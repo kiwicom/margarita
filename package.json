@@ -12,5 +12,11 @@
     "react-native-web"
   ],
   "author": "kiwi.com",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-native": "^0.57.5",
+    "react-native-web": "^0.9.7"
+  }
 }
