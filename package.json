@@ -4,7 +4,9 @@
   "description": "The proof of concept of universal the components.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9009 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook"
   },
   "keywords": [
     "react",
@@ -15,8 +17,14 @@
   "license": "MIT",
   "dependencies": {
     "react": "^16.6.3",
+    "react-art": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-native": "^0.57.5",
     "react-native-web": "^0.9.7"
+  },
+  "devDependencies": {
+    "@storybook/react": "^4.0.6",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4"
   }
 }
