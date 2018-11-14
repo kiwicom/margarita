@@ -1,0 +1,16 @@
+{
+  "name": "universal-orbit-components",
+  "version": "0.0.1",
+  "description": "The proof of concept of universal the components.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "native",
+    "react-native-web"
+  ],
+  "author": "kiwi.com",
+  "license": "MIT"
+}
