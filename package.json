@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9009 -c .storybook",
-    "storybook:build": "build-storybook -c .storybook"
+    "storybook:build": "build-storybook -c .storybook",
+    "eslint": "eslint ."
   },
   "keywords": [
     "react",
@@ -23,8 +24,11 @@
     "react-native-web": "^0.9.7"
   },
   "devDependencies": {
+    "@callstack/eslint-config": "^3.0.0",
     "@storybook/react": "^4.0.6",
     "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.4"
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.9.0",
+    "prettier-eslint-cli": "^4.7.1"
   }
 }
