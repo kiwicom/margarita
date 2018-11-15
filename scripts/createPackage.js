@@ -7,11 +7,13 @@ import rimraf from 'rimraf'; // eslint-disable-line import/no-extraneous-depende
 const srcPath = path.join(__dirname, '..', 'src');
 const libPath = path.join(__dirname, '..', 'lib');
 
+const excludePaths = ['__tests__', '__flowtests__'];
+
 const copyFiles = rootPath => {
   const filesAndFolders = fs.readdirSync(rootPath);
 
   filesAndFolders.forEach(item => {
-    if (item === '__tests__' || item.includes('.stories.js')) {
+    if (excludePaths.includes(item) || item.includes('.stories.js')) {
       return; // Skip test folders and storybook files
     }
     const currentPath = path.join(rootPath, item);

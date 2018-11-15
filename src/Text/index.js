@@ -1,7 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { Text as RNText, StyleSheet } from 'react-native';
+import { Text as RNText } from 'react-native';
+
+import { StyleSheet } from '..';
 
 type Props = {
   children: React.Node,
