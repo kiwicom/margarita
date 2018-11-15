@@ -1,5 +1,15 @@
+// @flow
+
 import * as React from 'react';
 import { Text as RNText, StyleSheet } from 'react-native';
+
+type Props = {
+  children: React.Node,
+};
+
+const Text = ({ children }: Props) => (
+  <RNText style={styles.title}>{children}</RNText>
+);
 
 const styles = StyleSheet.create({
   title: {
@@ -8,7 +18,5 @@ const styles = StyleSheet.create({
     color: 'green',
   },
 });
-
-const Text = ({ children }) => <RNText style={styles.title}>{children}</RNText>;
 
 export default Text;
