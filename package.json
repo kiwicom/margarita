@@ -5,12 +5,12 @@
   "main": "index.js",
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9009 -c .storybook",
     "storybook:build": "build-storybook -c .storybook",
     "prestorybook-native": "node ./node_modules/.bin/rnstl",
     "storybook-native": "storybook -c storybook.native start -p 7007",
     "eslint": "eslint .",
+    "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
     "rnstl": "rnstl",
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android"
@@ -30,7 +30,7 @@
     "react-native-web": "^0.9.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-0",
+    "@babel/core": "^7.1.6",
     "@callstack/eslint-config": "^3.0.0",
     "@emotion/core": "^0.13.1",
     "@emotion/styled": "^0.10.6",
@@ -38,16 +38,21 @@
     "@storybook/addon-links": "^4.0.6",
     "@storybook/react": "^4.0.6",
     "@storybook/react-native": "^4.0.6",
-    "babel-core": "^6.26.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-runtime": "^6.26.0",
     "eslint": "^5.9.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react-native": "^3.5.0",
+    "jest": "^23.6.0",
     "metro-react-native-babel-preset": "^0.49.1",
     "prettier": "^1.15.2",
     "prettier-eslint-cli": "^4.7.1",
     "react-native-storybook-loader": "^1.8.0",
+    "react-native-testing-library": "^1.3.2",
+    "react-test-renderer": "^16.6.3",
+    "regenerator-runtime": "^0.12.1",
     "webpack": "^4.25.1"
   },
   "config": {
