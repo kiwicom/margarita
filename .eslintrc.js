@@ -6,7 +6,8 @@ module.exports = {
   "extends": ["@callstack"],
   "plugins": [
     "prettier",
-    "react-native"
+    "react-native",
+    "flowtype"
   ],
   "rules": {
     "lines-between-class-members": [ERROR, "always", { exceptAfterSingleLine: true }],
@@ -29,5 +30,7 @@ module.exports = {
         ]
       }
     ],
+    "flowtype/require-valid-file-annotation": [ERROR, "always"],
+    "flowtype/newline-after-flow-annotation": [ERROR, "always"]
   },
 }

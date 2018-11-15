@@ -1,3 +1,5 @@
+// @flow
+
 import path from 'path';
 import fs from 'fs';
 import rimraf from 'rimraf'; // eslint-disable-line import/no-extraneous-dependencies
