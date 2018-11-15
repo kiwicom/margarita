@@ -31,6 +31,18 @@ module.exports = {
       }
     ],
     "flowtype/require-valid-file-annotation": [ERROR, "always"],
-    "flowtype/newline-after-flow-annotation": [ERROR, "always"]
+    "flowtype/newline-after-flow-annotation": [ERROR, "always"],
+    "no-restricted-imports": [
+      ERROR,
+      {
+        paths: [
+          {
+            name: "react-native",
+            importNames: ["StyleSheet"],
+            message: "Please use PlatformStyleSheet instead"
+          }
+        ]
+      }
+    ]
   },
 }
