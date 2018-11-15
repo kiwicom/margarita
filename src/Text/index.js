@@ -3,8 +3,9 @@ import { Text as RNText, StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: '1.25rem',
+    fontSize: 15,
     fontWeight: 'bold',
+    color: 'green',
   },
 });
 
