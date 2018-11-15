@@ -46,6 +46,7 @@ export type PlatformStyleObjectType = {
     > & {
       android: ReducedDangerouslyImpreciseStyle,
       ios: ReducedDangerouslyImpreciseStyle,
+      web: ReducedDangerouslyImpreciseStyle, // might need to be expanded
     }
   >,
 };

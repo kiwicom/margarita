@@ -16,6 +16,9 @@ import type { StyleObjectType, PlatformStyleObjectType } from './StyleTypes';
  *     android: {
  *       padding: 20,
  *     },
+ *     web: {
+ *       padding: 30,
+ *     },
  *   }
  * })
  */
@@ -37,12 +40,15 @@ export default {
   create(styles: PlatformStyleObjectType): StyleObjectType {
     const platformStyles = {};
     Object.keys(styles).forEach(name => {
-      let { ios, android, ...style } = { ...styles[name] }; // eslint-disable-line prefer-const
+      let { ios, android, web, ...style } = { ...styles[name] }; // eslint-disable-line prefer-const
       if (ios && Platform.OS === 'ios') {
         style = { ...style, ...ios };
       }
       if (android && Platform.OS === 'android') {
         style = { ...style, ...android };
+      }
+      if (web && Platform.OS === 'web') {
+        style = { ...style, ...web };
       }
       platformStyles[name] = style;
     });

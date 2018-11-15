@@ -14,10 +14,13 @@ export const testObject: StyleObjectType = {
     fontSize: 12,
     paddingStart: 10,
   },
-  // $FlowExpectedError: "android" key is not allowed here - should be already flattened
+  // $FlowExpectedError: "android" and "web" keys are not allowed here - should be already flattened
   testB: {
     android: {
       fontSize: 12,
+    },
+    web: {
+      paddingBottom: 25,
     },
   },
 };
@@ -63,6 +66,11 @@ export const testStyleSheetPlatforms: StylePropType = StyleSheet.create({
   testOnlyIOS: {
     ios: {
       color: 'blue',
+    },
+  },
+  testOnlyWeb: {
+    web: {
+      color: 'green',
     },
   },
 });
