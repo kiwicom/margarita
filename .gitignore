@@ -63,3 +63,6 @@ buck-out/
 
 #build
 lib/
+
+#Jest
+/coverage
