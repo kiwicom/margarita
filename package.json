@@ -2,7 +2,7 @@
   "name": "universal-orbit-components",
   "version": "0.0.1",
   "description": "The proof of concept of universal components.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,6 +15,12 @@
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android"
   },
+  "files": [
+    "/lib",
+    "package.json",
+    ".babelrc",
+    "README.md"
+  ],
   "keywords": [
     "react",
     "native",
@@ -23,31 +29,38 @@
   "author": "kiwi.com",
   "license": "MIT",
   "dependencies": {
+
+  },
+  "peerDependencies": {
     "react": "16.6.1",
-    "react-art": "16.6.1",
-    "react-dom": "16.6.1",
-    "react-native": "^0.57.5",
-    "react-native-web": "^0.9.7"
+    "react-native": "^0.57.5"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
+    "@babel/node": "^7.0.0",
     "@callstack/eslint-config": "^3.0.0",
     "@emotion/core": "^0.13.1",
     "@emotion/styled": "^0.10.6",
     "@storybook/addon-actions": "^4.0.6",
     "@storybook/addon-links": "^4.0.6",
-    "@storybook/react": "^4.0.6",
     "@storybook/react-native": "^4.0.6",
+    "@storybook/react": "^4.0.6",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.0.4",
     "babel-runtime": "^6.26.0",
-    "eslint": "^5.9.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react-native": "^3.5.0",
+    "eslint": "^5.9.0",
     "metro-react-native-babel-preset": "^0.49.1",
-    "prettier": "^1.15.2",
     "prettier-eslint-cli": "^4.7.1",
+    "prettier": "^1.15.2",
+    "react-art": "16.6.1",
+    "react-dom": "16.6.1",
     "react-native-storybook-loader": "^1.8.0",
+    "react-native-web": "^0.9.7",
+    "react-native": "^0.57.5",
+    "react": "16.6.1",
+    "rimraf": "^2.6.2",
     "webpack": "^4.25.1"
   },
   "config": {
