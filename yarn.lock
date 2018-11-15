@@ -960,6 +960,17 @@
     react-inspector "^2.3.0"
     uuid "^3.3.2"
 
+"@storybook/addon-links@^4.0.6":
+  version "4.0.6"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-links/-/addon-links-4.0.6.tgz#63a2735005195c06f367cd9132a8b9c3065c9eac"
+  integrity sha512-UBMJe8XB+hL+pv6/MEX/SE6lLdoTgS1k+i9cpaF4m47Mbsc2djAGXT+gCSFdVaZQuyMA0C2xm2XRmfIJiT6wEw==
+  dependencies:
+    "@storybook/addons" "4.0.6"
+    "@storybook/components" "4.0.6"
+    "@storybook/core-events" "4.0.6"
+    global "^4.3.2"
+    prop-types "^15.6.2"
+
 "@storybook/addons@4.0.6":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.0.6.tgz#4af486c113145c46bbe0d8b5cf6efa04d005a00a"
@@ -7625,7 +7636,7 @@ prettier-linter-helpers@^1.0.0:
   dependencies:
     fast-diff "^1.1.2"
 
-prettier@^1.14.2, prettier@^1.7.0:
+prettier@^1.14.2, prettier@^1.15.2, prettier@^1.7.0:
   version "1.15.2"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.15.2.tgz#d31abe22afa4351efa14c7f8b94b58bb7452205e"
   integrity sha512-YgPLFFA0CdKL4Eg2IHtUSjzj/BWgszDHiNQAe0VAIBse34148whfdzLagRL+QiKS+YfK5ftB6X4v/MBw8yCoug==

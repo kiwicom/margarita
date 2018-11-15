@@ -4,6 +4,9 @@ const ERROR = 2;
 
 module.exports = {
   "extends": ["@callstack"],
+  "plugins": [
+    "prettier"
+  ],
   "rules": {
     "react/destructuring-assignment": ERROR,
     "prettier/prettier": ERROR,
@@ -14,6 +17,7 @@ module.exports = {
           "**/*.test.js",
           "**/*.spec.js",
           "**/*.stories.js",
+          "./storybook.native/**/*.js",
         ]
       }
     ],
