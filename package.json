@@ -43,6 +43,7 @@
     "babel-runtime": "^6.26.0",
     "eslint": "^5.9.0",
     "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react-native": "^3.5.0",
     "metro-react-native-babel-preset": "^0.49.1",
     "prettier": "^1.15.2",
     "prettier-eslint-cli": "^4.7.1",
