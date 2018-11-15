@@ -1,16 +1,19 @@
 # Universal Orbit Components
-The proof of concept of universal the components.
-Based on the [react-native-web](https://github.com/necolas/react-native-web) library.
-
+Proof of concept for universal components.
+Based on [react-native-web](https://github.com/necolas/react-native-web).
 
 # Start
-## Desktop:
+## Desktop
 ```bash
 yarn storybook
 ```
-## IOS
+## iOS
 
 ```bash
 yarn ios
 ```
 
+## Android
+```bash
+yarn android
+```

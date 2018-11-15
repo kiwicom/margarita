@@ -60,3 +60,6 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+#build
+lib/
