@@ -10,7 +10,7 @@
     "storybook:build": "build-storybook -c .storybook",
     "prestorybook-native": "node ./node_modules/.bin/rnstl",
     "storybook-native": "storybook -c storybook.native start -p 7007",
-    "eslint": "eslint .",
+    "lint": "eslint src index.js",
     "rnstl": "rnstl",
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android"
