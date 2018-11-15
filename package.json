@@ -1,5 +1,5 @@
 {
-  "name": "universal-orbit-components",
+  "name": "@kiwicom/universal-orbit-components",
   "version": "0.0.1",
   "description": "The proof of concept of universal components.",
   "main": "lib/index.js",
@@ -14,7 +14,8 @@
     "flow": "flow",
     "rnstl": "rnstl",
     "ios": "rnstl && react-native run-ios",
-    "android": "rnstl && react-native run-android"
+    "android": "rnstl && react-native run-android",
+    "npm-publish": "yarn babel-node scripts/createPackage.js && yarn pack"
   },
   "files": [
     "/lib",
