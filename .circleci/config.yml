@@ -1,0 +1,73 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/universal-orbit-components
+  docker:
+    - image: circleci/node:10
+
+jobs:
+  install-dependencies:
+    <<: *defaults
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/universal-orbit-components
+      - restore_cache:
+          keys:
+            - v1-30-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-30-dependencies-
+      - run:
+          name: Install Dependencies
+          command: yarn
+      - save_cache:
+          key: v1-30-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - persist_to_workspace:
+          root: .
+          paths: .
+  flow:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/universal-orbit-components
+      - run: yarn flow
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/universal-orbit-components
+      - run: yarn lint
+  unit-tests:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/universal-orbit-components
+      - restore_cache:
+          keys:
+            - v1-0-jest-cache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-0-jest-cache-
+      - run: yarn test
+      - save_cache:
+          key: v1-0-jest-cache-{{ checksum "package.json" }}
+          paths:
+            - .jestCache
+      - persist_to_workspace:
+          root: .
+          paths: .
+workflows:
+  version: 2
+  test:
+    jobs:
+      - install-dependencies
+      - lint:
+          requires:
+            - install-dependencies
+      - flow:
+          requires:
+            - install-dependencies
+      - unit-tests:
+          requires:
+            - install-dependencies
