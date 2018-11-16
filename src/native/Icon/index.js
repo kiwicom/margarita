@@ -8,8 +8,8 @@ import iconsMap from './icons.json';
 
 export type Props = {|
   +name: string,
-  +size?: number,
-  +color?: string,
+  size?: number,
+  color?: string,
 |};
 
 const getIconCharacter = name => {

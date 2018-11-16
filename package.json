@@ -4,7 +4,9 @@
   "description": "The proof of concept of universal components.",
   "main": "lib/index.js",
   "private": true,
-  "workspaces": ["src/native/*"],
+  "workspaces": [
+    "src/native/*"
+  ],
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "storybook": "start-storybook -p 9009 -c .storybook",
@@ -33,7 +35,10 @@
   ],
   "author": "kiwi.com",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "@kiwicom/orbit-design-tokens": "^0.2.5",
+    "@kiwicom/react-native-orbit-icons": "^0.0.1"
+  },
   "peerDependencies": {
     "react": "16.6.1",
     "react-native": "^0.57.5"
@@ -44,8 +49,10 @@
     "@callstack/eslint-config": "^3.0.0",
     "@emotion/core": "^0.13.1",
     "@emotion/styled": "^0.10.6",
-    "@storybook/addon-actions": "^4.0.6",
+    "@storybook/addon-actions": "^4.0.7",
+    "@storybook/addon-knobs": "^4.0.7",
     "@storybook/addon-links": "^4.0.6",
+    "@storybook/addon-ondevice-knobs": "^4.0.7",
     "@storybook/react": "^4.0.6",
     "@storybook/react-native": "^4.0.6",
     "babel-core": "^7.0.0-bridge.0",

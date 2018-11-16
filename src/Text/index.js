@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Text as RNText } from 'react-native';
 
-import { StyleSheet } from '..';
+import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {
   children: React.Node,
