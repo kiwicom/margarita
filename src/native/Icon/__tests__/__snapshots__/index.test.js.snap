@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should match snapshot diff between regular and custom icon 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,5 +1,5 @@
+  <Text
+-   color=\\"#46515e\\"
+-   size={20}
++   color=\\"red\\"
++   size={40}
+    style={
+      Array [
+@@ -10,6 +10,6 @@
+        },
+        Object {
+-         \\"color\\": \\"#46515e\\",
+-         \\"fontSize\\": 20,
++         \\"color\\": \\"red\\",
++         \\"fontSize\\": 40,
+        },
+      ]"
+`;

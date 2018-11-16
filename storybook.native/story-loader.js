@@ -6,11 +6,13 @@
 
 function loadStories() {
   require('../src/Text/Text.stories');
+  require('../src/native/Icon/Icon.stories');
   
 }
 
 const stories = [
   '../src/Text/Text.stories',
+  '../src/native/Icon/Icon.stories',
   
 ];
 

@@ -7,7 +7,7 @@ import rimraf from 'rimraf'; // eslint-disable-line import/no-extraneous-depende
 const srcPath = path.join(__dirname, '..', 'src');
 const libPath = path.join(__dirname, '..', 'lib');
 
-const excludePaths = ['__tests__', '__flowtests__'];
+const excludePaths = ['native', '__tests__', '__flowtests__'];
 
 const copyFiles = rootPath => {
   const filesAndFolders = fs.readdirSync(rootPath);
