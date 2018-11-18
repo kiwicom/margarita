@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-
+import snapshotDiff from 'snapshot-diff';
 import Text from '../index';
 
 describe('Text', () => {
@@ -10,5 +10,23 @@ describe('Text', () => {
   const { getByText } = render(<Text>{children}</Text>);
   it('should have defined children text', () => {
     expect(getByText(children)).toBeDefined();
+  });
+
+  it('should match snapshot diff', () => {
+    const extend = render(
+      <Text
+        italic
+        uppercase
+        align="center"
+        type="secondary"
+        fontWeight="bold"
+        size="large"
+      >
+        {children}
+      </Text>
+    );
+    const base = render(<Text>{children}</Text>);
+
+    expect(snapshotDiff(base, extend)).toMatchSnapshot();
   });
 });

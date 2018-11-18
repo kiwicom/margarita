@@ -2,23 +2,65 @@
 
 import * as React from 'react';
 import { Text as RNText } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../index';
+import { createStylesGenerator } from '../utils';
+import {
+  align as alignTypes,
+  fontSize,
+  fontWeight as fontWeightTypes,
+  textColor,
+} from './styles';
 
-type Props = {
-  children: React.Node,
-};
+import type { TextType } from './TextTypes';
 
-const Text = ({ children }: Props) => (
-  <RNText style={styles.title}>{children}</RNText>
+const colorGen = createStylesGenerator('color', textColor);
+const fontWeightGen = createStylesGenerator('fontWeight', fontWeightTypes);
+const fontSizeGen = createStylesGenerator('fontSize', fontSize);
+const alingGen = createStylesGenerator('textAlign', alignTypes);
+
+const Text = ({
+  children,
+  italic,
+  uppercase,
+  dataTest,
+  align = 'left',
+  type = 'primary',
+  fontWeight = 'normal',
+  size = 'normal',
+}: TextType) => (
+  <RNText
+    dataTest={dataTest}
+    style={[
+      styles.text,
+      italic && styles.italic,
+      uppercase && styles.uppercase,
+      styles[fontWeight],
+      styles[size],
+      styles[type],
+      styles[align],
+    ]}
+  >
+    {children}
+  </RNText>
 );
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'green',
+  text: {
+    margin: 0,
+    fontFamily: defaultTokens.fontFamily,
   },
+  italic: {
+    fontStyle: 'italic',
+  },
+  uppercase: {
+    textTransform: 'uppercase',
+  },
+  ...fontWeightGen(),
+  ...alingGen(),
+  ...colorGen(),
+  ...fontSizeGen(),
 });
 
 export default Text;

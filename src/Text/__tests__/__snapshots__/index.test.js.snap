@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -3,24 +3,28 @@
+      Array [
+        Object {
+          \\"fontFamily\\": \\"\\\\\\"Roboto\\\\\\", -apple-system, \\\\\\".SFNSText-Regular\\\\\\", \\\\\\"San Francisco\\\\\\", \\\\\\"Segoe UI\\\\\\", \\\\\\"Helvetica Neue\\\\\\", \\\\\\"Lucida Grande\\\\\\", sans-serif\\",
+          \\"margin\\": 0,
+        },
+-       undefined,
+-       undefined,
+        Object {
+-         \\"fontSize\\": 14,
++         \\"fontStyle\\": \\"italic\\",
+        },
+        Object {
+-         \\"fontSize\\": 14,
++         \\"textTransform\\": \\"uppercase\\",
+        },
+        Object {
+-         \\"color\\": \\"#46515e\\",
++         \\"fontWeight\\": \\"700\\",
+        },
+        Object {
+-         \\"textAlign\\": \\"left\\",
++         \\"fontSize\\": 16,
+        },
++       Object {
++         \\"color\\": \\"#7f91a8\\",
++       },
++       Object {
++         \\"textAlign\\": \\"center\\",
++       },
+      ]
+    }
+  >
+    Lorem ipsum
+  </Text>"
+`;
