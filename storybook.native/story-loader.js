@@ -7,6 +7,7 @@
 
 function loadStories() {
   require('../src/Button/Button.stories');
+  require('../src/ServiceLogo/ServiceLogo.stories');
   require('../src/Text/Text.stories');
   require('../src/TextInput/TextInput.stories');
   require('../src/native/Icon/Icon.stories');
@@ -14,6 +15,7 @@ function loadStories() {
 
 const stories = [
   '../src/Button/Button.stories',
+  '../src/ServiceLogo/ServiceLogo.stories',
   '../src/Text/Text.stories',
   '../src/TextInput/TextInput.stories',
   '../src/native/Icon/Icon.stories',
