@@ -6,5 +6,6 @@ module.exports = {
       'react-native': 'react-native-web',
       '@storybook/react-native': '@storybook/react',
     },
+    extensions: [ '.web.js', '.js' ]
   }
 };

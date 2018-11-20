@@ -1,2 +1,5 @@
-import '@storybook/addon-actions';
-import '@storybook/addon-links';
+// @flow
+
+import '@storybook/addon-actions/register';
+import '@storybook/addon-links/register';
+import '@storybook/addon-knobs/register';
