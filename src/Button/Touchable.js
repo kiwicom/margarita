@@ -79,6 +79,7 @@ export default class Touchable extends React.Component<Props> {
     };
 
     const touchableOpacityProps = {
+      onPress,
       onLongPress,
       delayPressIn,
       testID,

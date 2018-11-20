@@ -17,7 +17,7 @@ type Props = {|
   +style?: StylePropType,
   +disabled?: boolean,
   +type?: ButtonType,
-  +icon?: React.Element<typeof Icon> | null,
+  +leftIcon?: React.Element<typeof Icon> | null,
   +rightIcon?: React.Element<typeof Icon> | null,
   +testID?: string,
   +sublabel?: React.Node,
@@ -30,19 +30,19 @@ export default function Button({
   style,
   testID,
   children,
-  icon: originalIcon,
+  leftIcon: originalleftIcon,
   rightIcon: originalRightIcon,
   sublabel,
 }: Props) {
   const type = disabled ? 'disabled' : originalType;
-  const icon = originalIcon
-    ? React.cloneElement(originalIcon, { color: textColor[type] })
-    : originalIcon;
+  const leftIcon = originalleftIcon
+    ? React.cloneElement(originalleftIcon, { color: textColor[type] })
+    : originalleftIcon;
   const rightIcon = originalRightIcon
     ? React.cloneElement(originalRightIcon, { color: textColor[type] })
     : originalRightIcon;
   let justifyContent = layout.default;
-  if (icon != null) {
+  if (leftIcon != null) {
     justifyContent = layout.flexStart;
   }
   if (rightIcon != null || sublabel != null) {
@@ -59,7 +59,9 @@ export default function Button({
     >
       <React.Fragment>
         <View style={layout.row}>
-          {icon != null && <View style={layout.rightSpace}>{icon}</View>}
+          {leftIcon != null && (
+            <View style={layout.rightSpace}>{leftIcon}</View>
+          )}
           <ButtonTitle text={children} type={type} />
         </View>
         <View style={layout.row}>

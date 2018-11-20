@@ -32,8 +32,8 @@ storiesOf('Button', module)
     );
     const disabled = boolean('Disabled', false);
     const sublabel = text('Sublabel', 'Sublabel');
-    const icon = select(
-      'Icon',
+    const leftIcon = select(
+      'Left Icon',
       ['undefined', ...Object.keys(icons)],
       'calendar'
     );
@@ -47,7 +47,7 @@ storiesOf('Button', module)
         type={type}
         onPress={noop}
         disabled={disabled}
-        icon={icon !== 'undefined' ? <Icon name={icon} /> : null}
+        leftIcon={leftIcon !== 'undefined' ? <Icon name={leftIcon} /> : null}
         rightIcon={rightIcon !== 'undefined' ? <Icon name={rightIcon} /> : null}
         sublabel={sublabel !== '' ? sublabel : null}
       >
@@ -62,7 +62,7 @@ storiesOf('Button', module)
       <Button
         onPress={noop}
         type="primary"
-        icon={<Icon name="attachment" />}
+        leftIcon={<Icon name="attachment" />}
         rightIcon={<Icon name="attachment" />}
       >
         Primary button
@@ -104,7 +104,7 @@ storiesOf('Button', module)
       <Button onPress={noop} type="disabled">
         Disabled button
       </Button>
-      <Button onPress={noop} type="primary" icon={<Icon name="calendar" />}>
+      <Button onPress={noop} type="primary" leftIcon={<Icon name="calendar" />}>
         Primary button with icon
       </Button>
     </>
