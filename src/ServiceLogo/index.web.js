@@ -43,11 +43,7 @@ const style = {
   backgroundColor: 'transparent',
 };
 
-const ServiceLogoWeb = ({
-  name,
-  size = 'medium',
-  grayScale = false,
-}: Props) => (
+const ServiceLogo = ({ name, size = 'medium', grayScale = false }: Props) => (
   <img
     style={[style, { height: () => getHeight(size) }]}
     src={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
@@ -62,4 +58,4 @@ const ServiceLogoWeb = ({
   />
 );
 
-export default ServiceLogoWeb;
+export default ServiceLogo;
