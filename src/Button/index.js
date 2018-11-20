@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import Icon from '@kiwicom/react-native-orbit-icons';
 
 import StyleSheet from '../PlatformStyleSheet/index';
@@ -10,6 +9,7 @@ import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import GenericButtonWrapper from './GenericButtonWrapper';
 import ButtonTitle from './ButtonTitle';
 import type { ButtonType } from './ButtonTypes';
+import { textColor } from './styles';
 
 type Props = {|
   +children: React.Node,
@@ -36,10 +36,10 @@ export default function Button({
 }: Props) {
   const type = disabled ? 'disabled' : originalType;
   const icon = originalIcon
-    ? React.cloneElement(originalIcon, { color: iconTheme[type] })
+    ? React.cloneElement(originalIcon, { color: textColor[type] })
     : originalIcon;
   const rightIcon = originalRightIcon
-    ? React.cloneElement(originalRightIcon, { color: iconTheme[type] })
+    ? React.cloneElement(originalRightIcon, { color: textColor[type] })
     : originalRightIcon;
   let justifyContent = layout.default;
   if (icon != null) {
@@ -76,18 +76,6 @@ export default function Button({
     </GenericButtonWrapper>
   );
 }
-
-const iconTheme = {
-  primary: defaultTokens.colorTextButtonPrimary,
-  secondary: defaultTokens.colorTextButtonSecondary,
-  info: defaultTokens.paletteBlueNormal,
-  success: defaultTokens.paletteProductNormal,
-  warning: defaultTokens.colorTextButtonWarning,
-  critical: defaultTokens.colorTextButtonCritical,
-  facebook: defaultTokens.colorTextButtonFacebook,
-  google: defaultTokens.colorTextButtonGoogle,
-  disabled: defaultTokens.paletteInkLighter,
-};
 
 const layout = StyleSheet.create({
   default: {

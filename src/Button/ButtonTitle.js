@@ -2,11 +2,11 @@
 
 import * as React from 'react';
 import { Text } from 'react-native'; // TODO replace with our own text
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import StyleSheet from '../PlatformStyleSheet';
 
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { ButtonType } from './ButtonTypes';
+import { textColor } from './styles';
 
 type Props = {|
   +text: React.Node,
@@ -24,7 +24,7 @@ export default function ButtonTitle({
   const variantStyle =
     variant === 'sublabel' ? styles.sublabel : styles.default;
   return (
-    <Text style={[styles.common, variantStyle, theme[type].text, style]}>
+    <Text style={[styles.common, variantStyle, theme(type).text, style]}>
       {text}
     </Text>
   );
@@ -48,56 +48,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const theme = {
-  primary: StyleSheet.create({
+const theme = (type: ButtonType = 'primary') =>
+  StyleSheet.create({
     text: {
-      color: defaultTokens.colorTextButtonPrimary,
+      color: textColor[type],
     },
-  }),
-  secondary: StyleSheet.create({
-    text: {
-      color: defaultTokens.colorTextButtonSecondary,
-    },
-  }),
-  info: StyleSheet.create({
-    text: {
-      color: defaultTokens.paletteBlueNormal,
-      web: {
-        color: defaultTokens.colorTextButtonInfo,
-      },
-    },
-  }),
-  success: StyleSheet.create({
-    text: {
-      color: defaultTokens.paletteProductNormal,
-      web: {
-        color: defaultTokens.colorTextButtonSuccess,
-      },
-    },
-  }),
-  warning: StyleSheet.create({
-    text: {
-      color: defaultTokens.colorTextButtonWarning,
-    },
-  }),
-  critical: StyleSheet.create({
-    text: {
-      color: defaultTokens.colorTextButtonCritical,
-    },
-  }),
-  facebook: StyleSheet.create({
-    text: {
-      color: defaultTokens.colorTextButtonFacebook,
-    },
-  }),
-  google: StyleSheet.create({
-    text: {
-      color: defaultTokens.colorTextButtonGoogle,
-    },
-  }),
-  disabled: StyleSheet.create({
-    text: {
-      color: defaultTokens.paletteInkLighter,
-    },
-  }),
-};
+  });

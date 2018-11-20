@@ -1,12 +1,12 @@
 // @flow
 
 import * as React from 'react';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Touchable from './Touchable';
 import StyleSheet from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { ButtonType } from './ButtonTypes';
+import { wrapperColor } from './styles';
 
 type Props = {|
   +children: React.Node,
@@ -36,7 +36,7 @@ export default function Button({
     <Touchable
       disabled={!onPress || disabled}
       onPress={onPressHandler}
-      style={[styleSheet.buttonWrapper, theme[type].wrapper, style]}
+      style={[styleSheet.buttonWrapper, theme(type).wrapper, style]}
       accessibilityComponentType="button"
       accessibilityTraits="button"
       testID={testID}
@@ -58,56 +58,9 @@ const styleSheet = StyleSheet.create({
   },
 });
 
-const theme = {
-  primary: StyleSheet.create({
+const theme = (type: ButtonType = 'primary') =>
+  StyleSheet.create({
     wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonPrimary,
+      backgroundColor: wrapperColor[type],
     },
-  }),
-  secondary: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonSecondary,
-    },
-  }),
-  info: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.paletteBlueLight,
-      web: {
-        backgroundColor: defaultTokens.backgroundButtonInfo,
-      },
-    },
-  }),
-  success: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.paletteProductLight,
-      web: {
-        backgroundColor: defaultTokens.backgroundButtonSuccess,
-      },
-    },
-  }),
-  warning: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonWarning,
-    },
-  }),
-  critical: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonCritical,
-    },
-  }),
-  facebook: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonFacebook,
-    },
-  }),
-  google: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.backgroundButtonGoogle,
-    },
-  }),
-  disabled: StyleSheet.create({
-    wrapper: {
-      backgroundColor: defaultTokens.paletteCloudLight,
-    },
-  }),
-};
+  });
