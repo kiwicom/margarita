@@ -1,7 +1,12 @@
 // @flow
 
 import * as React from 'react';
-import { TextInput as RNTextInput, View, Text } from 'react-native';
+import {
+  TextInput as RNTextInput,
+  View,
+  Text,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '..';
@@ -14,8 +19,9 @@ type Props = {|
   +disabled?: boolean,
   +required?: boolean,
   +inlineLabel?: boolean,
-  +label: string,
+  +label: React.Node,
   +prefix?: React.Node,
+  +suffix?: React.Node,
   +onFocus?: () => void | Promise<any>,
   +onBlur?: () => void | Promise<any>,
   +onChange?: () => void | Promise<any>,
@@ -43,6 +49,19 @@ const Prefix = ({ children, size }) => {
   );
 };
 
+const Suffix = ({ children }) => {
+  const suffix = React.Children.map(children, child => {
+    if (React.isValidElement(child)) {
+      return React.cloneElement(child, {
+        size: 16,
+      });
+    }
+    return child;
+  });
+
+  return <View style={styles.suffix}>{suffix}</View>;
+};
+
 const InlineLabel = ({ children }) => (
   <View style={styles.inlineLabel}>{children}</View>
 );
@@ -51,6 +70,8 @@ class TextInput extends React.Component<Props, State> {
   state = {
     focused: false,
   };
+
+  myref: ?RNTextInput;
 
   toggleFocus = () => {
     this.setState(state => ({
@@ -74,6 +95,14 @@ class TextInput extends React.Component<Props, State> {
     }
   };
 
+  refToTextInput = (ref: ?RNTextInput) => {
+    this.myref = ref;
+  };
+
+  focusTextInput = () => {
+    this.myref && this.myref.focus();
+  };
+
   render() {
     const {
       placeholder,
@@ -85,60 +114,70 @@ class TextInput extends React.Component<Props, State> {
       prefix,
       onChange,
       inlineLabel,
+      suffix,
     } = this.props;
     const { focused } = this.state;
     return (
-      <View>
-        {label && !inlineLabel && (
-          <FormLabel filled={!!value} required={required} disabled={disabled}>
-            {label}
-          </FormLabel>
-        )}
-        <View
-          style={[
-            styles.inputContainer,
-            size === 'normal' ? styles.normalSize : styles.smallSize,
-            disabled
-              ? styles.inputContainerDisabled
-              : styles.inputContainerDefault,
-            focused
-              ? styles.inputContainerBorderFocused
-              : styles.inputContainerBorderDefault,
-          ]}
-        >
-          {prefix && <Prefix size={size}>{prefix}</Prefix>}
-          {label && inlineLabel && (
-            <InlineLabel>
-              <FormLabel
-                filled={!!value}
-                inlineLabel
-                required={required}
-                disabled={disabled}
-              >
-                {label}
-              </FormLabel>
-            </InlineLabel>
+      <TouchableWithoutFeedback onPress={this.focusTextInput}>
+        <View style={styles.inputWrapper}>
+          {label != null && !inlineLabel && (
+            <FormLabel filled={!!value} required={required} disabled={disabled}>
+              {label}
+            </FormLabel>
           )}
-          <RNTextInput
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onChangeText={onChange}
-            placeholderTextColor={defaultTokens.colorPlaceholderInput}
-            editable={!disabled}
-            placeholder={placeholder}
-            value={value}
+          <View
             style={[
-              styles.inputField,
-              disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
+              styles.inputContainer,
+              size === 'normal' ? styles.normalSize : styles.smallSize,
+              disabled
+                ? styles.inputContainerDisabled
+                : styles.inputContainerDefault,
+              focused
+                ? styles.inputContainerBorderFocused
+                : styles.inputContainerBorderDefault,
             ]}
-          />
+          >
+            {prefix != null && <Prefix size={size}>{prefix}</Prefix>}
+            {label != null && inlineLabel && (
+              <InlineLabel>
+                <FormLabel
+                  filled={!!value}
+                  inlineLabel
+                  required={required}
+                  disabled={disabled}
+                >
+                  {label}
+                </FormLabel>
+              </InlineLabel>
+            )}
+            <RNTextInput
+              ref={this.refToTextInput}
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              onChangeText={onChange}
+              placeholderTextColor={defaultTokens.colorPlaceholderInput}
+              editable={!disabled}
+              placeholder={placeholder}
+              value={value}
+              style={[
+                styles.inputField,
+                disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
+              ]}
+            />
+            {suffix != null && <Suffix>{suffix}</Suffix>}
+          </View>
         </View>
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  inputWrapper: {
+    web: {
+      cursor: 'text',
+    },
+  },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -155,7 +194,9 @@ const styles = StyleSheet.create({
     backgroundColor: defaultTokens.backgroundInputDisabled,
   },
   inputField: {
+    flex: 1,
     width: '100%',
+    height: '100%',
     fontSize: 14,
     web: {
       outline: 'none',
@@ -189,6 +230,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingEnd: 12,
+  },
+  suffix: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingStart: 12,
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,

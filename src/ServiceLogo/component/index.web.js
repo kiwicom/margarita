@@ -1,9 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import type { Props } from './types';
+import type { Props } from './ServiceLogoTypes';
 
-const getHeight = size => {
+const getImageSize = size => {
   const tokens = {
     height: {
       small: '12px',
@@ -11,8 +11,13 @@ const getHeight = size => {
       large: '48px',
     },
   };
+
+  if (typeof size === 'number') {
+    return tokens.height.medium;
+  }
   return tokens.height[size];
 };
+
 const baseURL = '//images.kiwi.com';
 
 const getColor = greyScale => (greyScale ? 'logos-grayscale' : 'logos');
@@ -24,13 +29,13 @@ const style = {
 
 const ServiceLogo = ({ name, size = 'medium', grayScale = false }: Props) => (
   <img
-    style={[style, { height: () => getHeight(size) }]}
+    style={{ ...style, height: size }}
     src={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
-      getHeight(size),
+      getImageSize(size),
       10
     )}/${name}.png`}
     srcSet={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
-      getHeight(size),
+      getImageSize(size),
       10
     ) * 2}/${name}.png 2x`}
     alt={name}

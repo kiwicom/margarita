@@ -4,6 +4,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import TextInput from './index';
 import Icon from '../native/Icon';
+import ServiceLogo from '../ServiceLogo/component';
 
 storiesOf('TextInput', module)
   .add('Default input', () => (
@@ -30,4 +31,11 @@ storiesOf('TextInput', module)
   ))
   .add('Compact input', () => (
     <TextInput label="Label" inlineLabel placeholder="Type something" />
+  ))
+  .add('With service logo suffix', () => (
+    <TextInput
+      label="Label"
+      placeholder="Type something"
+      suffix={<ServiceLogo name="VisaHQ" />}
+    />
   ));

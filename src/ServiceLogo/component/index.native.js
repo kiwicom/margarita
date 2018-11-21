@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Image } from 'react-native';
-import type { Props } from './types';
+import type { Props } from './ServiceLogoTypes';
 
 const ServiceLogo = ({ name, grayScale }: Props) => {
   let source;
