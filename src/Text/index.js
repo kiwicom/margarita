@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Text as RNText } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../index';
 import { createStylesGenerator } from '../utils';
@@ -49,7 +48,6 @@ const Text = ({
 const styles = StyleSheet.create({
   text: {
     margin: 0,
-    fontFamily: defaultTokens.fontFamily,
   },
   italic: {
     fontStyle: 'italic',

@@ -5,10 +5,10 @@ exports[`Text should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -3,24 +3,28 @@
+@@ -2,24 +2,28 @@
+    style={
       Array [
         Object {
-          \\"fontFamily\\": \\"\\\\\\"Roboto\\\\\\", -apple-system, \\\\\\".SFNSText-Regular\\\\\\", \\\\\\"San Francisco\\\\\\", \\\\\\"Segoe UI\\\\\\", \\\\\\"Helvetica Neue\\\\\\", \\\\\\"Lucida Grande\\\\\\", sans-serif\\",
           \\"margin\\": 0,
         },
 -       undefined,
