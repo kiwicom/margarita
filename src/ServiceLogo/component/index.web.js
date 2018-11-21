@@ -1,28 +1,7 @@
 // @flow
 
 import * as React from 'react';
-
-type Name =
-  | 'AirHelp'
-  | 'Amex'
-  | 'AxaAssistance'
-  | 'DinersClub'
-  | 'JCB'
-  | 'Maestro'
-  | 'MasterCard'
-  | 'MIR'
-  | 'NewYorkTimes'
-  | 'NortonSecured'
-  | 'TravelPulse'
-  | 'Visa'
-  | 'VisaHQ'
-  | 'Zooz';
-
-type Props = {|
-  +name: Name,
-  +size?: string,
-  grayScale?: boolean,
-|};
+import type { Props } from './types';
 
 const getHeight = size => {
   const tokens = {
