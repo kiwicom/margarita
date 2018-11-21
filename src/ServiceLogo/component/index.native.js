@@ -74,12 +74,12 @@ const ServiceLogo = ({ name, grayScale }: Props) => {
         : require('../assets/TravelPulseLogo.imageset/TravelPulse.png');
       break;
     }
-    // case 'Visa': {
-    //   source = grayScale
-    //     ? require('../assets/GrayVisaLogo.imageset/Visa.png')
-    //     : require('../assets/VisaLogo.imageset/Visa.png');
-    //   break;
-    // }
+    case 'Visa': {
+      source = grayScale
+        ? require('../assets/GrayVisaLogo.imageset/Visa.png')
+        : require('../assets/VisaLogo.imageset/Visa.png');
+      break;
+    }
     case 'VisaHQ': {
       source = grayScale
         ? require('../assets/GrayVisaHQLogo.imageset/VisaHQ.png')
