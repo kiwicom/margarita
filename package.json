@@ -4,9 +4,7 @@
   "description": "The proof of concept of universal components.",
   "main": "lib/index.js",
   "private": true,
-  "workspaces": [
-    "src/native/*"
-  ],
+  "workspaces": ["src/native/*"],
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "storybook": "start-storybook -p 9009 -c .storybook",
