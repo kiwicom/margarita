@@ -11,26 +11,13 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '..';
 import FormLabel from './FormLabel';
+import { createStylesGenerator } from '../utils';
+import { fontSize, height } from './styles';
 
-type Props = {|
-  +size?: 'small' | 'normal',
-  +placeholder?: string,
-  +value?: string,
-  +disabled?: boolean,
-  +required?: boolean,
-  +inlineLabel?: boolean,
-  +label: React.Node,
-  +prefix?: React.Node,
-  +suffix?: React.Node,
-  +type?: string,
-  +onFocus?: () => void | Promise<any>,
-  +onBlur?: () => void | Promise<any>,
-  +onChangeText?: string => void | Promise<any>,
-|};
+import type { Props, State } from './TextInputTypes';
 
-type State = {|
-  focused: boolean,
-|};
+const fontSizeGen = createStylesGenerator('fontSize', fontSize);
+const heightGen = createStylesGenerator('height', height);
 
 const Prefix = ({ children, size }) => {
   const prefix = React.Children.map(children, child => {
@@ -86,24 +73,24 @@ class TextInput extends React.Component<Props, State> {
 
   handleOnFocus = () => {
     const { onFocus, disabled } = this.props;
-    if (!disabled && onFocus) {
+    if (!disabled) {
       this.toggleFocus();
-      onFocus();
+      onFocus && onFocus();
     }
   };
 
   handleOnBlur = () => {
     const { onBlur, disabled } = this.props;
-    if (!disabled && onBlur) {
+    if (!disabled) {
       this.toggleFocus();
-      onBlur();
+      onBlur && onBlur();
     }
   };
 
   handleChangeText = (value: string) => {
     const { onChangeText, disabled } = this.props;
-    if (!disabled && onChangeText) {
-      onChangeText(value);
+    if (!disabled) {
+      onChangeText && onChangeText(value);
     }
   };
 
@@ -151,7 +138,7 @@ class TextInput extends React.Component<Props, State> {
           <View
             style={[
               styles.inputContainer,
-              size === 'normal' ? styles.normalSize : styles.smallSize,
+              styles[size],
               disabled
                 ? styles.inputContainerDisabled
                 : styles.inputContainerDefault,
@@ -187,6 +174,7 @@ class TextInput extends React.Component<Props, State> {
               style={[
                 styles.inputField,
                 disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
+                styles[size],
               ]}
             />
             {suffix != null && <Suffix>{suffix}</Suffix>}
@@ -208,9 +196,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    borderWidth: 1,
-    borderRadius: 3,
-    paddingHorizontal: 12,
+    borderWidth: parseFloat(defaultTokens.borderWidthInput),
+    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    paddingHorizontal: parseFloat(defaultTokens.spaceSmall),
   },
   inputContainerDefault: {
     backgroundColor: defaultTokens.backgroundInput,
@@ -222,7 +210,6 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     height: '100%',
-    fontSize: 14,
     web: {
       outline: 'none',
     },
@@ -232,12 +219,6 @@ const styles = StyleSheet.create({
   },
   inputFieldDisabled: {
     color: defaultTokens.colorTextInputDisabled,
-  },
-  normalSize: {
-    height: 44,
-  },
-  smallSize: {
-    height: 32,
   },
   inputContainerBorderFocused: {
     borderColor: defaultTokens.borderColorInputFocus,
@@ -249,21 +230,23 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingEnd: 12,
+    paddingEnd: parseFloat(defaultTokens.spaceSmall),
   },
   prefix: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingEnd: 12,
+    paddingEnd: parseFloat(defaultTokens.spaceSmall),
   },
   suffix: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingStart: 12,
+    paddingStart: parseFloat(defaultTokens.spaceSmall),
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,
   },
+  ...fontSizeGen(),
+  ...heightGen(),
 });
 
 export default TextInput;
