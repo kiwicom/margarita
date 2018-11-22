@@ -88,7 +88,7 @@ class TextInput extends React.Component<Props, State> {
     const { onFocus, disabled } = this.props;
     if (!disabled && onFocus) {
       this.toggleFocus();
-      onFocus && onFocus();
+      onFocus();
     }
   };
 
@@ -96,21 +96,21 @@ class TextInput extends React.Component<Props, State> {
     const { onBlur, disabled } = this.props;
     if (!disabled && onBlur) {
       this.toggleFocus();
-      onBlur && onBlur();
+      onBlur();
     }
   };
 
   handleChangeText = (value: string) => {
     const { onChangeText, disabled } = this.props;
     if (!disabled && onChangeText) {
-      onChangeText && onChangeText(value);
+      onChangeText(value);
     }
   };
 
   handleKeyboardType = (type: string) => {
     switch (type) {
       case 'number':
-        return 'number';
+        return 'numeric';
       case 'email':
         return 'email-address';
       default:
