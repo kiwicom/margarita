@@ -86,41 +86,36 @@ class TextInput extends React.Component<Props, State> {
 
   handleOnFocus = () => {
     const { onFocus, disabled } = this.props;
-    if (disabled) {
-      return;
+    if (!disabled && onFocus) {
+      this.toggleFocus();
+      onFocus && onFocus();
     }
-
-    this.toggleFocus();
-    onFocus && onFocus();
   };
 
   handleOnBlur = () => {
     const { onBlur, disabled } = this.props;
-    if (disabled) {
-      return;
+    if (!disabled && onBlur) {
+      this.toggleFocus();
+      onBlur && onBlur();
     }
-
-    this.toggleFocus();
-    onBlur && onBlur();
   };
 
   handleChangeText = (value: string) => {
     const { onChangeText, disabled } = this.props;
-    if (disabled) {
-      return;
+    if (!disabled && onChangeText) {
+      onChangeText && onChangeText(value);
     }
-
-    onChangeText && onChangeText(value);
   };
 
   handleKeyboardType = (type: string) => {
-    if (type === 'number') {
-      return 'numeric';
+    switch (type) {
+      case 'number':
+        return 'number';
+      case 'email':
+        return 'email-address';
+      default:
+        return 'default';
     }
-    if (type === 'email') {
-      return 'email-address';
-    }
-    return 'default';
   };
 
   refToTextInput = (ref: ?RNTextInput) => {
