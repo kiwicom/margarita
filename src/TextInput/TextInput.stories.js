@@ -2,11 +2,64 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
+
 import TextInput from './index';
 import Icon from '../native/Icon';
 import ServiceLogo from '../ServiceLogo/component';
 
+import iconsMap from '../native/Icon/icons.json';
+
 storiesOf('TextInput', module)
+  .addDecorator(withKnobs)
+  .add('Playground', () => {
+    const size = select('Size', ['small', 'normal'], 'normal');
+    const label = text('Label', 'Label');
+    const inlineLabel = boolean('Inline label', false);
+    const value = text('Value', '');
+    const placeholder = text('Placeholder', 'Placeholder');
+    const disabled = boolean('Disabled', false);
+    const required = boolean('Required', false);
+    const serviceLogoName = select(
+      'Suffix service logo',
+      [
+        'AirHelp',
+        'Amex',
+        'AxaAssistance',
+        'DinersClub',
+        'JCB',
+        'Maestro',
+        'MasterCard',
+        'MIR',
+        'NewYorkTimes',
+        'NortonSecured',
+        'TravelPulse',
+        'Visa',
+        'VisaHQ',
+        'Zooz',
+      ],
+      'Visa'
+    );
+    const iconName = select(
+      'Prefix icon name',
+      Object.keys(iconsMap),
+      'search'
+    );
+
+    return (
+      <TextInput
+        size={size}
+        label={label}
+        inlineLabel={inlineLabel}
+        value={value}
+        placeholder={placeholder}
+        disabled={disabled}
+        required={required}
+        suffix={<ServiceLogo name={serviceLogoName} />}
+        prefix={<Icon name={iconName} />}
+      />
+    );
+  })
   .add('Default input', () => (
     <TextInput label="Label" placeholder="Type something" />
   ))
