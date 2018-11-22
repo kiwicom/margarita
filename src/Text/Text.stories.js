@@ -11,7 +11,7 @@ const style = {
   flexGrow: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  pading: 25,
+  padding: 25,
   backgroundColor: '#f5fcff',
   width: '100%',
 };

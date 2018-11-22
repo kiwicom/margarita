@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import { Text as RNText } from 'react-native';
-
+import { Text as RNText, Platform } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '../index';
 import { createStylesGenerator } from '../utils';
 import {
@@ -30,7 +30,7 @@ const Text = ({
   size = 'normal',
 }: TextType) => (
   <RNText
-    dataTest={dataTest}
+    data-test={dataTest}
     style={[
       styles.text,
       italic && styles.italic,
@@ -48,6 +48,7 @@ const Text = ({
 const styles = StyleSheet.create({
   text: {
     margin: 0,
+    fontFamily: Platform.OS === 'web' ? defaultTokens.fontFamily : 'Roboto',
   },
   italic: {
     fontStyle: 'italic',
