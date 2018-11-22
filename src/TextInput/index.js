@@ -30,7 +30,6 @@ type Props = {|
 
 type State = {|
   focused: boolean,
-  value?: string,
 |};
 
 const Prefix = ({ children, size }) => {
@@ -72,11 +71,8 @@ class TextInput extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const { value } = this.props;
-
     this.state = {
       focused: false,
-      value,
     };
   }
 
@@ -114,7 +110,6 @@ class TextInput extends React.Component<Props, State> {
       return;
     }
 
-    this.setState({ value });
     onChangeText && onChangeText(value);
   };
 
@@ -147,8 +142,9 @@ class TextInput extends React.Component<Props, State> {
       inlineLabel,
       suffix,
       type = 'text',
+      value,
     } = this.props;
-    const { focused, value } = this.state;
+    const { focused } = this.state;
     return (
       <TouchableWithoutFeedback onPress={this.focusTextInput}>
         <View style={styles.inputWrapper}>
