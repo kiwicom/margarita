@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
-import StyleSheet from '../../PlatformStyleSheet/index';
+import StyleSheet from '../PlatformStyleSheet/index';
 
-import Text from '../../Text/index';
+import Text from '../Text/index';
 import iconsMap from './icons.json';
 
 import Icon from './index';

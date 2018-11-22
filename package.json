@@ -3,10 +3,6 @@
   "version": "0.0.1",
   "description": "The proof of concept of universal components.",
   "main": "lib/index.js",
-  "private": true,
-  "workspaces": [
-    "src/native/*"
-  ],
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "storybook": "start-storybook -p 9009 -c .storybook",
@@ -36,8 +32,7 @@
   "author": "kiwi.com",
   "license": "MIT",
   "dependencies": {
-    "@kiwicom/orbit-design-tokens": "^0.2.5",
-    "@kiwicom/react-native-orbit-icons": "^0.0.1"
+    "@kiwicom/orbit-design-tokens": "^0.2.5"
   },
   "peerDependencies": {
     "react": "16.6.1",

@@ -7,13 +7,22 @@ Based on [react-native-web](https://github.com/necolas/react-native-web).
 ```bash
 yarn storybook
 ```
-## iOS
+
+## Mobile
+
+After running `yarn`, you also need to link assets using:
+
+```bash
+react-native link
+```
+
+### iOS
 
 ```bash
 yarn ios
 ```
 
-## Android
+### Android
 ```bash
 yarn android
 ```

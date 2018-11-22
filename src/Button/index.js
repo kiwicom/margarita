@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import Icon from '@kiwicom/react-native-orbit-icons';
 
+import Icon from '../Icon';
 import StyleSheet from '../PlatformStyleSheet/index';
 import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import GenericButtonWrapper from './GenericButtonWrapper';

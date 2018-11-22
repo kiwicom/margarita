@@ -6,10 +6,10 @@ import { action } from '@storybook/addon-actions';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 
 import TextInput from './index';
-import Icon from '../native/Icon';
+import Icon from '../Icon';
 import ServiceLogo from '../ServiceLogo/component';
 
-import iconsMap from '../native/Icon/icons.json';
+import iconsMap from '../Icon/icons.json';
 
 storiesOf('TextInput', module)
   .addDecorator(withKnobs)

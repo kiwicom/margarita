@@ -5,9 +5,9 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import Icon from '@kiwicom/react-native-orbit-icons';
+import Icon from '../Icon';
 import Button from './index';
-import icons from '../native/Icon/icons.json';
+import icons from '../Icon/icons.json';
 
 const Separator = () => <View style={{ height: 10 }} />;
 const noop = action('button-press');

@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import { render } from 'react-native-testing-library'; // eslint-disable-line import/no-extraneous-dependencies
-import snapshotDiff from 'snapshot-diff'; // eslint-disable-line import/no-extraneous-dependencies
+import { render } from 'react-native-testing-library';
+import snapshotDiff from 'snapshot-diff';
 
 import Icon from '../index';
 
