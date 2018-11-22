@@ -22,9 +22,10 @@ type Props = {|
   +label: React.Node,
   +prefix?: React.Node,
   +suffix?: React.Node,
+  +type?: string,
   +onFocus?: () => void | Promise<any>,
   +onBlur?: () => void | Promise<any>,
-  +onChange?: () => void | Promise<any>,
+  +onChangeText?: string => void | Promise<any>,
 |};
 
 type State = {|
@@ -67,9 +68,13 @@ const InlineLabel = ({ children }) => (
 );
 
 class TextInput extends React.Component<Props, State> {
-  state = {
-    focused: false,
-  };
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      focused: false,
+    };
+  }
 
   myref: ?RNTextInput;
 
@@ -79,19 +84,37 @@ class TextInput extends React.Component<Props, State> {
     }));
   };
 
-  onFocus = () => {
+  handleOnFocus = () => {
     const { onFocus, disabled } = this.props;
-    if (!disabled) {
+    if (!disabled && onFocus) {
       this.toggleFocus();
-      onFocus && onFocus();
+      onFocus();
     }
   };
 
-  onBlur = () => {
+  handleOnBlur = () => {
     const { onBlur, disabled } = this.props;
-    if (!disabled) {
+    if (!disabled && onBlur) {
       this.toggleFocus();
-      onBlur && onBlur();
+      onBlur();
+    }
+  };
+
+  handleChangeText = (value: string) => {
+    const { onChangeText, disabled } = this.props;
+    if (!disabled && onChangeText) {
+      onChangeText(value);
+    }
+  };
+
+  handleKeyboardType = (type: string) => {
+    switch (type) {
+      case 'number':
+        return 'numeric';
+      case 'email':
+        return 'email-address';
+      default:
+        return 'default';
     }
   };
 
@@ -107,14 +130,14 @@ class TextInput extends React.Component<Props, State> {
     const {
       placeholder,
       size = 'normal',
-      value,
       disabled,
       label,
       required,
       prefix,
-      onChange,
       inlineLabel,
       suffix,
+      type = 'text',
+      value,
     } = this.props;
     const { focused } = this.state;
     return (
@@ -152,13 +175,15 @@ class TextInput extends React.Component<Props, State> {
             )}
             <RNTextInput
               ref={this.refToTextInput}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              onChangeText={onChange}
+              onFocus={this.handleOnFocus}
+              onBlur={this.handleOnBlur}
+              onChangeText={this.handleChangeText}
               placeholderTextColor={defaultTokens.colorPlaceholderInput}
               editable={!disabled}
               placeholder={placeholder}
               value={value}
+              keyboardType={this.handleKeyboardType(type)}
+              secureTextEntry={type === 'password'}
               style={[
                 styles.inputField,
                 disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
