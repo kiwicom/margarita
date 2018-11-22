@@ -16,6 +16,22 @@ storiesOf('TextInput', module)
   .add('Small input', () => (
     <TextInput size="small" label="Label" placeholder="Type something" />
   ))
+  .add('Number input', () => (
+    <TextInput
+      size="small"
+      label="Label"
+      placeholder="Type something"
+      type="number"
+    />
+  ))
+  .add('Password input', () => (
+    <TextInput
+      size="small"
+      label="Label"
+      placeholder="Type something"
+      type="password"
+    />
+  ))
   .add('Required field', () => (
     <TextInput label="Label" placeholder="Type something" required />
   ))

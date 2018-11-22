@@ -22,13 +22,15 @@ type Props = {|
   +label: React.Node,
   +prefix?: React.Node,
   +suffix?: React.Node,
+  +type?: string,
   +onFocus?: () => void | Promise<any>,
   +onBlur?: () => void | Promise<any>,
-  +onChange?: () => void | Promise<any>,
+  +onChangeText?: string => void | Promise<any>,
 |};
 
 type State = {|
   focused: boolean,
+  value?: string,
 |};
 
 const Prefix = ({ children, size }) => {
@@ -67,9 +69,16 @@ const InlineLabel = ({ children }) => (
 );
 
 class TextInput extends React.Component<Props, State> {
-  state = {
-    focused: false,
-  };
+  constructor(props: Props) {
+    super(props);
+
+    const { value } = this.props;
+
+    this.state = {
+      focused: false,
+      value,
+    };
+  }
 
   myref: ?RNTextInput;
 
@@ -79,20 +88,44 @@ class TextInput extends React.Component<Props, State> {
     }));
   };
 
-  onFocus = () => {
+  handleOnFocus = () => {
     const { onFocus, disabled } = this.props;
-    if (!disabled) {
-      this.toggleFocus();
-      onFocus && onFocus();
+    if (disabled) {
+      return;
     }
+
+    this.toggleFocus();
+    onFocus && onFocus();
   };
 
-  onBlur = () => {
+  handleOnBlur = () => {
     const { onBlur, disabled } = this.props;
-    if (!disabled) {
-      this.toggleFocus();
-      onBlur && onBlur();
+    if (disabled) {
+      return;
     }
+
+    this.toggleFocus();
+    onBlur && onBlur();
+  };
+
+  handleChangeText = (value: string) => {
+    const { onChangeText, disabled } = this.props;
+    if (disabled) {
+      return;
+    }
+
+    this.setState({ value });
+    onChangeText && onChangeText(value);
+  };
+
+  handleKeyboardType = (type: string) => {
+    if (type === 'number') {
+      return 'numeric';
+    }
+    if (type === 'email') {
+      return 'email-address';
+    }
+    return 'default';
   };
 
   refToTextInput = (ref: ?RNTextInput) => {
@@ -107,16 +140,15 @@ class TextInput extends React.Component<Props, State> {
     const {
       placeholder,
       size = 'normal',
-      value,
       disabled,
       label,
       required,
       prefix,
-      onChange,
       inlineLabel,
       suffix,
+      type = 'text',
     } = this.props;
-    const { focused } = this.state;
+    const { focused, value } = this.state;
     return (
       <TouchableWithoutFeedback onPress={this.focusTextInput}>
         <View style={styles.inputWrapper}>
@@ -152,13 +184,15 @@ class TextInput extends React.Component<Props, State> {
             )}
             <RNTextInput
               ref={this.refToTextInput}
-              onFocus={this.onFocus}
-              onBlur={this.onBlur}
-              onChangeText={onChange}
+              onFocus={this.handleOnFocus}
+              onBlur={this.handleOnBlur}
+              onChangeText={this.handleChangeText}
               placeholderTextColor={defaultTokens.colorPlaceholderInput}
               editable={!disabled}
               placeholder={placeholder}
               value={value}
+              keyboardType={this.handleKeyboardType(type)}
+              secureTextEntry={type === 'password'}
               style={[
                 styles.inputField,
                 disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
