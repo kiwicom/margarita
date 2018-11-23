@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Text as RNText, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet } from '../index';
+import StyleSheet from '../PlatformStyleSheet';
 import { createStylesGenerator } from '../utils';
 import {
   align as alignTypes,

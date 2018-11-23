@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { StyleSheet } from '..';
+import StyleSheet from '../PlatformStyleSheet';
 import FormLabel from './FormLabel';
 import { createStylesGenerator } from '../utils';
 import { fontSize, height } from './styles';
@@ -160,6 +160,7 @@ class TextInput extends React.Component<Props, State> {
                 </FormLabel>
               </InlineLabel>
             )}
+
             <RNTextInput
               ref={this.refToTextInput}
               onFocus={this.handleOnFocus}
@@ -177,6 +178,7 @@ class TextInput extends React.Component<Props, State> {
                 styles[size],
               ]}
             />
+
             {suffix != null && <Suffix>{suffix}</Suffix>}
           </View>
         </View>

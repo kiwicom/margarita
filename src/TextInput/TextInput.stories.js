@@ -21,7 +21,11 @@ storiesOf('TextInput', module)
     const placeholder = text('Placeholder', 'Placeholder');
     const disabled = boolean('Disabled', false);
     const required = boolean('Required', false);
-    const type = select('Type', ['text', 'password', 'email'], 'text');
+    const type = select(
+      'Type',
+      ['text', 'password', 'email', 'number'],
+      'text'
+    );
     const serviceLogoName = select(
       'Suffix service logo',
       [
