@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 
-import { StyleSheet } from '..';
+import Text from '../Text';
+import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
   +children: React.Node,

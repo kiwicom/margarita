@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import type { AccessibilityProps as AccessibilityPropsType } from './AccessibilityTypes';
 
+import type { AccessibilityProps as AccessibilityPropsType } from './AccessibilityTypes';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|

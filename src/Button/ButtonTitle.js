@@ -1,12 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { Text } from 'react-native'; // TODO replace with our own text
 import StyleSheet from '../PlatformStyleSheet';
+
+import Text from '../Text';
+import { textColor } from './styles';
 
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { ButtonType } from './ButtonTypes';
-import { textColor } from './styles';
 
 type Props = {|
   +text: React.Node,

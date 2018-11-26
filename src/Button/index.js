@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 
 import Icon from '../Icon';
-import StyleSheet from '../PlatformStyleSheet/index';
+import StyleSheet from '../PlatformStyleSheet';
 import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import GenericButtonWrapper from './GenericButtonWrapper';
 import ButtonTitle from './ButtonTitle';
