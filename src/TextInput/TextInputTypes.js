@@ -13,6 +13,8 @@ export type Props = {|
   +prefix?: React.Node,
   +suffix?: React.Node,
   +type?: string,
+  +maxLength?: number,
+  +minLength?: number, // this prop is supported only on web
   +onFocus?: () => void | Promise<any>,
   +onBlur?: () => void | Promise<any>,
   +onChangeText?: string => void | Promise<any>,

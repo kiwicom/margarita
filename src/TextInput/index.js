@@ -125,6 +125,8 @@ class TextInput extends React.Component<Props, State> {
       suffix,
       type = 'text',
       value,
+      maxLength,
+      minLength,
     } = this.props;
     const { focused } = this.state;
     return (
@@ -160,7 +162,11 @@ class TextInput extends React.Component<Props, State> {
                 </FormLabel>
               </InlineLabel>
             )}
-
+            {/* $FlowFixMe
+             * Prop `minLength` is not supported in rn-web
+             * and doesn't exist in TextInput props,
+             * but it's catched by web and works with input field.
+             */}
             <RNTextInput
               ref={this.refToTextInput}
               onFocus={this.handleOnFocus}
@@ -172,6 +178,8 @@ class TextInput extends React.Component<Props, State> {
               value={value}
               keyboardType={this.handleKeyboardType(type)}
               secureTextEntry={type === 'password'}
+              maxLength={maxLength}
+              minLength={minLength}
               style={[
                 styles.inputField,
                 disabled ? styles.inputFieldDisabled : styles.inputFieldDefault,
