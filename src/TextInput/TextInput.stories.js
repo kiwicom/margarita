@@ -27,8 +27,8 @@ storiesOf('TextInput', module)
     const placeholder = text('Placeholder', 'Placeholder');
     const disabled = boolean('Disabled', false);
     const required = boolean('Required', false);
-    const maxLength = number('Max length', undefined);
-    const minLength = number('Min length', undefined);
+    const maxLength = number('Max length', 100);
+    const minLength = number('Min length', 0);
     const type = select(
       'Type',
       ['text', 'password', 'email', 'number'],
