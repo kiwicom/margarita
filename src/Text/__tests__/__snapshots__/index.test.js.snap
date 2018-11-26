@@ -35,9 +35,9 @@ exports[`Text should match snapshot diff 1`] = `
 +       Object {
 +         \\"textAlign\\": \\"center\\",
 +       },
+        undefined,
       ]
     }
   >
-    Lorem ipsum
-  </Text>"
+    Lorem ipsum"
 `;

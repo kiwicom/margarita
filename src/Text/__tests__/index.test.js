@@ -19,7 +19,7 @@ describe('Text', () => {
         uppercase
         align="center"
         type="secondary"
-        fontWeight="bold"
+        weight="bold"
         size="large"
       >
         {children}

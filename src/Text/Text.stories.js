@@ -61,7 +61,7 @@ storiesOf('Text', module)
       <Text
         type={type}
         size={size}
-        fontWeight={weight}
+        weight={weight}
         align={align}
         uppercase={uppercase}
         italic={italic}
