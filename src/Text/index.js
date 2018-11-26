@@ -26,8 +26,9 @@ const Text = ({
   dataTest,
   align = 'left',
   type = 'primary',
-  fontWeight = 'normal',
+  weight = 'normal',
   size = 'normal',
+  style,
 }: TextType) => (
   <RNText
     data-test={dataTest}
@@ -35,16 +36,16 @@ const Text = ({
       styles.text,
       italic && styles.italic,
       uppercase && styles.uppercase,
-      styles[fontWeight],
+      styles[weight],
       styles[size],
       styles[type],
       styles[align],
+      style && style,
     ]}
   >
     {children}
   </RNText>
 );
-
 const styles = StyleSheet.create({
   text: {
     margin: 0,
