@@ -59,6 +59,8 @@ storiesOf('TextInput', module)
       Object.keys(iconsMap),
       'search'
     );
+    const error = text('Error', '');
+    const help = text('Help', '');
 
     return (
       <TextInput
@@ -75,6 +77,8 @@ storiesOf('TextInput', module)
         onChangeText={action('change')}
         onFocus={action('focus')}
         onBlur={action('blur')}
+        error={error}
+        help={help}
         maxLength={maxLength}
         minLength={minLength}
       />
@@ -119,6 +123,22 @@ storiesOf('TextInput', module)
       placeholder="Type something"
       type="password"
       onChangeText={action('change')}
+    />
+  ))
+  .add('Error input', () => (
+    <TextInput
+      label="Label"
+      placeholder="Type something"
+      onChangeText={action('change')}
+      error="I'm Error"
+    />
+  ))
+  .add('Help input', () => (
+    <TextInput
+      label="Label"
+      placeholder="Type something"
+      onChangeText={action('change')}
+      help="I'm Helper"
     />
   ))
   .add('Input with max length', () => (
