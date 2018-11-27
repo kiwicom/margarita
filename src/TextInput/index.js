@@ -23,11 +23,22 @@ import type { Props, State } from './TextInputTypes';
 const fontSizeGen = createStylesGenerator('fontSize', fontSize);
 const heightGen = createStylesGenerator('height', height);
 
-const Prefix = ({ children, size }) => {
+const Prefix = ({ children, size, success, warning }) => {
   const prefix = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
+      let iconColor = defaultTokens.colorIconInput;
+
+      if (Platform.OS !== 'web') {
+        if (success) {
+          iconColor = defaultTokens.colorIconSuccess;
+        }
+        if (warning) {
+          iconColor = defaultTokens.colorIconCritical;
+        }
+      }
+
       return React.cloneElement(child, {
-        color: defaultTokens.colorIconInput,
+        color: iconColor,
         size: size === 'small' ? 16 : 24,
       });
     }
@@ -149,8 +160,24 @@ class TextInput extends React.Component<Props, State> {
       help,
       maxLength,
       minLength,
+      success,
+      warning,
     } = this.props;
     const { focused, value } = this.state;
+    const ifSuccess = success && Platform.OS !== 'web';
+    const ifWarning = warning && Platform.OS !== 'web';
+
+    let placeholderTextColor = defaultTokens.colorPlaceholderInput;
+
+    if (Platform.OS !== 'web') {
+      if (success) {
+        placeholderTextColor = defaultTokens.colorTextSuccess;
+      }
+      if (warning) {
+        placeholderTextColor = defaultTokens.paletteRedLightActive;
+      }
+    }
+
     return (
       <TouchableWithoutFeedback onPress={this.focusTextInput}>
         <View style={styles.inputWrapper}>
@@ -166,9 +193,15 @@ class TextInput extends React.Component<Props, State> {
               disabled && styles.inputContainerDisabled,
               focused && styles.inputContainerBorderFocused,
               error && !focused && styles.inputContainerBorderError,
+              ifSuccess && styles.inputContainerSuccess,
+              ifWarning && styles.inputContainerWarning,
             ]}
           >
-            {prefix != null && <Prefix size={size}>{prefix}</Prefix>}
+            {prefix != null && (
+              <Prefix size={size} success={success} warning={warning}>
+                {prefix}
+              </Prefix>
+            )}
             {label != null && inlineLabel && (
               <InlineLabel>
                 <FormLabel
@@ -191,7 +224,7 @@ class TextInput extends React.Component<Props, State> {
               onFocus={this.handleOnFocus}
               onBlur={this.handleOnBlur}
               onChangeText={this.handleChangeText}
-              placeholderTextColor={defaultTokens.colorPlaceholderInput}
+              placeholderTextColor={placeholderTextColor}
               editable={!disabled}
               placeholder={placeholder}
               value={value}
@@ -202,6 +235,8 @@ class TextInput extends React.Component<Props, State> {
               style={[
                 styles.inputField,
                 disabled && styles.inputFieldDisabled,
+                ifSuccess && styles.inputFieldSuccess,
+                ifWarning && styles.inputFieldWarning,
                 styles[size],
               ]}
             />
@@ -237,14 +272,27 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    borderWidth: parseFloat(defaultTokens.borderWidthInput),
     borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
     paddingHorizontal: parseFloat(defaultTokens.spaceSmall),
-    borderColor: defaultTokens.borderColorInput,
-    backgroundColor: defaultTokens.backgroundInput,
+    backgroundColor: defaultTokens.backgroundInputDisabled,
+    web: {
+      borderWidth: parseFloat(defaultTokens.borderWidthInput),
+      borderColor: defaultTokens.borderColorInput,
+      backgroundColor: defaultTokens.backgroundInput,
+    },
   },
   inputContainerDisabled: {
     backgroundColor: defaultTokens.backgroundInputDisabled,
+  },
+  inputContainerSuccess: {
+    backgroundColor: defaultTokens.backgroundAlertSuccess,
+    borderColor: defaultTokens.paletteGreenNormal,
+    borderWidth: parseFloat(defaultTokens.borderWidthInput),
+  },
+  inputContainerWarning: {
+    backgroundColor: defaultTokens.backgroundAlertCritical,
+    borderColor: defaultTokens.borderColorInputError,
+    borderWidth: parseFloat(defaultTokens.borderWidthInput),
   },
   inputField: {
     flex: 1,
@@ -252,11 +300,18 @@ const styles = StyleSheet.create({
     height: '100%',
     web: {
       outline: 'none',
+      color: defaultTokens.colorTextInput,
     },
-    color: defaultTokens.colorTextInput,
+    color: defaultTokens.colorTextAttention,
   },
   inputFieldDisabled: {
     color: defaultTokens.colorTextInputDisabled,
+  },
+  inputFieldSuccess: {
+    color: defaultTokens.colorTextAlertSuccess,
+  },
+  inputFieldWarning: {
+    color: defaultTokens.colorTextAlertWarning,
   },
   inputContainerBorderFocused: {
     borderColor: defaultTokens.borderColorInputFocus,
