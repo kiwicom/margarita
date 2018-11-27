@@ -5,11 +5,14 @@ import {
   TextInput as RNTextInput,
   View,
   TouchableWithoutFeedback,
+  TouchableOpacity,
+  Platform,
 } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../Text';
 import FormLabel from './FormLabel';
+import Icon from '../Icon';
 import FormFeedback from '../FormFeedback';
 import StyleSheet from '../PlatformStyleSheet';
 import { createStylesGenerator } from '../utils';
@@ -51,6 +54,17 @@ const Suffix = ({ children }) => {
   return <View style={styles.suffix}>{suffix}</View>;
 };
 
+const ClearButton = ({ onPress, focused, value }) => {
+  if (focused && value !== null && value.length > 0) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <Icon name="close-circle" color={defaultTokens.colorIconSecondary} />
+      </TouchableOpacity>
+    );
+  }
+  return null;
+};
+
 const InlineLabel = ({ children }) => (
   <View style={styles.inlineLabel}>{children}</View>
 );
@@ -61,6 +75,7 @@ class TextInput extends React.Component<Props, State> {
 
     this.state = {
       focused: false,
+      value: props.value || '',
     };
   }
 
@@ -91,6 +106,7 @@ class TextInput extends React.Component<Props, State> {
   handleChangeText = (value: string) => {
     const { onChangeText, disabled } = this.props;
     if (!disabled) {
+      this.setState({ value });
       onChangeText && onChangeText(value);
     }
   };
@@ -114,6 +130,10 @@ class TextInput extends React.Component<Props, State> {
     this.myref && this.myref.focus();
   };
 
+  clearValue = () => {
+    this.setState({ value: '' });
+  };
+
   render() {
     const {
       placeholder,
@@ -125,13 +145,12 @@ class TextInput extends React.Component<Props, State> {
       inlineLabel,
       suffix,
       type = 'text',
-      value,
       error,
       help,
       maxLength,
       minLength,
     } = this.props;
-    const { focused } = this.state;
+    const { focused, value } = this.state;
     return (
       <TouchableWithoutFeedback onPress={this.focusTextInput}>
         <View style={styles.inputWrapper}>
@@ -186,8 +205,16 @@ class TextInput extends React.Component<Props, State> {
                 styles[size],
               ]}
             />
-
-            {suffix != null && <Suffix>{suffix}</Suffix>}
+            {Platform.OS !== 'web' && (
+              <ClearButton
+                onPress={this.clearValue}
+                focused={focused}
+                value={value}
+              />
+            )}
+            {suffix != null && Platform.OS === 'web' && (
+              <Suffix>{suffix}</Suffix>
+            )}
           </View>
           {help != null && !error && (
             <FormFeedback type="help">{help}</FormFeedback>
@@ -233,6 +260,7 @@ const styles = StyleSheet.create({
   },
   inputContainerBorderFocused: {
     borderColor: defaultTokens.borderColorInputFocus,
+    borderWidth: parseFloat(defaultTokens.borderWidthInputFocus),
   },
   inputContainerBorderError: {
     borderColor: defaultTokens.borderColorInputError,

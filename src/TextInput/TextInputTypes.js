@@ -24,4 +24,5 @@ export type Props = {|
 
 export type State = {|
   focused: boolean,
+  value: string,
 |};
