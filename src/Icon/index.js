@@ -1,8 +1,8 @@
 // @flow
 
 import * as React from 'react';
-// eslint-disable-next-line no-restricted-imports
-import { Text as RNText, StyleSheet } from 'react-native';
+import { Text as RNText } from 'react-native';
+import StyleSheet from '../PlatformStyleSheet';
 
 import iconsMap from './icons.json';
 
@@ -42,8 +42,10 @@ Icon.defaultProps = {
 const styles = StyleSheet.create({
   icon: {
     fontFamily: 'orbit-icons',
-    includeFontPadding: false,
-    textAlignVertical: 'center',
+    android: {
+      includeFontPadding: false,
+      textAlignVertical: 'center',
+    },
   },
 });
 
