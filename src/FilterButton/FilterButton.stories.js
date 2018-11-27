@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 
