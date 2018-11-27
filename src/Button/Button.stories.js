@@ -51,7 +51,7 @@ storiesOf('Button', module)
       ['undefined', ...Object.keys(icons)],
       'calendar'
     );
-    const width = number('Width', NaN);
+    const width = number('Width', 300);
     let href;
     let block;
     if (Platform.OS === 'web') {
