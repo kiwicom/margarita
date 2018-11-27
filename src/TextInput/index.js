@@ -29,10 +29,10 @@ const Prefix = ({ children, size, success, warning }) => {
       let iconColor = defaultTokens.colorIconInput;
 
       if (Platform.OS !== 'web') {
-        if (success) {
-          iconColor = defaultTokens.colorIconSuccess;
-        } else if (warning) {
+        if (warning) {
           iconColor = defaultTokens.colorIconCritical;
+        } else if (success) {
+          iconColor = defaultTokens.colorIconSuccess;
         } else iconColor = defaultTokens.colorIconSecondary;
       }
 
