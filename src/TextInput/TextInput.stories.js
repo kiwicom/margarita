@@ -61,7 +61,8 @@ storiesOf('TextInput', module)
     );
     const error = text('Error', '');
     const help = text('Help', '');
-
+    const success = boolean('Success', false);
+    const warning = boolean('Warning', false);
     return (
       <TextInput
         size={size}
@@ -81,6 +82,8 @@ storiesOf('TextInput', module)
         help={help}
         maxLength={maxLength}
         minLength={minLength}
+        success={success}
+        warning={warning}
       />
     );
   })
