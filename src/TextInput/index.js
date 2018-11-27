@@ -55,7 +55,7 @@ const Suffix = ({ children }) => {
 };
 
 const ClearButton = ({ onPress, focused, value }) => {
-  if (focused && value !== null && value.length > 0) {
+  if (focused && value) {
     return (
       <TouchableOpacity onPress={onPress}>
         <Icon name="close-circle" color={defaultTokens.colorIconSecondary} />
