@@ -31,10 +31,9 @@ const Prefix = ({ children, size, success, warning }) => {
       if (Platform.OS !== 'web') {
         if (success) {
           iconColor = defaultTokens.colorIconSuccess;
-        }
-        if (warning) {
+        } else if (warning) {
           iconColor = defaultTokens.colorIconCritical;
-        }
+        } else iconColor = defaultTokens.colorIconSecondary;
       }
 
       return React.cloneElement(child, {
@@ -315,8 +314,10 @@ const styles = StyleSheet.create({
     color: defaultTokens.paletteRedNormalActive,
   },
   inputContainerBorderFocused: {
-    borderColor: defaultTokens.borderColorInputFocus,
-    borderWidth: parseFloat(defaultTokens.borderWidthInputFocus),
+    web: {
+      borderColor: defaultTokens.borderColorInputFocus,
+      borderWidth: parseFloat(defaultTokens.borderWidthInputFocus),
+    },
   },
   inputContainerBorderError: {
     borderColor: defaultTokens.borderColorInputError,
@@ -339,10 +340,6 @@ const styles = StyleSheet.create({
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,
-    opacity: 0.5,
-    web: {
-      opacity: 1,
-    },
   },
   ...fontSizeGen(),
   ...heightGen(),
