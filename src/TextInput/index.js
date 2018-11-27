@@ -164,6 +164,7 @@ class TextInput extends React.Component<Props, State> {
       warning,
     } = this.props;
     const { focused, value } = this.state;
+
     const ifSuccess = success && Platform.OS !== 'web';
     const ifWarning = warning && Platform.OS !== 'web';
 
@@ -311,7 +312,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAlertSuccess,
   },
   inputFieldWarning: {
-    color: defaultTokens.colorTextAlertWarning,
+    color: defaultTokens.paletteRedNormalActive,
   },
   inputContainerBorderFocused: {
     borderColor: defaultTokens.borderColorInputFocus,
@@ -338,6 +339,10 @@ const styles = StyleSheet.create({
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,
+    opacity: 0.5,
+    web: {
+      opacity: 1,
+    },
   },
   ...fontSizeGen(),
   ...heightGen(),
