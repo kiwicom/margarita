@@ -18,3 +18,21 @@ export const wrapperColor = {
   info: defaultTokens.backgroundButtonInfo,
   success: defaultTokens.backgroundButtonSuccess,
 };
+
+export const wrapperStyle = {
+  border: 0,
+  padding: 0,
+  textDecoration: 'none',
+};
+
+export function disabledStyle(disabled: boolean) {
+  return disabled
+    ? { pointerEvents: 'none', cursor: 'initial' }
+    : { pointerEvents: 'auto', cursor: 'pointer' };
+}
+
+export function displayBlock(block: ?boolean, width: ?number) {
+  return block
+    ? { display: 'block', width: '100%' }
+    : { display: 'inline-block', width: width || 'inherit' };
+}

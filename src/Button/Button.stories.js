@@ -1,9 +1,15 @@
 // @flow
 
 import React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
-import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
+import {
+  boolean,
+  select,
+  text,
+  number,
+  withKnobs,
+} from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import Icon from '../Icon';
 import Button from './index';
@@ -31,7 +37,10 @@ storiesOf('Button', module)
       'primary'
     );
     const disabled = boolean('Disabled', false);
-    const sublabel = text('Sublabel', 'Sublabel');
+    let sublabel;
+    if (Platform.OS !== 'web') {
+      sublabel = text('Sublabel', 'Sublabel');
+    }
     const leftIcon = select(
       'Left Icon',
       ['undefined', ...Object.keys(icons)],
@@ -42,14 +51,24 @@ storiesOf('Button', module)
       ['undefined', ...Object.keys(icons)],
       'calendar'
     );
+    const width = number('Width', NaN);
+    let href;
+    let block;
+    if (Platform.OS === 'web') {
+      href = text('href', '');
+      block = boolean('block', false);
+    }
     return (
       <Button
         type={type}
+        width={width}
         onPress={noop}
         disabled={disabled}
         leftIcon={leftIcon !== 'undefined' ? <Icon name={leftIcon} /> : null}
         rightIcon={rightIcon !== 'undefined' ? <Icon name={rightIcon} /> : null}
-        sublabel={sublabel !== '' ? sublabel : null}
+        sublabel={sublabel}
+        href={href}
+        block={block}
       >
         Playground button
       </Button>

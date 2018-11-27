@@ -7,14 +7,15 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-
 import type { AccessibilityProps as AccessibilityPropsType } from './AccessibilityTypes';
+
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
   +children: React.Node,
   +onPress: () => void,
   +disabled: boolean,
+  +width?: number,
   +style?: StylePropType,
   +onLongPress?: () => void,
   +delayPressIn?: number,
@@ -66,6 +67,7 @@ export default class Touchable extends React.Component<Props> {
       borderlessRipple,
       rippleColor,
       testID,
+      width,
       ...accessiblityProps
     } = this.props;
 
@@ -101,6 +103,7 @@ export default class Touchable extends React.Component<Props> {
       return (
         <TouchableNativeFeedback
           {...touchableNativeFeedbackProps}
+          style={{ width }}
           useForeground={useForeground}
           background={TouchableNativeFeedback.Ripple(
             rippleColor,
@@ -113,7 +116,11 @@ export default class Touchable extends React.Component<Props> {
     }
 
     return (
-      <TouchableOpacity activeOpacity={0.5} {...touchableOpacityProps}>
+      <TouchableOpacity
+        activeOpacity={0.5}
+        style={{ width }}
+        {...touchableOpacityProps}
+      >
         <View style={style}>{children}</View>
       </TouchableOpacity>
     );
