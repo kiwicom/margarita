@@ -9038,10 +9038,10 @@ react-native-switch@^1.5.0:
   dependencies:
     prop-types "^15.6.0"
 
-react-native-testing-library@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.4.0.tgz#a879718e99f976c753014236f22ba0a1bd8f95a0"
-  integrity sha512-YjElaJQMUapJ3kOqkGgYIgdLb8yNzzBq6CLDE9IOpbXJSYQ0On5f5bnASQReKXgSZKS5OyKzt4VMWCkbXKMN5A==
+react-native-testing-library@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-native-testing-library/-/react-native-testing-library-1.4.1.tgz#caf8ccf5303180681a8f1251b74884a640746a73"
+  integrity sha512-9r43HAuWRJZ5nzLoOG23eSA7sNiUy9Zoq0LBdGfjkdrIb1KlxqgPPbb2fui7GtDnbpsmsf12WXYO3X1aNfbaOw==
   dependencies:
     pretty-format "^23.6.0"
 
