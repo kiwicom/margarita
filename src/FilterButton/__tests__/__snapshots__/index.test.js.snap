@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterButton should match snapshot diff between active and inactive input 1`] = `
+"Snapshot Diff:
+- <FilterButton isActive={true} onPress={[Function mockConstructor]} title=\\"Title\\" />
++ <FilterButton isActive={false} onPress={[Function mockConstructor]} title=\\"Title\\" />
+
+@@ -28,5 +28,3 @@
+          },
+-         Object {
+-           \\"backgroundColor\\": \\"#46515e\\",
+-         },
++         false,
+        ]
+@@ -71,5 +69,3 @@
+                },
+-               Object {
+-                 \\"color\\": \\"#e8edf1\\",
+-               },
++               false,
+              ],"
+`;
