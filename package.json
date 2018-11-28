@@ -5,10 +5,12 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "relay": "yarn babel-node --config=.babelrc scripts/relay-compiler.js"
+    "relay": "yarn babel-node --config=.babelrc scripts/relay-compiler.js",
+    "analyze": "cross-env ANALYZE=1 next build"
   },
   "dependencies": {
     "@mrtnzlml/relay": "^0.12.0",
+    "cross-env": "^5.2.0",
     "expo": "^31.0.5",
     "graphql": "^14.0.2",
     "next": "^7.0.2",
@@ -23,6 +25,7 @@
   "devDependencies": {
     "@babel/node": "^7.0.0",
     "babel-plugin-relay": "^1.7.0",
-    "relay-compiler": "^1.7.0"
+    "relay-compiler": "^1.7.0",
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }
