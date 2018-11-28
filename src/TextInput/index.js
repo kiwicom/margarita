@@ -23,15 +23,15 @@ import type { Props, State } from './TextInputTypes';
 const fontSizeGen = createStylesGenerator('fontSize', fontSize);
 const heightGen = createStylesGenerator('height', height);
 
-const Prefix = ({ children, size, success, warning }) => {
+const Prefix = ({ children, size, status }) => {
   const prefix = React.Children.map(children, child => {
     if (React.isValidElement(child)) {
       let iconColor = defaultTokens.colorIconInput;
 
       if (Platform.OS !== 'web') {
-        if (warning) {
+        if (status === 'warning') {
           iconColor = defaultTokens.colorIconCritical;
-        } else if (success) {
+        } else if (status === 'success') {
           iconColor = defaultTokens.colorIconSuccess;
         } else iconColor = defaultTokens.colorIconSecondary;
       }
@@ -159,23 +159,21 @@ class TextInput extends React.Component<Props, State> {
       help,
       maxLength,
       minLength,
-      success,
-      warning,
+      status = 'default',
     } = this.props;
     const { focused, value } = this.state;
 
-    const ifSuccess = success && Platform.OS !== 'web';
-    const ifWarning = warning && Platform.OS !== 'web';
+    const ifSuccess = status === 'success' && Platform.OS !== 'web';
+    const ifWarning = status === 'warning' && Platform.OS !== 'web';
 
     let placeholderTextColor = defaultTokens.colorPlaceholderInput;
 
     if (Platform.OS !== 'web') {
-      if (success) {
+      if (status === 'success') {
         placeholderTextColor = defaultTokens.colorTextSuccess;
-      }
-      if (warning) {
+      } else if (status === 'warning') {
         placeholderTextColor = defaultTokens.paletteRedLightActive;
-      }
+      } else placeholderTextColor = defaultTokens.paletteInkLight;
     }
 
     return (
@@ -198,7 +196,7 @@ class TextInput extends React.Component<Props, State> {
             ]}
           >
             {prefix != null && (
-              <Prefix size={size} success={success} warning={warning}>
+              <Prefix size={size} status={status}>
                 {prefix}
               </Prefix>
             )}
