@@ -1,15 +1,15 @@
 // @flow
 
 import * as React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {graphql, QueryRenderer, type ReadyState} from 'react-relay';
+import { StyleSheet, Text, View } from 'react-native';
+import { graphql, QueryRenderer, type ReadyState } from 'react-relay';
 
 import environment from './Environment';
 
 type Props = Object;
 
 export default class App extends React.Component<Props> {
-  renderRelayContainer = ({error, props}: ReadyState) => {
+  renderRelayContainer = ({ error, props }: ReadyState) => {
     if (error) {
       return (
         <View>

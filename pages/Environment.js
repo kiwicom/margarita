@@ -1,7 +1,6 @@
 // @flow
-import {createEnvironment} from '@mrtnzlml/relay';
-import {inMemoryFetcher} from '@kiwicom/margarita-graphql';
-
+import { createEnvironment } from '@mrtnzlml/relay';
+import { inMemoryFetcher } from '@kiwicom/margarita-graphql';
 
 const createInMemoryFetcher = () => {
   return function(request, variables, uploadables) {

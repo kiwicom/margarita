@@ -31,4 +31,4 @@ const inMemoryFetcher = (source: string, variableValues: {||}) => {
   return graphql(schema, source, undefined, undefined, variableValues);
 };
 
-export {schema, inMemoryFetcher};
+export { schema, inMemoryFetcher };

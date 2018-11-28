@@ -4,13 +4,13 @@
 
 const fs = require('fs');
 const path = require('path');
-const {printSchema} = require('graphql/utilities');
-const {spawnSync} = require('child_process');
+const { printSchema } = require('graphql/utilities');
+const { spawnSync } = require('child_process');
 
-const {schema} = require('../packages/graphql/index');
+const { schema } = require('../packages/graphql/index');
 
 const _x = (command /*: string */, args /*: string[] */) => {
-  const {status} = spawnSync(command, args, {stdio: 'inherit'});
+  const { status } = spawnSync(command, args, { stdio: 'inherit' });
   if (status !== 0) {
     console.error(`Command "${command}" exited with status code: ${status}`);
     console.error(command, args.join(' '));
