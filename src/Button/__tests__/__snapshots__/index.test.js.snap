@@ -1,0 +1,402 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button - native should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -8,11 +8,11 @@
+    onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
+    onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
+    style={
+      Object {
+        \\"opacity\\": 1,
+-       \\"width\\": undefined,
++       \\"width\\": 200,
+      }
+    }
+  >
+    <View>
+      <View
+@@ -27,14 +27,14 @@
+              \\"paddingHorizontal\\": 8,
+              \\"paddingVertical\\": 11,
+            },
+            false,
+            Object {
+-             \\"backgroundColor\\": \\"#00a991\\",
++             \\"backgroundColor\\": \\"#e0f6ff\\",
+            },
+            Object {
+-             \\"justifyContent\\": \\"center\\",
++             \\"justifyContent\\": \\"space-between\\",
+            },
+          ]
+        }
+      >
+        <View
+@@ -43,14 +43,39 @@
+              \\"alignItems\\": \\"center\\",
+              \\"flexDirection\\": \\"row\\",
+            }
+          }
+        >
++         <View
++           style={
++             Object {
++               \\"marginEnd\\": 14,
++             }
++           }
++         >
+            <Text
++             color=\\"#0176D2\\"
++             size={20}
+              style={
+                Array [
+                  Object {
++                   \\"fontFamily\\": \\"orbit-icons\\",
++                 },
++                 Object {
++                   \\"color\\": \\"#0176D2\\",
++                   \\"fontSize\\": 20,
++                 },
++               ]
++             }
++           >
++             f
++           </Text>
++         </View>
++         <Text
++           style={
++             Array [
++               Object {
+                  \\"fontFamily\\": \\"Roboto\\",
+                  \\"margin\\": 0,
+                },
+                undefined,
+                undefined,
+@@ -72,11 +97,11 @@
+                    \\"fontSize\\": 16,
+                    \\"fontWeight\\": \\"bold\\",
+                    \\"lineHeight\\": 21,
+                  },
+                  Object {
+-                   \\"color\\": \\"#fff\\",
++                   \\"color\\": \\"#0176D2\\",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+@@ -89,9 +114,82 @@
+            Object {
+              \\"alignItems\\": \\"center\\",
+              \\"flexDirection\\": \\"row\\",
+            }
+          }
+-       />
++       >
++         <View
++           style={
++             Object {
++               \\"alignItems\\": \\"center\\",
++               \\"flexDirection\\": \\"row\\",
++             }
++           }
++         >
++           <Text
++             style={
++               Array [
++                 Object {
++                   \\"fontFamily\\": \\"Roboto\\",
++                   \\"margin\\": 0,
++                 },
++                 undefined,
++                 undefined,
++                 Object {
++                   \\"fontSize\\": 14,
++                 },
++                 Object {
++                   \\"fontSize\\": 14,
++                 },
++                 Object {
++                   \\"color\\": \\"#46515e\\",
++                 },
++                 Object {
++                   \\"textAlign\\": \\"left\\",
++                 },
++                 Array [
++                   Object {},
++                   Object {
++                     \\"fontSize\\": 14,
++                     \\"fontWeight\\": \\"normal\\",
++                     \\"lineHeight\\": 18,
++                   },
++                   Object {
++                     \\"color\\": \\"#0176D2\\",
++                   },
++                   undefined,
++                 ],
++               ]
++             }
++           >
++             Button sublabel
++           </Text>
+          </View>
++         <View
++           style={
++             Object {
++               \\"marginStart\\": 5,
++             }
++           }
++         >
++           <Text
++             color=\\"#0176D2\\"
++             size={20}
++             style={
++               Array [
++                 Object {
++                   \\"fontFamily\\": \\"orbit-icons\\",
++                 },
++                 Object {
++                   \\"color\\": \\"#0176D2\\",
++                   \\"fontSize\\": 20,
++                 },
++               ]
++             }
++           >
++             
++           </Text>
+          </View>
+        </View>
++     </View>
++   </View>
++ </View>"
+`;
+
+exports[`Button - native should match the snapshot 1`] = `
+<Button
+  disabled={false}
+  onPress={
+    [MockFunction] {
+      "calls": Array [
+        Array [
+          undefined,
+        ],
+        Array [
+          undefined,
+        ],
+      ],
+      "results": Array [
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+        Object {
+          "isThrow": false,
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  width={200}
+>
+  <ButtonInner
+    disabled={false}
+    leftIcon={
+      <Icon
+        color="#46515e"
+        name="calendar"
+        size={20}
+      />
+    }
+    rightIcon={
+      <Icon
+        color="#46515e"
+        name="chevron-right"
+        size={20}
+      />
+    }
+    sublabel="Button sublabel"
+    type="info"
+  >
+    Button text
+  </ButtonInner>
+</Button>
+`;
+
+exports[`Button - web should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,20 +1,18 @@
+- <button
+-   disabled={false}
+-   onClick={[Function mockConstructor]}
++ <a
++   href=\\"https://lolilol.com\\"
+    style={
+      Object {
+        \\"border\\": 0,
+        \\"cursor\\": \\"pointer\\",
+        \\"display\\": \\"inline-block\\",
+        \\"padding\\": 0,
+        \\"pointerEvents\\": \\"auto\\",
+        \\"textDecoration\\": \\"none\\",
+-       \\"width\\": \\"inherit\\",
++       \\"width\\": 200,
+      }
+    }
+-   type=\\"button\\"
+  >
+    <View
+      style={
+        Array [
+          Object {
+@@ -26,14 +24,14 @@
+            \\"paddingHorizontal\\": 8,
+            \\"paddingVertical\\": 11,
+          },
+          false,
+          Object {
+-           \\"backgroundColor\\": \\"#00a991\\",
++           \\"backgroundColor\\": \\"#e0f6ff\\",
+          },
+          Object {
+-           \\"justifyContent\\": \\"center\\",
++           \\"justifyContent\\": \\"space-between\\",
+          },
+        ]
+      }
+    >
+      <View
+@@ -42,14 +40,39 @@
+            \\"alignItems\\": \\"center\\",
+            \\"flexDirection\\": \\"row\\",
+          }
+        }
+      >
++       <View
++         style={
++           Object {
++             \\"marginEnd\\": 14,
++           }
++         }
++       >
+          <Text
++           color=\\"#0176D2\\"
++           size={20}
+            style={
+              Array [
+                Object {
++                 \\"fontFamily\\": \\"orbit-icons\\",
++               },
++               Object {
++                 \\"color\\": \\"#0176D2\\",
++                 \\"fontSize\\": 20,
++               },
++             ]
++           }
++         >
++           f
++         </Text>
++       </View>
++       <Text
++         style={
++           Array [
++             Object {
+                \\"fontFamily\\": \\"Roboto\\",
+                \\"margin\\": 0,
+              },
+              undefined,
+              undefined,
+@@ -71,11 +94,11 @@
+                  \\"fontSize\\": 16,
+                  \\"fontWeight\\": \\"bold\\",
+                  \\"lineHeight\\": 21,
+                },
+                Object {
+-                 \\"color\\": \\"#fff\\",
++                 \\"color\\": \\"#0176D2\\",
+                },
+                undefined,
+              ],
+            ]
+          }
+@@ -88,8 +111,34 @@
+          Object {
+            \\"alignItems\\": \\"center\\",
+            \\"flexDirection\\": \\"row\\",
+          }
+        }
+-     />
++     >
++       <View
++         style={
++           Object {
++             \\"marginStart\\": 5,
++           }
++         }
++       >
++         <Text
++           color=\\"#0176D2\\"
++           size={20}
++           style={
++             Array [
++               Object {
++                 \\"fontFamily\\": \\"orbit-icons\\",
++               },
++               Object {
++                 \\"color\\": \\"#0176D2\\",
++                 \\"fontSize\\": 20,
++               },
++             ]
++           }
++         >
++           
++         </Text>
+        </View>
+- </button>
++     </View>
++   </View>
++ </a>"
+`;
+
+exports[`Button - web should match the snapshot 1`] = `
+<a
+  href="https://lolilol.com"
+  style={
+    Object {
+      "border": 0,
+      "cursor": "pointer",
+      "display": "inline-block",
+      "padding": 0,
+      "pointerEvents": "auto",
+      "textDecoration": "none",
+      "width": 200,
+    }
+  }
+>
+  <ButtonInner
+    disabled={false}
+    leftIcon={
+      <Icon
+        color="#46515e"
+        name="calendar"
+        size={20}
+      />
+    }
+    rightIcon={
+      <Icon
+        color="#46515e"
+        name="chevron-right"
+        size={20}
+      />
+    }
+    type="info"
+  >
+    Button text
+  </ButtonInner>
+</a>
+`;
