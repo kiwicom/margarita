@@ -22,9 +22,6 @@
 ; Problems with this library which react-native-storybook-loader depends on
 .*/node_modules/findup/.*
 
-[untyped]
-.*/node_modules/react-native-testing-library/src/helpers/getByAPI.js
-
 [include]
 
 [libs]
