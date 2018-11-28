@@ -21,8 +21,6 @@ export type Props = {|
   +error?: React.Node,
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
-  // +success?: boolean, // this prop is supported only on mobile
-  // +warning?: boolean, // this prop is supported only on mobile
 |};
 
 export type State = {|
