@@ -1,9 +1,10 @@
-import { createEnvironment } from '@mrtnzlml/relay';
-import { inMemoryFetcher } from '@kiwicom/margarita-graphql';
+// @flow
+import {createEnvironment} from '@mrtnzlml/relay';
+import {inMemoryFetcher} from '@kiwicom/margarita-graphql';
 
 
 const createInMemoryFetcher = () => {
-  return function (request, variables, uploadables) {
+  return function(request, variables, uploadables) {
     if (uploadables) {
       throw new Error(
         'Uploadables are not supported in this in-memory Relay environment.',
