@@ -65,7 +65,7 @@ esproposal.nullish_coalescing=enable
 module.system=haste
 
 munge_underscores=true
-
+module.name_mapper='^react-native$' -> 'react-native-web'
 module.name_mapper='^[./a-zA-Z0-9$_-]+\.\(bmp\|gif\|jpg\|jpeg\|png\|psd\|svg\|webp\|m4v\|mov\|mp4\|mpeg\|mpg\|webm\|aac\|aiff\|caf\|m4a\|mp3\|wav\|html\|pdf\)$' -> 'RelativeImageStub'
 
 module.file_ext=.js

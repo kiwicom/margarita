@@ -1,0 +1,9 @@
+{
+  "preset": "react-native-web",
+  "testPathIgnorePatterns": [
+    "<rootDir>/.next/",
+    "<rootDir>/node_modules/",
+    "<rootDir>/.expo/",
+    "__tests__/__mocks__"
+  ]
+}
