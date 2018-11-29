@@ -11,7 +11,7 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 import Button from './index';
 import icons from '../Icon/icons.json';
 

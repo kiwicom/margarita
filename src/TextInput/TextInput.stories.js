@@ -12,9 +12,9 @@ import {
   number,
 } from '@storybook/addon-knobs';
 
-import TextInput from './index';
-import Icon from '../Icon';
-import ServiceLogo from '../ServiceLogo/component';
+import { TextInput } from '.';
+import { Icon } from '../Icon';
+import { ServiceLogo } from '../ServiceLogo';
 
 import iconsMap from '../Icon/icons.json';
 

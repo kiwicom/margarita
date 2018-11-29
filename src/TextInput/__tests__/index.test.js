@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
-import TextInput from '..';
+import { TextInput } from '..';
 import ServiceLogo from '../../ServiceLogo/component';
 
 describe('TextInput', () => {

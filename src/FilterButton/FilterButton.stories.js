@@ -6,8 +6,8 @@ import { storiesOf } from '@storybook/react-native';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
 
 import { action } from '@storybook/addon-actions';
-import FilterButton from './index';
-import Icon from '../Icon';
+import { FilterButton } from '.';
+import { Icon } from '../Icon';
 import iconsMap from '../Icon/icons.json';
 
 const noop = action('button-press');

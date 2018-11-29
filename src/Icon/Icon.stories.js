@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native';
 
 import IconsList from './IconsList';
 
-import Icon from './index';
+import { Icon } from '.';
 
 storiesOf('Icon', module)
   .addDecorator(getStory => getStory())

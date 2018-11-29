@@ -4,8 +4,8 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 
-import FilterButton from '../index';
-import Icon from '../../Icon';
+import { FilterButton } from '..';
+import { Icon } from '../../Icon';
 
 describe('FilterButton', () => {
   const onPress = jest.fn();

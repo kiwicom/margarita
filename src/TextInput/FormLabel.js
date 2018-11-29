@@ -29,22 +29,24 @@ const Asteriks = ({ filled, children, disabled }) => (
   <Text style={getAsteriksStyle(filled, disabled)}>{children}</Text>
 );
 
-const FormLabel = ({
+export default function FormLabel({
   children,
   required,
   filled,
   disabled,
   inlineLabel,
-}: Props) => (
-  <View style={inlineLabel ? styles.inlineFormLabel : styles.formLabel}>
-    {required && (
-      <Asteriks filled={filled} disabled={disabled}>
-        *{' '}
-      </Asteriks>
-    )}
-    <Text style={styles.labelText}>{children}</Text>
-  </View>
-);
+}: Props) {
+  return (
+    <View style={inlineLabel ? styles.inlineFormLabel : styles.formLabel}>
+      {required && (
+        <Asteriks filled={filled} disabled={disabled}>
+          *{' '}
+        </Asteriks>
+      )}
+      <Text style={styles.labelText}>{children}</Text>
+    </View>
+  );
+}
 
 const styles = StyleSheet.create({
   asteriksFilled: {
@@ -75,5 +77,3 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
 });
-
-export default FormLabel;

@@ -5,7 +5,7 @@ import { Image } from 'react-native';
 
 import type { Props } from './ServiceLogoTypes';
 
-const ServiceLogo = ({ name, grayScale }: Props) => {
+export default function ServiceLogo({ name, grayScale }: Props) {
   let source;
   switch (name) {
     /* eslint-disable global-require */
@@ -107,6 +107,4 @@ const ServiceLogo = ({ name, grayScale }: Props) => {
       }}
     />
   );
-};
-
-export default ServiceLogo;
+}

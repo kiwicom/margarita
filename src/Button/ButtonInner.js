@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
-import Icon from '../Icon';
+import { Icon } from '../Icon';
 import StyleSheet from '../PlatformStyleSheet/index';
 import ButtonTitle from './ButtonTitle';
 import type { ButtonType } from './ButtonTypes';

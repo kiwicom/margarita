@@ -28,19 +28,23 @@ const style = {
   backgroundColor: 'transparent',
 };
 
-const ServiceLogo = ({ name, size = 'medium', grayScale = false }: Props) => (
-  <img
-    style={{ ...style, height: size }}
-    src={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
-      getImageSize(size),
-      10
-    )}/${name}.png`}
-    srcSet={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
-      getImageSize(size),
-      10
-    ) * 2}/${name}.png 2x`}
-    alt={name}
-  />
-);
-
-export default ServiceLogo;
+export default function ServiceLogo({
+  name,
+  size = 'medium',
+  grayScale = false,
+}: Props) {
+  return (
+    <img
+      style={{ ...style, height: size }}
+      src={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
+        getImageSize(size),
+        10
+      )}/${name}.png`}
+      srcSet={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
+        getImageSize(size),
+        10
+      ) * 2}/${name}.png 2x`}
+      alt={name}
+    />
+  );
+}

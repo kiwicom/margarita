@@ -7,7 +7,7 @@ import snapshotDiff from 'snapshot-diff';
 
 import ButtonWeb from '../index.web';
 import ButtonNative from '../index.native';
-import Icon from '../../Icon';
+import { Icon } from '../../Icon';
 
 const originalPlatform = Platform.OS;
 const noop = jest.fn();

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 
-import Icon from '../index';
+import { Icon } from '..';
 
 describe('Icon', () => {
   const { getByProps, getByText } = render(

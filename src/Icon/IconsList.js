@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { FlatList, View } from 'react-native';
 
-import Icon from './index';
+import { Icon } from '.';
 import Text from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 import iconsMap from './icons.json';
@@ -16,16 +16,18 @@ const renderItem = ({ item }) => (
   </View>
 );
 
-const IconsList = () => (
-  <FlatList
-    data={Object.keys(iconsMap)}
-    keyExtractor={keyExtractor}
-    showsVerticalScrollIndicator={false}
-    contentContainerStyle={styles.list}
-    numColumns={2}
-    renderItem={renderItem}
-  />
-);
+export default function IconsList() {
+  return (
+    <FlatList
+      data={Object.keys(iconsMap)}
+      keyExtractor={keyExtractor}
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={styles.list}
+      numColumns={2}
+      renderItem={renderItem}
+    />
+  );
+}
 
 const styles = StyleSheet.create({
   list: {
@@ -39,5 +41,3 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
   },
 });
-
-export default IconsList;
