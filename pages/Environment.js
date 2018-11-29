@@ -1,6 +1,6 @@
 import { createEnvironment } from '@mrtnzlml/relay';
+import { inMemoryFetcher } from '@kiwicom/margarita-graphql';
 
-import { inMemoryFetcher } from '../packages/graphql/index'; // TODO: We need to transpile the code for it to work on web before we can import it from @kiwicom/margarita-graphql
 
 const createInMemoryFetcher = () => {
   return function (request, variables, uploadables) {
