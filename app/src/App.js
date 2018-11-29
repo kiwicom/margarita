@@ -2,28 +2,14 @@
 
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { graphql, QueryRenderer, type ReadyState } from 'react-relay';
+import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 
-import environment from './Environment';
+import type { AppQueryResponse } from './__generated__/AppQuery.graphql';
 
 type Props = Object;
 
 export default class App extends React.Component<Props> {
-  renderRelayContainer = ({ error, props }: ReadyState) => {
-    if (error) {
-      return (
-        <View>
-          <Text style={styles.text}>{error.message}</Text>
-        </View>
-      );
-    }
-    if (!props) {
-      return (
-        <View style={styles.container}>
-          <Text style={styles.text}>Loading</Text>
-        </View>
-      );
-    }
+  renderInner = (props: AppQueryResponse) => {
     return (
       <View style={styles.container}>
         <Text style={styles.text}>{props.hello}</Text>
@@ -34,14 +20,12 @@ export default class App extends React.Component<Props> {
   render() {
     return (
       <QueryRenderer
-        variables={{}}
-        environment={environment}
         query={graphql`
           query AppQuery {
             hello
           }
         `}
-        render={this.renderRelayContainer}
+        render={this.renderInner}
       />
     );
   }

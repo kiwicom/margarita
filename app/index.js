@@ -3,7 +3,7 @@
 import React from 'react';
 import * as Expo from 'expo';
 
-import SharedApp from './pages/App';
+import SharedApp from './src/App';
 
 const App = () => <SharedApp />;
 
