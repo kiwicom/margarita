@@ -1,0 +1,12 @@
+{
+  "name": "@kiwicom/margarita-relay",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "@kiwicom/margarita-graphql": "^0",
+    "@mrtnzlml/relay": "^0.12.0",
+    "react-relay": "^1.7.0"
+  },
+  "devDependencies": {}
+}
