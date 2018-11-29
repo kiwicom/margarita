@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { Platform } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import {
@@ -22,7 +23,31 @@ storiesOf('TextInput', module)
   .add('Playground', () => {
     const size = select('Size', ['small', 'normal'], 'normal');
     const label = text('Label', 'Label');
-    const inlineLabel = boolean('Inline label', false);
+    let inlineLabel;
+    let serviceLogoName = 'Visa';
+    if (Platform.OS === 'web') {
+      inlineLabel = boolean('Inline label', false);
+      serviceLogoName = select(
+        'Suffix service logo',
+        [
+          'AirHelp',
+          'Amex',
+          'AxaAssistance',
+          'DinersClub',
+          'JCB',
+          'Maestro',
+          'MasterCard',
+          'MIR',
+          'NewYorkTimes',
+          'NortonSecured',
+          'TravelPulse',
+          'Visa',
+          'VisaHQ',
+          'Zooz',
+        ],
+        'Visa'
+      );
+    }
     const value = text('Value', '');
     const placeholder = text('Placeholder', 'Placeholder');
     const disabled = boolean('Disabled', false);
@@ -33,26 +58,6 @@ storiesOf('TextInput', module)
       'Type',
       ['text', 'password', 'email', 'number'],
       'text'
-    );
-    const serviceLogoName = select(
-      'Suffix service logo',
-      [
-        'AirHelp',
-        'Amex',
-        'AxaAssistance',
-        'DinersClub',
-        'JCB',
-        'Maestro',
-        'MasterCard',
-        'MIR',
-        'NewYorkTimes',
-        'NortonSecured',
-        'TravelPulse',
-        'Visa',
-        'VisaHQ',
-        'Zooz',
-      ],
-      'Visa'
     );
     const iconName = select(
       'Prefix icon name',
@@ -114,7 +119,6 @@ storiesOf('TextInput', module)
   ))
   .add('Number input', () => (
     <TextInput
-      size="small"
       label="Label"
       placeholder="Type something"
       type="number"
@@ -123,7 +127,6 @@ storiesOf('TextInput', module)
   ))
   .add('Password input', () => (
     <TextInput
-      size="small"
       label="Label"
       placeholder="Type something"
       type="password"
