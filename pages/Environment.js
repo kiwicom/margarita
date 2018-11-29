@@ -1,4 +1,5 @@
 // @flow
+
 import { createEnvironment } from '@mrtnzlml/relay';
 import { inMemoryFetcher } from '@kiwicom/margarita-graphql';
 
