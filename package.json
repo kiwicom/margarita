@@ -8,7 +8,8 @@
     "relay": "yarn babel-node --config=.babelrc scripts/relay-compiler.js",
     "lint": "eslint .",
     "flow": "flow --include-warnings",
-    "analyze": "cross-env ANALYZE=1 next build"
+    "analyze": "cross-env ANALYZE=1 next build",
+    "test-ci": "yarn flow && yarn lint"
   },
   "private": true,
   "workspaces": [
