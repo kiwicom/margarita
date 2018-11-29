@@ -1,9 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 
+import Text from './components/Text';
 import type { AppQueryResponse } from './__generated__/AppQuery.graphql';
 
 type Props = Object;
@@ -12,7 +13,7 @@ export default class App extends React.Component<Props> {
   renderInner = (props: AppQueryResponse) => {
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>{props.hello}</Text>
+        <Text>{props.hello}</Text>
       </View>
     );
   };
@@ -36,9 +37,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
-  },
-  text: {
-    alignItems: 'center',
-    fontSize: 24,
   },
 });
