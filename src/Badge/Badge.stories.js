@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { select, text, withKnobs } from '@storybook/addon-knobs';
 
-import Badge from './index';
+import { Badge } from '.';
 
 const badgeTypes = [
   'primary',
