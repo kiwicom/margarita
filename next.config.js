@@ -4,30 +4,9 @@ const withTM = require('next-plugin-transpile-modules');
 
 const { ANALYZE } = process.env;
 
-// Update these to match your package scope name.
-const internalNodeModulesRegExp = /@kiwicom\/margarita(?!.*node_modules)/;
-
 module.exports = withTM({
-  transpileModules: ['react-native', 'react-native-web'],
+  transpileModules: ['react-native', 'react-native-web', '@kiwicom/*'],
   webpack: (config, { isServer, defaultLoaders }) => {
-    config.externals = config.externals.map(external => {
-      if (typeof external !== 'function') {
-        return external;
-      }
-
-      return (ctx, req, cb) => {
-        return internalNodeModulesRegExp.test(req)
-          ? cb()
-          : external(ctx, req, cb);
-      };
-    });
-
-    config.module.rules.push({
-      test: /\.+(js)$/,
-      loader: defaultLoaders.babel,
-      include: [internalNodeModulesRegExp],
-    });
-
     // Bundle Analyzer
     if (ANALYZE) {
       // eslint-disable-next-line import/no-extraneous-dependencies
