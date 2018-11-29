@@ -18,15 +18,17 @@ import ServiceLogo from '../ServiceLogo/component';
 
 import iconsMap from '../Icon/icons.json';
 
-storiesOf('TextInput', module)
+const stories = storiesOf('TextInput', module)
   .addDecorator(withKnobs)
   .add('Playground', () => {
     const size = select('Size', ['small', 'normal'], 'normal');
     const label = text('Label', 'Label');
     let inlineLabel;
     let serviceLogoName = 'Visa';
+    let minLength = 0;
     if (Platform.OS === 'web') {
       inlineLabel = boolean('Inline label', false);
+      minLength = number('Min length', 0);
       serviceLogoName = select(
         'Suffix service logo',
         [
@@ -53,7 +55,6 @@ storiesOf('TextInput', module)
     const disabled = boolean('Disabled', false);
     const required = boolean('Required', false);
     const maxLength = number('Max length', 100);
-    const minLength = number('Min length', 0);
     const type = select(
       'Type',
       ['text', 'password', 'email', 'number'],
@@ -158,15 +159,6 @@ storiesOf('TextInput', module)
       maxLength={5}
     />
   ))
-  .add('Input with min length', () => (
-    <TextInput
-      size="small"
-      label="Label"
-      placeholder="Type something"
-      onChangeText={action('change')}
-      minLength={3}
-    />
-  ))
   .add('Required field', () => (
     <TextInput
       label="Label"
@@ -190,20 +182,33 @@ storiesOf('TextInput', module)
       prefix={<Icon name="search" />}
       onChangeText={action('change')}
     />
-  ))
-  .add('Compact input', () => (
-    <TextInput
-      label="Label"
-      inlineLabel
-      placeholder="Type something"
-      onChangeText={action('change')}
-    />
-  ))
-  .add('With service logo suffix', () => (
-    <TextInput
-      label="Label"
-      placeholder="Type something"
-      suffix={<ServiceLogo name="VisaHQ" />}
-      onChangeText={action('change')}
-    />
   ));
+
+if (Platform.OS === 'web') {
+  stories
+    .add('Input with min length', () => (
+      <TextInput
+        size="small"
+        label="Label"
+        placeholder="Type something"
+        onChangeText={action('change')}
+        minLength={3}
+      />
+    ))
+    .add('Compact input', () => (
+      <TextInput
+        label="Label"
+        inlineLabel
+        placeholder="Type something"
+        onChangeText={action('change')}
+      />
+    ))
+    .add('With service logo suffix', () => (
+      <TextInput
+        label="Label"
+        placeholder="Type something"
+        suffix={<ServiceLogo name="VisaHQ" />}
+        onChangeText={action('change')}
+      />
+    ));
+}
