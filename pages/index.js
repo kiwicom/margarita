@@ -1,6 +1,7 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+// @flow
 
-import SharedApp from './App'
+import React from 'react';
 
-export default () => <SharedApp/>
+import SharedApp from './App';
+
+export default () => <SharedApp />;

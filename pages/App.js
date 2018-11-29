@@ -1,25 +1,48 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { graphql, QueryRenderer } from 'react-relay';
+import { graphql, QueryRenderer, type ReadyState } from 'react-relay';
 
 import environment from './Environment';
 
-export default class App extends React.Component {
+type Props = Object;
+
+export default class App extends React.Component<Props> {
+  renderRelayContainer = ({ error, props }: ReadyState) => {
+    if (error) {
+      return (
+        <View>
+          <Text style={styles.text}>{error.message}</Text>
+        </View>
+      );
+    }
+    if (!props) {
+      return (
+        <View style={styles.container}>
+          <Text style={styles.text}>Loading</Text>
+        </View>
+      );
+    }
+    return (
+      <View style={styles.container}>
+        <Text style={styles.text}>{props.hello}</Text>
+      </View>
+    );
+  };
+
   render() {
     return (
       <QueryRenderer
+        variables={{}}
         environment={environment}
-        query={graphql`query AppQuery { hello }`}
-        render={({ error, props }) => {
-          if (!props) {
-            return null;
+        query={graphql`
+          query AppQuery {
+            hello
           }
-          return (
-            <View style={styles.container}>
-              <Text style={styles.text}>{props.hello}</Text>
-            </View>
-          );
-        }}/>
+        `}
+        render={this.renderRelayContainer}
+      />
     );
   }
 }

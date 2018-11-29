@@ -1,8 +1,13 @@
+// @flow
+
+/* eslint-disable no-console */
+
 const fs = require('fs');
 const path = require('path');
 const { printSchema } = require('graphql/utilities');
 const { spawnSync } = require('child_process');
-const { schema } = require('../graphql/index');
+
+const { schema } = require('../packages/graphql/index');
 
 const _x = (command /*: string */, args /*: string[] */) => {
   const { status } = spawnSync(command, args, { stdio: 'inherit' });
