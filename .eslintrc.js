@@ -23,6 +23,18 @@ module.exports = {
       ERROR,
       { singleQuote: true, trailingComma: 'all', jsxBracketSameLine: false },
     ],
+    'no-restricted-imports': [
+      ERROR,
+      {
+        paths: [
+          {
+            name: 'react-relay',
+            message: 'Please use @kiwicom/margarita-relay package instead.'
+          }
+        ]
+      }
+    ],
+    'import/no-extraneous-dependencies': OFF,
   },
 
   // set each global variable name equal to true to allow the variable to be overwritten or

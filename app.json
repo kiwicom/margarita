@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "tequila-client",
+    "entryPoint": "./app/index.js",
     "description": "This project is really great.",
     "slug": "tequila-client",
     "privacy": "public",

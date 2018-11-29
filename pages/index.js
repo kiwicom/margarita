@@ -2,6 +2,6 @@
 
 import React from 'react';
 
-import SharedApp from './App';
+import SharedApp from '../app/src/App';
 
 export default () => <SharedApp />;
