@@ -15,8 +15,11 @@ module.exports = withTM({
         return external;
       }
 
-      return (ctx, req, cb) =>
-        internalNodeModulesRegExp.test(req) ? cb() : external(ctx, req, cb);
+      return (ctx, req, cb) => {
+        return internalNodeModulesRegExp.test(req)
+          ? cb()
+          : external(ctx, req, cb);
+      };
     });
 
     config.module.rules.push({
@@ -27,6 +30,7 @@ module.exports = withTM({
 
     // Bundle Analyzer
     if (ANALYZE) {
+      // eslint-disable-next-line import/no-extraneous-dependencies
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(
         new BundleAnalyzerPlugin({
