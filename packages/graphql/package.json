@@ -1,0 +1,10 @@
+{
+  "name": "@kiwicom/margarita-graphql",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {
+    "graphql": "^14.0.2"   
+  },
+  "devDependencies": {}
+}
