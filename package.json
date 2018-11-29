@@ -5,7 +5,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "relay": "yarn babel-node --config=.babelrc scripts/relay-compiler.js",
+    "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "lint": "eslint .",
     "flow": "flow --include-warnings",
     "analyze": "cross-env ANALYZE=1 next build"
