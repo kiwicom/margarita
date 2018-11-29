@@ -32,11 +32,23 @@
 [include]
 
 [untyped]
-<PROJECT_ROOT>/node_modules/react-native/Libraries/.+
+; Be careful - do not add 'StyleSheet' here
 <PROJECT_ROOT>/node_modules/expo/.+
-<PROJECT_ROOT>/node_modules/iterall/.+
-<PROJECT_ROOT>/node_modules/graphql/.+
 <PROJECT_ROOT>/node_modules/express-graphql/.+
+<PROJECT_ROOT>/node_modules/graphql/.+
+<PROJECT_ROOT>/node_modules/iterall/.+
+<PROJECT_ROOT>/node_modules/react-native-share/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Animated/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Components/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Experimental/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Image/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Lists/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/ReactNative/.+
+<PROJECT_ROOT>/node_modules/react-native/Libraries/StyleSheet/StyleSheetValidation.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Text/TextAncestor.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Utilities/.+
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
@@ -46,6 +58,9 @@ flow-typed/
 
 [options]
 emoji=true
+
+esproposal.optional_chaining=enable
+esproposal.nullish_coalescing=enable
 
 module.system=haste
 
@@ -72,10 +87,15 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowIssue: https://github.com/facebook/flow/iss
 suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError: .+
 
 [lints]
-all=error
-sketchy-null=off
-untyped-import=off
-; unclear types are used by Relay Compiler
-unclear-type=off
-; untyped imports are used by Relay Compiler
-untyped-type-import=off
+unnecessary-optional-chain=error
+
+[strict]
+;nonstrict-import
+unclear-type
+unsafe-getters-setters
+;untyped-import
+;untyped-type-import
+sketchy-null
+
+[version]
+^0.86.0

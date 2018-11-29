@@ -25,10 +25,12 @@
     "react-dom": "^16.6.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
     "react-native-web": "^0.9.3",
+    "react-relay": "^1.7.0",
     "schedule": "^0.4.0"
   },
   "devDependencies": {
     "@babel/node": "^7.0.0",
+    "@kiwicom/eslint-config": "^0.1.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-relay": "^1.7.0",
     "eslint": "^5.9.0",
@@ -38,6 +40,7 @@
     "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jasmine": "^2.10.1",
+    "eslint-plugin-kiwi-graphql": "^0.0.2",
     "eslint-plugin-prefer-object-spread": "^1.2.1",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-react": "^7.11.1",
