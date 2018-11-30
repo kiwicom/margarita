@@ -1,7 +1,9 @@
 {
   "name": "tequila-client",
+  "license": "MIT",
   "scripts": {
     "ios": "expo start --ios",
+    "android": "expo start --android",
     "dev": "next",
     "build": "next build",
     "start": "next start",
