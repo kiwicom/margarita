@@ -12,7 +12,7 @@ import {
 } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { Icon } from '../Icon';
-import Button from './index';
+import { Button } from '.';
 import icons from '../Icon/icons.json';
 
 const Separator = () => <View style={{ height: 10 }} />;

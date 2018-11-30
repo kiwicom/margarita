@@ -5,8 +5,8 @@ import { Platform } from 'react-native';
 import { render, shallow, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 
-import ButtonWeb from '../index.web';
-import ButtonNative from '../index.native';
+import ButtonWeb from '../Button.web';
+import ButtonNative from '../Button.native';
 import { Icon } from '../../Icon';
 
 const originalPlatform = Platform.OS;

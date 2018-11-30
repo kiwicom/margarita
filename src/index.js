@@ -2,7 +2,7 @@
 
 /* Components */
 export { default as Text } from './Text';
-export { default as Button } from './Button';
+export { Button } from './Button';
 export { Badge } from './Badge';
 export { Icon } from './Icon';
 export { TextInput } from './TextInput';
