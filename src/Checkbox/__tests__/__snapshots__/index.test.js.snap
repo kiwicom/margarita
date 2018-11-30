@@ -1,0 +1,203 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox - native should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -10,11 +10,11 @@
+      Array [
+        Object {
+          \\"display\\": \\"flex\\",
+          \\"flexDirection\\": \\"row\\",
+        },
+-       undefined,
++       false,
+      ]
+    }
+  >
+    <View
+      style={
+@@ -28,17 +28,35 @@
+            \\"borderWidth\\": 1,
+            \\"height\\": 20,
+            \\"justifyContent\\": \\"center\\",
+            \\"width\\": 20,
+          },
+-         undefined,
+          false,
+          false,
+          false,
++         false,
+        ]
+      }
+-   />
++   >
++     <Text
++       color=\\"#00a991\\"
++       size={14}
++       style={
++         Array [
++           Object {
++             \\"fontFamily\\": \\"orbit-icons\\",
++           },
++           Object {
++             \\"color\\": \\"#00a991\\",
++             \\"fontSize\\": 14,
++           },
++         ]
++       }
++     >
++       V
++     </Text>
++   </View>
+    <View
+      style={
+        Object {
+          \\"display\\": \\"flex\\",
+          \\"flex\\": 1,
+@@ -55,21 +73,27 @@
+              \\"fontFamily\\": \\"Roboto\\",
+              \\"fontSize\\": 14,
+              \\"fontWeight\\": \\"400\\",
+              \\"lineHeight\\": 20,
+            },
+-           undefined,
++           Object {
++             \\"fontWeight\\": \\"500\\",
++           },
+          ]
+        }
+-     />
++     >
++       Label
++     </Text>
+      <Text
+        style={
+          Object {
+            \\"color\\": \\"#7f91a8\\",
+            \\"fontFamily\\": \\"Roboto\\",
+            \\"fontSize\\": 12,
+            \\"lineHeight\\": 16,
+          }
+        }
+-     />
++     >
++       info
++     </Text>
+    </View>
+  </View>"
+`;
+
+exports[`CheckBox - web should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,17 +6,22 @@
+        \\"flexDirection\\": \\"row\\",
+      }
+    }
+  >
+    <input
++     checked={true}
++     disabled={false}
++     name=\\"name\\"
++     onChange={[Function mockConstructor]}
+      style={
+        Object {
+          \\"display\\": \\"none\\",
+          \\"visibility\\": \\"hidden\\",
+        }
+      }
+      type=\\"checkbox\\"
++     value=\\"value\\"
+    />
+    <View
+      accessible={true}
+      onResponderGrant={[Function bound touchableHandleResponderGrant]}
+      onResponderMove={[Function bound touchableHandleResponderMove]}
+@@ -28,11 +33,11 @@
+        Array [
+          Object {
+            \\"display\\": \\"flex\\",
+            \\"flexDirection\\": \\"row\\",
+          },
+-         undefined,
++         false,
+        ]
+      }
+    >
+      <View
+        style={
+@@ -46,17 +51,35 @@
+              \\"borderWidth\\": 1,
+              \\"height\\": 20,
+              \\"justifyContent\\": \\"center\\",
+              \\"width\\": 20,
+            },
+-           undefined,
+            false,
+            false,
+            false,
++           false,
+          ]
+        }
+-     />
++     >
++       <Text
++         color=\\"#00a991\\"
++         size={14}
++         style={
++           Array [
++             Object {
++               \\"fontFamily\\": \\"orbit-icons\\",
++             },
++             Object {
++               \\"color\\": \\"#00a991\\",
++               \\"fontSize\\": 14,
++             },
++           ]
++         }
++       >
++         V
++       </Text>
++     </View>
+      <View
+        style={
+          Object {
+            \\"display\\": \\"flex\\",
+            \\"flex\\": 1,
+@@ -73,22 +96,28 @@
+                \\"fontFamily\\": \\"Roboto\\",
+                \\"fontSize\\": 14,
+                \\"fontWeight\\": \\"400\\",
+                \\"lineHeight\\": 20,
+              },
+-             undefined,
++             Object {
++               \\"fontWeight\\": \\"500\\",
++             },
+            ]
+          }
+-       />
++       >
++         Label
++       </Text>
+        <Text
+          style={
+            Object {
+              \\"color\\": \\"#7f91a8\\",
+              \\"fontFamily\\": \\"Roboto\\",
+              \\"fontSize\\": 12,
+              \\"lineHeight\\": 16,
+            }
+          }
+-       />
++       >
++         info
++       </Text>
+      </View>
+    </View>
+  </label>"
+`;

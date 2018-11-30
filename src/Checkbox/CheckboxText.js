@@ -11,6 +11,17 @@ type Props = {|
   +info?: React.Node,
 |};
 
+export default function CheckboxText({ label, checked, info }: Props) {
+  return (
+    <View style={styles.view}>
+      <Text style={[styles.label, checked && styles.labelChecked]}>
+        {label}
+      </Text>
+      <Text style={styles.info}>{info}</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   view: {
     display: 'flex',
@@ -35,14 +46,3 @@ const styles = StyleSheet.create({
     lineHeight: 16,
   },
 });
-
-export default function CheckboxText({ label, checked, info }: Props) {
-  return (
-    <View style={styles.view}>
-      <Text style={[styles.label, checked && styles.labelChecked]}>
-        {label}
-      </Text>
-      <Text style={styles.info}>{info}</Text>
-    </View>
-  );
-}
