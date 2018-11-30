@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper should match snapshot diff between small and normal input 1`] = `
+"Snapshot Diff:
+- <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} />
++ <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} showNumber={false} />
+
+@@ -61,29 +61,2 @@
+    </View>
+-   <Text
+-     style={
+-       Array [
+-         Object {
+-           \\"fontFamily\\": \\"Roboto\\",
+-           \\"margin\\": 0,
+-         },
+-         undefined,
+-         undefined,
+-         Object {
+-           \\"fontSize\\": 14,
+-         },
+-         Object {
+-           \\"fontSize\\": 14,
+-         },
+-         Object {
+-           \\"color\\": \\"#46515e\\",
+-         },
+-         Object {
+-           \\"textAlign\\": \\"left\\",
+-         },
+-         undefined,
+-       ]
+-     }
+-   >
+-     0
+-   </Text>
+    <View"
+`;
+
+exports[`Stepper should match the snapshot 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <StepperButton
+    icon={
+      <Icon
+        color="#7f91a8"
+        name="minus"
+        size={14}
+      />
+    }
+    onPress={[MockFunction]}
+    touchable={true}
+  />
+  <Text
+    style={
+      Object {
+        "fontSize": 16,
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    0
+  </Text>
+  <StepperButton
+    icon={
+      <Icon
+        color="#7f91a8"
+        name="plus"
+        size={14}
+      />
+    }
+    onPress={[MockFunction]}
+    touchable={true}
+  />
+</View>
+`;
