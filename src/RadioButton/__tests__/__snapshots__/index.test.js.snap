@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton should match snapshot diff 1`] = `
+"Snapshot Diff:
+- <RadioButton onPress={[Function mockConstructor]}><Text>Label</Text></RadioButton>
++ <RadioButton bulletPosition=\\"left\\" checked={true} disabled={false} onPress={[Function mockConstructor]} style={{\\"padding\\": 10}} type=\\"bullet\\"><Text>Label</Text></RadioButton>
+
+@@ -9,12 +9,14 @@
+    style={
+      Array [
+        Object {
+          \\"flexDirection\\": \\"row\\",
+        },
+-       undefined,
+-       undefined,
++       false,
++       Object {
++         \\"padding\\": 10,
++       },
+      ]
+    }
+  >
+    <View
+      style={
+@@ -26,15 +28,28 @@
+            \\"borderWidth\\": 2,
+            \\"height\\": 24,
+            \\"justifyContent\\": \\"center\\",
+            \\"width\\": 24,
+          },
+-         undefined,
+-         undefined,
++         Object {
++           \\"borderColor\\": \\"#00a991\\",
++         },
++         false,
+        ]
+      }
++   >
++     <View
++       style={
++         Object {
++           \\"backgroundColor\\": \\"#00a991\\",
++           \\"borderRadius\\": 7,
++           \\"height\\": 14,
++           \\"width\\": 14,
++         }
++       }
+      />
++   </View>
+    <View
+      style={
+        Object {
+          \\"flex\\": 1,
+        }"
+`;
