@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/Checkbox/Checkbox.stories');
   require('../src/FilterButton/FilterButton.stories');
   require('../src/Icon/Icon.stories');
+  require('../src/Loader/Loader.stories');
   require('../src/RadioButton/RadioButton.stories');
   require('../src/ServiceLogo/ServiceLogo.stories');
   require('../src/Stepper/Stepper.stories');
@@ -24,6 +25,7 @@ const stories = [
   '../src/Checkbox/Checkbox.stories',
   '../src/FilterButton/FilterButton.stories',
   '../src/Icon/Icon.stories',
+  '../src/Loader/Loader.stories',
   '../src/RadioButton/RadioButton.stories',
   '../src/ServiceLogo/ServiceLogo.stories',
   '../src/Stepper/Stepper.stories',

@@ -2,6 +2,8 @@
 
 /* Components */
 export { default as Text } from './Text';
+export { Loader } from './Loader';
+export { PageLoader } from './Loader';
 export { Button } from './Button';
 export { Badge } from './Badge';
 export { Icon } from './Icon';
