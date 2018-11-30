@@ -11,6 +11,7 @@ export { TextInput } from './TextInput';
 export { ServiceLogo } from './ServiceLogo';
 export { FilterButton } from './FilterButton';
 export { Stepper } from './Stepper';
+export { Card } from './Card';
 
 /* Utils */
 export { default as StyleSheet } from './PlatformStyleSheet';
