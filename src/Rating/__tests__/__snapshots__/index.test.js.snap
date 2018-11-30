@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating should match snapshot diff 1`] = `
+"Snapshot Diff:
+- <Rating />
++ <Rating rating={3} style={{\\"color\\": \\"#ffb100\\"}} />
+
+@@ -21,12 +21,14 @@
+        },
+        Array [
+          Object {
+            \\"letterSpacing\\": 2,
+          },
+-         undefined,
++         Object {
++           \\"color\\": \\"#ffb100\\",
++         },
+        ],
+      ]
+    }
+  >
+-   
++   ★★★
+  </Text>"
+`;
