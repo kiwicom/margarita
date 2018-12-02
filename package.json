@@ -52,6 +52,7 @@
     "flow-bin": "^0.86.0",
     "jest": "^23.6.0",
     "prettier": "^1.15.2",
+    "react-native-testing-library": "^1.4.2",
     "react-test-renderer": "^16.6.3",
     "relay-compiler": "^1.7.0",
     "webpack-bundle-analyzer": "^3.0.3"

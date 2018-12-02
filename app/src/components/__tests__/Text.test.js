@@ -1,14 +1,16 @@
 // @flow
 
-import React from 'react';
-import renderer from 'react-test-renderer';
+import * as React from 'react';
+import { render } from 'react-native-testing-library';
 
 import Text from '../Text';
 
-describe('Test', () => {
-  test('render', () => {
-    const comp = renderer.create(<Text>Dummy Text</Text>).toJSON();
-    expect(comp).toMatchInlineSnapshot(`
+describe('Text', () => {
+  const children = 'Lorem ipsum';
+  const component = render(<Text>{children}</Text>);
+
+  it('render', () => {
+    expect(component).toMatchInlineSnapshot(`
 <Text
   style={
     Object {
@@ -17,8 +19,12 @@ describe('Test', () => {
     }
   }
 >
-  Dummy Text
+  Lorem ipsum
 </Text>
 `);
+  });
+
+  it('should have defined children text', () => {
+    expect(component.getByText(children)).toBeDefined();
   });
 });
