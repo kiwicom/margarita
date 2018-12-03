@@ -11,9 +11,15 @@ type Props = Object;
 
 export default class App extends React.Component<Props> {
   renderInner = (props: AppQueryResponse) => {
-    const { hello } = props;
+    const { id, hello } = props;
     return (
-      <View style={styles.container}>{hello && <Text>{hello}</Text>}</View>
+      <View style={styles.container}>
+        {hello && (
+          <Text>
+            {hello} ({id})
+          </Text>
+        )}
+      </View>
     );
   };
 
@@ -22,6 +28,7 @@ export default class App extends React.Component<Props> {
       <QueryRenderer
         query={graphql`
           query AppQuery {
+            id
             hello
           }
         `}

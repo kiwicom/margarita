@@ -4,18 +4,15 @@ import {
   graphql,
   GraphQLSchema,
   GraphQLObjectType,
-  GraphQLNonNull,
   GraphQLString,
-  GraphQLID,
 } from 'graphql';
+import GlobalID from '@kiwicom/graphql-global-id';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-      id: {
-        type: GraphQLNonNull(GraphQLID),
-      },
+      id: GlobalID(() => 'TODO: implement me'),
 
       hello: {
         type: GraphQLString,

@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "graphql": "^14.0.2"   
-  },
-  "devDependencies": {}
+    "@kiwicom/graphql-global-id": "^0.0.2",
+    "graphql": "^14.0.2"
+  }
 }

@@ -3,6 +3,11 @@ schema {
 }
 
 type RootQueryType {
-  id: ID!
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
   hello: String
 }
