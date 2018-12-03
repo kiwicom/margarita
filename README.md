@@ -1,7 +1,3 @@
-TODO:
-
-- yarn workspaces
-
 ![Margarita](assets/logo.png)
 
 # Margarita
