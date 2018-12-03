@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "flow": "flow --include-warnings",
     "analyze": "cross-env ANALYZE=1 next build",
-    "test-ci": "yarn flow && yarn lint"
+    "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
+    "test-ci": "yarn flow && yarn lint && yarn test"
   },
   "private": true,
   "workspaces": [
@@ -29,8 +30,10 @@
     "schedule": "^0.4.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
     "@kiwicom/eslint-config": "^0.1.0",
+    "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-relay": "^1.7.0",
     "eslint": "^5.9.0",
@@ -47,8 +50,14 @@
     "eslint-plugin-react-native": "^3.5.0",
     "eslint-plugin-relay": "^1.0.0",
     "flow-bin": "^0.86.0",
+    "jest": "^23.6.0",
     "prettier": "^1.15.2",
+    "react-native-testing-library": "^1.4.2",
+    "react-test-renderer": "^16.6.3",
     "relay-compiler": "^1.7.0",
     "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "resolutions": {
+    "**/babel-core": "7.0.0-bridge.0"
   }
 }
