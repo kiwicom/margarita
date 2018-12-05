@@ -940,6 +940,13 @@
   dependencies:
     eslint "^5.8.0"
 
+"@kiwicom/graphql-global-id@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-global-id/-/graphql-global-id-0.0.2.tgz#f12be7539ca05a4156cd70ca1666824800887567"
+  integrity sha512-BJrW2nCLhgRnoQ4MQF58z4gXuiP8FshZANNvuHnXTWhiWp/rE1I2KH+T5XA0u41/20o+rqbolFPkckcCXEVl8w==
+  dependencies:
+    buffer "^5.2.1"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -2420,6 +2427,14 @@ buffer@^4.3.0:
     base64-js "^1.0.2"
     ieee754 "^1.1.4"
     isarray "^1.0.0"
+
+buffer@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/buffer/-/buffer-5.2.1.tgz#dd57fa0f109ac59c602479044dca7b8b3d0b71d6"
+  integrity sha512-c+Ko0loDaFfuPWiL02ls9Xd3GO3cPVmUobQ6t3rXNUk304u6hGq+8N/kFi+QEIKhzK3uwolVhLzszmfLmMLnqg==
+  dependencies:
+    base64-js "^1.0.2"
+    ieee754 "^1.1.4"
 
 builtin-modules@^1.0.0:
   version "1.1.1"
