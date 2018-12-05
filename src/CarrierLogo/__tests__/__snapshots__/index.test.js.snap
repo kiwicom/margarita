@@ -5,20 +5,7 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
 - <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}]} />
 + <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}, {\\"code\\": \\"TO\\", \\"name\\": \\"Transavia France\\"}, {\\"code\\": \\"VY\\", \\"name\\": \\"Vueling\\"}, {\\"code\\": \\"OK\\", \\"name\\": \\"Czech Airlines\\"}]} />
 
-@@ -7,11 +7,11 @@
-          \\"display\\": \\"flex\\",
-          \\"flexWrap\\": \\"wrap\\",
-          \\"justifyContent\\": \\"space-between\\",
-        },
-        Object {
--         \\"flexDirection\\": \\"row\\",
-+         \\"flexDirection\\": \\"column\\",
-        },
-        Object {
-          \\"height\\": 32,
-          \\"width\\": 32,
-        },
-@@ -19,23 +19,83 @@
+@@ -17,23 +17,83 @@
     }
   >
     <Image
