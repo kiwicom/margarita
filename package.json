@@ -4,7 +4,7 @@
   "scripts": {
     "ios": "expo start --ios",
     "android": "expo start --android",
-    "dev": "next",
+    "dev": "BABEL_ENV=web next",
     "build": "next build",
     "start": "next start",
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",

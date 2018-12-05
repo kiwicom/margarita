@@ -1,8 +1,6 @@
 // @flow
 
 const withTM = require('next-plugin-transpile-modules');
-require('dotenv').config();
-const webpack = require('webpack');
 
 const { ANALYZE } = process.env;
 
@@ -26,7 +24,6 @@ module.exports = withTM({
     config.resolve.alias = {
       'react-native$': 'react-native-web',
     };
-    config.plugins.push(new webpack.EnvironmentPlugin(process.env));
 
     return config;
   },
