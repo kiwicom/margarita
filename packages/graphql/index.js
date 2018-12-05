@@ -8,6 +8,8 @@ import {
 } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
+import fetch from './src/services/Fetch';
+
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
     name: 'RootQueryType',
@@ -16,8 +18,15 @@ const schema = new GraphQLSchema({
 
       hello: {
         type: GraphQLString,
-        resolve() {
-          return 'Welcome to Tequila client demo!';
+
+        async resolve() {
+          const test = await fetch(
+            'https://kiwicom-prod.apigee.net/locations/query?term=oslo',
+          );
+
+          return `Welcome to Tequila client demo! Test location query = ${
+            test.locations[0].id
+          }`;
         },
       },
     },
