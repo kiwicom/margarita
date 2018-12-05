@@ -2,7 +2,7 @@
 #
 storybook-static
 .cache
-.storybook-native/story-loader.js
+storybook.native/story-loader.js
 
 # OSX
 #
