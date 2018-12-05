@@ -18,7 +18,8 @@ const schema = new GraphQLSchema({
 
       hello: {
         type: GraphQLString,
-        resolve: async () => {
+
+        async resolve() {
           const test = await fetch(
             'https://kiwicom-prod.apigee.net/locations/query?term=oslo',
           );
