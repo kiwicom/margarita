@@ -41,7 +41,7 @@ storiesOf('Text', module)
         'attention',
         'info',
         'success',
-        'warrning',
+        'warning',
         'critical',
         'white',
       ],

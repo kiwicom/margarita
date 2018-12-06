@@ -286,6 +286,6 @@ const styles = StyleSheet.create({
     width: '100%',
     borderBottomStartRadius: 10,
     borderBottomEndRadius: 10,
-    zIndex: 100,
+    zIndex: parseFloat(defaultTokens.zIndexSticky),
   },
 });

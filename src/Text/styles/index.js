@@ -9,7 +9,7 @@ export const textColor = {
   primary: defaultTokens.colorTextPrimary,
   secondary: defaultTokens.colorTextSecondary,
   success: defaultTokens.colorTextSuccess,
-  warrning: defaultTokens.colorTextWarning,
+  warning: defaultTokens.colorTextWarning,
   white: defaultTokens.colorTextWhite,
 };
 
