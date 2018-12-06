@@ -1,17 +1,19 @@
 // @flow
 
 /* Components */
-export { default as Text } from './Text';
-export { Loader } from './Loader';
-export { PageLoader } from './Loader';
-export { Button } from './Button';
 export { Badge } from './Badge';
-export { Icon } from './Icon';
-export { TextInput } from './TextInput';
-export { ServiceLogo } from './ServiceLogo';
-export { FilterButton } from './FilterButton';
-export { Stepper } from './Stepper';
+export { Button } from './Button';
 export { Card } from './Card';
+export { Checkbox } from './Checkbox';
+export { FilterButton } from './FilterButton';
+export { Icon } from './Icon';
+export { Loader } from './Loader';
+export { RadioButton } from './RadioButton';
+export { Rating } from './Rating';
+export { ServiceLogo } from './ServiceLogo';
+export { Stepper } from './Stepper';
+export { default as Text } from './Text';
+export { TextInput } from './TextInput';
 
 /* Utils */
 export { default as StyleSheet } from './PlatformStyleSheet';

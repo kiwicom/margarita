@@ -1,4 +1,4 @@
-# Universal Orbit Components
+# Universal Components
 Proof of concept for universal components.
 Based on [react-native-web](https://github.com/necolas/react-native-web).
 

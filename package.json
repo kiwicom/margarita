@@ -1,5 +1,5 @@
 {
-  "name": "@kiwicom/universal-orbit-components",
+  "name": "@kiwicom/universal-components",
   "version": "0.0.1",
   "description": "The proof of concept of universal components.",
   "main": "lib/index.js",

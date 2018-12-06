@@ -64,5 +64,8 @@ buck-out/
 #build
 lib/
 
+# Output of 'npm pack'
+*.tgz
+
 #Jest
 /coverage

@@ -20,16 +20,15 @@ const copyFiles = rootPath => {
     const stat = fs.statSync(currentPath);
     const isDirectory = stat.isDirectory();
 
+    const destinationFolder = rootPath.replace('src', 'lib');
+    if (!fs.existsSync(destinationFolder)) {
+      fs.mkdirSync(destinationFolder);
+    }
+
     if (isDirectory) {
       copyFiles(currentPath);
     } else {
       const destinationPath = currentPath.replace('src', 'lib');
-      const destinationFolder = rootPath.replace('src', 'lib');
-
-      if (!fs.existsSync(destinationFolder)) {
-        fs.mkdirSync(destinationFolder);
-      }
-
       fs.copyFileSync(currentPath, destinationPath);
     }
   });
