@@ -124,7 +124,7 @@ storiesOf('Stepper', module)
     });
     const disableIncrement = boolean('Disable increment', false);
     const disableDecrement = boolean('Disable decrement', false);
-    const min = number('Min', -2);
+    const min = number('Min', 0);
     const max = number('Max', 2);
     const defaultNumber = number('Default number', 0);
     return (
