@@ -5,18 +5,16 @@ import { View, Image, PixelRatio } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import StyleSheet from '../PlatformStyleSheet';
 import type { Props } from './CarrierLogoTypes';
-import { SIZE_OPTIONS, CARRIER_TYPE_OPTIONS, BASE_URL } from './consts';
+import { SIZE_OPTIONS } from './consts';
 import { logoSizes } from './styles';
+import { getCarrierImageUri, parseCarriers } from './CarrierLogoHelpers';
 
+const pixelRatio = PixelRatio.get();
 export default function CarrierLogo({
   size = SIZE_OPTIONS.LARGE,
   carriers = [],
 }: Props) {
   const carriersLength = carriers.length;
-  const urlSize =
-    (carriersLength > 1 || size === SIZE_OPTIONS.SMALL ? 16 : 32) *
-    (PixelRatio.get() >= 2 ? 2 : 1);
-
   return (
     <View
       style={[
@@ -24,22 +22,21 @@ export default function CarrierLogo({
         carriersLength > 1 ? sizeStyles[SIZE_OPTIONS.LARGE] : sizeStyles[size],
       ]}
     >
-      {carriers.slice(0, 4).map((carrierImage, index) => (
+      {parseCarriers(carriers).map((carrierData, index) => (
         <Image
-          key={carrierImage.code}
+          key={carrierData.code}
           style={[
             styles.logo,
             getLogoSizeStyle(carriersLength, size),
             carriersLength === 2 && index === 1 && styles.logoFlexEnd,
           ]}
           source={{
-            uri: `${BASE_URL}/airlines/${urlSize}/${
-              carrierImage.code
-            }.png?default=${
-              carrierImage.type === undefined
-                ? CARRIER_TYPE_OPTIONS.AIRLINE
-                : carrierImage.type
-            }.png`,
+            uri: getCarrierImageUri(
+              carriersLength,
+              size,
+              pixelRatio,
+              carrierData
+            ),
           }}
         />
       ))}

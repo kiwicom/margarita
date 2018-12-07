@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`CarrierLogo getCarrierImageUri > should return correct path 1`] = `"https://images.kiwi.com/airlines/128/TO.png?default=airline.png"`;
+
 exports[`CarrierLogo should match snapshot diff 1`] = `
 "Snapshot Diff:
 - <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}]} />
