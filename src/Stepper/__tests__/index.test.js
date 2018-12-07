@@ -37,6 +37,52 @@ describe('Stepper', () => {
     expect(output).toMatchSnapshot();
   });
 
+  it('should have buttons disabled when min, max and number is zero', () => {
+    const { getAllByProps } = render(
+      <Stepper
+        onDecrement={onDecrement}
+        onIncrement={onIncrement}
+        min={0}
+        max={0}
+        number={0}
+      />
+    );
+    expect(
+      getAllByProps({
+        touchable: false,
+      })
+    ).toHaveLength(2);
+  });
+
+  it('should have buttons enabled when min, max is set to null', () => {
+    const { getAllByProps } = render(
+      // $FlowFixMe - flow disabled to test 'null' edge case
+      <Stepper
+        onDecrement={onDecrement}
+        onIncrement={onIncrement}
+        min={null}
+        max={null}
+        number={0}
+      />
+    );
+    expect(
+      getAllByProps({
+        touchable: true,
+      })
+    ).toHaveLength(2);
+  });
+
+  it('should have buttons enabled when min, max is not set', () => {
+    const { getAllByProps } = render(
+      <Stepper onDecrement={onDecrement} onIncrement={onIncrement} number={0} />
+    );
+    expect(
+      getAllByProps({
+        touchable: true,
+      })
+    ).toHaveLength(2);
+  });
+
   const { getByText, getByType, getAllByType, getAllByProps } = render(
     <Stepper
       onDecrement={onDecrement}
