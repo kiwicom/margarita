@@ -9,7 +9,6 @@ module.exports = withTM({
   webpack: (config, { isServer, defaultLoaders }) => {
     // Bundle Analyzer
     if (ANALYZE) {
-      // eslint-disable-next-line import/no-extraneous-dependencies
       const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
       config.plugins.push(
         new BundleAnalyzerPlugin({
