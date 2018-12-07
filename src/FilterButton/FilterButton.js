@@ -23,7 +23,7 @@ export default function FilterButton({
           color: isActive
             ? defaultTokens.paletteCloudNormal
             : defaultTokens.colorIconPrimary,
-          size: 18,
+          size: 'medium',
         });
 
   return (

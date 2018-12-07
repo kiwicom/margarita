@@ -38,7 +38,7 @@ const Prefix = ({ children, size, status }) => {
 
       return React.cloneElement(child, {
         color: iconColor,
-        size: size === 'small' ? 16 : 24,
+        size,
       });
     }
     return child;

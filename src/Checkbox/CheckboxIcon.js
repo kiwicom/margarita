@@ -29,7 +29,7 @@ export default function CheckboxIcon({
         pressed && styles.boxPressed,
       ]}
     >
-      {checked && <Icon name="check" color={iconColor} size={14} />}
+      {checked && <Icon name="check" color={iconColor} size="small" />}
     </View>
   );
 }

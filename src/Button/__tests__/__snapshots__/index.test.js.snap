@@ -49,16 +49,16 @@ exports[`Button - native should match snapshot diff 1`] = `
 +           }
 +         >
             <Text
-+             color=\\"#0176D2\\"
-+             size={20}
               style={
                 Array [
                   Object {
 +                   \\"fontFamily\\": \\"orbit-icons\\",
 +                 },
 +                 Object {
++                   \\"fontSize\\": 24,
++                 },
++                 Object {
 +                   \\"color\\": \\"#0176D2\\",
-+                   \\"fontSize\\": 20,
 +                 },
 +               ]
 +             }
@@ -151,16 +151,16 @@ exports[`Button - native should match snapshot diff 1`] = `
 +           }
 +         >
 +           <Text
-+             color=\\"#0176D2\\"
-+             size={20}
 +             style={
 +               Array [
 +                 Object {
 +                   \\"fontFamily\\": \\"orbit-icons\\",
 +                 },
 +                 Object {
++                   \\"fontSize\\": 24,
++                 },
++                 Object {
 +                   \\"color\\": \\"#0176D2\\",
-+                   \\"fontSize\\": 20,
 +                 },
 +               ]
 +             }
@@ -205,16 +205,12 @@ exports[`Button - native should match the snapshot 1`] = `
     disabled={false}
     leftIcon={
       <Icon
-        color="#46515e"
         name="calendar"
-        size={20}
       />
     }
     rightIcon={
       <Icon
-        color="#46515e"
         name="chevron-right"
-        size={20}
       />
     }
     sublabel="Button sublabel"
@@ -285,16 +281,16 @@ exports[`Button - web should match snapshot diff 1`] = `
 +         }
 +       >
           <Text
-+           color=\\"#0176D2\\"
-+           size={20}
             style={
               Array [
                 Object {
 +                 \\"fontFamily\\": \\"orbit-icons\\",
 +               },
 +               Object {
++                 \\"fontSize\\": 24,
++               },
++               Object {
 +                 \\"color\\": \\"#0176D2\\",
-+                 \\"fontSize\\": 20,
 +               },
 +             ]
 +           }
@@ -340,16 +336,16 @@ exports[`Button - web should match snapshot diff 1`] = `
 +         }
 +       >
 +         <Text
-+           color=\\"#0176D2\\"
-+           size={20}
 +           style={
 +             Array [
 +               Object {
 +                 \\"fontFamily\\": \\"orbit-icons\\",
 +               },
 +               Object {
++                 \\"fontSize\\": 24,
++               },
++               Object {
 +                 \\"color\\": \\"#0176D2\\",
-+                 \\"fontSize\\": 20,
 +               },
 +             ]
 +           }
@@ -382,16 +378,12 @@ exports[`Button - web should match the snapshot 1`] = `
     disabled={false}
     leftIcon={
       <Icon
-        color="#46515e"
         name="calendar"
-        size={20}
       />
     }
     rightIcon={
       <Icon
-        color="#46515e"
         name="chevron-right"
-        size={20}
       />
     }
     type="info"

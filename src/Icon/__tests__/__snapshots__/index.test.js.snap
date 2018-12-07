@@ -5,21 +5,15 @@ exports[`Icon should match snapshot diff between regular and custom icon 1`] = `
 - First value
 + Second value
 
-@@ -1,5 +1,5 @@
-  <Text
--   color=\\"#46515e\\"
--   size={20}
-+   color=\\"red\\"
-+   size={40}
-    style={
-      Array [
-@@ -8,6 +8,6 @@
+@@ -6,8 +6,8 @@
+        },
+        Object {
+-         \\"fontSize\\": 24,
++         \\"fontSize\\": 32,
         },
         Object {
 -         \\"color\\": \\"#46515e\\",
--         \\"fontSize\\": 20,
 +         \\"color\\": \\"red\\",
-+         \\"fontSize\\": 40,
         },
       ]"
 `;

@@ -16,7 +16,7 @@ storiesOf('Icon', module)
   ))
   .add('Custom Icon', () => (
     <React.Fragment>
-      <Icon name="check" color="#46B655" size={80} />
+      <Icon name="check" color="#46B655" size="large" />
     </React.Fragment>
   ))
   .add('All Icons list', () => (

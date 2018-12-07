@@ -12,7 +12,7 @@ const keyExtractor = item => item;
 const renderItem = ({ item }) => (
   <View key={item} style={styles.item}>
     <Text>{item}</Text>
-    <Icon name={item} size={40} />
+    <Icon name={item} size="large" />
   </View>
 );
 

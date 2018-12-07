@@ -34,16 +34,16 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
 -   />
 +   >
 +     <Text
-+       color=\\"#00a991\\"
-+       size={14}
 +       style={
 +         Array [
 +           Object {
 +             \\"fontFamily\\": \\"orbit-icons\\",
 +           },
 +           Object {
++             \\"fontSize\\": 16,
++           },
++           Object {
 +             \\"color\\": \\"#00a991\\",
-+             \\"fontSize\\": 14,
 +           },
 +         ]
 +       }
@@ -146,16 +146,16 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 -     />
 +     >
 +       <Text
-+         color=\\"#00a991\\"
-+         size={14}
 +         style={
 +           Array [
 +             Object {
 +               \\"fontFamily\\": \\"orbit-icons\\",
 +             },
 +             Object {
++               \\"fontSize\\": 16,
++             },
++             Object {
 +               \\"color\\": \\"#00a991\\",
-+               \\"fontSize\\": 14,
 +             },
 +           ]
 +         }

@@ -2,15 +2,11 @@
 
 import * as React from 'react';
 import { Text as RNText } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import StyleSheet from '../PlatformStyleSheet';
 
 import iconsMap from './icons.json';
-
-export type Props = {|
-  +name: string,
-  size?: number,
-  color?: string,
-|};
+import type { Props } from './IconTypes';
 
 const getIconCharacter = name => {
   const icon = iconsMap[name];
@@ -24,22 +20,17 @@ const getIconCharacter = name => {
   return iconsMap[name].character;
 };
 
-export default function Icon({ name, color, size }: Props) {
+export default function Icon({
+  name,
+  color = '#46515e',
+  size = 'medium',
+}: Props) {
   return (
-    <RNText
-      color={color}
-      size={size}
-      style={[styles.icon, { color, fontSize: size }]}
-    >
+    <RNText style={[styles.icon, styles[size], { color }]}>
       {getIconCharacter(name)}
     </RNText>
   );
 }
-
-Icon.defaultProps = {
-  color: '#46515e',
-  size: 20,
-};
 
 const styles = StyleSheet.create({
   icon: {
@@ -49,4 +40,15 @@ const styles = StyleSheet.create({
       textAlignVertical: 'center',
     },
   },
+  /* eslint-disable react-native/no-unused-styles */
+  small: {
+    fontSize: parseFloat(defaultTokens.widthIconSmall),
+  },
+  medium: {
+    fontSize: parseFloat(defaultTokens.widthIconMedium),
+  },
+  large: {
+    fontSize: parseFloat(defaultTokens.widthIconLarge),
+  },
+  /* eslint-enable */
 });

@@ -31,7 +31,7 @@ export default function RadioButton({
         >
           {checked &&
             (isCheckType ? (
-              <Icon name="check" color="#ffffff" size={20} />
+              <Icon name="check" color="#ffffff" size="medium" />
             ) : (
               <View style={styles.bulletFill} />
             ))}

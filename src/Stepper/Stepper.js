@@ -40,7 +40,7 @@ export default function Stepper({
 
   const iconProps = {
     color: defaultTokens.colorIconSecondary,
-    size: 14,
+    size: 'small',
   };
 
   let numberDisplayed = number;
