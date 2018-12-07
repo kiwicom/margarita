@@ -2,7 +2,69 @@ schema {
   query: RootQueryType
 }
 
+"""
+A date string, such as 2007-12-03, compliant with the `full-date` format
+outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
+representation of dates and times using the Gregorian calendar.
+"""
+scalar Date
+
+input ItinerariesSearchInput {
+  travelFrom: String!
+
+  """Search itineraries from this date"""
+  dateFrom: Date!
+
+  """Search itineraries up to this date"""
+  dateTo: Date
+}
+
+type Itinerary {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+}
+
+"""A connection to a list of items."""
+type ItineraryConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [ItineraryEdge]
+}
+
+"""An edge in a connection."""
+type ItineraryEdge {
+  """The item at the end of the edge"""
+  node: Itinerary
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
 type RootQueryType {
+  """Query to fetch all itineraries(flights, busses, trains)"""
+  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
