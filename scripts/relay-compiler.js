@@ -7,7 +7,7 @@ const path = require('path');
 const { printSchema } = require('graphql/utilities');
 const { spawnSync } = require('child_process');
 
-const { schema } = require('../packages/graphql/index');
+const schema = require('../packages/graphql/src/Schema');
 
 const _x = (command /*: string */, args /*: string[] */) => {
   const { status } = spawnSync(command, args, { stdio: 'inherit' });
