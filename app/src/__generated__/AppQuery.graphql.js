@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 154001b2a90808584485f01513909fea
+ * @relayHash 65acb8ca3007fc01efde9b05cd8b764f
  */
 
 /* eslint-disable */
@@ -55,7 +55,7 @@ return {
   "fragment": {
     "kind": "Fragment",
     "name": "AppQuery",
-    "type": "RootQueryType",
+    "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": [],
     "selections": v0

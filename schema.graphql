@@ -1,5 +1,5 @@
 schema {
-  query: RootQueryType
+  query: RootQuery
 }
 
 """
@@ -61,15 +61,17 @@ type PageInfo {
   endCursor: String
 }
 
-type RootQueryType {
-  """Query to fetch all itineraries(flights, busses, trains)"""
-  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
-
+type RootQuery {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
+
+  """Query to fetch all itineraries(flights, busses, trains)"""
+  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
+  """A simple type for getting started!"""
   hello: String
 }

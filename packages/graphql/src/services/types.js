@@ -1,3 +1,3 @@
 // @flow
 
-export type HttpReqest = 'PUT' | 'POST' | 'GET' | 'OPTIONS';
+export type HttpMethod = 'PUT' | 'POST' | 'GET' | 'OPTIONS';

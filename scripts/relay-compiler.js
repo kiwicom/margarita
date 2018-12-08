@@ -1,13 +1,11 @@
 // @flow
 
 /* eslint-disable no-console */
-
-const fs = require('fs');
-const path = require('path');
-const { printSchema } = require('graphql/utilities');
-const { spawnSync } = require('child_process');
-
-const schema = require('../packages/graphql/src/Schema');
+import fs from 'fs';
+import path from 'path';
+import { printSchema } from 'graphql/utilities';
+import { spawnSync } from 'child_process';
+import { schema } from '@kiwicom/margarita-graphql';
 
 const _x = (command /*: string */, args /*: string[] */) => {
   const { status } = spawnSync(command, args, { stdio: 'inherit' });

@@ -14,8 +14,10 @@ git clone git@github.com:kiwicom/margarita.git
 cd margarita/
 yarn install
 ```
+To launch the graphql server:
+- `yarn server`
 
-To launch the app, you have different options:
+To launch the client app, you have different options:
 - `yarn dev` to launch the _development_ web version;
 - `yarn build; yarn start` to launch the _production_ web version;
 - `yarn ios` or `yarn android` to start the mobile version.
@@ -27,7 +29,7 @@ The other available scripts are:
 - `yarn lint` to ensure your code is properly formatted;
 - `yarn flow` to ensure your code is respecting the types given to your vaiables;
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
-- `yarn relay` to get the latest schema of the [graphql server](packages/graphql) 
+- `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
 and compile your queries and fragments to generate Flow types, among other things.
 
 
@@ -41,7 +43,7 @@ and compile your queries and fragments to generate Flow types, among other thing
 ### Considerations
 
 This project follows `react-native-web`'s philosophy of ["Write Once, Render Anywhere"](https://www.youtube.com/watch?v=HLWM2uhv2wI). The web version is powered by
-[Next.js](https://github.com/zeit/next.js/) and the mobile version is powered by 
+[Next.js](https://github.com/zeit/next.js/) and the mobile version is powered by
 [Expo](https://github.com/expo/expo).
 
 @TODO
@@ -75,7 +77,7 @@ If you'd like to contribute, please fork the repository and use a feature
 branch. Pull requests are warmly welcome.
 
 > NOTE: Note this is only meant as an example app and even though we take
-pride in the quality of our work, features should not be assumed to be 
+pride in the quality of our work, features should not be assumed to be
 production-ready.
 
 To ensure code quality, make sure to run `yarn test-ci` and fix the potential
