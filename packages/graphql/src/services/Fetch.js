@@ -1,8 +1,10 @@
 // @flow
 
 import fetchWithRetries from '@mrtnzlml/fetch';
-import { API_KEY, NODE_ENV } from 'react-native-dotenv';
-import { stringify } from 'querystring';
+
+import type { HttpReqest } from './types';
+
+const { API_KEY, NODE_ENV, BASE_URL } = process.env;
 
 export type Options = {|
   +headers?: Object,
@@ -24,9 +26,13 @@ const prepareOptions = (options: Object) => {
 };
 export default async function fetch(
   url: string,
-  method: string = 'GET',
+  method: HttpReqest = 'GET',
   options?: Options = ({}: Object),
 ): Promise<any> {
+  if (!BASE_URL) {
+    throw new Error('Missing set the BASE_URL environments variable.');
+  }
+
   if (typeof API_KEY !== 'string') {
     throw Error(
       `Expected to have apikey of type string, got ${typeof API_KEY}`,
@@ -44,15 +50,12 @@ export default async function fetch(
   }
 
   try {
-    const response = await fetchWithRetries(
-      `https://kiwicom-prod.apigee.net${url}`,
-      {
-        fetchTimeout: 30000,
-        retryDelays: [1000, 3000],
-        ...prepareOptions(options),
-        method,
-      },
-    );
+    const response = await fetchWithRetries(`${BASE_URL}${url}`, {
+      fetchTimeout: 30000,
+      retryDelays: [1000, 3000],
+      ...prepareOptions(options),
+      method,
+    });
 
     if (response.status === 204) {
       // response.json is undefined if there is no body
