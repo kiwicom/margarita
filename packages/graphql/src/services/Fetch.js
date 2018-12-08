@@ -2,7 +2,7 @@
 
 import fetchWithRetries from '@mrtnzlml/fetch';
 
-import type { HttpReqest } from './types';
+import type { HttpMethod } from './types';
 
 const { API_KEY, NODE_ENV, BASE_URL } = process.env;
 
@@ -26,7 +26,7 @@ const prepareOptions = (options: Object) => {
 };
 export default async function fetch(
   url: string,
-  method: HttpReqest = 'GET',
+  method: HttpMethod = 'GET',
   options?: Options = ({}: Object),
 ): Promise<any> {
   if (!BASE_URL) {

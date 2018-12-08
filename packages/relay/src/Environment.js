@@ -1,19 +1,8 @@
 // @flow
 
-import { createEnvironment } from '@mrtnzlml/relay';
-import { inMemoryFetcher } from '@kiwicom/margarita-graphql';
-
-const createInMemoryFetcher = () => {
-  return function(request, variables, uploadables) {
-    if (uploadables) {
-      throw new Error(
-        'Uploadables are not supported in this in-memory Relay environment.',
-      );
-    }
-    return inMemoryFetcher(request.text, variables);
-  };
-};
+import { GRAPHQL_URL } from 'react-native-dotenv';
+import { createEnvironment, createNetworkFetcher } from '@mrtnzlml/relay';
 
 export default createEnvironment({
-  fetcherFn: createInMemoryFetcher(),
+  fetcherFn: createNetworkFetcher(GRAPHQL_URL),
 });

@@ -6,14 +6,15 @@
     "android": "expo start --android",
     "dev": "BABEL_ENV=web next",
     "build": "next build",
-    "start": "next start",
+    "start": "BABEL_ENV=web next start",
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",
     "analyze": "cross-env ANALYZE=1 next build",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
     "test-ci": "yarn flow && yarn lint && yarn test",
-    "graphql": "yarn babel-node scripts/createSchema.js"
+    "server": "yarn workspace @kiwicom/margarita-graphql start",
+    "schema": "yarn babel-node scripts/createSchema.js"
   },
   "private": true,
   "workspaces": [
@@ -21,6 +22,7 @@
   ],
   "dependencies": {
     "@kiwicom/margarita-relay": "^0",
+    "better-npm-run": "^0.1.1",
     "cross-env": "^5.2.0",
     "expo": "^31.0.6",
     "next": "^7.0.2",
