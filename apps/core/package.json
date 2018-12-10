@@ -1,0 +1,8 @@
+{
+  "name": "@kiwicom/margarita-core",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {}
+}
