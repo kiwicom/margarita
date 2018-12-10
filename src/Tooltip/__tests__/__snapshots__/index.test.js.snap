@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TooltipBubble should match the snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "position": "relative",
+        "zIndex": 825,
+      },
+      Object {
+        "marginTop": 3,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "flex": 1,
+          "height": "100%",
+          "paddingHorizontal": 15,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 800,
+        },
+        Object {
+          "alignItems": "center",
+          "justifyContent": "flex-start",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#46515e",
+          "borderRadius": 2,
+          "height": 17,
+          "transform": Array [
+            Object {
+              "rotate": "45deg",
+            },
+          ],
+          "width": 17,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#46515e",
+          "borderRadius": 6,
+          "minHeight": 30,
+          "minWidth": 60,
+        },
+        Object {
+          "marginTop": 8,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        Object {
+          "color": "#fff",
+          "padding": 8,
+          "zIndex": 1,
+        }
+      }
+    >
+      Hello Kiwi.com
+    </Text>
+  </View>
+</View>
+`;
