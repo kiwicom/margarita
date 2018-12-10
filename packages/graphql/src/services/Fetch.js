@@ -18,20 +18,12 @@ const prepareOptions = (options: Object) => {
     headers: {
       ...headers,
       'Content-Type': 'application/json',
+      apikey: API_KEY,
     },
   };
 };
-
-// There is no global URL object in react-native
-const appendParameters = (url: string, parameters: Object) => {
-  if (url.includes('?')) {
-    return `${url}&${stringify(parameters)}`;
-  }
-  return `${url}?${stringify(parameters)}`;
-};
-
 export default async function fetch(
-  absoluteApiUrl: string,
+  url: string,
   method: string = 'GET',
   options?: Options = ({}: Object),
 ): Promise<any> {
@@ -40,10 +32,6 @@ export default async function fetch(
       `Expected to have apikey of type string, got ${typeof API_KEY}`,
     );
   }
-
-  const url = appendParameters(absoluteApiUrl, {
-    apikey: API_KEY,
-  });
 
   if (NODE_ENV === 'development') {
     console.log(url); // eslint-disable-line no-console
@@ -56,12 +44,15 @@ export default async function fetch(
   }
 
   try {
-    const response = await fetchWithRetries(url, {
-      fetchTimeout: 30000,
-      retryDelays: [1000, 3000],
-      ...prepareOptions(options),
-      method,
-    });
+    const response = await fetchWithRetries(
+      `https://kiwicom-prod.apigee.net${url}`,
+      {
+        fetchTimeout: 30000,
+        retryDelays: [1000, 3000],
+        ...prepareOptions(options),
+        method,
+      },
+    );
 
     if (response.status === 204) {
       // response.json is undefined if there is no body

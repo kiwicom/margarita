@@ -12,7 +12,8 @@
     "flow": "flow --include-warnings",
     "analyze": "cross-env ANALYZE=1 next build",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "test-ci": "yarn flow && yarn lint && yarn test"
+    "test-ci": "yarn flow && yarn lint && yarn test",
+    "graphql": "yarn babel-node scripts/createSchema.js"
   },
   "private": true,
   "workspaces": [
