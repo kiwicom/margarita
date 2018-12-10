@@ -1,12 +1,12 @@
 // @flow
 
 import { GraphQLNonNull } from 'graphql';
+import { type ConnectionArguments } from 'graphql-relay';
 import {
+  connectionFromArray,
   connectionArgs,
   connectionDefinitions,
-  connectionFromArray,
-  type ConnectionArguments,
-} from 'graphql-relay';
+} from '@kiwicom/graphql-utils';
 
 import ItinerariesSearchInput from '../types/input/ItinerariesSearchInput';
 import GraphQLItinerary from '../types/output/Itinerary';
