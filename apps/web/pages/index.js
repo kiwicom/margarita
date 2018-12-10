@@ -1,7 +1,6 @@
 // @flow
 
 import React from 'react';
-
-import SharedApp from '../app/src/App';
+import { App as SharedApp } from '@kiwicom/margarita-core';
 
 export default () => <SharedApp />;

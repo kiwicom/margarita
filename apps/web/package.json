@@ -1,0 +1,24 @@
+{
+  "name": "@kiwicom/margarita-web",
+  "private": true,
+  "version": "0.0.0",
+  "main": "pages/index.js",
+  "dependencies": {
+    "@kiwicom/margarita-core": "^0",
+    "next": "^7.0.2",
+    "next-plugin-transpile-modules": "^1.0.0",
+    "react-native-web": "^0.9.9",
+    "webpack-bundle-analyzer": "^3.0.3"
+  },
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "analyze": "cross-env ANALYZE=1 next build"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "babel-plugin-relay": "^1.7.0"
+  }
+}

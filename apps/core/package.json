@@ -1,0 +1,10 @@
+{
+  "name": "@kiwicom/margarita-core",
+  "private": true,
+  "version": "0.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "@kiwicom/margarita-relay": "^0",
+    "@kiwicom/margarita-components": "^0"
+  }
+}
