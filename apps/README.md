@@ -28,3 +28,7 @@ Expo does not like Yarn workspaces and most likely Metro bundler under the hood,
 ### Why `babel.config.js` everywhere
 
 A repo should only contain one `babel.config.js`, and workspaces should use `.babelrc`, however there is currently a 🐛 https://github.com/martpie/next-plugin-transpile-modules/issues/1#issuecomment-425651334, so `.babelrc` files would not be loaded.
+
+### Postinstall hook for `get-yarn-workspaces`
+
+NPM package did not deliver the same version as is published on the corresponding GitHub repository. To make sure only folders count as workspaces, we need this patch.

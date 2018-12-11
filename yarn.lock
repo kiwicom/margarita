@@ -5658,6 +5658,10 @@ get-yarn-workspaces@^1.0.0:
     flatten "^1.0.2"
     glob "^7.1.2"
 
+"get-yarn-workspaces@https://github.com/viewstools/yarn-workspaces-cra-crna.git#d349ecb223fda7ebca7e0686dc0472534780399c":
+  version "0.0.0"
+  resolved "https://github.com/viewstools/yarn-workspaces-cra-crna.git#d349ecb223fda7ebca7e0686dc0472534780399c"
+
 getpass@^0.1.1:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/getpass/-/getpass-0.1.7.tgz#5eff8e3e684d569ae4cb2b1282604e8ba62149fa"
