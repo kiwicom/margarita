@@ -19,6 +19,8 @@ module.exports = {
     node: true,
   },
   rules: {
+    'comma-dangle': OFF,
+    'flowtype/delimiter-dangle': OFF,
     'prettier/prettier': [
       ERROR,
       { singleQuote: true, trailingComma: 'all', jsxBracketSameLine: false },
