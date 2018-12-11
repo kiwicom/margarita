@@ -10,7 +10,15 @@ import fetch from '../services/Fetch';
 export type ItinerariesSearchParameters = {|
   +travelFrom: string,
   +dateFrom: Date,
-  +dateTo: ?Date,
+  +dateTo?: Date,
+  +travelTo?: string,
+  +returnDateFrom?: Date,
+  +returnDateTo?: Date,
+  +passengers?: {|
+    +adults?: number,
+    +children?: number,
+    +infants?: number,
+  |},
 |};
 
 export type Itineraries = {|
@@ -27,23 +35,38 @@ const dateFormat = 'dd/MM/yyyy';
 const parseDate = (date: Date) =>
   DateTime.fromJSDate(date, { zone: 'UTC' }).toFormat(dateFormat);
 
+export const parseParameters = (input: ItinerariesSearchParameters) => {
+  const dateTo = input.dateTo ?? input.dateFrom;
+  const params = {
+    flyFrom: input.travelFrom,
+    dateFrom: parseDate(input.dateFrom),
+    dateTo: parseDate(dateTo),
+    to: input.travelTo ?? 'BCN', // Currently crashes without this fallback, fix hardcoding later, see https://skypicker.slack.com/archives/C7J2QM28G/p1544189402006200?thread_ts=1544188700.004300&cid=C7J2QM28G
+    ...(input.returnDateFrom && {
+      returnFrom: parseDate(input.returnDateFrom),
+    }),
+    ...(input.returnDateTo && {
+      returnTo: parseDate(input.returnDateTo),
+    }),
+    ...(input.passengers && {
+      adults: input.passengers.adults ?? 0,
+      children: input.passengers.children ?? 0,
+      infants: input.passengers.infants ?? 0,
+    }),
+  };
+
+  return params;
+};
+
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesSearchParameters>,
 ) => {
-  return Promise.all(
-    parameters.map(async params => {
-      const dateTo = params.dateTo ?? params.dateFrom;
-      const itineraries: ApiResponse = await fetch(
-        `/v2/search?${qs.stringify({
-          flyFrom: params.travelFrom,
-          dateFrom: parseDate(params.dateFrom),
-          dateTo: parseDate(dateTo),
-          to: 'BCN', // Currently crashes without this, fix hardcoding later, see https://skypicker.slack.com/archives/C7J2QM28G/p1544189402006200?thread_ts=1544188700.004300&cid=C7J2QM28G
-        })}`,
-      );
-      return sanitizeIteneraries(itineraries.data);
+  const results: $ReadOnlyArray<ApiResponse> = await Promise.all(
+    parameters.map(params => {
+      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
     }),
   );
+  return results.map(res => sanitizeIteneraries(res.data));
 };
 
 const sanitizeIteneraries = (
