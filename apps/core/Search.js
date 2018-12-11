@@ -14,6 +14,7 @@ export default class Search extends React.Component<Props> {
   goToResults = () => {
     this.props.navigation.navigate(Routes.RESULTS);
   };
+
   goToPlacePicker = () => {
     this.props.navigation.navigate(Routes.PLACE_PICKER);
   };

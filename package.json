@@ -7,10 +7,10 @@
     "dev": "yarn workspace @kiwicom/margarita-web dev",
     "build": "yarn workspace @kiwicom/margarita-web build",
     "start": "yarn workspace @kiwicom/margarita-web start",
+    "analyze": "yarn workspace @kiwicom/margarita-web analyze",
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",
-    "analyze": "cross-env ANALYZE=1 next build",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
     "test-ci": "yarn flow && yarn lint && yarn test",
     "server": "yarn workspace @kiwicom/margarita-graphql start",
@@ -23,7 +23,6 @@
   ],
   "dependencies": {
     "@kiwicom/margarita-relay": "^0",
-    "better-npm-run": "^0.1.1",
     "cross-env": "^5.2.0",
     "expo": "^31.0.6",
     "next": "^7.0.2",
@@ -48,12 +47,9 @@
     "flow-bin": "^0.86.0",
     "jest": "^23.6.0",
     "prettier": "^1.15.2",
-    "react-native-dotenv": "^0.2.0",
     "react-native-testing-library": "^1.4.2",
     "react-test-renderer": "^16.6.3",
-    "relay-compiler": "^1.7.0",
-    "webpack": "^4.26.1",
-    "webpack-bundle-analyzer": "^3.0.3"
+    "relay-compiler": "^1.7.0"
   },
   "resolutions": {
     "**/babel-core": "7.0.0-bridge.0"

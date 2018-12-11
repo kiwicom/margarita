@@ -1,0 +1,33 @@
+{
+  "name": "@kiwicom/margarita-mobile",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ios": "EXPO_DEBUG=true expo start --ios",
+    "android": "expo start --android",
+    "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
+    "preios": "node link-workspaces.js",
+    "preandroid": "node link-workspaces.js",
+    "lint": "eslint .",
+    "flow": "flow --include-warnings",
+    "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
+    "test-ci": "yarn flow && yarn lint && yarn test"
+  },
+  "private": true,
+  "dependencies": {
+    "@kiwicom/margarita-core": "^0",
+    "@kiwicom/margarita-relay": "^0",
+    "cross-env": "^5.2.0",
+    "expo": "^31.0.6",
+    "react": "^16.6.3",
+    "react-art": "^16.5.2",
+    "react-dom": "^16.6.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
+    "react-navigation": "^3.0.6"
+  },
+  "devDependencies": {
+    "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
+    "metro-bundler-config-yarn-workspaces": "^1.0.3",
+    "react-native-dotenv": "^0.2.0"
+  }
+}
