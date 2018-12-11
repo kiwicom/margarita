@@ -13,8 +13,7 @@
     "analyze": "cross-env ANALYZE=1 next build",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json --silent",
     "test-ci": "yarn flow && yarn lint && yarn test",
-    "server": "yarn workspace @kiwicom/margarita-graphql start",
-    "schema": "yarn babel-node scripts/createSchema.js"
+    "server": "yarn workspace @kiwicom/margarita-graphql start"
   },
   "private": true,
   "workspaces": [
