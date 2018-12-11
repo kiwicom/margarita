@@ -54,11 +54,12 @@ const sanitizeIteneraries = (
   }));
 };
 
-export default new Dataloader<ItinerariesSearchParameters, Itineraries[]>(
-  async (
-    keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-  ): Promise<Array<Itineraries[]>> => await fetchItineraries(keys),
-  {
-    cacheKeyFn: stringify,
-  },
-);
+export default () =>
+  new Dataloader<ItinerariesSearchParameters, Itineraries[]>(
+    async (
+      keys: $ReadOnlyArray<ItinerariesSearchParameters>,
+    ): Promise<Array<Itineraries[]>> => await fetchItineraries(keys),
+    {
+      cacheKeyFn: stringify,
+    },
+  );
