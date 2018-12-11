@@ -19,6 +19,8 @@ module.exports = {
     node: true,
   },
   rules: {
+    'comma-dangle': OFF,
+    'flowtype/delimiter-dangle': OFF,
     'prettier/prettier': [
       ERROR,
       { singleQuote: true, trailingComma: 'all', jsxBracketSameLine: false },
@@ -30,9 +32,22 @@ module.exports = {
           {
             name: 'react-relay',
             message: 'Please use @kiwicom/margarita-relay package instead.'
+          },
+          {
+            name: 'graphql-relay',
+            importNames: [
+              'connectionArgs',
+              'connectionDefinitions',
+              'connectionFromArray',
+              'connectionFromArraySlice',
+              'connectionFromPromisedArray',
+              'connectionFromPromisedArraySlice'
+            ],
+            message:
+              "please import { connectionFromArray } from '@kiwicom/graphql-utiles' instead",
           }
         ]
-      }
+      },
     ],
     'import/no-extraneous-dependencies': OFF,
   },

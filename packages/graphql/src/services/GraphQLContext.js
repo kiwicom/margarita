@@ -2,7 +2,7 @@
 
 import DataLoader from 'dataloader';
 
-import ItinerariesLoader, {
+import createItinerariesLoader, {
   type ItinerariesSearchParameters,
   type Itineraries,
 } from '../dataloaders/Itinerariesloader';
@@ -15,6 +15,6 @@ export type GraphqlContextType = {|
 
 export default () => ({
   dataLoader: {
-    itineraries: ItinerariesLoader,
+    itineraries: createItinerariesLoader(),
   },
 });

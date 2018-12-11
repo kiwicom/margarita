@@ -11,10 +11,9 @@
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",
-    "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
+    "test": "node node_modules/jest/bin/jest.js --config=.jest.json --silent",
     "test-ci": "yarn flow && yarn lint && yarn test",
-    "server": "yarn workspace @kiwicom/margarita-graphql start",
-    "schema": "yarn babel-node scripts/createSchema.js"
+    "server": "yarn workspace @kiwicom/margarita-graphql start"
   },
   "private": true,
   "workspaces": [
@@ -46,6 +45,7 @@
     "eslint-plugin-prettier": "^3.0.0",
     "flow-bin": "^0.86.0",
     "jest": "^23.6.0",
+    "jest-fetch-mock": "^2.0.1",
     "prettier": "^1.15.2",
     "react-native-testing-library": "^1.4.2",
     "react-test-renderer": "^16.6.3",
