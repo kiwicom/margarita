@@ -38,6 +38,6 @@ export default {
   resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
 
-    return connectionFromArray<Itineraries>(itineraries, args); // TODO: Replace with connectionFromArray from grapqhl
+    return connectionFromArray<Itineraries>(itineraries, args);
   },
 };

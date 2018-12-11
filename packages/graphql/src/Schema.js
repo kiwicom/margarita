@@ -4,6 +4,7 @@ import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
 import Itineraries from './queries/Itineraries';
+import Locations from './queries/Locations';
 import fetch from './services/Fetch';
 
 const schema = new GraphQLSchema({
@@ -12,6 +13,8 @@ const schema = new GraphQLSchema({
     fields: {
       id: GlobalID(() => 'TODO: implement me'),
       searchItineraries: Itineraries,
+      locationsByTerm: Locations,
+
       hello: {
         type: GraphQLString,
         description: 'A simple type for getting started!',
