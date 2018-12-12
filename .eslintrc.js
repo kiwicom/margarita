@@ -49,9 +49,10 @@ module.exports = {
           {
             name: 'react-native',
             importNames: [
-              'StyleSheet'
+              'StyleSheet',
+              'Text'
             ],
-            message: 'Please use StyleSheet from @kiwicom/universal-components'
+            message: 'Please use @kiwicom/universal-components instead'
           }
         ]
       },
