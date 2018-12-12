@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import * as Icons from '@kiwicom/orbit-components/lib/icons'; // eslint-disable-line import/no-extraneous-dependencies
+import * as Icons from '@kiwicom/orbit-components/lib/icons';
 
 import type { Props } from './IconTypes';
 

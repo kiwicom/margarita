@@ -12,5 +12,6 @@
   },
   "github": {
     "release": true
-  }
+  },
+  "access": "public"
 }

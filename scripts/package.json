@@ -5,8 +5,8 @@
   "scripts": {
     "postinstall": "yarn build",
     "build": "rimraf ../lib && yarn build:copy:web && yarn build:copy:native && yarn build:copy:flow && yarn build:copy:index && yarn build:lib",
-    "build:copy:web": "copyfiles -u 2 '../src/**/*.js' '../src/**/*.json' -e '../src/**/*.stories.js' -e '../src/**/__tests__/**' -e '../src/**/*.native.js' -e '../src/**/*.ios.js' -e '../src/**/*.android.js' ../lib/web",
-    "build:copy:native": "copyfiles -u 2 '../src/**/*.js' '../src/**/*.json' -e '../src/**/*.stories.js' -e '../src/**/__tests__/**' -e '../src/**/**.web.js' ../lib/native",
+    "build:copy:web": "copyfiles -u 2 '../src/**/*.js' '../src/**/*.json' '../src/**/assets/**' -e '../src/**/*.stories.js' -e '../src/**/__tests__/**' -e '../src/**/*.native.js' -e '../src/**/*.ios.js' -e '../src/**/*.android.js' ../lib/web",
+    "build:copy:native": "copyfiles -u 2 '../src/**/*.js' '../src/**/*.json' '../src/**/assets/**' -e '../src/**/*.stories.js' -e '../src/**/__tests__/**' -e '../src/**/**.web.js' ../lib/native",
     "build:copy:flow": "flow-copy-source -i '**/*.stories.js' -i '**/*.test.js' -i '**/*.native.js' -i '**/*.android.js' -i '**/*.ios.js' ../src ../lib/web",
     "build:copy:index": "copyfiles -u 1 ./templates/**.js ../lib",
     "build:lib": "babel --out-dir ../lib/web ../lib/web --plugins=babel-plugin-react-native-web,@babel/plugin-proposal-class-properties,@babel/plugin-proposal-nullish-coalescing-operator --presets=@babel/react,@babel/flow --compact true"
