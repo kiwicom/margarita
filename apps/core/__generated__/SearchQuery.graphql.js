@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 65acb8ca3007fc01efde9b05cd8b764f
+ * @relayHash db7ba6e0e532468d6c47a5dec45be262
  */
 
 /* eslint-disable */
@@ -9,20 +9,20 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-export type AppQueryVariables = {||};
-export type AppQueryResponse = {|
+export type SearchQueryVariables = {||};
+export type SearchQueryResponse = {|
   +id: string,
   +hello: ?string,
 |};
-export type AppQuery = {|
-  variables: AppQueryVariables,
-  response: AppQueryResponse,
+export type SearchQuery = {|
+  variables: SearchQueryVariables,
+  response: SearchQueryResponse,
 |};
 */
 
 
 /*
-query AppQuery {
+query SearchQuery {
   id
   hello
 }
@@ -48,13 +48,13 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "AppQuery",
+  "name": "SearchQuery",
   "id": null,
-  "text": "query AppQuery {\n  id\n  hello\n}\n",
+  "text": "query SearchQuery {\n  id\n  hello\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "AppQuery",
+    "name": "SearchQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": [],
@@ -62,12 +62,12 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "AppQuery",
+    "name": "SearchQuery",
     "argumentDefinitions": [],
     "selections": v0
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '2c27b4cd53471343b7ba83f258a4d799';
+(node/*: any*/).hash = 'ed09ffc9f154a7442e729a6535b46a1a';
 module.exports = node;

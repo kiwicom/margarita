@@ -1,16 +1,25 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Button } from 'react-native';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import { Text } from '@kiwicom/margarita-components';
 
-import type { AppQueryResponse } from './__generated__/AppQuery.graphql';
+import Routes from './config/routes';
+import { type SearchQueryResponse } from './__generated__/SearchQuery.graphql';
 
 type Props = Object;
 
-export default class App extends React.Component<Props> {
-  renderInner = (props: AppQueryResponse) => {
+export default class Search extends React.Component<Props> {
+  goToResults = () => {
+    this.props.navigation.navigate(Routes.RESULTS);
+  };
+
+  goToPlacePicker = () => {
+    this.props.navigation.navigate(Routes.PLACE_PICKER);
+  };
+
+  renderInner = (props: SearchQueryResponse) => {
     const { id, hello } = props;
     return (
       <View style={styles.container}>
@@ -19,6 +28,8 @@ export default class App extends React.Component<Props> {
             {hello} ({id})
           </Text>
         )}
+        <Button title="PlacePicker" onPress={this.goToPlacePicker} />
+        <Button title="Search" onPress={this.goToResults} />
       </View>
     );
   };
@@ -27,7 +38,7 @@ export default class App extends React.Component<Props> {
     return (
       <QueryRenderer
         query={graphql`
-          query AppQuery {
+          query SearchQuery {
             id
             hello
           }
