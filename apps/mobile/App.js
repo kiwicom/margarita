@@ -1,6 +1,5 @@
 // @flow
 
-import * as React from 'react';
 import {
   createStackNavigator,
   createAppContainer,
