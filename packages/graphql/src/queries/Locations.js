@@ -1,6 +1,6 @@
 // @flow
 
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLNonNull } from 'graphql';
 import { type ConnectionArguments } from 'graphql-relay';
 import {
   connectionFromArray,
