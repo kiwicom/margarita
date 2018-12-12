@@ -6,5 +6,6 @@
     "<rootDir>/.expo/",
     "__tests__/__mocks__"
   ],
-  "setupTestFrameworkScriptFile": "<rootDir>/scripts/setupTests.js"
+  "setupTestFrameworkScriptFile": "<rootDir>/scripts/setupTests.js",
+  "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"]
 }

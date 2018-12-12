@@ -45,6 +45,13 @@ module.exports = {
             ],
             message:
               "please import { connectionFromArray } from '@kiwicom/graphql-utiles' instead",
+          },
+          {
+            name: 'react-native',
+            importNames: [
+              'StyleSheet'
+            ],
+            message: 'Please use StyleSheet from @kiwicom/universal-components'
           }
         ]
       },

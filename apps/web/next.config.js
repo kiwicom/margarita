@@ -23,6 +23,11 @@ module.exports = withTM({
     config.resolve.alias = {
       'react-native$': 'react-native-web',
     };
+    config.resolve.extensions = [
+      ...config.resolve.extensions,
+      '.web.js',
+      '.js',
+    ];
 
     return config;
   },

@@ -16,7 +16,11 @@ module.exports = function(api /* :API */) {
     'module:react-native-dotenv',
     'next/babel',
   ];
-  const plugins = ['babel-plugin-relay', '@babel/plugin-transform-runtime'];
+  const plugins = [
+    'babel-plugin-relay',
+    '@babel/plugin-transform-runtime',
+    'react-native-web',
+  ];
 
   return {
     presets,
