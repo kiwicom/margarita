@@ -20,7 +20,8 @@
     "release": "release-it"
   },
   "files": [
-    "lib"
+    "lib",
+    "assets"
   ],
   "keywords": [
     "react",
