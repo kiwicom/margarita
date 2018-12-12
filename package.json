@@ -4,7 +4,8 @@
   "scripts": {
     "ios": "yarn workspace @kiwicom/margarita-mobile ios",
     "android": "yarn workspace @kiwicom/margarita-mobile android",
-    "dev": "yarn workspace @kiwicom/margarita-web dev",
+    "web": "yarn workspace @kiwicom/margarita-web dev",
+    "dev": "yarn concurrently \"yarn web\" \" yarn server\" ",
     "build": "yarn workspace @kiwicom/margarita-web build",
     "start": "yarn workspace @kiwicom/margarita-web start",
     "analyze": "yarn workspace @kiwicom/margarita-web analyze",
@@ -41,6 +42,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-relay": "^1.7.0",
+    "concurrently": "^4.1.0",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.0",
     "flow-bin": "^0.86.0",
