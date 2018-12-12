@@ -1,12 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import {
-  View,
-  StyleSheet,
-  Image,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, Image, TouchableWithoutFeedback } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
 import Router from 'next/router';
 
 /**
