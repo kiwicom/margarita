@@ -7,12 +7,15 @@ import {
   EmptyResults,
   ResultsList,
 } from '@kiwicom/margarita-core';
+import { Layout } from '@kiwicom/margarita-components';
 
 export default () => (
-  <View>
-    <Text>Hello</Text>
-    <AnywhereResults />
-    <EmptyResults />
-    <ResultsList />
-  </View>
+  <Layout>
+    <View>
+      <Text>Hello</Text>
+      <AnywhereResults />
+      <EmptyResults />
+      <ResultsList />
+    </View>
+  </Layout>
 );
