@@ -32,9 +32,7 @@ function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
 
 const fetchLocations = async (ids: $ReadOnlyArray<{| +term: string |}>) => {
   const data = await Promise.all(
-    ids.map(async ({ term }) =>
-      fetch(`/locations/query?${qs.stringify({ term })}`),
-    ),
+    ids.map(({ term }) => fetch(`/locations/query?${qs.stringify({ term })}`)),
   );
   return data.map(({ locations }) => sanitizeLocations(locations));
 };

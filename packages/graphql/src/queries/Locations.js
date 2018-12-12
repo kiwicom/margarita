@@ -25,7 +25,7 @@ type Args = {|
 export default {
   name: 'Locations',
   type: LocationsConnection,
-  description: 'Query for suggested locsation based on incomplete names',
+  description: 'Query for suggested locations based on incomplete names',
   args: {
     input: {
       type: GraphQLNonNull(LocationsByTermInput),
