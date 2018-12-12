@@ -11,13 +11,14 @@ import {
 import type { GraphqlContextType } from '../services/GraphQLContext';
 import type { Location } from '../dataloaders/Locationsloader';
 import GraphQLocation from '../types/output/Location';
+import LocationsByTermInput from '../types/input/LocationsByTermInput';
 
 const { connectionType: LocationsConnection } = connectionDefinitions({
   nodeType: GraphQLocation,
 });
 
 type Args = {|
-  +term: string,
+  +input: { term: string },
   ...$Exact<ConnectionArguments>,
 |};
 
@@ -26,13 +27,13 @@ export default {
   type: LocationsConnection,
   description: 'Query for suggested locsation based on incomplete names',
   args: {
-    term: {
-      type: GraphQLNonNull(GraphQLString),
+    input: {
+      type: GraphQLNonNull(LocationsByTermInput),
     },
     ...connectionArgs,
   },
   resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
-    const { term } = args;
+    const { term } = args.input;
     const locations = await dataLoader.locations.load({
       term,
     });
