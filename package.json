@@ -10,19 +10,17 @@
     "prestorybook-native": "node ./node_modules/.bin/rnstl",
     "storybook-native": "storybook -c storybook.native start -p 7007",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "lint": "eslint src scripts index.js --report-unused-disable-directives",
+    "lint": "eslint src index.js --report-unused-disable-directives",
     "flow": "flow --include-warnings",
     "test-ci": "yarn lint && yarn flow && yarn test",
     "rnstl": "rnstl",
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android",
-    "npm-publish": "yarn babel-node scripts/createPackage.js && yarn pack"
+    "build": "cd scripts && yarn",
+    "release": "release-it"
   },
   "files": [
-    "/lib",
-    "package.json",
-    ".babelrc",
-    "README.md"
+    "lib"
   ],
   "keywords": [
     "react",
@@ -73,6 +71,7 @@
     "react-native-web-image-loader": "^0.0.6",
     "react-test-renderer": "16.6.1",
     "regenerator-runtime": "^0.12.1",
+    "release-it": "^8.4.2",
     "rimraf": "^2.6.2",
     "snapshot-diff": "^0.4.0",
     "webpack": "^4.25.1"

@@ -22,6 +22,10 @@
 ; Problems with this library which react-native-storybook-loader depends on
 .*/node_modules/findup/.*
 
+; From build process
+<PROJECT_ROOT>/lib/.*
+<PROJECT_ROOT>/scripts/templates/.*
+
 [include]
 
 [libs]
