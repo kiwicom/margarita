@@ -14,11 +14,13 @@ type ApiResponse = {|
   |}>,
 |};
 
-export type Locations = Array<{|
+export type Location = {|
   +id: string,
   +name: string,
   +slug: string,
-|}>;
+|};
+
+export type Locations = $ReadOnlyArray<Location>;
 
 function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
   return locations.map(location => ({
@@ -29,14 +31,12 @@ function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
 }
 
 const fetchLocations = async (ids: $ReadOnlyArray<{| +term: string |}>) => {
-  return Promise.all(
-    ids.map(async ({ term }) => {
-      const { locations }: ApiResponse = await fetch(
-        `/locations/query?${qs.stringify({ term })}`,
-      );
-      return sanitizeLocations(locations);
-    }),
+  const data = await Promise.all(
+    ids.map(async ({ term }) =>
+      fetch(`/locations/query?${qs.stringify({ term })}`),
+    ),
   );
+  return data.map(({ locations }) => sanitizeLocations(locations));
 };
 
 export default () =>

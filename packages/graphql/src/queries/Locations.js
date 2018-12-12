@@ -9,6 +9,7 @@ import {
 } from '@kiwicom/graphql-utils';
 
 import type { GraphqlContextType } from '../services/GraphQLContext';
+import type { Location } from '../dataloaders/Locationsloader';
 import GraphQLocation from '../types/output/Location';
 
 const { connectionType: LocationsConnection } = connectionDefinitions({
@@ -23,7 +24,7 @@ type Args = {|
 export default {
   name: 'Locations',
   type: LocationsConnection,
-  description: 'Query for suggested location based on incomplete names',
+  description: 'Query for suggested locsation based on incomplete names',
   args: {
     term: {
       type: GraphQLNonNull(GraphQLString),
@@ -36,6 +37,6 @@ export default {
       term,
     });
 
-    return connectionFromArray<any>(locations, args);
+    return connectionFromArray<Location>([...locations], args);
   },
 };
