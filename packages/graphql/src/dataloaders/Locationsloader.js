@@ -6,13 +6,13 @@ import qs from 'querystring';
 
 import fetch from '../services/Fetch';
 
-type ApiResponse = {
-  +locations: $ReadOnlyArray<{
+type ApiResponse = {|
+  +locations: $ReadOnlyArray<{|
     +id: string,
     +name: string,
     +slug: string,
-  }>,
-};
+  |}>,
+|};
 
 export type Locations = Array<{|
   +id: string,
