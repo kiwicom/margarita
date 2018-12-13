@@ -1,9 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { View, Image, TouchableWithoutFeedback } from 'react-native';
+import { View, Image } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import Router from 'next/router';
+import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 
 /**
  * This component should only be used by web.
