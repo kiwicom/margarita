@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   module: {
     rules: [
@@ -5,6 +7,16 @@ module.exports = {
         test: /\.(png|jpe?g|gif)$/,
         use:
           'react-native-web-image-loader?name=[name].[ext]&scalings[@2x]=2&scalings[-3x]=3',
+      },
+      {
+        test: /\.js$/,
+        include: [
+          path.join(
+            __dirname,
+            '../node_modules/react-native-status-bar-height/index.js'
+          ),
+        ],
+        use: 'babel-loader',
       },
     ],
   },

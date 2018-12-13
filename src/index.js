@@ -14,6 +14,7 @@ export { ServiceLogo } from './ServiceLogo';
 export { Stepper } from './Stepper';
 export { default as Text } from './Text';
 export { TextInput } from './TextInput';
+export { Notification } from './Notification';
 
 /* Utils */
 export { default as StyleSheet } from './PlatformStyleSheet';
