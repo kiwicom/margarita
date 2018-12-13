@@ -1,21 +1,23 @@
 # Folder structure and Navigation
 
 Here is the folder structure:
+
 - `core` folder, aka `@kiwicom/margarita-core` package  
   shared logic written in React Native (ported to the web through `react-native-web`),
 - `mobile` folder, aka `@kiwicom/margarita-mobile` package  
   mobile application written in React Native, powered by Expo,
-- `web` folder, aka `@kiwicom/margarita-web` package   
-  web application written in React, powered by Next.js.
+- `web` folder, aka `@kiwicom/margarita-web` package  
+  web application written in React, powered by Next.js,
+- `graphql` folder, aka `@kiwicom/margarita-graphql` package
+  graphql server, written in GraphQL.js, powered by Node.
 
 Next.js and React Native have different navigations: Next.js is filename based by default, when React Native has the _de facto_ standard `react-navigation`. That library relies on injecting a `navigation` prop to the different screens and it is possible to connect any component to that navigation by using a HoC `withNavigation`.
 
 Since we would like to reuse the same logic for navigation in `core`, we need to provide a similar HoC which will depend on the plaftorm; for `mobile`, it should be just a dumb wrapper of `react-navigation`. However, for `web`, we need to map the `Router` provided by `next/router` into a similar API as `react-navigation` provides.
 
-
 # Miscellaneous/Oddities
 
-Note that to make such an hybrid app, with technologies not originally designed to work together, some hacks are necessary. 
+Note that to make such an hybrid app, with technologies not originally designed to work together, some hacks are necessary.
 
 ### Why `App.js` at the root
 
