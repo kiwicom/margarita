@@ -13,11 +13,12 @@ import CityImage from './CityImage';
 import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
-  +imageUrl?: string,
+  +imageUrl: string,
   +price: string,
   +place: string,
   +country: string,
   +onPress: () => void,
+  +disabled?: boolean,
 |};
 
 export default function PlaceCard({
@@ -26,9 +27,10 @@ export default function PlaceCard({
   place,
   country,
   onPress,
+  disabled,
 }: Props) {
   return (
-    <Touchable onPress={onPress}>
+    <Touchable onPress={onPress} disabled={disabled}>
       <View style={styles.container}>
         <CityImage style={styles.image} url={imageUrl} />
         <Image

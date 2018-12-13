@@ -68,6 +68,7 @@ export default class Touchable extends React.Component<Props> {
       rippleColor,
       testID,
       width,
+      disabled,
       ...accessiblityProps
     } = this.props;
 
@@ -81,6 +82,7 @@ export default class Touchable extends React.Component<Props> {
     };
 
     const touchableOpacityProps = {
+      disabled,
       onPress,
       onLongPress,
       delayPressIn,
