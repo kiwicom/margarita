@@ -26,6 +26,8 @@ it('renders', () => {
   }
 >
   <Image
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
     accessible={true}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

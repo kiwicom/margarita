@@ -45,6 +45,19 @@ module.exports = {
             ],
             message:
               "please import { connectionFromArray } from '@kiwicom/graphql-utiles' instead",
+          },
+          {
+            name: 'react-native',
+            importNames: [
+              'StyleSheet',
+              'Text',
+              'TouchableHighlight',
+              'TouchableNativeFeedback',
+              'TouchableOpacity',
+              'TouchableWithoutFeedback',
+              'Button'
+            ],
+            message: 'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback'
           }
         ]
       },

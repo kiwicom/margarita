@@ -2,11 +2,9 @@
 #
 .expo/
 
-
 # next.js
 #
 .next/
-
 
 # node.js
 #
@@ -19,3 +17,6 @@ yarn-error.log
 #Jest
 #
 coverage/
+
+# IDE
+.idea

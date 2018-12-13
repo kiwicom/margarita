@@ -23,11 +23,23 @@ export type ItinerariesSearchParameters = {|
 
 export type Itineraries = {|
   +id: string,
+  +airlines: Array<string>,
+  +price: number,
+  +flyFrom: string,
+  +flyTo: string,
+  +localDeparture: string,
+  +localArrival: string,
 |};
 
 type ApiResponse = {|
   +data: $ReadOnlyArray<{|
     +id: string,
+    +airlines: Array<string>,
+    +price: number,
+    +flyFrom: string,
+    +flyTo: string,
+    +local_departure: string,
+    +local_arrival: string,
   |}>,
 |};
 
@@ -74,6 +86,12 @@ const sanitizeIteneraries = (
 ): Itineraries[] => {
   return itineraries.map(itinerary => ({
     id: itinerary.id,
+    airlines: itinerary.airlines,
+    price: itinerary.price,
+    flyFrom: itinerary.flyFrom,
+    flyTo: itinerary.flyTo,
+    localDeparture: itinerary.local_departure,
+    localArrival: itinerary.local_arrival,
   }));
 };
 

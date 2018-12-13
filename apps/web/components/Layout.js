@@ -1,7 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
 
 import Navbar from './Navbar';
 

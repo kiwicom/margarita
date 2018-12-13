@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "@kiwicom/orbit-design-tokens": "^0.2.5",
+    "@kiwicom/universal-components": "^0.0.6"
+  },
   "devDependencies": {}
 }

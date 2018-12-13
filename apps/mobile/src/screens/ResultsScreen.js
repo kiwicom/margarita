@@ -1,21 +1,16 @@
 // @flow
 
 import * as React from 'react';
-import {
-  AnywhereResults,
-  EmptyResults,
-  ResultsList,
-} from '@kiwicom/margarita-core';
+import { Results } from '@kiwicom/margarita-core';
 
 type Props = Object;
 
 export default class ResultsScreen extends React.Component<Props> {
   render() {
+    const { navigation } = this.props;
     return (
       <>
-        <AnywhereResults />
-        <EmptyResults />
-        <ResultsList />
+        <Results {...navigation.state.params} />
       </>
     );
   }

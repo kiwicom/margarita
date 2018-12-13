@@ -32,6 +32,10 @@ export default class MyDocument extends Document {
       <html style={{ height: '100%' }}>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
+            rel="stylesheet"
+          />
         </Head>
         <body style={{ height: '100%', overflow: 'hidden' }}>
           <Main />
