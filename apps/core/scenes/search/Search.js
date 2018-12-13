@@ -2,7 +2,13 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, TextInput, Button } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  TextInput,
+  Button,
+  Icon,
+} from '@kiwicom/universal-components';
+import { TripInput } from '@kiwicom/margarita-components';
 
 import Routes from '../../config/routes';
 
@@ -45,12 +51,17 @@ export default class Search extends React.Component<Props, State> {
     this.props.navigation.navigate(Routes.PLACE_PICKER);
   };
 
+  todo = () => {
+    console.warn('TODO'); // eslint-disable-line no-console
+  };
+
   render() {
     return (
       <View style={styles.formWrapper}>
-        <TextInput
-          style={styles.input}
-          onChangeText={this.handleTravelFromChange}
+        <TripInput
+          onPress={this.todo}
+          label="From"
+          icon={<Icon name="airplane-landing" />}
           value={this.state.travelFrom}
         />
         <TextInput
@@ -78,6 +89,7 @@ export default class Search extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   formWrapper: {
     maxWidth: 500,
+    padding: 8,
   },
   input: {
     borderWidth: 1,
