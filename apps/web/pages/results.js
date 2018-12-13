@@ -7,8 +7,9 @@ import {
   EmptyResults,
   ResultsList,
 } from '@kiwicom/margarita-core';
-import { Layout } from '@kiwicom/margarita-components';
 import { Text } from '@kiwicom/universal-components';
+
+import Layout from '../components/Layout';
 
 export default () => (
   <Layout>

@@ -4,7 +4,8 @@ import * as React from 'react';
 import { View } from 'react-native';
 import Router from 'next/router';
 import { Search } from '@kiwicom/margarita-core';
-import { Layout } from '@kiwicom/margarita-components';
+
+import Layout from '../components/Layout';
 
 export default () => (
   <Layout>
