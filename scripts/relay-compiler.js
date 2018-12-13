@@ -24,5 +24,5 @@ _x('yarn', [
   '--src=./apps',
   '--schema=./schema.graphql',
   '--verbose',
-  // ...process.argv.slice(2),
+  ...process.argv.slice(2),
 ]);
