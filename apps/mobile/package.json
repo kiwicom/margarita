@@ -14,7 +14,6 @@
   "dependencies": {
     "@kiwicom/margarita-core": "^0",
     "@kiwicom/margarita-relay": "^0",
-    "@kiwicom/margarita-tools": "^0",
     "cross-env": "^5.2.0",
     "expo": "^31.0.6",
     "react": "^16.6.3",
