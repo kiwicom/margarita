@@ -1,9 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { View, Button } from 'react-native';
+import { View } from 'react-native';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet, Text, Button } from '@kiwicom/universal-components';
 
 import Routes from './config/routes';
 import { type SearchQueryResponse } from './__generated__/SearchQuery.graphql';
@@ -28,8 +28,8 @@ export default class Search extends React.Component<Props> {
             {hello} ({id})
           </Text>
         )}
-        <Button title="PlacePicker" onPress={this.goToPlacePicker} />
-        <Button title="Search" onPress={this.goToResults} />
+        <Button onPress={this.goToPlacePicker}>PlacePicker</Button>
+        <Button onPress={this.goToResults}>Search</Button>
       </View>
     );
   };

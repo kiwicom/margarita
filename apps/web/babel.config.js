@@ -20,6 +20,7 @@ module.exports = function(api /* :API */) {
     'babel-plugin-relay',
     '@babel/plugin-transform-runtime',
     'react-native-web',
+    'babel-plugin-jsx-remove-data-test-id',
   ];
 
   return {

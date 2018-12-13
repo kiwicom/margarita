@@ -50,9 +50,14 @@ module.exports = {
             name: 'react-native',
             importNames: [
               'StyleSheet',
-              'Text'
+              'Text',
+              'TouchableHighlight',
+              'TouchableNativeFeedback',
+              'TouchableOpacity',
+              'TouchableWithoutFeedback',
+              'Button'
             ],
-            message: 'Please use @kiwicom/universal-components instead'
+            message: 'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback'
           }
         ]
       },
