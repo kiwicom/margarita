@@ -1,5 +1,5 @@
 {
-  "name": "tequila-client",
+  "name": "margarita",
   "license": "MIT",
   "scripts": {
     "ios": "yarn workspace @kiwicom/margarita-mobile ios",
