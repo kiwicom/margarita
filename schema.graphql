@@ -11,12 +11,22 @@ scalar Date
 
 input ItinerariesSearchInput {
   travelFrom: String!
+  travelTo: String
 
   """Search itineraries from this date"""
   dateFrom: Date!
 
   """Search itineraries up to this date"""
   dateTo: Date
+
+  """Search itineraries return from this date"""
+  returnDateFrom: Date
+
+  """Search itineraries return up to this date"""
+  returnDateTo: Date
+
+  """Number of children, adults and infants travelling"""
+  passengers: PassengersInput
 }
 
 type Itinerary {
@@ -26,6 +36,11 @@ type Itinerary {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
+  price: Int
+  flyFrom: String
+  flyTo: String
+  localDeparture: String
+  localArrival: String
 }
 
 """A connection to a list of items."""
@@ -46,6 +61,39 @@ type ItineraryEdge {
   cursor: String!
 }
 
+type Location {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  name: String
+  slug: String
+}
+
+"""A connection to a list of items."""
+type LocationConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [LocationEdge]
+}
+
+"""An edge in a connection."""
+type LocationEdge {
+  """The item at the end of the edge"""
+  node: Location
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
+input LocationsByTermInput {
+  term: String!
+}
+
 """Information about pagination in a connection."""
 type PageInfo {
   """When paginating forwards, are there more items?"""
@@ -61,6 +109,12 @@ type PageInfo {
   endCursor: String
 }
 
+input PassengersInput {
+  adults: Int
+  children: Int
+  infants: Int
+}
+
 type RootQuery {
   """
   The globally unique ID of an object. You can unmask this ID to get original
@@ -71,6 +125,9 @@ type RootQuery {
 
   """Query to fetch all itineraries(flights, busses, trains)"""
   searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
+  """Query for suggested locations based on incomplete names"""
+  locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationConnection
 
   """A simple type for getting started!"""
   hello: String
