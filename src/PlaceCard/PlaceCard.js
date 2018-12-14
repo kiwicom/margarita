@@ -9,11 +9,11 @@ import Touchable from '../Button/Touchable';
 import AdaptableBadge from './AdaptableBadge';
 import BlackToAlpha from './assets/black-to-alpha-vertical.png';
 
-import CityImage from './CityImage';
+import CityImage from './Image/CityImage';
 import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
-  +imageUrl: string,
+  +imageUrl?: string,
   +price: string,
   +place: string,
   +country: string,
@@ -36,11 +36,7 @@ export default function PlaceCard({
         <Image
           source={BlackToAlpha}
           resizeMode="stretch"
-          style={{
-            ...StyleSheet.absoluteFillObject,
-            width: '100%',
-            borderRadius: 4,
-          }}
+          style={styles.gradient}
         />
         <View style={[styles.row, styles.padding]}>
           <AdaptableBadge
@@ -81,6 +77,11 @@ const styles = StyleSheet.create({
   row: {
     justifyContent: 'space-between',
     flexDirection: 'row',
+  },
+  gradient: {
+    ...StyleSheet.absoluteFillObject,
+    width: '100%',
+    borderRadius: 4,
   },
   badge: {
     backgroundColor: defaultTokens.paletteProductNormal,

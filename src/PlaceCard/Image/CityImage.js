@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 
-import StyleSheet from '../PlatformStyleSheet';
+import StyleSheet from '../../PlatformStyleSheet';
 import NetworkImage from './NetworkImage';
 
-import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
+import type { StylePropType } from '../../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
   +url: ?string,

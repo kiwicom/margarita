@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Image } from 'react-native';
-import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
+import type { StylePropType } from '../../PlatformStyleSheet/StyleTypes';
 
 import MissingImage from './MissingImage';
 
@@ -11,9 +11,7 @@ type Props = {|
     +uri: ?string,
   |},
   +style?: StylePropType,
-  +resizeMode?:
-    | 'cover' // scales the image uniformly - image will be equal or larger
-    | 'contain', // scales the image uniformly - image will be equal or smaller
+  +resizeMode?: 'cover' | 'contain',
 |};
 
 export default function NetworkImage(imageProps: Props) {
