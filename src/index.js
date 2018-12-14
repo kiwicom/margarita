@@ -16,6 +16,7 @@ export { default as Text } from './Text';
 export { TextInput } from './TextInput';
 export { Notification } from './Notification';
 export { SearchParamsSummary } from './SearchParamsSummary';
+export { PlaceCard } from './PlaceCard';
 
 /* Utils */
 export { default as StyleSheet } from './PlatformStyleSheet';

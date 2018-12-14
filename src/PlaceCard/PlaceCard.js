@@ -6,7 +6,7 @@ import { View, Image } from 'react-native';
 
 import Text from '../Text';
 import Touchable from '../Button/Touchable';
-import AdaptableBadge from './AdaptableBadge';
+import AdaptableBadge from '../shared/AdaptableBadge';
 import BlackToAlpha from './assets/black-to-alpha-vertical.png';
 
 import CityImage from './Image/CityImage';

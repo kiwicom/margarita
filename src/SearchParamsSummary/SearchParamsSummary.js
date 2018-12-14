@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { custom } from '../utils/DateUtils/DateFormatter';
 
-import AdaptableBadge from './AdaptableBadge';
+import AdaptableBadge from '../shared/AdaptableBadge';
 import { Icon } from '../Icon';
 import Text from '../Text';
 import StyleSheet from '../PlatformStyleSheet';

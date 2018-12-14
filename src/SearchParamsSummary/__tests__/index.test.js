@@ -6,7 +6,7 @@ import { render } from 'react-native-testing-library';
 import Text from '../../Text';
 import { Icon } from '../../Icon';
 import { SearchParamsSummary } from '../index';
-import AdaptableBadge from '../AdaptableBadge';
+import AdaptableBadge from '../../shared/AdaptableBadge';
 
 jest.mock('../../utils/DateUtils/DateFormatter', () => ({
   custom: () => 'Oct 10',
