@@ -8,7 +8,7 @@ import {
   type NavigationRouteConfigMap,
   type NavigationContainer,
 } from 'react-navigation';
-import Routes from '@kiwicom/margarita-core/config/routes';
+import { Routes } from '@kiwicom/margarita-navigation';
 
 import { SearchScreen, ResultsScreen, PlacePickerScreen } from './src/screens';
 

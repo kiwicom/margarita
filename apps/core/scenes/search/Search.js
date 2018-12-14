@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
+import { Routes } from '@kiwicom/margarita-navigation';
 import {
   StyleSheet,
   TextInput,
@@ -9,8 +10,6 @@ import {
   Icon,
 } from '@kiwicom/universal-components';
 import { TripInput } from '@kiwicom/margarita-components';
-
-import Routes from '../../config/routes';
 
 type Props = Object;
 type State = {|
