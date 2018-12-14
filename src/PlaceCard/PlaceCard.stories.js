@@ -10,6 +10,15 @@ const noop = () => {};
 
 storiesOf('PlaceCard', module)
   .addDecorator(withKnobs)
+  .add('Default', () => (
+    <PlaceCard
+      imageUrl="https://images.kiwi.com/photos/600x600/munich_de.jpg"
+      price="$2444"
+      onPress={noop}
+      place="Munich"
+      country="Germany"
+    />
+  ))
   .add('Playground', () => {
     const imageUrl = text('Image URL', null);
     const price = text('Price', '$1234');
@@ -27,13 +36,4 @@ storiesOf('PlaceCard', module)
         disabled={disabled}
       />
     );
-  })
-  .add('Default', () => (
-    <PlaceCard
-      imageUrl="https://images.kiwi.com/photos/600x600/munich_de.jpg"
-      price="$2444"
-      onPress={noop}
-      place="Munich"
-      country="Germany"
-    />
-  ));
+  });

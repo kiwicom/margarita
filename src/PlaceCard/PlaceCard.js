@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     height: 152,
     width: '100%',
     justifyContent: 'space-between',
-    borderRadius: 4,
+    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
     overflow: 'hidden',
   },
   padding: {
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
   gradient: {
     ...StyleSheet.absoluteFillObject,
     width: '100%',
-    borderRadius: 4,
+    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
   },
   badge: {
     backgroundColor: defaultTokens.paletteProductNormal,
-    borderRadius: 4,
+    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
   },
   badgeText: {
-    fontSize: 16,
+    fontSize: parseFloat(defaultTokens.fontSizeHeadingTitle3),
     fontWeight: 'bold',
     color: defaultTokens.paletteWhite,
     padding: 2.5,
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   image: {
-    borderRadius: 4,
+    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
   },
 });

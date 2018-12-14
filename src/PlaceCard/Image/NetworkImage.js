@@ -2,6 +2,9 @@
 
 import * as React from 'react';
 import { Image } from 'react-native';
+
+import StyleSheet from '../../PlatformStyleSheet';
+
 import type { StylePropType } from '../../PlatformStyleSheet/StyleTypes';
 
 import MissingImage from './MissingImage';
@@ -21,13 +24,14 @@ export default function NetworkImage(imageProps: Props) {
 
   const newProps = {
     ...imageProps,
-    style: [
-      imageProps.style,
-      {
-        overflow: 'hidden', // otherwise 'borderRadius' won't work
-      },
-    ],
+    style: [styles.imageStyle, imageProps.style],
   };
 
   return <Image {...newProps} />;
 }
+
+const styles = StyleSheet.create({
+  imageStyle: {
+    overflow: 'hidden', // otherwise 'borderRadius' won't work
+  },
+});

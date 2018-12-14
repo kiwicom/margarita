@@ -33,7 +33,7 @@ export default function AdaptableBadge({
 const styles = StyleSheet.create({
   container: {
     alignSelf: 'flex-start',
-    borderRadius: 2,
+    borderRadius: parseFloat(defaultTokens.borderRadiusSmall),
     paddingVertical: 2,
     paddingHorizontal: 5,
     backgroundColor: defaultTokens.paletteInkLight,
