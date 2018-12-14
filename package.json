@@ -17,7 +17,8 @@
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android",
     "build": "cd scripts && yarn",
-    "release": "release-it"
+    "release": "release-it",
+    "postinstall": "node ./scripts/postInstall.js"
   },
   "files": [
     "lib"
@@ -33,7 +34,8 @@
     "@kiwicom/orbit-components": "^0.23.0",
     "@kiwicom/orbit-design-tokens": "^0.2.5",
     "react-native-status-bar-height": "^2.2.0",
-    "styled-components": "^4.1.2"
+    "styled-components": "^4.1.2",
+    "intl": "^1.2.5"
   },
   "peerDependencies": {
     "react": "16.6.1",
