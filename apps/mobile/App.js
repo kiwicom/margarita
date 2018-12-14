@@ -1,14 +1,14 @@
 // @flow
 
 import {
+  Routes,
   createStackNavigator,
   createAppContainer,
   type NavigationState,
   type NavigationNavigator,
   type NavigationRouteConfigMap,
   type NavigationContainer,
-} from 'react-navigation';
-import { Routes } from '@kiwicom/margarita-navigation';
+} from '@kiwicom/margarita-navigation';
 
 import { SearchScreen, ResultsScreen, PlacePickerScreen } from './src/screens';
 

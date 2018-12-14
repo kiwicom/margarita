@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Search } from '@kiwicom/margarita-core';
-import navigation from '@kiwicom/margarita-navigation/src/web';
+import { navigation } from '@kiwicom/margarita-navigation';
 
 import Layout from '../components/Layout';
 

@@ -58,6 +58,18 @@ module.exports = {
               'Button'
             ],
             message: 'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback'
+          },
+          {
+            name: 'react-navigation',
+            importNames: [
+              'createStackNavigator',
+              'createAppContainer',
+              'NavigationState',
+              'NavigationNavigator',
+              'NavigationRouteConfigMap',
+              'NavigationContainer',
+            ],
+            message: "Please use @kiwicom/margarita-navigation"
           }
         ]
       },
