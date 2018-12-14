@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { getStatusBarHeight } from 'react-native-status-bar-height';
+import { getStatusBarHeight } from '../utils/StatusBarHeight';
 
 import StyleSheet from '../PlatformStyleSheet';
 import InformativeNotification from './InformativeNotification';

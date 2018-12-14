@@ -8,16 +8,6 @@ module.exports = {
         use:
           'react-native-web-image-loader?name=[name].[ext]&scalings[@2x]=2&scalings[-3x]=3',
       },
-      {
-        test: /\.js$/,
-        include: [
-          path.join(
-            __dirname,
-            '../node_modules/react-native-status-bar-height/index.js'
-          ),
-        ],
-        use: 'babel-loader',
-      },
     ],
   },
   resolve: {
