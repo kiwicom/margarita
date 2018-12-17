@@ -16,6 +16,7 @@ const normalizeNextElements = `
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }: (cb: Function) => void) {
     AppRegistry.registerComponent('Main', () => Main);
+    // $FlowFixMe Wrong libdef. https://gist.github.com/paularmstrong/f60b40d16fc83e1e8e532d483336f9bb
     const { getStyleElement } = AppRegistry.getApplication('Main');
     const page = renderPage();
 
