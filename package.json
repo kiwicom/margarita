@@ -31,7 +31,7 @@
     "react-art": "^16.5.2",
     "react-dom": "^16.6.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz",
-    "react-native-web": "^0.9.3",
+    "react-native-web": "^0.9.9",
     "react-navigation": "^3.0.6",
     "schedule": "^0.4.0"
   },

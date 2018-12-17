@@ -9564,6 +9564,22 @@ react-native-web@^0.9.3:
     prop-types "^15.6.0"
     react-timer-mixin "^0.13.3"
 
+react-native-web@^0.9.9:
+  version "0.9.9"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.9.9.tgz#bd2424b38b96dfd5be346f10e3c0184f51f0c78a"
+  integrity sha512-NGjt5U23OagdKAIOhP2oL8yUf7x8OPr778mI1OVFAiDNQVRO93lJ4QKxSf8JoJgu4CvTRJ2MePxPEhNEIAFg/w==
+  dependencies:
+    array-find-index "^1.0.2"
+    create-react-class "^15.6.2"
+    debounce "^1.1.0"
+    deep-assign "^2.0.0"
+    fbjs "^0.8.16"
+    hyphenate-style-name "^1.0.2"
+    inline-style-prefixer "^4.0.2"
+    normalize-css-color "^1.0.2"
+    prop-types "^15.6.0"
+    react-timer-mixin "^0.13.3"
+
 "react-native@https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz":
   version "0.57.1"
   resolved "https://github.com/expo/react-native/archive/sdk-31.0.0.tar.gz#433d7b0693df3c036287343644a4478bc41fde97"
