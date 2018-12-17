@@ -23,7 +23,7 @@
   ],
   "dependencies": {
     "@kiwicom/margarita-relay": "^0",
-    "cross-env": "^5.2.0",
+    "better-npm-run": "^0.1.1",
     "expo": "^31.0.6",
     "next": "^7.0.2",
     "next-plugin-transpile-modules": "^0.1.3",
