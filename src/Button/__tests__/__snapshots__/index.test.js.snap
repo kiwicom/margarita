@@ -35,7 +35,7 @@ exports[`Button - native should match snapshot diff 1`] = `
         }
       >
         <View
-@@ -43,14 +43,39 @@
+@@ -43,14 +43,40 @@
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
             }
@@ -60,6 +60,7 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 Object {
 +                   \\"color\\": \\"#0176D2\\",
 +                 },
++                 undefined,
 +               ]
 +             }
 +           >
@@ -75,7 +76,7 @@ exports[`Button - native should match snapshot diff 1`] = `
                 },
                 undefined,
                 undefined,
-@@ -72,11 +97,11 @@
+@@ -72,11 +98,11 @@
                     \\"fontSize\\": 16,
                     \\"fontWeight\\": \\"bold\\",
                     \\"lineHeight\\": 21,
@@ -88,7 +89,7 @@ exports[`Button - native should match snapshot diff 1`] = `
                 ],
               ]
             }
-@@ -89,9 +114,82 @@
+@@ -89,9 +115,83 @@
             Object {
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
@@ -162,6 +163,7 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 Object {
 +                   \\"color\\": \\"#0176D2\\",
 +                 },
++                 undefined,
 +               ]
 +             }
 +           >
@@ -267,7 +269,7 @@ exports[`Button - web should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -42,14 +40,39 @@
+@@ -42,14 +40,40 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
           }
@@ -292,6 +294,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 +               Object {
 +                 \\"color\\": \\"#0176D2\\",
 +               },
++               undefined,
 +             ]
 +           }
 +         >
@@ -307,7 +310,7 @@ exports[`Button - web should match snapshot diff 1`] = `
               },
               undefined,
               undefined,
-@@ -71,11 +94,11 @@
+@@ -71,11 +95,11 @@
                   \\"fontSize\\": 16,
                   \\"fontWeight\\": \\"bold\\",
                   \\"lineHeight\\": 21,
@@ -320,7 +323,7 @@ exports[`Button - web should match snapshot diff 1`] = `
               ],
             ]
           }
-@@ -88,8 +111,34 @@
+@@ -88,8 +112,35 @@
           Object {
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
@@ -347,6 +350,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 +               Object {
 +                 \\"color\\": \\"#0176D2\\",
 +               },
++               undefined,
 +             ]
 +           }
 +         >

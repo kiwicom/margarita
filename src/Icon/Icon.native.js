@@ -24,9 +24,10 @@ export default function Icon({
   name,
   color = '#46515e',
   size = 'medium',
+  style,
 }: Props) {
   return (
-    <RNText style={[styles.icon, styles[size], { color }]}>
+    <RNText style={[styles.icon, styles[size], { color }, style]}>
       {getIconCharacter(name)}
     </RNText>
   );

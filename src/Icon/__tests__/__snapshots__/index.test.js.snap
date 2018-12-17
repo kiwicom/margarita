@@ -15,5 +15,5 @@ exports[`Icon should match snapshot diff between regular and custom icon 1`] = `
 -         \\"color\\": \\"#46515e\\",
 +         \\"color\\": \\"red\\",
         },
-      ]"
+        undefined,"
 `;
