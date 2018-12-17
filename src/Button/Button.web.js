@@ -46,8 +46,8 @@ export default function Button({
   if (href) {
     return (
       <a
-        testID={testID}
         href={href}
+        data-test-id={testID}
         style={{
           ...wrapperStyle,
           ...displayBlock(block, width),
@@ -63,7 +63,7 @@ export default function Button({
     <button
       type="button"
       onClick={onPress}
-      testID={testID}
+      data-test-id={testID}
       disabled={disabled}
       style={{
         ...wrapperStyle,
