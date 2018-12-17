@@ -19,6 +19,9 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+; Web + RN TODO temp fix. Duplicated providers.
+.*/node_modules/react-native-web/.*
+
 ; My custom ignores
 <PROJECT_ROOT>/\.git/
 <PROJECT_ROOT>/node_modules/reqwest/.+
@@ -59,6 +62,8 @@ flow-typed/
 
 [options]
 emoji=true
+
+module.name_mapper='^react-native$' -> 'react-native-web'
 
 esproposal.optional_chaining=enable
 esproposal.nullish_coalescing=enable
