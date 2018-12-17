@@ -12,11 +12,13 @@
 module.exports = function(api /* :API */) {
   api.cache(true);
   const presets = [
-    'babel-preset-expo',
+    '@babel/preset-flow',
     'module:react-native-dotenv',
     'next/babel',
   ];
   const plugins = [
+    '@babel/plugin-proposal-optional-chaining',
+    '@babel/plugin-proposal-nullish-coalescing-operator',
     'babel-plugin-relay',
     '@babel/plugin-transform-runtime',
     'react-native-web',

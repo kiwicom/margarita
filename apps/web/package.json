@@ -22,6 +22,9 @@
     "schedule": "^0.4.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
     "babel-plugin-jsx-remove-data-test-id": "^1.2.1",
     "babel-plugin-react-native-web": "^0.9.9",
     "webpack": "^4.26.1",
