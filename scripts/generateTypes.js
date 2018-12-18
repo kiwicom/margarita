@@ -1,3 +1,8 @@
+/**
+ * We want to type the Icon component, specifically  the "name" prop
+ * Flow does not infer types from JSON file and that is why we have this script
+ */
+
 /* eslint-disable no-console */
 // @flow strict
 
