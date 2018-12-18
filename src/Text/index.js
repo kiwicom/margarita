@@ -18,18 +18,19 @@ import type { TextType } from './TextTypes';
 const colorGen = createStylesGenerator('color', textColor);
 const fontWeightGen = createStylesGenerator('fontWeight', fontWeightTypes);
 const fontSizeGen = createStylesGenerator('fontSize', fontSize);
-const alingGen = createStylesGenerator('textAlign', alignTypes);
+const alignGen = createStylesGenerator('textAlign', alignTypes);
 
 const Text = ({
-  children,
-  italic,
-  uppercase,
-  dataTest,
   align = 'left',
-  type = 'primary',
-  weight = 'normal',
+  children,
+  dataTest,
+  italic,
+  numberOfLines,
   size = 'normal',
   style,
+  type = 'primary',
+  uppercase,
+  weight = 'normal',
 }: TextType) => (
   <RNText
     data-test={dataTest}
@@ -43,6 +44,7 @@ const Text = ({
       styles[align],
       style && style,
     ]}
+    numberOfLines={numberOfLines}
   >
     {children}
   </RNText>
@@ -59,7 +61,7 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
   },
   ...fontWeightGen(),
-  ...alingGen(),
+  ...alignGen(),
   ...colorGen(),
   ...fontSizeGen(),
 });

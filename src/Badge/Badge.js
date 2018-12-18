@@ -5,27 +5,17 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import Text from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
-
+import type { BadgeProps, BadgeType } from './BadgeTypes';
 import { textColor, wrapperColor } from './styles';
 
-type BadgeType =
-  | 'primary'
-  | 'neutral'
-  | 'critical'
-  | 'success'
-  | 'warning'
-  | 'info'
-  | 'dark'
-  | 'white';
-
-type Props = {|
-  +children: React.Node,
-  +type?: BadgeType,
-|};
-
-export default function Badge({ children, type = 'primary' }: Props) {
+// @TODO children should be string or React element, not element in React text element
+export default function Badge({
+  children,
+  type = 'primary',
+  style,
+}: BadgeProps) {
   return (
-    <View style={[styles.wrapper, theme(type).wrapper]}>
+    <View style={[styles.wrapper, theme(type).wrapper, style]}>
       <Text style={[styles.text, theme(type).text]}>{children}</Text>
     </View>
   );
