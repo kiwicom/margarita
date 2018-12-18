@@ -8,11 +8,11 @@ const rimraf = require('rimraf');
 
 const icons = require('../src/Icon/icons.json');
 
-rimraf.sync(path.join(__dirname, './types'));
-fs.mkdirSync(path.join(__dirname, 'types'));
+rimraf.sync(path.join(__dirname, '../src/types/_generated-types'));
+fs.mkdirSync(path.join(__dirname, '../src/types/_generated-types'));
 
 fs.writeFileSync(
-  path.join(__dirname, 'types', 'index.flow.js'),
+  path.join(__dirname, '..', 'src/types/_generated-types', 'index.js'),
   `// @flow strict
 
 export type IconNameType =
@@ -22,4 +22,4 @@ export type IconNameType =
 `
 );
 
-console.log('Successfully generated types/index.flow.js');
+console.log('Successfully generated _generated-types/index.js');

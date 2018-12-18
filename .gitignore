@@ -71,4 +71,4 @@ lib/
 /coverage
 
 # Generated
-scripts/types
+_generated-types/
