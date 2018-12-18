@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <React.Fragment>
+    <Component
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#171b1e",
+            "height": "100%",
+            "opacity": 0.2,
+            "position": "absolute",
+            "width": "100%",
+          },
+          false,
+        ]
+      }
+    />
+    <ModalWrap
+      onClose={[MockFunction]}
+      visible={true}
+    >
+      <Text>
+        Modal test content
+      </Text>
+    </ModalWrap>
+  </React.Fragment>,
+}
+`;

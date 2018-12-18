@@ -4,12 +4,13 @@ import * as React from 'react';
 import { View } from 'react-native';
 import Router from 'next/router';
 import { Search } from '@kiwicom/margarita-core';
+import { StyleSheet } from '@kiwicom/universal-components';
 
 import Layout from '../components/Layout';
 
 export default () => (
   <Layout>
-    <View>
+    <View style={styles.page}>
       <Search
         navigation={{
           navigate: (url, params) =>
@@ -23,3 +24,8 @@ export default () => (
     </View>
   </Layout>
 );
+const styles = StyleSheet.create({
+  page: {
+    flex: 1,
+  },
+});

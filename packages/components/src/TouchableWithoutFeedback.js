@@ -2,12 +2,14 @@
 
 import * as React from 'react';
 import { TouchableWithoutFeedback as OriginalTouchableWithoutFeedback } from 'react-native'; // eslint-disable-line no-restricted-imports
+import type { StylePropType } from '@kiwicom/universal-components';
 
 type Props = {|
   +onPress: () => void,
-  +children: React.Node | React.ChildrenArray<React.Node>,
+  +children: React.Node,
   +accessibilityTraits: string,
   +accessibilityComponentType: string,
+  +style?: StylePropType,
   // Expand as needed
 |};
 
