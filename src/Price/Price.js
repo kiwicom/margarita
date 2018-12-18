@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-
+import 'intl'; // Polyfill because of Android
 import Text from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 import type { PriceProps } from './PriceTypes';
