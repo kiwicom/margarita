@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <React.Fragment>
+    <SelectOption
+      icon="flight-direct"
+      id="oneWay"
+      label="One way"
+      onSelect={[MockFunction]}
+      selected={true}
+      underline={true}
+    />
+    <SelectOption
+      icon="flight-return"
+      id="return"
+      label="Return"
+      onSelect={[MockFunction]}
+      selected={false}
+      underline={false}
+    />
+    <Component
+      style={
+        Object {
+          "margin": 8,
+        }
+      }
+    >
+      <Button
+        onPress={[MockFunction]}
+        type="secondary"
+      >
+        Close
+      </Button>
+    </Component>
+  </React.Fragment>,
+}
+`;
