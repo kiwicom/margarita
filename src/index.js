@@ -28,6 +28,7 @@ export {
   TimelinePriorityBoarding,
 } from './TimelineInformation';
 export { Tooltip, TooltipBubble } from './Tooltip';
+export { DatePicker } from './DatePicker';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';
