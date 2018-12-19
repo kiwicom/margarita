@@ -8,11 +8,11 @@ export type TextType = {|
   +align?: 'left' | 'right' | 'center' | 'justify',
   +children: React.Node,
   +dataTest?: string,
-  +weight?: 'normal' | 'bold',
   +italic?: boolean,
+  +numberOfLines?: ?number,
   +size?: 'normal' | 'large' | 'small',
-  +uppercase?: boolean,
   +style?: StylePropType,
+  +uppercase?: boolean,
   +type?:
     | 'attention'
     | 'critical'
@@ -22,4 +22,5 @@ export type TextType = {|
     | 'success'
     | 'warning'
     | 'white',
+  +weight?: 'normal' | 'bold',
 |};
