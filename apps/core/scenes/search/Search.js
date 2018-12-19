@@ -7,9 +7,13 @@ import {
   TextInput,
   Button,
   Icon,
-  Text,
 } from '@kiwicom/universal-components';
-import { TripInput, Select, Modal } from '@kiwicom/margarita-components';
+import {
+  TripInput,
+  Select,
+  PassengersInputs,
+  Modal,
+} from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Routes from '../../config/routes';
@@ -31,6 +35,12 @@ const MODAL_TYPE = {
   PASSENGERS: 'PASSENGERS',
 };
 
+type PassengersData = {|
+  adults: number,
+  infants: number,
+  bags: number,
+|};
+type Props = Object;
 /**
  * TODO: FlowFix
  *
@@ -38,25 +48,28 @@ const MODAL_TYPE = {
  * and keep Select component universal at the same time
  */
 type State = {|
+  modalType: $Keys<typeof MODAL_TYPE>,
   travelFrom: string,
   travelTo: string,
   dateFrom: string,
   dateTo: string,
   tripType: string,
-  modalType: $Keys<typeof MODAL_TYPE>,
+  ...PassengersData,
 |};
-type Props = Object;
 
 export default class Search extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
+      modalType: MODAL_TYPE.HIDDEN,
       travelFrom: 'OSL',
       travelTo: 'PRG',
       dateFrom: '2018-12-30',
       dateTo: '2018-12-31',
       tripType: Object.keys(TRIP_TYPE)[0],
-      modalType: MODAL_TYPE.HIDDEN,
+      adults: 1,
+      infants: 0,
+      bags: 0,
     };
   }
 
@@ -92,6 +105,10 @@ export default class Search extends React.Component<Props, State> {
     this.setState({ modalType: MODAL_TYPE.TRIP_TYPE });
   };
 
+  handlePassengersSave = (passengersData: PassengersData) => {
+    this.setState({ ...passengersData, modalType: MODAL_TYPE.HIDDEN });
+  };
+
   handlePassengersPress = () => {
     this.setState({ modalType: MODAL_TYPE.PASSENGERS });
   };
@@ -101,7 +118,7 @@ export default class Search extends React.Component<Props, State> {
   };
 
   renderModalContent = () => {
-    const { tripType, modalType } = this.state;
+    const { modalType, tripType, adults, infants, bags } = this.state;
     switch (modalType) {
       case MODAL_TYPE.TRIP_TYPE:
         return (
@@ -113,7 +130,15 @@ export default class Search extends React.Component<Props, State> {
           />
         );
       case MODAL_TYPE.PASSENGERS:
-        return <Text>TODO: Passengers</Text>;
+        return (
+          <PassengersInputs
+            adults={adults}
+            infants={infants}
+            bags={bags}
+            onClosePress={this.handleModalClose}
+            onSavePress={this.handlePassengersSave}
+          />
+        );
       default:
         return null;
     }
@@ -121,12 +146,15 @@ export default class Search extends React.Component<Props, State> {
 
   render() {
     const {
+      modalType,
       travelFrom,
       travelTo,
       dateFrom,
       dateTo,
       tripType,
-      modalType,
+      adults,
+      infants,
+      bags,
     } = this.state;
     return (
       <>
@@ -142,10 +170,12 @@ export default class Search extends React.Component<Props, State> {
             </Button>
             <Button
               type="secondary"
-              width={110}
+              width={120}
+              leftIcon={<Icon name="passengers" />}
+              rightIcon={<Icon name="baggage-set" />}
               onPress={this.handlePassengersPress}
             >
-              Passengers
+              {`${adults + infants} | ${bags}`}
             </Button>
           </View>
           <TripInput
