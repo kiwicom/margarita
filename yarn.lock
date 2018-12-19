@@ -6573,7 +6573,7 @@ intl@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/intl/-/intl-1.2.5.tgz#82244a2190c4e419f8371f5aa34daa3420e2abde"
   integrity sha1-giRKIZDE5Bn4Nx9ao02qNCDiq94=
-  
+
 into-stream@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-3.1.0.tgz#96fb0a936c12babd6ff1752a17d05616abd094c6"
@@ -10042,7 +10042,7 @@ react-native-web-image-loader@^0.0.6:
     image-size "^0.5.1"
     loader-utils "^0.2.16"
 
-react-native-web@^0.9.7:
+react-native-web@^0.9.9:
   version "0.9.9"
   resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.9.9.tgz#bd2424b38b96dfd5be346f10e3c0184f51f0c78a"
   integrity sha512-NGjt5U23OagdKAIOhP2oL8yUf7x8OPr778mI1OVFAiDNQVRO93lJ4QKxSf8JoJgu4CvTRJ2MePxPEhNEIAFg/w==
