@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <Component>
+    <Text
+      size="large"
+      style={
+        Object {
+          "color": "#171b1e",
+          "marginBottom": 12,
+          "marginTop": 24,
+          "paddingHorizontal": 16,
+        }
+      }
+      weight="bold"
+    >
+      Passenger
+    </Text>
+    <PassengersInputsLine
+      icon="passenger"
+      label="Adults"
+      max={9}
+      min={1}
+      onChange={[Function]}
+      underline={true}
+      value={1}
+    />
+    <PassengersInputsLine
+      icon="child-friendly"
+      label="Infants"
+      max={1}
+      min={0}
+      onChange={[Function]}
+      value={0}
+    />
+    <Text
+      size="large"
+      style={
+        Object {
+          "color": "#171b1e",
+          "marginBottom": 12,
+          "marginTop": 24,
+          "paddingHorizontal": 16,
+        }
+      }
+      weight="bold"
+    >
+      Bags
+    </Text>
+    <PassengersInputsLine
+      icon="baggage-set"
+      label="Checked Bags"
+      max={2}
+      min={0}
+      onChange={[Function]}
+      value={0}
+    />
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "margin": 4,
+          "marginTop": 16,
+        }
+      }
+    >
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "margin": 4,
+          }
+        }
+      >
+        <Button
+          onPress={[MockFunction]}
+          type="secondary"
+        >
+          Close
+        </Button>
+      </Component>
+      <Component
+        style={
+          Object {
+            "flex": 1,
+            "margin": 4,
+          }
+        }
+      >
+        <Button
+          onPress={[Function]}
+          type="primary"
+        >
+          Save
+        </Button>
+      </Component>
+    </Component>
+  </Component>,
+}
+`;
