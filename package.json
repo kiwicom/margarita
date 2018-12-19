@@ -16,9 +16,9 @@
     "rnstl": "rnstl",
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android",
-    "build": "cd scripts && yarn",
+    "build": "yarn && cd scripts && yarn",
     "release": "release-it",
-    "postinstall": "node ./scripts/postInstall.js"
+    "postinstall": "node ./scripts/postInstall.js && node ./scripts/generateTypes.js"
   },
   "files": [
     "lib"

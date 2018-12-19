@@ -33,6 +33,7 @@ describe('Icon', () => {
   it('throws an error if icon name is invalid', () => {
     // $FlowExpectedError we are able to mock it in Jest
     console.error = jest.fn(); // eslint-disable-line
+    // $FlowExpectedError we expect this will be a flow error
     expect(() => render(<Icon name="__invalid-name__" />)).toThrowError(
       'Icon with name "__invalid-name__" does not exist.'
     );
