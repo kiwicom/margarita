@@ -7,6 +7,7 @@ export type BadgeProps = {|
   +children: React.Node,
   +type?: BadgeType,
   +style?: StylePropType,
+  +fontSize?: number,
 |};
 
 export type BadgeType =

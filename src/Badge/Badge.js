@@ -13,10 +13,18 @@ export default function Badge({
   children,
   type = 'primary',
   style,
+  fontSize,
 }: BadgeProps) {
+  const dynamicStyle = StyleSheet.create({
+    fontSize: {
+      fontSize,
+    },
+  });
   return (
     <View style={[styles.wrapper, theme(type).wrapper, style]}>
-      <Text style={[styles.text, theme(type).text]}>{children}</Text>
+      <Text style={[styles.text, dynamicStyle.fontSize, theme(type).text]}>
+        {children}
+      </Text>
     </View>
   );
 }
