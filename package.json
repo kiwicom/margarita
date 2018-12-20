@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.7-alpha.0",
+  "version": "0.0.7-alpha.1",
   "description": "The proof of concept of universal components.",
   "main": "lib",
   "scripts": {
@@ -21,7 +21,9 @@
     "postinstall": "node ./scripts/postInstall.js && node ./scripts/generateTypes.js"
   },
   "files": [
-    "lib"
+    "lib",
+    "scripts/generateTypes.js",
+    "scripts/postInstall.js"
   ],
   "keywords": [
     "react",
