@@ -44,5 +44,23 @@ storiesOf('RowOption', module)
         onItemPress={noop}
         onAddPress={noop}
       />
+      <RowOption
+        type="localization"
+        header="PRG Airport"
+        subheader="10 km from Prague"
+        onItemPress={noop}
+        onAddPress={noop}
+        info="Czech Republic"
+        border="short"
+      />
+      <RowOption
+        type="train"
+        header="Very very long long long long long long long long"
+        subheader="10 km from Prague"
+        onItemPress={noop}
+        onAddPress={noop}
+        info="Czech Republic"
+        border="short"
+      />
     </View>
   ));

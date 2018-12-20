@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../Text';
@@ -11,9 +11,10 @@ import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
   +border?: 'long' | 'short' | 'shaped',
-  +type: 'destination' | 'airplane' | 'bus' | 'train',
+  +type: 'localization' | 'destination' | 'airplane' | 'bus' | 'train',
   +header: string | React.Node,
   +subheader: string | React.Node,
+  +info?: string | React.Node,
   +onItemPress: () => void,
   +onAddPress: () => void,
 |};
@@ -22,6 +23,7 @@ export default function RowOption({
   type,
   header,
   subheader,
+  info,
   onItemPress,
   onAddPress,
   border,
@@ -31,6 +33,9 @@ export default function RowOption({
   let shortSeparatorStyle;
 
   switch (type) {
+    case 'localization':
+      icon = Platform.OS === 'android' ? 'gps' : 'gps-ios';
+      break;
     case 'destination':
       icon = 'city';
       break;
@@ -66,19 +71,46 @@ export default function RowOption({
         <View style={styles.wrapper}>
           <View style={styles.leftIconContainer}>
             <View style={styles.leftIcon}>
-              <Icon name={icon} color={defaultTokens.colorIconSecondary} />
+              <Icon
+                name={icon}
+                color={
+                  type === 'localization'
+                    ? defaultTokens.paletteProductNormal
+                    : defaultTokens.colorIconSecondary
+                }
+              />
             </View>
             {border === 'shaped' && <View style={styles.triangleShape} />}
           </View>
-
           <View style={[shortSeparatorStyle, styles.contentContainer]}>
-            <View>
-              <Text style={styles.header} type="primary">
+            <View style={styles.padded}>
+              <Text
+                numberOfLines={1}
+                style={[
+                  styles.header,
+                  type === 'localization' && styles.localizationHeader,
+                ]}
+                type="primary"
+              >
                 {header}
               </Text>
-              <Text type="secondary" style={styles.subheader}>
-                {subheader}
-              </Text>
+              <View style={styles.rowDirection}>
+                <Text type="secondary" style={styles.subheader}>
+                  {subheader}
+                </Text>
+                {info && (
+                  <View style={[styles.rowDirection, styles.padded]}>
+                    <View style={styles.dotSeparator} />
+                    <Text
+                      type="secondary"
+                      style={styles.subheader}
+                      numberOfLines={1}
+                    >
+                      {info}
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
             <Touchable onPress={onAddPress} style={styles.plusButton}>
               <Icon
@@ -125,7 +157,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '100%',
     paddingVertical: 10,
   },
   leftIcon: {
@@ -150,5 +181,23 @@ const styles = StyleSheet.create({
   },
   subheader: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
+  },
+  localizationHeader: {
+    color: defaultTokens.paletteProductNormal,
+  },
+  rowDirection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  padded: {
+    flex: 1,
+    paddingEnd: 10,
+  },
+  dotSeparator: {
+    marginHorizontal: 4,
+    height: 4,
+    width: 4,
+    borderRadius: 2,
+    backgroundColor: defaultTokens.colorTextSecondary,
   },
 });
