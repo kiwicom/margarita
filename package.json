@@ -34,6 +34,7 @@
     "@kiwicom/orbit-components": "^0.23.0",
     "@kiwicom/orbit-design-tokens": "^0.2.5",
     "intl": "^1.2.5",
+    "react-native-shimmer": "^0.4.1",
     "react-native-status-bar-height": "^2.2.0",
     "styled-components": "^4.1.2"
   },
