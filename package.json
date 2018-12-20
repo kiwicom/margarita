@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.7-alpha.2",
+  "version": "0.0.7-alpha.3",
   "description": "The proof of concept of universal components.",
   "main": "lib",
   "scripts": {
