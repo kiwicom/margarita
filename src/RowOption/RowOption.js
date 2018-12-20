@@ -7,8 +7,10 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import Text from '../Text';
 import { Icon } from '../Icon';
 import Touchable from '../Button/Touchable';
+import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
+  +border: 'long' | 'short' | 'shaped',
   +type: 'destination' | 'airplane' | 'bus' | 'train',
   +header: string | React.Node,
   +subheader: string | React.Node,
@@ -22,6 +24,7 @@ export default function RowOption({
   subheader,
   onItemPress,
   onAddPress,
+  border,
 }: Props) {
   let icon = '';
 
@@ -41,62 +44,41 @@ export default function RowOption({
     default:
       icon = 'city';
   }
+
   return (
     <Touchable onPress={onItemPress}>
       <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
+        style={[
+          (border === 'shaped' || border === 'long') && styles.longSeparator,
+          styles.container,
+        ]}
       >
-        <View style={{ alignItems: 'center', flexDirection: 'row' }}>
-          <Icon
-            name={icon}
-            style={{ padding: 10 }}
-            color={defaultTokens.colorIconSecondary}
-          />
+        <View style={styles.wrapper}>
+          <View style={styles.leftIconContainer}>
+            <View style={styles.leftIcon}>
+              <Icon name={icon} color={defaultTokens.colorIconSecondary} />
+            </View>
+            {border === 'shaped' && <View style={styles.triangleShape} />}
+          </View>
+
           <View
-            style={{
-              flex: 1,
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              borderColor: defaultTokens.paletteInkLighter,
-              borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
-              width: '100%',
-            }}
+            style={[
+              border === 'short' && styles.shortSeparator,
+              styles.contentContainer,
+            ]}
           >
             <View>
-              <Text
-                style={{
-                  fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-                }}
-                type="primary"
-              >
+              <Text style={styles.header} type="primary">
                 {header}
               </Text>
-              <Text
-                type="secondary"
-                style={{
-                  fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
-                  marginBottom: 5,
-                }}
-              >
+              <Text type="secondary" style={styles.subheader}>
                 {subheader}
               </Text>
             </View>
-            <Touchable
-              onPress={onAddPress}
-              style={{
-                backgroundColor: defaultTokens.backgroundAlertSuccess,
-                borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
-                marginEnd: 10,
-              }}
-            >
+            <Touchable onPress={onAddPress} style={styles.plusButton}>
               <Icon
                 name="plus"
                 size="small"
-                style={{ padding: 2 }}
                 color={defaultTokens.paletteProductNormal}
               />
             </Touchable>
@@ -106,3 +88,62 @@ export default function RowOption({
     </Touchable>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  wrapper: {
+    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 1,
+  },
+  triangleShape: {
+    height: 8,
+    width: 8,
+    borderColor: defaultTokens.paletteInkLighter,
+    borderStartWidth: 1,
+    borderTopWidth: 1,
+    transform: [{ rotate: '45deg' }],
+    position: 'absolute',
+    bottom: -7,
+    backgroundColor: 'white',
+  },
+  leftIconContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  contentContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingVertical: 10,
+  },
+  leftIcon: {
+    padding: 10,
+  },
+  longSeparator: {
+    borderColor: defaultTokens.paletteInkLighter,
+    borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
+  },
+  shortSeparator: {
+    borderColor: defaultTokens.paletteInkLighter,
+    borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
+  },
+  plusButton: {
+    backgroundColor: defaultTokens.backgroundAlertSuccess,
+    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    marginEnd: 10,
+    padding: 2,
+  },
+  header: {
+    fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
+  },
+  subheader: {
+    fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
+  },
+});
