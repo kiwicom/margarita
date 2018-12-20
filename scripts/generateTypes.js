@@ -7,24 +7,27 @@
 // @flow strict
 
 const fs = require('fs');
+
 const path = require('path');
 // eslint-disable-next-line import/no-extraneous-dependencies
 const rimraf = require('rimraf');
 
-const icons = require('../src/Icon/icons.json');
+if (fs.existsSync('../src/Icon/icons.json')) {
+  const icons = require('../src/Icon/icons.json'); // eslint-disable-line global-require
 
-rimraf.sync(path.join(__dirname, '../src/types/_generated-types'));
-fs.mkdirSync(path.join(__dirname, '../src/types/_generated-types'));
+  rimraf.sync(path.join(__dirname, '../src/types/_generated-types'));
+  fs.mkdirSync(path.join(__dirname, '../src/types/_generated-types'));
 
-fs.writeFileSync(
-  path.join(__dirname, '..', 'src/types/_generated-types', 'index.js'),
-  `// @flow strict
+  fs.writeFileSync(
+    path.join(__dirname, '..', 'src/types/_generated-types', 'index.js'),
+    `// @flow strict
+    
+    export type IconNameType =
+    | ${Object.keys(icons)
+      .map(n => `'${n}'`)
+      .join('\n  | ')};
+      `
+  );
 
-export type IconNameType =
-  | ${Object.keys(icons)
-    .map(n => `'${n}'`)
-    .join('\n  | ')};
-`
-);
-
-console.log('Successfully generated _generated-types/index.js');
+  console.log('Successfully generated _generated-types/index.js');
+}
