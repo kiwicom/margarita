@@ -11,8 +11,8 @@ log('Patching intl package');
 // In development, intl is located in ../node_modules
 const localPath = path.join(__dirname, '..', 'node_modules', 'intl');
 
-// In packaged version, intl is located in ../../ (as our package is inside node_modules folder)
-const npmPath = path.join(__dirname, '..', '..', 'intl');
+// In packaged version, intl is located in ../../../ (as our package is inside node_modules folder)
+const npmPath = path.join(__dirname, '..', '..', '..', 'intl');
 
 let correctPath;
 
