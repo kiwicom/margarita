@@ -36,6 +36,7 @@ const { getByText } = render(
 
 it('should execute onClosePress method', () => {
   fireEvent(getByText('Close'), 'press');
+  expect(onClose).toHaveBeenCalledTimes(1);
 });
 
 it('should execute onSavePress method with proper value', () => {
@@ -57,15 +58,40 @@ it('renders', () => {
   ).toMatchSnapshot();
 });
 
-test('updateAdults > should return correct value on increment', () => {
+test('updateAdults > should not increase value on increment when max limit is reached', () => {
   expect(updateAdults(testData0, 1)).toMatchObject(testData0);
 });
 
+test('updateAdults > should increase value on increment when limit is not reached', () => {
+  expect(updateAdults(testData1, 1)).toMatchObject({
+    adults: 3,
+    infants: 1,
+    bags: 1,
+  });
+});
+
 test('updateAdults > should return correct value on decrement', () => {
-  expect(updateAdults(testData0, -1)).toMatchObject({
-    adults: 6,
-    infants: 2,
-    bags: 12,
+  expect(updateAdults(testData1, -1)).toMatchObject({
+    adults: 1,
+    infants: 1,
+    bags: 1,
+  });
+});
+
+test('updateAdults > should properly update all values on decrement when their limits are reached', () => {
+  expect(
+    updateAdults(
+      {
+        adults: 4,
+        infants: 4,
+        bags: 8,
+      },
+      -1,
+    ),
+  ).toMatchObject({
+    adults: 3,
+    infants: 3,
+    bags: 6,
   });
 });
 
