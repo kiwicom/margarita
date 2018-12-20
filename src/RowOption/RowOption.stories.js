@@ -37,5 +37,12 @@ storiesOf('RowOption', module)
         onAddPress={noop}
         border="long"
       />
+      <RowOption
+        type="destination"
+        header="Prague"
+        subheader="Czech Republic"
+        onItemPress={noop}
+        onAddPress={noop}
+      />
     </View>
   ));

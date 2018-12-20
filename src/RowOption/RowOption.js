@@ -10,7 +10,7 @@ import Touchable from '../Button/Touchable';
 import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|
-  +border: 'long' | 'short' | 'shaped',
+  +border?: 'long' | 'short' | 'shaped',
   +type: 'destination' | 'airplane' | 'bus' | 'train',
   +header: string | React.Node,
   +subheader: string | React.Node,
@@ -27,6 +27,8 @@ export default function RowOption({
   border,
 }: Props) {
   let icon = '';
+  let longSeparatorStyle;
+  let shortSeparatorStyle;
 
   switch (type) {
     case 'destination':
@@ -45,14 +47,22 @@ export default function RowOption({
       icon = 'city';
   }
 
+  switch (border) {
+    case 'long':
+    case 'shaped':
+      longSeparatorStyle = styles.longSeparator;
+      break;
+    case 'short':
+      shortSeparatorStyle = styles.shortSeparator;
+      break;
+    default:
+      longSeparatorStyle = false;
+      shortSeparatorStyle = false;
+  }
+
   return (
     <Touchable onPress={onItemPress}>
-      <View
-        style={[
-          (border === 'shaped' || border === 'long') && styles.longSeparator,
-          styles.container,
-        ]}
-      >
+      <View style={[longSeparatorStyle, styles.container]}>
         <View style={styles.wrapper}>
           <View style={styles.leftIconContainer}>
             <View style={styles.leftIcon}>
@@ -61,12 +71,7 @@ export default function RowOption({
             {border === 'shaped' && <View style={styles.triangleShape} />}
           </View>
 
-          <View
-            style={[
-              border === 'short' && styles.shortSeparator,
-              styles.contentContainer,
-            ]}
-          >
+          <View style={[shortSeparatorStyle, styles.contentContainer]}>
             <View>
               <Text style={styles.header} type="primary">
                 {header}
