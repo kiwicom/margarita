@@ -5,9 +5,6 @@ import { render } from 'react-native-testing-library';
 import { LocalizedPrice } from '..';
 import { Text } from '../..';
 
-// Mock DateFormatter to prevent error
-jest.mock('../../utils/DateUtils/DateFormatter', () => ({}));
-
 describe('LocalizedPrice', () => {
   const localizedPrice = '$123,455.3455';
   const { getByType } = render(

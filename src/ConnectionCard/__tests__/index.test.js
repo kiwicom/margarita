@@ -6,9 +6,6 @@ import { ConnectionCard } from '..';
 import TripSector from '../TripSector';
 import { Badge, LocalizedPrice, Text } from '../..';
 
-// Mock DateFormatter to prevent error
-jest.mock('../../utils/DateUtils/DateFormatter', () => ({}));
-
 describe('ConnectionCard', () => {
   const badges = [
     {
