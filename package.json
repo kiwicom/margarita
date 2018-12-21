@@ -95,7 +95,7 @@
   },
   "rnpm": {
     "assets": [
-      "fonts"
+      "lib/fonts"
     ]
   }
 }
