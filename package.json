@@ -13,7 +13,7 @@
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json --silent",
-    "test-ci": "yarn flow && yarn lint && yarn test",
+    "test-ci": "yarn flow && yarn lint && yarn test --runInBand",
     "server": "yarn workspace @kiwicom/margarita-graphql start"
   },
   "private": true,
