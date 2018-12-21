@@ -80,7 +80,9 @@ export default function RowOption({
                 }
               />
             </View>
-            {border === 'shaped' && <View style={styles.triangleShape} />}
+            {border === 'shaped' && (
+              <View style={styles.triangleShape} testID="triangle-shape" />
+            )}
           </View>
           <View style={[shortSeparatorStyle, styles.contentContainer]}>
             <View style={styles.padded}>
@@ -100,7 +102,7 @@ export default function RowOption({
                 </Text>
                 {info && (
                   <View style={[styles.rowDirection, styles.padded]}>
-                    <View style={styles.dotSeparator} />
+                    <View style={styles.dotSeparator} testID="dot-separator" />
                     <Text
                       type="secondary"
                       style={styles.subheader}
