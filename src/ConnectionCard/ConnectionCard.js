@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Badge } from '../Badge';
-import { Price } from '../Price';
+import { LocalizedPrice } from '../LocalizedPrice';
 import ConnectionCardRow from './ConnectionCardRow';
 import TripSector from './TripSector';
 import BadgesContainer from './BadgesContainer';
 import type { BadgeProps } from '../Badge/BadgeTypes';
-import type { PriceProps } from '../Price/PriceTypes';
+import type { LocalizedPriceProps } from '../LocalizedPrice/LocalizedPriceTypes';
 import type { TripSectorProps } from './ConnectionCardTypes';
 import StyleSheet from '../PlatformStyleSheet';
 
@@ -19,9 +19,9 @@ type Props = {|
   +padding?: boolean,
   +wayForth: Array<TripSectorWithId>,
   +wayBack?: Array<TripSectorWithId>,
-  +price: PriceProps,
   +duration?: string,
   +badges?: Array<BadgeWithId>,
+  ...LocalizedPriceProps,
 |};
 
 const renderTripSector = way =>
@@ -51,7 +51,7 @@ export default function ConnectionCard({
   padding = true,
   wayForth,
   wayBack,
-  price,
+  localizedPrice,
   duration,
   badges,
 }: Props) {
@@ -73,11 +73,7 @@ export default function ConnectionCard({
       )}
       <ConnectionCardRow style={styles.lastRow}>
         <BadgesContainer>{renderBadges(badges)}</BadgesContainer>
-        <Price
-          currency={price.currency}
-          locale={price.locale}
-          value={price.value}
-        />
+        <LocalizedPrice localizedPrice={localizedPrice} />
       </ConnectionCardRow>
     </View>
   );

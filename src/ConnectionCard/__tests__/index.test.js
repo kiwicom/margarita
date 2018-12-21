@@ -4,7 +4,7 @@ import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import { ConnectionCard } from '..';
 import TripSector from '../TripSector';
-import { Badge, Price, Text } from '../..';
+import { Badge, LocalizedPrice, Text } from '../..';
 
 // Mock DateFormatter to prevent error
 jest.mock('../../utils/DateUtils/DateFormatter', () => ({}));
@@ -39,13 +39,13 @@ describe('ConnectionCard', () => {
       duration: '3h',
     },
   ];
-  const price = {
-    value: 123455.3455,
-    currency: 'EUR',
-    locale: 'en-GB',
-  };
+  const localizedPrice = '€123,455.35';
   const { getAllByType, getByType } = render(
-    <ConnectionCard price={price} wayForth={wayForth} badges={badges} />
+    <ConnectionCard
+      localizedPrice={localizedPrice}
+      wayForth={wayForth}
+      badges={badges}
+    />
   );
   it('should contain correct number of badges', () => {
     expect(getAllByType(Badge)).toHaveLength(1);
@@ -55,7 +55,7 @@ describe('ConnectionCard', () => {
   });
 
   it('should set proper price format', () => {
-    expect(getByType(Price).findByType(Text).props.children).toBe(
+    expect(getByType(LocalizedPrice).findByType(Text).props.children).toBe(
       '€123,455.35'
     );
   });

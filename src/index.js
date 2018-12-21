@@ -12,7 +12,7 @@ export { Icon } from './Icon';
 export { Loader } from './Loader';
 export { Notification } from './Notification';
 export { PlaceCard } from './PlaceCard';
-export { Price } from './Price';
+export { LocalizedPrice } from './LocalizedPrice';
 export { RadioButton } from './RadioButton';
 export { Rating } from './Rating';
 export { SearchParamsSummary } from './SearchParamsSummary';

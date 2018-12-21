@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { withKnobs, boolean, select } from '@storybook/addon-knobs';
+import { withKnobs, boolean, text } from '@storybook/addon-knobs';
 import { ConnectionCard } from './index';
 
 storiesOf('ConnectionCard', module)
@@ -10,12 +10,7 @@ storiesOf('ConnectionCard', module)
   .add('Playground', () => {
     const hasReturnConnection = boolean('Has return connection', true);
     const hasBadges = boolean('Has badges', true);
-    const currency = select('Currency', ['CZK', 'EUR', 'USD', 'GBP'], 'CZK');
-    const locale = select(
-      'Locale',
-      ['cs-CZ', 'de-DE', 'fr-FR', 'en-GB', 'en-US'],
-      'cs-CZ'
-    );
+    const localizedPrice = text('Localized Price', '$123,455.3455');
     return (
       <ConnectionCard
         wayForth={[
@@ -55,11 +50,7 @@ storiesOf('ConnectionCard', module)
           ]
         }
         duration={hasReturnConnection && '3 days'}
-        price={{
-          value: 123455.3455,
-          currency,
-          locale,
-        }}
+        localizedPrice={localizedPrice}
         badges={
           hasBadges && [
             {
