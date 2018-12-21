@@ -17,12 +17,10 @@
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android",
     "build": "yarn && cd scripts && yarn",
-    "release": "release-it",
-    "postinstall": "node ./scripts/generateTypes.js"
+    "release": "release-it"
   },
   "files": [
-    "lib",
-    "scripts/generateTypes.js"
+    "lib"
   ],
   "keywords": [
     "react",

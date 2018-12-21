@@ -69,6 +69,3 @@ lib/
 
 #Jest
 /coverage
-
-# Generated
-_generated-types/

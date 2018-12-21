@@ -36,3 +36,11 @@ yarn ios
 ```bash
 yarn android
 ```
+
+### Updating Icons
+
+If you need to update the icon list (`Icon/icons.json`), make sure to run
+```bash
+node scripts/generateTypes.js
+```
+to update `src/types/_generated-types/index.js`. This ensures flow types are accurate.
