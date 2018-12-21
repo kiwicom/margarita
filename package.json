@@ -18,12 +18,11 @@
     "android": "rnstl && react-native run-android",
     "build": "yarn && cd scripts && yarn",
     "release": "release-it",
-    "postinstall": "node ./scripts/postInstall.js && node ./scripts/generateTypes.js"
+    "postinstall": "node ./scripts/generateTypes.js"
   },
   "files": [
     "lib",
-    "scripts/generateTypes.js",
-    "scripts/postInstall.js"
+    "scripts/generateTypes.js"
   ],
   "keywords": [
     "react",
@@ -35,7 +34,6 @@
   "dependencies": {
     "@kiwicom/orbit-components": "^0.23.0",
     "@kiwicom/orbit-design-tokens": "^0.2.5",
-    "intl": "^1.2.5",
     "react-native-shimmer": "^0.4.1",
     "react-native-status-bar-height": "^2.2.0",
     "styled-components": "^4.1.2"
