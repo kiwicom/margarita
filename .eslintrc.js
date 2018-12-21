@@ -58,6 +58,13 @@ module.exports = {
               'Button'
             ],
             message: 'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback'
+          },
+          {
+            name: 'react-navigation',
+            importNames: [
+              'withNavigation',
+            ],
+            message: "Please use @kiwicom/margarita-navigation"
           }
         ]
       },

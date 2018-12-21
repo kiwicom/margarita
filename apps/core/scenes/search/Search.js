@@ -15,8 +15,11 @@ import {
   Modal,
 } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-
-import Routes from '../../config/routes';
+import {
+  withNavigation,
+  Routes,
+  type Navigation,
+} from '@kiwicom/margarita-navigation';
 
 const TRIP_TYPE = {
   oneWay: {
@@ -40,7 +43,9 @@ type PassengersData = {|
   infants: number,
   bags: number,
 |};
-type Props = Object;
+type Props = {
+  +navigation: Navigation,
+};
 /**
  * TODO: FlowFix
  *
@@ -57,7 +62,7 @@ type State = {|
   ...PassengersData,
 |};
 
-export default class Search extends React.Component<Props, State> {
+class Search extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -229,3 +234,5 @@ const styles = StyleSheet.create({
     padding: 5,
   },
 });
+
+export default withNavigation(Search);
