@@ -18,8 +18,8 @@ storiesOf('SearchParamsSummary', module)
     return (
       <SearchParamsSummary
         tripType={tripType}
-        departure={{ city: 'Wroclaw', date: '2018-10-10' }}
-        arrival={{ city: 'Prague', date: '2018-12-12' }}
+        departure={{ city: 'Wroclaw', localizedDate: 'Oct 10' }}
+        arrival={{ city: 'Prague', localizedDate: 'Dec 12' }}
       />
     );
   });

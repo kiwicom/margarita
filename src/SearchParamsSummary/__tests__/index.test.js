@@ -8,16 +8,12 @@ import { Icon } from '../../Icon';
 import { SearchParamsSummary } from '../index';
 import AdaptableBadge from '../../shared/AdaptableBadge';
 
-jest.mock('../../utils/DateUtils/DateFormatter', () => ({
-  custom: () => 'Oct 10',
-}));
-
 const renderSearchParamsSummary = (tripType, component) => {
   const { getByType } = render(
     <SearchParamsSummary
       tripType={tripType}
-      departure={{ city: 'Wroclaw', date: '2018-10-10' }}
-      arrival={{ city: 'Prague', date: '2018-12-12' }}
+      departure={{ city: 'Wroclaw', localizedDate: 'Oct 10' }}
+      arrival={{ city: 'Prague', localizedDate: 'Dec 12' }}
     />
   );
 
@@ -47,8 +43,8 @@ describe('SearchParamsSummary', () => {
     const { getAllByType } = render(
       <SearchParamsSummary
         tripType="Return"
-        departure={{ city: 'Wroclaw', date: '2018-10-10' }}
-        arrival={{ city: 'Prague', date: '2018-12-12' }}
+        departure={{ city: 'Wroclaw', localizedDate: 'Oct 10' }}
+        arrival={{ city: 'Prague', localizedDate: 'Dec 12' }}
       />
     );
 
@@ -61,8 +57,8 @@ describe('SearchParamsSummary', () => {
     const { getAllByType } = render(
       <SearchParamsSummary
         tripType="Return"
-        departure={{ city: 'Wroclaw', date: '2018-10-10' }}
-        arrival={{ city: 'Prague', date: '2018-12-12' }}
+        departure={{ city: 'Wroclaw', localizedDate: 'Oct 10' }}
+        arrival={{ city: 'Prague', localizedDate: 'Dec 12' }}
       />
     );
 

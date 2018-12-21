@@ -3,27 +3,15 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { custom } from '../utils/DateUtils/DateFormatter';
 
 import AdaptableBadge from '../shared/AdaptableBadge';
 import { Icon } from '../Icon';
 import Text from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 
-const dateFormat = {
-  day: '2-digit',
-  month: 'short',
-};
-
-const oneWayDateFormat = {
-  day: '2-digit',
-  month: 'long',
-  weekday: 'long',
-};
-
 type Trip = {|
   +city: string,
-  +date: string,
+  +localizedDate: string,
 |};
 
 type Props = {|
@@ -68,7 +56,7 @@ export default function SearchParamsSummary({
                 <AdaptableBadge
                   style={styles.badge}
                   textStyle={styles.badgeText}
-                  text={custom(new Date(arrival.date), oneWayDateFormat)}
+                  text={arrival.localizedDate}
                 />
               </View>
             ) : (
@@ -76,13 +64,13 @@ export default function SearchParamsSummary({
                 <AdaptableBadge
                   style={styles.badge}
                   textStyle={styles.badgeText}
-                  text={custom(new Date(departure.date), dateFormat)}
+                  text={departure.localizedDate}
                 />
                 <Text style={styles.connector}> to </Text>
                 <AdaptableBadge
                   style={styles.badge}
                   textStyle={styles.badgeText}
-                  text={custom(new Date(arrival.date), dateFormat)}
+                  text={arrival.localizedDate}
                 />
               </View>
             )}
