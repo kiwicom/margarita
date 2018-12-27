@@ -9,6 +9,13 @@ representation of dates and times using the Gregorian calendar.
 """
 scalar Date
 
+"""
+A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
+`date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
+8601 standard for representation of dates and times using the Gregorian calendar.
+"""
+scalar DateTime
+
 input ItinerariesSearchInput {
   travelFrom: String!
   travelTo: String
@@ -30,6 +37,8 @@ input ItinerariesSearchInput {
 }
 
 type Itinerary {
+  currency: String
+
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -41,6 +50,7 @@ type Itinerary {
   flyTo: String
   localDeparture: String
   localArrival: String
+  routes: [Routes]
 }
 
 """A connection to a list of items."""
@@ -131,4 +141,15 @@ type RootQuery {
 
   """A simple type for getting started!"""
   hello: String
+}
+
+type Routes {
+  airline: String
+  cityFrom: String
+  cityTo: String
+  id: String
+  localArrival: DateTime
+  utcArrival: DateTime
+  localDeparture: DateTime
+  utcDeparture: DateTime
 }

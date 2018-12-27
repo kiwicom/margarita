@@ -21,17 +21,42 @@ export type ItinerariesSearchParameters = {|
   |},
 |};
 
-export type Itineraries = {|
+export type Route = {
+  +airline: string,
+  +cityFrom: string,
+  +cityTo: string,
   +id: string,
+  +localArrival: Date,
+  +utcArrival: Date,
+  +localDeparture: Date,
+  +utcDeparture: Date,
+};
+
+export type Itineraries = {|
   +airlines: Array<string>,
-  +price: number,
+  +currency: string,
+  +id: string,
   +flyFrom: string,
   +flyTo: string,
   +localDeparture: string,
   +localArrival: string,
+  +price: number,
+  +routes: Array<Route>,
 |};
 
+export type ApiRoute = {
+  +airline: string,
+  +cityFrom: string,
+  +cityTo: string,
+  +id: string,
+  +local_arrival: Date,
+  +utc_arrival: Date,
+  +local_departure: Date,
+  +utc_departure: Date,
+};
+
 type ApiResponse = {|
+  +currency: string,
   +data: $ReadOnlyArray<{|
     +id: string,
     +airlines: Array<string>,
@@ -40,6 +65,7 @@ type ApiResponse = {|
     +flyTo: string,
     +local_departure: string,
     +local_arrival: string,
+    +route: Array<ApiRoute>,
   |}>,
 |};
 
@@ -65,6 +91,8 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
       children: input.passengers.children ?? 0,
       infants: input.passengers.infants ?? 0,
     }),
+    limit: 10, // @TODO: for testing purposes
+    curr: 'EUR',
   };
 
   return params;
@@ -82,13 +110,15 @@ const fetchItineraries = async (
       );
     }),
   );
-  return results.map(res => sanitizeIteneraries(res.data));
+  return results.map(res => {
+    return sanitizeItineraries(res);
+  });
 };
 
-const sanitizeIteneraries = (
-  itineraries: $PropertyType<ApiResponse, 'data'>,
-): Itineraries[] => {
+const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
+  const itineraries = response.data;
   return itineraries.map(itinerary => ({
+    currency: response.currency,
     id: itinerary.id,
     airlines: itinerary.airlines,
     price: itinerary.price,
@@ -96,6 +126,16 @@ const sanitizeIteneraries = (
     flyTo: itinerary.flyTo,
     localDeparture: itinerary.local_departure,
     localArrival: itinerary.local_arrival,
+    routes: itinerary.route.map(route => ({
+      airline: route.airline,
+      cityFrom: route.cityFrom,
+      cityTo: route.cityTo,
+      id: route.id,
+      localArrival: route.local_arrival,
+      utcArrival: route.utc_arrival,
+      localDeparture: route.local_departure,
+      utcDeparture: route.utc_departure,
+    })),
   }));
 };
 

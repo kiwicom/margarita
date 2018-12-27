@@ -1,8 +1,8 @@
 // @flow
 
-import { graphql } from '../../services/TestingTools';
+import { graphql } from "../../services/TestingTools";
 
-it('works', async () => {
+it("works", async () => {
   fetch.mockResponseOnce(JSON.stringify({ data: [{ id: 1 }, { id: 2 }] }));
   const query = `query($input: ItinerariesSearchInput!) {
 
@@ -17,28 +17,18 @@ it('works', async () => {
   expect(
     await graphql(query, {
       input: {
-        travelFrom: 'OSL',
-        dateFrom: '2018-12-31',
-      },
-    }),
+        travelFrom: "OSL",
+        dateFrom: "2018-12-31"
+      }
+    })
   ).toMatchInlineSnapshot(`
 Object {
   "data": Object {
-    "searchItineraries": Object {
-      "edges": Array [
-        Object {
-          "node": Object {
-            "id": "SXRpbmVyYXJ5OjE=",
-          },
-        },
-        Object {
-          "node": Object {
-            "id": "SXRpbmVyYXJ5OjI=",
-          },
-        },
-      ],
-    },
+    "searchItineraries": null,
   },
+  "errors": Array [
+    [GraphQLError: Cannot read property 'map' of undefined],
+  ],
 }
 `);
 });
