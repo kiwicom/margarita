@@ -9,7 +9,7 @@ export { Checkbox } from './Checkbox';
 export { ConnectionCard } from './ConnectionCard';
 export { FilterButton } from './FilterButton';
 export { Icon } from './Icon';
-export { Loader } from './Loader';
+export { Loader, PageLoader } from './Loader';
 export { Notification } from './Notification';
 export { PlaceCard } from './PlaceCard';
 export { LocalizedPrice } from './LocalizedPrice';
