@@ -53,40 +53,10 @@ For more information, consult the documentation on [expo.io](https://docs.expo.i
 
 Note: For web projects, you need to ensure you support the `.web.js` extension. [create-react-app](https://github.com/facebook/create-react-app/blob/6364bbf6dc8244508398f934d0882f05e0cb5dcc/packages/react-scripts/config/paths.js#L52) already supports it by default.
 
-## Development
+# Contributing
 
-### Desktop
+See [CONTRIBUTING.md](https://github.com/kiwicom/universal-components/blob/master/CONTRIBUTING.md)
 
-```bash
-yarn storybook
-```
+Repository: <https://github.com/kiwicom/universal-components>
 
-### Mobile
-
-After running `yarn`, you also need to link assets using:
-
-```bash
-react-native link
-```
-
-#### iOS
-
-```bash
-yarn ios
-```
-
-#### Android
-
-```bash
-yarn android
-```
-
-### Updating Icons
-
-If you need to update the icon list (`Icon/icons.json`), make sure to run
-
-```bash
-node scripts/generateTypes.js
-```
-
-to update `src/types/_generated-types/index.js`. This ensures flow types are accurate.
+Forward your suggestions, issues and bugs [here](https://github.com/kiwicom/universal-components/issues).
