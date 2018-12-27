@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.7-alpha.5",
+  "version": "0.0.7-beta.0",
   "description": "The proof of concept of universal components.",
   "main": "lib",
   "scripts": {
@@ -93,5 +93,8 @@
     "assets": [
       "lib/fonts"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
