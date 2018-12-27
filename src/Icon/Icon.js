@@ -8,6 +8,8 @@ import StyleSheet from '../PlatformStyleSheet';
 import iconsMap from './icons.json';
 import type { Props } from './IconTypes';
 
+import './Icon.css';
+
 const getIconCharacter = name => {
   const icon = iconsMap[name];
   if (!icon) {
