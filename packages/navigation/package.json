@@ -5,6 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "next": "^7.0.2",
+    "react-fast-compare": "^2.0.4",
     "react-navigation": "^3.0.9"
   },
   "peerDependencies": {

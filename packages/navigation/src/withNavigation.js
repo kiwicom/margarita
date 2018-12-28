@@ -1,21 +1,8 @@
 // @flow
 
-import * as React from 'react';
-import Router from 'next/router';
+import { Consumer } from './WebNavigationContext';
+import withContext from '../utils/withContext';
 
-import type { Navigation, Route } from './types';
+const select = state => state;
 
-const navigate = (url: Route, params?: Object) =>
-  Router.push({ pathname: `/${url}`, query: params });
-
-type Props = {};
-type EnhancedProps = { +navigation: Navigation };
-
-export const withNavigation = (
-  Component: React.ComponentType<EnhancedProps>,
-): React.ComponentType<Props> =>
-  class extends React.Component<Props> {
-    render() {
-      return <Component {...this.props} navigation={{ navigate }} />;
-    }
-  };
+export const withNavigation = withContext(select, Consumer);
