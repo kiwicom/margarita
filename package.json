@@ -1,7 +1,8 @@
 {
   "name": "@kiwicom/universal-components",
   "version": "0.0.7",
-  "description": "The proof of concept of universal components.",
+  "description": "Component Library for React Native, Expo and React applications",
+  "homepage": "https://github.com/kiwicom/universal-components",
   "main": "lib",
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",

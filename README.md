@@ -1,6 +1,10 @@
 # Universal Components
 
-Proof of concept for universal components. Based on [react-native-web](https://github.com/necolas/react-native-web).
+Component library compatible with Expo/React Native projects as well as React applications.
+
+Relies on [react-native-web](https://github.com/necolas/react-native-web) to port components, written with a React Native first approach, to the web.
+
+Storybook (web version): <https://kiwicom-universal-components.netlify.com>
 
 ## Usage
 
