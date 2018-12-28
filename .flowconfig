@@ -19,9 +19,6 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
-; Web + RN TODO temp fix. Duplicated providers.
-.*/node_modules/react-native-web/.*
-
 ; My custom ignores
 <PROJECT_ROOT>/\.git/
 <PROJECT_ROOT>/node_modules/reqwest/.+
