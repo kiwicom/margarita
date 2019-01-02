@@ -11,6 +11,7 @@ const defaultState = {
       params: {},
     },
     navigate: () => {},
+    setParams: () => {},
   },
 };
 
@@ -35,17 +36,21 @@ class Provider extends React.Component<Props, State> {
       navigation: {
         ...defaultState.navigation,
         navigate: this.navigate,
+        setParams: this.setParams,
       },
     };
   }
 
   navigate = (url: Route, params?: Object) => {
     this.setParams(params);
-    this.goTo(url);
+    this.goTo(url, params);
   };
 
-  goTo = (url: Route) => {
-    Router.push({ pathname: `/${url}` });
+  goTo = (url: Route, params?: Object) => {
+    Router.push({
+      pathname: `/${url}`,
+      query: params,
+    });
   };
 
   setParams = (params?: Object) => {
