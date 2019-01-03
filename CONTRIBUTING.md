@@ -83,8 +83,22 @@ and it is then easier to test the interactions with the action logger, and play 
 - I wrote tests for my component and all tests are passing;
 - I ran `yarn test-ci` and there were no errors;
 - I squashed all my commits into one (unless having several really makes sense);
-- I chose a descriptive message for all my commit messages;
+- I chose a descriptive message for all my commit messages ([check commit message convention](#commit-message-convention));
 - I created my PR and added reviewers.
+
+### Commit message convention
+
+- Commit message should contain also proper description, once you open a PR it will be added automatically to PR description.
+
+- We prefix our commit messages with one of the following to signify the kind of change:
+
+  - `fix`: bug fixes, e.g. fix some colors, paddings.
+  - `feat`: new features, e.g. add new component.
+  - `refactor`: code/structure refactor, e.g. new structure folder for components/ extracting component to separate file.
+  - `docs`: changes into documentation,
+  - `test`: adding or updating tests, e.g. unit, snapshot testing.
+  - `chore`: tooling changes, e.g. change circle ci config.
+  - `BREAKING`: for changes that break existing usage, e.g. change API of a component.
 
 ## Updating Icons
 
