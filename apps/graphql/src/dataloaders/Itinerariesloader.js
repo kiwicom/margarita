@@ -21,7 +21,7 @@ export type ItinerariesSearchParameters = {|
   |},
 |};
 
-export type Route = {
+export type RouteItem = {
   +airline: string,
   +cityFrom: string,
   +cityTo: string,
@@ -41,10 +41,10 @@ export type Itineraries = {|
   +localDeparture: string,
   +localArrival: string,
   +price: number,
-  +routes: Array<Route>,
+  +route: Array<RouteItem>,
 |};
 
-export type ApiRoute = {
+export type ApiRouteItem = {
   +airline: string,
   +cityFrom: string,
   +cityTo: string,
@@ -65,7 +65,7 @@ type ApiResponse = {|
     +flyTo: string,
     +local_departure: string,
     +local_arrival: string,
-    +route: Array<ApiRoute>,
+    +route: Array<ApiRouteItem>,
   |}>,
 |};
 
@@ -126,15 +126,15 @@ const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
     flyTo: itinerary.flyTo,
     localDeparture: itinerary.local_departure,
     localArrival: itinerary.local_arrival,
-    routes: itinerary.route.map(route => ({
-      airline: route.airline,
-      cityFrom: route.cityFrom,
-      cityTo: route.cityTo,
-      id: route.id,
-      localArrival: route.local_arrival,
-      utcArrival: route.utc_arrival,
-      localDeparture: route.local_departure,
-      utcDeparture: route.utc_departure,
+    route: itinerary.route.map(routeItem => ({
+      airline: routeItem.airline,
+      cityFrom: routeItem.cityFrom,
+      cityTo: routeItem.cityTo,
+      id: routeItem.id,
+      localArrival: routeItem.local_arrival,
+      utcArrival: routeItem.utc_arrival,
+      localDeparture: routeItem.local_departure,
+      utcDeparture: routeItem.utc_departure,
     })),
   }));
 };

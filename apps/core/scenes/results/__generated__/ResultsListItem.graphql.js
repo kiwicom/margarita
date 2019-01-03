@@ -15,7 +15,7 @@ export type ResultsListItem = {|
   +price: ?number,
   +localDeparture: ?string,
   +localArrival: ?string,
-  +routes: ?$ReadOnlyArray<?{|
+  +route: ?$ReadOnlyArray<?{|
     +airline: ?string,
     +cityFrom: ?string,
     +cityTo: ?string,
@@ -71,10 +71,10 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "routes",
+      "name": "route",
       "storageKey": null,
       "args": null,
-      "concreteType": "Routes",
+      "concreteType": "Route",
       "plural": true,
       "selections": [
         {
@@ -127,5 +127,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '532612cd51195595adbd975556672f2b';
+(node/*: any*/).hash = '495e9fa445a250718d6328eefd7c3a7f';
 module.exports = node;

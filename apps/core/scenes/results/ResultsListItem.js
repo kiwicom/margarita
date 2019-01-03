@@ -29,8 +29,8 @@ export type TripSectorProps = {
   +duration: string,
 };
 
-export type Routes = $PropertyType<ResultsListItemType, 'routes'>;
-export type Route = $ElementType<$NonMaybeType<Routes>, number>; // number because arrays are number-indexed
+export type Route = $PropertyType<ResultsListItemType, 'route'>;
+export type RouteItem = $ElementType<$NonMaybeType<Route>, number>; // number because arrays are number-indexed
 
 const dateFormat = 'ccc d LLL';
 
@@ -45,7 +45,7 @@ class ResultListItem extends React.Component<Props> {
     }`;
   };
 
-  getRoute = (route: Route): ?TripSectorProps => {
+  getRouteItem = (route: RouteItem): ?TripSectorProps => {
     const localArrival = route && DateTime.fromISO(route.localArrival);
     const localDeparture = route && DateTime.fromISO(route.localDeparture);
     const utcArrival = route && DateTime.fromISO(route.utcArrival);
@@ -71,9 +71,9 @@ class ResultListItem extends React.Component<Props> {
     );
   };
 
-  getRoutes = (): ?Array<?TripSectorProps> => {
-    const { routes } = this.props.data;
-    return routes && routes.map(this.getRoute);
+  getRoute = (): ?Array<?TripSectorProps> => {
+    const { route } = this.props.data;
+    return route && route.map(this.getRouteItem);
   };
 
   render() {
@@ -110,7 +110,7 @@ class ResultListItem extends React.Component<Props> {
     };
     return (
       <ConnectionCard
-        wayForth={this.getRoutes()}
+        wayForth={this.getRoute()}
         badges={badges}
         price={priceObject}
       />
@@ -126,7 +126,7 @@ export default createFragmentContainer(
       price
       localDeparture
       localArrival
-      routes {
+      route {
         airline
         cityFrom
         cityTo
