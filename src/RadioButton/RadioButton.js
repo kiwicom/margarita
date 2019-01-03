@@ -6,6 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import type { Props } from './RadioButtonTypes';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 export default function RadioButton({
   type = 'bullet',
@@ -15,13 +16,18 @@ export default function RadioButton({
   children,
   onPress,
   style,
+  label,
 }: Props) {
   const isCheckType = type === 'check';
-  const label = <View style={styles.label}>{children}</View>;
+  const renderLabel = children || (
+    <View style={styles.label} testID="label-wrapper">
+      <Text>{label}</Text>
+    </View>
+  );
   return (
     <TouchableWithoutFeedback disabled={disabled} onPress={onPress}>
       <View style={[styles.wrapper, disabled && styles.wrapperDisabled, style]}>
-        {bulletPosition === 'right' && label}
+        {bulletPosition === 'right' && renderLabel}
         <View
           style={[
             styles.bullet,
@@ -36,7 +42,7 @@ export default function RadioButton({
               <View style={styles.bulletFill} />
             ))}
         </View>
-        {bulletPosition === 'left' && label}
+        {bulletPosition === 'left' && renderLabel}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -76,5 +82,7 @@ const styles = StyleSheet.create({
   },
   label: {
     flex: 1,
+    alignSelf: 'center',
+    marginHorizontal: 5,
   },
 });

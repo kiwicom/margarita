@@ -11,6 +11,7 @@ export default function Checkbox({
   checked,
   info,
   onChange,
+  children,
 }: Props) {
   return (
     <CheckboxShared
@@ -20,6 +21,8 @@ export default function Checkbox({
       checked={checked}
       info={info}
       onPress={onChange}
-    />
+    >
+      {children}
+    </CheckboxShared>
   );
 }

@@ -1,26 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import { Icon } from '../Icon';
 
 import GenericButtonWrapper from './GenericButtonWrapper';
-import type { ButtonType } from './ButtonTypes';
+import type { Props } from './ButtonTypes';
 
 import ButtonInner from './ButtonInner';
-
-type Props = {|
-  +children: React.Node,
-  +width?: number,
-  +onPress: () => void,
-  +disabled?: boolean,
-  +type?: ButtonType,
-  +leftIcon?: React.Element<typeof Icon> | null,
-  +rightIcon?: React.Element<typeof Icon> | null,
-  +testID?: string,
-  +sublabel?: React.Node,
-  +href?: string,
-  +block?: boolean,
-|};
 
 export default function Button({
   onPress,
@@ -32,6 +17,7 @@ export default function Button({
   leftIcon,
   rightIcon,
   sublabel,
+  label,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -41,6 +27,7 @@ export default function Button({
     leftIcon,
     rightIcon,
     sublabel,
+    label,
   };
 
   return (

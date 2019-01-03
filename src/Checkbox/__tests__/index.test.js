@@ -1,11 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 import CheckboxWeb from '../Checkbox.web';
 import CheckboxNative from '../Checkbox.native';
+import CheckboxShared from '../CheckboxShared';
+import CheckboxText from '../CheckboxText';
 
 const originalPlatform = Platform.OS;
 const label = 'Label';
@@ -134,5 +136,24 @@ describe('CheckBox - native', () => {
     );
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
+  });
+});
+
+describe('CheckboxShared', () => {
+  it('should render CheckboxText with label', () => {
+    const wrapper = render(<CheckboxShared label="label" />);
+    expect(wrapper.getByType(CheckboxText)).toBeDefined();
+  });
+
+  it('should render children instead of label', () => {
+    const wrapper = render(
+      <CheckboxShared label="label">
+        <View testID="test-view" />
+      </CheckboxShared>
+    );
+    expect(wrapper.getByTestId('test-view')).toBeDefined();
+    expect(() => {
+      wrapper.getByType(CheckboxText);
+    }).toThrow();
   });
 });

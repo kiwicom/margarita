@@ -2,8 +2,8 @@
 
 exports[`RadioButton should match snapshot diff 1`] = `
 "Snapshot Diff:
-- <RadioButton onPress={[Function mockConstructor]}><Text>Label</Text></RadioButton>
-+ <RadioButton bulletPosition=\\"left\\" checked={true} disabled={false} onPress={[Function mockConstructor]} style={{\\"padding\\": 10}} type=\\"bullet\\"><Text>Label</Text></RadioButton>
+- <RadioButton onPress={[Function mockConstructor]}><Text>child-label</Text></RadioButton>
++ <RadioButton bulletPosition=\\"left\\" checked={true} disabled={false} onPress={[Function mockConstructor]} style={{\\"padding\\": 10}} type=\\"bullet\\"><Text>child-label</Text></RadioButton>
 
 @@ -9,12 +9,14 @@
     style={
@@ -48,9 +48,9 @@ exports[`RadioButton should match snapshot diff 1`] = `
 +       }
       />
 +   </View>
-    <View
+    <Text
       style={
-        Object {
-          \\"flex\\": 1,
-        }"
+        Array [
+          Object {
+            \\"fontFamily\\": \\"Roboto\\","
 `;

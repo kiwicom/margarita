@@ -11,7 +11,8 @@ export type Props = {|
   +bulletPosition?: BulletPositionType,
   +checked?: boolean,
   +disabled?: boolean,
-  +children: React.Element<any>,
+  +children?: React.Node,
+  +label?: React.Node,
   +onPress: () => void,
   +style?: StylePropType,
 |};

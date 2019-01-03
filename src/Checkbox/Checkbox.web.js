@@ -20,6 +20,7 @@ export default function Checkbox({
   name,
   info,
   onChange,
+  children,
 }: Props) {
   const labelStyle = {
     display: 'flex',
@@ -44,7 +45,9 @@ export default function Checkbox({
         disabled={disabled}
         checked={checked}
         info={info}
-      />
+      >
+        {children}
+      </CheckboxShared>
     </label>
   );
 }

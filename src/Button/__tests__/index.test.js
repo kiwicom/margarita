@@ -1,12 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { render, shallow, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 
 import ButtonWeb from '../Button.web';
 import ButtonNative from '../Button.native';
+import ButtonInner from '../ButtonInner';
 import { Icon } from '../../Icon';
 
 const originalPlatform = Platform.OS;
@@ -40,9 +41,8 @@ describe('Button - web', () => {
       href={href}
       block={block}
       testID={testID}
-    >
-      {buttonText}
-    </ButtonWeb>
+      label={buttonText}
+    />
   );
 
   it('should have the right text', () => {
@@ -149,9 +149,8 @@ describe('Button - native', () => {
       href={href}
       block={block}
       testID={testID}
-    >
-      {buttonText}
-    </ButtonNative>
+      label={buttonText}
+    />
   );
 
   it('should have the right text', () => {
@@ -222,5 +221,25 @@ describe('Button - native', () => {
       <ButtonNative onPress={noop}>{buttonText}</ButtonNative>
     );
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
+  });
+});
+
+describe('ButtonInner', () => {
+  it('should render children instead of label if passed', () => {
+    const label = 'should not render';
+    const wrapper = render(
+      <ButtonInner label={label}>
+        <View testID="child-view" />
+      </ButtonInner>
+    );
+    expect(wrapper.getByTestId('child-view')).toBeDefined();
+    expect(() => {
+      wrapper.getByText(label);
+    }).toThrow();
+  });
+
+  it('should render label if no children are passed', () => {
+    const wrapper = render(<ButtonInner label="test" />);
+    expect(wrapper.getByText('test')).toBeDefined();
   });
 });

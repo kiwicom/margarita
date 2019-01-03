@@ -12,7 +12,7 @@ describe('RadioButton', () => {
   const checked = true;
   const disabled = false;
   const label = 'Label';
-  const children = <Text>{label}</Text>;
+  const children = <Text>child-label</Text>;
   const onPress = jest.fn();
   const style = { padding: 10 };
 
@@ -24,13 +24,20 @@ describe('RadioButton', () => {
       disabled={disabled}
       onPress={onPress}
       style={style}
+      label={label}
     >
       {children}
     </RadioButton>
   );
 
-  it('should contain a label', () => {
-    expect(getByText(label)).toBeDefined();
+  it('should contain child', () => {
+    expect(getByText('child-label')).toBeDefined();
+  });
+
+  it('should render children rather than label', () => {
+    expect(() => {
+      getByText(label);
+    }).toThrow();
   });
 
   it('should have passed props', () => {
@@ -43,6 +50,7 @@ describe('RadioButton', () => {
         children,
         onPress,
         style,
+        label,
       })
     ).toBeDefined();
   });
@@ -67,5 +75,10 @@ describe('RadioButton', () => {
     );
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
+  });
+
+  it('should render label', () => {
+    const wrapper = render(<RadioButton onPress={onPress} label="label" />);
+    expect(wrapper.getByTestId('label-wrapper')).toBeDefined();
   });
 });

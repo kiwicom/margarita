@@ -11,4 +11,5 @@ export type Props = {|
   +name?: string, // this prop is currently used only on web
   +info?: React.Node,
   +onChange?: () => void,
+  +children?: React.Node,
 |};

@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { View, Platform } from 'react-native';
+import { View, Platform, Text } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import {
   boolean,
@@ -58,6 +58,7 @@ storiesOf('Button', module)
       href = text('href', '');
       block = boolean('block', false);
     }
+    const label = text('label', 'Playground button');
     return (
       <Button
         type={type}
@@ -69,107 +70,108 @@ storiesOf('Button', module)
         sublabel={sublabel}
         href={href}
         block={block}
-      >
-        Playground button
-      </Button>
+        label={label}
+      />
     );
   })
-  .add('default', () => (
-    <>
-      <Button onPress={noop}>Default button</Button>
-      <Separator />
-      <Button
-        onPress={noop}
-        type="primary"
-        leftIcon={<Icon name="attachment" />}
-        rightIcon={<Icon name="attachment" />}
-      >
-        Primary button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="secondary" sublabel="Sublabel">
-        Secondary button
-      </Button>
-      <Separator />
-      <Button
-        onPress={noop}
-        type="info"
-        sublabel="Sublabel"
-        rightIcon={<Icon name="chevron-right" />}
-      >
-        Info button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="success">
-        Success button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="warning">
-        Warning button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="critical">
-        Critical button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="facebook">
-        Facebook button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="google">
-        Google button
-      </Button>
-      <Separator />
-      <Button onPress={noop} type="disabled">
-        Disabled button
-      </Button>
-      <Button onPress={noop} type="primary" leftIcon={<Icon name="calendar" />}>
-        Primary button with icon
-      </Button>
-    </>
-  ))
-  .add('primary', () => (
-    <Button onPress={noop} type="primary">
-      Some random text
-    </Button>
-  ))
-  .add('secondary', () => (
-    <Button onPress={noop} type="secondary">
-      Some random text
-    </Button>
-  ))
-  .add('info', () => (
+  .add('default', () => {
+    const defaultLabel = text('label', 'Default button');
+    const primaryLabel = text('label', 'Primary button');
+    const secondaryLabel = text('label', 'Secondary button');
+    const infoLabel = text('label', 'Info button');
+    const successLabel = text('label', 'Success button');
+    const warningLabel = text('label', 'Warning button');
+    const criticalLabel = text('label', 'Critical button');
+    const facebookLabel = text('label', 'Facebook button');
+    const googleLabel = text('label', 'Google Button');
+    const disabledLabel = text('label', 'Disabled button');
+    const primaryWithIconLabel = text('label', 'Primary button with icon');
+    return (
+      <>
+        <Button onPress={noop} label={defaultLabel} />
+        <Separator />
+        <Button
+          onPress={noop}
+          type="primary"
+          leftIcon={<Icon name="attachment" />}
+          rightIcon={<Icon name="attachment" />}
+          label={primaryLabel}
+        />
+        <Separator />
+        <Button
+          onPress={noop}
+          type="secondary"
+          sublabel="Sublabel"
+          label={secondaryLabel}
+        />
+        <Separator />
+        <Button
+          onPress={noop}
+          type="info"
+          sublabel="Sublabel"
+          rightIcon={<Icon name="chevron-right" />}
+          label={infoLabel}
+        />
+        <Separator />
+        <Button onPress={noop} type="success" label={successLabel} />
+        <Separator />
+        <Button onPress={noop} type="warning" label={warningLabel} />
+        <Separator />
+        <Button onPress={noop} type="critical" label={criticalLabel} />
+        <Separator />
+        <Button onPress={noop} type="facebook" label={facebookLabel} />
+        <Separator />
+        <Button onPress={noop} type="google" label={googleLabel} />
+        <Separator />
+        <Button onPress={noop} type="disabled" label={disabledLabel} />
+        <Separator />
+        <Button
+          onPress={noop}
+          type="primary"
+          leftIcon={<Icon name="calendar" />}
+          label={primaryWithIconLabel}
+        />
+      </>
+    );
+  })
+  .add('primary', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="primary" label={label} />;
+  })
+  .add('secondary', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="secondary" label={label} />;
+  })
+  .add('info', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="info" label={label} />;
+  })
+  .add('success', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="success" label={label} />;
+  })
+  .add('warning', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="warning" label={label} />;
+  })
+  .add('critical', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="critical" label={label} />;
+  })
+  .add('facebook', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="facebook" label={label} />;
+  })
+  .add('google', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="google" label={label} />;
+  })
+  .add('disabled', () => {
+    const label = text('label', 'Some random text');
+    return <Button onPress={noop} type="disabled" label={label} />;
+  })
+  .add('with children', () => (
     <Button onPress={noop} type="info">
-      Some random text
-    </Button>
-  ))
-  .add('success', () => (
-    <Button onPress={noop} type="success">
-      Some random text
-    </Button>
-  ))
-  .add('warning', () => (
-    <Button onPress={noop} type="warning">
-      Some random text
-    </Button>
-  ))
-  .add('critical', () => (
-    <Button onPress={noop} type="critical">
-      Some random text
-    </Button>
-  ))
-  .add('facebook', () => (
-    <Button onPress={noop} type="facebook">
-      Some random text
-    </Button>
-  ))
-  .add('google', () => (
-    <Button onPress={noop} type="google">
-      Some random text
-    </Button>
-  ))
-  .add('disabled', () => (
-    <Button onPress={noop} type="disabled">
-      Some random text
+      <Text style={{ color: 'salmon', padding: 20 }}>Custom child</Text>
     </Button>
   ));

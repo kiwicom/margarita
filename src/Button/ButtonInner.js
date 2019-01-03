@@ -10,13 +10,14 @@ import type { ButtonType } from './ButtonTypes';
 import { textColor, wrapperColor } from './styles';
 
 type Props = {|
-  +children: React.Node,
+  +children?: React.Node,
   +disabled?: boolean,
   +type?: ButtonType,
   +leftIcon?: React.Element<typeof Icon> | null,
   +rightIcon?: React.Element<typeof Icon> | null,
   +testID?: string,
   +sublabel?: React.Node,
+  +label?: React.Node,
 |};
 
 export default function ButtonInner({
@@ -27,6 +28,7 @@ export default function ButtonInner({
   leftIcon: originalleftIcon,
   rightIcon: originalRightIcon,
   sublabel,
+  label,
 }: Props) {
   const leftIcon = originalleftIcon
     ? React.cloneElement(originalleftIcon, { color: textColor[type] })
@@ -59,7 +61,7 @@ export default function ButtonInner({
     >
       <View style={layout.row}>
         {leftIcon != null && <View style={layout.rightSpace}>{leftIcon}</View>}
-        <ButtonTitle text={children} type={type} />
+        {children || <ButtonTitle text={label} type={type} />}
       </View>
       <View style={layout.row}>
         {sublabel != null && (

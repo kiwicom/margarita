@@ -35,7 +35,7 @@ exports[`Button - native should match snapshot diff 1`] = `
         }
       >
         <View
-@@ -43,14 +43,43 @@
+@@ -43,18 +43,124 @@
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
             }
@@ -48,10 +48,10 @@ exports[`Button - native should match snapshot diff 1`] = `
 +             }
 +           }
 +         >
-            <Text
-              style={
-                Array [
-                  Object {
++           <Text
++             style={
++               Array [
++                 Object {
 +                   \\"fontFamily\\": \\"orbit-icons\\",
 +                 },
 +                 Object {
@@ -70,29 +70,10 @@ exports[`Button - native should match snapshot diff 1`] = `
 +             f
 +           </Text>
 +         </View>
-+         <Text
-+           style={
-+             Array [
-+               Object {
-                  \\"fontFamily\\": \\"Roboto\\",
-                  \\"margin\\": 0,
-                },
-                undefined,
-                undefined,
-@@ -72,11 +101,11 @@
-                    \\"fontSize\\": 16,
-                    \\"fontWeight\\": \\"bold\\",
-                    \\"lineHeight\\": 21,
-                  },
-                  Object {
--                   \\"color\\": \\"#fff\\",
-+                   \\"color\\": \\"#0176D2\\",
-                  },
-                  undefined,
-                ],
-              ]
-            }
-@@ -89,9 +118,86 @@
+          Button text
+        </View>
+        <View
+          style={
             Object {
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
@@ -275,7 +256,7 @@ exports[`Button - web should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -42,14 +40,43 @@
+@@ -42,17 +40,76 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
           }
@@ -288,10 +269,10 @@ exports[`Button - web should match snapshot diff 1`] = `
 +           }
 +         }
 +       >
-          <Text
-            style={
-              Array [
-                Object {
++         <Text
++           style={
++             Array [
++               Object {
 +                 \\"fontFamily\\": \\"orbit-icons\\",
 +               },
 +               Object {
@@ -310,29 +291,10 @@ exports[`Button - web should match snapshot diff 1`] = `
 +           f
 +         </Text>
 +       </View>
-+       <Text
-+         style={
-+           Array [
-+             Object {
-                \\"fontFamily\\": \\"Roboto\\",
-                \\"margin\\": 0,
-              },
-              undefined,
-              undefined,
-@@ -71,11 +98,11 @@
-                  \\"fontSize\\": 16,
-                  \\"fontWeight\\": \\"bold\\",
-                  \\"lineHeight\\": 21,
-                },
-                Object {
--                 \\"color\\": \\"#fff\\",
-+                 \\"color\\": \\"#0176D2\\",
-                },
-                undefined,
-              ],
-            ]
-          }
-@@ -88,8 +115,38 @@
+        Button text
+      </View>
+      <View
+        style={
           Object {
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",

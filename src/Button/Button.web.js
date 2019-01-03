@@ -1,23 +1,14 @@
 // @flow
 
 import * as React from 'react';
-import { Icon } from '../Icon';
 
-import type { ButtonType } from './ButtonTypes';
+import type { Props as ButtonProps } from './ButtonTypes';
 
 import { wrapperStyle, disabledStyle, displayBlock } from './styles/index.web';
 import ButtonInner from './ButtonInner';
 
 type Props = {|
-  +children: React.Node,
-  +width?: number,
-  +onPress: () => void,
-  +disabled?: boolean,
-  +type?: ButtonType,
-  +leftIcon?: React.Element<typeof Icon> | null,
-  +rightIcon?: React.Element<typeof Icon> | null,
-  +testID?: string,
-  +sublabel?: React.Node,
+  ...ButtonProps,
   +href?: string,
   +block?: boolean,
 |};
@@ -33,6 +24,7 @@ export default function Button({
   rightIcon,
   href,
   block,
+  label,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -41,6 +33,7 @@ export default function Button({
     children,
     leftIcon,
     rightIcon,
+    label,
   };
 
   if (href) {

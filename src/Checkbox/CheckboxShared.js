@@ -15,6 +15,7 @@ type Props = {|
   +checked?: boolean,
   +info?: React.Node,
   +onPress?: () => void,
+  +children?: React.Node,
 |};
 
 type State = {|
@@ -59,7 +60,15 @@ class CheckboxShared extends React.Component<Props, State> {
   };
 
   render() {
-    const { label, hasError, disabled, checked, info, onPress } = this.props;
+    const {
+      label,
+      hasError,
+      disabled,
+      checked,
+      info,
+      onPress,
+      children,
+    } = this.props;
     const { focusDisplayed, hovered, pressed } = this.state;
 
     return (
@@ -85,7 +94,9 @@ class CheckboxShared extends React.Component<Props, State> {
               hovered={hovered}
               pressed={pressed}
             />
-            <CheckboxText label={label} checked={checked} info={info} />
+            {children || (
+              <CheckboxText label={label} checked={checked} info={info} />
+            )}
           </View>
         </TouchableWithoutFeedback>
       </Hoverable>

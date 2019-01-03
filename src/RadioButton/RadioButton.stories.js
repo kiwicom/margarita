@@ -59,6 +59,35 @@ storiesOf('RadioButton', module)
       </RadioButton>
     );
   })
+  .add('With label', () => {
+    const checked = boolean('Checked', false);
+    const disabled = boolean('Disabled', false);
+    const label = text('Label', 'Label');
+    return (
+      <RadioButton
+        checked={checked}
+        disabled={disabled}
+        onPress={pressAction}
+        label={label}
+      />
+    );
+  })
+  .add('With label and children', () => {
+    const checked = boolean('Checked', false);
+    const disabled = boolean('Disabled', false);
+    const label = text('Label', 'Label');
+    const children = text('children', 'Children take presedence over label');
+    return (
+      <RadioButton
+        checked={checked}
+        disabled={disabled}
+        onPress={pressAction}
+        label={label}
+      >
+        {getSampleLabel(children)}
+      </RadioButton>
+    );
+  })
   .add('Playground', () => {
     const type = select('Type', bulletTypes, bulletTypes[0]);
     const bulletPosition = select(

@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import { View, Text } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
@@ -26,6 +27,18 @@ storiesOf('Checkbox', module)
         info={info}
         onChange={changeAction}
       />
+    );
+  })
+  .add('With children', () => {
+    const value = text('Value', 'value');
+    const info = text('Info', 'Additional information to this choice');
+    const label = text('label', 'This should not render');
+    return (
+      <Checkbox value={value} info={info} onChange={changeAction} label={label}>
+        <View>
+          <Text>Child instead of label</Text>
+        </View>
+      </Checkbox>
     );
   })
   .add('Playground', () => {
