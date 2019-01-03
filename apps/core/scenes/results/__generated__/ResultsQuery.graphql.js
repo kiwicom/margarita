@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c4d9d67482b1c5b6d25353ca9f9e8a88
+ * @relayHash 47419b4952d95915cb103b33be4b499b
  */
 
 /* eslint-disable */
@@ -62,7 +62,7 @@ fragment ResultsListItem on Itinerary {
   price
   localDeparture
   localArrival
-  routes {
+  route {
     airline
     cityFrom
     cityTo
@@ -118,7 +118,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  currency\n  price\n  localDeparture\n  localArrival\n  routes {\n    airline\n    cityFrom\n    cityTo\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  currency\n  price\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -197,10 +197,10 @@ return {
                   {
                     "kind": "LinkedField",
                     "alias": null,
-                    "name": "routes",
+                    "name": "route",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "Routes",
+                    "concreteType": "Route",
                     "plural": true,
                     "selections": [
                       {

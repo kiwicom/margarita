@@ -50,7 +50,7 @@ type Itinerary {
   flyTo: String
   localDeparture: String
   localArrival: String
-  routes: [Routes]
+  route: [Route]
 }
 
 """A connection to a list of items."""
@@ -143,7 +143,7 @@ type RootQuery {
   hello: String
 }
 
-type Routes {
+type Route {
   airline: String
   cityFrom: String
   cityTo: String

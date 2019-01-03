@@ -13,8 +13,8 @@ export type Itinerary = {|
   +id: string,
 |};
 
-const routesType = new GraphQLObjectType({
-  name: 'Routes',
+const routeType = new GraphQLObjectType({
+  name: 'Route',
   fields: {
     airline: { type: GraphQLString },
     cityFrom: { type: GraphQLString },
@@ -39,7 +39,7 @@ export default new GraphQLObjectType({
     flyTo: { type: GraphQLString },
     localDeparture: { type: GraphQLString },
     localArrival: { type: GraphQLString },
-    routes: { type: new GraphQLList(routesType) },
+    route: { type: new GraphQLList(routeType) },
     // TODO: Add fields as needed
   },
 });
