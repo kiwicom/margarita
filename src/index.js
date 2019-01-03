@@ -28,6 +28,7 @@ export {
   TimelinePriorityBoarding,
 } from './TimelineInformation';
 export { Tooltip, TooltipBubble } from './Tooltip';
+export { Touchable } from './Touchable';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

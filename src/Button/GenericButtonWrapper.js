@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import Touchable from './Touchable';
+import { Touchable } from '../Touchable';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|

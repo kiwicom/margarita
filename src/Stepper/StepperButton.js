@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Icon } from '../Icon';
-import Touchable from '../Button/Touchable';
+import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 

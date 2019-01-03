@@ -5,7 +5,7 @@ import { render, fireEvent } from 'react-native-testing-library';
 
 import { PlaceCard } from '..';
 import MissingImage from '../Image/MissingImage';
-import Touchable from '../../Button/Touchable';
+import { Touchable } from '../../Touchable';
 
 describe('PlaceCard', () => {
   const onPress = jest.fn();

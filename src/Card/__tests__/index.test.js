@@ -5,7 +5,7 @@ import { render, fireEvent } from 'react-native-testing-library';
 
 import { Card } from '..';
 import { Text } from '../../Text';
-import Touchable from '../../Button/Touchable';
+import { Touchable } from '../../Touchable';
 
 const noop = jest.fn();
 const children = 'Lorem ipsum';
