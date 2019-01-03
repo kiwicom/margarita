@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 
-import RowOption from '../RowOption';
+import RowOption from '../RowOptionContainer';
 
 import Touchable from '../../Button/Touchable';
 import { Icon } from '../../Icon';
