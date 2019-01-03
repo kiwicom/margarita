@@ -7,7 +7,7 @@ import StyleSheet from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 import { Icon } from '../Icon';
-import Text from '../Text';
+import { Text } from '../Text';
 
 type Props = {|
   +icon: React.Element<typeof Icon>,

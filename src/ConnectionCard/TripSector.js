@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View, Image } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import Text from '../Text';
+import { Text } from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import { CarrierLogo } from '../CarrierLogo';

@@ -4,7 +4,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
-import Text from './index';
+import { Text } from '.';
 
 const style = {
   alignSelf: 'stretch',

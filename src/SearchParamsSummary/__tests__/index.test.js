@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
 
-import Text from '../../Text';
+import { Text } from '../../Text';
 import { Icon } from '../../Icon';
 import { SearchParamsSummary } from '../index';
 import AdaptableBadge from '../../shared/AdaptableBadge';

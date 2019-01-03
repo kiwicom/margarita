@@ -5,7 +5,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import TimelineInformation from './TimelineInformation';
 
 import { Icon } from '../Icon';
-import Text from '../Text';
+import { Text } from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|

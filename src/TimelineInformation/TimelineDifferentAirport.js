@@ -5,7 +5,7 @@ import * as React from 'react';
 import TimelineInformation from './TimelineInformation';
 
 import { Icon } from '../Icon';
-import Text from '../Text';
+import { Text } from '../Text';
 
 type Props = {|
   +differentAirportWarning: string,

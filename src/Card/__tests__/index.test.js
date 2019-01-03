@@ -4,7 +4,7 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 
 import { Card } from '..';
-import Text from '../../Text';
+import { Text } from '../../Text';
 import Touchable from '../../Button/Touchable';
 
 const noop = jest.fn();

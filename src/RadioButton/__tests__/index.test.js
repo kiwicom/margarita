@@ -4,7 +4,7 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 import { RadioButton } from '..';
-import Text from '../../Text';
+import { Text } from '../../Text';
 
 describe('RadioButton', () => {
   const type = 'bullet';

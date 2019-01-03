@@ -11,7 +11,7 @@ import StyleSheet from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { NotificationStyleType } from '../types';
 
-import Text from '../Text';
+import { Text } from '../Text';
 
 type Props = {|
   +style?: StylePropType,

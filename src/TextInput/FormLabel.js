@@ -4,7 +4,7 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 
-import Text from '../Text';
+import { Text } from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 
 type Props = {|

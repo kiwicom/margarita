@@ -5,7 +5,7 @@ import { storiesOf } from '@storybook/react-native';
 import { select, boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 import { RadioButton } from '.';
-import Text from '../Text';
+import { Text } from '../Text';
 import StyleSheet from '../PlatformStyleSheet';
 
 const pressAction = action('radio-button-press');

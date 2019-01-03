@@ -14,7 +14,7 @@ import {
 import { Icon } from '../Icon';
 import icons from '../Icon/icons.json';
 
-import Text from '../Text';
+import { Text } from '../Text';
 
 storiesOf('TimelineInformation', module)
   .addDecorator(withKnobs)

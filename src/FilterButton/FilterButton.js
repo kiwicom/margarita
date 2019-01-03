@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import Text from '../Text';
+import { Text } from '../Text';
 import Touchable from '../Button/Touchable';
 import StyleSheet from '../PlatformStyleSheet';
 

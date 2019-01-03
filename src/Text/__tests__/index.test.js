@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
-import Text from '../index';
+import { Text } from '..';
 
 describe('Text', () => {
   const children = 'Lorem ipsum';

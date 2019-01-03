@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import Text from '../Text';
+import { Text } from '../Text';
 import FormLabel from './FormLabel';
 import { Icon } from '../Icon';
 import { FormFeedback } from '../FormFeedback';

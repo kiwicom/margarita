@@ -7,7 +7,7 @@ import { withKnobs, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import { Card } from '.';
-import Text from '../Text';
+import { Text } from '../Text';
 
 const noop = action('card-press');
 storiesOf('Card', module)

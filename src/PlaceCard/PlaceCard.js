@@ -4,7 +4,7 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View, Image } from 'react-native';
 
-import Text from '../Text';
+import { Text } from '../Text';
 import Touchable from '../Button/Touchable';
 import AdaptableBadge from '../shared/AdaptableBadge';
 import BlackToAlpha from './assets/black-to-alpha-vertical.png';

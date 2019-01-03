@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import Text from '../Text';
+import { Text } from '../Text';
 import { Icon } from '../Icon';
 import StepperButton from './StepperButton';
 import StyleSheet from '../PlatformStyleSheet';

@@ -18,7 +18,7 @@ export { Rating } from './Rating';
 export { SearchParamsSummary } from './SearchParamsSummary';
 export { ServiceLogo } from './ServiceLogo';
 export { Stepper } from './Stepper';
-export { default as Text } from './Text';
+export { Text } from './Text';
 export { TextInput } from './TextInput';
 export {
   TimelineInformation,

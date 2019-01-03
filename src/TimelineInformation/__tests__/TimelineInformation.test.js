@@ -6,7 +6,7 @@ import snapshotDiff from 'snapshot-diff';
 import { TimelineInformation } from '../index';
 
 import { Icon } from '../../Icon';
-import Text from '../../Text';
+import { Text } from '../../Text';
 
 describe('TimelineInformation', () => {
   const informationText = 'Lorem ipsum';

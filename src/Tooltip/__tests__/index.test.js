@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { shallow, render } from 'react-native-testing-library';
 import { Tooltip, TooltipBubble } from '..';
-import Text from '../../Text';
+import { Text } from '../../Text';
 
 describe('TooltipBubble', () => {
   const component = (
