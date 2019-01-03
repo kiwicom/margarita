@@ -4,8 +4,8 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import Text from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { Text } from '../Text';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +type: 'localization' | 'destination' | 'airplane' | 'bus' | 'train',

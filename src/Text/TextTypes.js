@@ -22,9 +22,5 @@ export type TextType = {|
     | 'success'
     | 'warning'
     | 'white',
-<<<<<<< HEAD
   +weight?: 'normal' | 'bold',
-=======
-  +numberOfLines?: number,
->>>>>>> Add new type and text truncation
 |};

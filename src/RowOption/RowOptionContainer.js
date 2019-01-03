@@ -8,8 +8,8 @@ import RowOptionContent from './RowOptionContent';
 import RowOptionLeftIcon from './RowOptionLeftIcon';
 import RowOptionRightButton from './RowOptionRightButton';
 
-import Touchable from '../Button/Touchable';
-import StyleSheet from '../PlatformStyleSheet';
+import { Touchable } from '../Touchable';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +border?: 'long' | 'short' | 'shaped',

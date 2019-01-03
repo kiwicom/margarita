@@ -5,7 +5,7 @@ import { render, fireEvent } from 'react-native-testing-library';
 
 import RowOption from '../RowOptionContainer';
 
-import Touchable from '../../Button/Touchable';
+import { Touchable } from '../../Touchable';
 import { Icon } from '../../Icon';
 
 describe('RowOption', () => {

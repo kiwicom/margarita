@@ -4,8 +4,8 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Icon } from '../Icon';
-import Touchable from '../Button/Touchable';
-import StyleSheet from '../PlatformStyleSheet';
+import { Touchable } from '../Touchable';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +onAddPress: () => void,
