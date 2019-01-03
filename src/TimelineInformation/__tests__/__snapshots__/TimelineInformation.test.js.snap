@@ -21,10 +21,10 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
   >
     <Text
       style={
-@@ -24,11 +27,11 @@
-          },
-          Object {
-            \\"fontSize\\": 16,
+@@ -27,11 +30,11 @@
+            \\"height\\": 16,
+            \\"lineHeight\\": 16,
+            \\"width\\": 16,
           },
           Object {
 -           \\"color\\": \\"#171b1e\\",
@@ -34,7 +34,7 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
         ]
       }
     >
-@@ -56,11 +59,11 @@
+@@ -59,11 +62,11 @@
             },
             Object {
               \\"fontSize\\": 14,

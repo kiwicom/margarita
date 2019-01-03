@@ -5,7 +5,7 @@ exports[`Stepper should match snapshot diff between small and normal input 1`] =
 - <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} />
 + <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} showNumber={false} />
 
-@@ -62,29 +62,2 @@
+@@ -65,29 +65,2 @@
     </View>
 -   <Text
 -     style={

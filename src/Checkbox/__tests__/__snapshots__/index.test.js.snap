@@ -18,7 +18,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
   >
     <View
       style={
-@@ -28,17 +28,36 @@
+@@ -28,17 +28,39 @@
             \\"borderWidth\\": 1,
             \\"height\\": 20,
             \\"justifyContent\\": \\"center\\",
@@ -41,6 +41,9 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
 +           },
 +           Object {
 +             \\"fontSize\\": 16,
++             \\"height\\": 16,
++             \\"lineHeight\\": 16,
++             \\"width\\": 16,
 +           },
 +           Object {
 +             \\"color\\": \\"#00a991\\",
@@ -57,7 +60,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
         Object {
           \\"display\\": \\"flex\\",
           \\"flex\\": 1,
-@@ -55,21 +74,27 @@
+@@ -55,21 +77,27 @@
               \\"fontFamily\\": \\"Roboto\\",
               \\"fontSize\\": 14,
               \\"fontWeight\\": \\"400\\",
@@ -131,7 +134,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
     >
       <View
         style={
-@@ -46,17 +51,36 @@
+@@ -46,17 +51,39 @@
               \\"borderWidth\\": 1,
               \\"height\\": 20,
               \\"justifyContent\\": \\"center\\",
@@ -154,6 +157,9 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 +             },
 +             Object {
 +               \\"fontSize\\": 16,
++               \\"height\\": 16,
++               \\"lineHeight\\": 16,
++               \\"width\\": 16,
 +             },
 +             Object {
 +               \\"color\\": \\"#00a991\\",
@@ -170,7 +176,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
           Object {
             \\"display\\": \\"flex\\",
             \\"flex\\": 1,
-@@ -73,22 +97,28 @@
+@@ -73,22 +100,28 @@
                 \\"fontFamily\\": \\"Roboto\\",
                 \\"fontSize\\": 14,
                 \\"fontWeight\\": \\"400\\",

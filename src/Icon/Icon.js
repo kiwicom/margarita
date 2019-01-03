@@ -35,6 +35,13 @@ export default function Icon({
   );
 }
 
+const getSizeStyle = (size: number): Object => ({
+  fontSize: size,
+  width: size,
+  height: size,
+  lineHeight: size,
+});
+
 const styles = StyleSheet.create({
   icon: {
     fontFamily: 'orbit-icons',
@@ -44,14 +51,8 @@ const styles = StyleSheet.create({
     },
   },
   /* eslint-disable react-native/no-unused-styles */
-  small: {
-    fontSize: parseFloat(defaultTokens.widthIconSmall),
-  },
-  medium: {
-    fontSize: parseFloat(defaultTokens.widthIconMedium),
-  },
-  large: {
-    fontSize: parseFloat(defaultTokens.widthIconLarge),
-  },
+  small: getSizeStyle(parseFloat(defaultTokens.widthIconSmall)),
+  medium: getSizeStyle(parseFloat(defaultTokens.widthIconMedium)),
+  large: getSizeStyle(parseFloat(defaultTokens.widthIconLarge)),
   /* eslint-enable */
 });

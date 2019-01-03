@@ -5,11 +5,17 @@ exports[`Icon should match snapshot diff between regular and custom icon 1`] = `
 - First value
 + Second value
 
-@@ -6,8 +6,8 @@
+@@ -6,11 +6,11 @@
         },
         Object {
 -         \\"fontSize\\": 24,
+-         \\"height\\": 24,
+-         \\"lineHeight\\": 24,
+-         \\"width\\": 24,
 +         \\"fontSize\\": 32,
++         \\"height\\": 32,
++         \\"lineHeight\\": 32,
++         \\"width\\": 32,
         },
         Object {
 -         \\"color\\": \\"#46515e\\",
