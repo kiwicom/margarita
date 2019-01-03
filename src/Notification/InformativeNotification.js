@@ -4,7 +4,7 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Animated } from 'react-native';
 
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';

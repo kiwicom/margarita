@@ -5,7 +5,7 @@ import { FlatList, View } from 'react-native';
 
 import { Icon } from '.';
 import { Text } from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import iconsMap from './icons.json';
 
 const keyExtractor = item => item;

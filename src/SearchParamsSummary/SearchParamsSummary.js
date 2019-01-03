@@ -7,7 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import AdaptableBadge from '../shared/AdaptableBadge';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Trip = {|
   +city: string,

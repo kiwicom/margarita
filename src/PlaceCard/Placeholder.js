@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Shimmer from '../Placeholder/shimmer';
 import connect from '../Placeholder/connect';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 const Placeholder = () => (
   <View style={styles.container}>

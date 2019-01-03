@@ -10,7 +10,7 @@ import AdaptableBadge from '../shared/AdaptableBadge';
 import BlackToAlpha from './assets/black-to-alpha-vertical.png';
 
 import CityImage from './Image/CityImage';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +imageUrl?: string,

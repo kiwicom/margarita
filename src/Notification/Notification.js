@@ -5,7 +5,7 @@ import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { getStatusBarHeight } from '../utils/StatusBarHeight';
 
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import InformativeNotification from './InformativeNotification';
 import ImportantNotification from './ImportantNotification';
 

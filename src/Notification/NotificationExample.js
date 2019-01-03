@@ -5,7 +5,7 @@ import { View } from 'react-native';
 
 import Notification from './Notification';
 import { Button } from '../Button';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 import type { NotificationType } from '../types';
 

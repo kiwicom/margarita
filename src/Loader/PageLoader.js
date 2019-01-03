@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Platform, View } from 'react-native';
 
 import Loader from './Loader';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 export default function PageLoader() {
   return (

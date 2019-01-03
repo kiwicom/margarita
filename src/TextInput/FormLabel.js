@@ -5,7 +5,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 
 import { Text } from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +children: React.Node,

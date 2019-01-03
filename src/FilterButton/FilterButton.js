@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Text } from '../Text';
 import Touchable from '../Button/Touchable';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 import type { Props } from './FilterButtonTypes';
 

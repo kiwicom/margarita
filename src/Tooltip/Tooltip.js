@@ -5,7 +5,7 @@ import { Dimensions, View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
 import TooltipBubble from './TooltipBubble';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +isActive?: boolean,

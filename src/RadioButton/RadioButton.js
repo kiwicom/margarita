@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import type { Props } from './RadioButtonTypes';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import { Icon } from '../Icon';
 
 export default function RadioButton({

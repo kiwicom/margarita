@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 
 import { Icon } from '../Icon';
-import StyleSheet from '../PlatformStyleSheet/index';
+import { StyleSheet } from '../PlatformStyleSheet';
 import ButtonTitle from './ButtonTitle';
 import type { ButtonType } from './ButtonTypes';
 import { textColor, wrapperColor } from './styles';

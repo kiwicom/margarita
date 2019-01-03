@@ -6,7 +6,7 @@ import CheckboxText from './CheckboxText';
 import CheckboxIcon from './CheckboxIcon';
 import Hoverable from './Hoverable';
 import theme, { parseStringToFloat } from './styles';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { CheckboxSharedProps, CheckboxSharedState } from './CheckboxTypes';
 
 class CheckboxShared extends React.Component<

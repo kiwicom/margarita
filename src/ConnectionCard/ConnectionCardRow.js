@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|

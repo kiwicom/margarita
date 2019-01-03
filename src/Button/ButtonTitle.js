@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 import { Text } from '../Text';
 import { textColor } from './styles';

@@ -14,7 +14,7 @@ import { Text } from '../Text';
 import FormLabel from './FormLabel';
 import { Icon } from '../Icon';
 import { FormFeedback } from '../FormFeedback';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import { createStylesGenerator } from '../utils';
 import { fontSize, height } from './styles';
 

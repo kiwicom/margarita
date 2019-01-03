@@ -10,7 +10,7 @@ import BadgesContainer from './BadgesContainer';
 import type { BadgeProps } from '../Badge/BadgeTypes';
 import type { LocalizedPriceProps } from '../LocalizedPrice/LocalizedPriceTypes';
 import type { TripSectorProps } from './ConnectionCardTypes';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type TripSectorWithId = { ...TripSectorProps, id: number };
 type BadgeWithId = { ...BadgeProps, id: number };

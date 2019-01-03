@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Text, View, Platform } from 'react-native';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import theme, { parsePxValue } from './styles';
 
 type Props = {|

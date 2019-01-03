@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 import { Icon } from '../Icon';

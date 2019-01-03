@@ -30,11 +30,11 @@ export {
 export { Tooltip, TooltipBubble } from './Tooltip';
 
 /* Utils */
-export { default as StyleSheet } from './PlatformStyleSheet';
+export { StyleSheet } from './PlatformStyleSheet';
 
 /* Types */
 export type {
   StylePropType,
   StyleObjectType,
   PlatformStyleObjectType,
-} from './PlatformStyleSheet/StyleTypes.js';
+} from './PlatformStyleSheet';

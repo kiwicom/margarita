@@ -6,7 +6,7 @@ import TimelineInformation from './TimelineInformation';
 
 import { Icon } from '../Icon';
 import { Text } from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
   +cabinBaggageWarning: string,

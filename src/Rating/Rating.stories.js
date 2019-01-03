@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { number, withKnobs } from '@storybook/addon-knobs';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import { Rating } from '.';
 
 storiesOf('Rating', module)

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Text } from '../Text';
-import StyleSheet from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
