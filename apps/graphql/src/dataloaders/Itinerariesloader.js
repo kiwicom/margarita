@@ -72,10 +72,14 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
 
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesSearchParameters>,
+  apikey: string,
 ) => {
   const results: $ReadOnlyArray<ApiResponse> = await Promise.all(
     parameters.map(params => {
-      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
+      return fetch(
+        `/v2/search?${qs.stringify(parseParameters(params))}`,
+        apikey,
+      );
     }),
   );
   return results.map(res => sanitizeIteneraries(res.data));
@@ -95,11 +99,11 @@ const sanitizeIteneraries = (
   }));
 };
 
-export default () =>
+export default (apikey: string) =>
   new Dataloader<ItinerariesSearchParameters, Itineraries[]>(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<Itineraries[]>> => await fetchItineraries(keys),
+    ): Promise<Array<Itineraries[]>> => await fetchItineraries(keys, apikey),
     {
       cacheKeyFn: stringify,
     },
