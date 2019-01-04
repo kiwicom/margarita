@@ -1081,14 +1081,13 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/universal-components@0.0.7", "@kiwicom/universal-components@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.7.tgz#16720556b54787e8fc1df569364fee757d96f411"
-  integrity sha512-tO9hS8Sw0vJw0zwv9yk6UWa2WIP6Qso8XjABdfaKEYLECU9/0d8yZCJ9MysZs6CJLREYMTG5IiE4sXkCxtua7w==
+"@kiwicom/universal-components@^0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.6.tgz#09f3c1561ce0e5f812ded0537c75ff7ace27c790"
+  integrity sha512-F0/68tHN8zKZmSh/k3fDePNFh9wb4NUi6ZODdIgSVW9A3XOinGCKdqkijADlJrekoFL7U/nSGpcvwM29JXBp6g==
   dependencies:
     "@kiwicom/orbit-components" "^0.23.0"
     "@kiwicom/orbit-design-tokens" "^0.2.5"
-    react-native-shimmer "^0.4.1"
     react-native-status-bar-height "^2.2.0"
     styled-components "^4.1.2"
 
@@ -9228,13 +9227,6 @@ react-native-screens@1.0.0-alpha.15:
   version "1.0.0-alpha.19"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.19.tgz#ecf3c9023e169b7013266d40b9c5599f37667f6d"
   integrity sha512-+a7GdwzLWYWYVUJMg+XuyBoRFGD8GdGyBfebuTNBY+xwUZpTXCaK/GlLGL6EE3h0iBHZu83do7zViEailWRNyA==
-
-react-native-shimmer@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-shimmer/-/react-native-shimmer-0.4.1.tgz#4221a4b19e9001c1a8afd0cee0979e1ede6e8a44"
-  integrity sha512-f2SitWHcO9BaVazmaRmqwlgq56TUy+fdMQGfDyqxdVWDcO7QaxCSoB2B2Bx5dA9W2FoyincrJNFiM0Pk1OmRBQ==
-  dependencies:
-    prop-types "^15.6.0"
 
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"

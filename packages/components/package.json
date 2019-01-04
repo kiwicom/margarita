@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
-  "dependencies": {
-    "@kiwicom/universal-components": "0.0.7"
-  },
+  "dependencies": {},
   "devDependencies": {}
 }
