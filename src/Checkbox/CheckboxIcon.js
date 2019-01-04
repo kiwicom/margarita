@@ -5,7 +5,15 @@ import { View } from 'react-native';
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import theme, { parsePxValue } from './styles';
-import type { CheckboxIconProps } from './CheckboxTypes';
+
+type Props = {|
+  +checked?: boolean,
+  +hasError?: boolean,
+  +disabled?: boolean,
+  +focused?: boolean,
+  +hovered?: boolean,
+  +pressed?: boolean,
+|};
 
 export default function CheckboxIcon({
   checked,
@@ -14,7 +22,7 @@ export default function CheckboxIcon({
   focused,
   hovered,
   pressed,
-}: CheckboxIconProps) {
+}: Props) {
   const errorState = hasError && !disabled && !checked;
   const iconColor = disabled
     ? theme.orbit.colorIconCheckboxRadioDisabled

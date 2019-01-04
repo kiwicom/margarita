@@ -1,13 +1,18 @@
 // @flow
 
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Platform } from 'react-native';
-import type { HoverableProps } from './CheckboxTypes';
 import HoverMonitor from './HoverMonitor';
+
+type Props = {|
+  +children: React.Element<any>,
+  +onMouseEnter?: () => void,
+  +onMouseLeave?: () => void,
+|};
 
 const hoverMonitor = HoverMonitor();
 
-class Hoverable extends Component<HoverableProps> {
+class Hoverable extends React.Component<Props> {
   handleOnMouseEnter = () => {
     const { onMouseEnter } = this.props;
     if (onMouseEnter && hoverMonitor.hoverEnabled) {

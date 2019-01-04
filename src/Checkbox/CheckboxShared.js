@@ -7,13 +7,24 @@ import CheckboxIcon from './CheckboxIcon';
 import Hoverable from './Hoverable';
 import theme, { parseStringToFloat } from './styles';
 import { StyleSheet } from '../PlatformStyleSheet';
-import type { CheckboxSharedProps, CheckboxSharedState } from './CheckboxTypes';
 
-class CheckboxShared extends React.Component<
-  CheckboxSharedProps,
-  CheckboxSharedState
-> {
-  constructor(props: CheckboxSharedProps) {
+type Props = {|
+  +label?: React.Node,
+  +hasError?: boolean,
+  +disabled?: boolean,
+  +checked?: boolean,
+  +info?: React.Node,
+  +onPress?: () => void,
+|};
+
+type State = {|
+  focusDisplayed: boolean,
+  hovered: boolean,
+  pressed: boolean,
+|};
+
+class CheckboxShared extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {

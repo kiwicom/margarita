@@ -109,3 +109,19 @@ node scripts/generateTypes.js
 ```
 
 to update `src/types/_generated-types/index.js`. This ensures flow types are accurate.
+
+## Style Guide
+
+### Writing flow types in different files
+
+When writing `flow` types, leave them as close to the component as possible, ideally in the same file. They should be written just after the imports and before the component declaration.
+
+However, since this is a multi-platform component library, if some types need to be reused in different files specific to each platform, the accepted practice is to extract said types into a file `ComponentTypes.js` in the same `Component` folder. They would typically consist of `Props` and `State` types.
+
+> For instance, have a look at [Checkbox](./src/Checkbox). Since we have a `Checkbox.native.js` file and a `Checkbox.web.js` file, we need to extract the common types into `CheckboxTypes.js`. However, `CheckboxShared.js` is a cross-platform component and it contains its types inside the same file.
+
+If you need to import types in other components, the convention is to do the following:
+
+```javascript
+import type { Props as ComponentProps } from '../Component/Component';
+```

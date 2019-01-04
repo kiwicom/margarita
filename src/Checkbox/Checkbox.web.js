@@ -4,7 +4,7 @@
 
 import * as React from 'react';
 import CheckboxShared from './CheckboxShared';
-import type { CheckboxProps } from './CheckboxTypes';
+import type { Props } from './CheckboxTypes';
 
 const styleInput = {
   display: 'none',
@@ -20,7 +20,7 @@ export default function Checkbox({
   name,
   info,
   onChange,
-}: CheckboxProps) {
+}: Props) {
   const labelStyle = {
     display: 'flex',
     flexDirection: 'row',

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import CheckboxShared from './CheckboxShared';
-import type { CheckboxProps } from './CheckboxTypes';
+import type { Props } from './CheckboxTypes';
 
 export default function Checkbox({
   label,
@@ -11,7 +11,7 @@ export default function Checkbox({
   checked,
   info,
   onChange,
-}: CheckboxProps) {
+}: Props) {
   return (
     <CheckboxShared
       label={label}
