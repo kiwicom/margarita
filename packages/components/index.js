@@ -9,3 +9,4 @@ export { default as Modal } from './src/modal/Modal';
 export {
   default as PassengersInputs,
 } from './src/passengersInputs/PassengersInputs';
+export { SearchParamsSummary } from './src/SearchParamsSummary';
