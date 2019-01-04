@@ -19,6 +19,8 @@ const routeType = new GraphQLObjectType({
     airline: { type: GraphQLString },
     cityFrom: { type: GraphQLString },
     cityTo: { type: GraphQLString },
+    flyFrom: { type: GraphQLString },
+    flyTo: { type: GraphQLString },
     id: { type: GraphQLString },
     localArrival: { type: GraphQLDateTime },
     utcArrival: { type: GraphQLDateTime },
@@ -40,6 +42,7 @@ export default new GraphQLObjectType({
     localDeparture: { type: GraphQLString },
     localArrival: { type: GraphQLString },
     route: { type: new GraphQLList(routeType) },
+    routes: { type: new GraphQLList(new GraphQLList(GraphQLString)) },
     // TODO: Add fields as needed
   },
 });
