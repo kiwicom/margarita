@@ -14,7 +14,6 @@ export { Notification } from './Notification';
 export { LocalizedPrice } from './LocalizedPrice';
 export { RadioButton } from './RadioButton';
 export { Rating } from './Rating';
-export { SearchParamsSummary } from './SearchParamsSummary';
 export { ServiceLogo } from './ServiceLogo';
 export { Stepper } from './Stepper';
 export { Text } from './Text';
