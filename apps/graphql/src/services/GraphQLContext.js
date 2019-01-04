@@ -17,9 +17,9 @@ export type GraphqlContextType = {|
   |},
 |};
 
-export default () => ({
+export default (apikey: string) => ({
   dataLoader: {
-    itineraries: createItinerariesLoader(),
-    locations: createLocationLoader(),
+    itineraries: createItinerariesLoader(apikey),
+    locations: createLocationLoader(apikey),
   },
 });

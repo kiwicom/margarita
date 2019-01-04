@@ -9,13 +9,14 @@ import schema from './src/Schema';
 
 const server = new ApolloServer({
   schema,
-  context: () => {
+  context: ({ req }) => {
     // Please note: this context must be created for every single request.
     // This is important because of these reasons:
     //   - tokens and user identities are per request
     //   - dataloaders use Map internally (not LRU) and they would otherwise
     //     grow indefinitely because the Map content is not garbage collected
-    return createContext();
+    const apikey = req.headers.apikey;
+    return createContext(apikey);
   },
 });
 

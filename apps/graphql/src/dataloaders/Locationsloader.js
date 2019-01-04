@@ -30,14 +30,23 @@ function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
   }));
 }
 
-const fetchLocations = async (ids: $ReadOnlyArray<{| +term: string |}>) => {
+const fetchLocations = async (
+  ids: $ReadOnlyArray<{| +term: string |}>,
+  apikey: string,
+) => {
   const data = await Promise.all(
-    ids.map(({ term }) => fetch(`/locations/query?${qs.stringify({ term })}`)),
+    ids.map(({ term }) =>
+      fetch(`/locations/query?${qs.stringify({ term })}`, apikey),
+    ),
   );
   return data.map(({ locations }) => sanitizeLocations(locations));
 };
 
-export default () =>
-  new Dataloader<{| +term: string |}, Locations>(fetchLocations, {
-    cacheKeyFn: stringify,
-  });
+export default (apikey: string) =>
+  new Dataloader<{| +term: string |}, Locations>(
+    async (ids: $ReadOnlyArray<{| +term: string |}>) =>
+      await fetchLocations(ids, apikey),
+    {
+      cacheKeyFn: stringify,
+    },
+  );

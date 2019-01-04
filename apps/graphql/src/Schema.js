@@ -5,7 +5,6 @@ import GlobalID from '@kiwicom/graphql-global-id';
 
 import Itineraries from './queries/Itineraries';
 import Locations from './queries/Locations';
-import fetch from './services/Fetch';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -18,8 +17,8 @@ const schema = new GraphQLSchema({
       hello: {
         type: GraphQLString,
         description: 'A simple type for getting started!',
-        resolve: async () => {
-          const test = await fetch('/locations/query?term=oslo');
+        resolve: async (_: mixed, __: mixed, { dataLoader }: Object) => {
+          const test = await dataLoader.locations.load({ term: 'OSL' });
 
           return `Welcome to Tequila client demo! Test location query = ${
             test.locations[0].id
