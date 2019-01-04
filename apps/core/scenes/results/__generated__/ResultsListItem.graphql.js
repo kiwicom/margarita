@@ -19,12 +19,14 @@ export type ResultsListItem = {|
     +airline: ?string,
     +cityFrom: ?string,
     +cityTo: ?string,
+    +flyFrom: ?string,
     +id: ?string,
     +localArrival: ?any,
     +utcArrival: ?any,
     +localDeparture: ?any,
     +utcDeparture: ?any,
   |}>,
+  +routes: ?$ReadOnlyArray<?$ReadOnlyArray<?string>>,
   +$refType: ResultsListItem$ref,
 |};
 */
@@ -101,6 +103,13 @@ return {
         {
           "kind": "ScalarField",
           "alias": null,
+          "name": "flyFrom",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
           "name": "id",
           "args": null,
           "storageKey": null
@@ -122,10 +131,17 @@ return {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "routes",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '495e9fa445a250718d6328eefd7c3a7f';
+(node/*: any*/).hash = '8b4e8ae88ed16c0db76c5cf7b5cf2dca';
 module.exports = node;

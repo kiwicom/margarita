@@ -25,6 +25,8 @@ export type RouteItem = {
   +airline: string,
   +cityFrom: string,
   +cityTo: string,
+  +flyFrom: string,
+  +flyTo: string,
   +id: string,
   +localArrival: Date,
   +utcArrival: Date,
@@ -42,12 +44,15 @@ export type Itineraries = {|
   +localArrival: string,
   +price: number,
   +route: Array<RouteItem>,
+  +routes: Array<Array<string>>,
 |};
 
 export type ApiRouteItem = {
   +airline: string,
   +cityFrom: string,
   +cityTo: string,
+  +flyFrom: string,
+  +flyTo: string,
   +id: string,
   +local_arrival: Date,
   +utc_arrival: Date,
@@ -66,6 +71,7 @@ type ApiResponse = {|
     +local_departure: string,
     +local_arrival: string,
     +route: Array<ApiRouteItem>,
+    +routes: Array<Array<string>>,
   |}>,
 |};
 
@@ -74,17 +80,16 @@ const parseDate = (date: Date) =>
   DateTime.fromJSDate(date, { zone: 'UTC' }).toFormat(dateFormat);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
-  const dateTo = input.dateTo ?? input.dateFrom;
   const params = {
     flyFrom: input.travelFrom,
     dateFrom: parseDate(input.dateFrom),
-    dateTo: parseDate(dateTo),
+    dateTo: parseDate(input.dateFrom),
     to: input.travelTo ?? 'BCN', // Currently crashes without this fallback, fix hardcoding later, see https://skypicker.slack.com/archives/C7J2QM28G/p1544189402006200?thread_ts=1544188700.004300&cid=C7J2QM28G
-    ...(input.returnDateFrom && {
-      returnFrom: parseDate(input.returnDateFrom),
+    ...(input.dateTo && {
+      returnFrom: parseDate(input.dateTo),
     }),
-    ...(input.returnDateTo && {
-      returnTo: parseDate(input.returnDateTo),
+    ...(input.dateTo && {
+      returnTo: parseDate(input.dateTo),
     }),
     ...(input.passengers && {
       adults: input.passengers.adults ?? 0,
@@ -126,10 +131,13 @@ const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
     flyTo: itinerary.flyTo,
     localDeparture: itinerary.local_departure,
     localArrival: itinerary.local_arrival,
+    routes: itinerary.routes,
     route: itinerary.route.map(routeItem => ({
       airline: routeItem.airline,
       cityFrom: routeItem.cityFrom,
       cityTo: routeItem.cityTo,
+      flyFrom: routeItem.flyFrom,
+      flyTo: routeItem.flyTo,
       id: routeItem.id,
       localArrival: routeItem.local_arrival,
       utcArrival: routeItem.utc_arrival,

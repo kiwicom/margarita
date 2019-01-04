@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-import { Text } from '@kiwicom/universal-components';
 import { FlatList } from 'react-native';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
@@ -42,14 +41,11 @@ class ResultsList extends React.Component<Props> {
       return <EmptyResults />;
     }
     return (
-      <>
-        <Text>{`Total results: ${data.length}`}</Text>
-        <FlatList
-          data={data}
-          keyExtractor={this.keyExtractor}
-          renderItem={this.resultItem}
-        />
-      </>
+      <FlatList
+        data={data}
+        keyExtractor={this.keyExtractor}
+        renderItem={this.resultItem}
+      />
     );
   }
 }

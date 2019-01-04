@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 47419b4952d95915cb103b33be4b499b
+ * @relayHash 215a184b7d317b5c59d5ec26239d04a8
  */
 
 /* eslint-disable */
@@ -66,12 +66,14 @@ fragment ResultsListItem on Itinerary {
     airline
     cityFrom
     cityTo
+    flyFrom
     id
     localArrival
     utcArrival
     localDeparture
     utcDeparture
   }
+  routes
 }
 */
 
@@ -118,7 +120,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  currency\n  price\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  currency\n  price\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    flyFrom\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n  routes\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -224,6 +226,13 @@ return {
                         "args": null,
                         "storageKey": null
                       },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "flyFrom",
+                        "args": null,
+                        "storageKey": null
+                      },
                       v2,
                       v4,
                       {
@@ -242,6 +251,13 @@ return {
                         "storageKey": null
                       }
                     ]
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "routes",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }

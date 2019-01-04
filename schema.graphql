@@ -51,6 +51,7 @@ type Itinerary {
   localDeparture: String
   localArrival: String
   route: [Route]
+  routes: [[String]]
 }
 
 """A connection to a list of items."""
@@ -147,6 +148,8 @@ type Route {
   airline: String
   cityFrom: String
   cityTo: String
+  flyFrom: String
+  flyTo: String
   id: String
   localArrival: DateTime
   utcArrival: DateTime
