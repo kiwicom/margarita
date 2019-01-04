@@ -307,14 +307,14 @@ declare module 'react-native-web/dist/exports/I18nManager/index' {
 
 declare module 'react-native-web/dist/exports/Image/index' {
   declare type RNW$Image$Props = RNW$View$Props & {
-    defaultSource?: { uri: string, width: number, height: number },
+    defaultSource?: { +uri: string, +width: number, +height: number },
     draggable?: boolean,
     onError?: ({ nativeEvent: { error: string } }) => void,
     onLoad?: () => void,
     onLoadEnd?: () => void,
     onLoadStart?: () => void,
     resizeMode?: 'center' | 'contain' | 'cover' | 'none' | 'repeat' | 'stretch',
-    source?: string | {| uri: string, width?: number, height?: number |},
+    source?: string | {| +uri: string, +width?: number, +height?: number |},
     style?: RNW$Styles
   };
 

@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo"
+  },
   "devDependencies": {}
 }
