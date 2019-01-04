@@ -17,3 +17,5 @@ export {
   TimelineCabinBaggage,
   TimelinePriorityBoarding,
 } from './src/TimelineInformation';
+export { PlaceCard } from './src/PlaceCard';
+export { Shimmer } from './src/Shimmer';

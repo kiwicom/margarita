@@ -1,5 +1,5 @@
 {
-  "preset": "react-native",
+  "preset": "jest-expo",
   "testPathIgnorePatterns": [
     "<rootDir>/.next/",
     "<rootDir>/node_modules/",
@@ -7,5 +7,7 @@
     "__tests__/__mocks__"
   ],
   "setupTestFrameworkScriptFile": "<rootDir>/scripts/setupTests.js",
-  "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"]
+  "transformIgnorePatterns": [
+    "/node_modules/(?!@kiwicom)/"
+  ]
 }

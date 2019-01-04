@@ -65,6 +65,10 @@ module.exports = {
               'withNavigation',
             ],
             message: "Please use @kiwicom/margarita-navigation"
+          },
+          {
+            name: 'react-native-shimmer-placeholder',
+            message: "Please use Shimmer from @kiwicom/margarita-components"
           }
         ]
       },
