@@ -10114,13 +10114,6 @@ react-native-modal@^5.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-react-native-shimmer@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/react-native-shimmer/-/react-native-shimmer-0.4.1.tgz#4221a4b19e9001c1a8afd0cee0979e1ede6e8a44"
-  integrity sha512-f2SitWHcO9BaVazmaRmqwlgq56TUy+fdMQGfDyqxdVWDcO7QaxCSoB2B2Bx5dA9W2FoyincrJNFiM0Pk1OmRBQ==
-  dependencies:
-    prop-types "^15.6.0"
-
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.2.0.tgz#3bd51de134660efc5f5ad136ca573c7d5790f7ed"
