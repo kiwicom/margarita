@@ -484,7 +484,7 @@ declare module 'react-native-web/dist/exports/ScrollView/index' {
     horizontal?: boolean,
     keyboardDismissMode?: 'none' | 'interactive' | 'on-drag',
     onContentSizeChange?: () => void,
-    onScroll: () => void,
+    onScroll?: () => void,
     pagingEnabled?: boolean,
     refreshControl?: React$Node,
     scrollEnabled?: boolean,
