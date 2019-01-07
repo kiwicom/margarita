@@ -1,0 +1,15 @@
+
+# <Fix/Feat/...>: <one-line summary>
+# e.g. Feat: Added Icon component
+
+Summary: 
+# Summary: <longer description, documenting the history of the repository>
+# e.g. Summary: For Icon component to work on web, it was necessary to add dependency on @kiwicom/orbit-components. Since mobile version relies on a font file, it should be possible to use the font on the web as well. Created issue to improve this in the future.
+
+# `Fix`: bug fixes, e.g. fix some colors, paddings.
+# `Feat`: new features, e.g. add new component.
+# `Refactor`: code/structure refactor, e.g. new structure folder for components/ extracting component to separate file.
+# `Docs`: changes into documentation,
+# `Test`: adding or updating tests, e.g. unit, snapshot testing.
+# `Chore`: tooling changes, e.g. change circle ci config.
+# `BREAKING`: for changes that break existing usage, e.g. change API of a component.

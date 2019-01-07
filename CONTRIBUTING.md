@@ -92,13 +92,21 @@ and it is then easier to test the interactions with the action logger, and play 
 
 - We prefix our commit messages with one of the following to signify the kind of change:
 
-  - `fix`: bug fixes, e.g. fix some colors, paddings.
-  - `feat`: new features, e.g. add new component.
-  - `refactor`: code/structure refactor, e.g. new structure folder for components/ extracting component to separate file.
-  - `docs`: changes into documentation,
-  - `test`: adding or updating tests, e.g. unit, snapshot testing.
-  - `chore`: tooling changes, e.g. change circle ci config.
+  - `Fix`: bug fixes, e.g. fix some colors, paddings.
+  - `Feat`: new features, e.g. add new component.
+  - `Refactor`: code/structure refactor, e.g. new structure folder for components/ extracting component to separate file.
+  - `Docs`: changes into documentation,
+  - `Test`: adding or updating tests, e.g. unit, snapshot testing.
+  - `Chore`: tooling changes, e.g. change circle ci config.
   - `BREAKING`: for changes that break existing usage, e.g. change API of a component.
+
+**To make this easier**, please run the following command:
+
+```bash
+git config --local commit.template docs/commit-template.txt
+```
+
+This will pre-fill your commit message with a [template](docs/commit-template.txt) whenever you run `git commit`, reminding you to follow the convention and to add a summary.
 
 ## Updating Icons
 
