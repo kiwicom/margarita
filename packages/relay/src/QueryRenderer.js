@@ -3,6 +3,7 @@
 /* eslint-disable no-restricted-imports */
 import * as React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { Loader } from '@kiwicom/universal-components';
 import {
   QueryRenderer,
   type ReadyState,
@@ -29,7 +30,7 @@ export default class App extends React.Component<Props> {
     if (!props) {
       return (
         <View style={styles.container}>
-          <Text style={styles.text}>Loading</Text>
+          <Loader size="large" />
         </View>
       );
     }
