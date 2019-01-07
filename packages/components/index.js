@@ -10,3 +10,10 @@ export {
   default as PassengersInputs,
 } from './src/passengersInputs/PassengersInputs';
 export { SearchParamsSummary } from './src/SearchParamsSummary';
+export {
+  TimelineInformation,
+  TimelineDate,
+  TimelineDifferentAirport,
+  TimelineCabinBaggage,
+  TimelinePriorityBoarding,
+} from './src/TimelineInformation';

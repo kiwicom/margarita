@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimelineInformation should match snapshot diff 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#f5f7f9",
+        "borderColor": "#bac7d5",
+        "borderRadius": 3,
+        "borderWidth": 0.5,
+        "flexDirection": "row",
+        "height": 22,
+        "paddingHorizontal": 7,
+        "paddingVertical": 2,
+      },
+      Object {
+        "backgroundColor": "teal",
+        "borderColor": "blue",
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "orbit-icons",
+        },
+        Object {
+          "fontSize": 16,
+        },
+        Object {
+          "color": "orange",
+        },
+      ]
+    }
+  >
+    f
+  </Text>
+  <View
+    style={
+      Object {
+        "marginStart": 19,
+      }
+    }
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontFamily": "Roboto",
+            "margin": 0,
+          },
+          undefined,
+          undefined,
+          Object {
+            "fontSize": 14,
+          },
+          Object {
+            "fontSize": 14,
+          },
+          Object {
+            "color": "#46B655",
+          },
+          Object {
+            "textAlign": "left",
+          },
+          undefined,
+        ]
+      }
+    >
+      Lorem ipsum
+    </Text>
+  </View>
+</View>
+`;
