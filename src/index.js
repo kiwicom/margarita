@@ -6,7 +6,6 @@ export { Button } from './Button';
 export { Card } from './Card';
 export { CarrierLogo } from './CarrierLogo';
 export { Checkbox } from './Checkbox';
-export { ConnectionCard } from './ConnectionCard';
 export { FilterButton } from './FilterButton';
 export { Icon } from './Icon';
 export { Loader, PageLoader } from './Loader';
