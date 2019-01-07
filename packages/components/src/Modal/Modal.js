@@ -5,10 +5,15 @@ import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { ModalProps } from './ModalTypes';
 import ModalWrap from './ModalWrap';
 
-const Modal = (props: ModalProps) => {
+export type Props = {|
+  +visible: boolean,
+  +onClose: () => void,
+  +children: ?React.Element<any>,
+|};
+
+const Modal = (props: Props) => {
   return (
     <>
       <View style={[styles.overlay, !props.visible && styles.overlayHidden]} />

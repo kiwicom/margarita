@@ -5,7 +5,7 @@ import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
+import { TouchableWithoutFeedback } from '../TouchableWithoutFeedback';
 
 type Props = {|
   +onPress: () => void,

@@ -5,10 +5,14 @@ import { View, Dimensions, Platform } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { ModalContentProps } from './ModalTypes';
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
+import { TouchableWithoutFeedback } from '../TouchableWithoutFeedback';
 
-const ModalContent = ({ onClose, children }: ModalContentProps) => {
+export type Props = {|
+  +onClose: () => void,
+  +children: ?React.Element<any>,
+|};
+
+const ModalContent = ({ onClose, children }: Props) => {
   const { width, height } = Dimensions.get('window');
   // Center modal content on web and tablets
   const centerContent = Platform.OS === 'web' || height / width < 1.6;

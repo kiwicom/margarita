@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { ModalProps } from './ModalTypes';
+import type { Props } from './Modal';
 import ModalContent from './ModalContent';
 
-const ModalWrap = ({ visible, children, onClose }: ModalProps) => {
+const ModalWrap = ({ visible, children, onClose }: Props) => {
   if (visible) {
     return (
       <div style={style}>

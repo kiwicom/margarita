@@ -1,6 +1,6 @@
 // @flow
 
-import type { State } from './PassengersInputsTypes';
+import type { State } from './PassengersInputs';
 
 const MAX_PASSENGERS: number = 9;
 

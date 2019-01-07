@@ -1,12 +1,8 @@
 // @flow
 
-export {
-  default as TouchableWithoutFeedback,
-} from './src/TouchableWithoutFeedback';
-export { default as TripInput } from './src/tripInput/TripInput';
-export { default as Select } from './src/select/Select';
-export { default as Modal } from './src/modal/Modal';
-export {
-  default as PassengersInputs,
-} from './src/passengersInputs/PassengersInputs';
+export { TouchableWithoutFeedback } from './src/TouchableWithoutFeedback';
+export { TripInput } from './src/TripInput';
+export { Select } from './src/Select';
+export { Modal } from './src/Modal';
+export { PassengersInputs } from './src/PassengersInputs';
 export { SearchParamsSummary } from './src/SearchParamsSummary';

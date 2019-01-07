@@ -5,7 +5,6 @@ import { View } from 'react-native';
 import { Text, Button, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { Props, State } from './PassengersInputsTypes';
 import PassengersInputsLine from './PassengersInputsLine';
 import {
   updateAdults,
@@ -15,6 +14,20 @@ import {
   getMaxInfants,
   getMaxBags,
 } from './PassengersInputsHelpers';
+
+type Props = {|
+  +adults: number,
+  +infants: number,
+  +bags: number,
+  +onClosePress: () => void,
+  +onSavePress: (passengersData: State) => void,
+|};
+
+export type State = {|
+  adults: number,
+  infants: number,
+  bags: number,
+|};
 
 class PassengersInputs extends React.Component<Props, State> {
   constructor(props: Props) {
