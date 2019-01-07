@@ -18,13 +18,6 @@ export { ServiceLogo } from './ServiceLogo';
 export { Stepper } from './Stepper';
 export { Text } from './Text';
 export { TextInput } from './TextInput';
-export {
-  TimelineInformation,
-  TimelineDate,
-  TimelineDifferentAirport,
-  TimelineCabinBaggage,
-  TimelinePriorityBoarding,
-} from './TimelineInformation';
 export { Tooltip, TooltipBubble } from './Tooltip';
 export { DatePicker } from './DatePicker';
 
