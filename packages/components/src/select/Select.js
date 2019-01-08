@@ -44,9 +44,7 @@ const Select = ({
     <>
       {options}
       <View style={styles.buttonWrapper}>
-        <Button onPress={onClosePress} type="secondary">
-          Close
-        </Button>
+        <Button onPress={onClosePress} type="secondary" label="Close" />
       </View>
     </>
   );

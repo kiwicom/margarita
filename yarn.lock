@@ -1067,13 +1067,6 @@
   dependencies:
     graphql-relay "^0.5.5"
 
-"@kiwicom/orbit-components@^0.23.0":
-  version "0.23.1"
-  resolved "https://registry.yarnpkg.com/@kiwicom/orbit-components/-/orbit-components-0.23.1.tgz#164fb8bb3a13bd9277429d8e8f2775d3116eee67"
-  integrity sha512-e4jdXgn5VZ7RSoCYB8KyUSOKukZYx59PtyorflyAT/OVN/vG5ShtXwcMcf6+UC/PzU0JTLGURFVXS97XkWfGeA==
-  dependencies:
-    "@kiwicom/orbit-design-tokens" "^0.2.5"
-
 "@kiwicom/orbit-design-tokens@^0.2.5":
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/@kiwicom/orbit-design-tokens/-/orbit-design-tokens-0.2.5.tgz#b945e5f792d321aa66ef23bc327000e4ff702e50"
@@ -1081,12 +1074,11 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/universal-components@^0.0.6":
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.6.tgz#09f3c1561ce0e5f812ded0537c75ff7ace27c790"
-  integrity sha512-F0/68tHN8zKZmSh/k3fDePNFh9wb4NUi6ZODdIgSVW9A3XOinGCKdqkijADlJrekoFL7U/nSGpcvwM29JXBp6g==
+"@kiwicom/universal-components@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.8.tgz#aca69fa51aea9edc6b6787a04fba66577c3b6dce"
+  integrity sha512-0diFRam8pNUtQJUpNZ3ZehAD+aJEguvAOIloaYsaTdCyQUUUJ87KM0TBCS0iisBhRd8+hgL7UH8KZsCj/B73RQ==
   dependencies:
-    "@kiwicom/orbit-components" "^0.23.0"
     "@kiwicom/orbit-design-tokens" "^0.2.5"
     react-native-status-bar-height "^2.2.0"
     styled-components "^4.1.2"
@@ -5197,6 +5189,14 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
+
+file-loader@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/file-loader/-/file-loader-3.0.1.tgz#f8e0ba0b599918b51adfe45d66d1e771ad560faa"
+  integrity sha512-4sNIOXgtH/9WZq4NvlfU3Opn5ynUsqBwSLyM+I7UOwdGigTBYfVVQEwe/msZNX/j4pCJTIM14Fsw66Svo1oVrw==
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^1.0.0"
 
 filename-regex@^2.0.0:
   version "2.0.1"

@@ -5,6 +5,7 @@
 # next.js
 #
 .next/
+apps/web/static/fonts/*
 
 # node.js
 #

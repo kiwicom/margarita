@@ -86,14 +86,14 @@ class PassengersInputs extends React.Component<Props, State> {
         />
         <View style={styles.bottomButtons}>
           <View style={styles.buttonWrapper}>
-            <Button onPress={onClosePress} type="secondary">
-              Close
-            </Button>
+            <Button onPress={onClosePress} type="secondary" label="Close" />
           </View>
           <View style={styles.buttonWrapper}>
-            <Button onPress={this.handleSavePress} type="primary">
-              Save
-            </Button>
+            <Button
+              onPress={this.handleSavePress}
+              type="primary"
+              label="Save"
+            />
           </View>
         </View>
       </View>

@@ -170,18 +170,16 @@ class Search extends React.Component<Props, State> {
               leftIcon={<Icon name={TRIP_TYPE[tripType].icon} />}
               rightIcon={<Icon name="show-more" />}
               onPress={this.handleTripTypePress}
-            >
-              {TRIP_TYPE[tripType].label}
-            </Button>
+              label={TRIP_TYPE[tripType].label}
+            />
             <Button
               type="secondary"
               width={120}
               leftIcon={<Icon name="passengers" />}
               rightIcon={<Icon name="baggage-set" />}
               onPress={this.handlePassengersPress}
-            >
-              {`${adults + infants} | ${bags}`}
-            </Button>
+              label={`${adults + infants} | ${bags}`}
+            />
           </View>
           <TripInput
             onPress={this.todo}
@@ -204,8 +202,8 @@ class Search extends React.Component<Props, State> {
             onChangeText={this.handleDateToChange}
             value={dateTo}
           />
-          <Button onPress={this.handleSubmitPress}>Search</Button>
-          <Button onPress={this.goToPlacePicker}>PlacePicker</Button>
+          <Button onPress={this.handleSubmitPress} label="Search" />
+          <Button onPress={this.goToPlacePicker} label="PlacePicker" />
         </View>
         <Modal
           visible={modalType !== MODAL_TYPE.HIDDEN}
