@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingEnd: parseInt(defaultTokens.paddingButtonNormal, 10),
     alignItems: 'center',
+    justifyContent: 'space-between',
   },
   radioUnderline: {
     borderBottomColor: defaultTokens.paletteInkLighter,

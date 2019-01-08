@@ -30,10 +30,14 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
         },
         Object {
           "fontSize": 16,
+          "height": 16,
+          "lineHeight": 16,
+          "width": 16,
         },
         Object {
           "color": "orange",
         },
+        undefined,
       ]
     }
   >
@@ -47,6 +51,7 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
     }
   >
     <Text
+      numberOfLines={1}
       style={
         Array [
           Object {

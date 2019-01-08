@@ -27,11 +27,10 @@ Object {
       }
     >
       <Button
+        label="Close"
         onPress={[MockFunction]}
         type="secondary"
-      >
-        Close
-      </Button>
+      />
     </Component>
   </React.Fragment>,
 }

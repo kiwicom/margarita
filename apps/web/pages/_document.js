@@ -3,6 +3,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import * as React from 'react';
 import { AppRegistry } from 'react-native-web';
+import OrbitIconFont from '@kiwicom/universal-components/lib/fonts/orbit-icons.ttf';
 
 // Force Next-generated DOM elements to fill their parent's height
 const normalizeNextElements = `
@@ -12,6 +13,17 @@ const normalizeNextElements = `
     height: 100%;
   }
 `;
+
+// This is a workaround for the following bug:
+// https://github.com/zeit/next.js/issues/3520
+const globalStyle = {
+  __html: `
+  @font-face {
+    font-family: 'orbit-icons';
+    src: url(${OrbitIconFont});
+  }
+`,
+};
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }: (cb: Function) => void) {
@@ -37,6 +49,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
             rel="stylesheet"
           />
+          <style dangerouslySetInnerHTML={globalStyle} />
         </Head>
         <body style={{ height: '100%', overflow: 'hidden' }}>
           <Main />
