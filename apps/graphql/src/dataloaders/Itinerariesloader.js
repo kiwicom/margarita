@@ -34,15 +34,19 @@ export type RouteItem = {
   +utcDeparture: Date,
 };
 
+export type Price = {
+  +amount: number,
+  +currency: string,
+};
+
 export type Itineraries = {|
   +airlines: Array<string>,
-  +currency: string,
   +id: string,
   +flyFrom: string,
   +flyTo: string,
   +localDeparture: string,
   +localArrival: string,
-  +price: number,
+  +price: Price,
   +route: Array<RouteItem>,
   +routes: Array<Array<string>>,
 |};
@@ -96,7 +100,6 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
       children: input.passengers.children ?? 0,
       infants: input.passengers.infants ?? 0,
     }),
-    limit: 10, // @TODO: for testing purposes
     curr: 'EUR',
   };
 
@@ -123,10 +126,12 @@ const fetchItineraries = async (
 const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
   const itineraries = response.data;
   return itineraries.map(itinerary => ({
-    currency: response.currency,
     id: itinerary.id,
     airlines: itinerary.airlines,
-    price: itinerary.price,
+    price: {
+      currency: response.currency,
+      amount: itinerary.price,
+    },
     flyFrom: itinerary.flyFrom,
     flyTo: itinerary.flyTo,
     localDeparture: itinerary.local_departure,

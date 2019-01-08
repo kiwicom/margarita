@@ -4,8 +4,9 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { DateTime, Duration } from 'luxon';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-import { ConnectionCard, StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { ConnectionCard } from '@kiwicom/margarita-components';
 
 import type { ResultsListItem as ResultsListItemType } from './__generated__/ResultsListItem.graphql';
 
@@ -97,12 +98,7 @@ class ResultListItem extends React.Component<Props> {
     }
     // @TODO polish awful condition if it's possible
     return route.findIndex(
-      routeItem =>
-        routeItem &&
-        routes &&
-        routes.length === 2 &&
-        routes[1] &&
-        routeItem.flyFrom === routes[1][0],
+      routeItem => routeItem?.flyFrom === routes?.[1]?.[0],
     );
   };
 
@@ -133,12 +129,7 @@ class ResultListItem extends React.Component<Props> {
   };
 
   getSectorBorderDuration = (route: ?Route, sectorBorderIndex: ?number) => {
-    if (
-      route &&
-      sectorBorderIndex !== null &&
-      sectorBorderIndex !== undefined &&
-      sectorBorderIndex >= 0
-    ) {
+    if (route && sectorBorderIndex != null && sectorBorderIndex >= 0) {
       const stopBeforeSector = route[sectorBorderIndex - 1];
       const stopAfterSector = route[sectorBorderIndex];
 
@@ -161,7 +152,7 @@ class ResultListItem extends React.Component<Props> {
     if (data == null) {
       return null;
     }
-    const { currency, price } = data;
+    const { price } = data;
     /**
      * TODO: properly handle possible undefined props in final version of list
      * (for example: should be entry with undefined price still displayed?)
@@ -184,8 +175,8 @@ class ResultListItem extends React.Component<Props> {
       },
     ];
     const priceObject = {
-      value: price ?? 0,
-      currency: currency ?? 'CZK',
+      value: price?.amount ?? 0,
+      currency: price?.currency ?? 'CZK',
       locale: 'cs-CZ',
     };
     // @TODO: use Card component
@@ -197,9 +188,8 @@ class ResultListItem extends React.Component<Props> {
           badges={badges}
           price={priceObject}
           duration={
-            sectorBorderIndex !== null &&
-            sectorBorderIndex !== undefined &&
-            sectorBorderIndex > -1 &&
+            sectorBorderIndex != null &&
+            (sectorBorderIndex ?? 0) > -1 &&
             this.intervalToString(
               this.getSectorBorderDuration(data.route, sectorBorderIndex),
               'days',
@@ -215,8 +205,10 @@ export default createFragmentContainer(
   ResultListItem,
   graphql`
     fragment ResultsListItem on Itinerary {
-      currency
-      price
+      price {
+        currency
+        amount
+      }
       localDeparture
       localArrival
       route {
