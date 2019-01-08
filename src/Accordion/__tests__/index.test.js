@@ -1,16 +1,18 @@
 // @flow
 
 import * as React from 'react';
-import { render, fireEvent } from 'react-native-testing-library';
+import { fireEvent, render } from 'react-native-testing-library';
 
+import { Text } from '../../Text';
 import Accordion from '../Accordion';
 
-const Header = expanded => (expanded ? 'expanded' : 'closed');
+const Header = expanded =>
+  expanded ? <Text>expanded</Text> : <Text>closed</Text>;
 const children = 'Lorem ipsum';
 describe('Accordion', () => {
-  const { getByText } = render(
+  const { getByText, queryByText } = render(
     <Accordion expandedDefault header={Header}>
-      {children}
+      <Text>{children}</Text>
     </Accordion>
   );
 
@@ -20,14 +22,15 @@ describe('Accordion', () => {
 
   it('should be closed by default', () => {
     expect(getByText('expanded')).toBeDefined();
-    expect(getByText('closed')).not.toBeDefined();
+    expect(queryByText('closed')).toBeNull();
+    expect(getByText(children)).toBeDefined();
   });
 
   it('should expand on press', () => {
     fireEvent(getByText('expanded'), 'press');
 
-    expect(getByText('expanded')).not.toBeDefined();
+    expect(queryByText('expanded')).toBeNull();
     expect(getByText('closed')).toBeDefined();
-    expect(getByText(children)).toBeDefined();
+    expect(queryByText(children)).toBeNull();
   });
 });
