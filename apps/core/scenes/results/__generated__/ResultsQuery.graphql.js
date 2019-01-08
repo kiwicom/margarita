@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 215a184b7d317b5c59d5ec26239d04a8
+ * @relayHash e483797239b0ca3cc78fbc11d9a198f3
  */
 
 /* eslint-disable */
@@ -58,8 +58,10 @@ fragment ResultsList on ItineraryConnection {
 }
 
 fragment ResultsListItem on Itinerary {
-  currency
-  price
+  price {
+    currency
+    amount
+  }
   localDeparture
   localArrival
   route {
@@ -120,7 +122,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  currency\n  price\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    flyFrom\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n  routes\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  price {\n    currency\n    amount\n  }\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    flyFrom\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n  routes\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -181,18 +183,29 @@ return {
                 "selections": [
                   v2,
                   {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "currency",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
                     "name": "price",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
+                    "concreteType": "Price",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "currency",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "amount",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
                   },
                   v3,
                   v4,

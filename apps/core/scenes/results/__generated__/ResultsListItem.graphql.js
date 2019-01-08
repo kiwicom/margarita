@@ -11,8 +11,10 @@ import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ResultsListItem$ref: FragmentReference;
 export type ResultsListItem = {|
-  +currency: ?string,
-  +price: ?number,
+  +price: ?{|
+    +currency: ?string,
+    +amount: ?number,
+  |},
   +localDeparture: ?string,
   +localArrival: ?string,
   +route: ?$ReadOnlyArray<?{|
@@ -55,18 +57,29 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "currency",
-      "args": null,
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
       "name": "price",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "Price",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "currency",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "amount",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     },
     v0,
     v1,
@@ -143,5 +156,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '8b4e8ae88ed16c0db76c5cf7b5cf2dca';
+(node/*: any*/).hash = '1465e614745bdad1bfd18c6f448213dc';
 module.exports = node;

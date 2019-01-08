@@ -31,16 +31,23 @@ const routeType = new GraphQLObjectType({
   },
 });
 
+const priceType = new GraphQLObjectType({
+  name: 'Price',
+  fields: {
+    amount: { type: GraphQLInt },
+    currency: { type: GraphQLString },
+  },
+});
+
 export default new GraphQLObjectType({
   name: 'Itinerary',
   fields: {
-    currency: { type: GraphQLString },
     id: GlobalID(({ id }) => id),
-    price: { type: GraphQLInt },
     flyFrom: { type: GraphQLString },
     flyTo: { type: GraphQLString },
     localDeparture: { type: GraphQLString },
     localArrival: { type: GraphQLString },
+    price: { type: priceType },
     route: { type: new GraphQLList(routeType) },
     routes: { type: new GraphQLList(new GraphQLList(GraphQLString)) },
     // TODO: Add fields as needed
