@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-// import { Badge } from '@kiwicom/universal-components';
+import { LocalizedPrice, Text } from '@kiwicom/universal-components';
 
 import ConnectionCard from '../ConnectionCard';
 import BadgesContainer from '../BadgesContainer';
@@ -43,10 +43,14 @@ describe('ConnectionCard', () => {
       duration: '3h',
     },
   ];
-  // const localizedPrice = '€123,455.35';
-  const { getAllByType } = render(
+  const localizedPrice = {
+    amount: 123455.35,
+    locale: 'en-US',
+    currency: 'EUR',
+  };
+  const { getAllByType, getByType } = render(
     <ConnectionCard
-      // localizedPrice={localizedPrice}
+      price={localizedPrice}
       wayForth={wayForth}
       badges={badges}
     />,
@@ -62,9 +66,9 @@ describe('ConnectionCard', () => {
     expect(getAllByType(TripSector)).toHaveLength(2);
   });
 
-  // it('should set proper price format', () => {
-  //   expect(getByType(LocalizedPrice).findByType(Text).props.children).toBe(
-  //     '€123,455.35',
-  //   );
-  // });
+  it('should set proper price format', () => {
+    expect(getByType(LocalizedPrice).findByType(Text).props.children).toBe(
+      '€123,455.35',
+    );
+  });
 });

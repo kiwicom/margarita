@@ -148,14 +148,15 @@ type RootQuery {
 }
 
 type Route {
+  arrival: TripSector
+  departure: TripSector
   airline: String
-  cityFrom: String
-  cityTo: String
-  flyFrom: String
-  flyTo: String
   id: String
-  localArrival: DateTime
-  utcArrival: DateTime
-  localDeparture: DateTime
-  utcDeparture: DateTime
+}
+
+type TripSector {
+  city: String
+  cityCode: String
+  localTime: DateTime
+  utcTime: DateTime
 }

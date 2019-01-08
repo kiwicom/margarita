@@ -1,10 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
 import { Results } from '@kiwicom/margarita-core';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet } from '@kiwicom/universal-components';
 
 type Props = {|
   +navigation: {|
@@ -37,17 +35,6 @@ export default class ResultsScreen extends React.Component<Props> {
 
   render() {
     const { navigation } = this.props;
-    return (
-      <View style={styles.cardList}>
-        <Results {...navigation.state.params} />
-      </View>
-    );
+    return <Results {...navigation.state.params} />;
   }
 }
-
-const styles = StyleSheet.create({
-  cardList: {
-    backgroundColor: defaultTokens.backgroundBody,
-    flex: 1,
-  },
-});

@@ -13,21 +13,23 @@ export type Itinerary = {|
   +id: string,
 |};
 
+const tripSectorType = new GraphQLObjectType({
+  name: 'TripSector',
+  fields: {
+    city: { type: GraphQLString },
+    cityCode: { type: GraphQLString },
+    localTime: { type: GraphQLDateTime },
+    utcTime: { type: GraphQLDateTime },
+  },
+});
+
 const routeType = new GraphQLObjectType({
   name: 'Route',
   fields: {
+    arrival: { type: tripSectorType },
+    departure: { type: tripSectorType },
     airline: { type: GraphQLString },
-    cityFrom: { type: GraphQLString },
-    cityTo: { type: GraphQLString },
-    flyFrom: { type: GraphQLString },
-    flyTo: { type: GraphQLString },
     id: { type: GraphQLString },
-    localArrival: { type: GraphQLDateTime },
-    utcArrival: { type: GraphQLDateTime },
-    localDeparture: {
-      type: GraphQLDateTime,
-    },
-    utcDeparture: { type: GraphQLDateTime },
   },
 });
 
@@ -50,6 +52,5 @@ export default new GraphQLObjectType({
     price: { type: priceType },
     route: { type: new GraphQLList(routeType) },
     routes: { type: new GraphQLList(new GraphQLList(GraphQLString)) },
-    // TODO: Add fields as needed
   },
 });

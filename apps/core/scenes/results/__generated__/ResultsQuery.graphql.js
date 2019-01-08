@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e483797239b0ca3cc78fbc11d9a198f3
+ * @relayHash 9a779a683e7c8069e14283a06bc3bb5d
  */
 
 /* eslint-disable */
@@ -62,18 +62,21 @@ fragment ResultsListItem on Itinerary {
     currency
     amount
   }
-  localDeparture
-  localArrival
   route {
     airline
-    cityFrom
-    cityTo
-    flyFrom
+    arrival {
+      city
+      cityCode
+      localTime
+      utcTime
+    }
+    departure {
+      city
+      cityCode
+      localTime
+      utcTime
+    }
     id
-    localArrival
-    utcArrival
-    localDeparture
-    utcDeparture
   }
   routes
 }
@@ -103,26 +106,42 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "localDeparture",
-  "args": null,
-  "storageKey": null
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "localArrival",
-  "args": null,
-  "storageKey": null
-};
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "city",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cityCode",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "localTime",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "utcTime",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  price {\n    currency\n    amount\n  }\n  localDeparture\n  localArrival\n  route {\n    airline\n    cityFrom\n    cityTo\n    flyFrom\n    id\n    localArrival\n    utcArrival\n    localDeparture\n    utcDeparture\n  }\n  routes\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  price {\n    currency\n    amount\n  }\n  route {\n    airline\n    arrival {\n      city\n      cityCode\n      localTime\n      utcTime\n    }\n    departure {\n      city\n      cityCode\n      localTime\n      utcTime\n    }\n    id\n  }\n  routes\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -207,8 +226,6 @@ return {
                       }
                     ]
                   },
-                  v3,
-                  v4,
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -226,43 +243,26 @@ return {
                         "storageKey": null
                       },
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "cityFrom",
+                        "name": "arrival",
+                        "storageKey": null,
                         "args": null,
-                        "storageKey": null
+                        "concreteType": "TripSector",
+                        "plural": false,
+                        "selections": v3
                       },
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "cityTo",
+                        "name": "departure",
+                        "storageKey": null,
                         "args": null,
-                        "storageKey": null
+                        "concreteType": "TripSector",
+                        "plural": false,
+                        "selections": v3
                       },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "flyFrom",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      v2,
-                      v4,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "utcArrival",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      v3,
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "utcDeparture",
-                        "args": null,
-                        "storageKey": null
-                      }
+                      v2
                     ]
                   },
                   {

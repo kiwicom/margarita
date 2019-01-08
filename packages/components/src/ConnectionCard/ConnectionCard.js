@@ -2,8 +2,11 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Badge, StyleSheet } from '@kiwicom/universal-components';
-// LocalizedPrice,
+import {
+  Badge,
+  LocalizedPrice,
+  StyleSheet,
+} from '@kiwicom/universal-components';
 
 import ConnectionCardRow from './ConnectionCardRow';
 import TripSector from './TripSector';
@@ -21,7 +24,11 @@ type Props = {|
   +wayBack?: Array<TripSectorWithId>,
   +duration?: string,
   ...React.ElementProps<typeof BadgesContainer>,
-  // ...React.ElementProps<typeof LocalizedPrice>,
+  +price: {
+    +amount?: number,
+    +currency?: string,
+    +locale?: string,
+  },
 |};
 
 type RenderTripSectorProps = {|
@@ -50,10 +57,16 @@ export default function ConnectionCard({
   padding = true,
   wayForth,
   wayBack,
-  // localizedPrice,
+  price,
   duration,
   badges,
 }: Props) {
+  const localizedPrice = price =>
+    price &&
+    new Intl.NumberFormat(price.locale, {
+      style: 'currency',
+      currency: price.currency,
+    }).format(price.amount ?? 0);
   const hasWayBack = wayBack && wayBack.length > 0;
   return (
     <View style={styles.container}>
@@ -84,7 +97,7 @@ export default function ConnectionCard({
       >
         <ConnectionCardRow style={styles.lastRow}>
           <BadgesContainer badges={badges} />
-          {/* <LocalizedPrice localizedPrice={localizedPrice} /> */}
+          <LocalizedPrice localizedPrice={localizedPrice(price)} />
         </ConnectionCardRow>
       </View>
     </View>
