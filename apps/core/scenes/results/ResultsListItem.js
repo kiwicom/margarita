@@ -46,7 +46,13 @@ class ResultListItem extends React.Component<Props> {
     return to.diff(from, unit).toObject();
   };
 
-  intervalToString = (interval: Duration, type: 'days' | 'hours' = 'hours') => {
+  intervalToString = (
+    interval?: Duration,
+    type?: 'days' | 'hours' = 'hours',
+  ): ?string => {
+    if (!interval) {
+      return '';
+    }
     if (type === 'days') {
       switch (interval.days) {
         case 0:
@@ -66,25 +72,26 @@ class ResultListItem extends React.Component<Props> {
   // @TODO Handle cases when we don't have some data from GraphQL/REST server
   getSanitizedRouteItem = (route: RouteItem): ?TripSectorProps => {
     if (route) {
-      const localArrival = DateTime.fromISO(route.localArrival);
-      const localDeparture = DateTime.fromISO(route.localDeparture);
-      const utcArrival = DateTime.fromISO(route.utcArrival);
-      const utcDeparture = DateTime.fromISO(route.utcDeparture);
+      const localArrival = DateTime.fromISO(route.arrival?.localTime);
+      const localDeparture = DateTime.fromISO(route.departure?.localTime);
+      const utcArrival = DateTime.fromISO(route.arrival?.utcTime);
+      const utcDeparture = DateTime.fromISO(route.departure?.utcTime);
+      const duration = this.intervalToString(
+        this.getDateTimeInterval(utcArrival, utcDeparture),
+      );
       return {
-        arrival: route.cityTo ?? '',
+        arrival: route.arrival?.city ?? '',
         arrivalTime:
           (localArrival && localArrival.toLocaleString(DateTime.TIME_SIMPLE)) ??
           '',
         carrier: { code: route.airline ?? '', name: '' }, // @TODO: get name of the airline
         tripDate: (localDeparture && localDeparture.toFormat(dateFormat)) ?? '',
-        departure: route.cityFrom ?? '',
+        departure: route.departure?.city ?? '',
         departureTime:
           (localDeparture &&
             localDeparture.toLocaleString(DateTime.TIME_SIMPLE)) ??
           '',
-        duration: this.intervalToString(
-          this.getDateTimeInterval(utcArrival, utcDeparture),
-        ),
+        duration: duration ?? '',
         id: route.id ?? '',
       };
     }
@@ -96,9 +103,8 @@ class ResultListItem extends React.Component<Props> {
     if (!route) {
       return null;
     }
-    // @TODO polish awful condition if it's possible
     return route.findIndex(
-      routeItem => routeItem?.flyFrom === routes?.[1]?.[0],
+      routeItem => routeItem?.departure?.cityCode === routes?.[1]?.[0],
     );
   };
 
@@ -119,7 +125,11 @@ class ResultListItem extends React.Component<Props> {
     if (!route) {
       return null;
     }
-    if (demandedSector === null || sectorBorderIndex === null) {
+    if (
+      demandedSector === null ||
+      sectorBorderIndex === null ||
+      sectorBorderIndex === -1
+    ) {
       return route;
     }
     if (demandedSector === 0) {
@@ -129,14 +139,18 @@ class ResultListItem extends React.Component<Props> {
   };
 
   getSectorBorderDuration = (route: ?Route, sectorBorderIndex: ?number) => {
-    if (route && sectorBorderIndex != null && sectorBorderIndex >= 0) {
+    if (route && sectorBorderIndex != null && sectorBorderIndex > 0) {
       const stopBeforeSector = route[sectorBorderIndex - 1];
       const stopAfterSector = route[sectorBorderIndex];
 
       const utcDeparture =
-        stopAfterSector && DateTime.fromISO(stopAfterSector.utcDeparture);
+        stopAfterSector &&
+        stopAfterSector.departure &&
+        DateTime.fromISO(stopAfterSector.departure.utcTime);
       const utcArrival =
-        stopBeforeSector && DateTime.fromISO(stopBeforeSector.utcArrival);
+        stopBeforeSector &&
+        stopBeforeSector.arrival &&
+        DateTime.fromISO(stopBeforeSector.arrival.utcTime);
       return this.getDateTimeInterval(utcDeparture, utcArrival, [
         'days',
         'hours',
@@ -149,6 +163,7 @@ class ResultListItem extends React.Component<Props> {
     const { data } = this.props;
     const sanitizedRoute = this.getSanitizedRoute();
     const sectorBorderIndex = this.getSectorBorderIndex();
+    const hasSectorBorder = sectorBorderIndex != null && sectorBorderIndex > -1;
     if (data == null) {
       return null;
     }
@@ -175,26 +190,29 @@ class ResultListItem extends React.Component<Props> {
       },
     ];
     const priceObject = {
-      value: price?.amount ?? 0,
+      amount: price?.amount ?? 0,
       currency: price?.currency ?? 'CZK',
       locale: 'cs-CZ',
     };
     // @TODO: use Card component
+    const duration =
+      this.intervalToString(
+        this.getSectorBorderDuration(data.route, sectorBorderIndex),
+        'days',
+      ) ?? '';
+    const hasReturnFlight = sectorBorderIndex != null && sectorBorderIndex > 0;
     return (
       <View style={styles.card}>
         <ConnectionCard
           wayForth={this.getSector(sanitizedRoute, 0, sectorBorderIndex)}
-          wayBack={this.getSector(sanitizedRoute, 1, sectorBorderIndex)}
+          wayBack={
+            hasReturnFlight
+              ? this.getSector(sanitizedRoute, 1, sectorBorderIndex)
+              : undefined
+          }
           badges={badges}
           price={priceObject}
-          duration={
-            sectorBorderIndex != null &&
-            (sectorBorderIndex ?? 0) > -1 &&
-            this.intervalToString(
-              this.getSectorBorderDuration(data.route, sectorBorderIndex),
-              'days',
-            )
-          }
+          duration={hasSectorBorder ? duration : ''}
         />
       </View>
     );
@@ -209,18 +227,21 @@ export default createFragmentContainer(
         currency
         amount
       }
-      localDeparture
-      localArrival
       route {
         airline
-        cityFrom
-        cityTo
-        flyFrom
+        arrival {
+          city
+          cityCode
+          localTime
+          utcTime
+        }
+        departure {
+          city
+          cityCode
+          localTime
+          utcTime
+        }
         id
-        localArrival
-        utcArrival
-        localDeparture
-        utcDeparture
       }
       routes
     }

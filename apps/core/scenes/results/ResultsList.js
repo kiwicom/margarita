@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-import { FlatList } from 'react-native';
+import { FlatList, View } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { StyleSheet } from '@kiwicom/universal-components';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
 import type { ResultsListItem as ResultsListItemType } from './__generated__/ResultsListItem.graphql';
@@ -41,11 +43,13 @@ class ResultsList extends React.Component<Props> {
       return <EmptyResults />;
     }
     return (
-      <FlatList
-        data={data}
-        keyExtractor={this.keyExtractor}
-        renderItem={this.resultItem}
-      />
+      <View style={styles.cardList}>
+        <FlatList
+          data={data}
+          keyExtractor={this.keyExtractor}
+          renderItem={this.resultItem}
+        />
+      </View>
     );
   }
 }
@@ -63,3 +67,10 @@ export default createFragmentContainer(
     }
   `,
 );
+
+const styles = StyleSheet.create({
+  cardList: {
+    backgroundColor: defaultTokens.backgroundBody,
+    flex: 1,
+  },
+});

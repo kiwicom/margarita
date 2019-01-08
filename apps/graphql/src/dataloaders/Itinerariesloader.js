@@ -21,17 +21,17 @@ export type ItinerariesSearchParameters = {|
   |},
 |};
 
+export type TripSector = {
+  +city: string,
+  +cityCode: string,
+  +localTime: Date,
+  +utcTime: Date,
+};
 export type RouteItem = {
   +airline: string,
-  +cityFrom: string,
-  +cityTo: string,
-  +flyFrom: string,
-  +flyTo: string,
+  +arrival: TripSector,
+  +departure: TripSector,
   +id: string,
-  +localArrival: Date,
-  +utcArrival: Date,
-  +localDeparture: Date,
-  +utcDeparture: Date,
 };
 
 export type Price = {
@@ -139,15 +139,19 @@ const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
     routes: itinerary.routes,
     route: itinerary.route.map(routeItem => ({
       airline: routeItem.airline,
-      cityFrom: routeItem.cityFrom,
-      cityTo: routeItem.cityTo,
-      flyFrom: routeItem.flyFrom,
-      flyTo: routeItem.flyTo,
+      arrival: {
+        city: routeItem.cityTo,
+        cityCode: routeItem.flyTo,
+        localTime: routeItem.local_arrival,
+        utcTime: routeItem.utc_arrival,
+      },
+      departure: {
+        city: routeItem.cityFrom,
+        cityCode: routeItem.flyFrom,
+        localTime: routeItem.local_departure,
+        utcTime: routeItem.utc_departure,
+      },
       id: routeItem.id,
-      localArrival: routeItem.local_arrival,
-      utcArrival: routeItem.utc_arrival,
-      localDeparture: routeItem.local_departure,
-      utcDeparture: routeItem.utc_departure,
     })),
   }));
 };

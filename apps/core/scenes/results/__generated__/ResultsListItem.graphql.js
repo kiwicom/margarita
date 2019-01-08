@@ -15,18 +15,21 @@ export type ResultsListItem = {|
     +currency: ?string,
     +amount: ?number,
   |},
-  +localDeparture: ?string,
-  +localArrival: ?string,
   +route: ?$ReadOnlyArray<?{|
     +airline: ?string,
-    +cityFrom: ?string,
-    +cityTo: ?string,
-    +flyFrom: ?string,
+    +arrival: ?{|
+      +city: ?string,
+      +cityCode: ?string,
+      +localTime: ?any,
+      +utcTime: ?any,
+    |},
+    +departure: ?{|
+      +city: ?string,
+      +cityCode: ?string,
+      +localTime: ?any,
+      +utcTime: ?any,
+    |},
     +id: ?string,
-    +localArrival: ?any,
-    +utcArrival: ?any,
-    +localDeparture: ?any,
-    +utcDeparture: ?any,
   |}>,
   +routes: ?$ReadOnlyArray<?$ReadOnlyArray<?string>>,
   +$refType: ResultsListItem$ref,
@@ -35,20 +38,36 @@ export type ResultsListItem = {|
 
 
 const node/*: ConcreteFragment*/ = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "localDeparture",
-  "args": null,
-  "storageKey": null
-},
-v1 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "localArrival",
-  "args": null,
-  "storageKey": null
-};
+var v0 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "city",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cityCode",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "localTime",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "utcTime",
+    "args": null,
+    "storageKey": null
+  }
+];
 return {
   "kind": "Fragment",
   "name": "ResultsListItem",
@@ -81,8 +100,6 @@ return {
         }
       ]
     },
-    v0,
-    v1,
     {
       "kind": "LinkedField",
       "alias": null,
@@ -100,46 +117,29 @@ return {
           "storageKey": null
         },
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "cityFrom",
+          "name": "arrival",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
+          "concreteType": "TripSector",
+          "plural": false,
+          "selections": v0
         },
         {
-          "kind": "ScalarField",
+          "kind": "LinkedField",
           "alias": null,
-          "name": "cityTo",
+          "name": "departure",
+          "storageKey": null,
           "args": null,
-          "storageKey": null
-        },
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "flyFrom",
-          "args": null,
-          "storageKey": null
+          "concreteType": "TripSector",
+          "plural": false,
+          "selections": v0
         },
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "id",
-          "args": null,
-          "storageKey": null
-        },
-        v1,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "utcArrival",
-          "args": null,
-          "storageKey": null
-        },
-        v0,
-        {
-          "kind": "ScalarField",
-          "alias": null,
-          "name": "utcDeparture",
           "args": null,
           "storageKey": null
         }
@@ -156,5 +156,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '1465e614745bdad1bfd18c6f448213dc';
+(node/*: any*/).hash = '525d93ca3b11711bf40ce6d3d12699c3';
 module.exports = node;

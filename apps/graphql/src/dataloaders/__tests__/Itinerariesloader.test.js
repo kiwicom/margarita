@@ -15,7 +15,6 @@ Object {
   "dateFrom": "01/01/2018",
   "dateTo": "01/01/2018",
   "flyFrom": "OSL",
-  "limit": 10,
   "to": "PRG",
 }
 `);
@@ -37,7 +36,6 @@ Object {
   "dateTo": "01/01/2018",
   "flyFrom": "OSL",
   "infants": 0,
-  "limit": 10,
   "to": "PRG",
 }
 `);

@@ -33,8 +33,7 @@ export default function TripSector({
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.carrierLogo}>
-          {/* <CarrierLogo size="medium" carriers={[carrier]} /> */}
-          <Text>CarrierLogo@TODO</Text>
+          <CarrierLogo size="medium" carriers={[carrier]} />
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
