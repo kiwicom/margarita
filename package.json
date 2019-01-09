@@ -6,8 +6,8 @@
   "main": "lib",
   "scripts": {
     "native": "node node_modules/react-native/local-cli/cli.js start",
-    "storybook": "start-storybook -p 9009 -c .storybook",
-    "storybook:build": "build-storybook -c .storybook",
+    "storybook": "start-storybook -p 9009 -c .storybook -s ./fonts",
+    "storybook:build": "rimraf storybook-static; build-storybook -c .storybook -s ./fonts",
     "prestorybook-native": "node ./node_modules/.bin/rnstl",
     "storybook-native": "storybook -c storybook.native start -p 7007",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
@@ -55,7 +55,6 @@
     "babel-jest": "^23.6.0",
     "babel-loader": "^8.0.4",
     "babel-runtime": "^6.26.0",
-    "css-loader": "^2.1.0",
     "eslint": "^5.9.0",
     "eslint-plugin-flowtype": "^3.2.0",
     "eslint-plugin-prettier": "^3.0.0",
