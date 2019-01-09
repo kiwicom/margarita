@@ -3,12 +3,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import {
-  Text,
-  StyleSheet,
-  CarrierLogo,
-  Icon,
-} from '@kiwicom/universal-components';
+import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
+
+import Timeline from './Timeline';
 
 type Props = {|
   +arrival: string,
@@ -22,21 +19,6 @@ type Props = {|
   +departureTime: string,
   +duration: string,
 |};
-
-const TimelineArrow = () => (
-  <View style={styles.timelineArrowContainer}>
-    <View style={styles.circle} />
-    <View style={[styles.line, styles.firstLine]} />
-    <Icon
-      name="chevron-down"
-      color={defaultTokens.paletteInkLighter}
-      size="small"
-      style={styles.timelineArrowIcon}
-    />
-    <View style={[styles.line, styles.secondLine]} />
-    <View style={styles.circle} />
-  </View>
-);
 
 export default function TripSector({
   arrival,
@@ -59,7 +41,7 @@ export default function TripSector({
             <Text numberOfLines={1}>{departureTime}</Text>
             <Text numberOfLines={1}>{arrivalTime}</Text>
           </View>
-          <TimelineArrow />
+          <Timeline />
           <View style={styles.places}>
             <Text style={styles.text} numberOfLines={1}>
               {departure}
@@ -122,29 +104,5 @@ const styles = StyleSheet.create({
   },
   info: {
     color: defaultTokens.colorTextSecondary,
-  },
-  timelineArrowContainer: {
-    minHeight: 35,
-    alignItems: 'center',
-  },
-  circle: {
-    borderRadius: parseFloat(defaultTokens.borderRadiusCircle),
-    width: 6,
-    height: 6,
-    backgroundColor: defaultTokens.paletteInkLighter,
-  },
-  line: {
-    flex: 1,
-    backgroundColor: defaultTokens.paletteCloudNormal,
-    width: 2,
-  },
-  firstLine: {
-    marginBottom: -5,
-  },
-  secondLine: {
-    marginTop: -3,
-  },
-  timelineArrowIcon: {
-    fontWeight: 'bold',
   },
 });
