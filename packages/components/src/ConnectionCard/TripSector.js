@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
 
-import Timeline from './Timeline';
+import TimelineArrow from './TimelineArrow';
 
 type Props = {|
   +arrival: string,
@@ -38,10 +38,14 @@ export default function TripSector({
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
-            <Text numberOfLines={1}>{departureTime}</Text>
-            <Text numberOfLines={1}>{arrivalTime}</Text>
+            <Text style={styles.highlightedText} numberOfLines={1}>
+              {departureTime}
+            </Text>
+            <Text style={styles.highlightedText} numberOfLines={1}>
+              {arrivalTime}
+            </Text>
           </View>
-          <Timeline />
+          <TimelineArrow />
           <View style={styles.places}>
             <Text style={styles.text} numberOfLines={1}>
               {departure}
@@ -84,11 +88,13 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   time: {
-    width: 60,
+    paddingHorizontal: 10,
+  },
+  highlightedText: {
     fontWeight: 'bold',
     fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-    lineHeight: 19,
-    paddingHorizontal: 10,
+    color: defaultTokens.colorTextAttention,
+    padding: 5,
   },
   places: {
     flex: 1,
@@ -96,8 +102,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     lineHeight: 17,
-    paddingHorizontal: 5,
-    paddingVertical: 5,
+    padding: 5,
   },
   infoItems: {
     alignItems: 'flex-end',
