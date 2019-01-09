@@ -21,6 +21,7 @@ export { TextInput } from './TextInput';
 export { Tooltip, TooltipBubble } from './Tooltip';
 export { DatePicker } from './DatePicker';
 export { Hoverable } from './Hoverable';
+export { Slider } from './Slider';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

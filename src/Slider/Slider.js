@@ -25,6 +25,17 @@ type Props = {|
   +customMarker?: React.Node,
 |};
 
+type OnLayout = {
+  +nativeEvent: {
+    +layout: {
+      +x: number,
+      +y: number,
+      +width: number,
+      +height: number,
+    },
+  },
+};
+
 type State = {
   multiSliderValues: Array<number>,
   singleSliderValue: Array<number>,
@@ -35,7 +46,11 @@ export default class Slider extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const { startValue, endValue } = this.props;
+    const { maxValue, startValue, endValue = maxValue } = this.props;
+
+    if (endValue > maxValue) {
+      console.error('End value cannot be equal or higher than maximum value');
+    }
 
     this.state = {
       width: 0,
