@@ -20,3 +20,4 @@ export {
 export { PlaceCard } from './src/PlaceCard';
 export { Shimmer } from './src/Shimmer';
 export { ConnectionCard } from './src/ConnectionCard';
+export { TimelineFlightDetail } from './src/TimelineFlightDetail';
