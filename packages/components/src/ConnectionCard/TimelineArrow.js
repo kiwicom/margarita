@@ -19,18 +19,18 @@ const Arrow = ({ arrowStyle = null, containerStyle = null }: ArrowProps) => (
   </View>
 );
 
-export default function Timeline() {
+export default function TimelineArrow() {
   return (
     <View style={styles.timelineArrowContainer}>
       <View style={styles.circle} />
       <View style={[styles.line, styles.firstLine]} />
       <Arrow
-        containerStyle={{ marginTop: -4 }}
-        arrowStyle={{ backgroundColor: defaultTokens.backgroundCard }}
+        containerStyle={styles.upperArrowContainer}
+        arrowStyle={styles.invisibleArrow}
       />
       <Arrow
-        containerStyle={{ marginTop: 4 }}
-        arrowStyle={{ backgroundColor: defaultTokens.backgroundCard }}
+        containerStyle={styles.lowerArrowContainer}
+        arrowStyle={styles.invisibleArrow}
       />
       <Arrow />
       <View style={[styles.line, styles.secondLine]} />
@@ -98,4 +98,7 @@ const styles = StyleSheet.create({
     right: 0,
     position: 'absolute',
   },
+  upperArrowContainer: { marginTop: -4 },
+  lowerArrowContainer: { marginTop: 4 },
+  invisibleArrow: { backgroundColor: defaultTokens.backgroundCard },
 });
