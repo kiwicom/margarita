@@ -19,44 +19,39 @@ type State = {
   date: Date,
 };
 
+const parsePropsToState = ({ date }: Props) => {
+  const tempDate = date ?? new Date();
+  return {
+    date: tempDate,
+  };
+};
+
 export default class iOSDatePicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      date: props.date || new Date(),
+      date: props.date ?? new Date(),
     };
   }
 
-  static getDerivedStateFromProps(nextProps: Props, nextState: State) {
-    const { date } = nextProps;
-
-    if (date && date !== nextState.date) {
-      return {
-        date,
-      };
+  componentDidUpdate = (prevProps: Props) => {
+    const { date } = this.props;
+    if (date != null && date !== prevProps.date) {
+      this.setState(parsePropsToState(this.props));
     }
-    return null;
-  }
-
-  setDefaultDate = () => {
-    this.setState({
-      date: new Date(),
-    });
   };
 
   handleDismiss = () => {
     const { onDismiss } = this.props;
-
     onDismiss();
+    this.setState(parsePropsToState(this.props));
   };
 
   handleConfirm = () => {
     const { onConfirm } = this.props;
     const { date } = this.state;
-
     onConfirm(date);
-    this.setDefaultDate();
   };
 
   handleChangeDate = (date: Date) => {

@@ -5,6 +5,7 @@ import { Platform } from 'react-native';
 import HoverMonitor from './HoverMonitor';
 
 type Props = {|
+  +disabled?: boolean,
   +children: React.Element<any>,
   +onMouseEnter?: () => void,
   +onMouseLeave?: () => void,
@@ -28,8 +29,8 @@ class Hoverable extends React.Component<Props> {
   };
 
   render() {
-    const { children } = this.props;
-    if (Platform.OS === 'web' && React.isValidElement(children)) {
+    const { disabled, children } = this.props;
+    if (!disabled && Platform.OS === 'web' && React.isValidElement(children)) {
       return React.cloneElement(React.Children.only(children), {
         onMouseEnter: this.handleOnMouseEnter,
         onMouseLeave: this.handleOnMouseLeave,

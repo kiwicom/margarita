@@ -4,23 +4,26 @@ import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs, select, date as dateAddon } from '@storybook/addon-knobs';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { StyleSheet } from '../PlatformStyleSheet';
 
 import { Button } from '../Button';
-import { Icon } from '../Icon';
 import { Text } from '../Text';
 import DatePicker from './DatePicker';
-import { StyleSheet } from '../PlatformStyleSheet';
 
 type State = {
   isOpen: boolean,
-  date: string,
+  date: Date,
 };
+
+// NOTE: currentDate is used for default min & max limit values and is defined outside
+// of component because the default value for dateAddon must not change
+const currentDate = new Date();
+const dateMinMaxOffset = 1000 * 60 * 60 * 24 * 30;
 
 class DateTimePicker extends React.Component<{}, State> {
   state = {
     isOpen: false,
-    date: '',
+    date: new Date(),
   };
 
   showDatePicker = () => this.setState({ isOpen: true });
@@ -28,7 +31,11 @@ class DateTimePicker extends React.Component<{}, State> {
   hideDatePicker = () => this.setState({ isOpen: false });
 
   handleDateChange = date => {
-    this.setState({ date: date.toString() }, () => this.hideDatePicker());
+    this.setState({ date }, () => this.hideDatePicker());
+  };
+
+  handleDateReset = () => {
+    this.setState({ date: new Date() });
   };
 
   render() {
@@ -36,11 +43,11 @@ class DateTimePicker extends React.Component<{}, State> {
     const mode = select('Mode', ['date', 'time', 'datetime'], 'date');
     const minDateStringTimestamp = dateAddon(
       'Min date',
-      new Date('Dec 20 2018')
+      new Date(currentDate.getTime() - dateMinMaxOffset)
     );
     const maxDateStringTimestamp = dateAddon(
       'Max date',
-      new Date('Jan 20 2019')
+      new Date(currentDate.getTime() + dateMinMaxOffset)
     );
     let datePickerMode;
 
@@ -53,50 +60,31 @@ class DateTimePicker extends React.Component<{}, State> {
     }
 
     return (
-      <View>
-        {Platform.OS !== 'web' && (
-          <Button onPress={this.showDatePicker}>Open date picker</Button>
-        )}
+      <View style={styles.container}>
+        <Button onPress={this.showDatePicker} label="Open date picker" />
         <DatePicker
           isVisible={isOpen}
-          onDismiss={this.hideDatePicker}
-          onConfirm={this.handleDateChange}
-          minDate={new Date(minDateStringTimestamp)}
-          maxDate={new Date(maxDateStringTimestamp)}
           mode={mode}
           datePickerMode={datePickerMode}
-          customInput={
-            <View style={styles.customInputContainer}>
-              <View style={styles.icon}>
-                <Icon name="calendar" color={defaultTokens.colorTextWhite} />
-              </View>
-              <Text type="white" size="large">
-                Date: {date}
-              </Text>
-            </View>
-          }
+          date={date}
+          minDate={new Date(minDateStringTimestamp)}
+          maxDate={new Date(maxDateStringTimestamp)}
+          onConfirm={this.handleDateChange}
+          onDismiss={this.hideDatePicker}
         />
-
-        {Platform.OS !== 'web' && <Text>Selected date: {date}</Text>}
+        <Text>Selected date: {date.toString()}</Text>
+        <Button onPress={this.handleDateReset} label="Reset Date" />
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  customInputContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    padding: parseFloat(defaultTokens.spaceSmall),
-    backgroundColor: defaultTokens.paletteProductNormal,
-    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
-  },
-  icon: {
-    marginEnd: 10,
-  },
-});
-
 storiesOf('DatePicker', module)
   .addDecorator(withKnobs)
   .add('Playground', () => <DateTimePicker />);
+
+const styles = StyleSheet.create({
+  container: {
+    minHeight: 360,
+  },
+});

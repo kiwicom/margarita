@@ -32,7 +32,6 @@
   "license": "MIT",
   "dependencies": {
     "@kiwicom/orbit-design-tokens": "^0.2.5",
-    "react-datepicker": "2.0.0",
     "react-native-status-bar-height": "^2.2.0",
     "styled-components": "^4.1.2"
   },
