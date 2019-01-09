@@ -1,0 +1,10 @@
+{
+  "name": "@kiwicom/margarita-utils",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "fast-check": "^1.10.0"
+  }
+}
