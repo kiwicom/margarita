@@ -16,23 +16,34 @@ type State = {|
 global.Buffer = Buffer; // No global Buffer in react-native, and graphql-relay needs it
 
 class App extends React.Component<Props, State> {
-  state = {
-    fontsLoaded: false,
-  };
+  constructor(props: Props) {
+    super(props);
 
-  async componentDidMount() {
-    await Expo.Font.loadAsync({
+    Expo.SplashScreen.preventAutoHide();
+
+    this.state = {
+      fontsLoaded: false,
+    };
+  }
+
+  loadFonts = () =>
+    Expo.Font.loadAsync({
       Roboto: Roboto,
       'orbit-icons': OrbitIcons,
     });
-    this.setState({ fontsLoaded: true });
+
+  async componentDidMount() {
+    await this.loadFonts();
+    this.setState({ fontsLoaded: true }, () => {
+      Expo.SplashScreen.hide();
+    });
   }
 
   render() {
     if (this.state.fontsLoaded) {
       return <SharedApp />;
     }
-    return null; // TODO: create some loading screen
+    return null;
   }
 }
 
