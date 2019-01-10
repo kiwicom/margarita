@@ -1053,12 +1053,12 @@
     eslint-plugin-react-native "^3.5.0"
     eslint-plugin-relay "^1.0.0"
 
-"@kiwicom/graphql-global-id@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-global-id/-/graphql-global-id-0.0.2.tgz#f12be7539ca05a4156cd70ca1666824800887567"
-  integrity sha512-BJrW2nCLhgRnoQ4MQF58z4gXuiP8FshZANNvuHnXTWhiWp/rE1I2KH+T5XA0u41/20o+rqbolFPkckcCXEVl8w==
+"@kiwicom/graphql-global-id@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-global-id/-/graphql-global-id-0.4.0.tgz#151cbbf723ef5013fcfbb9b5d429b551f1b8b30d"
+  integrity sha512-2HRQ/+3zHd9lreDf86qRR9b5tEDfkklpuYit3ypY0gMSzBziSdLWROQVBG8YEp3B54C3EhSZQD0gmkOIR2osog==
   dependencies:
-    buffer "^5.2.1"
+    "@mrtnzlml/utils" "^1.0.2"
 
 "@kiwicom/graphql-utils@^0.1.0":
   version "0.1.0"
@@ -1108,7 +1108,7 @@
     "@mrtnzlml/utils" "^1.0.0"
     react-relay "^1.7.0-rc.1"
 
-"@mrtnzlml/utils@^1.0.0":
+"@mrtnzlml/utils@^1.0.0", "@mrtnzlml/utils@^1.0.2":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@mrtnzlml/utils/-/utils-1.0.2.tgz#b29eb8911df76a4673187ed4130c4cbdcbd85e49"
   integrity sha512-F9wcVpn038gZ5Z/bJoQZXu4qwS+FVffXBvV8sutk/1UeXLK0QagwoH2x//Hnw3IuJt1vxEqCWQGk620wd4gpLQ==
