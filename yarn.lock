@@ -1065,11 +1065,12 @@
   dependencies:
     "@mrtnzlml/utils" "^1.0.2"
 
-"@kiwicom/graphql-utils@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.1.0.tgz#966777d8f05184d34c3d5802ed27a8f4938159f5"
-  integrity sha512-AMg1GQ/q9k2a8/oZ8FHu2rTOru6boPKJ2hzWuhfGelx3CKp1rFXRArGKrIDestpnX56j+kPn2NELuX+2uI8wCw==
+"@kiwicom/graphql-utils@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.3.0.tgz#042e7be6047b622c2e9fe1d4641c8117686ee8cb"
+  integrity sha512-hzLLRme8FI5FaORgvRffhkGpQGh4G04TkwlKe4QOOG+rHztAd87YF5ijRuZ+qhJ7Iac37vmWlGcBl+pP9oI5VQ==
   dependencies:
+    dataloader "^1.4.0"
     graphql-relay "^0.5.5"
 
 "@kiwicom/orbit-design-tokens@^0.2.5":

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-import { Badge } from '@kiwicom/universal-components';
+// import { Badge } from '@kiwicom/universal-components';
 
 import ConnectionCard from '../ConnectionCard';
 import BadgesContainer from '../BadgesContainer';

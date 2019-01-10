@@ -1,8 +1,8 @@
 // @flow
 
-import Dataloader from 'dataloader';
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
+import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import fetch from '../services/Fetch';
 
@@ -43,9 +43,10 @@ const fetchLocations = async (
 };
 
 export default (apikey: string) =>
-  new Dataloader<{| +term: string |}, Locations>(
-    async (ids: $ReadOnlyArray<{| +term: string |}>) =>
-      fetchLocations(ids, apikey),
+  new OptimisticDataloader(
+    async (
+      ids: $ReadOnlyArray<{| +term: string |}>,
+    ): Promise<Array<Location[] | Error>> => fetchLocations(ids, apikey),
     {
       cacheKeyFn: stringify,
     },

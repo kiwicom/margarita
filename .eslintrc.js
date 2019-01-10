@@ -12,6 +12,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    'no-unused-vars': ERROR,
     'no-restricted-imports': [
       ERROR,
       {
