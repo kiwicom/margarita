@@ -4,9 +4,9 @@ import * as React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import CheckboxText from './CheckboxText';
 import CheckboxIcon from './CheckboxIcon';
-import Hoverable from './Hoverable';
 import theme, { parseStringToFloat } from './styles';
 import { StyleSheet } from '../PlatformStyleSheet';
+import { Hoverable } from '../Hoverable';
 
 type Props = {|
   +label?: React.Node,

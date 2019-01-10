@@ -20,6 +20,7 @@ export { Text } from './Text';
 export { TextInput } from './TextInput';
 export { Tooltip, TooltipBubble } from './Tooltip';
 export { DatePicker } from './DatePicker';
+export { Hoverable } from './Hoverable';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

@@ -5,7 +5,7 @@ import { View, TouchableWithoutFeedback } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
-import Hoverable from '../Checkbox/Hoverable';
+import { Hoverable } from '../Hoverable';
 
 type Props = {|
   +dayId: number,
