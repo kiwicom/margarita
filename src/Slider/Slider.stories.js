@@ -16,34 +16,6 @@ import { Slider } from '.';
 
 storiesOf('Slider', module)
   .addDecorator(withKnobs)
-  .add('Playground', () => {
-    const minValue = number('Min value', 0);
-    const maxValue = number('Max value', 10000);
-    const startValue = number('Start value', 2000);
-    const endValue = number('End value', 8000);
-    const label = text('Label', 'Price');
-    const type = select('Type', ['multi', 'single'], 'single');
-    const snapped = boolean('Snapped', false);
-    const numOfParts = number('Number of parts', 5);
-    const sliderLength = number('Slider length', 315);
-
-    return (
-      <Slider
-        minValue={minValue}
-        maxValue={maxValue}
-        startValue={startValue}
-        endValue={endValue}
-        label={label}
-        type={type}
-        snapped={snapped}
-        numOfParts={numOfParts}
-        sliderLength={sliderLength}
-        onValuesChange={action('change')}
-        onValuesChangeFinish={action('finish')}
-        onValuesChangeStart={action('start')}
-      />
-    );
-  })
   .add('Default', () => (
     <ScrollView style={{ flex: 1 }}>
       <Slider
@@ -105,4 +77,34 @@ storiesOf('Slider', module)
         numOfParts={5}
       />
     </ScrollView>
-  ));
+  ))
+  .add('Playground', () => {
+    const minValue = number('Min value', 0);
+    const maxValue = number('Max value', 10000);
+    const startValue = number('Start value', 2000);
+    const endValue = number('End value', 8000);
+    const label = text('Label', 'Price');
+    const type = select('Type', ['multi', 'single'], 'single');
+    const snapped = boolean('Snapped', false);
+    const numOfParts = number('Number of parts', 5);
+    const sliderLength = number('Slider length', 315);
+    const step = number('Step', 1000);
+
+    return (
+      <Slider
+        minValue={minValue}
+        maxValue={maxValue}
+        startValue={startValue}
+        endValue={endValue}
+        label={label}
+        type={type}
+        snapped={snapped}
+        numOfParts={numOfParts}
+        sliderLength={sliderLength}
+        onValuesChange={action('change')}
+        onValuesChangeFinish={action('finish')}
+        onValuesChangeStart={action('start')}
+        step={step}
+      />
+    );
+  });

@@ -6,10 +6,10 @@ import { View } from 'react-native';
 import MultiSlider from 'react-native-multi-slider';
 
 import Marker from './Marker';
+import SliderParts from './SliderParts';
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
 
-const LABEL_LENGTH = 200;
 const TRACK_HEIGHT = 4;
 
 type Props = {|
@@ -24,7 +24,7 @@ type Props = {|
   +step?: number,
   +customMarker?: React.Node,
   +sliderLength?: number,
-  +onValuesChange?: () => void,
+  +onValuesChange?: (Array<number>) => void,
   +onValuesChangeFinish?: (Array<number>) => void,
   +onValuesChangeStart?: () => void,
 |};
@@ -68,7 +68,7 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       singleSliderValue: values,
     });
-    onValuesChange && onValuesChange();
+    onValuesChange && onValuesChange(values);
   };
 
   multiSliderValuesChange = (values: Array<number>) => {
@@ -76,47 +76,7 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       multiSliderValues: values,
     });
-    onValuesChange && onValuesChange();
-  };
-
-  calculateOffset = (value: number) => {
-    const { minValue, maxValue } = this.props;
-    const { width } = this.state;
-    return (value * width) / (maxValue - minValue) - LABEL_LENGTH / 2;
-  };
-
-  createParts = () => {
-    const { numOfParts = 1, minValue, maxValue } = this.props;
-    const step = (maxValue - minValue) / numOfParts;
-
-    const parts = [];
-    let i;
-
-    if (numOfParts != null && numOfParts < 1) {
-      console.error('numOfParts cannot be lower than 1');
-    }
-
-    for (i = 0; i <= numOfParts; i++) {
-      const valuePerStep = Math.floor(step * i);
-
-      parts.push(
-        <View
-          key={i}
-          style={[
-            styles.partStyle,
-            {
-              left: this.calculateOffset(valuePerStep),
-            },
-          ]}
-        >
-          <View style={styles.partBorder} />
-          <Text size="small" style={styles.labelText}>
-            {valuePerStep + minValue}
-          </Text>
-        </View>
-      );
-    }
-    return parts;
+    onValuesChange && onValuesChange(values);
   };
 
   onLayout = ({ nativeEvent }: OnLayout) => {
@@ -137,13 +97,9 @@ export default class Slider extends React.Component<Props, State> {
       customMarker,
       onValuesChangeFinish,
       onValuesChangeStart,
+      numOfParts,
     } = this.props;
     const { multiSliderValues, width, singleSliderValue } = this.state;
-
-    const typeLineStyle =
-      type === 'single' && singleSliderValue[0] >= minValue
-        ? styles.selected
-        : styles.unselected;
 
     const labelValue =
       type === 'multi'
@@ -174,26 +130,13 @@ export default class Slider extends React.Component<Props, State> {
           <View onLayout={this.onLayout}>
             <View style={styles.contentContainer}>
               <View>
-                <View>{this.createParts()}</View>
-                <View
-                  style={[
-                    styles.trackLine,
-                    typeLineStyle,
-                    {
-                      right: 0,
-                      width: width + 10,
-                    },
-                  ]}
-                />
-                <View
-                  style={[
-                    styles.trackLine,
-                    styles.unselected,
-                    {
-                      left: 0,
-                      width: width + 10,
-                    },
-                  ]}
+                <SliderParts
+                  width={width}
+                  minValue={minValue}
+                  maxValue={maxValue}
+                  numOfParts={numOfParts}
+                  type={type}
+                  singleSliderValue={singleSliderValue}
                 />
                 <MultiSlider
                   values={values}
@@ -240,33 +183,10 @@ const styles = StyleSheet.create({
   unselected: {
     backgroundColor: defaultTokens.paletteInkLighter,
   },
-  trackLine: {
-    borderRadius: 5,
-    height: TRACK_HEIGHT,
-    position: 'absolute',
-    top: 25 - TRACK_HEIGHT / 2,
-    alignSelf: 'center',
-  },
-  partStyle: {
-    position: 'absolute',
-    width: LABEL_LENGTH,
-    alignItems: 'center',
-  },
-  partBorder: {
-    position: 'absolute',
-    borderStartWidth: 2,
-    borderStartColor: defaultTokens.paletteCloudLightHover,
-    height: 34,
-    top: 8,
-  },
   labelContainer: {
     paddingHorizontal: 20,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  labelText: {
-    top: 50,
-    position: 'absolute',
   },
   resultContainer: {
     flexDirection: 'row',
