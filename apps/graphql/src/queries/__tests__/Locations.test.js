@@ -4,11 +4,9 @@ import { graphql } from '../../services/TestingTools';
 import locations from '../../datasets/locations';
 
 describe('locationsByTerm query', () => {
-  it;
-});
-it('works', async () => {
-  fetch.mockResponseOnce(JSON.stringify(locations));
-  const query = `query($input: LocationsByTermInput!) {
+  it('works', async () => {
+    fetch.mockResponseOnce(JSON.stringify(locations));
+    const query = `query($input: LocationsByTermInput!) {
       locationsByTerm(input: $input) {
         edges {
           node {
@@ -19,13 +17,13 @@ it('works', async () => {
         }
       }
     }`;
-  expect(
-    await graphql(query, {
-      input: {
-        term: 'Prague',
-      },
-    }),
-  ).toMatchInlineSnapshot(`
+    expect(
+      await graphql(query, {
+        input: {
+          term: 'Prague',
+        },
+      }),
+    ).toMatchInlineSnapshot(`
 Object {
   "data": Object {
     "locationsByTerm": Object {
@@ -105,4 +103,5 @@ Object {
   },
 }
 `);
+  });
 });
