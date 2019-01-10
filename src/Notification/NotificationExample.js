@@ -37,7 +37,7 @@ export default class NotificationExample extends React.Component<Props> {
     const { notificationType, onDismiss } = this.props;
     return (
       <View style={styles.container}>
-        <Button onPress={this.renderNotification}>Press</Button>
+        <Button onPress={this.renderNotification} label="Press" />
         <Notification
           ref={this.refToNotification}
           notificationType={notificationType}
