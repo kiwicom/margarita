@@ -48,20 +48,16 @@ export default async function fetch(
     );
   }
 
-  try {
-    const response = await fetchWithRetries(`${BASE_URL}${url}`, {
-      fetchTimeout: 30000,
-      retryDelays: [1000, 3000],
-      ...prepareOptions(options, apikey),
-      method,
-    });
+  const response = await fetchWithRetries(`${BASE_URL}${url}`, {
+    fetchTimeout: 30000,
+    retryDelays: [1000, 3000],
+    ...prepareOptions(options, apikey),
+    method,
+  });
 
-    if (response.status === 204) {
-      // response.json is undefined if there is no body
-      return null;
-    }
-    return response.json();
-  } catch (error) {
-    throw error;
+  if (response.status === 204) {
+    // response.json is undefined if there is no body
+    return null;
   }
+  return response.json();
 }

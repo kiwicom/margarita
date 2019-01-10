@@ -103,7 +103,7 @@ export default (apikey: string) =>
   new Dataloader<ItinerariesSearchParameters, Itineraries[]>(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<Itineraries[]>> => await fetchItineraries(keys, apikey),
+    ): Promise<Array<Itineraries[]>> => fetchItineraries(keys, apikey),
     {
       cacheKeyFn: stringify,
     },

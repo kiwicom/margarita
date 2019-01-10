@@ -45,7 +45,7 @@ const fetchLocations = async (
 export default (apikey: string) =>
   new Dataloader<{| +term: string |}, Locations>(
     async (ids: $ReadOnlyArray<{| +term: string |}>) =>
-      await fetchLocations(ids, apikey),
+      fetchLocations(ids, apikey),
     {
       cacheKeyFn: stringify,
     },
