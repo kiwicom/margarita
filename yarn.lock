@@ -9997,7 +9997,7 @@ react-native-modal@^5.4.0:
 
 "react-native-multi-slider@https://github.com/lukewalczak/react-native-multi-slider.git#feat/block-overlap":
   version "2.0.0"
-  resolved "https://github.com/lukewalczak/react-native-multi-slider.git#ed4746c444a89322cea2f837e04ce8080e953b84"
+  resolved "https://github.com/lukewalczak/react-native-multi-slider.git#920046a4a6ab49f7f163d0e00ae34993b9778807"
 
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"

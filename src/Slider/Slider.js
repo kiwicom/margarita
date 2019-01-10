@@ -23,6 +23,10 @@ type Props = {|
   +snapped?: boolean,
   +step?: number,
   +customMarker?: React.Node,
+  +sliderLength?: number,
+  +onValuesChange?: () => void,
+  +onValuesChangeFinish?: (Array<number>) => void,
+  +onValuesChangeStart?: () => void,
 |};
 
 type OnLayout = {
@@ -60,15 +64,19 @@ export default class Slider extends React.Component<Props, State> {
   }
 
   sliderOneValuesChange = (values: Array<number>) => {
+    const { onValuesChange } = this.props;
     this.setState({
       singleSliderValue: values,
     });
+    onValuesChange && onValuesChange();
   };
 
   multiSliderValuesChange = (values: Array<number>) => {
+    const { onValuesChange } = this.props;
     this.setState({
       multiSliderValues: values,
     });
+    onValuesChange && onValuesChange();
   };
 
   calculateOffset = (value: number) => {
@@ -112,7 +120,10 @@ export default class Slider extends React.Component<Props, State> {
   };
 
   onLayout = ({ nativeEvent }: OnLayout) => {
-    this.setState({ width: nativeEvent.layout.width });
+    const { sliderLength } = this.props;
+    this.setState({
+      width: sliderLength || nativeEvent.layout.width,
+    });
   };
 
   render() {
@@ -124,6 +135,8 @@ export default class Slider extends React.Component<Props, State> {
       step = 1,
       type,
       customMarker,
+      onValuesChangeFinish,
+      onValuesChangeStart,
     } = this.props;
     const { multiSliderValues, width, singleSliderValue } = this.state;
 
@@ -194,6 +207,8 @@ export default class Slider extends React.Component<Props, State> {
                   unselectedStyle={styles.unselected}
                   customMarker={customMarker || Marker}
                   snapped={snapped}
+                  onValuesChangeFinish={onValuesChangeFinish}
+                  onValuesChangeStart={onValuesChangeStart}
                 />
               </View>
             </View>
