@@ -1,9 +1,9 @@
 // @flow
 
-import Dataloader from 'dataloader';
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import { DateTime } from 'luxon';
+import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import fetch from '../services/Fetch';
 
@@ -100,10 +100,10 @@ const sanitizeIteneraries = (
 };
 
 export default (apikey: string) =>
-  new Dataloader<ItinerariesSearchParameters, Itineraries[]>(
+  new OptimisticDataloader(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<Itineraries[]>> => fetchItineraries(keys, apikey),
+    ): Promise<Array<Itineraries[] | Error>> => fetchItineraries(keys, apikey),
     {
       cacheKeyFn: stringify,
     },

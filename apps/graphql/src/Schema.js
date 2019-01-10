@@ -1,7 +1,6 @@
 // @flow
 
-import { GraphQLSchema, GraphQLObjectType, GraphQLString } from 'graphql';
-import GlobalID from '@kiwicom/graphql-global-id';
+import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
 import Itineraries from './queries/Itineraries';
 import Locations from './queries/Locations';
