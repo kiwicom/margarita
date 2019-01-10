@@ -35,6 +35,11 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 0,
     borderStyle: 'dotted',
+    web: {
+      borderLeftStyle: 'none',
+      borderRightStyle: 'none',
+      borderBottomStyle: 'none',
+    },
     position: 'relative',
   },
   dashOverlay: {
