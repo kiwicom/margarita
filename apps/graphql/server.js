@@ -6,6 +6,7 @@ import { ApolloServer } from 'apollo-server';
 
 import createContext from './src/services/GraphQLContext';
 import schema from './src/Schema';
+import Logger from './src/services/Logger';
 
 const server = new ApolloServer({
   schema,
@@ -21,5 +22,5 @@ const server = new ApolloServer({
 });
 
 server.listen().then(({ url, context }) => {
-  console.log(`🚀 Server ready at ${url}`); // eslint-disable-line no-console
+  Logger.info(`🚀 Server ready at ${url}`);
 });
