@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    web: {
+      minHeight: 350,
+    },
   },
   containerCentered: {
     justifyContent: 'center',

@@ -2,17 +2,22 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
+import { DateTime } from 'luxon';
 import {
   StyleSheet,
-  TextInput,
   Button,
   Icon,
+  DatePicker,
 } from '@kiwicom/universal-components';
 import {
   TripInput,
   Select,
   PassengersInputs,
   Modal,
+  PassengersButton,
+  TripTypeButton,
+  TouchableWithoutFeedback,
+  SearchIllustration,
 } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
@@ -22,13 +27,13 @@ import {
 } from '@kiwicom/margarita-navigation';
 
 const TRIP_TYPE = {
-  oneWay: {
-    icon: 'flight-direct',
-    label: 'One way',
-  },
   return: {
     icon: 'flight-return',
     label: 'Return',
+  },
+  oneWay: {
+    icon: 'flight-direct',
+    label: 'One way',
   },
 };
 
@@ -36,6 +41,11 @@ const MODAL_TYPE = {
   HIDDEN: 'HIDDEN',
   TRIP_TYPE: 'TRIP_TYPE',
   PASSENGERS: 'PASSENGERS',
+};
+
+const DATEPICKER_MODE = {
+  DEPARTURE: 'DEPARTURE',
+  RETURN: 'RETURN',
 };
 
 type PassengersData = {|
@@ -58,48 +68,67 @@ type State = {|
   travelTo: string,
   dateFrom: string,
   dateTo: string,
+  returnFrom: string,
+  returnTo: string,
   tripType: string,
+  datePickerVisible: boolean,
+  datePickerDate: Date,
+  datePickerMode: $Keys<typeof DATEPICKER_MODE>,
   ...PassengersData,
 |};
 
 class Search extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
+    const defaultDepartureDate = DateTime.local().toISODate();
+    const defaultReturnDate = DateTime.local()
+      .plus({ days: 2 })
+      .toISODate();
     this.state = {
       modalType: MODAL_TYPE.HIDDEN,
       travelFrom: 'OSL',
       travelTo: 'PRG',
-      dateFrom: '2018-12-30',
-      dateTo: '2018-12-31',
+      dateFrom: defaultDepartureDate,
+      dateTo: defaultDepartureDate,
+      returnFrom: defaultReturnDate,
+      returnTo: defaultReturnDate,
       tripType: Object.keys(TRIP_TYPE)[0],
+      datePickerVisible: false,
+      datePickerDate: DateTime.local().toJSDate(),
+      datePickerMode: DATEPICKER_MODE.DEPARTURE,
       adults: 1,
       infants: 0,
       bags: 0,
     };
   }
 
-  handleTravelFromChange = (value: string) =>
-    this.setState({ travelFrom: value });
-
-  handleTravelToChange = (value: string) => this.setState({ travelTo: value });
-  handleDateFromChange = (value: string) => this.setState({ dateFrom: value });
-  handleDateToChange = (value: string) => this.setState({ dateTo: value });
   handleSubmitPress = () => {
-    const { travelFrom, travelTo, dateFrom, dateTo } = this.state;
+    const {
+      travelFrom,
+      travelTo,
+      dateFrom,
+      dateTo,
+      returnFrom,
+      returnTo,
+      tripType,
+    } = this.state;
     this.props.navigation.navigate(Routes.RESULTS, {
       travelFrom,
       travelTo,
       dateFrom,
       dateTo,
+      ...(tripType === 'return'
+        ? {
+            returnFrom,
+            returnTo,
+          }
+        : {}),
     });
   };
 
   goToPlacePicker = () => {
     this.props.navigation.navigate(Routes.PLACE_PICKER);
-  };
-
-  todo = () => {
-    console.warn('TODO'); // eslint-disable-line no-console
   };
 
   handleTripTypeSelect = (type: string) => {
@@ -116,6 +145,67 @@ class Search extends React.Component<Props, State> {
 
   handlePassengersPress = () => {
     this.setState({ modalType: MODAL_TYPE.PASSENGERS });
+  };
+
+  handlePlacePress = () => {
+    console.log('TODO: place select'); // eslint-disable-line no-console
+  };
+
+  handlePlaceSwitchPress = () => {
+    this.setState(prevState => {
+      const { travelFrom, travelTo } = prevState;
+      return {
+        travelFrom: travelTo,
+        travelTo: travelFrom,
+      };
+    });
+  };
+
+  handleDepartureDatePress = () => {
+    const { dateFrom } = this.state;
+    this.setState({
+      datePickerVisible: true,
+      datePickerDate: DateTime.fromISO(dateFrom).toJSDate(),
+      datePickerMode: DATEPICKER_MODE.DEPARTURE,
+    });
+  };
+
+  handleReturnDatePress = () => {
+    const { returnFrom } = this.state;
+    this.setState({
+      datePickerVisible: true,
+      datePickerDate: DateTime.fromISO(returnFrom).toJSDate(),
+      datePickerMode: DATEPICKER_MODE.RETURN,
+    });
+  };
+
+  handleDateChange = date => {
+    const { datePickerMode } = this.state;
+    const parsedDate = DateTime.fromJSDate(date).toISODate();
+
+    switch (datePickerMode) {
+      case DATEPICKER_MODE.DEPARTURE:
+        this.setState({
+          dateFrom: parsedDate,
+          dateTo: parsedDate,
+          datePickerVisible: false,
+        });
+        break;
+      case DATEPICKER_MODE.RETURN:
+        this.setState({
+          returnFrom: parsedDate,
+          returnTo: parsedDate,
+          datePickerVisible: false,
+        });
+        break;
+      default:
+        this.setState({ datePickerVisible: false });
+        break;
+    }
+  };
+
+  handleDatePickerDismiss = () => {
+    this.setState({ datePickerVisible: false });
   };
 
   handleModalClose = () => {
@@ -155,55 +245,69 @@ class Search extends React.Component<Props, State> {
       travelFrom,
       travelTo,
       dateFrom,
-      dateTo,
+      returnFrom,
       tripType,
+      datePickerVisible,
+      datePickerDate,
       adults,
       infants,
       bags,
     } = this.state;
     return (
       <>
-        <View style={styles.form}>
-          <View style={styles.formTop}>
-            <Button
-              type="secondary"
-              leftIcon={<Icon name={TRIP_TYPE[tripType].icon} />}
-              rightIcon={<Icon name="show-more" />}
-              onPress={this.handleTripTypePress}
-              label={TRIP_TYPE[tripType].label}
+        <View style={styles.container}>
+          <View style={styles.form}>
+            <SearchIllustration />
+            <View style={styles.top}>
+              <TripTypeButton
+                onPress={this.handleTripTypePress}
+                icon={TRIP_TYPE[tripType].icon}
+                label={TRIP_TYPE[tripType].label}
+              />
+              <View style={styles.hSpacer} />
+              <PassengersButton
+                onPress={this.handlePassengersPress}
+                passengers={adults + infants}
+                bags={bags}
+              />
+            </View>
+            <View>
+              <TripInput
+                onPress={this.handlePlacePress}
+                label="From"
+                icon={<Icon name="airplane-takeoff" />}
+                value={travelFrom}
+              />
+              <TouchableWithoutFeedback onPress={this.handlePlaceSwitchPress}>
+                <View style={styles.placeSwitch}>
+                  <Icon name="replace" color="#7F91A8" />
+                </View>
+              </TouchableWithoutFeedback>
+              <TripInput
+                onPress={this.handlePlacePress}
+                label="To"
+                icon={<Icon name="airplane-landing" />}
+                value={travelTo}
+              />
+            </View>
+            <TripInput
+              onPress={this.handleDepartureDatePress}
+              label="Departure"
+              icon={<Icon name="calendar" />}
+              value={dateFrom}
             />
-            <Button
-              type="secondary"
-              width={120}
-              leftIcon={<Icon name="passengers" />}
-              rightIcon={<Icon name="baggage-set" />}
-              onPress={this.handlePassengersPress}
-              label={`${adults + infants} | ${bags}`}
-            />
+            {tripType === 'return' && (
+              <TripInput
+                onPress={this.handleReturnDatePress}
+                label="Return"
+                icon={<Icon name="calendar" />}
+                value={returnFrom}
+              />
+            )}
+            <View style={styles.bottom}>
+              <Button onPress={this.handleSubmitPress} label="Search" />
+            </View>
           </View>
-          <TripInput
-            onPress={this.todo}
-            label="From"
-            icon={<Icon name="airplane-landing" />}
-            value={travelFrom}
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={this.handleTravelToChange}
-            value={travelTo}
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={this.handleDateFromChange}
-            value={dateFrom}
-          />
-          <TextInput
-            style={styles.input}
-            onChangeText={this.handleDateToChange}
-            value={dateTo}
-          />
-          <Button onPress={this.handleSubmitPress} label="Search" />
-          <Button onPress={this.goToPlacePicker} label="PlacePicker" />
         </View>
         <Modal
           visible={modalType !== MODAL_TYPE.HIDDEN}
@@ -211,25 +315,63 @@ class Search extends React.Component<Props, State> {
         >
           {this.renderModalContent()}
         </Modal>
+        <DatePicker
+          isVisible={datePickerVisible}
+          mode={'date'}
+          date={datePickerDate}
+          onConfirm={this.handleDateChange}
+          onDismiss={this.handleDatePickerDismiss}
+        />
       </>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    web: {
+      overflowY: 'auto',
+      justifyContent: 'flex-start',
+    },
+  },
   form: {
+    width: '100%',
     maxWidth: 500,
-    padding: 8,
+    marginBottom: 100,
+    padding: parseInt(defaultTokens.spaceXSmall, 10),
   },
-  formTop: {
+  placeSwitch: {
+    position: 'absolute',
+    zIndex: 1,
+    right: 18,
+    top: '50%',
+    marginTop: -20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: defaultTokens.paletteWhite,
+    width: parseInt(defaultTokens.widthIconLarge, 10),
+    height: parseInt(defaultTokens.heightIconLarge, 10),
+    borderRadius: parseInt(defaultTokens.widthIconLarge, 10) * 0.5,
+    shadowOffset: { width: 0, height: 2 },
+    shadowColor: 'black',
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    android: {
+      elevation: 3,
+    },
+  },
+  hSpacer: {
+    width: parseInt(defaultTokens.spaceXSmall, 10),
+  },
+  top: {
     flexDirection: 'row',
-    marginBottom: parseInt(defaultTokens.marginButtonIconNormal, 10),
+    marginBottom: parseInt(defaultTokens.spaceMedium, 10),
   },
-  input: {
-    borderWidth: 1,
-    borderColor: '#bbbbbb',
-    margin: 5,
-    padding: 5,
+  bottom: {
+    marginTop: parseInt(defaultTokens.spaceXSmall, 10),
   },
 });
 

@@ -11,7 +11,7 @@ import ModalWrap from './ModalWrap';
 const Modal = (props: ModalProps) => {
   return (
     <>
-      <View style={[styles.overlay, !props.visible && styles.overlayHidden]} />
+      {props.visible && <View style={styles.overlay} />}
       <ModalWrap {...props} />
     </>
   );
@@ -20,13 +20,14 @@ const Modal = (props: ModalProps) => {
 const styles = StyleSheet.create({
   overlay: {
     position: 'absolute',
+    zIndex: parseInt(defaultTokens.zIndexModal, 10),
     width: '100%',
     height: '100%',
     backgroundColor: defaultTokens.paletteInkDark,
     opacity: 0.2,
-  },
-  overlayHidden: {
-    display: 'none',
+    android: {
+      elevation: 4, // NOTE: added to move overlay above PlaceSwitch on search screen
+    },
   },
 });
 

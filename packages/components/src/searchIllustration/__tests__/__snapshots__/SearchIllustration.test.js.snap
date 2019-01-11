@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <Component
+    source={1}
+    style={
+      Object {
+        "alignSelf": "center",
+        "marginBottom": 20,
+      }
+    }
+  />,
+}
+`;
