@@ -18,7 +18,7 @@ it('works', async () => {
     await graphql(query, {
       input: {
         travelFrom: 'OSL',
-        dateFrom: '2018-12-31',
+        dateFrom: '2019-05-15',
       },
     }),
   ).toMatchInlineSnapshot(`

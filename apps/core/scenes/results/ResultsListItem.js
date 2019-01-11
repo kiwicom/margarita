@@ -110,17 +110,13 @@ class ResultListItem extends React.Component<Props> {
     demandedSector: number,
     sectorBorderIndex: ?number,
   ): Array<TripSectorWithId> => {
-    if (
-      demandedSector === null ||
-      sectorBorderIndex === null ||
-      sectorBorderIndex === -1
-    ) {
-      return route;
+    if (sectorBorderIndex != null) {
+      if (demandedSector === 0) {
+        return route.slice(0, sectorBorderIndex);
+      }
+      return route.slice(sectorBorderIndex);
     }
-    if (demandedSector === 0) {
-      return route.slice(0, sectorBorderIndex);
-    }
-    return route.slice(sectorBorderIndex);
+    return route;
   };
 
   getDurationBetweenSectors = (route: ?Route, sectorBorderIndex: ?number) => {
@@ -153,23 +149,14 @@ class ResultListItem extends React.Component<Props> {
       return null;
     }
     const { price } = data;
-    /**
-     * TODO: properly handle possible undefined props in final version of list
-     * (for example: should be entry with undefined price still displayed?)
-     *
-     * NOTE: ugly form of string creation below is used for now because
-     * using ?? inside template literals caused problems with code styling
-     * inside VS Code (this part will be probably completely replaced
-     * in next iteration, so it's temporary solution)
-     */
     const badges = [
       {
-        id: 1,
+        id: '1',
         type: 'warning',
         children: 'Cheapest',
       },
       {
-        id: 2,
+        id: '2',
         type: 'neutral',
         children: 'Wi-fi',
       },

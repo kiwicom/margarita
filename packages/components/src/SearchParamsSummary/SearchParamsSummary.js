@@ -41,40 +41,38 @@ export default function SearchParamsSummary({
 
   return (
     <View style={styles.container}>
-      <View style={styles.headerLeftcontainer}>
+      <View style={styles.headerLeftContainer}>
         <View style={styles.citiesContainer}>
           <Text style={styles.departureCity}>{departure?.city || ''}</Text>
           <Icon name={icon} />
           <Text style={styles.arrivalCity}>{arrival?.city || ''}</Text>
         </View>
-        {arrival != null && departure != null && (
-          <View>
-            {tripType === 'OneWay' ? (
-              <View>
-                <AdaptableBadge
-                  style={styles.badge}
-                  textStyle={styles.badgeText}
-                  text={arrival.localizedDate}
-                />
-              </View>
-            ) : (
-              <View style={styles.row}>
-                <AdaptableBadge
-                  style={styles.badge}
-                  textStyle={styles.badgeText}
-                  text={departure.localizedDate}
-                />
-                <Text style={styles.connector}> to </Text>
-                {/* @TODO localize string `to` */}
-                <AdaptableBadge
-                  style={styles.badge}
-                  textStyle={styles.badgeText}
-                  text={arrival.localizedDate}
-                />
-              </View>
-            )}
-          </View>
-        )}
+        {arrival != null &&
+          departure != null &&
+          (tripType === 'OneWay' ? (
+            <View>
+              <AdaptableBadge
+                style={styles.badge}
+                textStyle={styles.badgeText}
+                text={departure.localizedDate}
+              />
+            </View>
+          ) : (
+            <View style={styles.row}>
+              <AdaptableBadge
+                style={styles.badge}
+                textStyle={styles.badgeText}
+                text={departure.localizedDate}
+              />
+              <Text style={styles.connector}> to </Text>
+              {/* @TODO localize string `to` */}
+              <AdaptableBadge
+                style={styles.badge}
+                textStyle={styles.badgeText}
+                text={arrival.localizedDate}
+              />
+            </View>
+          ))}
       </View>
     </View>
   );
@@ -97,9 +95,10 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     paddingTop: 8,
   },
-  headerLeftcontainer: {
+  headerLeftContainer: {
     flexDirection: 'column',
     paddingStart: 16,
+    flex: 1,
   },
   departureCity: {
     fontWeight: 'bold',
@@ -119,9 +118,11 @@ const styles = StyleSheet.create({
   },
   badge: {
     backgroundColor: defaultTokens.paletteCloudNormal,
+    alignSelf: 'center',
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
