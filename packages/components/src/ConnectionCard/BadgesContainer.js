@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ScrollView } from 'react-native';
 import { Badge, StyleSheet } from '@kiwicom/universal-components';
 
-type BadgeWithId = { ...React.ElementProps<typeof Badge>, id: number };
+type BadgeWithId = { ...React.ElementProps<typeof Badge>, id: string };
 
 type Props = {|
   +badges?: Array<BadgeWithId>,

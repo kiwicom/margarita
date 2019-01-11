@@ -43,17 +43,13 @@ describe('ConnectionCard', () => {
       duration: '3h',
     },
   ];
-  const localizedPrice = {
+  const price = {
     amount: 123455.35,
     locale: 'en-US',
     currency: 'EUR',
   };
   const { getAllByType, getByType } = render(
-    <ConnectionCard
-      price={localizedPrice}
-      wayForth={wayForth}
-      badges={badges}
-    />,
+    <ConnectionCard price={price} wayForth={wayForth} badges={badges} />,
   );
   // @TODO in this environment, I get 'No instances found' when it was working in @kiwicom/universal-components; could be linked to not having the latest version of the npm package or because the Badges are returned as an array?
   // it('should contain correct number of badges', () => {

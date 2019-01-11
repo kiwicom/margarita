@@ -3,9 +3,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { DateTime } from 'luxon';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { SearchParamsSummary } from '@kiwicom/margarita-components';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
 import ResultsList from './ResultsList';
@@ -29,16 +29,6 @@ export default class Results extends React.Component<Props> {
     return <ResultsList data={searchItineraries} />;
   };
 
-  // @TODO: separate to Frame component in universal components
-  renderFrame = () => {
-    const { dateFrom } = this.props;
-    return (
-      <Text style={styles.frameText}>
-        {DateTime.fromISO(dateFrom).toFormat('cccc d LLLL')}
-      </Text>
-    );
-  };
-
   render() {
     const {
       travelFrom,
@@ -49,9 +39,19 @@ export default class Results extends React.Component<Props> {
       returnDateTo,
     } = this.props;
 
+    const dateFormat = 'd LLLL';
+    const from = DateTime.fromISO(dateFrom).toFormat(dateFormat);
+    const tripType = returnDateFrom ? 'Return' : 'OneWay';
+    const to = returnDateFrom
+      ? DateTime.fromISO(returnDateFrom).toFormat(dateFormat)
+      : '';
     return (
       <View style={styles.container}>
-        <View style={styles.headerContainer}>{this.renderFrame()}</View>
+        <SearchParamsSummary
+          tripType={tripType}
+          departure={{ city: travelFrom, localizedDate: from }}
+          arrival={{ city: travelTo, localizedDate: to }}
+        />
         <QueryRenderer
           query={graphql`
             query ResultsQuery($input: ItinerariesSearchInput!) {
@@ -80,20 +80,12 @@ export default class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  headerContainer: {
-    paddingHorizontal: 25,
-    paddingBottom: 10,
-    backgroundColor: defaultTokens.backgroundCard,
-    borderColor: defaultTokens.borderColorCard,
-    borderBottomWidth: 1,
-  },
-  frameText: {
-    padding: 3,
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
-    borderRadius: parseFloat(defaultTokens.borderRadiusSmall),
-    fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
-    color: defaultTokens.colorTextPrimary,
-    alignSelf: 'center',
+    android: {
+      marginTop: 40, // @TODO create some metric for this number
+    },
+    ios: {
+      marginTop: 40, // @TODO create some metric for this number
+    },
+    justifyContent: 'flex-start',
   },
 });
