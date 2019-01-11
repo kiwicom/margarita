@@ -2,6 +2,7 @@
 
 import fetchWithRetries from '@mrtnzlml/fetch';
 
+import Logger from './Logger';
 import type { HttpMethod } from './types';
 
 const { NODE_ENV, BASE_URL } = process.env;
@@ -38,8 +39,8 @@ export default async function fetch(
     throw Error(`Expected to have apikey of type string, got ${typeof apikey}`);
   }
 
-  if (NODE_ENV === 'development') {
-    console.log(url); // eslint-disable-line no-console
+  if (NODE_ENV !== 'production') {
+    Logger.info(`${BASE_URL}${url}`);
   }
 
   if (NODE_ENV === 'test') {
@@ -48,16 +49,23 @@ export default async function fetch(
     );
   }
 
-  const response = await fetchWithRetries(`${BASE_URL}${url}`, {
-    fetchTimeout: 30000,
-    retryDelays: [1000, 3000],
-    ...prepareOptions(options, apikey),
-    method,
-  });
+  try {
+    const response = await fetchWithRetries(`${BASE_URL}${'/dsdas'}`, {
+      fetchTimeout: 30000,
+      retryDelays: [1000, 3000],
+      ...prepareOptions(options, apikey),
+      method,
+    });
+    Logger.info(`response status: ${response.status}`);
 
-  if (response.status === 204) {
-    // response.json is undefined if there is no body
-    return null;
+    if (response.status === 204) {
+      // response.json is undefined if there is no body
+      return null;
+    }
+
+    return response.json();
+  } catch (err) {
+    Logger.error(err);
+    throw err;
   }
-  return response.json();
 }
