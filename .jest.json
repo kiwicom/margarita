@@ -5,7 +5,8 @@
   },
   "testPathIgnorePatterns": [
     "/node_modules/",
-    "__tests__/__mocks__"
+    "__tests__/__mocks__",
+    "/examples/"
   ],
   "modulePathIgnorePatterns": [
     "/.build/"

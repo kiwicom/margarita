@@ -5,6 +5,8 @@
   "homepage": "https://github.com/kiwicom/universal-components",
   "main": "lib",
   "scripts": {
+    "docz:dev": "cd docs; yarn; yarn docz:dev",
+    "docz:build": "cd docs; yarn; yarn docz:build",
     "native": "node node_modules/react-native/local-cli/cli.js start",
     "storybook": "start-storybook -p 9009 -c .storybook -s ./fonts",
     "storybook:build": "rimraf storybook-static; build-storybook -c .storybook -s ./fonts",
@@ -44,7 +46,6 @@
     "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
     "@callstack/eslint-config": "^3.0.0",
-    "@emotion/core": "^0.13.1",
     "@emotion/styled": "^0.10.6",
     "@storybook/addon-actions": "^4.0.7",
     "@storybook/addon-knobs": "^4.0.7",

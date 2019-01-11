@@ -9,9 +9,21 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
+  /**
+   * Only shown if Accordion is in expanded state
+   */
   +children: React.Node,
+  /**
+   * (expanded: boolean) => React.Node
+   */
   +header: (expanded: boolean) => React.Node,
+  /**
+   * Forces the Accordion to be expanded when mounted
+   */
   +expandedDefault?: boolean,
+  /**
+   * Custom style for the container
+   */
   +containerStyle?: StylePropType,
 |};
 

@@ -1,0 +1,27 @@
+{
+  "name": "@kiwicom/universal-components-docz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docz:dev": "docz dev",
+    "docz:build": "docz build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.2.0",
+    "@babel/preset-flow": "^7.0.0",
+    "@emotion/babel-preset-css-prop": "^10.0.6",
+    "@emotion/core": "^10.0.6",
+    "@emotion/styled": "^10.0.6",
+    "babel-plugin-emotion": "^10.0.6",
+    "docz": "^0.13.7",
+    "docz-theme-default": "^0.13.7",
+    "react": "^16.7.0",
+    "react-art": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-native-web": "^0.10.0-alpha.1"
+  }
+}

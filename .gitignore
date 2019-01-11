@@ -4,6 +4,9 @@ storybook-static
 .cache
 storybook.native/story-loader.js
 
+# Docz.site - documentation generating tool
+**/.docz/*
+
 # OSX
 #
 .DS_Store
