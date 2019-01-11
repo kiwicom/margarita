@@ -19,10 +19,10 @@ const ModalWrap = ({ visible, children, onClose }: ModalProps) => {
 
 const style = {
   position: 'absolute',
-  zIndex: defaultTokens.zIndexModal,
-  top: 0,
+  zIndex: parseInt(defaultTokens.zIndexModal, 10),
   width: '100%',
   height: '100%',
+  overflowY: 'auto',
 };
 
 export default ModalWrap;

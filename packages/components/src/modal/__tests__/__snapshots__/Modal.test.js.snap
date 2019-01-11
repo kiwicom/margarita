@@ -5,16 +5,14 @@ Object {
   "output": <React.Fragment>
     <Component
       style={
-        Array [
-          Object {
-            "backgroundColor": "#171b1e",
-            "height": "100%",
-            "opacity": 0.2,
-            "position": "absolute",
-            "width": "100%",
-          },
-          false,
-        ]
+        Object {
+          "backgroundColor": "#171b1e",
+          "height": "100%",
+          "opacity": 0.2,
+          "position": "absolute",
+          "width": "100%",
+          "zIndex": 825,
+        }
       }
     />
     <ModalWrap

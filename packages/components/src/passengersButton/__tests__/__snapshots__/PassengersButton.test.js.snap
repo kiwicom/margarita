@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <TouchableWithoutFeedback
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    onPress={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            undefined,
+          ],
+        ],
+        "results": Array [
+          Object {
+            "isThrow": false,
+            "value": undefined,
+          },
+        ],
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#e8edf1",
+          "borderRadius": 6,
+          "flexDirection": "row",
+          "height": 44,
+          "justifyContent": "space-between",
+          "paddingEnd": 16,
+          "paddingStart": 11,
+          "width": 122,
+        }
+      }
+    >
+      <Icon
+        color="#7f91a8"
+        name="passengers"
+      />
+      <Text
+        style={
+          Object {
+            "color": "#171b1e",
+            "fontSize": 16,
+          }
+        }
+      >
+        2
+      </Text>
+      <Icon
+        color="#7f91a8"
+        name="baggage-set"
+      />
+      <Text
+        style={
+          Object {
+            "color": "#171b1e",
+            "fontSize": 16,
+          }
+        }
+      >
+        1
+      </Text>
+    </Component>
+  </TouchableWithoutFeedback>,
+}
+`;
