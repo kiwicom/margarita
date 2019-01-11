@@ -7,7 +7,11 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import DatePickerDayTile from './DatePickerDayTile';
 import { Button } from '../Button';
 import { Text } from '../Text';
-import { getPreviousMonthData, getNextMonthData } from './DatePickerHelpers';
+import {
+  getPreviousMonthData,
+  getNextMonthData,
+  getStartOfDayTime,
+} from './DatePickerHelpers';
 
 import type { Props } from './DatePickerTypes';
 
@@ -66,11 +70,11 @@ export default class WebDatePicker extends React.Component<Props, State> {
 
     const monthLength = new Date(year, month + 1, 0).getDate();
     const startDay = new Date(year, month, 1).getDay();
-    const selectedDay = new Date(
-      date.getFullYear(),
-      date.getMonth(),
-      date.getDate()
-    );
+    const selectedDateTime = getStartOfDayTime(date);
+    const minDateTime = minDate ? getStartOfDayTime(minDate) : 0;
+    const maxDateTime = maxDate
+      ? getStartOfDayTime(maxDate)
+      : Number.MAX_SAFE_INTEGER;
     const backDisabled =
       minDate && year <= minDate.getFullYear() && month <= minDate.getMonth();
     const forwardDisabled =
@@ -81,14 +85,12 @@ export default class WebDatePicker extends React.Component<Props, State> {
       const dayId = i + 1 - startDay;
       const tempDateTime =
         dayId > 0 ? new Date(year, month, dayId).getTime() : 0;
-      const disabled =
-        tempDateTime < (minDate ?? 0) ||
-        tempDateTime > (maxDate ?? Number.MAX_SAFE_INTEGER);
+      const disabled = tempDateTime < minDateTime || tempDateTime > maxDateTime;
       dayTiles.push(
         <DatePickerDayTile
           key={`${year}-${month}-${i}`}
           dayId={dayId}
-          selected={tempDateTime === selectedDay.getTime()}
+          selected={tempDateTime === selectedDateTime}
           disabled={disabled}
           onDaySelect={this.handleDaySelect}
         />

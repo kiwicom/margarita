@@ -27,7 +27,7 @@ export default class DatePickerDayTile extends React.Component<Props, State> {
     };
   }
 
-  handleDayClick = () => {
+  handleDayPress = () => {
     const { onDaySelect, dayId } = this.props;
     onDaySelect(dayId);
   };
@@ -56,7 +56,7 @@ export default class DatePickerDayTile extends React.Component<Props, State> {
       >
         <TouchableWithoutFeedback
           disabled={selected || disabled}
-          onPress={this.handleDayClick}
+          onPress={this.handleDayPress}
         >
           <View
             style={[

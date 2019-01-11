@@ -28,3 +28,6 @@ export const getNextMonthData = (state: State): MonthSwapResult => {
     year,
   };
 };
+
+export const getStartOfDayTime = (date: Date): number =>
+  new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();

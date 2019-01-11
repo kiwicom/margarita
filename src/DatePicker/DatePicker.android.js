@@ -6,6 +6,11 @@ import { DatePickerAndroid, TimePickerAndroid } from 'react-native';
 import type { Props } from './DatePickerTypes';
 
 export default class AndroidDatePicker extends React.Component<Props> {
+  static defaultProps = {
+    mode: 'date',
+    datePickerMode: 'default',
+  };
+
   componentDidUpdate = (prevProps: Props) => {
     const { isVisible, mode } = this.props;
 

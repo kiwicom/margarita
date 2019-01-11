@@ -1,6 +1,10 @@
 // @flow
 
-import { getPreviousMonthData, getNextMonthData } from '../DatePickerHelpers';
+import {
+  getPreviousMonthData,
+  getNextMonthData,
+  getStartOfDayTime,
+} from '../DatePickerHelpers';
 
 describe('DatePicker', () => {
   test('getPreviousMonthData > should decrease month number', () => {
@@ -49,5 +53,11 @@ describe('DatePicker', () => {
       month: 0,
       year: 2020,
     });
+  });
+
+  test('getStartOfDayTime > should reset date time to start of the day', () => {
+    const testDay = new Date(2019, 0, 1, 10, 32, 5, 12);
+    const resultTime = new Date(2019, 0, 1).getTime();
+    expect(getStartOfDayTime(testDay)).toBe(resultTime);
   });
 });

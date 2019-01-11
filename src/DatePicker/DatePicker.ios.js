@@ -27,6 +27,10 @@ const parsePropsToState = ({ date }: Props) => {
 };
 
 export default class iOSDatePicker extends React.Component<Props, State> {
+  static defaultProps = {
+    mode: 'date',
+  };
+
   constructor(props: Props) {
     super(props);
 
