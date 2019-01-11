@@ -3,21 +3,21 @@
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 
-import RowOption from '../RowOptionContainer';
+import RowOption from '../RowOption';
 
-import { Touchable } from '../../Touchable';
 import { Icon } from '../../Icon';
 
 describe('RowOption', () => {
-  const onPress = jest.fn();
+  const onItemPress = jest.fn();
+  const onAddPress = jest.fn();
 
-  const { getByType, getAllByType, getByTestId } = render(
+  const { getAllByType, getByTestId } = render(
     <RowOption
       type="destination"
       header="Very very long long long long long long long long"
       subheader="10 km from center"
-      onItemPress={onPress}
-      onAddPress={onPress}
+      onItemPress={onItemPress}
+      onAddPress={onAddPress}
       border="shaped"
       info="Czech Republic"
     />
@@ -36,7 +36,12 @@ describe('RowOption', () => {
   });
 
   it('should execute onItemPress function', () => {
-    const touchable = getByType(Touchable);
-    fireEvent.press(touchable);
+    fireEvent(getByTestId('item-button'), 'press');
+    expect(onItemPress).toHaveBeenCalled();
+  });
+
+  it('should execute onAddPress function', () => {
+    fireEvent(getByTestId('add-button'), 'press');
+    expect(onAddPress).toHaveBeenCalled();
   });
 });

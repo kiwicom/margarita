@@ -13,7 +13,11 @@ type Props = {|
 
 export default function RowOptionContainer({ onAddPress }: Props) {
   return (
-    <Touchable onPress={onAddPress} style={styles.plusButton}>
+    <Touchable
+      onPress={onAddPress}
+      style={styles.plusButton}
+      testID="add-button"
+    >
       <Icon
         name="plus"
         size="small"

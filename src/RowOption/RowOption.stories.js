@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs, text, select } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import RowOption from './RowOptionContainer';
+import RowOption from './RowOption';
 
 const onItemPress = action('item-press');
 const onAddPress = action('add-press');

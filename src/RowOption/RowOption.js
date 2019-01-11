@@ -47,7 +47,7 @@ export default function RowOptionContainer({
   }
 
   return (
-    <Touchable onPress={onItemPress}>
+    <Touchable onPress={onItemPress} testID="item-button">
       <View style={[longSeparatorStyle, styles.container]}>
         <View style={styles.wrapper}>
           <RowOptionLeftIcon type={type} border={border} />
