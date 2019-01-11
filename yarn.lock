@@ -9995,7 +9995,7 @@ react-native-modal@^5.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-"react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git":
+"react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e":
   version "2.0.3"
   resolved "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"
 
