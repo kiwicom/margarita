@@ -6,7 +6,10 @@ import { DateTime, Duration } from 'luxon';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { ConnectionCard } from '@kiwicom/margarita-components';
+import {
+  ConnectionCard,
+  type TripSectorWithId,
+} from '@kiwicom/margarita-components';
 
 import type { ResultsListItem as ResultsListItemType } from './__generated__/ResultsListItem.graphql';
 
@@ -14,30 +17,14 @@ type Props = {|
   +data: ResultsListItemType,
 |};
 
-// @TODO make TripSectorProps and CarrierData exportable from universal-components
-export type CarrierData = {
-  code: string,
-  name: string,
-  type?: 'airline' | 'bus' | 'train',
-};
-
-export type TripSectorProps = {
-  +id: string,
-  +arrival: string,
-  +arrivalTime: string,
-  +carrier: CarrierData,
-  +tripDate: string,
-  +departure: string,
-  +departureTime: string,
-  +duration: string,
-};
-
 export type Route = $PropertyType<ResultsListItemType, 'route'>;
 export type RouteItem = $ElementType<$NonMaybeType<Route>, number>; // number because arrays are number-indexed
 
+// @TODO get from config
 const dateFormat = 'ccc d LLL';
 
 class ResultListItem extends React.Component<Props> {
+  // @TODO get from utils
   getDateTimeInterval = (
     to: DateTime,
     from: DateTime,
@@ -46,10 +33,11 @@ class ResultListItem extends React.Component<Props> {
     return to.diff(from, unit).toObject();
   };
 
+  // @TODO get from utils
   intervalToString = (
     interval?: Duration,
     type?: 'days' | 'hours' = 'hours',
-  ): ?string => {
+  ) => {
     if (!interval) {
       return '';
     }
@@ -70,35 +58,33 @@ class ResultListItem extends React.Component<Props> {
   };
 
   // @TODO Handle cases when we don't have some data from GraphQL/REST server
-  getSanitizedRouteItem = (route: RouteItem): ?TripSectorProps => {
-    if (route) {
-      const localArrival = DateTime.fromISO(route.arrival?.localTime);
-      const localDeparture = DateTime.fromISO(route.departure?.localTime);
-      const utcArrival = DateTime.fromISO(route.arrival?.utcTime);
-      const utcDeparture = DateTime.fromISO(route.departure?.utcTime);
-      const duration = this.intervalToString(
-        this.getDateTimeInterval(utcArrival, utcDeparture),
-      );
-      return {
-        arrival: route.arrival?.city ?? '',
-        arrivalTime:
-          (localArrival && localArrival.toLocaleString(DateTime.TIME_SIMPLE)) ??
-          '',
-        carrier: { code: route.airline ?? '', name: '' }, // @TODO: get name of the airline
-        tripDate: (localDeparture && localDeparture.toFormat(dateFormat)) ?? '',
-        departure: route.departure?.city ?? '',
-        departureTime:
-          (localDeparture &&
-            localDeparture.toLocaleString(DateTime.TIME_SIMPLE)) ??
-          '',
-        duration: duration ?? '',
-        id: route.id ?? '',
-      };
-    }
-    return null;
+  getSanitizedRouteItem = (route: RouteItem) => {
+    const localArrival = route && DateTime.fromISO(route.arrival?.localTime);
+    const localDeparture =
+      route && DateTime.fromISO(route.departure?.localTime);
+    const utcArrival = route && DateTime.fromISO(route.arrival?.utcTime);
+    const utcDeparture = route && DateTime.fromISO(route.departure?.utcTime);
+    const duration =
+      route &&
+      this.intervalToString(this.getDateTimeInterval(utcArrival, utcDeparture));
+    return {
+      arrival: (route && route.arrival?.city) ?? '',
+      arrivalTime:
+        (localArrival && localArrival.toLocaleString(DateTime.TIME_SIMPLE)) ??
+        '',
+      carrier: { code: (route && route.airline) ?? '', name: '' }, // @TODO: get name of the airline
+      tripDate: (localDeparture && localDeparture.toFormat(dateFormat)) ?? '',
+      departure: (route && route.departure?.city) ?? '',
+      departureTime:
+        (localDeparture &&
+          localDeparture.toLocaleString(DateTime.TIME_SIMPLE)) ??
+        '',
+      duration: duration ?? '',
+      id: (route && route.id) ?? '',
+    };
   };
 
-  getSectorBorderIndex = (): ?number => {
+  getSectorBorderIndex = () => {
     const { route, routes } = this.props.data;
     if (!route) {
       return null;
@@ -109,22 +95,21 @@ class ResultListItem extends React.Component<Props> {
   };
 
   // @TODO: make ConnectionCard more universal (not only for forth and back routes)
-  getSanitizedRoute = (): ?Array<?TripSectorProps> => {
+  getSanitizedRoute = (): Array<TripSectorWithId> => {
     const { route } = this.props.data;
-    return (
-      route &&
-      route.map((routeItem: RouteItem) => this.getSanitizedRouteItem(routeItem))
-    );
+    if (route) {
+      return route.map((routeItem: RouteItem) =>
+        this.getSanitizedRouteItem(routeItem),
+      );
+    }
+    return [];
   };
 
   getSector = (
-    route: ?Array<?TripSectorProps>,
-    demandedSector: ?number,
+    route: Array<TripSectorWithId>, // rename to sanitizeRoute
+    demandedSector: number,
     sectorBorderIndex: ?number,
-  ): ?Array<?TripSectorProps> => {
-    if (!route) {
-      return null;
-    }
+  ): Array<TripSectorWithId> => {
     if (
       demandedSector === null ||
       sectorBorderIndex === null ||
@@ -138,7 +123,7 @@ class ResultListItem extends React.Component<Props> {
     return route.slice(sectorBorderIndex);
   };
 
-  getSectorBorderDuration = (route: ?Route, sectorBorderIndex: ?number) => {
+  getDurationBetweenSectors = (route: ?Route, sectorBorderIndex: ?number) => {
     if (route && sectorBorderIndex != null && sectorBorderIndex > 0) {
       const stopBeforeSector = route[sectorBorderIndex - 1];
       const stopAfterSector = route[sectorBorderIndex];
@@ -190,17 +175,19 @@ class ResultListItem extends React.Component<Props> {
       },
     ];
     const priceObject = {
-      amount: price?.amount ?? 0,
+      amount: parseFloat(price?.amount) ?? 0,
       currency: price?.currency ?? 'CZK',
       locale: 'cs-CZ',
     };
-    // @TODO: use Card component
+
     const duration =
       this.intervalToString(
-        this.getSectorBorderDuration(data.route, sectorBorderIndex),
+        this.getDurationBetweenSectors(data.route, sectorBorderIndex),
         'days',
       ) ?? '';
     const hasReturnFlight = sectorBorderIndex != null && sectorBorderIndex > 0;
+
+    // @TODO: use Card component
     return (
       <View style={styles.card}>
         <ConnectionCard

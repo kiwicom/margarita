@@ -36,6 +36,8 @@ Object {
   "dateTo": "01/01/2018",
   "flyFrom": "OSL",
   "infants": 0,
+  "returnFrom": "02/01/2018",
+  "returnTo": "02/01/2018",
   "to": "PRG",
 }
 `);

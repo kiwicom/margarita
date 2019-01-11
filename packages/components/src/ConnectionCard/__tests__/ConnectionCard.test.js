@@ -23,7 +23,7 @@ describe('ConnectionCard', () => {
   ];
   const wayForth = [
     {
-      id: 1,
+      id: '1',
       arrival: 'Berlin TXL',
       arrivalTime: '14:20',
       carrier: { code: 'OK', name: 'Czech Airlines' },
@@ -33,7 +33,7 @@ describe('ConnectionCard', () => {
       duration: '1h',
     },
     {
-      id: 2,
+      id: '2',
       arrival: 'Moscow VKO',
       arrivalTime: '20:20',
       carrier: { code: 'FR', type: 'airline', name: 'Ryanair' },

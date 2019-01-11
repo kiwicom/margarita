@@ -82,6 +82,10 @@ const getFormatedDate = date => {
 };
 
 class Search extends React.Component<Props, State> {
+  static navigationOptions = ({ navigation }: any) => ({
+    header: null,
+  });
+
   constructor(props: Props) {
     super(props);
 
