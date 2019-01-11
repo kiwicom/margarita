@@ -15,6 +15,8 @@ type Props = {|
   +travelTo: string,
   +dateFrom: string,
   +dateTo: string,
+  +returnDateFrom: string,
+  +returnDateTo: string,
 |};
 
 type ResultsType = {|
@@ -38,7 +40,14 @@ export default class Results extends React.Component<Props> {
   };
 
   render() {
-    const { travelFrom, travelTo, dateFrom, dateTo } = this.props;
+    const {
+      travelFrom,
+      travelTo,
+      dateFrom,
+      dateTo,
+      returnDateFrom,
+      returnDateTo,
+    } = this.props;
 
     return (
       <View style={styles.container}>
@@ -57,6 +66,8 @@ export default class Results extends React.Component<Props> {
               travelTo,
               dateFrom,
               dateTo,
+              returnDateFrom,
+              returnDateTo,
             },
           }}
           render={this.renderInner}

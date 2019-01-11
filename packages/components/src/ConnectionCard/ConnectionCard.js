@@ -10,13 +10,9 @@ import {
 
 import ConnectionCardRow from './ConnectionCardRow';
 import TripSector from './TripSector';
+import type { TripSectorWithId } from './ConnectionCardTypes';
 import BadgesContainer from './BadgesContainer';
 import HorizontalDash from './HorizontalDash';
-
-type TripSectorWithId = {
-  ...React.ElementProps<typeof TripSector>,
-  id: number,
-};
 
 type Props = {|
   +padding?: boolean,
@@ -31,11 +27,11 @@ type Props = {|
   },
 |};
 
-type RenderTripSectorProps = {|
+type TripSectorProps = {|
   +way?: Array<TripSectorWithId>,
 |};
 
-const RenderTripSectors = ({ way }: RenderTripSectorProps) => {
+const TripSectors = ({ way }: TripSectorProps) => {
   if (way == null) {
     return null;
   }
@@ -74,7 +70,7 @@ export default function ConnectionCard({
         style={padding ? styles.paddingHorizontal : styles.noPaddingHorizontal}
       >
         <ConnectionCardRow>
-          <RenderTripSectors way={wayForth} />
+          <TripSectors way={wayForth} />
         </ConnectionCardRow>
         {hasWayBack && (
           <React.Fragment>
@@ -86,7 +82,7 @@ export default function ConnectionCard({
               </ConnectionCardRow>
             )}
             <ConnectionCardRow>
-              <RenderTripSectors way={wayBack} />
+              <TripSectors way={wayBack} />
             </ConnectionCardRow>
           </React.Fragment>
         )}

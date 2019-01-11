@@ -89,11 +89,11 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
     dateFrom: parseDate(input.dateFrom),
     dateTo: parseDate(input.dateFrom),
     to: input.travelTo ?? 'BCN', // Currently crashes without this fallback, fix hardcoding later, see https://skypicker.slack.com/archives/C7J2QM28G/p1544189402006200?thread_ts=1544188700.004300&cid=C7J2QM28G
-    ...(input.dateTo && {
-      returnFrom: parseDate(input.dateTo),
+    ...(input.returnDateFrom && {
+      returnFrom: parseDate(input.returnDateFrom),
     }),
-    ...(input.dateTo && {
-      returnTo: parseDate(input.dateTo),
+    ...(input.returnDateTo && {
+      returnTo: parseDate(input.returnDateTo),
     }),
     ...(input.passengers && {
       adults: input.passengers.adults ?? 0,

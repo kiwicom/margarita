@@ -12,6 +12,8 @@ type Props = {|
         +travelTo: string,
         +dateFrom: string,
         +dateTo: string,
+        +returnDateFrom: string,
+        +returnDateTo: string,
       |},
     |},
   |},
