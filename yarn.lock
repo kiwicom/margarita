@@ -10781,9 +10781,9 @@ react-native-modal@^5.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-"react-native-multi-slider@https://github.com/lukewalczak/react-native-multi-slider.git#feat/block-overlap":
+"react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git#a53e20f97d93361907d283dd98eb6da3c20c4249":
   version "2.0.2"
-  resolved "https://github.com/lukewalczak/react-native-multi-slider.git#ad977facbc402dce725efc3ac537778531d944df"
+  resolved "https://github.com/kiwicom/react-native-multi-slider.git#a53e20f97d93361907d283dd98eb6da3c20c4249"
 
 react-native-status-bar-height@^2.2.0:
   version "2.2.0"
