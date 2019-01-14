@@ -9,8 +9,8 @@ export const wrapperColor = {
   info: defaultTokens.backgroundBadgeInfo,
   neutral: defaultTokens.backgroundBadgeNeutral,
   success: defaultTokens.backgroundBadgeSuccess,
-  warning: defaultTokens.backgroundBadgeWarning,
-  white: defaultTokens.backgroundBadgeWhite,
+  warning: '#F9971E', // @TODO defaultTokens.backgroundBadgeWarning - after design tokens update
+  white: '#F5F7F9', // @TODO defaultTokens.backgroundBadgeWhite - after design tokens update
 };
 
 export const textColor = {
@@ -20,6 +20,6 @@ export const textColor = {
   info: defaultTokens.colorTextBadgeInfo,
   neutral: defaultTokens.colorTextBadgeNeutral,
   success: defaultTokens.colorTextBadgeSuccess,
-  warning: defaultTokens.colorTextBadgeWarning,
-  white: defaultTokens.colorTextBadgeWhite,
+  warning: '#FFFFFF', // @TODO defaultTokens.colorTextBadgeWarning - after design tokens update
+  white: '#7F91A8', // @TODO defaultTokens.colorTextBadgeWhite - after design tokens update
 };

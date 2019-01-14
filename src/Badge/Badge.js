@@ -34,18 +34,17 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
-    paddingHorizontal: 8,
-    height: parseFloat(defaultTokens.heightBadge),
+    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    paddingHorizontal: 4,
     web: {
       width: 'fit-content',
     },
   },
   text: {
     fontSize: 12,
-    lineHeight: 22,
+    lineHeight: 18, // @TODO parseFloat(defaultTokens.heightBadge) - after design tokens update
     fontWeight: '500',
-    letterSpacing: 0.59,
+    letterSpacing: 0.3,
     color: defaultTokens.colorTextBadgeDark,
   },
 });
