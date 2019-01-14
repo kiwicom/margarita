@@ -8,14 +8,15 @@
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "preios": "node link-workspaces.js",
     "preandroid": "node link-workspaces.js",
-    "postinstall": "./scripts/patch-get-yarn-workspaces.sh"
+    "postinstall": "node scripts/configureApplication.js"
   },
   "private": true,
   "dependencies": {
     "@kiwicom/margarita-core": "^0",
-    "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-navigation": "^0",
+    "@kiwicom/margarita-relay": "^0",
     "expo": "^31.0.6",
+    "intl": "^1.2.5",
     "react": "^16.6.3",
     "react-art": "^16.5.2",
     "react-dom": "^16.6.3",
@@ -24,8 +25,8 @@
   },
   "devDependencies": {
     "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
-    "metro-bundler-config-yarn-workspaces": "^1.0.3",
     "get-yarn-workspaces": "https://github.com/viewstools/yarn-workspaces-cra-crna.git#d349ecb223fda7ebca7e0686dc0472534780399c",
+    "metro-bundler-config-yarn-workspaces": "^1.0.3",
     "react-native-dotenv": "^0.2.0"
   }
 }
