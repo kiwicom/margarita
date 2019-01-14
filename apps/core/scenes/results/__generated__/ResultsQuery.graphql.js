@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9a779a683e7c8069e14283a06bc3bb5d
+ * @relayHash 54884d60516560952febf873eb40c93e
  */
 
 /* eslint-disable */
@@ -248,7 +248,7 @@ return {
                         "name": "arrival",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "TripSector",
+                        "concreteType": "TripSegment",
                         "plural": false,
                         "selections": v3
                       },
@@ -258,7 +258,7 @@ return {
                         "name": "departure",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "TripSector",
+                        "concreteType": "TripSegment",
                         "plural": false,
                         "selections": v3
                       },

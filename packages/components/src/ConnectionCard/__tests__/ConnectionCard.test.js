@@ -6,7 +6,7 @@ import { LocalizedPrice, Text } from '@kiwicom/universal-components';
 
 import ConnectionCard from '../ConnectionCard';
 import BadgesContainer from '../BadgesContainer';
-import TripSector from '../TripSector';
+import TripSegment from '../TripSegment';
 
 describe('ConnectionCard', () => {
   const badges = [
@@ -45,7 +45,6 @@ describe('ConnectionCard', () => {
   ];
   const price = {
     amount: 123455.35,
-    locale: 'en-US',
     currency: 'EUR',
   };
   const { getAllByType, getByType } = render(
@@ -59,7 +58,7 @@ describe('ConnectionCard', () => {
     expect(getAllByType(BadgesContainer)).toHaveLength(1);
   });
   it('should contain correct number of connections', () => {
-    expect(getAllByType(TripSector)).toHaveLength(2);
+    expect(getAllByType(TripSegment)).toHaveLength(2);
   });
 
   it('should set proper price format', () => {

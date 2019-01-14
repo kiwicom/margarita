@@ -1,10 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { DateTime } from 'luxon';
+import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
@@ -23,6 +23,8 @@ type ResultsType = {|
   +searchItineraries: ResultsListType,
 |};
 
+const statusBarHeight = 20; // @TODO add to orbit design tokens
+
 export default class Results extends React.Component<Props> {
   renderInner = (props: ResultsType) => {
     const { searchItineraries } = props;
@@ -39,14 +41,16 @@ export default class Results extends React.Component<Props> {
       returnDateTo,
     } = this.props;
 
-    const dateFormat = 'd LLLL';
-    const from = DateTime.fromISO(dateFrom).toFormat(dateFormat);
+    // @TODO get from config
+    const dateFormat = 'Do MMMM';
+
+    const from = DateFNS.format(DateFNS.parse(dateFrom), dateFormat);
     const tripType = returnDateFrom ? 'Return' : 'OneWay';
     const to = returnDateFrom
-      ? DateTime.fromISO(returnDateFrom).toFormat(dateFormat)
+      ? DateFNS.format(DateFNS.parse(returnDateFrom), dateFormat)
       : '';
     return (
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         <SearchParamsSummary
           tripType={tripType}
           departure={{ city: travelFrom, localizedDate: from }}
@@ -72,7 +76,7 @@ export default class Results extends React.Component<Props> {
           }}
           render={this.renderInner}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -80,11 +84,9 @@ export default class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    android: {
-      marginTop: 40, // @TODO create some metric for this number
-    },
-    ios: {
-      marginTop: 40, // @TODO create some metric for this number
+    marginTop: statusBarHeight,
+    web: {
+      marginTop: 0,
     },
     justifyContent: 'flex-start',
   },

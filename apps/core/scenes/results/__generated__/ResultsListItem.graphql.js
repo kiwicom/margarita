@@ -122,7 +122,7 @@ return {
           "name": "arrival",
           "storageKey": null,
           "args": null,
-          "concreteType": "TripSector",
+          "concreteType": "TripSegment",
           "plural": false,
           "selections": v0
         },
@@ -132,7 +132,7 @@ return {
           "name": "departure",
           "storageKey": null,
           "args": null,
-          "concreteType": "TripSector",
+          "concreteType": "TripSegment",
           "plural": false,
           "selections": v0
         },

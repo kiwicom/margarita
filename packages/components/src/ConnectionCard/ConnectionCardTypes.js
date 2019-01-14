@@ -1,8 +1,8 @@
 // @flow
 
-import TripSector from './TripSector';
+import TripSegment from './TripSegment';
 
-export type TripSectorWithId = {
-  ...React.ElementProps<typeof TripSector>,
+export type TripSegmentWithId = {
+  ...React.ElementProps<typeof TripSegment>,
   +id: string,
 };

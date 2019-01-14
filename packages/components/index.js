@@ -25,7 +25,7 @@ export { PlaceCard } from './src/PlaceCard';
 export { Shimmer } from './src/Shimmer';
 export { ConnectionCard } from './src/ConnectionCard';
 export type {
-  TripSectorWithId,
+  TripSegmentWithId,
 } from './src/ConnectionCard/ConnectionCardTypes';
 
 export { TimelineFlightDetail } from './src/TimelineFlightDetail';

@@ -20,7 +20,7 @@ type Props = {|
   +duration: string,
 |};
 
-export default function TripSector({
+export default function TripSegment({
   arrival,
   arrivalTime,
   carrier,
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
   },
   time: {
+    minWidth: 65,
     paddingHorizontal: 10,
   },
   highlightedText: {
