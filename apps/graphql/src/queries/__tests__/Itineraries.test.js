@@ -24,11 +24,21 @@ it('works', async () => {
   ).toMatchInlineSnapshot(`
 Object {
   "data": Object {
-    "searchItineraries": null,
+    "searchItineraries": Object {
+      "edges": Array [
+        Object {
+          "node": Object {
+            "id": "SXRpbmVyYXJ5OjE=",
+          },
+        },
+        Object {
+          "node": Object {
+            "id": "SXRpbmVyYXJ5OjI=",
+          },
+        },
+      ],
+    },
   },
-  "errors": Array [
-    [GraphQLError: Cannot read property 'map' of undefined],
-  ],
 }
 `);
 });

@@ -21,23 +21,23 @@ export type ItinerariesSearchParameters = {|
   |},
 |};
 
-export type TripSector = {
+export type TripSegment = {|
   +city: string,
   +cityCode: string,
-  +localTime: Date,
-  +utcTime: Date,
-};
-export type RouteItem = {
+  +localTime: ?Date,
+  +utcTime: ?Date,
+|};
+export type RouteItem = {|
   +airline: string,
-  +arrival: TripSector,
-  +departure: TripSector,
+  +arrival: TripSegment,
+  +departure: TripSegment,
   +id: string,
-};
+|};
 
-export type Price = {
+export type Price = {|
   +amount: number,
   +currency: string,
-};
+|};
 
 export type Itineraries = {|
   +airlines: Array<string>,
@@ -51,18 +51,18 @@ export type Itineraries = {|
   +routes: Array<Array<string>>,
 |};
 
-export type ApiRouteItem = {
-  +airline: string,
-  +cityFrom: string,
-  +cityTo: string,
-  +flyFrom: string,
-  +flyTo: string,
-  +id: string,
-  +local_arrival: Date,
-  +utc_arrival: Date,
-  +local_departure: Date,
-  +utc_departure: Date,
-};
+export type ApiRouteItem = {|
+  +airline?: string,
+  +cityFrom?: string,
+  +cityTo?: string,
+  +flyFrom?: string,
+  +flyTo?: string,
+  +id?: string,
+  +local_arrival?: Date,
+  +utc_arrival?: ?Date,
+  +local_departure?: Date,
+  +utc_departure?: Date,
+|};
 
 type ApiResponse = {|
   +currency: string,
@@ -137,22 +137,24 @@ const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
     localDeparture: itinerary.local_departure,
     localArrival: itinerary.local_arrival,
     routes: itinerary.routes,
-    route: itinerary.route.map(routeItem => ({
-      airline: routeItem.airline,
-      arrival: {
-        city: routeItem.cityTo,
-        cityCode: routeItem.flyTo,
-        localTime: routeItem.local_arrival,
-        utcTime: routeItem.utc_arrival,
-      },
-      departure: {
-        city: routeItem.cityFrom,
-        cityCode: routeItem.flyFrom,
-        localTime: routeItem.local_departure,
-        utcTime: routeItem.utc_departure,
-      },
-      id: routeItem.id,
-    })),
+    route:
+      itinerary.route &&
+      itinerary.route.map(routeItem => ({
+        airline: routeItem.airline ?? '',
+        arrival: {
+          city: routeItem.cityTo ?? '',
+          cityCode: routeItem.flyTo ?? '',
+          localTime: routeItem.local_arrival ?? null,
+          utcTime: routeItem.utc_arrival ?? null,
+        },
+        departure: {
+          city: routeItem.cityFrom ?? '',
+          cityCode: routeItem.flyFrom ?? '',
+          localTime: routeItem.local_departure ?? null,
+          utcTime: routeItem.utc_departure ?? null,
+        },
+        id: routeItem.id ?? '',
+      })),
   }));
 };
 

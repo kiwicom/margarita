@@ -7,36 +7,36 @@ import {
   LocalizedPrice,
   StyleSheet,
 } from '@kiwicom/universal-components';
+import { formatPrice } from '@kiwicom/margarita-utils';
 
 import ConnectionCardRow from './ConnectionCardRow';
-import TripSector from './TripSector';
-import type { TripSectorWithId } from './ConnectionCardTypes';
+import TripSegment from './TripSegment';
+import type { TripSegmentWithId } from './ConnectionCardTypes';
 import BadgesContainer from './BadgesContainer';
 import HorizontalDash from './HorizontalDash';
 
 type Props = {|
   +padding?: boolean,
-  +wayForth: Array<TripSectorWithId>,
-  +wayBack?: Array<TripSectorWithId>,
+  +wayForth: Array<TripSegmentWithId>,
+  +wayBack?: Array<TripSegmentWithId>,
   +duration?: string,
   ...React.ElementProps<typeof BadgesContainer>,
-  +price: {
-    +amount?: number,
-    +currency?: string,
-    +locale?: string,
-  },
+  +price: {|
+    +amount: number,
+    +currency: string,
+  |},
 |};
 
-type TripSectorProps = {|
-  +way?: Array<TripSectorWithId>,
+type TripSegmentProps = {|
+  +way?: Array<TripSegmentWithId>,
 |};
 
-const TripSectors = ({ way }: TripSectorProps) => {
+const TripSegments = ({ way }: TripSegmentProps) => {
   if (way == null) {
     return null;
   }
   return way.map(connection => (
-    <TripSector
+    <TripSegment
       key={connection.id}
       arrival={connection.arrival}
       arrivalTime={connection.arrivalTime}
@@ -57,12 +57,6 @@ export default function ConnectionCard({
   duration,
   badges,
 }: Props) {
-  const localizedPrice = price =>
-    price &&
-    new Intl.NumberFormat(price.locale, {
-      style: 'currency',
-      currency: price.currency,
-    }).format(price.amount ?? 0);
   const hasWayBack = wayBack && wayBack.length > 0;
   return (
     <View style={styles.container}>
@@ -70,7 +64,7 @@ export default function ConnectionCard({
         style={padding ? styles.paddingHorizontal : styles.noPaddingHorizontal}
       >
         <ConnectionCardRow>
-          <TripSectors way={wayForth} />
+          <TripSegments way={wayForth} />
         </ConnectionCardRow>
         {hasWayBack && (
           <React.Fragment>
@@ -82,7 +76,7 @@ export default function ConnectionCard({
               </ConnectionCardRow>
             )}
             <ConnectionCardRow>
-              <TripSectors way={wayBack} />
+              <TripSegments way={wayBack} />
             </ConnectionCardRow>
           </React.Fragment>
         )}
@@ -93,7 +87,7 @@ export default function ConnectionCard({
       >
         <ConnectionCardRow style={styles.lastRow}>
           <BadgesContainer badges={badges} />
-          <LocalizedPrice localizedPrice={localizedPrice(price)} />
+          <LocalizedPrice localizedPrice={formatPrice(price)} />
         </ConnectionCardRow>
       </View>
     </View>

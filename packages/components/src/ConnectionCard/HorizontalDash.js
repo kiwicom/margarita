@@ -36,14 +36,17 @@ const styles = StyleSheet.create({
     height: 0,
     borderStyle: 'dotted',
     web: {
-      borderLeftStyle: 'none',
-      borderRightStyle: 'none',
-      borderBottomStyle: 'none',
+      borderBottomWidth: 0,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
     },
     position: 'relative',
   },
   dashOverlay: {
     width: Dimensions.get('window').width,
     position: 'absolute',
+    web: {
+      display: 'none',
+    },
   },
 });
