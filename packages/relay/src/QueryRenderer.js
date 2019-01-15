@@ -9,6 +9,8 @@ import {
   type ReadyState,
   type GraphQLTaggedNode,
 } from 'react-relay';
+import { ErrorSearchIllustration } from '@kiwicom/margarita-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import environment from './Environment';
 
@@ -22,8 +24,9 @@ export default class App extends React.Component<Props> {
   renderRelayContainer = ({ error, props }: ReadyState) => {
     if (error) {
       return (
-        <View>
+        <View style={styles.container}>
           <Text style={styles.text}>{error.message}</Text>
+          <ErrorSearchIllustration />
         </View>
       );
     }
@@ -56,7 +59,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
-    alignItems: 'center',
-    fontSize: 24,
+    fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
+    fontWeight: defaultTokens.fontWeightMedium,
+    paddingBottom: 40,
   },
 });
