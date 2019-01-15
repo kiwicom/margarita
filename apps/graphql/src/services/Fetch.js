@@ -50,7 +50,7 @@ export default async function fetch(
   }
 
   try {
-    const response = await fetchWithRetries(`${BASE_URL}${'/dsdas'}`, {
+    const response = await fetchWithRetries(`${BASE_URL}${url}`, {
       fetchTimeout: 30000,
       retryDelays: [1000, 3000],
       ...prepareOptions(options, apikey),
