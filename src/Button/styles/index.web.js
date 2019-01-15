@@ -23,6 +23,7 @@ export const wrapperStyle = {
   border: 0,
   padding: 0,
   textDecoration: 'none',
+  backgroundColor: 'transparent',
 };
 
 export function disabledStyle(disabled: boolean) {

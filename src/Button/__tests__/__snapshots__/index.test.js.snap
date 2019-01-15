@@ -215,7 +215,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -1,20 +1,18 @@
+@@ -1,21 +1,19 @@
 - <button
 -   disabled={false}
 -   onClick={[Function mockConstructor]}
@@ -223,6 +223,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 +   href=\\"https://lolilol.com\\"
     style={
       Object {
+        \\"backgroundColor\\": \\"transparent\\",
         \\"border\\": 0,
         \\"cursor\\": \\"pointer\\",
         \\"display\\": \\"inline-block\\",
@@ -239,7 +240,7 @@ exports[`Button - web should match snapshot diff 1`] = `
       style={
         Array [
           Object {
-@@ -26,14 +24,14 @@
+@@ -27,14 +25,14 @@
             \\"paddingHorizontal\\": 8,
             \\"paddingVertical\\": 11,
           },
@@ -256,7 +257,7 @@ exports[`Button - web should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -42,17 +40,76 @@
+@@ -43,17 +41,76 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
           }
@@ -342,6 +343,7 @@ exports[`Button - web should match the snapshot 1`] = `
   href="https://lolilol.com"
   style={
     Object {
+      "backgroundColor": "transparent",
       "border": 0,
       "cursor": "pointer",
       "display": "inline-block",
