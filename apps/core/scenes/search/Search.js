@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { DateTime } from 'luxon';
 import {
   StyleSheet,
   Button,
@@ -25,6 +24,7 @@ import {
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
+import * as DateFNS from 'date-fns';
 
 const TRIP_TYPE = {
   return: {
@@ -66,10 +66,10 @@ type State = {|
   modalType: $Keys<typeof MODAL_TYPE>,
   travelFrom: string,
   travelTo: string,
-  dateFrom: string,
-  dateTo: string,
-  returnFrom: string,
-  returnTo: string,
+  dateFrom: Date,
+  dateTo: Date,
+  returnDateFrom: Date,
+  returnDateTo: Date,
   tripType: string,
   datePickerVisible: boolean,
   datePickerDate: Date,
@@ -77,25 +77,28 @@ type State = {|
   ...PassengersData,
 |};
 
+const getFormatedDate = date => {
+  return DateFNS.format(date, 'YYYY-MM-DD');
+};
+
 class Search extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    const defaultDepartureDate = DateTime.local().toISODate();
-    const defaultReturnDate = DateTime.local()
-      .plus({ days: 2 })
-      .toISODate();
+    const defaultDepartureDate = new Date();
+    const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
+
     this.state = {
       modalType: MODAL_TYPE.HIDDEN,
       travelFrom: 'OSL',
       travelTo: 'PRG',
       dateFrom: defaultDepartureDate,
       dateTo: defaultDepartureDate,
-      returnFrom: defaultReturnDate,
-      returnTo: defaultReturnDate,
+      returnDateFrom: defaultReturnDate,
+      returnDateTo: defaultReturnDate,
       tripType: Object.keys(TRIP_TYPE)[0],
       datePickerVisible: false,
-      datePickerDate: DateTime.local().toJSDate(),
+      datePickerDate: defaultDepartureDate,
       datePickerMode: DATEPICKER_MODE.DEPARTURE,
       adults: 1,
       infants: 0,
@@ -109,19 +112,19 @@ class Search extends React.Component<Props, State> {
       travelTo,
       dateFrom,
       dateTo,
-      returnFrom,
-      returnTo,
+      returnDateFrom,
+      returnDateTo,
       tripType,
     } = this.state;
     this.props.navigation.navigate(Routes.RESULTS, {
       travelFrom,
       travelTo,
-      dateFrom,
-      dateTo,
+      dateFrom: getFormatedDate(dateFrom),
+      dateTo: getFormatedDate(dateTo),
       ...(tripType === 'return'
         ? {
-            returnFrom,
-            returnTo,
+            returnDateFrom: getFormatedDate(returnDateFrom),
+            returnDateTo: getFormatedDate(returnDateTo),
           }
         : {}),
     });
@@ -165,37 +168,46 @@ class Search extends React.Component<Props, State> {
     const { dateFrom } = this.state;
     this.setState({
       datePickerVisible: true,
-      datePickerDate: DateTime.fromISO(dateFrom).toJSDate(),
+      datePickerDate: dateFrom,
       datePickerMode: DATEPICKER_MODE.DEPARTURE,
     });
   };
 
   handleReturnDatePress = () => {
-    const { returnFrom } = this.state;
+    const { returnDateFrom } = this.state;
     this.setState({
       datePickerVisible: true,
-      datePickerDate: DateTime.fromISO(returnFrom).toJSDate(),
+      datePickerDate: returnDateFrom,
       datePickerMode: DATEPICKER_MODE.RETURN,
     });
   };
 
   handleDateChange = date => {
     const { datePickerMode } = this.state;
-    const parsedDate = DateTime.fromJSDate(date).toISODate();
 
     switch (datePickerMode) {
       case DATEPICKER_MODE.DEPARTURE:
-        this.setState({
-          dateFrom: parsedDate,
-          dateTo: parsedDate,
-          datePickerVisible: false,
+        this.setState(prevState => {
+          const returnDate = DateFNS.max(prevState.returnDateFrom, date);
+          return {
+            dateFrom: date,
+            dateTo: date,
+            returnDateFrom: returnDate,
+            returnDateTo: returnDate,
+            datePickerVisible: false,
+          };
         });
         break;
       case DATEPICKER_MODE.RETURN:
-        this.setState({
-          returnFrom: parsedDate,
-          returnTo: parsedDate,
-          datePickerVisible: false,
+        this.setState(prevState => {
+          const departureDate = DateFNS.min(prevState.returnDateFrom, date);
+          return {
+            dateFrom: departureDate,
+            dateTo: departureDate,
+            returnDateFrom: date,
+            returnDateTo: date,
+            datePickerVisible: false,
+          };
         });
         break;
       default:
@@ -245,7 +257,7 @@ class Search extends React.Component<Props, State> {
       travelFrom,
       travelTo,
       dateFrom,
-      returnFrom,
+      returnDateFrom,
       tripType,
       datePickerVisible,
       datePickerDate,
@@ -294,14 +306,14 @@ class Search extends React.Component<Props, State> {
               onPress={this.handleDepartureDatePress}
               label="Departure"
               icon={<Icon name="calendar" />}
-              value={dateFrom}
+              value={getFormatedDate(dateFrom)}
             />
             {tripType === 'return' && (
               <TripInput
                 onPress={this.handleReturnDatePress}
                 label="Return"
                 icon={<Icon name="calendar" />}
-                value={returnFrom}
+                value={getFormatedDate(returnDateFrom)}
               />
             )}
             <View style={styles.bottom}>
@@ -319,6 +331,7 @@ class Search extends React.Component<Props, State> {
           isVisible={datePickerVisible}
           mode={'date'}
           date={datePickerDate}
+          minDate={DateFNS.startOfDay(new Date())}
           onConfirm={this.handleDateChange}
           onDismiss={this.handleDatePickerDismiss}
         />
