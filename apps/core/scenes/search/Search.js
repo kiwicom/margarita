@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import {
   StyleSheet,
   Button,
@@ -82,10 +82,6 @@ const getFormatedDate = date => {
 };
 
 class Search extends React.Component<Props, State> {
-  static navigationOptions = ({ navigation }: any) => ({
-    header: null,
-  });
-
   constructor(props: Props) {
     super(props);
 
@@ -271,7 +267,7 @@ class Search extends React.Component<Props, State> {
     } = this.state;
     return (
       <>
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
           <View style={styles.form}>
             <SearchIllustration />
             <View style={styles.top}>
@@ -324,7 +320,7 @@ class Search extends React.Component<Props, State> {
               <Button onPress={this.handleSubmitPress} label="Search" />
             </View>
           </View>
-        </View>
+        </SafeAreaView>
         <Modal
           visible={modalType !== MODAL_TYPE.HIDDEN}
           onClose={this.handleModalClose}
@@ -357,7 +353,7 @@ const styles = StyleSheet.create({
   form: {
     width: '100%',
     maxWidth: 500,
-    marginBottom: 100,
+    marginBottom: 25,
     padding: parseInt(defaultTokens.spaceXSmall, 10),
   },
   placeSwitch: {

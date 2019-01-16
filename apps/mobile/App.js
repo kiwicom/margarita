@@ -22,6 +22,9 @@ const AppNavigator: NavigationNavigator<
 > = createStackNavigator(
   ({
     [Routes.SEARCH]: {
+      navigationOptions: {
+        header: null,
+      },
       screen: SearchScreen,
     },
     [Routes.RESULTS]: {
