@@ -4,7 +4,8 @@ Component library compatible with Expo/React Native projects as well as React ap
 
 Relies on [react-native-web](https://github.com/necolas/react-native-web) to port components, written with a React Native first approach, to the web.
 
-Storybook (web version): <https://kiwicom-universal-components.netlify.com>
+[📘 Storybook](https://kiwicom-universal-components.netlify.com) |
+[📚 Documentation](https://kiwicom-universal-components-docs.netlify.com)
 
 ## Usage
 
