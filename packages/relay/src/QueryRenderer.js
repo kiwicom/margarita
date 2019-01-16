@@ -2,15 +2,14 @@
 
 /* eslint-disable no-restricted-imports */
 import * as React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { Loader } from '@kiwicom/universal-components';
 import {
   QueryRenderer,
   type ReadyState,
   type GraphQLTaggedNode,
 } from 'react-relay';
-import { ErrorSearchIllustration } from '@kiwicom/margarita-components';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { IllustrationWithInformation } from '@kiwicom/margarita-components';
 
 import environment from './Environment';
 
@@ -24,10 +23,11 @@ export default class App extends React.Component<Props> {
   renderRelayContainer = ({ error, props }: ReadyState) => {
     if (error) {
       return (
-        <View style={styles.container}>
-          <Text style={styles.text}>{error.message}</Text>
-          <ErrorSearchIllustration />
-        </View>
+        <IllustrationWithInformation
+          illustrationName="Error"
+          text="Something went wrong"
+          description={error.message}
+        />
       );
     }
     if (!props) {
@@ -57,10 +57,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexGrow: 1,
     justifyContent: 'center',
-  },
-  text: {
-    fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-    fontWeight: defaultTokens.fontWeightMedium,
-    paddingBottom: 40,
   },
 });

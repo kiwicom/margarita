@@ -2,7 +2,7 @@
 
 import { type StylePropType } from '@kiwicom/universal-components';
 
-type NameType =
+export type IllustrationNameType =
   | 'Accommodation'
   | 'AirHelp'
   | 'AirportTransport'
@@ -64,6 +64,6 @@ type NameType =
   | 'TransportTaxi';
 
 export type IllustrationProps = {|
-  name: NameType,
+  name: IllustrationNameType,
   style?: StylePropType,
 |};
