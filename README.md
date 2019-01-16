@@ -51,11 +51,11 @@ The other available scripts are:
    - `GRAPHQL_URL`
      - URL of GraphQL server
      - E. g.: http://127.0.0.1:4000
-   - `API_KEY`
-     - Get your API key here: https://tequila.kiwi.com
 
    **apps/graphql/.env**:
 
+   - `API_KEY`
+     - Get your API key here: https://tequila.kiwi.com
    - `BASE_URL`
      - URL of REST server
      - E. g.: https://kiwicom-test.apigee.net/

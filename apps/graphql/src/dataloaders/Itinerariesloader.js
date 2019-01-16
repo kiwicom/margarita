@@ -108,14 +108,10 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
 
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesSearchParameters>,
-  apikey: string,
 ) => {
   const results: $ReadOnlyArray<ApiResponse> = await Promise.all(
     parameters.map(params => {
-      return fetch(
-        `/v2/search?${qs.stringify(parseParameters(params))}`,
-        apikey,
-      );
+      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
     }),
   );
   return results.map(res => {
@@ -158,11 +154,11 @@ const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
   }));
 };
 
-export default (apikey: string) =>
+export default () =>
   new OptimisticDataloader(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<Itineraries[] | Error>> => fetchItineraries(keys, apikey),
+    ): Promise<Array<Itineraries[] | Error>> => fetchItineraries(keys),
     {
       cacheKeyFn: stringify,
     },
