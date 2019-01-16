@@ -1,0 +1,4 @@
+[build]
+  publish = "apps/web/out"
+  command = "echo GRAPHQL_URL=$GRAPHQL_URL > .env; yarn build && yarn export && yarn netlify-lambda:build"
+  functions = "apps/graphql/netlify"

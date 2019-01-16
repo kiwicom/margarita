@@ -9,6 +9,7 @@
     "@kiwicom/graphql-utils": "^0.3.0",
     "@mrtnzlml/fetch": "^1.3.0",
     "apollo-server": "^2.2.6",
+    "apollo-server-lambda": "^2.3.1",
     "buffer": "^5.2.1",
     "chalk": "^2.4.2",
     "dataloader": "^1.4.0",
@@ -20,8 +21,11 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.2.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
+    "apollo-server-lambda": "^2.3.1",
     "nodemon": "^1.18.7"
   },
   "scripts": {
@@ -29,7 +33,7 @@
   },
   "betterScripts": {
     "start": {
-      "command": "nodemon -x babel-node server.js"
+      "command": "nodemon -x babel-node src/server.js"
     }
   }
 }

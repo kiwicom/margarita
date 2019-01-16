@@ -2,7 +2,7 @@
 
 import { graphql as originalGraphQL } from 'graphql';
 
-import { schema } from '../..';
+import schema from '../Schema';
 import createContext from './GraphQLContext';
 
 jest.mock('./Fetch.js');

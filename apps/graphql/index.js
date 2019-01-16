@@ -1,5 +1,3 @@
 // @flow
 
-import schema from './src/Schema';
-
-export { schema };
+export { default as schema } from './src/Schema';
