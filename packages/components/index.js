@@ -30,3 +30,6 @@ export type {
 
 export { TimelineFlightDetail } from './src/TimelineFlightDetail';
 export { default as Illustration } from './src/Illustration/Illustration';
+export {
+  default as IllustrationWithInformation,
+} from './src/IllustrationWithInformation/IllustrationWithInformation';
