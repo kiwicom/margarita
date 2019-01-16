@@ -5,7 +5,7 @@ import fetchWithRetries from '@mrtnzlml/fetch';
 import Logger from './Logger';
 import type { HttpMethod } from './types';
 
-const { NODE_ENV, BASE_URL } = process.env;
+const { API_KEY, NODE_ENV, BASE_URL } = process.env;
 
 export type Options = {|
   +headers?: Object,
@@ -14,20 +14,19 @@ export type Options = {|
   +token?: string,
 |};
 
-const prepareOptions = (options: Object, apikey) => {
+const prepareOptions = (options: Object) => {
   const headers = options.headers ?? {};
   return {
     ...options,
     headers: {
       ...headers,
       'Content-Type': 'application/json',
-      apikey,
+      apikey: API_KEY,
     },
   };
 };
 export default async function fetch(
   url: string,
-  apikey: string,
   method: HttpMethod = 'GET',
   options?: Options = ({}: Object),
 ): Promise<any> {
@@ -35,8 +34,10 @@ export default async function fetch(
     throw new Error('Missing set the BASE_URL environments variable.');
   }
 
-  if (typeof apikey !== 'string') {
-    throw Error(`Expected to have apikey of type string, got ${typeof apikey}`);
+  if (typeof API_KEY !== 'string') {
+    throw Error(
+      `Expected to have apikey of type string, got ${typeof API_KEY}`,
+    );
   }
 
   if (NODE_ENV !== 'production') {
@@ -53,7 +54,7 @@ export default async function fetch(
     const response = await fetchWithRetries(`${BASE_URL}${url}`, {
       fetchTimeout: 30000,
       retryDelays: [1000, 3000],
-      ...prepareOptions(options, apikey),
+      ...prepareOptions(options),
       method,
     });
     Logger.info(`response status: ${response.status}`);

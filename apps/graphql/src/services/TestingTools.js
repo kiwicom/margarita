@@ -10,11 +10,5 @@ export const graphql = async (
   query: string,
   variables: ?Object,
 ): Promise<Object> => {
-  return originalGraphQL(
-    schema,
-    query,
-    null,
-    createContext('apikey'),
-    variables,
-  );
+  return originalGraphQL(schema, query, null, createContext(), variables);
 };
