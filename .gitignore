@@ -6,12 +6,17 @@
 #
 .next/
 apps/web/static/fonts/*
+apps/web/out/
 
 # node.js
 #
 node_modules/
 npm-debug.log
 yarn-error.log
+
+# apps/graphql
+#
+apps/graphql/netlify
 
 .env
 
