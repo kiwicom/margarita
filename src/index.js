@@ -22,6 +22,7 @@ export { Tooltip, TooltipBubble } from './Tooltip';
 export { DatePicker } from './DatePicker';
 export { Hoverable } from './Hoverable';
 export { Slider } from './Slider';
+export { Touchable } from './Touchable';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';
