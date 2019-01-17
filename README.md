@@ -26,6 +26,8 @@ To launch the client app, you have different options:
 - `yarn build; yarn start` to launch the _production_ web version;
 - `yarn ios` or `yarn android` to start the mobile version.
 
+>Note: If `yarn server` is running and you get Network errors on Android, you need to forward your localhost:4000 to the emulator; this is achieved by running `adb reverse tcp:4000 tcp:4000`.
+
 The other available scripts are:
 
 - `yarn analyze` to get an analysis of the bundle size to get the following
