@@ -27,6 +27,8 @@ export { Slider } from './Slider';
 export { StyleSheet } from './PlatformStyleSheet';
 
 /* Types */
+export type { IconNameType } from './types/_generated-types';
+
 export type {
   StylePropType,
   StyleObjectType,
