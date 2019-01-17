@@ -21,7 +21,7 @@ type Props = {|
   +onAddPress: () => void,
 |};
 
-export default function RowOptionContainer({
+export default function RowOption({
   type,
   header,
   subheader,

@@ -8,6 +8,7 @@ export type BadgeProps = {|
   +type?: BadgeType,
   +style?: StylePropType,
   +fontSize?: number,
+  +testID?: string,
 |};
 
 export type BadgeType =

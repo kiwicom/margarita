@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionPicker render 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "borderBottomColor": "#bac7d5",
+        "borderBottomWidth": 1,
+        "padding": 5,
+      }
+    }
+  >
+    <TagsInput
+      autofocus={true}
+      fontSize={16}
+      label="label"
+      onChangeText={[Function]}
+      onClearPress={[Function]}
+      onKeyPress={[Function]}
+      placeholder="placeholder"
+      tags={Array []}
+      value=""
+    />
+  </View>
+  <OptionList
+    onAddPress={[Function]}
+    onItemPress={[Function]}
+    options={
+      Array [
+        Object {
+          "id": "prague",
+          "label": "Prague",
+          "subOptions": Array [
+            Object {
+              "id": "train-station",
+              "label": "Prague Central Station",
+              "text": "5 km from city center",
+              "type": "train",
+            },
+            Object {
+              "id": "airport",
+              "label": "Václav Havel Airport",
+              "text": "5 km from city center",
+              "type": "airplane",
+            },
+          ],
+          "text": "Czech Republic",
+          "type": "destination",
+        },
+        Object {
+          "id": "berlin",
+          "label": "Berlin",
+          "subOptions": Array [
+            Object {
+              "id": "QPP",
+              "label": "Airport of Berlin",
+              "text": "4.5 km from city center",
+              "type": "airplane",
+            },
+            Object {
+              "id": "QWC",
+              "label": "Zoo Railway Station",
+              "text": "10 km from city center",
+              "type": "airplane",
+            },
+          ],
+          "text": "Federal Republic of Germany",
+          "type": "destination",
+        },
+        Object {
+          "id": "presov",
+          "label": "Presov",
+          "text": "Slovakia",
+          "type": "destination",
+        },
+      ]
+    }
+  />
+</View>
+`;

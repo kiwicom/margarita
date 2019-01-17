@@ -3,72 +3,93 @@
 import * as React from 'react';
 import { View, TextInput, Text } from 'react-native';
 import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import type { OnLayout } from '../../types';
 import { StyleSheet } from '../../PlatformStyleSheet';
+import { INPUT_MIN_WIDTH } from '../constants';
 
 type Props = {|
-  +onChangeText: (value: string) => void,
-  +value: string,
-  +onLayout: (e: ViewLayoutEvent) => void,
-  +maxWidth: ?number | 'auto',
-  +minWidth: number,
   +fontSize: number,
-  +disabled: ?boolean,
-  +placeholder: ?string,
-  +forwardRef: (el: any) => void,
-  +onFocus: () => void,
-  +onBlur: () => void,
-  +autoFocus?: boolean,
+  +onChangeText: (value: string) => void,
+  +forwardRef?: (el: any) => void,
+  +minWidth?: number,
+  +value?: string,
+  +onFocus?: () => void,
+  +onBlur?: () => void,
+  +disabled?: boolean,
+  +maxWidth?: number,
+  +placeholder?: string,
+  +onKeyPress?: (e: ViewLayoutEvent) => void,
+  +autofocus?: boolean,
 |};
 
 type State = {|
-  componentWidth: number | 'auto',
+  componentWidth: number,
 |};
 
-class InputField extends React.PureComponent<Props, State> {
+class InputField extends React.Component<Props, State> {
   static defaultProps = {
-    maxWidth: 'auto',
-    minWidth: 'auto',
+    fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
+    disabled: false,
   };
 
   constructor(props: Props) {
     super(props);
     this.state = {
-      componentWidth: props.minWidth ?? 'auto',
+      componentWidth: props.minWidth ?? INPUT_MIN_WIDTH,
     };
   }
 
-  handleOnLayout = (event: ViewLayoutEvent) => {
-    const { onLayout, maxWidth, minWidth, fontSize } = this.props;
-    const { width: inputWidth } = event.nativeEvent.layout;
+  shouldComponentUpdate(nextProps, nextState) {
+    const { fontSize, maxWidth, minWidth, placeholder, value } = this.props;
+
+    if (
+      fontSize !== nextProps.fontSize ||
+      maxWidth !== nextProps.maxWidth ||
+      placeholder !== nextProps.placeholder ||
+      minWidth !== nextProps.minWidth ||
+      value !== nextProps.value
+    ) {
+      return true;
+    }
+
+    if (nextState.componentWidth !== this.setState.componentWidth) {
+      return true;
+    }
+    return false;
+  }
+
+  updateRootWidth = (width: number) => {
+    this.setState({ componentWidth: width });
+  };
+
+  updateWidth = (width: ?number) => {
+    const { fontSize, maxWidth, minWidth } = this.props;
 
     /*
-    There is a difference in character width in an input element and others. Especially with tiny characters.
-    Because the input width is computed on the hidden helper container, the bufferWidth have to be added,
-    otherwise, it leads to blink when the user has been writing.
-    The bufferWidth is computed on font-size and multiplying by value 1.63 which is based on the experiment.
-    */
-    const getWidth = (width: number) => {
-      const withBuffer = width + fontSize * 1.63;
-      if (typeof maxWidth === 'number' && withBuffer > maxWidth) {
-        return maxWidth;
-      }
-      if (typeof maxWidth === 'number' && withBuffer < minWidth) {
-        return minWidth;
-      }
-      return withBuffer;
-    };
+     There is a difference in character width in an input element and others. Especially with tiny characters.
+     Because the input width is computed on the hidden helper container, the bufferWidth have to be added,
+     otherwise, it leads to blink when the user has been writing.
+     The buffer is computed on font-size and multiplying by value 1.63 which is based on the experiment.
+     */
+    const buffer = fontSize * 1.65;
+    let newWidth = width + buffer;
 
-    this.setState({
-      componentWidth: getWidth(inputWidth),
-    });
+    if (maxWidth && newWidth > maxWidth) {
+      newWidth = maxWidth;
+    } else if (minWidth && newWidth < minWidth) {
+      newWidth = minWidth;
+    }
+    this.updateRootWidth(newWidth);
+  };
 
-    onLayout(event);
+  handleOnLayout = (event: OnLayout) => {
+    const { width: inputWidth } = event.nativeEvent.layout;
+    this.updateWidth(inputWidth);
   };
 
   render() {
     const {
-      maxWidth,
-      minWidth,
       onChangeText,
       placeholder,
       value,
@@ -77,39 +98,40 @@ class InputField extends React.PureComponent<Props, State> {
       forwardRef,
       onFocus,
       onBlur,
-      autoFocus,
+      onKeyPress,
+      autofocus,
     } = this.props;
     const { componentWidth } = this.state;
-    const dynamicStyle = StyleSheet.create({
-      common: {
-        minWidth,
-        maxWidth,
-        fontSize,
-      },
+
+    const dynamicStyle = {
+      common: { fontSize },
       input: {
         width: componentWidth,
       },
-    });
+    };
+
+    const sizerValue = value || (placeholder || '');
 
     return (
       <View style={styles.container}>
-        <Text
-          onLayout={this.handleOnLayout}
-          style={[styles.hiddenSizer, dynamicStyle.common]}
-        >
-          {!value && placeholder ? placeholder : value}
-        </Text>
         <TextInput
+          autoFocus={autofocus}
+          onKeyPress={onKeyPress}
           onBlur={onBlur}
           onFocus={onFocus}
           ref={forwardRef}
           editable={!disabled}
-          autoFocus={autoFocus}
           onChangeText={onChangeText}
           value={value}
           placeholder={placeholder}
-          style={[styles.input, dynamicStyle.common, dynamicStyle.input]}
+          style={[styles.input, dynamicStyle.input, dynamicStyle.common]}
         />
+        <Text
+          style={[styles.hiddenSizer, dynamicStyle.common]}
+          onLayout={this.handleOnLayout}
+        >
+          {sizerValue}
+        </Text>
       </View>
     );
   }
@@ -117,7 +139,9 @@ class InputField extends React.PureComponent<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
+    minHeight: 24,
     flexDirection: 'row',
+    position: 'relative',
   },
   input: {
     web: {
@@ -126,10 +150,9 @@ const styles = StyleSheet.create({
   },
   hiddenSizer: {
     position: 'absolute',
+    bottom: 0,
     flexDirection: 'row',
     opacity: 0,
-    bottom: 0,
-    end: 0,
     zIndex: -100,
     web: {
       visibility: 'hidden',

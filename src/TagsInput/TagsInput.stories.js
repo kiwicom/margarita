@@ -18,18 +18,16 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
-        autoFocus={false}
       />
     </View>
   ))
   .add('with Tags', () => (
     <View style={{ margin: 20 }}>
       <TagsInput
-        selected={selectedMock}
+        tags={selectedMock}
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
-        autoFocus={false}
       />
     </View>
   ))
@@ -42,12 +40,13 @@ storiesOf('TagsInput', module)
       step: 1,
     });
     const label = text('Label', 'From:');
+
     const placeholder = text('Placeholder', 'Departure point');
     return (
       <View style={{ margin: 20 }}>
         <TagsInput
           fontSize={fontSize}
-          selected={tags}
+          tags={tags}
           onChangeText={action('onChangeText')}
           onClearPress={action('onClearPress')}
           label={label}

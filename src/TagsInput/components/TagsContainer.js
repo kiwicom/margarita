@@ -1,76 +1,60 @@
 // @flow
 
 import * as React from 'react';
-import { View, ScrollView, StyleSheet as StyleSheetNative } from 'react-native'; // eslint-disable-line no-restricted-imports
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Badge } from '../../Badge';
 import { StyleSheet } from '../../PlatformStyleSheet';
 
 type Props = {|
-  +tags?: string[],
+  +tags: string[],
   +fontSize: number,
-  +maxWidth: 'auto' | ?number,
-  +minWidth: number,
 |};
 
-class TagsContainer extends React.PureComponent<Props> {
+export default class TagsContainer extends React.Component<Props> {
   static defaultProps = {
-    maxWidth: 'auto',
+    tags: [],
+    fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
   };
 
+  shouldComponentUpdate(nextProps: Props) {
+    const { tags, fontSize } = this.props;
+    if (
+      nextProps.tags.length === tags.length &&
+      nextProps.tags[0] === tags[0] &&
+      nextProps.fontSize === fontSize
+    ) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
-    const { tags, fontSize, maxWidth, minWidth } = this.props;
-    if (!tags || tags.length < 1) {
+    const { tags, fontSize } = this.props;
+    if (tags.length < 1) {
       return null;
     }
 
-    const dynamicStyle = StyleSheet.create({
-      container: {
-        maxWidth,
-        minWidth,
-      },
-    });
-
     return (
-      <View>
-        <ScrollView
-          centerContent
-          horizontal
-          style={[styles.row, dynamicStyle.container]}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={nativeStyles.container}
-        >
-          <View style={styles.row}>
-            {tags.map(tag => (
-              <Badge
-                fontSize={fontSize}
-                type="info"
-                key={tag}
-                style={styles.tag}
-              >
-                {tag}
-              </Badge>
-            ))}
-          </View>
-        </ScrollView>
-      </View>
+      <>
+        {tags.map(tag => (
+          <Badge
+            fontSize={fontSize}
+            type="info"
+            key={tag}
+            testID="input-tag"
+            style={styles.tag}
+          >
+            {tag}
+          </Badge>
+        ))}
+      </>
     );
   }
 }
 
-const nativeStyles = StyleSheetNative.create({
-  container: {
-    alignItems: 'center',
-    flexGrow: 1,
-  },
-});
-
 const styles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-  },
   tag: {
-    marginEnd: 4,
+    marginHorizontal: 2,
+    alignSelf: 'center',
   },
 });
-
-export default TagsContainer;

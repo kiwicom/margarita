@@ -18,7 +18,7 @@ describe('TagsInput', () => {
 
   const { getByType, getByText, getAllByProps, getByTestId } = render(
     <TagsInput
-      selected={tags}
+      tags={tags}
       onChangeText={onChangeText}
       onClearPress={onClearPress}
       label={label}
@@ -39,7 +39,7 @@ describe('TagsInput', () => {
   it('should have passed props', () => {
     expect(
       getAllByProps({
-        selected: tags,
+        tags,
         label,
         placeholder,
         fontSize,
@@ -49,14 +49,6 @@ describe('TagsInput', () => {
     ).toBeDefined();
   });
 
-  it('should execute onChangeText method', () => {
-    const input = 'content';
-    fireEvent.changeText(getByType(TextInput), input);
-    expect(onChangeText).toHaveBeenCalledWith(input);
-    expect(onChangeText).toHaveBeenCalledTimes(1);
-    expect(getByText(input)).toBeDefined();
-  });
-
   it('should execute onClearPress method', () => {
     fireEvent.press(getByTestId('delete-button'));
     expect(onClearPress).toHaveBeenCalledTimes(1);
@@ -64,5 +56,23 @@ describe('TagsInput', () => {
 
   it('should render Tags', () => {
     tags.map(tag => expect(getByText(tag)).toBeDefined());
+  });
+
+  it('should execute onChangeText method', () => {
+    const wrapper = render(
+      <TagsInput
+        tags={tags}
+        onChangeText={onChangeText}
+        onClearPress={onClearPress}
+        label={label}
+        placeholder={placeholder}
+        fontSize={fontSize}
+      />
+    );
+    const input = 'content';
+    fireEvent.changeText(wrapper.getByType(TextInput), input);
+    expect(onChangeText).toHaveBeenCalledWith(input);
+    expect(onChangeText).toHaveBeenCalledTimes(1);
+    expect(wrapper.getByText(input)).toBeDefined();
   });
 });

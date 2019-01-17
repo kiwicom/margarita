@@ -14,6 +14,7 @@ export default function Badge({
   type = 'primary',
   style,
   fontSize,
+  testID,
 }: BadgeProps) {
   let dynamicStyle = { fontSize: {} };
   if (fontSize != null) {
@@ -25,7 +26,7 @@ export default function Badge({
   }
 
   return (
-    <View style={[styles.wrapper, theme(type).wrapper, style]}>
+    <View style={[styles.wrapper, theme(type).wrapper, style]} testID={testID}>
       <Text style={[styles.text, dynamicStyle.fontSize, theme(type).text]}>
         {children}
       </Text>

@@ -1,8 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { View, Platform, TextInput } from 'react-native';
-import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
+import {
+  View,
+  Platform,
+  ScrollView,
+  TouchableWithoutFeedback,
+} from 'react-native';
+
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import DeleteButton from './components/DeleteButton';
@@ -11,156 +16,163 @@ import InputField from './components/InputField';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 
-import { INPUT_MIN_WIDTH, TAGS_MIN_WIDTH } from './constants';
-
 type Props = {|
-  +label: string,
-  +onChangeText: (value: string) => void,
-  +placeholder: string,
-  +selected?: string[],
-  +disabled?: boolean,
   +fontSize: number,
+  +onChangeText: (value: string) => void,
+  +tags: string[],
+  +disabled?: boolean,
+  +label?: string,
   +onClearPress?: () => void,
+  +onKeyPress?: (e: Event) => void,
+  +placeholder?: string,
   +value?: string,
-  +autoFocus: boolean,
+  +autofocus?: boolean,
 |};
 
 type State = {
   value: string,
   isFocus: boolean,
-  containerWidth: ?number,
-  inputWidth: ?number,
 };
 
-export default class TagInput extends React.Component<Props, State> {
-  inputRef: ?{ current: null | React.Element<typeof TextInput> };
+type Event = { nativeEvent: { key: string } };
+
+const boxShadow = isFocus => {
+  if (Platform.OS === 'web') {
+    return {
+      boxShadow: isFocus
+        ? `${defaultTokens.borderColorInputFocus} 0 0 0 2px inset`
+        : `${defaultTokens.borderColorInput} 0 0 0 1px inset`,
+    };
+  }
+  return null;
+};
+
+export default class TagsInput extends React.Component<Props, State> {
+  inputRef: any;
+  scrollRef: any;
+
   static defaultProps = {
-    fontSize: 16,
-    autoFocus: true,
+    fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
+    tags: [],
   };
 
   constructor(props: Props) {
     super(props);
     this.inputRef = React.createRef();
+    this.scrollRef = React.createRef();
 
     this.state = {
-      value: props.value ?? '',
-      containerWidth: null,
-      inputWidth: null,
-      isFocus: props.autoFocus,
+      value: props.value || '',
+      isFocus: false,
     };
   }
 
-  componentDidUpdate = (prevProps: Props) => {
-    const { value } = this.props;
-    if (value !== prevProps.value) {
-      this.setState({ value });
-    }
-  };
-
-  setContainerWidth = (event: ViewLayoutEvent) => {
-    this.setState({ containerWidth: event.nativeEvent.layout.width });
-  };
-
-  setInputWidth = (event: ViewLayoutEvent) => {
-    this.setState({ inputWidth: event.nativeEvent.layout.width });
-  };
-
-  subtractFromContainerWidth = (width: ?number) => {
-    const { containerWidth } = this.state;
-    if (containerWidth && width) {
-      const newWidth = containerWidth - width;
-      return newWidth < 0 ? 'auto' : newWidth;
+  static getDerivedStateFromProps(props: Props, state: State) {
+    // if the "props.value" has changed update state
+    const { value } = props;
+    if (typeof value === 'string' && value !== state.value) {
+      return {
+        value,
+      };
     }
     return null;
-  };
+  }
 
   getPlaceholder = () => {
-    const { selected, placeholder } = this.props;
-    return selected?.length === 0 && placeholder ? placeholder : null;
+    const { tags, placeholder } = this.props;
+    // Don't render placeholder if the Tags are rendered.
+    return tags.length === 0 && placeholder ? placeholder : null;
   };
 
   handleChange = (value: string) => {
     const { value: oldValue } = this.state;
     const { onChangeText } = this.props;
     if (value !== oldValue) {
-      this.setState({ value });
+      this.setState({ value }, this.scrollRef.current.scrollToEnd);
       onChangeText(value);
     }
   };
 
-  handleClear = () => {
-    const { onClearPress } = this.props;
-    this.setState({ value: '' });
-
-    // $FlowFixMe property focus is missing in object type
-    Platform.OS === 'web' && this.inputRef.current.focus();
-
-    onClearPress?.();
-  };
-
   handleOnFocus = () => {
+    const { isFocus } = this.state;
+    if (isFocus) return;
     this.setState({ isFocus: true });
+    this.inputRef.current && this.inputRef.current.focus();
   };
 
   handleOnBlur = () => {
     this.setState({ isFocus: false });
   };
 
-  render() {
-    const { selected, fontSize, label, disabled } = this.props;
-    const { value, inputWidth, isFocus } = this.state;
-    const isButtonDisabled = !value.length ?? disabled;
+  handleClear = () => {
+    const { onClearPress } = this.props;
+    this.setState({ value: '' }, onClearPress);
+    this.handleOnFocus();
+  };
 
-    const dynamicStyle = StyleSheet.create({
+  render() {
+    const {
+      disabled,
+      fontSize,
+      label,
+      onKeyPress,
+      tags,
+      autofocus,
+    } = this.props;
+    const { isFocus, value } = this.state;
+
+    const isButtonDisabled = (!value && tags.length === 0) ?? disabled;
+
+    const dynamicStyle = {
       deleteButton: {
-        opacity: value.length > 0 ? 1 : 0,
+        opacity: value || tags.length > 0 ? 1 : 0,
       },
       label: {
         fontSize,
       },
       border: {
-        web: {
-          boxShadow: isFocus
-            ? `${defaultTokens.borderColorInputFocus} 0 0 0 2px inset`
-            : `${defaultTokens.borderColorInput} 0 0 0 1px inset`,
-        },
+        ...boxShadow(isFocus),
       },
-    });
+    };
 
     return (
-      <View style={[styles.container, dynamicStyle.border, dynamicStyle.label]}>
-        <Text weight="bold" style={styles.label}>
-          {label}
-        </Text>
-        <View style={styles.fieldContainer} onLayout={this.setContainerWidth}>
-          <TagsContainer
-            minWidth={TAGS_MIN_WIDTH}
-            maxWidth={this.subtractFromContainerWidth(inputWidth)}
-            tags={selected}
-            fontSize={fontSize}
-          />
-          <InputField
-            onFocus={this.handleOnFocus}
-            onBlur={this.handleOnBlur}
-            ref={this.inputRef}
-            fontSize={fontSize}
-            disabled={disabled}
-            minWidth={INPUT_MIN_WIDTH}
-            maxWidth={this.subtractFromContainerWidth(TAGS_MIN_WIDTH)}
-            onLayout={this.setInputWidth}
-            value={value}
-            placeholder={this.getPlaceholder()}
-            onChangeText={this.handleChange}
-            autoFocus={isFocus}
+      <TouchableWithoutFeedback onPress={this.handleOnFocus}>
+        <View style={[styles.container, dynamicStyle.border]}>
+          {Boolean(label) && (
+            <Text weight="bold" style={[styles.label, dynamicStyle.label]}>
+              {label}
+            </Text>
+          )}
+          <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            onContentSizeChange={this.scrollRef?.current?.scrollToEnd}
+            scrollEventThrottle={3}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+            style={styles.fieldContainer}
+            ref={this.scrollRef}
+          >
+            <TagsContainer tags={tags} fontSize={fontSize} />
+            <InputField
+              autofocus={autofocus}
+              onKeyPress={onKeyPress}
+              onFocus={this.handleOnFocus}
+              onBlur={this.handleOnBlur}
+              ref={this.inputRef}
+              fontSize={fontSize}
+              disabled={disabled}
+              value={value}
+              placeholder={this.getPlaceholder()}
+              onChangeText={this.handleChange}
+            />
+          </ScrollView>
+          <DeleteButton
+            opacity={dynamicStyle.deleteButton.opacity}
+            onPress={this.handleClear}
+            disabled={isButtonDisabled}
           />
         </View>
-        <DeleteButton
-          style={dynamicStyle.deleteButton}
-          onPress={this.handleClear}
-          disabled={isButtonDisabled}
-        />
-      </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -178,8 +190,8 @@ const styles = StyleSheet.create({
     marginStart: 4,
     overflow: 'hidden',
   },
-
   label: {
     color: defaultTokens.paletteInkDark,
+    lineHeight: 16,
   },
 });
