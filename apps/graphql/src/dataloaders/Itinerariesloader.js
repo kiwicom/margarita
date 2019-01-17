@@ -2,7 +2,7 @@
 
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
-import { DateTime } from 'luxon';
+import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import fetch from '../services/Fetch';
@@ -79,9 +79,10 @@ type ApiResponse = {|
   |}>,
 |};
 
-const dateFormat = 'dd/MM/yyyy';
+const dateFormat = 'DD/MM/YYYY';
+
 const parseDate = (date: Date) =>
-  DateTime.fromJSDate(date, { zone: 'UTC' }).toFormat(dateFormat);
+  DateFNS.format(DateFNS.parse(date), dateFormat);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
   const params = {
