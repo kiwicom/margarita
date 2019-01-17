@@ -270,7 +270,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
-    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
     paddingHorizontal: parseFloat(defaultTokens.spaceSmall),
     backgroundColor: defaultTokens.backgroundInputDisabled,
     web: {

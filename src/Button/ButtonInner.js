@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import ButtonTitle from './ButtonTitle';
@@ -108,10 +109,10 @@ const styleSheet = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 8,
+    paddingHorizontal: parseInt(defaultTokens.spaceXSmall, 10),
     paddingVertical: 11,
-    height: 44,
-    borderRadius: 6,
+    height: parseInt(defaultTokens.heightButtonNormal, 10),
+    borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
   },
   disabled: {
     opacity: 0.5,
