@@ -4,9 +4,9 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@kiwicom/margarita-navigation": "^0.0.0",
     "@kiwicom/orbit-design-tokens": "^0.2.5",
-    "@kiwicom/universal-components": "0.0.8",
-    "@kiwicom/margarita-navigation": "^0.0.0"
+    "@kiwicom/universal-components": "0.0.9"
   },
   "devDependencies": {}
 }

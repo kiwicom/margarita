@@ -3,10 +3,15 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Text, Icon, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Text,
+  Icon,
+  StyleSheet,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 
 type Info = {|
-  +icon: string, // TODO IconNameType,
+  +icon: IconNameType,
   +label: string,
   +value: string,
 |};

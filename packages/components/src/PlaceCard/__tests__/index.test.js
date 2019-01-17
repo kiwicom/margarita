@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
+import { Touchable } from '@kiwicom/universal-components';
 
-import { Touchable } from '../../Touchable';
 import PlaceCard from '../PlaceCard';
 import MissingImage from '../Image/MissingImage';
 
