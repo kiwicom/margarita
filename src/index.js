@@ -2,6 +2,7 @@
 
 /* Components */
 export { Accordion } from './Accordion';
+export { AdaptableBadge } from './AdaptableBadge';
 export { Badge } from './Badge';
 export { Button } from './Button';
 export { Card } from './Card';
