@@ -2,9 +2,7 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-import { Icon, Text } from '@kiwicom/universal-components';
-
-import { AdaptableBadge } from '../../AdaptableBadge';
+import { Icon, Text, AdaptableBadge } from '@kiwicom/universal-components';
 
 import { SearchParamsSummary } from '..';
 

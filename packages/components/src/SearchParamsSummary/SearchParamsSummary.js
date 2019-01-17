@@ -3,9 +3,12 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Icon, StyleSheet, Text } from '@kiwicom/universal-components';
-
-import { AdaptableBadge } from '../AdaptableBadge';
+import {
+  Icon,
+  StyleSheet,
+  Text,
+  AdaptableBadge,
+} from '@kiwicom/universal-components';
 
 type Trip = {|
   +city: string,

@@ -1080,12 +1080,13 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/universal-components@0.0.8":
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.8.tgz#aca69fa51aea9edc6b6787a04fba66577c3b6dce"
-  integrity sha512-0diFRam8pNUtQJUpNZ3ZehAD+aJEguvAOIloaYsaTdCyQUUUJ87KM0TBCS0iisBhRd8+hgL7UH8KZsCj/B73RQ==
+"@kiwicom/universal-components@0.0.9":
+  version "0.0.9"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.9.tgz#fa81d13daef0deefb32d9a4997ea356845d8a6a5"
+  integrity sha512-BqIwBxaKcit2YyaQxYZsNYMhu6WzXi0ciBDFnvoB1khw5EqLsn6/7UY7F8smiwRx5DFxhZ59qbkb6bAYFYONQg==
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.2.5"
+    react-native-multi-slider "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"
     react-native-status-bar-height "^2.2.0"
     styled-components "^4.1.2"
 
@@ -9468,6 +9469,10 @@ react-native-linear-gradient@2.4.0:
 react-native-maps@expo/react-native-maps#v0.22.1-exp.0:
   version "0.22.1"
   resolved "https://codeload.github.com/expo/react-native-maps/tar.gz/e6f98ff7272e5d0a7fe974a41f28593af2d77bb2"
+
+"react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e":
+  version "2.0.3"
+  resolved "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"
 
 react-native-reanimated@1.0.0-alpha.10:
   version "1.0.0-alpha.10"

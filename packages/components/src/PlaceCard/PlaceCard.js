@@ -3,10 +3,13 @@
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
-import { Text, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Text,
+  StyleSheet,
+  Touchable,
+  AdaptableBadge,
+} from '@kiwicom/universal-components';
 
-import { Touchable } from '../Touchable';
-import { AdaptableBadge } from '../AdaptableBadge';
 // import BlackToAlpha from './assets/black-to-alpha-vertical.png'; @TODO
 import CityImage from './Image/CityImage';
 import Placeholder from './Placeholder';
