@@ -5,10 +5,13 @@ Object {
   "output": <Component
     source={1}
     style={
-      Object {
-        "alignSelf": "center",
-        "marginBottom": 20,
-      }
+      Array [
+        Object {
+          "alignSelf": "center",
+          "resizeMode": "contain",
+        },
+        undefined,
+      ]
     }
   />,
 }

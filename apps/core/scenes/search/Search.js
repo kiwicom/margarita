@@ -16,7 +16,7 @@ import {
   PassengersButton,
   TripTypeButton,
   TouchableWithoutFeedback,
-  SearchIllustration,
+  Illustration,
 } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
@@ -273,7 +273,7 @@ class Search extends React.Component<Props, State> {
       <>
         <View style={styles.container}>
           <View style={styles.form}>
-            <SearchIllustration />
+            <Illustration name="Boarding" style={styles.boardingIllustration} />
             <View style={styles.top}>
               <TripTypeButton
                 onPress={this.handleTripTypePress}
@@ -389,6 +389,12 @@ const styles = StyleSheet.create({
   },
   bottom: {
     marginTop: parseInt(defaultTokens.spaceXSmall, 10),
+  },
+  boardingIllustration: {
+    marginBottom: 20,
+    web: {
+      marginTop: 20,
+    },
   },
 });
 

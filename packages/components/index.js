@@ -29,6 +29,4 @@ export type {
 } from './src/ConnectionCard/ConnectionCardTypes';
 
 export { TimelineFlightDetail } from './src/TimelineFlightDetail';
-export {
-  default as SearchIllustration,
-} from './src/searchIllustration/SearchIllustration';
+export { default as Illustration } from './src/Illustration/Illustration';
