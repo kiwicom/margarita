@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { shallow } from 'react-native-testing-library';
 
-import SearchIllustration from '../SearchIllustration';
+import Illustration from '../Illustration';
 
 it('renders', () => {
-  expect(shallow(<SearchIllustration />)).toMatchSnapshot();
+  expect(shallow(<Illustration name="Boarding" />)).toMatchSnapshot();
 });
