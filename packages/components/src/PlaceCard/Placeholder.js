@@ -4,6 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
+import { tokens } from '@kiwicom/margarita-utils';
 
 import { Shimmer } from '../Shimmer';
 
@@ -12,22 +13,22 @@ const Placeholder = () => (
     <View style={styles.pricePlaceholder}>
       <Shimmer
         style={[styles.defaultPlaceholder, styles.large]}
-        width={80}
-        height={25}
+        width={tokens.widthShimmerSmall}
+        height={tokens.heightShimmerMedium}
       />
     </View>
     <View style={[styles.bottomContainer, styles.padding]}>
-      <View style={styles.placePlacholder}>
+      <View style={styles.placePlaceholder}>
         <Shimmer
-          width={200}
-          height={16}
+          width={tokens.widthShimmerLarge}
+          height={tokens.heightShimmerSmall}
           style={[styles.defaultPlaceholder, styles.small]}
         />
       </View>
       <View style={styles.countryPlaceholder}>
         <Shimmer
-          width={100}
-          height={16}
+          width={tokens.widthShimmerMedium}
+          height={tokens.heightShimmerSmall}
           style={[styles.defaultPlaceholder, styles.small]}
         />
       </View>
@@ -37,28 +38,28 @@ const Placeholder = () => (
 
 const styles = StyleSheet.create({
   container: {
-    height: 152,
+    height: tokens.heightPlaceCard,
     justifyContent: 'space-between',
     borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
     overflow: 'hidden',
     backgroundColor: defaultTokens.paletteCloudLight,
   },
   pricePlaceholder: {
-    width: 100,
+    width: tokens.widthShimmerMedium,
     padding: 10,
   },
   small: {
-    height: 16,
+    height: parseFloat(defaultTokens.heightIconSmall),
   },
   large: {
-    height: 25,
+    height: parseFloat(defaultTokens.heightIconMedium),
   },
-  placePlacholder: {
+  placePlaceholder: {
     marginBottom: 4,
-    width: 200,
+    width: tokens.widthShimmerLarge,
   },
   countryPlaceholder: {
-    width: 100,
+    width: tokens.widthShimmerMedium,
   },
   padding: {
     padding: 10,

@@ -9,6 +9,7 @@ import {
   Touchable,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
+import { tokens } from '@kiwicom/margarita-utils';
 
 // import BlackToAlpha from './assets/black-to-alpha-vertical.png'; @TODO
 import CityImage from './Image/CityImage';
@@ -81,14 +82,14 @@ export default function PlaceCard({
 
 const styles = StyleSheet.create({
   container: {
-    height: 152,
+    height: tokens.heightPlaceCard,
     width: '100%',
     justifyContent: 'space-between',
     borderRadius: parseFloat(defaultTokens.borderRadiusLarge),
     overflow: 'hidden',
   },
   padding: {
-    padding: 10,
+    padding: parseFloat(defaultTokens.spaceSmall),
   },
   row: {
     justifyContent: 'space-between',
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     padding: 2.5,
   },
   placeText: {
-    marginBottom: 4,
+    marginBottom: parseFloat(defaultTokens.spaceXXSmall),
   },
   bottomContainer: {
     justifyContent: 'flex-end',

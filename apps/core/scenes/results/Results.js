@@ -6,6 +6,7 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
+import { mobileTokens } from '@kiwicom/margarita-utils';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
 import ResultsList from './ResultsList';
@@ -22,8 +23,6 @@ type Props = {|
 type ResultsType = {|
   +searchItineraries: ResultsListType,
 |};
-
-const statusBarHeight = 20; // @TODO add to orbit design tokens
 
 export default class Results extends React.Component<Props> {
   renderInner = (props: ResultsType) => {
@@ -84,7 +83,12 @@ export default class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: statusBarHeight,
+    android: {
+      marginTop: mobileTokens.heightStatusBarAndroid,
+    },
+    ios: {
+      marginTop: mobileTokens.heightStatusBarIOS,
+    },
     web: {
       marginTop: 0,
     },

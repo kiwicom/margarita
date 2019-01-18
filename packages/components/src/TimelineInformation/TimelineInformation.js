@@ -9,6 +9,7 @@ import {
   StyleSheet,
   type StylePropType,
 } from '@kiwicom/universal-components';
+import { tokens } from '@kiwicom/margarita-utils';
 
 type Props = {|
   +icon: React.Element<typeof Icon>,
@@ -53,7 +54,7 @@ export default class TimelineInformation extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    height: 22,
+    height: tokens.heightTimelineInformation,
     paddingVertical: 2,
     paddingHorizontal: 7,
     backgroundColor: defaultTokens.paletteCloudLight,
@@ -68,6 +69,6 @@ const styles = StyleSheet.create({
   },
   warningContainer: {
     flex: 1,
-    marginEnd: 24,
+    marginEnd: parseFloat(defaultTokens.spaceLarge),
   },
 });

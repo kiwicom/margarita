@@ -4,6 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
+import { tokens } from '@kiwicom/margarita-utils';
 
 import TimelineArrow from './TimelineArrow';
 
@@ -69,7 +70,7 @@ export default function TripSegment({
 
 const styles = StyleSheet.create({
   container: {
-    height: 70,
+    height: tokens.heightTripSegment,
   },
   row: {
     flex: 1,
@@ -78,7 +79,7 @@ const styles = StyleSheet.create({
     paddingVertical: 0,
   },
   carrierLogo: {
-    width: 30,
+    width: parseFloat(defaultTokens.widthIconLarge),
   },
   tripItems: {
     flexDirection: 'row',

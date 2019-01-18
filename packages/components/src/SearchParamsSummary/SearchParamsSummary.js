@@ -9,6 +9,7 @@ import {
   Text,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
+import { tokens } from '@kiwicom/margarita-utils';
 
 type Trip = {|
   +city: string,
@@ -82,7 +83,7 @@ export default function SearchParamsSummary({
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 64,
+    height: tokens.heightSearchParamsSummary,
     borderBottomWidth: 1,
     borderBottomColor: defaultTokens.paletteInkLighter,
   },
@@ -94,22 +95,22 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: 3,
-    paddingTop: 8,
+    paddingTop: parseFloat(defaultTokens.spaceXSmall),
   },
   headerLeftContainer: {
     flexDirection: 'column',
-    paddingStart: 16,
+    paddingStart: parseFloat(defaultTokens.spaceMedium),
     flex: 1,
   },
   departureCity: {
     fontWeight: 'bold',
-    marginEnd: 5,
+    marginEnd: parseFloat(defaultTokens.spaceXXSmall),
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
     color: defaultTokens.colorTextAttention,
   },
   arrivalCity: {
     fontWeight: 'bold',
-    marginStart: 5,
+    marginStart: parseFloat(defaultTokens.spaceXXSmall),
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
     color: defaultTokens.colorTextAttention,
   },
