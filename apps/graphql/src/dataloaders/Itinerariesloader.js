@@ -102,6 +102,7 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
       infants: input.passengers.infants ?? 0,
     }),
     curr: 'EUR',
+    limit: 10, // TODO pagination
   };
 
   return params;
