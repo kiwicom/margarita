@@ -5,6 +5,7 @@ import qs from 'querystring';
 import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
+import itineraryMock from '../mocks/itinerary';
 import fetch from '../services/Fetch';
 
 export type ItinerariesSearchParameters = {|
@@ -34,10 +35,73 @@ export type RouteItem = {|
   +id: string,
 |};
 
+// start - new structure
+
+export type Country = {|
+  +id: string,
+  +name: string,
+  +code: string,
+  +slug: string,
+  +flagURL: string,
+|};
+
+// @TODO rename PriceType
 export type Price = {|
   +amount: number,
   +currency: string,
 |};
+
+export type LocationType = {|
+  +id: string,
+  +locationId: string,
+  +name: string,
+  +timezone: string,
+  +country: Country,
+|};
+export type DateType = {|
+  +local: Date,
+  +utc: Date,
+|};
+export type ProviderType = {|
+  +id: string,
+  +name: string,
+|};
+export type VehicleType = {|
+  +type: string,
+  +uniqueNo: string,
+|};
+export type SegmentType = {|
+  +arrivalTime: DateType,
+  +departureTime: DateType,
+  +destination: LocationType,
+  +duration: number,
+  +id: string,
+  +origin: LocationType,
+  +provider: ProviderType,
+  +vehicle: VehicleType,
+|};
+export type SectorType = {|
+  +arrivalTime: DateType,
+  +connections: Array<SegmentType>,
+  +departureTime: DateType,
+  +destination: LocationType,
+  +duration: number,
+  +id: string,
+  +origin: LocationType,
+  +segments: Array<SegmentType>,
+|};
+
+export type newItinerariesStructure = {|
+  id: string,
+  +type: string,
+  +price: Price,
+  +origin: LocationType,
+  +destination: LocationType,
+  +startTime: DateType,
+  +endTime: DateType,
+  +sectors: Array<SectorType>,
+|};
+// end - new structure
 
 export type Itineraries = {|
   +airlines: Array<string>,
@@ -49,6 +113,7 @@ export type Itineraries = {|
   +price: Price,
   +route: Array<RouteItem>,
   +routes: Array<Array<string>>,
+  ...newItinerariesStructure,
 |};
 
 export type ApiRouteItem = {|
@@ -123,7 +188,11 @@ const fetchItineraries = async (
 
 const sanitizeItineraries = (response: ApiResponse): Itineraries[] => {
   const itineraries = response.data;
+
+  const newItinerariesStructure = itineraryMock;
+
   return itineraries.map(itinerary => ({
+    ...newItinerariesStructure,
     id: itinerary.id,
     airlines: itinerary.airlines,
     price: {
