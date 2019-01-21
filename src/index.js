@@ -24,6 +24,7 @@ export { DatePicker } from './DatePicker';
 export { Hoverable } from './Hoverable';
 export { Slider } from './Slider';
 export { Touchable } from './Touchable';
+export { SegmentedButton } from './SegmentedButton';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';
