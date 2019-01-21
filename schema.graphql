@@ -2,6 +2,19 @@ schema {
   query: RootQuery
 }
 
+type CountryType {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  name: String
+  code: String
+  slug: String
+  flagURL: String
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -15,6 +28,11 @@ A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 8601 standard for representation of dates and times using the Gregorian calendar.
 """
 scalar DateTime
+
+type DateType {
+  local: DateTime
+  utc: DateTime
+}
 
 input ItinerariesSearchInput {
   travelFrom: String!
@@ -47,9 +65,15 @@ type Itinerary {
   flyTo: String
   localDeparture: String
   localArrival: String
-  price: Price
+  price: PriceType
   route: [Route]
   routes: [[String]]
+  type: String
+  origin: LocationType
+  destination: LocationType
+  startTime: DateType
+  endTime: DateType
+  sectors: [SectorType]
 }
 
 """A connection to a list of items."""
@@ -103,6 +127,19 @@ input LocationsByTermInput {
   term: String!
 }
 
+type LocationType {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  locationId: String
+  name: String
+  timezone: String
+  country: CountryType
+}
+
 """Information about pagination in a connection."""
 type PageInfo {
   """When paginating forwards, are there more items?"""
@@ -124,9 +161,14 @@ input PassengersInput {
   infants: Int
 }
 
-type Price {
+type PriceType {
   amount: Int
   currency: String
+}
+
+type ProviderType {
+  id: String
+  name: String
 }
 
 type RootQuery {
@@ -144,9 +186,48 @@ type Route {
   id: String
 }
 
+type SectorType {
+  arrivalTime: DateType
+  connections: [SegmentType]
+  departureTime: DateType
+  destination: LocationType
+  duration: Int
+
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  origin: LocationType
+  segments: [SegmentType]
+}
+
+type SegmentType {
+  arrivalTime: DateType
+  departureTime: DateType
+  destination: LocationType
+  duration: Int
+
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  origin: LocationType
+  provider: ProviderType
+  vehicle: VehicleType
+}
+
 type TripSegment {
   city: String
   cityCode: String
   localTime: DateTime
   utcTime: DateTime
+}
+
+type VehicleType {
+  type: String
+  uniqueNo: String
 }

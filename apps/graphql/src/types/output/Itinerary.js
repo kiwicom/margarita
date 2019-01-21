@@ -33,13 +33,96 @@ const RouteType = new GraphQLObjectType({
   },
 });
 
+// start - new structure
+
 const PriceType = new GraphQLObjectType({
-  name: 'Price',
+  name: 'PriceType',
   fields: {
     amount: { type: GraphQLInt },
     currency: { type: GraphQLString },
   },
 });
+
+const CountryType = new GraphQLObjectType({
+  name: 'CountryType',
+  fields: {
+    id: GlobalID(({ id }) => id),
+    name: { type: GraphQLString },
+    code: { type: GraphQLString },
+    slug: { type: GraphQLString },
+    flagURL: { type: GraphQLString },
+  },
+});
+const LocationType = new GraphQLObjectType({
+  name: 'LocationType',
+  fields: {
+    id: GlobalID(({ id }) => id),
+    locationId: { type: GraphQLString },
+    name: { type: GraphQLString },
+    timezone: { type: GraphQLString },
+    country: { type: CountryType },
+  },
+});
+const DateType = new GraphQLObjectType({
+  name: 'DateType',
+  fields: {
+    local: { type: GraphQLDateTime },
+    utc: { type: GraphQLDateTime },
+  },
+});
+const VehicleType = new GraphQLObjectType({
+  name: 'VehicleType',
+  fields: {
+    type: { type: GraphQLString },
+    uniqueNo: { type: GraphQLString },
+  },
+});
+const ProviderType = new GraphQLObjectType({
+  name: 'ProviderType',
+  fields: {
+    id: { type: GraphQLString },
+    name: { type: GraphQLString },
+  },
+});
+const SegmentType = new GraphQLObjectType({
+  name: 'SegmentType',
+  fields: {
+    arrivalTime: { type: DateType },
+    departureTime: { type: DateType },
+    destination: { type: LocationType },
+    duration: { type: GraphQLInt },
+    id: GlobalID(({ id }) => id),
+    origin: { type: LocationType },
+    provider: { type: ProviderType },
+    vehicle: { type: VehicleType },
+  },
+});
+const SectorType = new GraphQLObjectType({
+  name: 'SectorType',
+  fields: {
+    arrivalTime: { type: DateType },
+    connections: { type: new GraphQLList(SegmentType) },
+    departureTime: { type: DateType },
+    destination: { type: LocationType },
+    duration: { type: GraphQLInt },
+    id: GlobalID(({ id }) => id),
+    origin: { type: LocationType },
+    segments: { type: new GraphQLList(SegmentType) },
+  },
+});
+
+const newItineraryStructure = {
+  id: GlobalID(({ id }) => id),
+  type: { type: GraphQLString },
+  price: { type: PriceType },
+  origin: { type: LocationType },
+  destination: { type: LocationType },
+  startTime: { type: DateType },
+  endTime: { type: DateType },
+  sectors: { type: new GraphQLList(SectorType) },
+};
+
+// end - new structure
 
 export default new GraphQLObjectType({
   name: 'Itinerary',
@@ -52,5 +135,6 @@ export default new GraphQLObjectType({
     price: { type: PriceType },
     route: { type: new GraphQLList(RouteType) },
     routes: { type: new GraphQLList(new GraphQLList(GraphQLString)) },
+    ...newItineraryStructure,
   },
 });
