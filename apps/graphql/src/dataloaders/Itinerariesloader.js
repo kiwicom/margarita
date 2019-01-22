@@ -7,6 +7,7 @@ import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import itineraryMock from '../mocks/itinerary';
 import fetch from '../services/Fetch';
+import { getLocation, getDate } from './itinerariesHelpers';
 import type {
   ItinerariesSearchParametersType,
   ApiResponseType,
@@ -61,7 +62,32 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
   const newItinerariesStructure = itineraryMock;
 
   return itineraries.map(itinerary => ({
+    // new structure mock
     ...newItinerariesStructure,
+
+    // new structure
+
+    // type: 'return',
+
+    // startTime: getDate(2019, 3, 13, 11),
+    startTime: getDate(itinerary.local_departure, itinerary.utc_departure),
+    endTime: getDate(itinerary.local_arrival, itinerary.utc_arrival),
+    // sectors: [getSector1(), getSector2()],
+    destination: getLocation(
+      itinerary.flyTo,
+      itinerary.cityTo,
+      itinerary.countryTo.name,
+      itinerary.countryTo.code,
+    ),
+    // id: itinerary.id,
+    origin: getLocation(
+      itinerary.flyFrom,
+      itinerary.cityFrom,
+      itinerary.countryFrom.name,
+      itinerary.countryFrom.code,
+    ),
+
+    // old structure
     id: itinerary.id,
     airlines: itinerary.airlines,
     price: {

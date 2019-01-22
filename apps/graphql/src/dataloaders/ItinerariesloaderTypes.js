@@ -121,16 +121,27 @@ export type ApiRouteItemType = {|
   +utc_departure?: Date,
 |};
 
+export type ApiCountryType = {|
+  code: string,
+  name: string,
+|};
+
 export type ApiResponseType = {|
   +currency: string,
   +data: $ReadOnlyArray<{|
     +id: string,
     +airlines: Array<string>,
+    +cityFrom: string,
+    +cityTo: string,
+    +countryFrom: ApiCountryType,
+    +countryTo: ApiCountryType,
     +price: number,
     +flyFrom: string,
     +flyTo: string,
     +local_departure: string,
+    +utc_departure: string,
     +local_arrival: string,
+    +utc_arrival: string,
     +route: Array<ApiRouteItemType>,
     +routes: Array<Array<string>>,
   |}>,
