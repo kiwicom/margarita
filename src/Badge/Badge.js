@@ -15,11 +15,15 @@ export default function Badge({
   style,
   fontSize,
 }: BadgeProps) {
-  const dynamicStyle = StyleSheet.create({
-    fontSize: {
-      fontSize,
-    },
-  });
+  let dynamicStyle = { fontSize: {} };
+  if (fontSize != null) {
+    dynamicStyle = StyleSheet.create({
+      fontSize: {
+        fontSize,
+      },
+    });
+  }
+
   return (
     <View style={[styles.wrapper, theme(type).wrapper, style]}>
       <Text style={[styles.text, dynamicStyle.fontSize, theme(type).text]}>
@@ -41,7 +45,7 @@ const styles = StyleSheet.create({
     },
   },
   text: {
-    fontSize: 12,
+    fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     lineHeight: 18, // @TODO parseFloat(defaultTokens.heightBadge) - after design tokens update
     fontWeight: '500',
     letterSpacing: 0.3,
