@@ -35,7 +35,7 @@ exports[`Button - native should match snapshot diff 1`] = `
         }
       >
         <View
-@@ -43,18 +43,124 @@
+@@ -43,18 +43,110 @@
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
             }
@@ -95,20 +95,6 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 Object {
 +                   \\"fontFamily\\": \\"Roboto\\",
 +                   \\"margin\\": 0,
-+                 },
-+                 undefined,
-+                 undefined,
-+                 Object {
-+                   \\"fontSize\\": 14,
-+                 },
-+                 Object {
-+                   \\"fontSize\\": 14,
-+                 },
-+                 Object {
-+                   \\"color\\": \\"#46515e\\",
-+                 },
-+                 Object {
-+                   \\"textAlign\\": \\"left\\",
 +                 },
 +                 Array [
 +                   Object {},

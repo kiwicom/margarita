@@ -5,39 +5,33 @@ exports[`Text should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -3,24 +3,28 @@
+@@ -3,10 +3,28 @@
       Array [
         Object {
           \\"fontFamily\\": \\"Roboto\\",
           \\"margin\\": 0,
         },
--       undefined,
--       undefined,
-        Object {
--         \\"fontSize\\": 14,
++       Object {
 +         \\"fontStyle\\": \\"italic\\",
-        },
-        Object {
--         \\"fontSize\\": 14,
++       },
++       Object {
 +         \\"textTransform\\": \\"uppercase\\",
-        },
-        Object {
--         \\"color\\": \\"#46515e\\",
++       },
++       Object {
 +         \\"fontWeight\\": \\"700\\",
-        },
-        Object {
--         \\"textAlign\\": \\"left\\",
++       },
++       Object {
 +         \\"fontSize\\": 16,
-        },
++       },
 +       Object {
 +         \\"color\\": \\"#7f91a8\\",
 +       },
 +       Object {
 +         \\"textAlign\\": \\"center\\",
 +       },
-        undefined,
       ]
     }
   >
-    Lorem ipsum"
+    Lorem ipsum
+  </Text>"
 `;

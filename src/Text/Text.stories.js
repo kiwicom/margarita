@@ -21,7 +21,13 @@ const customText =
 storiesOf('Text', module)
   .addDecorator(withKnobs)
   .addDecorator(getStory => <View style={style}>{getStory()}</View>)
-  .add('Primary text', () => <Text>{customText}</Text>)
+  .add('Cascading styles', () => (
+    <Text style={{ color: 'blue', fontSize: 22 }}>
+      Test
+      <Text style={{ color: 'red' }}>Nested test</Text>
+    </Text>
+  ))
+  .add('Primary text', () => <Text type="primary">{customText}</Text>)
   .add('Secondary text', () => <Text type="secondary">{customText}</Text>)
   .add('Attention text', () => <Text type="attention">{customText}</Text>)
   .add('Status text', () => (

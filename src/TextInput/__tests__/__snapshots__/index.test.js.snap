@@ -5,12 +5,12 @@ exports[`TextInput should match snapshot diff between small and normal input 1`]
 - <TextInput label=\\"Label\\" />
 + <TextInput label=\\"Label\\" size=\\"small\\" />
 
-@@ -61,3 +61,3 @@
+@@ -47,3 +47,3 @@
           Object {
 -           \\"height\\": 44,
 +           \\"height\\": 32,
           },
-@@ -93,3 +93,3 @@
+@@ -79,3 +79,3 @@
             Object {
 -             \\"height\\": 44,
 +             \\"height\\": 32,

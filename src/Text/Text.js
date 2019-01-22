@@ -21,34 +21,35 @@ const fontSizeGen = createStylesGenerator('fontSize', fontSize);
 const alignGen = createStylesGenerator('textAlign', alignTypes);
 
 const Text = ({
-  align = 'left',
+  align,
   children,
   dataTest,
   italic,
   numberOfLines,
-  size = 'normal',
+  size,
   style,
-  type = 'primary',
+  type,
   uppercase,
-  weight = 'normal',
-}: TextType) => (
-  <RNText
-    data-test={dataTest}
-    style={[
-      styles.text,
-      italic && styles.italic,
-      uppercase && styles.uppercase,
-      styles[weight],
-      styles[size],
-      styles[type],
-      styles[align],
-      style && style,
-    ]}
-    numberOfLines={numberOfLines}
-  >
-    {children}
-  </RNText>
-);
+  weight,
+}: TextType) => {
+  const textStyle = [styles.text];
+  italic && textStyle.push(styles.italic);
+  uppercase && textStyle.push(styles.uppercase);
+  weight && textStyle.push(styles[weight]);
+  size && textStyle.push(styles[size]);
+  type && textStyle.push(styles[type]);
+  align && textStyle.push(styles[align]);
+  style && textStyle.push(style);
+  return (
+    <RNText
+      data-test={dataTest}
+      style={textStyle}
+      numberOfLines={numberOfLines}
+    >
+      {children}
+    </RNText>
+  );
+};
 const styles = StyleSheet.create({
   text: {
     margin: 0,

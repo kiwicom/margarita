@@ -12,7 +12,7 @@ exports[`FilterButton should match snapshot diff between active and inactive inp
 -         },
 +         false,
         ]
-@@ -71,5 +69,3 @@
+@@ -57,5 +55,3 @@
                 },
 -               Object {
 -                 \\"color\\": \\"#e8edf1\\",
