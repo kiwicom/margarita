@@ -28,12 +28,12 @@ Object {
       "edges": Array [
         Object {
           "node": Object {
-            "id": "SXRpbmVyYXJ5OmFzZGY=",
+            "id": "SXRpbmVyYXJ5OjE=",
           },
         },
         Object {
           "node": Object {
-            "id": "SXRpbmVyYXJ5OmFzZGY=",
+            "id": "SXRpbmVyYXJ5OjI=",
           },
         },
       ],

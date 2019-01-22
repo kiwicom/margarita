@@ -12,16 +12,16 @@ import ItinerariesSearchInput from '../types/input/ItinerariesSearchInput';
 import GraphQLItinerary from '../types/output/Itinerary';
 import type { GraphqlContextType } from '../services/GraphQLContext';
 import type {
-  Itineraries,
-  ItinerariesSearchParameters,
-} from '../dataloaders/Itinerariesloader';
+  ItinerariesType,
+  ItinerariesSearchParametersType,
+} from '../dataloaders/ItinerariesloaderTypes';
 
 const { connectionType: ItinerariesConnection } = connectionDefinitions({
   nodeType: GraphQLItinerary,
 });
 
 type Args = {|
-  +input: ItinerariesSearchParameters,
+  +input: ItinerariesSearchParametersType,
   ...$Exact<ConnectionArguments>,
 |};
 
@@ -38,6 +38,6 @@ export default {
   resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
 
-    return connectionFromArray<Itineraries>(itineraries, args);
+    return connectionFromArray<ItinerariesType>(itineraries, args);
   },
 };
