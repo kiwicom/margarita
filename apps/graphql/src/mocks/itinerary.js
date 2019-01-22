@@ -4,18 +4,18 @@ const getCountry = () => ({
   id: 'aaa',
   name: 'Norway',
   code: 'NO',
-  slug: '',
-  flagURL: '',
+  slug: 'slug',
+  flagURL: 'flagUrl',
 });
 
 const vehicle = {
-  type: 'bus', // bus | train | aircraft,
+  type: 'bus',
   uniqueNo: '1234',
 };
 
 const provider = {
   id: 'ads',
-  name: 'Ryan Air', // RegioJet, Rayner, Emirates, etc….
+  name: 'Ryan Air',
 };
 
 const getLocation = (locationId, name) => ({
@@ -45,7 +45,7 @@ const getSegment = (origin, destination, departureTime, arrivalTime) => ({
   origin: origin,
   provider: provider,
   vehicle: vehicle,
-  // "connections": Segment[]  // the array of related Segments
+  // connections: [], // Segment[]  // the array of related Segments
 });
 
 const getSector1 = () => {
@@ -98,7 +98,7 @@ const getSector2 = () => {
 
 export default {
   id: 'asdf',
-  type: 'return', // "oneway" | "return" | "multicity"
+  type: 'return',
   price: price,
   origin: getLocation('OSL', 'Oslo'),
   destination: getLocation('PRG', 'Prague'),
