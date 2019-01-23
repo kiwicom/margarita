@@ -30,68 +30,73 @@ export type RouteItemType = {|
 // start - new structure
 
 export type CountryType = {|
-  +id: string,
-  +name: string,
-  +code: string,
-  +slug: string,
-  +flagURL: string,
+  +id: ?string,
+  +name: ?string,
+  +code: ?string,
+  +slug: ?string,
+  +flagURL: ?string,
 |};
 
-// @TODO rename PriceType
 export type PriceType = {|
-  +amount: number,
-  +currency: string,
+  +amount: ?number,
+  +currency: ?string,
 |};
 
 export type LocationType = {|
   +id: string,
-  +locationId: string,
-  +name: string,
-  +timezone: string,
-  +country: CountryType,
+  +locationId: ?string,
+  +name: ?string,
+  +timezone: ?string,
+  +country: ?CountryType,
 |};
 export type DateType = {|
-  +local: Date,
-  +utc: Date,
+  +local: ?Date,
+  +utc: ?Date,
 |};
+
+export type ProviderTypeType = 'bus' | 'train' | 'aircraft';
+
 export type ProviderType = {|
   +id: string,
-  +name: string,
+  +name: ?string,
 |};
+
 export type VehicleType = {|
-  +type: 'bus' | 'train' | 'aircraft',
-  +uniqueNo: string,
+  +type: ?ProviderTypeType,
+  +uniqueNo: ?string,
 |};
+
 export type SegmentType = {|
-  +arrivalTime: DateType,
-  +departureTime: DateType,
-  +destination: LocationType,
-  +duration: number,
-  +id: string,
-  +origin: LocationType,
-  +provider: ProviderType,
-  +vehicle: VehicleType,
+  +arrivalTime: ?DateType,
+  +departureTime: ?DateType,
+  +destination: ?LocationType,
+  +duration: ?number,
+  +id: ?string,
+  +origin: ?LocationType,
+  +provider: ?ProviderType,
+  +vehicle: ?VehicleType,
 |};
+
 export type SectorType = {|
-  +arrivalTime: DateType,
-  +connections: Array<SegmentType>,
-  +departureTime: DateType,
-  +destination: LocationType,
-  +duration: number,
-  +id: string,
-  +origin: LocationType,
-  +segments: Array<SegmentType>,
+  +arrivalTime: ?DateType,
+  +connections: ?Array<SegmentType>,
+  +departureTime: ?DateType,
+  +destination: ?LocationType,
+  +duration: ?number,
+  +id: ?string,
+  +origin: ?LocationType,
+  +segments: ?Array<SegmentType>,
 |};
 
 export type newItinerariesStructureType = {|
   id: string,
-  +type: 'oneway' | 'return' | 'multicity',
-  +price: PriceType,
-  +origin: LocationType,
-  +destination: LocationType,
-  +startTime: DateType,
-  +endTime: DateType,
-  +sectors: Array<SectorType>,
+  +type: ?'oneway' | 'return' | 'multicity',
+  +price: ?PriceType,
+  +origin: ?LocationType,
+  +destination: ?LocationType,
+  +startTime: ?DateType,
+  +endTime: ?DateType,
+  +sectors: ?Array<SectorType>,
 |};
 // end - new structure
 
@@ -100,8 +105,8 @@ export type ItinerariesType = {|
   +id: string,
   +flyFrom: string,
   +flyTo: string,
-  +localDeparture: string,
-  +localArrival: string,
+  +localDeparture: Date,
+  +localArrival: Date,
   +price: PriceType,
   +route: Array<RouteItemType>,
   +routes: Array<Array<string>>,
@@ -112,13 +117,15 @@ export type ApiRouteItemType = {|
   +airline?: string,
   +cityFrom?: string,
   +cityTo?: string,
+  +flight_no?: number,
   +flyFrom?: string,
   +flyTo?: string,
   +id?: string,
   +local_arrival?: Date,
-  +utc_arrival?: ?Date,
   +local_departure?: Date,
+  +utc_arrival?: ?Date,
   +utc_departure?: Date,
+  +vehicle_type?: ProviderTypeType,
 |};
 
 export type ApiCountryType = {|
@@ -138,10 +145,10 @@ export type ApiResponseType = {|
     +price: number,
     +flyFrom: string,
     +flyTo: string,
-    +local_departure: string,
-    +utc_departure: string,
-    +local_arrival: string,
-    +utc_arrival: string,
+    +local_departure: Date,
+    +utc_departure: Date,
+    +local_arrival: Date,
+    +utc_arrival: Date,
     +route: Array<ApiRouteItemType>,
     +routes: Array<Array<string>>,
   |}>,
