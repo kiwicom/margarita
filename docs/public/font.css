@@ -1,0 +1,8 @@
+
+@font-face {
+  font-family: 'orbit-icons';
+  src: url('/public/orbit-icons.ttf');
+}
+body {
+  -webkit-font-smoothing: antialiased;
+}
