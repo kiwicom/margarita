@@ -23,5 +23,8 @@
     "react-art": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-native-web": "^0.10.0-alpha.1"
+  },
+  "dependencies": {
+    "docz-plugin-netlify": "^1.1.4"
   }
 }

@@ -1,8 +1,10 @@
 // @flow
 
+import doczPluginNetlify from 'docz-plugin-netlify';
+
 export default {
   src: '..',
-  dest: '../.docz/dist',
+  plugins: [doczPluginNetlify()],
   native: true,
   public: './public',
   htmlContext: {

@@ -19,7 +19,7 @@ jobs:
             - v1-30-dependencies-
       - run:
           name: Install Dependencies
-          command: yarn --network-concurrency 1 install
+          command: yarn --network-concurrency 1 install; cd docs; yarn install
       - save_cache:
           key: v1-30-dependencies-{{ checksum "package.json" }}
           paths:
