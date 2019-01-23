@@ -15,10 +15,18 @@ describe('CarrierLogo', () => {
     { code: 'VY', name: 'Vueling' },
     { code: 'OK', name: 'Czech Airlines' },
   ];
-  const { getAllByType } = render(<CarrierLogo carriers={carriers} />);
 
   it('should contain correct number of images', () => {
+    const { getAllByType } = render(<CarrierLogo carriers={carriers} />);
     expect(getAllByType(Image)).toHaveLength(4);
+  });
+
+  it('should contain correct number of images with correct size when duplicate carriers data are supplied', () => {
+    const { getAllByType, getByType } = render(
+      <CarrierLogo carriers={[carriers[0], carriers[0]]} />
+    );
+    expect(getAllByType(Image)).toHaveLength(1);
+    expect(getByType(Image).props.source.uri).toMatch(/64/);
   });
 
   it('should match snapshot diff', () => {

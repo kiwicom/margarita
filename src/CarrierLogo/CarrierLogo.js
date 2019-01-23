@@ -14,7 +14,8 @@ export default function CarrierLogo({
   size = SIZE_OPTIONS.LARGE,
   carriers = [],
 }: Props) {
-  const carriersLength = carriers.length;
+  const parsedCarriers = parseCarriers(carriers);
+  const carriersLength = parsedCarriers.length;
   return (
     <View
       style={[
@@ -22,7 +23,7 @@ export default function CarrierLogo({
         carriersLength > 1 ? sizeStyles[SIZE_OPTIONS.LARGE] : sizeStyles[size],
       ]}
     >
-      {parseCarriers(carriers).map((carrierData, index) => (
+      {parsedCarriers.map((carrierData, index) => (
         <Image
           key={carrierData.code}
           style={[
