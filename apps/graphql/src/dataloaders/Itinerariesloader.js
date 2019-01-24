@@ -121,7 +121,7 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
                   segment.utc_arrival,
                   segment.utc_departure,
                 ),
-                id: segment.id ?? '',
+                id: segment.id,
                 origin: getLocation(segment.flyFrom, segment.cityFrom),
                 provider: getProvider(segment.airline),
                 vehicle: getVehicle(
