@@ -4,7 +4,7 @@ import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import { LocalizedPrice, Text } from '@kiwicom/universal-components';
 
-import ConnectionCard from '../ConnectionCard';
+import ItineraryCard from '../ItineraryCard';
 import BadgesContainer from '../BadgesContainer';
 import TripSegment from '../TripSegment';
 
@@ -21,34 +21,15 @@ describe('ConnectionCard', () => {
       children: 'WiFi',
     },
   ];
-  const wayForth = [
-    {
-      id: '1',
-      arrival: 'Berlin TXL',
-      arrivalTime: '14:20',
-      carrier: { code: 'OK', name: 'Czech Airlines' },
-      tripDate: 'Mon 22 Oct',
-      departure: 'Prague PRG',
-      departureTime: '13:20',
-      duration: '1h',
-    },
-    {
-      id: '2',
-      arrival: 'Moscow VKO',
-      arrivalTime: '20:20',
-      carrier: { code: 'FR', type: 'airline', name: 'Ryanair' },
-      tripDate: 'Mon 22 Oct',
-      departure: 'Berlin TXL',
-      departureTime: '15:20',
-      duration: '3h',
-    },
-  ];
+  const sectors = [];
   const price = {
     amount: 123455.35,
     currency: 'EUR',
   };
+
+  // @TODO: set mock
   const { getAllByType, getByType } = render(
-    <ConnectionCard price={price} wayForth={wayForth} badges={badges} />,
+    <ItineraryCard price={price} sectors={sectors} badges={badges} />,
   );
   // @TODO in this environment, I get 'No instances found' when it was working in @kiwicom/universal-components; could be linked to not having the latest version of the npm package or because the Badges are returned as an array?
   // it('should contain correct number of badges', () => {

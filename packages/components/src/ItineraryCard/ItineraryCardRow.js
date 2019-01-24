@@ -9,7 +9,7 @@ type Props = {|
   +style?: StylePropType,
 |};
 
-export default function ConnectionCardRow({ children, style }: Props) {
+export default function ItineraryCardRow({ children, style }: Props) {
   return <View style={[styles.container, style]}>{children}</View>;
 }
 
