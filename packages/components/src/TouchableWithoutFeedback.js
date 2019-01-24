@@ -10,7 +10,8 @@ type Props = {|
   +accessibilityTraits: string,
   +accessibilityComponentType: string,
   +style?: StylePropType,
-  // Expand as needed
+  +onMouseEnter?: () => void,
+  +onMouseLeave?: () => void,
 |};
 
 export default function TouchableWithoutFeedback(props: Props) {

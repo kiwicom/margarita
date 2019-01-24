@@ -6,24 +6,28 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import Router from 'next/router';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 
-/**
- * This component should only be used by web.
- * react-navigation handles header for mobile
- */
+import NavbarLink from './NavbarLink';
+
 const goToHomePage = () => {
   Router.push('/');
 };
+
 export default function Navbar() {
   return (
     <View style={styles.navbar}>
-      <TouchableWithoutFeedback onPress={goToHomePage}>
-        <Image
-          style={styles.image}
-          source={{ uri: 'https://go.kiwi.com/logo.jpg' }}
-          accessibilityLabel="Logo"
-        />
-      </TouchableWithoutFeedback>
-      {/* TODO: Add more navigation links */}
+      <View style={styles.actionsLeft}>
+        <TouchableWithoutFeedback onPress={goToHomePage}>
+          <Image
+            style={styles.image}
+            source={{ uri: 'https://go.kiwi.com/logo.jpg' }}
+            accessibilityLabel="Logo"
+          />
+        </TouchableWithoutFeedback>
+        <NavbarLink label="Travel" route="/" />
+      </View>
+      <View style={styles.actionsRight}>
+        <NavbarLink label="Manage My Booking" route="/mmb" />
+      </View>
     </View>
   );
 }
@@ -39,7 +43,7 @@ const styles = StyleSheet.create({
     },
     shadowRadius: 3,
     paddingHorizontal: 10,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'row',
   },
@@ -47,5 +51,12 @@ const styles = StyleSheet.create({
     height: 50,
     width: 80,
     marginEnd: 20,
+  },
+  actionsLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  actionsRight: {
+    flexDirection: 'row',
   },
 });
