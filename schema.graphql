@@ -166,11 +166,6 @@ type PriceType {
   currency: String
 }
 
-type ProviderType {
-  id: String
-  name: String
-}
-
 type RootQuery {
   """Query to fetch all itineraries(flights, busses, trains)"""
   searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
@@ -188,17 +183,9 @@ type Route {
 
 type SectorType {
   arrivalTime: DateType
-  connections: [SegmentType]
   departureTime: DateType
   destination: LocationType
   duration: Int
-
-  """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
-  """
-  id(opaque: Boolean = true): ID!
   origin: LocationType
   segments: [SegmentType]
 }
@@ -216,8 +203,12 @@ type SegmentType {
   """
   id(opaque: Boolean = true): ID!
   origin: LocationType
-  provider: ProviderType
+  transporter: TransporterType
   vehicle: VehicleType
+}
+
+type TransporterType {
+  name: String
 }
 
 type TripSegment {

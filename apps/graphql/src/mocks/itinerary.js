@@ -13,7 +13,7 @@ const vehicle = {
   uniqueNo: '1234',
 };
 
-const provider = {
+const transporter = {
   id: 'ads',
   name: 'Ryan Air',
 };
@@ -43,9 +43,8 @@ const getSegment = (origin, destination, departureTime, arrivalTime) => ({
   duration: 100,
   id: 'asdfg',
   origin: origin,
-  provider: provider,
+  transporter: transporter,
   vehicle: vehicle,
-  // connections: [], // Segment[]  // the array of related Segments
 });
 
 const getSector1 = () => {
@@ -65,7 +64,6 @@ const getSector1 = () => {
   ];
   return {
     arrivalTime: getDate(2019, 3, 11, 21),
-    connections: [segments[0], segments[1]],
     departureTime: getDate(2019, 3, 11, 10),
     destination: getLocation('PRG', 'Prague'),
     duration: 660,
@@ -86,7 +84,6 @@ const getSector2 = () => {
   ];
   return {
     arrivalTime: getDate(2019, 3, 13, 11),
-    connections: [segments[0]],
     departureTime: getDate(2019, 3, 13, 9),
     destination: getLocation('PRG', 'Prague'),
     duration: 180,

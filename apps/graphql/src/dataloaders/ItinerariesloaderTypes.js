@@ -43,7 +43,7 @@ export type PriceType = {|
 |};
 
 export type LocationType = {|
-  +id: string,
+  +id: ?string,
   +locationId: ?string,
   +name: ?string,
   +timezone: ?string,
@@ -54,15 +54,12 @@ export type DateType = {|
   +utc: ?Date,
 |};
 
-export type ProviderTypeType = 'bus' | 'train' | 'aircraft';
-
-export type ProviderType = {|
-  +id: string,
+export type TransporterType = {|
   +name: ?string,
 |};
 
 export type VehicleType = {|
-  +type: ?ProviderTypeType,
+  +type: ?string,
   +uniqueNo: ?string,
 |};
 
@@ -73,24 +70,22 @@ export type SegmentType = {|
   +duration: ?number,
   +id: ?string,
   +origin: ?LocationType,
-  +provider: ?ProviderType,
+  +transporter: ?TransporterType,
   +vehicle: ?VehicleType,
 |};
 
 export type SectorType = {|
   +arrivalTime: ?DateType,
-  +connections: ?Array<SegmentType>,
   +departureTime: ?DateType,
   +destination: ?LocationType,
   +duration: ?number,
-  +id: ?string,
   +origin: ?LocationType,
   +segments: ?Array<SegmentType>,
 |};
 
 export type newItinerariesStructureType = {|
   id: string,
-  +type: ?'oneway' | 'return' | 'multicity',
+  +type: ?string,
   +price: ?PriceType,
   +origin: ?LocationType,
   +destination: ?LocationType,
@@ -125,14 +120,15 @@ export type ApiRouteItemType = {|
   +local_departure?: Date,
   +utc_arrival?: ?Date,
   +utc_departure?: Date,
-  +vehicle_type?: ProviderTypeType,
+  +vehicle_type?: string,
 |};
 
 export type ApiCountryType = {|
-  code: string,
-  name: string,
+  +code: string,
+  +name: string,
 |};
 
+// @TODO data should be with "?"
 export type ApiResponseType = {|
   +currency: string,
   +data: $ReadOnlyArray<{|
@@ -140,8 +136,8 @@ export type ApiResponseType = {|
     +airlines: Array<string>,
     +cityFrom: string,
     +cityTo: string,
-    +countryFrom: ApiCountryType,
-    +countryTo: ApiCountryType,
+    +countryFrom?: ApiCountryType,
+    +countryTo?: ApiCountryType,
     +price: number,
     +flyFrom: string,
     +flyTo: string,

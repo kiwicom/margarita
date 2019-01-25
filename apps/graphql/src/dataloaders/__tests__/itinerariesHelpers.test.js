@@ -5,10 +5,18 @@ import {
   getDate,
   getItineraryType,
   getLocation,
-  getProvider,
+  getTransporter,
   getSectors,
   getVehicle,
 } from '../itinerariesHelpers';
+import {
+  oneWaySectors,
+  oneWayRoutesList,
+  oneWayRoutesMap,
+  twoWaySectors,
+  twoWayRoutesList,
+  twoWayRoutesMap,
+} from './itinerariesMock';
 
 describe('getCountry', () => {
   const name = 'Czech republic';
@@ -64,10 +72,10 @@ describe('getLocation', () => {
   });
 });
 
-describe('getProvider', () => {
+describe('getTransporter', () => {
   const name = 'Ryan Air';
-  it('returns proper structure of the Provider object', () => {
-    expect(getProvider(name)).toMatchObject({
+  it('returns proper structure of the Transporter object', () => {
+    expect(getTransporter(name)).toMatchObject({
       name,
     });
   });
@@ -75,56 +83,14 @@ describe('getProvider', () => {
 
 describe('getSectors', () => {
   it('returns an array with two Sectors for return flight', () => {
-    const routesList = [
-      {
-        flyFrom: 'OSL',
-        flyTo: 'BCN',
-      },
-      {
-        flyFrom: 'BCN',
-        flyTo: 'PRG',
-      },
-      {
-        flyFrom: 'PRG',
-        flyTo: 'OSL',
-      },
-    ];
-    const routesMap = [['OSL', 'PRG'], ['PRG', 'OSL']];
-    expect(getSectors(routesList, routesMap)).toEqual([
-      [
-        {
-          flyFrom: 'OSL',
-          flyTo: 'BCN',
-        },
-        {
-          flyFrom: 'BCN',
-          flyTo: 'PRG',
-        },
-      ],
-      [
-        {
-          flyFrom: 'PRG',
-          flyTo: 'OSL',
-        },
-      ],
-    ]);
+    expect(getSectors(twoWayRoutesList, twoWayRoutesMap)).toEqual(
+      twoWaySectors,
+    );
   });
   it('returns an array with one Sector for one-way flight', () => {
-    const routesList = [
-      {
-        flyFrom: 'OSL',
-        flyTo: 'PRG',
-      },
-    ];
-    const routesMap = [['OSL', 'PRG']];
-    expect(getSectors(routesList, routesMap)).toEqual([
-      [
-        {
-          flyFrom: 'OSL',
-          flyTo: 'PRG',
-        },
-      ],
-    ]);
+    expect(getSectors(oneWayRoutesList, oneWayRoutesMap)).toEqual(
+      oneWaySectors,
+    );
   });
 });
 

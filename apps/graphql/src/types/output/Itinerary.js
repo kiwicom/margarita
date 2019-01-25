@@ -77,10 +77,9 @@ const VehicleType = new GraphQLObjectType({
     uniqueNo: { type: GraphQLString },
   },
 });
-const ProviderType = new GraphQLObjectType({
-  name: 'ProviderType',
+const TransporterType = new GraphQLObjectType({
+  name: 'TransporterType',
   fields: {
-    id: { type: GraphQLString },
     name: { type: GraphQLString },
   },
 });
@@ -93,7 +92,7 @@ const SegmentType = new GraphQLObjectType({
     duration: { type: GraphQLInt },
     id: GlobalID(({ id }) => id),
     origin: { type: LocationType },
-    provider: { type: ProviderType },
+    transporter: { type: TransporterType },
     vehicle: { type: VehicleType },
   },
 });
@@ -101,11 +100,9 @@ const SectorType = new GraphQLObjectType({
   name: 'SectorType',
   fields: {
     arrivalTime: { type: DateType },
-    connections: { type: new GraphQLList(SegmentType) },
     departureTime: { type: DateType },
     destination: { type: LocationType },
     duration: { type: GraphQLInt },
-    id: GlobalID(({ id }) => id),
     origin: { type: LocationType },
     segments: { type: new GraphQLList(SegmentType) },
   },

@@ -11,8 +11,6 @@ import {
   getDate,
   getItineraryType,
   getSectors,
-  getProvider,
-  getVehicle,
 } from './itinerariesHelpers';
 import type {
   ItinerariesSearchParametersType,
@@ -67,71 +65,22 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
 
   return itineraries.map(itinerary => {
     return {
-      // new structure
       type: getItineraryType(itinerary.routes),
       startTime: getDate(itinerary.local_departure, itinerary.utc_departure),
       endTime: getDate(itinerary.local_arrival, itinerary.utc_arrival),
       destination: getLocation(
         itinerary.flyTo,
         itinerary.cityTo,
-        itinerary.countryFrom && itinerary.countryTo.name,
-        itinerary.countryFrom && itinerary.countryTo.code,
+        itinerary.countryTo?.name,
+        itinerary.countryTo?.code,
       ),
       origin: getLocation(
         itinerary.flyFrom,
         itinerary.cityFrom,
-        itinerary.countryFrom && itinerary.countryFrom.name,
-        itinerary.countryFrom && itinerary.countryFrom.code,
+        itinerary.countryFrom?.name,
+        itinerary.countryFrom?.code,
       ),
-      sectors:
-        itinerary.route &&
-        itinerary.routes &&
-        getSectors(itinerary.route, itinerary.routes).map(sector => {
-          const firstSegment = sector[0];
-          const lastSegment = sector[sector.length - 1];
-          return {
-            destination: getLocation(lastSegment.flyTo, lastSegment.cityTo),
-            origin: getLocation(firstSegment.flyFrom, firstSegment.cityFrom),
-            arrivalTime: getDate(
-              lastSegment.local_arrival,
-              lastSegment.utc_arrival,
-            ),
-            connections: [],
-            departureTime: getDate(
-              firstSegment.local_departure,
-              firstSegment.utc_departure,
-            ),
-            duration: DateFNS.differenceInMinutes(
-              lastSegment.utc_arrival,
-              firstSegment.utc_departure,
-            ),
-            id: 'asdfd',
-            segments: sector.map(segment => {
-              return {
-                arrivalTime: getDate(
-                  segment.local_arrival,
-                  segment.utc_arrival,
-                ),
-                departureTime: getDate(
-                  segment.local_departure,
-                  segment.utc_departure,
-                ),
-                destination: getLocation(segment.flyTo, segment.cityTo),
-                duration: DateFNS.differenceInMinutes(
-                  segment.utc_arrival,
-                  segment.utc_departure,
-                ),
-                id: segment.id,
-                origin: getLocation(segment.flyFrom, segment.cityFrom),
-                provider: getProvider(segment.airline),
-                vehicle: getVehicle(
-                  segment.vehicle_type,
-                  String(segment.flight_no),
-                ),
-              };
-            }),
-          };
-        }),
+      sectors: getSectors(itinerary.route, itinerary.routes),
 
       // old structure which we want to keep in new structure
       id: itinerary.id,
