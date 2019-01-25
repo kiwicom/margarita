@@ -17,6 +17,7 @@ type Props = {|
   +forwardRef: (el: any) => void,
   +onFocus: () => void,
   +onBlur: () => void,
+  +autoFocus?: boolean,
 |};
 
 type State = {|
@@ -76,6 +77,7 @@ class InputField extends React.PureComponent<Props, State> {
       forwardRef,
       onFocus,
       onBlur,
+      autoFocus,
     } = this.props;
     const { componentWidth } = this.state;
     const dynamicStyle = StyleSheet.create({
@@ -102,7 +104,7 @@ class InputField extends React.PureComponent<Props, State> {
           onFocus={onFocus}
           ref={forwardRef}
           editable={!disabled}
-          autoFocus
+          autoFocus={autoFocus}
           onChangeText={onChangeText}
           value={value}
           placeholder={placeholder}

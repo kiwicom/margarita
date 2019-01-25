@@ -18,6 +18,7 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
+        autoFocus={false}
       />
     </View>
   ))
@@ -28,10 +29,11 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
+        autoFocus={false}
       />
     </View>
   ))
-  .add('Playground', () => {
+  .lokiSkip('Playground', () => {
     const tags = object('Tags', ['Prague']);
     const fontSize = number('fontSize', 16, {
       range: true,

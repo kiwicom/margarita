@@ -22,6 +22,7 @@ type Props = {|
   +fontSize: number,
   +onClearPress?: () => void,
   +value?: string,
+  +autoFocus: boolean,
 |};
 
 type State = {
@@ -35,6 +36,7 @@ export default class TagInput extends React.Component<Props, State> {
   inputRef: ?{ current: null | React.Element<typeof TextInput> };
   static defaultProps = {
     fontSize: 16,
+    autoFocus: true,
   };
 
   constructor(props: Props) {
@@ -45,7 +47,7 @@ export default class TagInput extends React.Component<Props, State> {
       value: props.value ?? '',
       containerWidth: null,
       inputWidth: null,
-      isFocus: true,
+      isFocus: props.autoFocus,
     };
   }
 
@@ -150,6 +152,7 @@ export default class TagInput extends React.Component<Props, State> {
             value={value}
             placeholder={this.getPlaceholder()}
             onChangeText={this.handleChange}
+            autoFocus={isFocus}
           />
         </View>
         <DeleteButton

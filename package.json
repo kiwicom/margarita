@@ -20,7 +20,11 @@
     "ios": "rnstl && react-native run-ios",
     "android": "rnstl && react-native run-android",
     "build": "yarn && cd scripts && yarn",
-    "release": "release-it"
+    "release": "release-it",
+    "loki:test:chrome": "yarn loki test --configurationFilter chrome.laptop --port 9009",
+    "loki:approve:chrome": "yarn loki approve --configurationFilter chrome.laptop --port 9009",
+    "loki:test:iphone": "yarn loki test --configurationFilter iphoneX --port 7007",
+    "loki:approve:iphone": "yarn loki approve --configurationFilter iphoneX --port 7007"
   },
   "files": [
     "lib"
@@ -64,6 +68,7 @@
     "file-loader": "^3.0.1",
     "flow-bin": "0.78.0",
     "jest": "^23.6.0",
+    "loki": "^0.14.2",
     "metro-react-native-babel-preset": "^0.49.1",
     "prettier": "^1.15.2",
     "prettier-eslint-cli": "^4.7.1",
@@ -98,5 +103,17 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768
+      },
+      "ios.iphoneX": {
+        "target": "ios.simulator"
+      }
+    }
   }
 }

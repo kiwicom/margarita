@@ -79,9 +79,23 @@ class DateTimePicker extends React.Component<{}, State> {
   }
 }
 
+const noop = () => {};
+
 storiesOf('DatePicker', module)
   .addDecorator(withKnobs)
-  .add('Playground', () => <DateTimePicker />);
+  .lokiSkip('Playground', () => <DateTimePicker />)
+  .add('Default', () => (
+    <DatePicker
+      isVisible
+      mode="date"
+      datePickerMode="default"
+      date={new Date('01/25/2019')}
+      minDate={new Date('01/24/2019')}
+      maxDate={new Date('01/29/2019')}
+      onConfirm={noop}
+      onDismiss={noop}
+    />
+  ));
 
 const styles = StyleSheet.create({
   container: {

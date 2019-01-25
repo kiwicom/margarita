@@ -77,11 +77,25 @@ and it is then easier to test the interactions with the action logger, and play 
 - **I started the web UI for the mobile storybook but no stories are displayed.**<br>
   Make sure that the packager is running (`yarn ios` or `yarn android`), and refresh the application by pressing `CMD+R` on iOS or by pressing `R` twice on `Android`.
 
+## Visual regression testing
+
+We use [Loki](https://loki.js.org) to perform visual testing; this ensures that the appearance of components does not change without us noticing.
+
+### Usage
+
+- on Chrome, you need to have the Storybook started (`yarn storybook`) and then run `yarn loki:test:chrome`. If any error is reported, you can check the difference in `.loki/difference`. If you expected these changes, run `yarn loki:approve:chrome` to update the screenshots.
+- on iPhone, you need to have the Storybook started (`yarn storybook-native`) and the app open on the simulator (`yarn native`). Run `yarn loki:test:iphone`. If any error is reported, you can check the difference in `.loki/difference`. If you expected these changes, run `yarn loki:approve:iphone` to update the screenshots.
+
+### Skipping context dependent stories
+
+If a story is too dependent on context and the output changes on every render (e.g. the Playground story for the DatePicker component: a new date is generated on every render), you can use `.lokiSkip` instead of `.add` to add your story to Storybook. That story would then be visible in the Storybook and be ignored by Loki.
+
 ## Before submitting a PR: a checklist
 
 - I tested my component at least on iOS or on Android;
 - I wrote tests for my component and all tests are passing;
 - I ran `yarn test-ci` and there were no errors;
+- I ran `yarn loki:test:chrome` and `yarn loki:test:iphone` and there were no errors;
 - I squashed all my commits into one (unless having several really makes sense);
 - I chose a descriptive message for all my commit messages ([check commit message convention](#commit-message-convention));
 - I created my PR and added reviewers.
