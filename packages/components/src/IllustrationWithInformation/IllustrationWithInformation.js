@@ -2,11 +2,11 @@
 
 import React from 'react';
 import { View } from 'react-native';
-import { Illustration } from '@kiwicom/margarita-components';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { type IllustrationNameType } from '../Illustration/IllustrationTypes';
+import Illustration from '../Illustration/Illustration';
 
 type Props = {|
   +text: string,
