@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
-import { Text, StyleSheet } from '@kiwicom/universal-components';
+import { Text, StyleSheet, Hoverable } from '@kiwicom/universal-components';
 import Router from 'next/router';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
@@ -23,7 +23,8 @@ export default class NavbarLink extends React.Component<Props, State> {
 
   componentDidMount() {
     if (Router.route === this.props.route) {
-      this.onMouseEnter();
+      // Should have been done in the constructor, but we cannot access Router in constructor, since it executes on server
+      this.setState({ isActive: true }); // eslint-disable-line react/no-did-mount-set-state
     }
   }
 
@@ -44,17 +45,18 @@ export default class NavbarLink extends React.Component<Props, State> {
 
   render() {
     return (
-      <TouchableWithoutFeedback
+      <Hoverable
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
-        onPress={this.onPress}
       >
-        <View>
-          <Text style={this.state.isActive && styles.active}>
-            {this.props.label}
-          </Text>
-        </View>
-      </TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={this.onPress}>
+          <View>
+            <Text style={this.state.isActive && styles.active}>
+              {this.props.label}
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </Hoverable>
     );
   }
 }
