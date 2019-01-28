@@ -26,18 +26,22 @@ class App extends React.Component<Props, State> {
     };
   }
 
+  async componentDidMount() {
+    await this.loadFonts();
+    this.afterFontLoaded();
+  }
+
   loadFonts = () =>
     Expo.Font.loadAsync({
       Roboto: Roboto,
       'orbit-icons': OrbitIcons,
     });
 
-  async componentDidMount() {
-    await this.loadFonts();
+  afterFontLoaded = () => {
     this.setState({ fontsLoaded: true }, () => {
       Expo.SplashScreen.hide();
     });
-  }
+  };
 
   render() {
     if (this.state.fontsLoaded) {

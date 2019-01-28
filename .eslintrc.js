@@ -12,6 +12,7 @@ module.exports = {
     node: true,
   },
   rules: {
+    'react/sort-comp': ERROR,
     'no-unused-vars': ERROR,
     'no-restricted-imports': [
       ERROR,
