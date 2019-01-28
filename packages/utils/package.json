@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "react-fast-compare": "^2.0.4"
+  },
   "devDependencies": {
     "fast-check": "^1.10.0"
   }
