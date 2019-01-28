@@ -9,36 +9,39 @@ import {
 import { Icon, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import { withSearchContext, type SearchContextState } from './SearchContext';
+
 type Props = {|
   +travelFrom: string,
   +travelTo: string,
-  +handlePlacePress: () => void,
   +handlePlaceSwitchPress: () => void,
 |};
 
-export default function Placepickers(props: Props) {
-  return (
-    <View>
-      <TripInput
-        onPress={props.handlePlacePress}
-        label="From"
-        icon={<Icon name="airplane-takeoff" />}
-        value={props.travelFrom}
-      />
-      <TouchableWithoutFeedback onPress={props.handlePlaceSwitchPress}>
-        <View style={styles.placeSwitch}>
-          <Icon name="replace" color="#7F91A8" />
-        </View>
-      </TouchableWithoutFeedback>
-      <TripInput
-        onPress={props.handlePlacePress}
-        label="To"
-        icon={<Icon name="airplane-landing" />}
-        value={props.travelTo}
-      />
-    </View>
-  );
-}
+const handlePlacePress = () => {
+  console.log('TODO'); // eslint-disable-line no-console
+};
+
+const Placepickers = (props: Props) => (
+  <View>
+    <TripInput
+      onPress={handlePlacePress}
+      label="From"
+      icon={<Icon name="airplane-takeoff" />}
+      value={props.travelFrom}
+    />
+    <TouchableWithoutFeedback onPress={props.handlePlaceSwitchPress}>
+      <View style={styles.placeSwitch}>
+        <Icon name="replace" color="#7F91A8" />
+      </View>
+    </TouchableWithoutFeedback>
+    <TripInput
+      onPress={handlePlacePress}
+      label="To"
+      icon={<Icon name="airplane-landing" />}
+      value={props.travelTo}
+    />
+  </View>
+);
 
 const styles = StyleSheet.create({
   placeSwitch: {
@@ -62,3 +65,15 @@ const styles = StyleSheet.create({
     },
   },
 });
+
+const select = ({
+  travelFrom,
+  travelTo,
+  actions: { switchFromTo },
+}: SearchContextState) => ({
+  travelFrom,
+  travelTo,
+  handlePlaceSwitchPress: switchFromTo,
+});
+
+export default withSearchContext(select)(Placepickers);

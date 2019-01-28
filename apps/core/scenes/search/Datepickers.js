@@ -7,6 +7,8 @@ import { Icon, DatePicker, StyleSheet } from '@kiwicom/universal-components';
 import { format, startOfDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import { withSearchContext, type SearchContextState } from './SearchContext';
+
 type Props = {|
   +tripType: string,
   +dateFrom: Date,
@@ -17,11 +19,10 @@ type Props = {|
 
 type State = {|
   isDatePickerVisible: boolean,
-  datePickerDate: Date,
   selectDate: $Keys<typeof DATEPICKER_MODE> | null,
 |};
 
-const getFormatedDate = date => {
+export const formatDate = (date: Date) => {
   return format(date, 'YYYY-MM-DD');
 };
 
@@ -33,13 +34,11 @@ const DATEPICKER_MODE = {
 class Datepickers extends React.Component<Props, State> {
   state = {
     isDatePickerVisible: false,
-    datePickerDate: new Date(),
     selectDate: null,
   };
 
   handleDepartureDatePress = () => {
     this.setState({
-      datePickerDate: this.props.dateFrom,
       isDatePickerVisible: true,
       selectDate: DATEPICKER_MODE.DEPARTURE,
     });
@@ -47,7 +46,6 @@ class Datepickers extends React.Component<Props, State> {
 
   handleReturnDatePress = () => {
     this.setState({
-      datePickerDate: this.props.returnDateFrom,
       isDatePickerVisible: true,
       selectDate: DATEPICKER_MODE.RETURN,
     });
@@ -75,28 +73,31 @@ class Datepickers extends React.Component<Props, State> {
 
   render() {
     const { tripType, dateFrom, returnDateFrom } = this.props;
-
+    const datePickerDate =
+      this.state.selectDate === DATEPICKER_MODE.DEPARTURE
+        ? dateFrom
+        : returnDateFrom;
     return (
       <>
         <TripInput
           onPress={this.handleDepartureDatePress}
           label="Departure"
           icon={<Icon name="calendar" />}
-          value={getFormatedDate(dateFrom)}
+          value={formatDate(dateFrom)}
         />
         {tripType === 'return' && (
           <TripInput
             onPress={this.handleReturnDatePress}
             label="Return"
             icon={<Icon name="calendar" />}
-            value={getFormatedDate(returnDateFrom)}
+            value={formatDate(returnDateFrom)}
           />
         )}
         <View style={this.state.isDatePickerVisible && styles.picker}>
           <DatePicker
             isVisible={this.state.isDatePickerVisible}
             mode={'date'}
-            date={this.state.datePickerDate}
+            date={datePickerDate}
             minDate={startOfDay(new Date())}
             onConfirm={this.handleDateChange}
             onDismiss={this.handleDatePickerDismiss}
@@ -120,4 +121,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Datepickers;
+const select = ({
+  dateFrom,
+  returnDateFrom,
+  tripType,
+  actions: { setDepartureDate, setReturnDate },
+}: SearchContextState) => ({
+  dateFrom,
+  returnDateFrom,
+  tripType,
+  setDepartureDate,
+  setReturnDate,
+});
+
+export default withSearchContext(select)(Datepickers);
