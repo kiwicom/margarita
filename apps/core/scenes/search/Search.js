@@ -14,6 +14,7 @@ import {
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
+import format from 'date-fns/format';
 
 import {
   withSearchContext,
@@ -22,9 +23,9 @@ import {
   type ModalTypes,
 } from './SearchContext';
 import Placepickers from './Placepickers';
-import Datepickers, { formatDate } from './Datepickers';
+import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
-import { TRIP_TYPE, MODAL_TYPE } from './SearchConstants';
+import { TRIP_TYPE, MODAL_TYPE, DATE_FORMAT } from './SearchConstants';
 
 type Props = {
   +navigation: Navigation,
@@ -60,12 +61,12 @@ class Search extends React.Component<Props> {
     this.props.navigation.navigate(Routes.RESULTS, {
       travelFrom,
       travelTo,
-      dateFrom: formatDate(dateFrom),
-      dateTo: formatDate(dateTo),
+      dateFrom: format(dateFrom, DATE_FORMAT),
+      dateTo: format(dateTo, DATE_FORMAT),
       ...(tripType === 'return'
         ? {
-            returnDateFrom: formatDate(returnDateFrom),
-            returnDateTo: formatDate(returnDateTo),
+            returnDateFrom: format(returnDateFrom, DATE_FORMAT),
+            returnDateTo: format(returnDateTo, DATE_FORMAT),
           }
         : {}),
     });
