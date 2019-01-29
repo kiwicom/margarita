@@ -76,7 +76,7 @@ module.file_ext=.android.js
 module.file_ext=.ios.js
 module.file_ext=.web.js
 module.file_ext=.jsx
-;module.file_ext=.json
+module.file_ext=.json
 module.file_ext=.native.js
 
 ; This option lets you alias 'any' with a given string - useful for explaining why you’re using 'any'
