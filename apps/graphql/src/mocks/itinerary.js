@@ -1,11 +1,10 @@
 // @flow
 
-const getCountry = () => ({
-  id: 'aaa',
+const mapLocationArea = () => ({
+  locationId: 'aaa',
   name: 'Norway',
   code: 'NO',
   slug: 'slug',
-  flagURL: 'flagUrl',
 });
 
 const vehicle = {
@@ -23,7 +22,7 @@ const getLocation = (locationId, name) => ({
   locationId: locationId,
   name: name,
   timezone: 'UTC+1',
-  country: getCountry(),
+  country: mapLocationArea(),
 });
 
 const price = {

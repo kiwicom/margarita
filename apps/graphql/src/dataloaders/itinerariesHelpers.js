@@ -2,18 +2,22 @@
 
 import * as DateFNS from 'date-fns';
 
-import type { ApiRouteItemType, SectorType } from './ItinerariesloaderTypes';
+import type { ApiRouteItem, Sector } from './ItinerariesloaderTypes';
 
-export const getVehicle = (type: ?string, uniqueNo: string) => ({
+export const differenceInMinutes = (from: ?string, to: ?string) => {
+  return from && to ? DateFNS.differenceInMinutes(to, from) : null;
+};
+
+export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   type: type ?? null,
   uniqueNo: uniqueNo ?? null,
 });
 
-export const getTransporter = (transporter: ?string) => ({
+export const mapTransporter = (transporter: ?string) => ({
   name: transporter ?? null,
 });
 
-export const getItineraryType = (routes: ?Array<Array<string>>) => {
+export const mapItineraryType = (routes: ?Array<Array<string>>) => {
   if (routes == null) {
     return null;
   }
@@ -26,12 +30,23 @@ export const getItineraryType = (routes: ?Array<Array<string>>) => {
   return null;
 };
 
-export const getSectors = (
-  routesList: ?Array<ApiRouteItemType>,
+export const sortRoute = (
+  segments: Array<ApiRouteItem>,
+): Array<ApiRouteItem> => {
+  return segments.slice(0).sort((segmentA, segmentB) => {
+    const a = segmentA.utc_departure && new Date(segmentA.utc_departure);
+    const b = segmentB.utc_departure && new Date(segmentB.utc_departure);
+    if (!a || !b) return 0;
+    return a < b ? -1 : a > b ? 1 : 0;
+  });
+};
+
+export const mapSectors = (
+  routesList: ?Array<ApiRouteItem>,
   routesMap: ?Array<Array<string>>,
-): ?Array<SectorType> => {
+): ?Array<Sector> => {
   if (routesList && routesMap) {
-    let routesSubList = routesList;
+    let routesSubList = sortRoute(routesList);
     return routesMap
       .map(routeMap => {
         const routeListEndSectorIndex = routesSubList.findIndex(
@@ -46,36 +61,36 @@ export const getSectors = (
         const firstSegment = sector[0];
         const lastSegment = sector[sector.length - 1];
         return {
-          destination: getLocation(lastSegment.flyTo, lastSegment.cityTo),
-          origin: getLocation(firstSegment.flyFrom, firstSegment.cityFrom),
-          arrivalTime: getDate(
+          destination: mapLocation(lastSegment.flyTo, lastSegment.cityTo),
+          origin: mapLocation(firstSegment.flyFrom, firstSegment.cityFrom),
+          arrivalTime: mapDate(
             lastSegment.local_arrival,
             lastSegment.utc_arrival,
           ),
-          departureTime: getDate(
+          departureTime: mapDate(
             firstSegment.local_departure,
             firstSegment.utc_departure,
           ),
-          duration: DateFNS.differenceInMinutes(
-            lastSegment.utc_arrival,
+          duration: differenceInMinutes(
             firstSegment.utc_departure,
+            lastSegment.utc_arrival,
           ),
           segments: sector.map(segment => {
             return {
-              arrivalTime: getDate(segment.local_arrival, segment.utc_arrival),
-              departureTime: getDate(
+              arrivalTime: mapDate(segment.local_arrival, segment.utc_arrival),
+              departureTime: mapDate(
                 segment.local_departure,
                 segment.utc_departure,
               ),
-              destination: getLocation(segment.flyTo, segment.cityTo),
-              duration: DateFNS.differenceInMinutes(
-                segment.utc_arrival,
+              destination: mapLocation(segment.flyTo, segment.cityTo),
+              duration: differenceInMinutes(
                 segment.utc_departure,
+                segment.utc_arrival,
               ),
               id: segment.id,
-              origin: getLocation(segment.flyFrom, segment.cityFrom),
-              transporter: getTransporter(segment.airline),
-              vehicle: getVehicle(
+              origin: mapLocation(segment.flyFrom, segment.cityFrom),
+              transporter: mapTransporter(segment.airline),
+              vehicle: mapVehicle(
                 segment.vehicle_type,
                 String(segment.flight_no),
               ),
@@ -87,7 +102,7 @@ export const getSectors = (
   return null;
 };
 
-export const getDate = (local: ?string, utc: ?string) => {
+export const mapDate = (local: ?string, utc: ?string) => {
   const localDate = local && DateFNS.parse(local).toISOString();
   const utcDate = utc && DateFNS.parse(utc).toISOString();
   return {
@@ -96,15 +111,19 @@ export const getDate = (local: ?string, utc: ?string) => {
   };
 };
 
-export const getCountry = (name: ?string, code: ?string) => ({
-  id: code ?? null,
-  name: name ?? null,
+export const mapLocationArea = (
+  code: ?string,
+  locationId: ?string,
+  name: ?string,
+  slug: ?string,
+) => ({
   code: code ?? null,
-  slug: 'slug',
-  flagURL: 'flagUrl',
+  locationId: locationId ?? null,
+  name: name ?? null,
+  slug: slug ?? null,
 });
 
-export const getLocation = (
+export const mapLocation = (
   locationId?: string,
   name?: string,
   countryName?: string,
@@ -114,5 +133,5 @@ export const getLocation = (
   locationId: locationId ?? null,
   name: name ?? null,
   timezone: 'UTC+1',
-  country: getCountry(countryName, countryCode),
+  country: mapLocationArea(countryCode, countryCode, countryName),
 });

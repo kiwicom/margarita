@@ -7,13 +7,13 @@ import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import fetch from '../services/Fetch';
 import {
-  getLocation,
-  getDate,
-  getItineraryType,
-  getSectors,
+  mapLocation,
+  mapDate,
+  mapItineraryType,
+  mapSectors,
 } from './itinerariesHelpers';
 import type {
-  ItinerariesSearchParametersType,
+  ItinerariesSearchParameters,
   ApiResponseType,
   ItinerariesType,
 } from './ItinerariesloaderTypes';
@@ -23,7 +23,7 @@ const dateFormat = 'DD/MM/YYYY';
 const parseDate = (date: Date) =>
   DateFNS.format(DateFNS.parse(date), dateFormat);
 
-export const parseParameters = (input: ItinerariesSearchParametersType) => {
+export const parseParameters = (input: ItinerariesSearchParameters) => {
   const params = {
     flyFrom: input.travelFrom,
     dateFrom: parseDate(input.dateFrom),
@@ -48,7 +48,7 @@ export const parseParameters = (input: ItinerariesSearchParametersType) => {
 };
 
 const fetchItineraries = async (
-  parameters: $ReadOnlyArray<ItinerariesSearchParametersType>,
+  parameters: $ReadOnlyArray<ItinerariesSearchParameters>,
 ) => {
   const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
     parameters.map(params => {
@@ -65,22 +65,22 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
 
   return itineraries.map(itinerary => {
     return {
-      type: getItineraryType(itinerary.routes),
-      startTime: getDate(itinerary.local_departure, itinerary.utc_departure),
-      endTime: getDate(itinerary.local_arrival, itinerary.utc_arrival),
-      destination: getLocation(
+      type: mapItineraryType(itinerary.routes),
+      startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
+      endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
+      destination: mapLocation(
         itinerary.flyTo,
         itinerary.cityTo,
         itinerary.countryTo?.name,
         itinerary.countryTo?.code,
       ),
-      origin: getLocation(
+      origin: mapLocation(
         itinerary.flyFrom,
         itinerary.cityFrom,
         itinerary.countryFrom?.name,
         itinerary.countryFrom?.code,
       ),
-      sectors: getSectors(itinerary.route, itinerary.routes),
+      sectors: mapSectors(itinerary.route, itinerary.routes),
 
       // old structure which we want to keep in new structure
       id: itinerary.id,
@@ -121,7 +121,7 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
 export default () =>
   new OptimisticDataloader(
     async (
-      keys: $ReadOnlyArray<ItinerariesSearchParametersType>,
+      keys: $ReadOnlyArray<ItinerariesSearchParameters>,
     ): Promise<Array<ItinerariesType[] | Error>> => fetchItineraries(keys),
     {
       cacheKeyFn: stringify,

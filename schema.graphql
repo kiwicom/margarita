@@ -2,7 +2,7 @@ schema {
   query: RootQuery
 }
 
-type CountryType {
+type Country {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -55,25 +55,26 @@ input ItinerariesSearchInput {
 }
 
 type Itinerary {
+  flyFrom: String @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  flyTo: String @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  localDeparture: String @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  localArrival: String @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  route: [Route] @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  routes: [[String]] @deprecated(reason: "We changed the structure. Type will be deleted soon")
+  destination: LocationType
+  endTime: DateType
+
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  flyFrom: String
-  flyTo: String
-  localDeparture: String
-  localArrival: String
-  price: PriceType
-  route: [Route]
-  routes: [[String]]
-  type: String
   origin: LocationType
-  destination: LocationType
+  price: Price
+  sectors: [Sector]
   startTime: DateType
-  endTime: DateType
-  sectors: [SectorType]
+  type: String
 }
 
 """A connection to a list of items."""
@@ -137,7 +138,7 @@ type LocationType {
   locationId: String
   name: String
   timezone: String
-  country: CountryType
+  country: Country
 }
 
 """Information about pagination in a connection."""
@@ -161,8 +162,8 @@ input PassengersInput {
   infants: Int
 }
 
-type PriceType {
-  amount: Int
+type Price {
+  amount: Float
   currency: String
 }
 
@@ -181,19 +182,19 @@ type Route {
   id: String
 }
 
-type SectorType {
+type Sector {
   arrivalTime: DateType
   departureTime: DateType
-  destination: LocationType
+  destination: Location
   duration: Int
-  origin: LocationType
-  segments: [SegmentType]
+  origin: Location
+  segments: [Segment]
 }
 
-type SegmentType {
+type Segment {
   arrivalTime: DateType
   departureTime: DateType
-  destination: LocationType
+  destination: Location
   duration: Int
 
   """
@@ -202,12 +203,12 @@ type SegmentType {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  origin: LocationType
-  transporter: TransporterType
-  vehicle: VehicleType
+  origin: Location
+  transporter: Transporter
+  vehicle: Vehicle
 }
 
-type TransporterType {
+type Transporter {
   name: String
 }
 
@@ -218,7 +219,7 @@ type TripSegment {
   utcTime: DateTime
 }
 
-type VehicleType {
+type Vehicle {
   type: String
   uniqueNo: String
 }

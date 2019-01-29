@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 3c6faf68dd7646e3382ba3bcfe569e16
+ * @relayHash 54884d60516560952febf873eb40c93e
  */
 
 /* eslint-disable */
@@ -207,7 +207,7 @@ return {
                     "name": "price",
                     "storageKey": null,
                     "args": null,
-                    "concreteType": "PriceType",
+                    "concreteType": "Price",
                     "plural": false,
                     "selections": [
                       {
