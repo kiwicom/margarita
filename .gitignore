@@ -16,7 +16,8 @@ yarn-error.log
 
 # apps/graphql
 #
-apps/graphql/netlify
+apps/graphql/lambda/dist
+apps/graphql/lambda/.serverless
 
 .env
 
