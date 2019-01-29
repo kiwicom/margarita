@@ -87,10 +87,14 @@ export const getSectors = (
   return null;
 };
 
-export const getDate = (local: ?Date, utc: ?Date) => ({
-  local: local ?? null,
-  utc: utc ?? null,
-});
+export const getDate = (local: ?string, utc: ?string) => {
+  const localDate = local && DateFNS.parse(local).toISOString();
+  const utcDate = utc && DateFNS.parse(utc).toISOString();
+  return {
+    local: localDate ?? null,
+    utc: utcDate ?? null,
+  };
+};
 
 export const getCountry = (name: ?string, code: ?string) => ({
   id: code ?? null,

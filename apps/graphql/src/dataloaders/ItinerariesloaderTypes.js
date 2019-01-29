@@ -50,8 +50,8 @@ export type LocationType = {|
   +country: ?CountryType,
 |};
 export type DateType = {|
-  +local: ?Date,
-  +utc: ?Date,
+  +local: ?string,
+  +utc: ?string,
 |};
 
 export type TransporterType = {|
@@ -116,10 +116,10 @@ export type ApiRouteItemType = {|
   +flyFrom?: string,
   +flyTo?: string,
   +id?: string,
-  +local_arrival?: Date,
-  +local_departure?: Date,
-  +utc_arrival?: ?Date,
-  +utc_departure?: Date,
+  +local_arrival?: string,
+  +local_departure?: string,
+  +utc_arrival?: ?string,
+  +utc_departure?: string,
   +vehicle_type?: string,
 |};
 
@@ -141,10 +141,10 @@ export type ApiResponseType = {|
     +price: number,
     +flyFrom: string,
     +flyTo: string,
-    +local_departure: Date,
-    +utc_departure: Date,
-    +local_arrival: Date,
-    +utc_arrival: Date,
+    +local_departure: string,
+    +utc_departure: string,
+    +local_arrival: string,
+    +utc_arrival: string,
     +route: Array<ApiRouteItemType>,
     +routes: Array<Array<string>>,
   |}>,

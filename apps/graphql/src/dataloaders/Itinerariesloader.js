@@ -93,8 +93,8 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
       airlines: itinerary.airlines,
       flyFrom: itinerary.flyFrom,
       flyTo: itinerary.flyTo,
-      localDeparture: itinerary.local_departure,
-      localArrival: itinerary.local_arrival,
+      localDeparture: DateFNS.parse(itinerary.local_departure),
+      localArrival: DateFNS.parse(itinerary.local_arrival),
       routes: itinerary.routes,
       route:
         itinerary.route &&
@@ -103,14 +103,14 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
           arrival: {
             city: routeItem.cityTo ?? '',
             cityCode: routeItem.flyTo ?? '',
-            localTime: routeItem.local_arrival ?? null,
-            utcTime: routeItem.utc_arrival ?? null,
+            localTime: DateFNS.parse(routeItem.local_arrival) ?? null,
+            utcTime: DateFNS.parse(routeItem.utc_arrival) ?? null,
           },
           departure: {
             city: routeItem.cityFrom ?? '',
             cityCode: routeItem.flyFrom ?? '',
-            localTime: routeItem.local_departure ?? null,
-            utcTime: routeItem.utc_departure ?? null,
+            localTime: DateFNS.parse(routeItem.local_departure) ?? null,
+            utcTime: DateFNS.parse(routeItem.utc_departure) ?? null,
           },
           id: routeItem.id ?? '',
         })),

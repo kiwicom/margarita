@@ -16,7 +16,7 @@ import {
   twoWaySectors,
   twoWayRoutesList,
   twoWayRoutesMap,
-} from './itinerariesMock';
+} from '../__mocks__/itinerariesMock';
 
 describe('getCountry', () => {
   const name = 'Czech republic';
@@ -33,8 +33,8 @@ describe('getCountry', () => {
 
 describe('getDate', () => {
   it('returns proper structure of the Date object', () => {
-    const local = new Date('2019-05-13T15:30:00.000Z');
-    const utc = new Date('2019-05-13T13:30:00.000Z');
+    const local = '2019-05-13T15:30:00.000Z';
+    const utc = '2019-05-13T13:30:00.000Z';
     expect(getDate(local, utc)).toMatchObject({
       local: local,
       utc: utc,
