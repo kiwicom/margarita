@@ -16,3 +16,5 @@ export const MODAL_TYPE = {
   TRIP_TYPE: 'TRIP_TYPE',
   PASSENGERS: 'PASSENGERS',
 };
+
+export const DATE_FORMAT = 'YYYY-MM-DD';
