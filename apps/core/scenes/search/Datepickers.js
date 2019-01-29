@@ -8,6 +8,7 @@ import { format, startOfDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { withSearchContext, type SearchContextState } from './SearchContext';
+import { DATE_FORMAT } from './SearchConstants';
 
 type Props = {|
   +tripType: string,
@@ -21,10 +22,6 @@ type State = {|
   isDatePickerVisible: boolean,
   selectDate: $Keys<typeof DATEPICKER_MODE> | null,
 |};
-
-export const formatDate = (date: Date) => {
-  return format(date, 'YYYY-MM-DD');
-};
 
 const DATEPICKER_MODE = {
   DEPARTURE: 'DEPARTURE',
@@ -83,14 +80,14 @@ class Datepickers extends React.Component<Props, State> {
           onPress={this.handleDepartureDatePress}
           label="Departure"
           icon={<Icon name="calendar" />}
-          value={formatDate(dateFrom)}
+          value={format(dateFrom, DATE_FORMAT)}
         />
         {tripType === 'return' && (
           <TripInput
             onPress={this.handleReturnDatePress}
             label="Return"
             icon={<Icon name="calendar" />}
-            value={formatDate(returnDateFrom)}
+            value={format(returnDateFrom, DATE_FORMAT)}
           />
         )}
         <View style={this.state.isDatePickerVisible && styles.picker}>
