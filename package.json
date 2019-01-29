@@ -7,8 +7,6 @@
     "web": "yarn workspace @kiwicom/margarita-web dev",
     "dev": "yarn concurrently \"yarn web\" \" yarn server\" ",
     "build": "yarn workspace @kiwicom/margarita-web build",
-    "netlify-lambda:build": "netlify-lambda build apps/graphql/lambda",
-    "netlify-lambda:serve": "netlify-lambda serve apps/graphql/lambda",
     "start": "yarn workspace @kiwicom/margarita-web start",
     "export": "yarn workspace @kiwicom/margarita-web export",
     "analyze": "yarn workspace @kiwicom/margarita-web analyze",
@@ -49,7 +47,6 @@
     "jest": "^23.6.0",
     "jest-expo": "^32.0.0",
     "jest-fetch-mock": "^2.0.1",
-    "netlify-lambda": "^1.2.0",
     "react-native-testing-library": "^1.4.2",
     "react-test-renderer": "16.5.0",
     "relay-compiler": "^1.7.0"

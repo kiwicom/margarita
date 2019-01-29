@@ -2,3 +2,4 @@
 /flow-typed/npm
 **/datasets/**
 **/__generated__/**
+apps/graphql/lambda/dist

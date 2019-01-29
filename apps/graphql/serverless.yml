@@ -1,0 +1,22 @@
+service: margarita-graphql
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: eu-central-1
+functions:
+  margarita-graphql:
+    handler: lambda/dist/index.handler
+    environmentVariables:
+      BASE_URL: ${env:BASE_URL}
+      API_KEY: ${env:API_KEY}
+    events:
+      - http:
+          path: /graphql
+          method: post
+          cors: true
+      - http:
+          path: /graphql
+          method: get
+          cors: true
