@@ -1,0 +1,478 @@
+[
+  {
+    "arrival": {
+      "where": {
+        "code": "CDG",
+        "name": "Paris"
+      },
+      "when": 0
+    },
+    "original_price": 74.61,
+    "bag_params": {},
+    "grade": {
+      "id": "A",
+      "time": 30
+    },
+    "route": [
+      "LGW",
+      "CDG"
+    ],
+    "auth_token": "token-1",
+    "bags_restrictions": {
+      "holds": {},
+      "hands": {}
+    },
+    "podio_status": 32,
+    "currency": "EUR",
+    "booked_at": "skypicker",
+    "prices": [
+      "30.0"
+    ],
+    "cancel_requested": null,
+    "passenger_ids": [
+      4095455,
+      4095456
+    ],
+    "credits_payment": 0.0,
+    "bags": 0,
+    "bid": 2707251,
+    "brand": "kiwicom",
+    "transfer_ids": [],
+    "card_payment": 69.0,
+    "segments": null,
+    "passengers": [
+      {
+        "category": "adults",
+        "bags": 0,
+        "insurance_price": null,
+        "firstname": "chatbot",
+        "travel_document": {
+          "cardno": null,
+          "expiration": null
+        },
+        "lastname": "test",
+        "title": "mr",
+        "hand_bags": {},
+        "birthday": "1985-01-01",
+        "contact_passenger": false,
+        "nationality": "us",
+        "id": 4095455,
+        "insurance_type": "none"
+      },
+      {
+        "category": "adults",
+        "bags": 0,
+        "insurance_price": null,
+        "firstname": "TEST",
+        "travel_document": {
+          "cardno": null,
+          "expiration": null
+        },
+        "lastname": "TEST",
+        "title": "mr",
+        "hand_bags": {},
+        "birthday": "1985-01-01",
+        "contact_passenger": true,
+        "nationality": "us",
+        "id": 4095456,
+        "insurance_type": "none"
+      }
+    ],
+    "departure": {
+      "where": {
+        "code": "LGW",
+        "name": "London"
+      },
+      "when": 0
+    },
+    "booking_token": "booking-token-1",
+    "created": 1490858935,
+    "original_currency": "USD",
+    "flights": [
+      {
+        "arrival": {
+          "when": {
+            "utc": 1504992600,
+            "local": 1504999800
+          },
+          "where": {
+            "city_id": "paris_fr",
+            "country": "FR",
+            "code": "CDG",
+            "name": "Paris"
+          }
+        },
+        "bags_recheck_required": false,
+        "extras": "VY",
+        "return": 0,
+        "airline": {
+          "checkin": 7,
+          "iata": "VY",
+          "doing_online_checkin": 1,
+          "name": "Vueling"
+        },
+        "flight_no": 8773,
+        "guarantee": false,
+        "reservation_number": "chat",
+        "id": "315289498",
+        "departure": {
+          "when": {
+            "utc": 1504987800,
+            "local": 1504991400
+          },
+          "where": {
+            "city_id": "london_gb",
+            "country": "GB",
+            "code": "LGW",
+            "name": "London"
+          }
+        }
+      }
+    ],
+    "contact": {
+      "phone": "+1 000",
+      "pid": 4095456,
+      "email": "kiwicomtester@gmail.com"
+    },
+    "status": "confirmed",
+    "grace_period_fee": null,
+    "sandbox": 1,
+    "original_flight_price": null,
+    "price": 69.0,
+    "flight_ids": [
+      "315289498"
+    ]
+  },
+  {
+    "arrival": {
+      "where": {
+        "code": "DXB",
+        "name": "Dubai"
+      },
+      "when": 0
+    },
+    "original_price": 208.69,
+    "bag_params": {},
+    "grade": {
+      "id": "D",
+      "time": 240
+    },
+    "route": [
+      "STN",
+      "DXB"
+    ],
+    "auth_token": "token-2",
+    "bags_restrictions": {
+      "holds": {},
+      "hands": {}
+    },
+    "podio_status": 32,
+    "currency": "EUR",
+    "booked_at": "skypicker",
+    "prices": [
+      "49.0",
+      "60.85",
+      "60.85"
+    ],
+    "cancel_requested": null,
+    "passenger_ids": [
+      4095425
+    ],
+    "credits_payment": 0.0,
+    "bags": 0,
+    "bid": 2707229,
+    "brand": "kiwicom",
+    "transfer_ids": [],
+    "card_payment": 193.0,
+    "segments": null,
+    "passengers": [
+      {
+        "category": "adults",
+        "bags": 0,
+        "insurance_price": null,
+        "firstname": "TEST",
+        "travel_document": {
+          "cardno": "12345678XY",
+          "expiration": 1608768000
+        },
+        "lastname": "TEST",
+        "title": "mr",
+        "hand_bags": {},
+        "birthday": "1985-01-01",
+        "contact_passenger": true,
+        "nationality": "gb",
+        "id": 4095425,
+        "insurance_type": "none"
+      }
+    ],
+    "departure": {
+      "where": {
+        "code": "STN",
+        "name": "London"
+      },
+      "when": 0
+    },
+    "booking_token": "booking-token-2",
+    "created": 1490858750,
+    "original_currency": "USD",
+    "flights": [
+      {
+        "arrival": {
+          "when": {
+            "utc": 1504947600,
+            "local": 1504954800
+          },
+          "where": {
+            "city_id": "prague_cz",
+            "country": "CZ",
+            "code": "PRG",
+            "name": "Prague"
+          }
+        },
+        "bags_recheck_required": false,
+        "extras": "FR",
+        "return": 0,
+        "airline": {
+          "checkin": 4,
+          "iata": "FR",
+          "doing_online_checkin": 1,
+          "name": "Ryanair"
+        },
+        "flight_no": 1013,
+        "guarantee": false,
+        "reservation_number": "chat",
+        "id": "313527121",
+        "departure": {
+          "when": {
+            "utc": 1504940700,
+            "local": 1504944300
+          },
+          "where": {
+            "city_id": "london_gb",
+            "country": "GB",
+            "code": "STN",
+            "name": "London"
+          }
+        }
+      },
+      {
+        "arrival": {
+          "when": {
+            "utc": 1504970100,
+            "local": 1504980900
+          },
+          "where": {
+            "city_id": "kiev_ua",
+            "country": "UA",
+            "code": "KBP",
+            "name": "Kiev"
+          }
+        },
+        "bags_recheck_required": true,
+        "extras": "PS",
+        "return": 0,
+        "airline": {
+          "checkin": 2,
+          "iata": "PS",
+          "doing_online_checkin": 1,
+          "name": "Ukraine International Airlines"
+        },
+        "flight_no": 808,
+        "guarantee": true,
+        "reservation_number": "bot",
+        "id": "SP990384_1477709",
+        "departure": {
+          "when": {
+            "utc": 1504962000,
+            "local": 1504969200
+          },
+          "where": {
+            "city_id": "prague_cz",
+            "country": "CZ",
+            "code": "PRG",
+            "name": "Prague"
+          }
+        }
+      },
+      {
+        "arrival": {
+          "when": {
+            "utc": 1504994400,
+            "local": 1505008800
+          },
+          "where": {
+            "city_id": "dubai_ae",
+            "country": "AE",
+            "code": "DXB",
+            "name": "Dubai"
+          }
+        },
+        "bags_recheck_required": false,
+        "extras": "PS",
+        "return": 0,
+        "airline": {
+          "checkin": 2,
+          "iata": "PS",
+          "doing_online_checkin": 1,
+          "name": "Ukraine International Airlines"
+        },
+        "flight_no": 373,
+        "guarantee": false,
+        "reservation_number": "ko",
+        "id": "SP990384_1477710",
+        "departure": {
+          "when": {
+            "utc": 1504975800,
+            "local": 1504986600
+          },
+          "where": {
+            "city_id": "kiev_ua",
+            "country": "UA",
+            "code": "KBP",
+            "name": "Kiev"
+          }
+        }
+      }
+    ],
+    "contact": {
+      "phone": "+44 000",
+      "pid": 4095425,
+      "email": "kiwicomtester@gmail.com"
+    },
+    "status": "confirmed",
+    "grace_period_fee": null,
+    "sandbox": 1,
+    "original_flight_price": null,
+    "price": 193.0,
+    "flight_ids": [
+      "313527121",
+      "SP990384_1477709",
+      "SP990384_1477710"
+    ]
+  },
+  {
+    "arrival": {
+      "where": {
+        "code": "KUF",
+        "name": "Samara"
+      },
+      "when": 0
+    },
+    "original_price": 163.28,
+    "bag_params": {},
+    "grade": {
+      "id": "D",
+      "time": 240
+    },
+    "route": [
+      "PRG",
+      "KUF"
+    ],
+    "auth_token": "token-3",
+    "bags_restrictions": {
+      "holds": {},
+      "hands": {}
+    },
+    "podio_status": 32,
+    "currency": "EUR",
+    "booked_at": "skypicker",
+    "prices": [
+      "140.38"
+    ],
+    "cancel_requested": null,
+    "passenger_ids": [
+      4095416
+    ],
+    "credits_payment": 0.0,
+    "bags": 0,
+    "bid": 2707224,
+    "brand": "kiwicom",
+    "transfer_ids": [],
+    "card_payment": 151.0,
+    "segments": null,
+    "passengers": [
+      {
+        "category": "adults",
+        "bags": 0,
+        "insurance_price": null,
+        "firstname": "TEST",
+        "travel_document": {
+          "cardno": "12345678XY",
+          "expiration": 1608768000
+        },
+        "lastname": "TEST",
+        "title": "mr",
+        "hand_bags": {},
+        "birthday": "1985-01-01",
+        "contact_passenger": true,
+        "nationality": "us",
+        "id": 4095416,
+        "insurance_type": "none"
+      }
+    ],
+    "departure": {
+      "where": {
+        "code": "PRG",
+        "name": "Prague"
+      },
+      "when": 0
+    },
+    "booking_token": "booking-token-3",
+    "created": 1490858664,
+    "original_currency": "USD",
+    "flights": [
+      {
+        "arrival": {
+          "when": {
+            "utc": 1503099600,
+            "local": 1503114000
+          },
+          "where": {
+            "city_id": "samara_ru",
+            "country": "RU",
+            "code": "KUF",
+            "name": "Samara"
+          }
+        },
+        "bags_recheck_required": false,
+        "extras": "OK",
+        "return": 0,
+        "airline": {
+          "checkin": 0,
+          "iata": "OK",
+          "doing_online_checkin": null,
+          "name": "Czech Airlines"
+        },
+        "flight_no": 910,
+        "guarantee": false,
+        "reservation_number": "chatbot",
+        "id": "SP990379_1477702",
+        "departure": {
+          "when": {
+            "utc": 1503086700,
+            "local": 1503093900
+          },
+          "where": {
+            "city_id": "prague_cz",
+            "country": "CZ",
+            "code": "PRG",
+            "name": "Prague"
+          }
+        }
+      }
+    ],
+    "contact": {
+      "phone": "+1 000",
+      "pid": 4095416,
+      "email": "kiwicomtester@gmail.com"
+    },
+    "status": "confirmed",
+    "grace_period_fee": null,
+    "sandbox": 1,
+    "original_flight_price": null,
+    "price": 151.0,
+    "flight_ids": [
+      "SP990379_1477702"
+    ]
+  }
+]

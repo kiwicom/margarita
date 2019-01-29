@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: CustomerBookings.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+{
+  customerBookings {
+    edges {
+      node {
+        id
+        status
+      }
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "customerBookings": {
+      "edges": [
+        {
+          "node": {
+            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=",
+            "status": "confirmed"
+          }
+        },
+        {
+          "node": {
+            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjk=",
+            "status": "confirmed"
+          }
+        },
+        {
+          "node": {
+            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjQ=",
+            "status": "confirmed"
+          }
+        }
+      ]
+    }
+  }
+}
+`;

@@ -1,0 +1,10 @@
+{
+  customerBookings {
+    edges {
+      node {
+        id
+        status
+      }
+    }
+  }
+}
