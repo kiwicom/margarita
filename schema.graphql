@@ -2,19 +2,6 @@ schema {
   query: RootQuery
 }
 
-type Country {
-  """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
-  """
-  id(opaque: Boolean = true): ID!
-  name: String
-  code: String
-  slug: String
-  flagURL: String
-}
-
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -61,7 +48,7 @@ type Itinerary {
   localArrival: String @deprecated(reason: "We changed the structure. Type will be deleted soon")
   route: [Route] @deprecated(reason: "We changed the structure. Type will be deleted soon")
   routes: [[String]] @deprecated(reason: "We changed the structure. Type will be deleted soon")
-  destination: LocationType
+  destination: Location
   endTime: DateType
 
   """
@@ -70,7 +57,7 @@ type Itinerary {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  origin: LocationType
+  origin: Location
   price: Price
   sectors: [Sector]
   startTime: DateType
@@ -104,6 +91,23 @@ type Location {
   id(opaque: Boolean = true): ID!
   name: String
   slug: String
+  locationId: String
+  timezone: String
+  country: LocationArea
+}
+
+type LocationArea {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  locationId: String
+  name: String
+  slug: String
+  code: String
+  flagURL: String
 }
 
 """A connection to a list of items."""
@@ -126,19 +130,6 @@ type LocationEdge {
 
 input LocationsByTermInput {
   term: String!
-}
-
-type LocationType {
-  """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
-  """
-  id(opaque: Boolean = true): ID!
-  locationId: String
-  name: String
-  timezone: String
-  country: Country
 }
 
 """Information about pagination in a connection."""
@@ -192,17 +183,16 @@ type Sector {
 }
 
 type Segment {
-  arrivalTime: DateType
-  departureTime: DateType
-  destination: Location
-  duration: Int
-
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
+  arrivalTime: DateType
+  departureTime: DateType
+  destination: Location
+  duration: Int
   origin: Location
   transporter: Transporter
   vehicle: Vehicle

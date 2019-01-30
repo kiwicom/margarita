@@ -33,9 +33,7 @@ class ResultListItem extends React.Component<Props> {
   getSanitizedRouteItem = (routeItem: RouteItem) => {
     const timeSimpleFormat = 'H:mm';
 
-    const localArrival =
-      routeItem?.arrival?.localTime &&
-      this.parseDate(routeItem?.arrival?.localTime);
+    const localArrival = this.parseDate(routeItem?.arrival?.localTime);
     const localDeparture = this.parseDate(routeItem?.departure?.localTime);
     const utcArrival = this.parseDate(routeItem?.arrival?.utcTime);
     const utcDeparture = this.parseDate(routeItem?.departure?.utcTime);

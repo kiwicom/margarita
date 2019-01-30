@@ -9,7 +9,7 @@ import {
 } from '@kiwicom/graphql-utils';
 
 import type { GraphqlContextType } from '../services/GraphQLContext';
-import type { Location } from '../dataloaders/Locationsloader';
+import type { Location } from '../dataloaders/LocationsloaderTypes';
 import GraphQLocation from '../types/output/Location';
 import LocationsByTermInput from '../types/input/LocationsByTermInput';
 

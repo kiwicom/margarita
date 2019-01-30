@@ -1,11 +1,13 @@
 // @flow
 
-const mapLocationArea = () => ({
+const locationArea = {
+  id: 'aaa',
   locationId: 'aaa',
   name: 'Norway',
   code: 'NO',
   slug: 'slug',
-});
+  flagURL: 'flag',
+};
 
 const vehicle = {
   type: 'bus',
@@ -22,7 +24,8 @@ const getLocation = (locationId, name) => ({
   locationId: locationId,
   name: name,
   timezone: 'UTC+1',
-  country: mapLocationArea(),
+  country: locationArea,
+  slug: 'slug',
 });
 
 const price = {

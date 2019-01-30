@@ -9,7 +9,7 @@ import fetch from '../services/Fetch';
 import {
   mapLocation,
   mapDate,
-  mapItineraryType,
+  getItineraryType,
   mapSectors,
 } from './itinerariesHelpers';
 import type {
@@ -65,7 +65,7 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
 
   return itineraries.map(itinerary => {
     return {
-      type: mapItineraryType(itinerary.routes),
+      type: getItineraryType(itinerary.routes),
       startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
       endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
       destination: mapLocation(

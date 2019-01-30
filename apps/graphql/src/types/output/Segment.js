@@ -11,11 +11,11 @@ import Location from './Location';
 export default new GraphQLObjectType({
   name: 'Segment',
   fields: {
+    id: GlobalID(({ id }) => id),
     arrivalTime: { type: DateType },
     departureTime: { type: DateType },
     destination: { type: Location },
     duration: { type: GraphQLInt },
-    id: GlobalID(({ id }) => id),
     origin: { type: Location },
     transporter: { type: Transporter },
     vehicle: { type: Vehicle },

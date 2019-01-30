@@ -1,5 +1,7 @@
 // @flow
 
+import { type Location } from './LocationsloaderTypes';
+
 export type ItinerariesSearchParameters = {|
   +travelFrom: string,
   +dateFrom: Date,
@@ -29,33 +31,11 @@ export type RouteItem = {|
 
 // start - new structure
 
-export type Country = {|
-  +id: ?string,
-  +name: ?string,
-  +code: ?string,
-  +slug: ?string,
-  +flagURL: ?string,
-|};
-
 export type Price = {|
   +amount: ?number,
   +currency: ?string,
 |};
 
-export type LocationArea = {|
-  +code: ?string,
-  +locationId: ?string,
-  +name: ?string,
-  +slug: ?string,
-|};
-
-export type LocationType = {|
-  +id: ?string,
-  +locationId: ?string,
-  +name: ?string,
-  +timezone: ?string,
-  +country: ?LocationArea,
-|};
 export type Time = {|
   +local: ?string,
   +utc: ?string,
@@ -73,10 +53,10 @@ export type Vehicle = {|
 export type Segment = {|
   +arrivalTime: ?Time,
   +departureTime: ?Time,
-  +destination: ?LocationType,
+  +destination: ?Location,
   +duration: ?number,
   +id: ?string,
-  +origin: ?LocationType,
+  +origin: ?Location,
   +transporter: ?Transporter,
   +vehicle: ?Vehicle,
 |};
@@ -84,9 +64,9 @@ export type Segment = {|
 export type Sector = {|
   +arrivalTime: ?Time,
   +departureTime: ?Time,
-  +destination: ?LocationType,
+  +destination: ?Location,
   +duration: ?number,
-  +origin: ?LocationType,
+  +origin: ?Location,
   +segments: ?Array<Segment>,
 |};
 
@@ -94,8 +74,8 @@ export type newItinerariesStructureType = {|
   id: string,
   +type: ?string,
   +price: ?Price,
-  +origin: ?LocationType,
-  +destination: ?LocationType,
+  +origin: ?Location,
+  +destination: ?Location,
   +startTime: ?Time,
   +endTime: ?Time,
   +sectors: ?Array<Sector>,

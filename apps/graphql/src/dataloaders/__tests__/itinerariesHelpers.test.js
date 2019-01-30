@@ -3,7 +3,7 @@
 import {
   mapLocationArea,
   mapDate,
-  mapItineraryType,
+  getItineraryType,
   mapLocation,
   mapTransporter,
   mapSectors,
@@ -25,20 +25,26 @@ import {
 describe('mapLocationArea', () => {
   const name = 'Czech republic';
   const code = 'CZ';
+  const slug = 'slug';
+  const flagURL = 'flag';
   it('returns proper structure of the Location Area object', () => {
-    expect(mapLocationArea(code, code, name)).toMatchObject({
+    expect(mapLocationArea(code, code, name, slug, flagURL)).toMatchObject({
+      id: code,
       locationId: code,
-      name: name,
-      code: code,
-      slug: null,
+      name,
+      code,
+      slug,
+      flagURL,
     });
   });
   it('returns empty structure of the Location Area object', () => {
     expect(mapLocationArea()).toMatchObject({
+      id: null,
       locationId: null,
       name: null,
       code: null,
       slug: null,
+      flagURL: null,
     });
   });
 });
@@ -60,17 +66,17 @@ describe('mapDate', () => {
   });
 });
 
-describe('mapItineraryType', () => {
+describe('getItineraryType', () => {
   const routesForReturnFlight = [['OSL', 'PRG'], ['PRG', 'OSL']];
   const routesForOneWayFlight = [['OSL', 'PRG']];
   it('returns return flight type', () => {
-    expect(mapItineraryType(routesForReturnFlight)).toBe('return');
+    expect(getItineraryType(routesForReturnFlight)).toBe('return');
   });
   it('returns one-way flight type', () => {
-    expect(mapItineraryType(routesForOneWayFlight)).toBe('oneway');
+    expect(getItineraryType(routesForOneWayFlight)).toBe('oneway');
   });
   it('returns null flight type', () => {
-    expect(mapItineraryType()).toBe(null);
+    expect(getItineraryType()).toBe(null);
   });
 });
 

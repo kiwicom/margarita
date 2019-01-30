@@ -4,8 +4,6 @@ import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 import { GraphQLDateTime } from 'graphql-iso-date';
 
-// import { Price, Sector, DateType, Location } from '.';
-
 import Price from './Price';
 import Sector from './Sector';
 import Location from './Location';
