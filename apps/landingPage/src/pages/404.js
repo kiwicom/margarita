@@ -1,8 +1,10 @@
 // @flow
 
-import { navigate } from 'gatsby';
+import React from 'react';
 
-export default () => {
-  navigate('/');
-  return null;
-};
+type Props = {||};
+export default class NotFound extends React.Component<Props> {
+  render() {
+    return <div>This is 404</div>;
+  }
+}

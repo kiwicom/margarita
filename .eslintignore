@@ -5,3 +5,5 @@
 apps/graphql/lambda/dist
 apps/web/out
 apps/web/.next
+apps/landingPage/.cache
+apps/landingPage/public
