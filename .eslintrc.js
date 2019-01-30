@@ -10,6 +10,7 @@ module.exports = {
     es6: true,
     jest: true,
     node: true,
+    browser: true
   },
   rules: {
     'react/sort-comp': ERROR,
