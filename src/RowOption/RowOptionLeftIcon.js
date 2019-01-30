@@ -63,6 +63,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: -7,
     backgroundColor: 'white',
+    android: {
+      bottom: -10,
+    },
   },
   leftIconContainer: {
     justifyContent: 'center',
