@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup renders correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 0.5,
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    borderlessRipple={false}
+    disabled={false}
+    onPress={[MockFunction]}
+    rippleColor="rgba(0, 0, 0, 0.32)"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "paddingBottom": 8.5,
+        "paddingEnd": 16,
+        "paddingStart": 12,
+        "paddingTop": 6,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View>
+        <Text
+          size="large"
+          type="attention"
+        >
+          test
+        </Text>
+      </View>
+    </View>
+  </Touchable>
+  <Separator
+    style={Object {}}
+  />
+</View>
+`;

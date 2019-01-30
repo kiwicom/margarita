@@ -1,0 +1,227 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup renders with icon 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -0.5,
+      "marginTop": 0.5,
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    borderlessRipple={false}
+    disabled={false}
+    onPress={[MockFunction]}
+    rippleColor="rgba(0, 0, 0, 0.32)"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "paddingBottom": 11.5,
+        "paddingEnd": 16,
+        "paddingStart": 12,
+        "paddingTop": 8.5,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Icon
+        color="#7f91a8"
+        name="clock"
+        size="medium"
+        style={
+          Array [
+            Object {
+              "marginEnd": 12,
+            },
+            undefined,
+          ]
+        }
+      />
+      <View>
+        <Text
+          size="large"
+          type="attention"
+        >
+          test
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+          }
+        }
+      >
+        <Icon
+          color="#00a991"
+          name="chevron-right"
+        />
+      </View>
+    </View>
+  </Touchable>
+  <Separator
+    style={
+      Object {
+        "marginStart": 48,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`MenuGroup renders with label 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -0.5,
+      "marginTop": 0.5,
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    borderlessRipple={false}
+    disabled={false}
+    onPress={[MockFunction]}
+    rippleColor="rgba(0, 0, 0, 0.32)"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "paddingBottom": 11.5,
+        "paddingEnd": 16,
+        "paddingStart": 12,
+        "paddingTop": 8.5,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View>
+        <Text
+          size="small"
+          type="secondary"
+        >
+          label
+        </Text>
+        <Text
+          size="large"
+          type="attention"
+        >
+          test
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+          }
+        }
+      >
+        <Icon
+          color="#00a991"
+          name="chevron-right"
+        />
+      </View>
+    </View>
+  </Touchable>
+  <Separator
+    style={
+      Object {
+        "marginStart": 12,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`MenuGroup renders with subTitle 1`] = `
+<View
+  style={
+    Object {
+      "marginBottom": -0.5,
+      "marginTop": 0.5,
+    }
+  }
+>
+  <Touchable
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    borderlessRipple={false}
+    disabled={false}
+    onPress={[MockFunction]}
+    rippleColor="rgba(0, 0, 0, 0.32)"
+    style={
+      Object {
+        "backgroundColor": "#fff",
+        "paddingBottom": 11.5,
+        "paddingEnd": 16,
+        "paddingStart": 12,
+        "paddingTop": 8.5,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View>
+        <Text
+          size="large"
+          type="attention"
+        >
+          test
+        </Text>
+        <Text
+          size="small"
+          type="secondary"
+        >
+          sub
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "flex-end",
+            "flex": 1,
+          }
+        }
+      >
+        <Icon
+          color="#00a991"
+          name="chevron-right"
+        />
+      </View>
+    </View>
+  </Touchable>
+  <Separator
+    style={
+      Object {
+        "marginStart": 12,
+      }
+    }
+  />
+</View>
+`;
