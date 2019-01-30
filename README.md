@@ -37,7 +37,8 @@ The other available scripts are:
 - `yarn flow` to ensure your code is respecting the types given to your vaiables;
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
 - `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
-  and compile your queries and fragments to generate Flow types, among other things.
+  and compile your queries and fragments to generate Flow types, among other things;
+- `yarn landing-page` to run landing page of the app.
 
 ### Initial Configuration
 
