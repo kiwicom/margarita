@@ -1,6 +1,7 @@
 // @flow
 
 module.exports = {
+  pathPrefix: `/margarita`,
   siteMetadata: {
     title: `Margarita`,
     description: `Margarita is an example project of what you can build with Tequila.`,
@@ -19,8 +20,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Margarita`,
+        short_name: `Margarita`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,

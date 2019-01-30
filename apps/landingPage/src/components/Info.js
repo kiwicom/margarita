@@ -12,7 +12,7 @@ type Props = {|
   +iframeWidth: number,
 |};
 
-const features = ['Search', 'Booking', 'MMB', 'Payments'];
+// const features = ['Search', 'Booking', 'MMB', 'Payments'];
 
 export default ({ iframeWidth }: Props) => (
   <Container id="features">
@@ -36,16 +36,13 @@ export default ({ iframeWidth }: Props) => (
       <PhoneImage src={placeholderPhone} alt="placeholder" />
       <PhoneImage src={placeholderPhone} alt="placeholder" />
     </ImagesAndGradientWrapper>
-    <ContainerBottom>
-      <Heading>Features</Heading>
-      <WrapperBoxes>
+    {/* <ContainerBottom>
         {features.map(feature => (
-          <Box key={feature}>
             <Heading type="title2">{feature}</Heading>
           </Box>
         ))}
       </WrapperBoxes>
-    </ContainerBottom>
+    </ContainerBottom> */}
   </Container>
 );
 
@@ -90,7 +87,7 @@ const ImagesAndGradientWrapper = styled.div`
 const BackgroundGradientAccent = styled.div`
   position: absolute;
   z-index: -1;
-  height: 70vh;
+  height: 50vh;
   width: 100vw;
   margin-top: 300px;
   background-image: linear-gradient(
@@ -100,28 +97,27 @@ const BackgroundGradientAccent = styled.div`
   );
 `;
 
-const ContainerBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
-  padding: 50px 0 40px 0;
-`;
-
-const WrapperBoxes = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 80vw;
-  padding-top: 40px;
-`;
-const Box = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  width: 260px;
-  box-shadow: ${defaultTokens.boxShadowActionable};
-  border-radius: ${defaultTokens.borderRadiusNormal};
-  border: ${defaultTokens.borderStyleCard} ${defaultTokens.borderWidthCard}
-    ${defaultTokens.borderColorCard};
-`;
+// const ContainerBottom = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   width: 100vw;
+//   padding: 50px 0 40px 0;
+// `;
+// const WrapperBoxes = styled.div`
+//   display: flex;
+//   justify-content: space-evenly;
+//   width: 80vw;
+//   padding-top: 40px;
+// `;
+// const Box = styled.div`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   height: 100px;
+//   width: 260px;
+//   box-shadow: ${defaultTokens.boxShadowActionable};
+//   border-radius: ${defaultTokens.borderRadiusNormal};
+//   border: ${defaultTokens.borderStyleCard} ${defaultTokens.borderWidthCard}
+//     ${defaultTokens.borderColorCard};
+// `;

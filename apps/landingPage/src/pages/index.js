@@ -10,23 +10,29 @@ import Info from '../components/Info';
 import Headline from '../components/Headline';
 import Playground from '../components/Playground';
 
-const windowWidth = window.innerWidth;
-const windowHeight = window.innerHeight;
+const windowWidth = (typeof window !== `undefined` && window.innerWidth) || 0; //eslint-disable-line
+const windowHeight = (typeof window !== `undefined` && window.innerHeight) || 0; //eslint-disable-line
 
 const iframeWidth = windowWidth - 250;
 const iframeHeight = windowHeight - 200;
 
-export default () => (
-  <LandingPage>
-    <GlobalStyle />
-    <Header />
-    <Headline iframeWidth={iframeWidth} />
-    <Playground iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
-    <Info iframeWidth={iframeWidth} />
-    <Demo iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
-    <Footer />
-  </LandingPage>
-);
+type Props = {||};
+
+export default class App extends React.Component<Props> {
+  render() {
+    return (
+      <LandingPage>
+        <GlobalStyle />
+        <Header />
+        <Headline iframeWidth={iframeWidth} />
+        <Info iframeWidth={iframeWidth} />
+        <Playground iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
+        <Demo iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
+        <Footer />
+      </LandingPage>
+    );
+  }
+}
 
 const GlobalStyle = createGlobalStyle`
   body {
