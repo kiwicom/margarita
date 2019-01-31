@@ -50,10 +50,10 @@ jobs:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
       - run:
-        name: Install Serverless CLI and dependencies
-        command: |
-          sudo npm i -g serverless
-          yarn install
+          name: Install Serverless CLI and dependencies
+          command: |
+            sudo npm i -g serverless
+            yarn install
       - save_cache:
           paths:
             - node_modules
