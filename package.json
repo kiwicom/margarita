@@ -16,6 +16,8 @@
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
     "test-ci": "yarn flow && yarn lint && yarn test --ci --color --maxWorkers=2",
     "server": "yarn workspace @kiwicom/margarita-graphql start",
+    "build:graphql": "yarn workspace @kiwicom/margarita-graphql build",
+    "deploy:graphql": "yarn workspace @kiwicom/margarita-graphql deploy",
     "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall"
   },
   "private": true,

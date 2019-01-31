@@ -18,6 +18,7 @@ yarn-error.log
 #
 apps/graphql/lambda/dist
 apps/graphql/lambda/.serverless
+apps/graphql/.serverless
 
 .env
 
