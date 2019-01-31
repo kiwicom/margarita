@@ -2,6 +2,35 @@ schema {
   query: RootQuery
 }
 
+"""The bookings for the customer"""
+type CustomerBooking {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  status: String
+}
+
+"""A connection to a list of items."""
+type CustomerBookingConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CustomerBookingEdge]
+}
+
+"""An edge in a connection."""
+type CustomerBookingEdge {
+  """The item at the end of the edge"""
+  node: CustomerBooking
+
+  """A cursor for use in pagination"""
+  cursor: String!
+}
+
 """
 A date string, such as 2007-12-03, compliant with the `full-date` format
 outlined in section 5.6 of the RFC 3339 profile of the ISO 8601 standard for
@@ -159,11 +188,14 @@ type Price {
 }
 
 type RootQuery {
-  """Query to fetch all itineraries(flights, busses, trains)"""
-  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+  """Retrieve all your bookings."""
+  customerBookings(after: String, first: Int, before: String, last: Int): CustomerBookingConnection
 
   """Query for suggested locations based on incomplete names"""
   locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationConnection
+
+  """Query to fetch all itineraries(flights, busses, trains)"""
+  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
 }
 
 type Route {

@@ -6,4 +6,5 @@ export default {
   SEARCH: 'search',
   PLACE_PICKER: 'place-picker',
   RESULTS: 'results',
+  BOOKING_LIST: 'booking-list',
 };

@@ -3,10 +3,11 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Routes } from '@kiwicom/margarita-navigation';
-import { Icon, Text } from '@kiwicom/universal-components';
+import { Icon } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import SearchStack from './SearchStack';
+import MMBStack from './MMBStack';
 
 export default createBottomTabNavigator(
   {
@@ -18,7 +19,7 @@ export default createBottomTabNavigator(
       },
     },
     [Routes.BOOKING_TAB]: {
-      screen: () => <Text style={{ marginTop: 50 }}>TODO</Text>,
+      screen: MMBStack,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Icon name="ticket-outline" color={tintColor} />
