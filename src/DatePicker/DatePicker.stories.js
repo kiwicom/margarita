@@ -4,27 +4,34 @@ import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs, select, date as dateAddon } from '@storybook/addon-knobs';
-import { StyleSheet } from '../PlatformStyleSheet';
 
 import { Button } from '../Button';
 import { Text } from '../Text';
 import DatePicker from './DatePicker';
+
+type Props = {|
+  +isOpen?: boolean,
+|};
 
 type State = {
   isOpen: boolean,
   date: Date,
 };
 
-// NOTE: currentDate is used for default min & max limit values and is defined outside
-// of component because the default value for dateAddon must not change
-const currentDate = new Date();
-const dateMinMaxOffset = 1000 * 60 * 60 * 24 * 30;
+const labels = {
+  cancel: 'CANCEL',
+  confirm: 'OK',
+};
 
-class DateTimePicker extends React.Component<{}, State> {
-  state = {
-    isOpen: false,
-    date: new Date(),
-  };
+class DateTimePicker extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = {
+      isOpen: props.isOpen ?? false,
+      date: new Date('2019-01-16'),
+    };
+  }
 
   showDatePicker = () => this.setState({ isOpen: true });
 
@@ -43,11 +50,11 @@ class DateTimePicker extends React.Component<{}, State> {
     const mode = select('Mode', ['date', 'time', 'datetime'], 'date');
     const minDateStringTimestamp = dateAddon(
       'Min date',
-      new Date(currentDate.getTime() - dateMinMaxOffset)
+      new Date('2019-01-14')
     );
     const maxDateStringTimestamp = dateAddon(
       'Max date',
-      new Date(currentDate.getTime() + dateMinMaxOffset)
+      new Date('2019-02-18')
     );
     let datePickerMode;
 
@@ -60,10 +67,15 @@ class DateTimePicker extends React.Component<{}, State> {
     }
 
     return (
-      <View style={styles.container}>
-        <Button onPress={this.showDatePicker} label="Open date picker" />
+      <>
+        <View>
+          <Button onPress={this.showDatePicker} label="Open date picker" />
+          <Text>Selected date: {date.toString()}</Text>
+          <Button onPress={this.handleDateReset} label="Reset Date" />
+        </View>
         <DatePicker
           isVisible={isOpen}
+          labels={labels}
           mode={mode}
           datePickerMode={datePickerMode}
           date={date}
@@ -72,33 +84,12 @@ class DateTimePicker extends React.Component<{}, State> {
           onConfirm={this.handleDateChange}
           onDismiss={this.hideDatePicker}
         />
-        <Text>Selected date: {date.toString()}</Text>
-        <Button onPress={this.handleDateReset} label="Reset Date" />
-      </View>
+      </>
     );
   }
 }
 
-const noop = () => {};
-
 storiesOf('DatePicker', module)
   .addDecorator(withKnobs)
   .lokiSkip('Playground', () => <DateTimePicker />)
-  .add('Default', () => (
-    <DatePicker
-      isVisible
-      mode="date"
-      datePickerMode="default"
-      date={new Date('01/25/2019')}
-      minDate={new Date('01/24/2019')}
-      maxDate={new Date('01/29/2019')}
-      onConfirm={noop}
-      onDismiss={noop}
-    />
-  ));
-
-const styles = StyleSheet.create({
-  container: {
-    minHeight: 360,
-  },
-});
+  .add('Default', () => <DateTimePicker isOpen />);

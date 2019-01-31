@@ -1,15 +1,11 @@
 /* @flow */
 
 import * as React from 'react';
-import {
-  View,
-  DatePickerIOS,
-  Modal,
-  TouchableWithoutFeedback,
-} from 'react-native';
+import { View, DatePickerIOS } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Text } from '../Text';
+import { Modal } from '../Modal';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
 
@@ -65,61 +61,49 @@ export default class iOSDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, mode, maxDate, minDate } = this.props;
+    const { isVisible, labels, mode, maxDate, minDate } = this.props;
 
     const { date } = this.state;
 
     return (
       <Modal
-        transparent
-        visible={isVisible}
+        isVisible={isVisible}
         onRequestClose={this.handleDismiss}
-        animationType="slide"
+        onBackdropPress={this.handleDismiss}
       >
-        <TouchableWithoutFeedback onPress={this.handleDismiss}>
-          <View style={styles.backdrop}>
-            <View style={styles.content}>
-              <DatePickerIOS
-                date={date}
-                onDateChange={this.handleChangeDate}
-                mode={mode}
-                maximumDate={maxDate}
-                minimumDate={minDate}
-              />
-              <View style={styles.buttonsContainer}>
-                <Touchable
-                  onPress={this.handleDismiss}
-                  style={styles.confirmButton}
-                >
-                  <Text style={styles.buttonText}>Cancel</Text>
-                </Touchable>
-                <Touchable
-                  style={styles.confirmButton}
-                  onPress={this.handleConfirm}
-                >
-                  <Text style={styles.buttonText}>OK</Text>
-                </Touchable>
-              </View>
-            </View>
+        <View style={styles.content}>
+          <DatePickerIOS
+            date={date}
+            onDateChange={this.handleChangeDate}
+            mode={mode}
+            maximumDate={maxDate}
+            minimumDate={minDate}
+          />
+          <View style={styles.buttonsContainer}>
+            <Touchable
+              onPress={this.handleDismiss}
+              style={styles.confirmButton}
+            >
+              <Text style={styles.buttonText}>{labels.cancel}</Text>
+            </Touchable>
+            <Touchable
+              style={styles.confirmButton}
+              onPress={this.handleConfirm}
+            >
+              <Text style={styles.buttonText}>{labels.confirm}</Text>
+            </Touchable>
           </View>
-        </TouchableWithoutFeedback>
+        </View>
       </Modal>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  backdrop: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   content: {
     flexDirection: 'column',
     backgroundColor: 'white',
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
-    width: '90%',
   },
   confirmButton: {
     borderColor: defaultTokens.paletteWhite,

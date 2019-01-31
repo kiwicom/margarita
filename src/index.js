@@ -25,6 +25,7 @@ export { Hoverable } from './Hoverable';
 export { Slider } from './Slider';
 export { Touchable } from './Touchable';
 export { SegmentedButton } from './SegmentedButton';
+export { Modal } from './Modal';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

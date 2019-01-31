@@ -10507,6 +10507,14 @@ react-native-modal@^5.4.0:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
+react-native-modal@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-7.0.2.tgz#6048217807e03cd585204dace2e1ca1726c0b647"
+  integrity sha512-IRTDeErr4asDdPs4DGbaKvz3fgr56tcVA7nAdCLu4IkjNw7DaIlAbQelg0Sdirb+8+RbIDPyrrnuEH84Fnj4ZA==
+  dependencies:
+    prop-types "^15.6.1"
+    react-native-animatable "^1.2.4"
+
 "react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e":
   version "2.0.3"
   resolved "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"

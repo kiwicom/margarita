@@ -1,12 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { View, TouchableWithoutFeedback } from 'react-native';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '../PlatformStyleSheet';
 import DatePickerDayTile from './DatePickerDayTile';
 import { Button } from '../Button';
 import { Text } from '../Text';
+import { Modal } from '../Modal';
 import {
   getPreviousMonthData,
   getNextMonthData,
@@ -61,7 +62,7 @@ export default class WebDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, minDate, maxDate, onDismiss } = this.props;
+    const { isVisible, labels, minDate, maxDate, onDismiss } = this.props;
     const { date, month, year } = this.state;
 
     if (!isVisible) {
@@ -108,10 +109,11 @@ export default class WebDatePicker extends React.Component<Props, State> {
     }
 
     return (
-      <View style={styles.container}>
-        <TouchableWithoutFeedback onPress={onDismiss}>
-          <View style={styles.dismiss} />
-        </TouchableWithoutFeedback>
+      <Modal
+        isVisible={isVisible}
+        onRequestClose={onDismiss}
+        onBackdropPress={onDismiss}
+      >
         <View style={styles.picker}>
           <View style={styles.head}>
             <Button
@@ -134,29 +136,14 @@ export default class WebDatePicker extends React.Component<Props, State> {
             />
           </View>
           <View style={styles.month}>{weekRows}</View>
-          <Button onPress={onDismiss} label="Close" />
+          <Button onPress={onDismiss} label={labels.cancel} />
         </View>
-      </View>
+      </Modal>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-    zIndex: parseInt(defaultTokens.zIndexModal, 10),
-  },
-  dismiss: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
-    backgroundColor: defaultTokens.paletteInkDark,
-    opacity: 0.2,
-  },
   picker: {
     padding: 10,
     backgroundColor: defaultTokens.paletteWhite,
