@@ -21,9 +21,64 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn test-ci
-
+  build-graphql:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/margarita
+    steps:
+      - checkout
+      - retore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Build GraphQL lambda
+          command: yarn build:graphql
+  deploy-graphql:
+    docker:
+      - image: circleci/node:10
+    working_directory: ~/margarita
+    steps:
+      - checkout
+      - retore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+        name: Install Serverless CLI and dependencies
+        command: |
+          sudo npm i -g serverless
+          yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          name: Deploy Application
+          command: yarn deploy:graphql
 workflows:
   version: 2
   test-and-release:
     jobs:
       - test
+  build-and-deploy-graphql:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: master
+      - build-graphql:
+          filters:
+            branches:
+              only: master
+      - deploy-graphql:
+          requires:
+            - build-graphql
+          filters:
+            branches:
+              only: master

@@ -39,7 +39,8 @@
   },
   "scripts": {
     "start": "better-npm-run start",
-    "build": "yarn webpack"
+    "build": "yarn webpack",
+    "deploy": "serverless deploy --conceal"
   },
   "betterScripts": {
     "start": {
