@@ -23,7 +23,6 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.json$/, exclude: /node_modules/, loader: 'json-loader' },
       {
         // see: https://github.com/apollographql/react-apollo/issues/1737
         test: /\.mjs$/,
