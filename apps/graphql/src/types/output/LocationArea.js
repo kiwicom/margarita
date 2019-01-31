@@ -3,16 +3,14 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
-import LocationArea from './LocationArea';
-
 export default new GraphQLObjectType({
-  name: 'Location',
+  name: 'LocationArea',
   fields: {
     id: GlobalID(({ id }) => id),
+    locationId: { type: GraphQLString },
     name: { type: GraphQLString },
     slug: { type: GraphQLString },
-    locationId: { type: GraphQLString },
-    timezone: { type: GraphQLString },
-    country: { type: LocationArea },
+    code: { type: GraphQLString },
+    flagURL: { type: GraphQLString },
   },
 });

@@ -81,7 +81,7 @@ return {
       "name": "price",
       "storageKey": null,
       "args": null,
-      "concreteType": "PriceType",
+      "concreteType": "Price",
       "plural": false,
       "selections": [
         {

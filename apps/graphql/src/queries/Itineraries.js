@@ -13,7 +13,7 @@ import GraphQLItinerary from '../types/output/Itinerary';
 import type { GraphqlContextType } from '../services/GraphQLContext';
 import type {
   ItinerariesType,
-  ItinerariesSearchParametersType,
+  ItinerariesSearchParameters,
 } from '../dataloaders/ItinerariesloaderTypes';
 
 const { connectionType: ItinerariesConnection } = connectionDefinitions({
@@ -21,7 +21,7 @@ const { connectionType: ItinerariesConnection } = connectionDefinitions({
 });
 
 type Args = {|
-  +input: ItinerariesSearchParametersType,
+  +input: ItinerariesSearchParameters,
   ...$Exact<ConnectionArguments>,
 |};
 
