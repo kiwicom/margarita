@@ -7,8 +7,9 @@ import {
 } from '@kiwicom/graphql-utils';
 import { type ConnectionArguments } from 'graphql-relay';
 
-import AllBookings from '../datasets/AllBookings.json';
+import type { Booking } from '../dataloaders/BookingsLoader';
 import GraphQLCustomerBookings from '../types/output/CustomerBookings';
+import type { GraphqlContextType } from '../services/GraphQLContext';
 
 const { connectionType: AllBookingsConnection } = connectionDefinitions({
   nodeType: GraphQLCustomerBookings,
@@ -18,19 +19,19 @@ type Args = {|
   ...$Exact<ConnectionArguments>,
 |};
 
-type CustomerBookings = {|
-  +bid: number,
-|};
-
 export default {
   type: AllBookingsConnection,
   description: 'Retrieve all your bookings.',
   args: {
     ...connectionArgs,
   },
-  resolve: (ancestor: mixed, args: Args) => {
-    const bookings = AllBookings;
+  resolve: (
+    ancestor: mixed,
+    args: Args,
+    { dataLoader }: GraphqlContextType,
+  ) => {
+    const bookings = dataLoader.bookings.load();
 
-    return connectionFromArray<CustomerBookings>(bookings, args);
+    return connectionFromArray<Booking>(bookings, args);
   },
 };
