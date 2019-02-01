@@ -36,7 +36,6 @@ export default function Checkbox({
         disabled={disabled}
         name={name}
         checked={checked}
-        onChange={onChange}
         style={styleInput}
       />
       <CheckboxShared
@@ -45,6 +44,7 @@ export default function Checkbox({
         disabled={disabled}
         checked={checked}
         info={info}
+        onPress={onChange}
       >
         {children}
       </CheckboxShared>

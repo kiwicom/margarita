@@ -5,7 +5,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -10,11 +10,11 @@
+@@ -11,11 +11,11 @@
       Array [
         Object {
           \\"display\\": \\"flex\\",
@@ -18,7 +18,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
   >
     <View
       style={
-@@ -28,17 +28,39 @@
+@@ -29,17 +29,39 @@
             \\"borderWidth\\": 1,
             \\"height\\": 20,
             \\"justifyContent\\": \\"center\\",
@@ -60,7 +60,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
         Object {
           \\"display\\": \\"flex\\",
           \\"flex\\": 1,
-@@ -55,21 +77,27 @@
+@@ -56,21 +78,27 @@
               \\"fontFamily\\": \\"Roboto\\",
               \\"fontSize\\": 14,
               \\"fontWeight\\": \\"400\\",
@@ -98,7 +98,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -6,17 +6,22 @@
+@@ -6,17 +6,21 @@
         \\"flexDirection\\": \\"row\\",
       }
     }
@@ -107,7 +107,6 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 +     checked={true}
 +     disabled={false}
 +     name=\\"name\\"
-+     onChange={[Function mockConstructor]}
       style={
         Object {
           \\"display\\": \\"none\\",
@@ -118,10 +117,10 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 +     value=\\"value\\"
     />
     <View
+      accessibilityRole=\\"button\\"
       accessible={true}
       onResponderGrant={[Function bound touchableHandleResponderGrant]}
-      onResponderMove={[Function bound touchableHandleResponderMove]}
-@@ -28,11 +33,11 @@
+@@ -29,11 +33,11 @@
         Array [
           Object {
             \\"display\\": \\"flex\\",
@@ -134,7 +133,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
     >
       <View
         style={
-@@ -46,17 +51,39 @@
+@@ -47,17 +51,39 @@
               \\"borderWidth\\": 1,
               \\"height\\": 20,
               \\"justifyContent\\": \\"center\\",
@@ -176,7 +175,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
           Object {
             \\"display\\": \\"flex\\",
             \\"flex\\": 1,
-@@ -73,22 +100,28 @@
+@@ -74,22 +100,28 @@
                 \\"fontFamily\\": \\"Roboto\\",
                 \\"fontSize\\": 14,
                 \\"fontWeight\\": \\"400\\",
