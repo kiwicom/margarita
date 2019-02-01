@@ -21,25 +21,8 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run: yarn test-ci
-  build-graphql:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/margarita
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run:
-          name: Build GraphQL lambda
-          command: yarn build:graphql
-  deploy-graphql:
+
+  build-and-deploy-graphql:
     docker:
       - image: circleci/node:10
     working_directory: ~/margarita
@@ -59,26 +42,18 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
-          name: Deploy Application
-          command: yarn deploy:graphql
+          name: Build GraphQL lambda
+          command: yarn build:graphql
+      - run:
+          name: Deploy GraphQL lambda
+          command: yarn deploy:graphql --stage staging
+
 workflows:
   version: 2
   test-and-release:
     jobs:
       - test
-  build-and-deploy-graphql:
-    jobs:
-      - test:
-          filters:
-            branches:
-              only: master
-      - build-graphql:
-          filters:
-            branches:
-              only: master
-      - deploy-graphql:
-          requires:
-            - build-graphql
+      - build-and-deploy-graphql:
           filters:
             branches:
               only: master
