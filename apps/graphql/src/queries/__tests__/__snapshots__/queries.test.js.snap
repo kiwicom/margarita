@@ -2,12 +2,29 @@
 
 exports[`matches expected output: CustomerBookings.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
 {
   customerBookings {
     edges {
       node {
         id
         status
+        arrival {
+          ...RouteStopFragment
+        }
+        departure {
+          ...RouteStopFragment
+        }
+        destinationImageUrl
+        passengerCount
       }
     }
   }
@@ -21,19 +38,73 @@ exports[`matches expected output: CustomerBookings.graphql 1`] = `
         {
           "node": {
             "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=",
-            "status": "confirmed"
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Paris",
+              "cityId": "paris_fr",
+              "time": {
+                "utc": "2017-09-09T21:30:00.000Z",
+                "local": "2017-09-09T23:30:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "London",
+              "cityId": "london_gb",
+              "time": {
+                "utc": "2017-09-09T20:10:00.000Z",
+                "local": "2017-09-09T21:10:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/paris_fr.jpg",
+            "passengerCount": 2
           }
         },
         {
           "node": {
             "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjk=",
-            "status": "confirmed"
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Dubai",
+              "cityId": "dubai_ae",
+              "time": {
+                "utc": "2017-09-09T22:00:00.000Z",
+                "local": "2017-09-10T02:00:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "London",
+              "cityId": "london_gb",
+              "time": {
+                "utc": "2017-09-09T07:05:00.000Z",
+                "local": "2017-09-09T08:05:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/dubai_ae.jpg",
+            "passengerCount": 1
           }
         },
         {
           "node": {
             "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjQ=",
-            "status": "confirmed"
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Samara",
+              "cityId": "samara_ru",
+              "time": {
+                "utc": "2017-08-18T23:40:00.000Z",
+                "local": "2017-08-19T03:40:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Prague",
+              "cityId": "prague_cz",
+              "time": {
+                "utc": "2017-08-18T20:05:00.000Z",
+                "local": "2017-08-18T22:05:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/samara_ru.jpg",
+            "passengerCount": 1
           }
         }
       ]
