@@ -1,9 +1,26 @@
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
 {
   customerBookings {
     edges {
       node {
         id
         status
+        arrival {
+          ...RouteStopFragment
+        }
+        departure {
+          ...RouteStopFragment
+        }
+        destinationImageUrl
+        passengerCount
       }
     }
   }
