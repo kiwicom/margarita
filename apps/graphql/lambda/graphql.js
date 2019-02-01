@@ -26,7 +26,7 @@ const server = (
       ...createContext(),
     },
     playground: {
-      endpoint: '/dev/graphql',
+      endpoint: '/staging/graphql',
     },
     introspection: true,
   });

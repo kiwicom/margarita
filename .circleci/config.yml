@@ -46,7 +46,7 @@ jobs:
           command: yarn build:graphql
       - run:
           name: Deploy GraphQL lambda
-          command: yarn deploy:graphql --stage staging
+          command: yarn deploy:graphql
 
 workflows:
   version: 2
