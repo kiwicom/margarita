@@ -76,7 +76,7 @@ describe('getItineraryType', () => {
     expect(getItineraryType(routesForOneWayFlight)).toBe('oneway');
   });
   it('returns null flight type', () => {
-    expect(getItineraryType()).toBe(null);
+    expect(getItineraryType()).toBeNull();
   });
 });
 
@@ -135,9 +135,9 @@ describe('mapSectors', () => {
     );
   });
   it('returns null if there are not enough of data for getting Sector', () => {
-    expect(mapSectors()).toBe(null);
-    expect(mapSectors(oneWayRoutesList)).toEqual(null);
-    expect(mapSectors(null, oneWayRoutesMap)).toEqual(null);
+    expect(mapSectors()).toBeNull();
+    expect(mapSectors(oneWayRoutesList)).toBeNull();
+    expect(mapSectors(null, oneWayRoutesMap)).toBeNull();
   });
 });
 
@@ -165,9 +165,9 @@ describe('differenceInMinutes', () => {
     expect(differenceInMinutes(from, to)).toBe(65);
   });
   it('returns null if there are not enough of data for getting difference', () => {
-    expect(differenceInMinutes()).toBe(null);
-    expect(differenceInMinutes(from)).toBe(null);
-    expect(differenceInMinutes(null, to)).toBe(null);
+    expect(differenceInMinutes()).toBeNull();
+    expect(differenceInMinutes(from)).toBeNull();
+    expect(differenceInMinutes(null, to)).toBeNull();
   });
 });
 
