@@ -6,6 +6,7 @@ import {
   type NavigationNavigator,
   type NavigationRouteConfigMap,
 } from 'react-navigation';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Routes } from '@kiwicom/margarita-navigation';
 
 import { BookingsListScreen, BookingDetailScreen } from '../screens';
@@ -32,6 +33,11 @@ const StackNavigator: NavigationNavigator<
       },
     },
   }: NavigationRouteConfigMap),
+  {
+    defaultNavigationOptions: {
+      headerTintColor: defaultTokens.paletteProductNormal,
+    },
+  },
 );
 
 export default StackNavigator;
