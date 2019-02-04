@@ -11,7 +11,6 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
-// $FlowFixMe - Cannot resolve module RelativeImageStub ( possible solution https://bit.ly/2BYfHRr )
 import logo from '../images/logo.png';
 
 const links = [

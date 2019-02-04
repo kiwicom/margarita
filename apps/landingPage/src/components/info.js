@@ -4,11 +4,8 @@ import React from 'react';
 import { Heading, Text } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
 
-// $FlowFixMe - Cannot resolve module RelativeImageStub ( possible solution https://bit.ly/2BYfHRr )
 import ios from '../images/ios.png';
-// $FlowFixMe - Cannot resolve module RelativeImageStub ( possible solution https://bit.ly/2BYfHRr )
 import android from '../images/android.png';
-// $FlowFixMe - Cannot resolve module RelativeImageStub ( possible solution https://bit.ly/2BYfHRr )
 import web from '../images/web.png';
 
 type Props = {|
