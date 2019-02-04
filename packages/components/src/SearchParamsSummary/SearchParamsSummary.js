@@ -50,30 +50,30 @@ export default function SearchParamsSummary({
           <Icon name={icon} />
           <Text style={styles.arrivalCity}>{arrival?.city || ''}</Text>
         </View>
-        {tripType === 'OneWay' ? (
-          <View>
+        <View style={styles.row}>
+          {tripType === 'OneWay' ? (
             <AdaptableBadge
               style={styles.badge}
               textStyle={styles.badgeText}
               text={departure?.localizedDate ?? ''}
             />
-          </View>
-        ) : (
-          <View style={styles.row}>
-            <AdaptableBadge
-              style={styles.badge}
-              textStyle={styles.badgeText}
-              text={departure?.localizedDate ?? ''}
-            />
-            <Text style={styles.connector}> to </Text>
-            {/* @TODO localize string `to` */}
-            <AdaptableBadge
-              style={styles.badge}
-              textStyle={styles.badgeText}
-              text={arrival?.localizedDate ?? ''}
-            />
-          </View>
-        )}
+          ) : (
+            <>
+              <AdaptableBadge
+                style={styles.badge}
+                textStyle={styles.badgeText}
+                text={departure?.localizedDate ?? ''}
+              />
+              <Text style={styles.connector}> to </Text>
+              {/* @TODO localize string `to` */}
+              <AdaptableBadge
+                style={styles.badge}
+                textStyle={styles.badgeText}
+                text={arrival?.localizedDate ?? ''}
+              />
+            </>
+          )}
+        </View>
       </View>
     </View>
   );
