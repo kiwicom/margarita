@@ -40,18 +40,18 @@
   },
   "devDependencies": {
     "@babel/node": "^7.0.0",
-    "@kiwicom/eslint-config": "^2.5.0",
+    "@kiwicom/eslint-config": "^2.7.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-plugin-relay": "^1.7.0",
     "concurrently": "^4.1.0",
-    "eslint": "^5.12.1",
+    "eslint": "^5.13.0",
     "flow-bin": "^0.88.0",
     "jest": "^24.0.0",
     "jest-expo": "^32.0.0",
     "jest-fetch-mock": "^2.0.1",
     "react-native-testing-library": "^1.4.2",
-    "react-test-renderer": "16.5.0",
+    "react-test-renderer": "^16.7.0",
     "relay-compiler": "^1.7.0"
   },
   "resolutions": {
