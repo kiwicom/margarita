@@ -13,6 +13,7 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type Booking$ref: FragmentReference;
 export type Booking = {|
   +destinationImageUrl: ?string,
+  +relayId: string,
   +$fragmentRefs: BookingBadges$ref,
   +$refType: Booking$ref,
 |};
@@ -44,9 +45,16 @@ const node/*: ConcreteFragment*/ = {
         }
       ],
       "storageKey": "destinationImageUrl(dimensions:\"_1200x628\")"
+    },
+    {
+      "kind": "ScalarField",
+      "alias": "relayId",
+      "name": "id",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '6bd96119d2a4e343ef52e79754ef39cb';
+(node/*: any*/).hash = 'e056e0381b6715f200465b18d20e0009';
 module.exports = node;

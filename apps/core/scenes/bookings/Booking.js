@@ -4,17 +4,25 @@ import * as React from 'react';
 import { Image, View } from 'react-native';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { Touchable, StyleSheet } from '@kiwicom/universal-components';
+import {
+  withNavigation,
+  type Navigation,
+  Routes,
+} from '@kiwicom/margarita-navigation';
 
 import type { Booking as BookingType } from './__generated__/Booking.graphql';
 import BookingBadges from './BookingBadges';
 
 type Props = {|
   +data: BookingType,
+  +navigation: Navigation,
 |};
 
 class Booking extends React.Component<Props> {
   onPress = () => {
-    console.log('TODO'); // eslint-disable-line no-console
+    this.props.navigation.navigate(Routes.BOOKING_DETAIL, {
+      id: this.props.data.relayId,
+    });
   };
 
   render() {
@@ -58,11 +66,12 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  Booking,
+  withNavigation(Booking),
   graphql`
     fragment Booking on CustomerBooking {
       ...BookingBadges
       destinationImageUrl(dimensions: _1200x628)
+      relayId: id
     }
   `,
 );

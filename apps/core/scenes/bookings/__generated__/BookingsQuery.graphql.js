@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 870510d1b2cd2fa50a00b7306bc6fca3
+ * @relayHash 723d89c91a03c919e6e3d05628f3b199
  */
 
 /* eslint-disable */
@@ -42,6 +42,7 @@ fragment BookingList on CustomerBookingConnection {
 fragment Booking on CustomerBooking {
   ...BookingBadges
   destinationImageUrl(dimensions: _1200x628)
+  relayId: id
 }
 
 fragment BookingBadges on CustomerBooking {
@@ -55,7 +56,7 @@ const node/*: ConcreteRequest*/ = {
   "operationKind": "query",
   "name": "BookingsQuery",
   "id": null,
-  "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on CustomerBookingConnection {\n  edges {\n    node {\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on CustomerBooking {\n  ...BookingBadges\n  destinationImageUrl(dimensions: _1200x628)\n}\n\nfragment BookingBadges on CustomerBooking {\n  id(opaque: false)\n  status\n}\n",
+  "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on CustomerBookingConnection {\n  edges {\n    node {\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on CustomerBooking {\n  ...BookingBadges\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n}\n\nfragment BookingBadges on CustomerBooking {\n  id(opaque: false)\n  status\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -148,6 +149,13 @@ const node/*: ConcreteRequest*/ = {
                       }
                     ],
                     "storageKey": "destinationImageUrl(dimensions:\"_1200x628\")"
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": "relayId",
+                    "name": "id",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }
