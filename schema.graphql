@@ -2,6 +2,18 @@ schema {
   query: RootQuery
 }
 
+enum BookingDestinationImageDimensions {
+  _1200x628
+  _1280x720
+  _220x165
+  _275x250
+  _300x165
+  _375x165
+  _600x330
+  _600x600
+  _610x251
+}
+
 """The bookings for the customer"""
 type CustomerBooking {
   """
@@ -11,6 +23,10 @@ type CustomerBooking {
   """
   id(opaque: Boolean = true): ID!
   status: String
+  arrival: RouteStop
+  departure: RouteStop
+  destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
+  passengerCount: Int
 }
 
 """A connection to a list of items."""
@@ -205,6 +221,13 @@ type Route {
   id: String
 }
 
+"""Departure or arrival for a segment"""
+type RouteStop {
+  cityName: String
+  cityId: String
+  time: SegmentTime
+}
+
 type Sector {
   arrivalTime: DateType
   departureTime: DateType
@@ -228,6 +251,12 @@ type Segment {
   origin: Location
   transporter: Transporter
   vehicle: Vehicle
+}
+
+"""Time of the segment in utc and local time."""
+type SegmentTime {
+  utc: DateTime
+  local: DateTime
 }
 
 type Transporter {
