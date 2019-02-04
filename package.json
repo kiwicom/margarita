@@ -37,7 +37,7 @@
   "author": "kiwi.com",
   "license": "MIT",
   "dependencies": {
-    "@kiwicom/orbit-design-tokens": "^0.2.5",
+    "@kiwicom/orbit-design-tokens": "^0.3.0",
     "react-native-modal": "^7.0.2",
     "react-native-multi-slider": "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e",
     "react-native-status-bar-height": "^2.2.0",
