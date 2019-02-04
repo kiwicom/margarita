@@ -9,7 +9,8 @@ Here is the folder structure:
 - `web` folder, aka `@kiwicom/margarita-web` package  
   web application written in React, powered by Next.js,
 - `graphql` folder, aka `@kiwicom/margarita-graphql` package
-  graphql server, written in GraphQL.js, powered by Node.
+  graphql server, written in GraphQL.js, powered by Node,
+- `landingPage` folder, aka `@kiwicom/margarita-landing-page` package web page, powered by Gatsby.js.
 
 Next.js and React Native have different navigations: Next.js is filename based by default, when React Native has the _de facto_ standard `react-navigation`. That library relies on injecting a `navigation` prop to the different screens and it is possible to connect any component to that navigation by using a HoC `withNavigation`.
 

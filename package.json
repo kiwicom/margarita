@@ -18,7 +18,8 @@
     "server": "yarn workspace @kiwicom/margarita-graphql start",
     "build:graphql": "yarn workspace @kiwicom/margarita-graphql build",
     "deploy:graphql": "yarn workspace @kiwicom/margarita-graphql deploy",
-    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall"
+    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall",
+    "landing-page": "yarn workspace @kiwicom/margarita-landing-page start"
   },
   "private": true,
   "workspaces": [
