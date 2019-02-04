@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { withRouter, type Router } from 'next/router';
+import 'url-search-params-polyfill';
 
 export const withPageRouter = <T>(
   Component: React.ComponentType<T & { router: Router }>,
