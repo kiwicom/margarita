@@ -48,8 +48,8 @@
     "react-native": "^0.57.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.6",
-    "@babel/node": "^7.0.0",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@callstack/eslint-config": "^3.0.0",
     "@emotion/styled": "^0.10.6",
     "@storybook/addon-actions": "^4.0.7",
@@ -60,7 +60,7 @@
     "@storybook/react-native": "^4.0.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
+    "babel-loader": "^8.0.5",
     "babel-runtime": "^6.26.0",
     "eslint": "^5.9.0",
     "eslint-plugin-flowtype": "^3.2.0",
@@ -84,7 +84,7 @@
     "react-test-renderer": "16.6.1",
     "regenerator-runtime": "^0.12.1",
     "release-it": "^8.4.2",
-    "rimraf": "^2.6.2",
+    "rimraf": "^2.6.3",
     "snapshot-diff": "^0.4.0",
     "webpack": "^4.25.1"
   },
