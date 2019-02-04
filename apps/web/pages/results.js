@@ -3,9 +3,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Results } from '@kiwicom/margarita-core';
-import { withRouter } from 'next/router';
 import { StyleSheet } from '@kiwicom/universal-components';
 
+import { withPageRouter } from '../components/withPageRouter';
 import Layout from '../components/Layout';
 
 const results = ({ router }) => {
@@ -23,4 +23,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-export default withRouter<React.Element<any>>(results);
+export default withPageRouter<React.Element<any>>(results);
