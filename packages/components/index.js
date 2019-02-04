@@ -1,5 +1,7 @@
 // @flow
 
+import BlackToAlpha from './src/PlaceCard/assets/black-to-alpha-vertical.png';
+
 export {
   default as TouchableWithoutFeedback,
 } from './src/TouchableWithoutFeedback';
@@ -22,6 +24,7 @@ export {
   TimelinePriorityBoarding,
 } from './src/TimelineInformation';
 export { PlaceCard } from './src/PlaceCard';
+export { BlackToAlpha };
 export { Shimmer } from './src/Shimmer';
 export { ConnectionCard } from './src/ConnectionCard';
 export type {
