@@ -3,3 +3,5 @@
 **/datasets/**
 **/__generated__/**
 apps/graphql/lambda/dist
+apps/web/out
+apps/web/.next
