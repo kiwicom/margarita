@@ -15,7 +15,7 @@
     "@kiwicom/margarita-core": "^0",
     "@kiwicom/margarita-navigation": "^0",
     "@kiwicom/margarita-relay": "^0",
-    "expo": "^32.0.0",
+    "expo": "^32.0.4",
     "intl": "^1.2.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-navigation": "^3.0.9"
@@ -27,8 +27,8 @@
     "react-native-dotenv": "^0.2.0"
   },
   "peerDependencies": {
-    "react-dom": ">=16",
+    "react": ">=16",
     "react-art": ">=16",
-    "react": ">=16"
+    "react-dom": ">=16"
   }
 }

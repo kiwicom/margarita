@@ -34,8 +34,8 @@
     "nodemon": "^1.18.7",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "utf-8-validate": "^5.0.2",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3"
   },
   "scripts": {
     "start": "better-npm-run start",
