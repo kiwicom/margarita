@@ -2,8 +2,9 @@
 
 import * as React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
-import { FlatList, View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { ScrollView, View } from 'react-native';
+import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { BookingList as BookingListType } from './__generated__/BookingList.graphql';
 import Booking from './Booking';
@@ -12,28 +13,42 @@ type Props = {|
   +data: ?BookingListType,
 |};
 
-class BookingList extends React.Component<Props> {
-  keyExtractor = (item: Object) => item.node.id;
-  renderItem = ({ item }: Object) => <Booking data={item.node} />;
-
-  render() {
-    const data = this.props.data?.edges ?? [];
-    return (
-      <View style={styles.container}>
-        <FlatList
-          keyExtractor={this.keyExtractor}
-          renderItem={this.renderItem}
-          data={data}
-        />
-      </View>
-    );
-  }
-}
+const BookingList = (props: Props) => {
+  const data = props.data?.edges ?? [];
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <Text style={styles.title}>Upcoming trips</Text>
+        <View style={styles.inner}>
+          {data.map(item => (
+            <Booking data={item?.node} key={item?.node?.id} />
+          ))}
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingHorizontal: 8,
+  },
+  scrollView: {
+    paddingTop: 15,
+    web: {
+      paddingHorizontal: parseInt(defaultTokens.spaceLarge, 10),
+    },
+  },
+  inner: {
+    web: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+    },
+  },
+  title: {
+    marginStart: 8,
+    marginBottom: 8,
   },
 });
 
