@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { Image, View } from 'react-native';
+import { Image, View, Platform } from 'react-native';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { Touchable, StyleSheet } from '@kiwicom/universal-components';
 import {
@@ -9,7 +9,11 @@ import {
   type Navigation,
   Routes,
 } from '@kiwicom/margarita-navigation';
-import { BlackToAlpha } from '@kiwicom/margarita-components';
+import {
+  BlackToAlpha,
+  TouchableWithoutFeedback,
+} from '@kiwicom/margarita-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { Booking as BookingType } from './__generated__/Booking.graphql';
 import BookingBadges from './BookingBadges';
@@ -21,6 +25,20 @@ type Props = {|
   +navigation: Navigation,
 |};
 
+type TouchWrapperProps = {|
+  +children: React.Node,
+  +onPress: () => void,
+|};
+
+const TouchWrapper = (props: TouchWrapperProps) => {
+  // We are not able to style Touchable properly for web, since it does not apply style prop to parent element
+  return Platform.OS === 'web' ? (
+    <TouchableWithoutFeedback {...props} />
+  ) : (
+    <Touchable {...props} delayPressIn={40} />
+  );
+};
+
 class Booking extends React.Component<Props> {
   onPress = () => {
     this.props.navigation.navigate(Routes.BOOKING_DETAIL, {
@@ -31,7 +49,7 @@ class Booking extends React.Component<Props> {
   render() {
     const image = { uri: this.props.data.destinationImageUrl ?? '' };
     return (
-      <Touchable onPress={this.onPress}>
+      <TouchWrapper onPress={this.onPress}>
         <View style={styles.container}>
           <Image source={image} style={styles.image} resizeMode="stretch" />
           <Image
@@ -49,7 +67,7 @@ class Booking extends React.Component<Props> {
             <DateAndPassengerCount data={this.props.data} />
           </View>
         </View>
-      </Touchable>
+      </TouchWrapper>
     );
   }
 }
@@ -63,8 +81,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     marginBottom: 8,
     web: {
-      marginStart: '25%',
-      width: '50%',
+      width: '30%',
+      minWidth: 250,
+      marginEnd: parseInt(defaultTokens.paddingButtonNormal, 10),
+      justifyContent: 'flex-start',
     },
   },
   image: {
