@@ -7,4 +7,5 @@ export default {
   PLACE_PICKER: 'place-picker',
   RESULTS: 'results',
   BOOKING_LIST: 'booking-list',
+  BOOKING_DETAIL: 'mmb/booking-detail',
 };

@@ -8,7 +8,7 @@ import {
 } from 'react-navigation';
 import { Routes } from '@kiwicom/margarita-navigation';
 
-import { BookingsListScreen } from '../screens';
+import { BookingsListScreen, BookingDetailScreen } from '../screens';
 
 type NavigationOptions = {};
 type NavigationProps = {};
@@ -23,6 +23,12 @@ const StackNavigator: NavigationNavigator<
       screen: BookingsListScreen,
       navigationOptions: {
         title: 'My Bookings',
+      },
+    },
+    [Routes.BOOKING_DETAIL]: {
+      screen: BookingDetailScreen,
+      navigationOptions: {
+        title: 'Booking details',
       },
     },
   }: NavigationRouteConfigMap),
