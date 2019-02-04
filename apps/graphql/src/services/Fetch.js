@@ -1,6 +1,6 @@
 // @flow
 
-import fetchWithRetries from '@mrtnzlml/fetch';
+import fetchWithRetries from '@kiwicom/fetch';
 
 import Logger from './Logger';
 import type { HttpMethod } from './types';
