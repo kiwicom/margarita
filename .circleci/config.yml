@@ -2,30 +2,66 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
+defaults: &defaults
+  working_directory: ~/margarita
+  docker:
+    - image: circleci/node:10
 
 version: 2
 jobs:
-  test:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/margarita
+  install-dependencies:
+    <<: *defaults
     steps:
       - checkout
+      - attach_workspace:
+          at: ~/margarita
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             - v1-dependencies-
-      - run: yarn install --frozen-lockfile
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn test-ci
+      - persist_to_workspace:
+          root: .
+          paths: .
+  flow:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - run: yarn flow
+  lint:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - run: yarn lint
+  unit-tests:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - restore_cache:
+          keys:
+            - v1-0-jest-cache-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-0-jest-cache-
+      - run: yarn test --ci --color --maxWorkers=2
+      - save_cache:
+          key: v1-0-jest-cache-{{ checksum "package.json" }}
+          paths:
+            - .jestCache
+      - persist_to_workspace:
+          root: .
+          paths: .
 
   build-and-deploy-graphql:
-    docker:
-      - image: circleci/node:10
-    working_directory: ~/margarita
+    <<: *defaults
     steps:
       - checkout
       - restore_cache:
@@ -52,10 +88,21 @@ workflows:
   version: 2
   test-and-release:
     jobs:
-      - test
+      - install-dependencies
+      - lint:
+          requires:
+            - install-dependencies
+      - flow:
+          requires:
+            - install-dependencies
+      - unit-tests:
+          requires:
+            - install-dependencies
       - build-and-deploy-graphql:
           requires:
-            - test
+            - lint
+            - flow
+            - unit-tests
           filters:
             branches:
               only: master
