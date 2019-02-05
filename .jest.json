@@ -7,8 +7,6 @@
     "__tests__/__mocks__",
     "<rootDir>/apps/landingPage/.cache/__tests__/"
   ],
-  "setupTestFrameworkScriptFile": "<rootDir>/scripts/setupTests.js",
-  "transformIgnorePatterns": [
-    "/node_modules/(?!@kiwicom)/"
-  ]
+  "setupFilesAfterEnv": ["<rootDir>/scripts/setupTests.js"],
+  "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"]
 }
