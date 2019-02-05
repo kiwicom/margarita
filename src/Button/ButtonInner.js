@@ -62,7 +62,8 @@ export default function ButtonInner({
     >
       <View style={layout.row}>
         {leftIcon != null && <View style={layout.rightSpace}>{leftIcon}</View>}
-        {children || <ButtonTitle text={label} type={type} />}
+        {children ||
+          (label != null && <ButtonTitle text={label} type={type} />)}
       </View>
       <View style={layout.row}>
         {sublabel != null && (

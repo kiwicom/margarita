@@ -58,7 +58,9 @@ export default function Stepper({
         touchable={!disableDecrement}
         onPress={onDecrement}
       />
-      {showNumber && <Text style={numberStyle}>{numberDisplayed}</Text>}
+      {showNumber && numberDisplayed != null && (
+        <Text style={numberStyle}>{numberDisplayed}</Text>
+      )}
       <StepperButton
         icon={<Icon name="plus" {...iconProps} />}
         touchable={!disableIncrement}

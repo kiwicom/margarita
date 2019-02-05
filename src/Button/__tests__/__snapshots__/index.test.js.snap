@@ -18,7 +18,7 @@ exports[`Button - native should match snapshot diff 1`] = `
   >
     <View>
       <View
-@@ -27,14 +27,14 @@
+@@ -27,34 +27,126 @@
               \\"paddingHorizontal\\": 8,
               \\"paddingVertical\\": 11,
             },
@@ -35,12 +35,13 @@ exports[`Button - native should match snapshot diff 1`] = `
         }
       >
         <View
-@@ -43,18 +43,110 @@
+          style={
+            Object {
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
-            }
++           }
           }
-        >
++       >
 +         <View
 +           style={
 +             Object {
@@ -65,8 +66,8 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 },
 +                 undefined,
 +               ]
-+             }
-+           >
+              }
+            >
 +             f
 +           </Text>
 +         </View>
@@ -113,7 +114,7 @@ exports[`Button - native should match snapshot diff 1`] = `
 +           >
 +             Button sublabel
 +           </Text>
-          </View>
++         </View>
 +         <View
 +           style={
 +             Object {
@@ -142,11 +143,11 @@ exports[`Button - native should match snapshot diff 1`] = `
 +           >
 +             
 +           </Text>
-          </View>
-        </View>
-+     </View>
-+   </View>
-+ </View>"
++         </View>
++       </View>
+      </View>
+    </View>
+  </View>"
 `;
 
 exports[`Button - native should match the snapshot 1`] = `
@@ -285,16 +286,16 @@ exports[`Button - web should match snapshot diff 1`] = `
           Object {
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
-          }
-        }
--     />
++         }
++       }
 +     >
 +       <View
 +         style={
 +           Object {
 +             \\"marginStart\\": 5,
-+           }
-+         }
+            }
+          }
+-     />
 +       >
 +         <Text
 +           style={
@@ -317,9 +318,9 @@ exports[`Button - web should match snapshot diff 1`] = `
 +         >
 +           
 +         </Text>
-        </View>
++       </View>
+      </View>
 - </button>
-+     </View>
 +   </View>
 + </a>"
 `;

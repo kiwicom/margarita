@@ -20,11 +20,13 @@ export default function RadioButton({
   label,
 }: Props) {
   const isCheckType = type === 'check';
-  const renderLabel = children || (
-    <View style={styles.label} testID="label-wrapper">
-      <Text>{label}</Text>
-    </View>
-  );
+  const renderLabel =
+    children ||
+    (label != null && label !== '' && (
+      <View style={styles.label} testID="label-wrapper">
+        <Text>{label}</Text>
+      </View>
+    ));
   return (
     <TouchableWithoutFeedback disabled={disabled} onPress={onPress}>
       <View style={[styles.wrapper, disabled && styles.wrapperDisabled, style]}>

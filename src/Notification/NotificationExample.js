@@ -11,7 +11,7 @@ import type { NotificationType } from '../types';
 type Props = {|
   +notificationStyle: 'error' | 'warning' | 'success',
   +notificationType: NotificationType,
-  +title?: React.Node | string,
+  +title: React.Node | string,
   +message: React.Node | string,
   +onDismiss?: () => void,
 |};

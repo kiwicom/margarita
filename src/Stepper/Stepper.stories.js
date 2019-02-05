@@ -46,7 +46,6 @@ class Wrapper extends React.Component<
     const { children: childrenProps } = this.props;
     const { number: numberState } = this.state;
 
-    /* $FlowFixMe: overwriting props to make it easier here */
     const children = React.cloneElement(childrenProps, {
       number: numberState,
       onIncrement: () => {

@@ -7,7 +7,7 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
 - <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}]} />
 + <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}, {\\"code\\": \\"TO\\", \\"name\\": \\"Transavia France\\"}, {\\"code\\": \\"VY\\", \\"name\\": \\"Vueling\\"}, {\\"code\\": \\"OK\\", \\"name\\": \\"Czech Airlines\\"}]} />
 
-@@ -17,23 +17,83 @@
+@@ -17,22 +17,82 @@
     }
   >
     <Image
@@ -15,6 +15,26 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
         Object {
 -         \\"uri\\": \\"https://images.kiwi.com/airlines/64/FR.png?default=airline.png\\",
 +         \\"uri\\": \\"https://images.kiwi.com/airlines/32/FR.png?default=airline.png\\",
++       }
++     }
++     style={
++       Array [
++         Object {
++           \\"backgroundColor\\": \\"transparent\\",
++           \\"borderRadius\\": 3,
++         },
++         Object {
++           \\"height\\": 15,
++           \\"width\\": 15,
++         },
++         false,
++       ]
++     }
++   />
++   <Image
++     source={
++       Object {
++         \\"uri\\": \\"https://images.kiwi.com/airlines/32/TO.png?default=airline.png\\",
         }
       }
       style={
@@ -26,26 +46,6 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
           Object {
 -           \\"height\\": 32,
 -           \\"width\\": 32,
-+           \\"height\\": 15,
-+           \\"width\\": 15,
-          },
-          false,
-        ]
-      }
-    />
-+   <Image
-+     source={
-+       Object {
-+         \\"uri\\": \\"https://images.kiwi.com/airlines/32/TO.png?default=airline.png\\",
-+       }
-+     }
-+     style={
-+       Array [
-+         Object {
-+           \\"backgroundColor\\": \\"transparent\\",
-+           \\"borderRadius\\": 3,
-+         },
-+         Object {
 +           \\"height\\": 15,
 +           \\"width\\": 15,
 +         },
@@ -88,10 +88,9 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
 +         Object {
 +           \\"height\\": 15,
 +           \\"width\\": 15,
-+         },
-+         false,
-+       ]
-+     }
-+   />
-  </View>"
+          },
+          false,
+        ]
+      }
+    />"
 `;

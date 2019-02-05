@@ -4,7 +4,10 @@ import * as React from 'react';
 import { Text as RNText } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { StyleSheet } from '../PlatformStyleSheet';
+import {
+  StyleSheet,
+  type PlatformStyleObjectType,
+} from '../PlatformStyleSheet';
 import iconsMap from './icons.json';
 import type { Props } from './IconTypes';
 
@@ -33,7 +36,7 @@ export default function Icon({
   );
 }
 
-const getSizeStyle = (size: number): Object => ({
+const getSizeStyle = (size: number): $Values<PlatformStyleObjectType> => ({
   fontSize: size,
   width: size,
   height: size,

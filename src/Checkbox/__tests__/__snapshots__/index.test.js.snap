@@ -140,10 +140,10 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
               \\"width\\": 20,
             },
 -           undefined,
-            false,
-            false,
-            false,
 +           false,
+            false,
+            false,
+            false,
           ]
         }
 -     />

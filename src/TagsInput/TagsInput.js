@@ -140,15 +140,11 @@ export default class TagsInput extends React.Component<Props, State> {
     return (
       <TouchableWithoutFeedback onPress={this.handleOnFocus}>
         <View style={[styles.container, dynamicStyle.border]}>
-          {Boolean(label) && (
+          {label != null && label !== '' && (
             <Text weight="bold" style={[styles.label, dynamicStyle.label]}>
               {label}
             </Text>
           )}
-          {/* $FlowFixMe
-           * Prop `contentContainerStyle`:
-           * The ReducedDangerouslyImpreciseStyle is incompatible with exact $ReadOnly.
-           */}
           <ScrollView
             contentContainerStyle={styles.scrollContainer}
             onContentSizeChange={this.scrollRef?.current?.scrollToEnd}

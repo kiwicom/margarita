@@ -14,7 +14,7 @@ type Props = {|
   +border?: 'long' | 'short' | 'shaped',
   +type: 'localization' | 'destination' | 'airplane' | 'bus' | 'train',
   +header: string | React.Node,
-  +subheader: string | React.Node,
+  +subheader: ?(string | React.Node),
   +info?: string | React.Node,
   +onItemPress: () => void,
   +onAddPress: () => void,

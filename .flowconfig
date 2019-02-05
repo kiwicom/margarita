@@ -85,5 +85,23 @@ suppress_comment=\\(.\\|\n\\)*\\$FlowExpectedError
 [lints]
 unnecessary-optional-chain=error
 
+; https://github.com/facebook/react-native/issues/19812#issuecomment-431893188
+[untyped]
+.*/node_modules/react-native/Libraries/Components/View/ViewPropTypes.js
+.*/node_modules/react-native/Libraries/Text/TextAncestor.js
+.*/node_modules/react-native/Libraries/Text/Text.js
+.*/node_modules/react-native/Libraries/YellowBox/UI/YellowBoxList.js
+.*/node_modules/react-native/Libraries/Image/Image.ios.js
+.*/node_modules/react-native/Libraries/StyleSheet/processTransform.js
+.*/node_modules/react-native/Libraries/StyleSheet/StyleSheetValidation.js
+.*/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
+.*/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
+.*/node_modules/react-native/Libraries/Components/Touchable/TouchableOpacity.js
+.*/node_modules/react-native/Libraries/Components/Touchable/TouchableHighlight.js
+.*/node_modules/react-native/Libraries/Components/Slider/Slider.js
+.*/node_modules/react-native/Libraries/Components/Navigation/NavigatorIOS.ios.js
+.*/node_modules/react-native/Libraries/Components/ActivityIndicator/ActivityIndicator.js
+.*/node_modules/react-native/Libraries/Lists/VirtualizedSectionList.js
+
 [version]
-^0.78.0
+^0.92.1

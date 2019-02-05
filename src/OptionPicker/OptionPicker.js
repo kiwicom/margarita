@@ -27,13 +27,15 @@ type State = {|
 
 type Event = { nativeEvent: { key: string } };
 
-const filterSubOptionsByIds = (option, ids) => {
+const filterSubOptionsByIds = (option: OptionType, ids) => {
   const { subOptions } = option;
   // check if the subOptions exists
   if (!subOptions) return option;
 
   // filter out selected options
-  const filteredOptions = subOptions.filter(({ id }) => !ids.includes(id));
+  const filteredOptions: Array<OptionType> = subOptions.filter(
+    ({ id }) => !ids.includes(id),
+  );
   return { ...option, ...{ subOptions: filteredOptions } };
 };
 

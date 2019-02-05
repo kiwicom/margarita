@@ -7,7 +7,7 @@ import HoverMonitor from './HoverMonitor';
 
 type Props = {|
   +disabled?: boolean,
-  +children: React.Element<any>,
+  +children: React.Node,
   +onMouseEnter?: () => void,
   +onMouseLeave?: () => void,
 |};

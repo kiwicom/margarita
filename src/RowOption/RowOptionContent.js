@@ -10,7 +10,7 @@ import { StyleSheet } from '../PlatformStyleSheet';
 type Props = {|
   +type: 'localization' | 'destination' | 'airplane' | 'bus' | 'train',
   +header: string | React.Node,
-  +subheader: string | React.Node,
+  +subheader: ?(string | React.Node),
   +info?: string | React.Node,
 |};
 
@@ -33,10 +33,12 @@ export default function RowOptionContent({
         {header}
       </Text>
       <View style={styles.rowDirection}>
-        <Text type="secondary" style={styles.subheader}>
-          {subheader}
-        </Text>
-        {info && (
+        {subheader != null && subheader !== '' && (
+          <Text type="secondary" style={styles.subheader}>
+            {subheader}
+          </Text>
+        )}
+        {info != null && info !== '' && (
           <View style={[styles.rowDirection, styles.padded]}>
             <View style={styles.dotSeparator} testID="dot-separator" />
             <Text type="secondary" style={styles.subheader} numberOfLines={1}>
