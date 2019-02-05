@@ -18,6 +18,7 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
+        autofocus
       />
     </View>
   ))
@@ -28,6 +29,7 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
+        autofocus
       />
     </View>
   ))
@@ -45,6 +47,7 @@ storiesOf('TagsInput', module)
     return (
       <View style={{ margin: 20 }}>
         <TagsInput
+          autofocus
           fontSize={fontSize}
           tags={tags}
           onChangeText={action('onChangeText')}

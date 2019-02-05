@@ -127,6 +127,7 @@ class InputField extends React.Component<Props, State> {
           style={[styles.input, dynamicStyle.input, dynamicStyle.common]}
         />
         <Text
+          accessibilityRole="none"
           style={[styles.hiddenSizer, dynamicStyle.common]}
           onLayout={this.handleOnLayout}
         >

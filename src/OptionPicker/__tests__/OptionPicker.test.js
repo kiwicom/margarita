@@ -57,7 +57,7 @@ describe('OptionPicker', () => {
     const Item = getByText(Prague.label);
     expect(() => getByTestId('input-tag')).toThrow('No instances found');
     fireEvent(Item, 'press');
-    expect(getByTestId('input-tag')).toBeDefined();
+    expect(getByTestId(`input-tag-${Prague.label}`)).toBeDefined();
 
     expect(getAllByType(Badge)).toHaveLength(1);
     expect(onPressItem).toHaveBeenCalledTimes(1);

@@ -41,7 +41,7 @@ export default class TagsContainer extends React.Component<Props> {
             fontSize={fontSize}
             type="info"
             key={tag}
-            testID="input-tag"
+            testID={`input-tag-${tag}`}
             style={styles.tag}
           >
             {tag}

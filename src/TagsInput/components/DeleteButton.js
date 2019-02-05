@@ -7,21 +7,23 @@ import { Touchable } from '../../Touchable';
 
 import { Icon } from '../../Icon';
 
+import { type StylePropType } from '../../PlatformStyleSheet/StyleTypes';
+
 type Props = {|
   +onPress: () => void,
-  +opacity: number,
   +disabled?: boolean,
+  +style: ?StylePropType,
 |};
 
 export default class DeleteButton extends React.PureComponent<Props> {
   render() {
-    const { onPress, disabled, opacity } = this.props;
+    const { onPress, disabled, style } = this.props;
     return (
       <Touchable
         testID="delete-button"
         onPress={onPress}
         disabled={disabled}
-        style={{ opacity }}
+        style={style}
       >
         <Icon
           name="close"

@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import Option from './Option';
 import { areSelectedOptionsChanged } from '../helpers';
 
@@ -24,7 +24,7 @@ export default class OptionList extends React.Component<Props> {
     const { options, onItemPress, onAddPress } = this.props;
 
     return (
-      <View>
+      <ScrollView>
         {options.map(option => (
           <Option
             option={option}
@@ -33,7 +33,7 @@ export default class OptionList extends React.Component<Props> {
             onAddPress={onAddPress}
           />
         ))}
-      </View>
+      </ScrollView>
     );
   }
 }

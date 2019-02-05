@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+
 import {
   View,
   Platform,
@@ -26,7 +27,7 @@ type Props = {|
   +onKeyPress?: (e: Event) => void,
   +placeholder?: string,
   +value?: string,
-  +autofocus?: boolean,
+  +autofocus: boolean,
 |};
 
 type State = {
@@ -54,6 +55,7 @@ export default class TagsInput extends React.Component<Props, State> {
   static defaultProps = {
     fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
     tags: [],
+    autofocus: false,
   };
 
   constructor(props: Props) {
@@ -63,7 +65,7 @@ export default class TagsInput extends React.Component<Props, State> {
 
     this.state = {
       value: props.value || '',
-      isFocus: false,
+      isFocus: props.autofocus,
     };
   }
 
@@ -121,12 +123,7 @@ export default class TagsInput extends React.Component<Props, State> {
     } = this.props;
     const { isFocus, value } = this.state;
 
-    const isButtonDisabled = (!value && tags.length === 0) ?? disabled;
-
     const dynamicStyle = {
-      deleteButton: {
-        opacity: value || tags.length > 0 ? 1 : 0,
-      },
       label: {
         fontSize,
       },
@@ -134,6 +131,11 @@ export default class TagsInput extends React.Component<Props, State> {
         ...boxShadow(isFocus),
       },
     };
+
+    const buttonStyles =
+      value || tags.length > 0 ? styles.opacityOne : styles.opacityZero;
+
+    const isButtonDisabled = (!value && tags.length === 0) ?? disabled;
 
     return (
       <TouchableWithoutFeedback onPress={this.handleOnFocus}>
@@ -143,8 +145,12 @@ export default class TagsInput extends React.Component<Props, State> {
               {label}
             </Text>
           )}
+          {/* $FlowFixMe
+           * Prop `contentContainerStyle`:
+           * The ReducedDangerouslyImpreciseStyle is incompatible with exact $ReadOnly.
+           */}
           <ScrollView
-            contentContainerStyle={{ flexGrow: 1 }}
+            contentContainerStyle={styles.scrollContainer}
             onContentSizeChange={this.scrollRef?.current?.scrollToEnd}
             scrollEventThrottle={3}
             showsHorizontalScrollIndicator={false}
@@ -167,7 +173,7 @@ export default class TagsInput extends React.Component<Props, State> {
             />
           </ScrollView>
           <DeleteButton
-            opacity={dynamicStyle.deleteButton.opacity}
+            style={buttonStyles}
             onPress={this.handleClear}
             disabled={isButtonDisabled}
           />
@@ -178,6 +184,9 @@ export default class TagsInput extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    flexGrow: 1,
+  },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -193,5 +202,11 @@ const styles = StyleSheet.create({
   label: {
     color: defaultTokens.paletteInkDark,
     lineHeight: 16,
+  },
+  opacityZero: {
+    opacity: 0,
+  },
+  opacityOne: {
+    opacity: 1,
   },
 });
