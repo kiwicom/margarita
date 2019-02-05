@@ -47,7 +47,7 @@
     "concurrently": "^4.1.0",
     "eslint": "^5.12.1",
     "flow-bin": "^0.88.0",
-    "jest": "^23.6.0",
+    "jest": "^24.0.0",
     "jest-expo": "^32.0.0",
     "jest-fetch-mock": "^2.0.1",
     "react-native-testing-library": "^1.4.2",
