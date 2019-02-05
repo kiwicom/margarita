@@ -17,7 +17,6 @@ export const withPageRouter = <T>(
     }
 
     // replace the empty query
-    // $FlowFixMe flow-typed Router has read-only on query
     router.query = query;
 
     return <Component {...props} router={router} />;
