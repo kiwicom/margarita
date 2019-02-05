@@ -26,7 +26,6 @@
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@babel/preset-env": "^7.2.0",
-    "@babel/preset-flow": "^7.0.0",
     "apollo-server-lambda": "^2.3.1",
     "babel-loader": "^8.0.5",
     "bufferutil": "^4.0.1",
@@ -36,6 +35,9 @@
     "utf-8-validate": "^5.0.2",
     "webpack": "^4.29.1",
     "webpack-cli": "^3.2.3"
+  },
+  "peerDependencies": {
+    "@babel/preset-flow": "^7.0.0"
   },
   "scripts": {
     "start": "better-npm-run start",
