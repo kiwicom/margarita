@@ -54,6 +54,8 @@ workflows:
     jobs:
       - test
       - build-and-deploy-graphql:
+          requires:
+            - test
           filters:
             branches:
               only: master
