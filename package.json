@@ -86,7 +86,7 @@
     "release-it": "^8.4.2",
     "rimraf": "^2.6.3",
     "snapshot-diff": "^0.4.0",
-    "webpack": "^4.25.1"
+    "webpack": "^4.29.1"
   },
   "config": {
     "react-native-storybook-loader": {
