@@ -32,7 +32,6 @@ class Booking extends React.Component<Props> {
         <View style={styles.container}>
           <Image source={image} style={styles.image} resizeMode="stretch" />
           <View style={styles.bookingBadgesWrapper}>
-            {/* $FlowExpectedError: react-relay flow types are in bad shape, https://github.com/facebook/relay/issues/2516#issuecomment-459681737 */}
             <BookingBadges data={this.props.data} />
           </View>
         </View>
