@@ -1130,6 +1130,15 @@
   dependencies:
     ramda "^0.25.0"
 
+"@kiwicom/relay@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.1.0.tgz#e7a6b54d6fb95c01e8b27d5f880dab2fbab8e867"
+  integrity sha512-tTxrabQ64aDZpGcDu+oupVf8uhFlGXQzkrgjHwUTYsOfNZXYmqAvPf45iOF5rfdVH4mzzVz693lbfGHsRE5Npw==
+  dependencies:
+    "@kiwicom/fetch" "^2.0.0"
+    react-relay "^1.7.0"
+    relay-runtime "^1.7.0"
+
 "@kiwicom/test-utils@^0.3.1":
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/@kiwicom/test-utils/-/test-utils-0.3.1.tgz#25151e13aedb355658a665e49b6162ec2bb05e75"
@@ -1155,24 +1164,7 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@mrtnzlml/fetch@^1.0.0":
-  version "1.5.2"
-  resolved "https://registry.yarnpkg.com/@mrtnzlml/fetch/-/fetch-1.5.2.tgz#6809cb1afdbc77a371b55303c2c2834bd94b4965"
-  integrity sha512-dCh7FHwKWaF4V2jbuymk244usjkDiMshzhpiY58yNM7GOQQCV7RrNQksqTmS9E5toFLexnpmvfy5Rz+PFQRieA==
-  dependencies:
-    "@mrtnzlml/utils" "^1.1.0"
-    cross-fetch "^2.2.2"
-
-"@mrtnzlml/relay@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@mrtnzlml/relay/-/relay-0.12.0.tgz#728137f3cbf52c1a455cd1a538bd6207d35920bc"
-  integrity sha512-YZinomNSdbl5vJx6RQl+nYU9sl0A/XiheIEVG3v8q4ewgftkQBQnHrMicIbCI9OuP8UMZ4OoE0FRCG77FXdWVw==
-  dependencies:
-    "@mrtnzlml/fetch" "^1.0.0"
-    "@mrtnzlml/utils" "^1.0.0"
-    react-relay "^1.7.0-rc.1"
-
-"@mrtnzlml/utils@^1.0.0", "@mrtnzlml/utils@^1.1.0", "@mrtnzlml/utils@^1.1.1":
+"@mrtnzlml/utils@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@mrtnzlml/utils/-/utils-1.1.1.tgz#70182ddb12825ecbb494bffe8596b3ad2b0869ee"
   integrity sha512-FFvgqzJO4kiVQj6Hb1Qp+PGB7NY32bW95jxietxEnoYe79sUNr4MCWsV7pU7e1UHZ4XsSF2lTh0agr2edEvw2A==
@@ -13972,7 +13964,7 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-relay@^1.7.0, react-relay@^1.7.0-rc.1:
+react-relay@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-1.7.0.tgz#6a21df4e6bb52c7a02374ad288ccbeb0172f095d"
   integrity sha512-vZOs1iK6LxqeaAelwSuD5eVXnQux5eVIrik/kxKt6Y3j6ylrjrdTadmgO6sapGc0TG61VtFK5CKPOtW+XSNotg==
@@ -14372,7 +14364,7 @@ relay-compiler@^1.7.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@1.7.0:
+relay-runtime@1.7.0, relay-runtime@^1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.7.0.tgz#59cfb5cab361ef630099464e1b364342466cd212"
   integrity sha512-gvx01aRoLHdIMQoIjMQ79js4BR9JZVfF/SoSiLXvWOgDWEnD7RKb80zmCZTByCpka0GwFzkVwBWUy1gW6g0zlQ==

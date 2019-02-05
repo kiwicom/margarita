@@ -5,7 +5,16 @@ const withTM = require('next-plugin-transpile-modules');
 const { ANALYZE } = process.env;
 
 module.exports = withTM({
-  transpileModules: ['react-native', 'react-native-web', '@kiwicom/*'],
+  transpileModules: [
+    'react-native',
+    'react-native-web',
+    '@kiwicom/margarita-core',
+    '@kiwicom/margarita-relay',
+    '@kiwicom/margarita-utils',
+    '@kiwicom/margarita-components',
+    '@kiwicom/universal-components',
+    '@kiwicom/margarita-navigation',
+  ],
   webpack: (config, { isServer, defaultLoaders }) => {
     // Bundle Analyzer
     if (ANALYZE) {
