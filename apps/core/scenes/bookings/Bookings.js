@@ -8,7 +8,6 @@ import type { BookingsQueryResponse } from './__generated__/BookingsQuery.graphq
 
 export default class Bookings extends React.Component<{||}> {
   renderInner = (props: BookingsQueryResponse) => {
-    // $FlowExpectedError: react-relay flow types are in bad shape, https://github.com/facebook/relay/issues/2516#issuecomment-459681737
     return <BookingList data={props.customerBookings} />;
   };
 

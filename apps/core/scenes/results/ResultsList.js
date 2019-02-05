@@ -7,38 +7,33 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
-import type { ResultsListItem as ResultsListItemType } from './__generated__/ResultsListItem.graphql';
 import ResultListItem from './ResultsListItem';
 import EmptyResults from './EmptyResults';
 
 type Props = {|
-  +data: ResultsListType,
-|};
-
-type ItemType = {|
-  +node?: {|
-    +id: string,
-  |},
+  +data: ?ResultsListType,
 |};
 
 type ResultItemType = {|
-  +item: {|
-    +node?: ResultsListItemType,
+  +node?: {|
+    +id: string,
+    +$fragmentRefs: any,
   |},
+  +$refType: any,
 |};
 
 class ResultsList extends React.Component<Props> {
-  resultItem = ({ item }: ResultItemType) => {
+  resultItem = ({ item }: {| +item: ResultItemType |}) => {
     if (item.node) {
       return <ResultListItem data={item.node} />;
     }
     return null;
   };
 
-  keyExtractor = (item: ItemType) => item.node?.id;
+  keyExtractor = (item: ResultItemType) => item.node?.id;
 
   render() {
-    const data = this.props.data.edges ?? [];
+    const data = this.props.data?.edges ?? [];
     if (data.length === 0) {
       return <EmptyResults />;
     }

@@ -7,7 +7,7 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 
-import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
+import type { ResultsQueryResponse } from './__generated__/ResultsQuery.graphql';
 import ResultsList from './ResultsList';
 
 type Props = {|
@@ -19,14 +19,10 @@ type Props = {|
   +returnDateTo: string,
 |};
 
-type ResultsType = {|
-  +searchItineraries: ResultsListType,
-|};
-
 const statusBarHeight = 20; // @TODO add to orbit design tokens
 
 export default class Results extends React.Component<Props> {
-  renderInner = (props: ResultsType) => {
+  renderInner = (props: ResultsQueryResponse) => {
     const { searchItineraries } = props;
     return <ResultsList data={searchItineraries} />;
   };

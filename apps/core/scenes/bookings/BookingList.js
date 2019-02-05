@@ -9,7 +9,7 @@ import type { BookingList as BookingListType } from './__generated__/BookingList
 import Booking from './Booking';
 
 type Props = {|
-  +data: BookingListType,
+  +data: ?BookingListType,
 |};
 
 class BookingList extends React.Component<Props> {
@@ -17,7 +17,7 @@ class BookingList extends React.Component<Props> {
   renderItem = ({ item }: Object) => <Booking data={item.node} />;
 
   render() {
-    const data = this.props.data.edges ?? [];
+    const data = this.props.data?.edges ?? [];
     return (
       <View style={styles.container}>
         <FlatList
