@@ -15,7 +15,7 @@ describe('MenuGroup', () => {
     const { output } = shallow(
       <MenuGroup title="Title">
         <MenuItem onPress={jest.fn()} title="test" />
-      </MenuGroup>
+      </MenuGroup>,
     );
     expect(output).toMatchSnapshot();
   });

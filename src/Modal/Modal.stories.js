@@ -4,10 +4,12 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { StyleSheet } from '../PlatformStyleSheet';
-import { Modal } from '.';
 import { Text } from '../Text';
 import { Button } from '../Button';
+
+import { Modal } from '.';
 
 type Props = {|
   +isVisible?: boolean,

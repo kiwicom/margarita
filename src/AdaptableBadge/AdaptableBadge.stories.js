@@ -21,7 +21,7 @@ storiesOf('AdaptableBadge', module)
     const iconName = select(
       'Icon',
       ['undefined', ...Object.keys(icons)],
-      'calendar'
+      'calendar',
     );
     return (
       <AdaptableBadge

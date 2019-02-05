@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Platform, View } from 'react-native';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import CheckboxWeb from '../Checkbox.web';
 import CheckboxNative from '../Checkbox.native';
 import CheckboxShared from '../CheckboxShared';
@@ -35,7 +36,7 @@ describe('CheckBox - web', () => {
       name={name}
       info={info}
       onChange={onChange}
-    />
+    />,
   );
 
   it('should contain a label', () => {
@@ -57,7 +58,7 @@ describe('CheckBox - web', () => {
         name,
         info,
         onChange,
-      })
+      }),
     ).toBeDefined();
   });
 
@@ -77,7 +78,7 @@ describe('CheckBox - web', () => {
         name={name}
         info={info}
         onChange={onChange}
-      />
+      />,
     );
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
@@ -94,7 +95,7 @@ describe('CheckBox - native', () => {
       checked={checked}
       info={info}
       onChange={onChange}
-    />
+    />,
   );
 
   it('should contain a label', () => {
@@ -114,7 +115,7 @@ describe('CheckBox - native', () => {
         checked,
         info,
         onChange,
-      })
+      }),
     ).toBeDefined();
   });
 
@@ -132,7 +133,7 @@ describe('CheckBox - native', () => {
         checked={checked}
         info={info}
         onChange={onChange}
-      />
+      />,
     );
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
@@ -149,7 +150,7 @@ describe('CheckboxShared', () => {
     const wrapper = render(
       <CheckboxShared label="label">
         <View testID="test-view" />
-      </CheckboxShared>
+      </CheckboxShared>,
     );
     expect(wrapper.getByTestId('test-view')).toBeDefined();
     expect(() => {

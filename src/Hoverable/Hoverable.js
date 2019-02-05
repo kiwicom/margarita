@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Platform } from 'react-native';
+
 import HoverMonitor from './HoverMonitor';
 
 type Props = {|

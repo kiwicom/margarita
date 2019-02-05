@@ -4,6 +4,7 @@ import * as React from 'react';
 import { View, TextInput, Text } from 'react-native';
 import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import type { OnLayout } from '../../types';
 import { StyleSheet } from '../../PlatformStyleSheet';
 import { INPUT_MIN_WIDTH } from '../constants';

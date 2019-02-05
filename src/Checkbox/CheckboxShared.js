@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
+
 import CheckboxText from './CheckboxText';
 import CheckboxIcon from './CheckboxIcon';
 import theme, { parseStringToFloat } from './styles';

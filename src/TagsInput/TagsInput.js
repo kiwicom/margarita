@@ -1,14 +1,12 @@
 // @flow
 
 import * as React from 'react';
-
 import {
   View,
   Platform,
   ScrollView,
   TouchableWithoutFeedback,
 } from 'react-native';
-
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import DeleteButton from './components/DeleteButton';
@@ -49,9 +47,6 @@ const boxShadow = isFocus => {
 };
 
 export default class TagsInput extends React.Component<Props, State> {
-  inputRef: any;
-  scrollRef: any;
-
   static defaultProps = {
     fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
     tags: [],
@@ -80,6 +75,9 @@ export default class TagsInput extends React.Component<Props, State> {
     return null;
   }
 
+  inputRef: any;
+  scrollRef: any;
+
   getPlaceholder = () => {
     const { tags, placeholder } = this.props;
     // Don't render placeholder if the Tags are rendered.
@@ -99,7 +97,9 @@ export default class TagsInput extends React.Component<Props, State> {
     const { isFocus } = this.state;
     if (isFocus) return;
     this.setState({ isFocus: true });
-    this.inputRef.current && this.inputRef.current.focus();
+    if (this.inputRef.current) {
+      this.inputRef.current.focus();
+    }
   };
 
   handleOnBlur = () => {

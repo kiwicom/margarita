@@ -4,7 +4,6 @@ import * as React from 'react';
 
 import GenericButtonWrapper from './GenericButtonWrapper';
 import type { Props } from './ButtonTypes';
-
 import ButtonInner from './ButtonInner';
 
 export default function Button({

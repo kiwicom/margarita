@@ -38,11 +38,11 @@ export default function ServiceLogo({
       style={{ ...style, height: size }}
       src={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
         getImageSize(size),
-        10
+        10,
       )}/${name}.png`}
       srcSet={`${baseURL}/${getColor(grayScale)}/0x${parseInt(
         getImageSize(size),
-        10
+        10,
       ) * 2}/${name}.png 2x`}
       alt={name}
     />

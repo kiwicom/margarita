@@ -13,12 +13,12 @@ storiesOf('Notification', module)
     const notificationType = select(
       'Notification type',
       ['informative', 'important'],
-      'informative'
+      'informative',
     );
     const notificationStyle = select(
       'Notification style',
       ['error', 'warning', 'success'],
-      'warning'
+      'warning',
     );
     const message = text('Message', 'Error message');
     const title = text('Title', 'Error');

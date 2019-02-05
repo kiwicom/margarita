@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import ButtonTitle from './ButtonTitle';

@@ -1,13 +1,11 @@
 // @flow
 
 import * as React from 'react';
-
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { Touchable } from '../../Touchable';
-
+import type { StylePropType } from '../../PlatformStyleSheet/StyleTypes';
 import { Icon } from '../../Icon';
-
-import { type StylePropType } from '../../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
   +onPress: () => void,

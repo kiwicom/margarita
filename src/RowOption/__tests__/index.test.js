@@ -4,7 +4,6 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 
 import RowOption from '../RowOption';
-
 import { Icon } from '../../Icon';
 
 describe('RowOption', () => {
@@ -20,7 +19,7 @@ describe('RowOption', () => {
       onAddPress={onAddPress}
       border="shaped"
       info="Czech Republic"
-    />
+    />,
   );
 
   it('should have city icon when type is destination', () => {

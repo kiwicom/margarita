@@ -4,9 +4,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { select, boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
-import { RadioButton } from '.';
+
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
+
+import { RadioButton } from '.';
 
 const pressAction = action('radio-button-press');
 const bulletTypes = ['bullet', 'check'];
@@ -93,7 +95,7 @@ storiesOf('RadioButton', module)
     const bulletPosition = select(
       'bulletPosition',
       bulletPositionTypes,
-      bulletPositionTypes[0]
+      bulletPositionTypes[0],
     );
     const checked = boolean('Checked', false);
     const disabled = boolean('Disabled', false);

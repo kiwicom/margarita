@@ -5,6 +5,7 @@ import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
 
 import { FilterButton } from '..';
+
 import { Icon } from '../../Icon';
 
 describe('FilterButton', () => {
@@ -13,7 +14,7 @@ describe('FilterButton', () => {
   const icon = <Icon name="close" />;
 
   const { getByText } = render(
-    <FilterButton isActive={false} title={title} onPress={onPress} />
+    <FilterButton isActive={false} title={title} onPress={onPress} />,
   );
   const button = getByText('Title');
 
@@ -32,7 +33,7 @@ describe('FilterButton', () => {
         title={title}
         onPress={onPress}
         icon={icon}
-      />
+      />,
     );
     const filterIcon = getByType(Icon);
     expect(filterIcon).toBeDefined();
@@ -45,7 +46,7 @@ describe('FilterButton', () => {
     );
 
     expect(
-      snapshotDiff(active, inactive, { contextLines: 1 })
+      snapshotDiff(active, inactive, { contextLines: 1 }),
     ).toMatchSnapshot();
   });
 });

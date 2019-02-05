@@ -6,7 +6,6 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Touchable } from '../Touchable';
-
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|

@@ -12,7 +12,6 @@ import {
   fontWeight as fontWeightTypes,
   textColor,
 } from './styles';
-
 import type { TextType } from './TextTypes';
 
 const colorGen = createStylesGenerator('color', textColor);
@@ -33,13 +32,27 @@ const Text = ({
   weight,
 }: TextType) => {
   const textStyle = [styles.text];
-  italic && textStyle.push(styles.italic);
-  uppercase && textStyle.push(styles.uppercase);
-  weight && textStyle.push(styles[weight]);
-  size && textStyle.push(styles[size]);
-  type && textStyle.push(styles[type]);
-  align && textStyle.push(styles[align]);
-  style && textStyle.push(style);
+  if (italic) {
+    textStyle.push(styles.italic);
+  }
+  if (uppercase) {
+    textStyle.push(styles.uppercase);
+  }
+  if (weight) {
+    textStyle.push(styles[weight]);
+  }
+  if (size) {
+    textStyle.push(styles[size]);
+  }
+  if (type) {
+    textStyle.push(styles[type]);
+  }
+  if (align) {
+    textStyle.push(styles[align]);
+  }
+  if (style) {
+    textStyle.push(style);
+  }
   return (
     <RNText
       data-test={dataTest}

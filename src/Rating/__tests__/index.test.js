@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { Rating } from '..';
 
 describe('Rating', () => {
@@ -10,7 +11,7 @@ describe('Rating', () => {
   const style = { color: '#ffb100' };
 
   const { getByText, getAllByProps } = render(
-    <Rating style={style} rating={rating} />
+    <Rating style={style} rating={rating} />,
   );
 
   it('should contain stars', () => {
@@ -22,7 +23,7 @@ describe('Rating', () => {
       getAllByProps({
         rating,
         style,
-      })
+      }),
     ).toBeDefined();
   });
 

@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View, Image, PixelRatio } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './CarrierLogoTypes';
 import { SIZE_OPTIONS } from './consts';
@@ -36,7 +37,7 @@ export default function CarrierLogo({
               carriersLength,
               size,
               pixelRatio,
-              carrierData
+              carrierData,
             ),
           }}
         />

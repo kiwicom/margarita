@@ -16,7 +16,7 @@ export function getOptionsIds(options: OptionType[]) {
 
 export function areSelectedOptionsChanged(
   optionsA: OptionType[],
-  optionsB: OptionType[]
+  optionsB: OptionType[],
 ) {
   const optionsIdsB = getOptionsIds(optionsB);
   const optionsIdsA = getOptionsIds(optionsA);

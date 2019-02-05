@@ -7,8 +7,8 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import type { AccessibilityProps as AccessibilityPropsType } from './AccessibilityTypes';
 
+import type { AccessibilityProps as AccessibilityPropsType } from './AccessibilityTypes';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
@@ -109,7 +109,7 @@ export default class Touchable extends React.Component<Props> {
           useForeground={useForeground}
           background={TouchableNativeFeedback.Ripple(
             rippleColor,
-            borderlessRipple
+            borderlessRipple,
           )}
         >
           <View style={style}>{children}</View>

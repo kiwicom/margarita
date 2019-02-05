@@ -52,10 +52,6 @@ export default class Slider extends React.Component<Props, State> {
 
     const { maxValue, startValue, endValue = maxValue } = this.props;
 
-    if (endValue > maxValue) {
-      console.error('End value cannot be equal or higher than maximum value');
-    }
-
     this.state = {
       width: 0,
       multiSliderValues: [startValue, endValue],
@@ -68,7 +64,7 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       singleSliderValue: values,
     });
-    onValuesChange && onValuesChange(values);
+    onValuesChange?.(values);
   };
 
   multiSliderValuesChange = (values: Array<number>) => {
@@ -76,7 +72,7 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       multiSliderValues: values,
     });
-    onValuesChange && onValuesChange(values);
+    onValuesChange?.(values);
   };
 
   onLayout = ({ nativeEvent }: OnLayout) => {

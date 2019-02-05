@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { StyleSheet } from '../PlatformStyleSheet';
 import DatePickerDayTile from './DatePickerDayTile';
 import { Button } from '../Button';
@@ -13,7 +14,6 @@ import {
   getNextMonthData,
   getStartOfDayTime,
 } from './DatePickerHelpers';
-
 import type { Props } from './DatePickerTypes';
 
 type State = {
@@ -94,7 +94,7 @@ export default class WebDatePicker extends React.Component<Props, State> {
           selected={tempDateTime === selectedDateTime}
           disabled={disabled}
           onDaySelect={this.handleDaySelect}
-        />
+        />,
       );
     }
 
@@ -104,7 +104,7 @@ export default class WebDatePicker extends React.Component<Props, State> {
       weekRows.push(
         <View key={key} style={styles.weekRow}>
           {dayTiles.splice(0, 7)}
-        </View>
+        </View>,
       );
     }
 

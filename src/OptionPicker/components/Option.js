@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+
 import { RowOption } from '../../RowOption';
 import type { OptionType } from '../OptionPickerTypes';
 

@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
+
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import theme, { parsePxValue } from './styles';

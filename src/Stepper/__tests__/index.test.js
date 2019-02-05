@@ -3,7 +3,9 @@
 import * as React from 'react';
 import { shallow, render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { Stepper } from '..';
+
 import StepperButton from '../StepperButton';
 
 describe('Stepper', () => {
@@ -32,7 +34,7 @@ describe('Stepper', () => {
         min={min}
         max={max}
         number={defaultNumber}
-      />
+      />,
     );
     expect(output).toMatchSnapshot();
   });
@@ -45,12 +47,12 @@ describe('Stepper', () => {
         min={0}
         max={0}
         number={0}
-      />
+      />,
     );
     expect(
       getAllByProps({
         touchable: false,
-      })
+      }),
     ).toHaveLength(2);
   });
 
@@ -63,23 +65,27 @@ describe('Stepper', () => {
         min={null}
         max={null}
         number={0}
-      />
+      />,
     );
     expect(
       getAllByProps({
         touchable: true,
-      })
+      }),
     ).toHaveLength(2);
   });
 
   it('should have buttons enabled when min, max is not set', () => {
     const { getAllByProps } = render(
-      <Stepper onDecrement={onDecrement} onIncrement={onIncrement} number={0} />
+      <Stepper
+        onDecrement={onDecrement}
+        onIncrement={onIncrement}
+        number={0}
+      />,
     );
     expect(
       getAllByProps({
         touchable: true,
-      })
+      }),
     ).toHaveLength(2);
   });
 
@@ -94,7 +100,7 @@ describe('Stepper', () => {
       min={min}
       max={max}
       number={defaultNumber}
-    />
+    />,
   );
 
   it('should have two stepper buttons', () => {
@@ -117,7 +123,7 @@ describe('Stepper', () => {
         min,
         max,
         number: defaultNumber,
-      })
+      }),
     ).toBeDefined();
   });
 
@@ -143,7 +149,7 @@ describe('Stepper', () => {
     );
 
     expect(
-      snapshotDiff(normal, numberNotDisplayed, { contextLines: 1 })
+      snapshotDiff(normal, numberNotDisplayed, { contextLines: 1 }),
     ).toMatchSnapshot();
   });
 });

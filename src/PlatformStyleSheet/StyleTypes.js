@@ -1,6 +1,6 @@
 // @flow
 
-/* eslint-disable camelcase */
+/* eslint-disable babel/camelcase */
 
 /**
  * Styles are only reexported here to avoid importing internal RN libraries
@@ -29,7 +29,7 @@ type ReducedDangerouslyImpreciseStyle = $Rest<
     borderBottomRightRadius: *, // use 'borderBottomEndRadius' instead
     borderTopLeftRadius: *, // use 'borderTopStartRadius' instead
     borderTopRightRadius: *, // use 'borderTopEndRadius' instead
-  |}
+  |},
 >;
 
 export type StyleObjectType = {
@@ -42,7 +42,7 @@ export type PlatformStyleObjectType = {
       ReducedDangerouslyImpreciseStyle,
       {|
         elevation: *, // elevation should be only used under the Android key
-      |}
+      |},
     > & {
       android: ReducedDangerouslyImpreciseStyle,
       ios: ReducedDangerouslyImpreciseStyle,
@@ -50,7 +50,7 @@ export type PlatformStyleObjectType = {
         ...ReducedDangerouslyImpreciseStyle,
         position?: 'absolute' | 'relative' | 'fixed',
       }, // might need to be expanded
-    }
+    },
   >,
 };
 

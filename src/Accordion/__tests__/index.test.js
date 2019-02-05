@@ -13,7 +13,7 @@ describe('Accordion', () => {
   const { getByText, queryByText } = render(
     <Accordion expandedDefault header={Header}>
       <Text>{children}</Text>
-    </Accordion>
+    </Accordion>,
   );
 
   it('should have a children', () => {

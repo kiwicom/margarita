@@ -4,6 +4,7 @@ import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 
 import { Card } from '..';
+
 import { Text } from '../../Text';
 import { Touchable } from '../../Touchable';
 
@@ -13,7 +14,7 @@ describe('Card', () => {
   const { getByText, getByType, getByProps } = render(
     <Card onPress={noop} delayPressIn={1000}>
       <Text>{children}</Text>
-    </Card>
+    </Card>,
   );
 
   it('should have a children', () => {

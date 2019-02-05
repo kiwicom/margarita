@@ -18,7 +18,7 @@ describe('OptionPicker: areSelectedOptionsChanged helper function', () => {
   });
   test('empty array as parameter', () => {
     expect(
-      areSelectedOptionsChanged(mockedPlaces, [mockedPlaces[1]])
+      areSelectedOptionsChanged(mockedPlaces, [mockedPlaces[1]]),
     ).toBeTruthy();
   });
 });

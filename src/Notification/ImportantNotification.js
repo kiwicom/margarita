@@ -7,10 +7,8 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Icon } from '../Icon';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
-
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { NotificationStyleType } from '../types';
-
 import { Text } from '../Text';
 
 type Props = {|

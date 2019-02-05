@@ -6,7 +6,6 @@ import { View } from 'react-native';
 import Notification from './Notification';
 import { Button } from '../Button';
 import { StyleSheet } from '../PlatformStyleSheet';
-
 import type { NotificationType } from '../types';
 
 type Props = {|
@@ -23,8 +22,9 @@ export default class NotificationExample extends React.Component<Props> {
 
   renderNotification = () => {
     const { notificationStyle, title, message } = this.props;
-    this.notification &&
+    if (this.notification) {
       this.notification.toggleNotification(notificationStyle, title, message);
+    }
   };
 
   refToNotification = (ref: ?Notification) => {

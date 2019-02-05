@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './ModalTypes';
 

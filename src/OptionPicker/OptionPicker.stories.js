@@ -6,7 +6,6 @@ import { withKnobs, text } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import OptionPicker from './OptionPicker';
-
 import mockedPlaces from './mocks/places';
 
 storiesOf('OptionPicker', module)

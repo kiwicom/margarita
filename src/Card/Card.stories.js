@@ -6,8 +6,9 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs, number } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Card } from '.';
 import { Text } from '../Text';
+
+import { Card } from '.';
 
 const noop = action('card-press');
 storiesOf('Card', module)

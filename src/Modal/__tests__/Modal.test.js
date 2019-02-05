@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
+
 import { Text } from '../..';
 import ModalNative from '../Modal.native';
 import ModalWeb from '../Modal.web';
@@ -13,7 +14,7 @@ describe('Modal - web', () => {
   const { getByText, getByTestId } = render(
     <ModalWeb isVisible onBackdropPress={onBackdropPress}>
       <Text>{placeholder}</Text>
-    </ModalWeb>
+    </ModalWeb>,
   );
 
   it('should contain passed children', () => {
@@ -29,7 +30,7 @@ describe('Modal - web', () => {
     const component = render(
       <ModalWeb isVisible onBackdropPress={jest.fn()}>
         <Text>{placeholder}</Text>
-      </ModalWeb>
+      </ModalWeb>,
     );
 
     expect(component).toMatchSnapshot();
@@ -41,7 +42,7 @@ describe('Modal - native', () => {
     const component = render(
       <ModalNative isVisible={false} onBackdropPress={jest.fn()}>
         <Text>{placeholder}</Text>
-      </ModalNative>
+      </ModalNative>,
     );
 
     expect(component).toMatchSnapshot();

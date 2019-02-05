@@ -10,6 +10,7 @@ import {
   number,
   withKnobs,
 } from '@storybook/addon-knobs';
+
 import { Tooltip, TooltipBubble, Text } from '..';
 
 const arrowVerticalPositionOptions = {
@@ -28,7 +29,7 @@ storiesOf('Tooltip', module)
     const arrowHorizontalPosition = select(
       'arrowHorizontalPosition',
       arrowHorizontalPositionOptions,
-      'center'
+      'center',
     );
 
     return (
@@ -113,12 +114,12 @@ storiesOf('Tooltip', module)
     const arrowHorizontalPosition = select(
       'arrowHorizontalPosition',
       arrowHorizontalPositionOptions,
-      'center'
+      'center',
     );
     const arrowVerticalPosition = select(
       'arrowVerticalPosition',
       arrowVerticalPositionOptions,
-      'flex-start'
+      'flex-start',
     );
     return (
       <TooltipBubble

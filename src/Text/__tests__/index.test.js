@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { Text } from '..';
 
 describe('Text', () => {
@@ -23,7 +24,7 @@ describe('Text', () => {
         size="large"
       >
         {children}
-      </Text>
+      </Text>,
     );
     const base = render(<Text>{children}</Text>);
 

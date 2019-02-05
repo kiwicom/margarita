@@ -40,7 +40,7 @@ export default {
   create(styles: PlatformStyleObjectType): StyleObjectType {
     const platformStyles = {};
     Object.keys(styles).forEach(name => {
-      let { ios, android, web, ...style } = { ...styles[name] }; // eslint-disable-line prefer-const
+      let { ios, android, web, ...style } = { ...styles[name] };
       if (ios && Platform.OS === 'ios') {
         style = { ...style, ...ios };
       }

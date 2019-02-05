@@ -42,7 +42,7 @@ describe('Button - web', () => {
       block={block}
       testID={testID}
       label={buttonText}
-    />
+    />,
   );
 
   it('should have the right text', () => {
@@ -66,13 +66,13 @@ describe('Button - web', () => {
         href,
         block,
         testID,
-      })
+      }),
     ).toBeDefined();
   });
 
   it('should render a button by default', () => {
     const defaultButton = render(
-      <ButtonWeb onPress={noop}>{buttonText}</ButtonWeb>
+      <ButtonWeb onPress={noop}>{buttonText}</ButtonWeb>,
     );
     // $FlowFixMe react-native-testing-library does not allow HTML elements
     expect(defaultButton.getByType('button')).toBeDefined();
@@ -84,13 +84,13 @@ describe('Button - web', () => {
     const withHref = render(
       <ButtonWeb onPress={noop} href={href}>
         {buttonText}
-      </ButtonWeb>
+      </ButtonWeb>,
     );
     // $FlowFixMe react-native-testing-library does not allow HTML elements
     expect(withHref.getByType('a')).toBeDefined();
     // $FlowFixMe react-native-testing-library does not allow HTML elements
     expect(() => fireEvent(withHref.getByType('a'), 'click')).toThrow(
-      'No handler function found for event: click'
+      'No handler function found for event: click',
     );
   });
 
@@ -108,7 +108,7 @@ describe('Button - web', () => {
         block={block}
       >
         {buttonText}
-      </ButtonWeb>
+      </ButtonWeb>,
     );
     expect(output).toMatchSnapshot();
   });
@@ -127,7 +127,7 @@ describe('Button - web', () => {
         block={block}
       >
         {buttonText}
-      </ButtonWeb>
+      </ButtonWeb>,
     );
     const base = render(<ButtonWeb onPress={noop}>{buttonText}</ButtonWeb>);
 
@@ -150,7 +150,7 @@ describe('Button - native', () => {
       block={block}
       testID={testID}
       label={buttonText}
-    />
+    />,
   );
 
   it('should have the right text', () => {
@@ -178,7 +178,7 @@ describe('Button - native', () => {
         href,
         block,
         testID,
-      })
+      }),
     ).toBeDefined();
   });
 
@@ -196,7 +196,7 @@ describe('Button - native', () => {
         block={block}
       >
         {buttonText}
-      </ButtonNative>
+      </ButtonNative>,
     );
     expect(output).toMatchSnapshot();
   });
@@ -215,10 +215,10 @@ describe('Button - native', () => {
         block={block}
       >
         {buttonText}
-      </ButtonNative>
+      </ButtonNative>,
     );
     const base = render(
-      <ButtonNative onPress={noop}>{buttonText}</ButtonNative>
+      <ButtonNative onPress={noop}>{buttonText}</ButtonNative>,
     );
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
   });
@@ -230,7 +230,7 @@ describe('ButtonInner', () => {
     const wrapper = render(
       <ButtonInner label={label}>
         <View testID="child-view" />
-      </ButtonInner>
+      </ButtonInner>,
     );
     expect(wrapper.getByTestId('child-view')).toBeDefined();
     expect(() => {

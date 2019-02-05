@@ -8,7 +8,6 @@ import { Text } from '../Text';
 import { Modal } from '../Modal';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
-
 import type { Props } from './DatePickerTypes';
 
 type State = {

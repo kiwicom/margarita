@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+
 import CheckboxShared from './CheckboxShared';
 import type { Props } from './CheckboxTypes';
 

@@ -15,9 +15,11 @@ const HoverMonitor = () => {
     }
   }
 
+  /* eslint-disable no-undef */
   if (typeof document !== 'undefined') {
     document.addEventListener('touchstart', disableHover, true);
     document.addEventListener('mousemove', enableHover, true);
+    /* eslint-enable no-undef */
   } else {
     hoverEnabled = false;
   }

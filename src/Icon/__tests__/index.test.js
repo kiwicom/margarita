@@ -8,7 +8,7 @@ import { Icon } from '..';
 
 describe('Icon', () => {
   const { getByProps, getByText } = render(
-    <Icon name="check" size="large" color="red" />
+    <Icon name="check" size="large" color="red" />,
   );
 
   it('should have correct icon character for icon name', () => {
@@ -26,7 +26,7 @@ describe('Icon', () => {
     const custom = render(<Icon name="check" size="large" color="red" />);
 
     expect(
-      snapshotDiff(regular, custom, { contextLines: 2 })
+      snapshotDiff(regular, custom, { contextLines: 2 }),
     ).toMatchSnapshot();
   });
 
@@ -35,7 +35,7 @@ describe('Icon', () => {
     console.error = jest.fn(); // eslint-disable-line
     // $FlowExpectedError we expect this will be a flow error
     expect(() => render(<Icon name="__invalid-name__" />)).toThrowError(
-      'Icon with name "__invalid-name__" does not exist.'
+      'Icon with name "__invalid-name__" does not exist.',
     );
   });
 });

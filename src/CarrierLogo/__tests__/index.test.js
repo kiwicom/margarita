@@ -4,7 +4,9 @@ import * as React from 'react';
 import { Image } from 'react-native';
 import { render } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { CarrierLogo } from '..';
+
 import { getCarrierImageUri, parseCarriers } from '../CarrierLogoHelpers';
 import { SIZE_OPTIONS } from '../consts';
 
@@ -23,7 +25,7 @@ describe('CarrierLogo', () => {
 
   it('should contain correct number of images with correct size when duplicate carriers data are supplied', () => {
     const { getAllByType, getByType } = render(
-      <CarrierLogo carriers={[carriers[0], carriers[0]]} />
+      <CarrierLogo carriers={[carriers[0], carriers[0]]} />,
     );
     expect(getAllByType(Image)).toHaveLength(1);
     expect(getByType(Image).props.source.uri).toMatch(/64/);
@@ -42,13 +44,13 @@ describe('CarrierLogo', () => {
 
   test('getCarrierImageUri > should have high resolution', () => {
     expect(getCarrierImageUri(1, SIZE_OPTIONS.LARGE, 3, carriers[0])).toMatch(
-      /128/
+      /128/,
     );
   });
 
   test('getCarrierImageUri > should return small size version in case of multiple carriers', () => {
     expect(getCarrierImageUri(4, SIZE_OPTIONS.LARGE, 1, carriers[0])).toMatch(
-      /16/
+      /16/,
     );
   });
 

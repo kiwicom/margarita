@@ -3,7 +3,6 @@
 import * as React from 'react';
 
 import type { Props as ButtonProps } from './ButtonTypes';
-
 import { wrapperStyle, disabledStyle, displayBlock } from './styles/index.web';
 import ButtonInner from './ButtonInner';
 

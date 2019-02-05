@@ -4,6 +4,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
 import { SegmentedButton } from '.';
 
 const segmentsData = [
@@ -19,7 +20,7 @@ storiesOf('SegmentedButton', module)
     const selected = select(
       'selectedValue',
       segmentsData.map(data => data.value),
-      segmentsData[0].value
+      segmentsData[0].value,
     );
 
     return (

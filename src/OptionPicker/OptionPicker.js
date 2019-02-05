@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import type { OptionType } from './OptionPickerTypes';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { TagsInput } from '../TagsInput';
@@ -33,12 +34,12 @@ const filterSubOptionsByIds = (option, ids) => {
 
   // filter out selected options
   const filteredOptions = subOptions.filter(({ id }) => !ids.includes(id));
-  return Object.assign({}, option, { subOptions: filteredOptions });
+  return { ...option, ...{ subOptions: filteredOptions } };
 };
 
 export const filterOptions = (
   options: OptionType[],
-  selected: OptionType[]
+  selected: OptionType[],
 ) => {
   // get selectedIds
   const selectedIDs = getOptionsIds(selected);
@@ -71,7 +72,7 @@ export default class OptionPicker extends React.Component<Props, State> {
     const { onPressAdd } = this.props;
     this.setState(
       ({ selected }) => ({ selected: [...selected, option] }),
-      onPressAdd
+      onPressAdd,
     );
   };
 

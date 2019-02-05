@@ -36,10 +36,6 @@ export default function SliderParts({
     const parts = [];
     let i;
 
-    if (numOfParts != null && numOfParts < 1) {
-      console.error('numOfParts cannot be lower than 1');
-    }
-
     for (i = 0; i <= numOfParts; i++) {
       const valuePerStep = Math.floor(step * i);
 
@@ -57,7 +53,7 @@ export default function SliderParts({
           <Text size="small" style={styles.labelText}>
             {valuePerStep + minValue}
           </Text>
-        </View>
+        </View>,
       );
     }
     return parts;

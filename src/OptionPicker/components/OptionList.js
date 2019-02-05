@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { ScrollView } from 'react-native';
+
 import Option from './Option';
 import { areSelectedOptionsChanged } from '../helpers';
-
 import type { OptionType } from '../OptionPickerTypes';
 
 type Props = {|

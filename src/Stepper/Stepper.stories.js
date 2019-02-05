@@ -4,11 +4,12 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, number, object, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
 import { Stepper } from '.';
 
 class Wrapper extends React.Component<
   {| +children: React.Element<typeof Stepper> |},
-  {| number: number |}
+  {| number: number |},
 > {
   constructor(props) {
     super(props);
@@ -27,7 +28,9 @@ class Wrapper extends React.Component<
       if (children.props.max && numberState >= children.props.max) {
         numberState = children.props.max;
       }
-      children.props.number && this.setState({ number: numberState }); // eslint-disable-line react/no-did-update-set-state
+      if (children.props.number) {
+        this.setState({ number: numberState }); // eslint-disable-line react/no-did-update-set-state
+      }
     }
   }
 

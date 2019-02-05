@@ -4,6 +4,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+
 import { Text } from '.';
 
 const style = {
@@ -51,14 +52,14 @@ storiesOf('Text', module)
         'critical',
         'white',
       ],
-      'primary'
+      'primary',
     );
     const size = select('Size', ['small', 'normal', 'large'], 'small');
     const weight = select('Weight', ['normal', 'bold'], 'normal');
     const align = select(
       'Align',
       ['left', 'right', 'center', 'justify'],
-      'right'
+      'right',
     );
     const uppercase = boolean('Uppercase', false);
     const italic = boolean('Italic', false);

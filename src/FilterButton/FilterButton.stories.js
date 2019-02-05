@@ -4,11 +4,12 @@ import React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs';
-
 import { action } from '@storybook/addon-actions';
-import { FilterButton } from '.';
+
 import { Icon } from '../Icon';
 import iconsMap from '../Icon/icons.json';
+
+import { FilterButton } from '.';
 
 const noop = action('button-press');
 

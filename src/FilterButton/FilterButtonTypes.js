@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+
 import { Icon } from '../Icon';
 
 export type Props = {|

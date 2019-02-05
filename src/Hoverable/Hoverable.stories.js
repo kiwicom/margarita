@@ -5,7 +5,9 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs, boolean } from '@storybook/addon-knobs';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { StyleSheet } from '../PlatformStyleSheet';
+
 import { Hoverable } from '.';
 
 type Props = {|

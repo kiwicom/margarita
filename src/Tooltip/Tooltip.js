@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Dimensions, View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import type { ViewLayoutEvent } from 'react-native/Libraries/Components/View/ViewPropTypes';
+
 import TooltipBubble from './TooltipBubble';
 import { StyleSheet } from '../PlatformStyleSheet';
 
@@ -44,7 +45,9 @@ export default class Tooltip extends React.Component<Props, State> {
     if (newChildrenHeight !== oldChildrenHeight) {
       changedState.childrenHeight = newChildrenHeight;
     }
-    Object.keys(changedState).length !== 0 && this.setState(changedState);
+    if (Object.keys(changedState).length !== 0) {
+      this.setState(changedState);
+    }
   };
 
   getArrowVerticalPosition = (isArrowDown: boolean) =>

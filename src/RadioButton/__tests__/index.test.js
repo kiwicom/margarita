@@ -3,7 +3,9 @@
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { RadioButton } from '..';
+
 import { Text } from '../../Text';
 
 describe('RadioButton', () => {
@@ -27,7 +29,7 @@ describe('RadioButton', () => {
       label={label}
     >
       {children}
-    </RadioButton>
+    </RadioButton>,
   );
 
   it('should contain child', () => {
@@ -51,7 +53,7 @@ describe('RadioButton', () => {
         onPress,
         style,
         label,
-      })
+      }),
     ).toBeDefined();
   });
 

@@ -3,8 +3,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs, select, object } from '@storybook/addon-knobs';
-import { CarrierLogo } from '.';
+
 import { SIZE_OPTIONS, CARRIER_TYPE_OPTIONS } from './consts';
+
+import { CarrierLogo } from '.';
 
 const carriersLabel = 'Carriers';
 
@@ -52,7 +54,7 @@ storiesOf('CarrierLogo', module)
     const carrierType = select(
       'Type',
       Object.values(CARRIER_TYPE_OPTIONS),
-      'airline'
+      'airline',
     );
     const carrier = [{ code: 'LAL', name: 'Lorem ipsum', type: carrierType }];
     const carriersObject = object(carriersLabel, carrier);

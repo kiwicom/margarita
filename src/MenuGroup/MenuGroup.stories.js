@@ -4,9 +4,10 @@ import * as React from 'react';
 import { storiesOf, onPress } from '@storybook/react-native';
 import { View } from 'react-native';
 
-import { MenuGroup, MenuItem } from './index';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
+
+import { MenuGroup, MenuItem } from './index';
 
 storiesOf('Menu Group', module)
   .addDecorator(getStory => getStory())

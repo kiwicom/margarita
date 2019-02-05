@@ -12,11 +12,11 @@ import {
   number,
 } from '@storybook/addon-knobs';
 
-import { TextInput } from '.';
 import { Icon } from '../Icon';
 import { ServiceLogo } from '../ServiceLogo';
-
 import iconsMap from '../Icon/icons.json';
+
+import { TextInput } from '.';
 
 const stories = storiesOf('TextInput', module)
   .addDecorator(withKnobs)
@@ -47,7 +47,7 @@ const stories = storiesOf('TextInput', module)
           'VisaHQ',
           'Zooz',
         ],
-        'Visa'
+        'Visa',
       );
     }
     const value = text('Value', '');
@@ -58,19 +58,19 @@ const stories = storiesOf('TextInput', module)
     const type = select(
       'Type',
       ['text', 'password', 'email', 'number'],
-      'text'
+      'text',
     );
     const iconName = select(
       'Prefix icon name',
       Object.keys(iconsMap),
-      'search'
+      'search',
     );
     const error = text('Error', '');
     const help = text('Help', '');
     const status = select(
       'Status',
       ['default', 'success', 'warning'],
-      'default'
+      'default',
     );
     return (
       <TextInput

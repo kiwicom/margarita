@@ -7,7 +7,6 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
-
 import type { Props } from './FilterButtonTypes';
 
 export default function FilterButton({

@@ -7,7 +7,7 @@ export const getCarrierImageUri = (
   carriersLength: number,
   size: string,
   pixelRatio: number,
-  carrierData: CarrierData
+  carrierData: CarrierData,
 ): string => {
   let urlSize = carriersLength > 1 || size === SIZE_OPTIONS.SMALL ? 16 : 32;
   if (pixelRatio > 2.25) {

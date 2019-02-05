@@ -1,6 +1,7 @@
 // @flow
 
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { SIZE_OPTIONS } from '../consts';
 
 export const logoSizes = {

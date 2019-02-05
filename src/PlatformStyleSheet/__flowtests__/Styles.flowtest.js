@@ -1,6 +1,7 @@
 // @flow
 
 import { StyleSheet } from '..';
+
 import { type StyleObjectType, type StylePropType } from '../StyleTypes';
 
 /**

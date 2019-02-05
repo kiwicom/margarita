@@ -8,7 +8,6 @@ import type { Props } from './ServiceLogoTypes';
 export default function ServiceLogo({ name, grayScale }: Props) {
   let source;
   switch (name) {
-    /* eslint-disable global-require */
     case 'AirHelp': {
       source = grayScale
         ? require('../assets/GrayAirHelpLogo.imageset/AirHelp.png')
@@ -96,7 +95,6 @@ export default function ServiceLogo({ name, grayScale }: Props) {
     default: {
       source = '';
     }
-    /* eslint-enable global-require */
   }
   return (
     <Image

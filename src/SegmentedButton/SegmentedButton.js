@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet } from '../PlatformStyleSheet';
 
+import { StyleSheet } from '../PlatformStyleSheet';
 import Segment from './Segment';
 
 export type Props = {|

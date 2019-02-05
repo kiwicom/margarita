@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { Platform, View } from 'react-native';
 import { render, fireEvent } from 'react-native-testing-library';
+
 import { Hoverable } from '..';
 
 const originalPlatform = Platform.OS;
@@ -18,7 +19,7 @@ describe('Hoverable - web', () => {
   const { getByType } = render(
     <Hoverable onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <View />
-    </Hoverable>
+    </Hoverable>,
   );
 
   it('should contain a children', () => {
@@ -38,7 +39,7 @@ describe('Hoverable - web', () => {
     const component = render(
       <Hoverable onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <View />
-      </Hoverable>
+      </Hoverable>,
     );
 
     expect(component).toMatchSnapshot();
@@ -51,7 +52,7 @@ describe('Hoverable - native', () => {
     const component = render(
       <Hoverable onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         <View />
-      </Hoverable>
+      </Hoverable>,
     );
 
     expect(component).toMatchSnapshot();

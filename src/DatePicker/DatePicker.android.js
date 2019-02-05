@@ -11,10 +11,10 @@ export default class AndroidDatePicker extends React.Component<Props> {
     datePickerMode: 'default',
   };
 
-  componentDidUpdate = (prevProps: Props) => {
+  componentDidMount = () => {
     const { isVisible, mode } = this.props;
 
-    if (!prevProps.isVisible && isVisible) {
+    if (this.props && isVisible) {
       if (mode === 'date' || mode === 'datetime') {
         this.showDatePicker();
       } else {
@@ -23,10 +23,10 @@ export default class AndroidDatePicker extends React.Component<Props> {
     }
   };
 
-  componentDidMount = () => {
+  componentDidUpdate = (prevProps: Props) => {
     const { isVisible, mode } = this.props;
 
-    if (this.props && isVisible) {
+    if (!prevProps.isVisible && isVisible) {
       if (mode === 'date' || mode === 'datetime') {
         this.showDatePicker();
       } else {
@@ -54,7 +54,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
         mode: datePickerMode,
       });
     } catch (e) {
-      console.warn('Cannot open date picker', e.message);
       return;
     }
 
@@ -81,7 +80,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
         try {
           pickerTime = await TimePickerAndroid.open(timeOptions);
         } catch (e) {
-          console.warn('Cannot open time picker', e.message);
           return;
         }
 
@@ -116,7 +114,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
         mode: datePickerMode,
       });
     } catch (e) {
-      console.warn('Cannot open time picker', e.message);
       return;
     }
 

@@ -17,7 +17,7 @@ describe('MenuGroup', () => {
 
   it('hides actionIcon', () => {
     const { output } = shallow(
-      <MenuItem onPress={jest.fn()} title="test" hideActionIcon />
+      <MenuItem onPress={jest.fn()} title="test" hideActionIcon />,
     );
     expect(output).toMatchSnapshot();
   });

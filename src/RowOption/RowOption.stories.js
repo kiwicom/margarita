@@ -18,7 +18,7 @@ storiesOf('RowOption', module)
     const type = select(
       'Type',
       ['localization', 'destination', 'airplane', 'bus', 'train'],
-      'airplane'
+      'airplane',
     );
 
     const header = text('Header', 'Prague');

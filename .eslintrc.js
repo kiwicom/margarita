@@ -3,23 +3,22 @@ const WARNING = 1;
 const ERROR = 2;
 
 module.exports = {
-  "extends": ["@callstack"],
+  "root": true,
+  "extends": ["@kiwicom/eslint-config"],
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true,
+    "jest": true,
+    "node": true,
+  },
   "plugins": [
     "prettier",
     "react-native",
     "flowtype"
   ],
   "rules": {
-    "lines-between-class-members": [ERROR, "always", { exceptAfterSingleLine: true }],
-    "no-lonely-if": ERROR,
-    "react/jsx-no-bind": [ERROR, { "allowArrowFunctions": false }],
-    "no-else-return": ERROR,
-    "prefer-const": ERROR,
-    "no-duplicate-imports": ERROR,
-    "curly": ERROR,
-    "react-native/no-unused-styles": ERROR,
-    "react/destructuring-assignment": ERROR,
-    "prettier/prettier": ERROR,
+    'react/sort-comp': ERROR,
+    'no-unused-vars': ERROR,
     "import/no-extraneous-dependencies": [
       ERROR,
       {
@@ -31,20 +30,17 @@ module.exports = {
         ]
       }
     ],
-    "flowtype/require-valid-file-annotation": [ERROR, "always"],
-    "flowtype/newline-after-flow-annotation": [ERROR, "always"],
     "no-restricted-imports": [
       ERROR,
       {
-        paths: [
+        "paths": [
           {
-            name: "react-native",
-            importNames: ["StyleSheet"],
-            message: "Please use PlatformStyleSheet instead"
+            "name": "react-native",
+            "importNames": ["StyleSheet"],
+            "message": "Please use PlatformStyleSheet instead"
           }
         ]
       }
     ],
-    "react/default-props-match-prop-types": OFF,
   },
 };

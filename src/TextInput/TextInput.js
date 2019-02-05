@@ -17,7 +17,6 @@ import { FormFeedback } from '../FormFeedback';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { createStylesGenerator } from '../utils';
 import { fontSize, height } from './styles';
-
 import type { Props, State } from './TextInputTypes';
 
 const fontSizeGen = createStylesGenerator('fontSize', fontSize);
@@ -101,7 +100,7 @@ class TextInput extends React.Component<Props, State> {
     const { onFocus, disabled } = this.props;
     if (!disabled) {
       this.toggleFocus();
-      onFocus && onFocus();
+      onFocus?.();
     }
   };
 
@@ -109,7 +108,7 @@ class TextInput extends React.Component<Props, State> {
     const { onBlur, disabled } = this.props;
     if (!disabled) {
       this.toggleFocus();
-      onBlur && onBlur();
+      onBlur?.();
     }
   };
 
@@ -117,7 +116,7 @@ class TextInput extends React.Component<Props, State> {
     const { onChangeText, disabled } = this.props;
     if (!disabled) {
       this.setState({ value });
-      onChangeText && onChangeText(value);
+      onChangeText?.(value);
     }
   };
 
@@ -137,7 +136,9 @@ class TextInput extends React.Component<Props, State> {
   };
 
   focusTextInput = () => {
-    this.myref && this.myref.focus();
+    if (this.myref) {
+      this.myref.focus();
+    }
   };
 
   clearValue = () => {

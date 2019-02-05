@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { render, shallow, fireEvent } from 'react-native-testing-library';
+
 import { SegmentedButton } from '..';
 
 describe('SegmentedButton', () => {
@@ -13,7 +14,7 @@ describe('SegmentedButton', () => {
       segmentsData={testData}
       selectedValue={testData[0].value}
       onValueChange={onValueChange}
-    />
+    />,
   );
 
   it('should contain labels', () => {
@@ -33,8 +34,8 @@ describe('SegmentedButton', () => {
           segmentsData={testData}
           selectedValue="a"
           onValueChange={jest.fn()}
-        />
-      )
+        />,
+      ),
     ).toMatchSnapshot();
   });
 });

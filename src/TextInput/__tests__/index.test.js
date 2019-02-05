@@ -3,7 +3,9 @@
 import * as React from 'react';
 import { render, fireEvent } from 'react-native-testing-library';
 import snapshotDiff from 'snapshot-diff';
+
 import { TextInput } from '..';
+
 import ServiceLogo from '../../ServiceLogo/component';
 
 describe('TextInput', () => {
@@ -25,7 +27,7 @@ describe('TextInput', () => {
       onChangeText={onChangeText}
       onFocus={onFocus}
       suffix={<ServiceLogo name="MIR" />}
-    />
+    />,
   );
 
   it('should contain an input', () => {
@@ -43,7 +45,7 @@ describe('TextInput', () => {
         type,
         value,
         placeholder,
-      })
+      }),
     ).toBeDefined();
   });
 

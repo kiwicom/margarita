@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { TextInput } from 'react-native';
 import { render, fireEvent } from 'react-native-testing-library';
+
 import { TagsInput } from '../index';
 
 jest.mock('NativeAnimatedHelper');
@@ -25,7 +26,7 @@ describe('TagsInput', () => {
       placeholder={placeholder}
       fontSize={fontSize}
       value={value}
-    />
+    />,
   );
 
   it('should contain an input', () => {
@@ -45,7 +46,7 @@ describe('TagsInput', () => {
         fontSize,
         onChangeText,
         value,
-      })
+      }),
     ).toBeDefined();
   });
 
@@ -67,7 +68,7 @@ describe('TagsInput', () => {
         label={label}
         placeholder={placeholder}
         fontSize={fontSize}
-      />
+      />,
     );
     const input = 'content';
     fireEvent.changeText(wrapper.getByType(TextInput), input);

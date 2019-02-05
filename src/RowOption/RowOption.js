@@ -7,7 +7,6 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import RowOptionContent from './RowOptionContent';
 import RowOptionLeftIcon from './RowOptionLeftIcon';
 import RowOptionRightButton from './RowOptionRightButton';
-
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
 

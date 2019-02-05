@@ -11,9 +11,11 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
 import { Icon } from '../Icon';
-import { Button } from '.';
 import icons from '../Icon/icons.json';
+
+import { Button } from '.';
 
 const Separator = () => <View style={{ height: 10 }} />;
 const noop = action('button-press');
@@ -34,7 +36,7 @@ storiesOf('Button', module)
         'google',
         'disabled',
       ],
-      'primary'
+      'primary',
     );
     const disabled = boolean('Disabled', false);
     let sublabel;
@@ -44,12 +46,12 @@ storiesOf('Button', module)
     const leftIcon = select(
       'Left Icon',
       ['undefined', ...Object.keys(icons)],
-      'calendar'
+      'calendar',
     );
     const rightIcon = select(
       'Right Icon',
       ['undefined', ...Object.keys(icons)],
-      'calendar'
+      'calendar',
     );
     const width = number('Width', 300);
     let href;

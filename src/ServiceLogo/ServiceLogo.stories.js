@@ -3,6 +3,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
+
 import ServiceLogo from './component';
 
 storiesOf('ServiceLogo', module)
@@ -26,7 +27,7 @@ storiesOf('ServiceLogo', module)
         'VisaHQ',
         'Zooz',
       ],
-      'Visa'
+      'Visa',
     );
 
     const size = select('Size', ['small', 'medium', 'large'], 'large');

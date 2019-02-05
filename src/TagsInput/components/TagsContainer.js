@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
 import { Badge } from '../../Badge';
 import { StyleSheet } from '../../PlatformStyleSheet';
 

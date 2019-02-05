@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import { shallow, render } from 'react-native-testing-library';
+
 import { Tooltip, TooltipBubble } from '..';
+
 import { Text } from '../../Text';
 
 describe('TooltipBubble', () => {
@@ -32,7 +34,7 @@ const children = <Text>Lorem ipsum</Text>;
 describe('Tooltip', () => {
   it('should have a children', () => {
     const { getByProps } = render(
-      <Tooltip text="Hello Kiwi.com">{children}</Tooltip>
+      <Tooltip text="Hello Kiwi.com">{children}</Tooltip>,
     );
     expect(getByProps({ children })).toBeDefined();
   });

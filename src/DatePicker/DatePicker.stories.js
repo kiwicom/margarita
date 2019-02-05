@@ -50,11 +50,11 @@ class DateTimePicker extends React.Component<Props, State> {
     const mode = select('Mode', ['date', 'time', 'datetime'], 'date');
     const minDateStringTimestamp = dateAddon(
       'Min date',
-      new Date('2019-01-14')
+      new Date('2019-01-14'),
     );
     const maxDateStringTimestamp = dateAddon(
       'Max date',
-      new Date('2019-02-18')
+      new Date('2019-02-18'),
     );
     let datePickerMode;
 
@@ -62,7 +62,7 @@ class DateTimePicker extends React.Component<Props, State> {
       datePickerMode = select(
         'Picker Mode',
         ['calendar', 'spinner', 'default'],
-        'default'
+        'default',
       );
     }
 

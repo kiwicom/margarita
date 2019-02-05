@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { shallow, render, fireEvent } from 'react-native-testing-library';
+
 import OptionPicker, { filterOptions } from '../OptionPicker';
 import options, { Prague, Berlin } from '../mocks/places';
 import { Badge } from '../../Badge';
@@ -35,7 +36,7 @@ describe('OptionPicker', () => {
       onPressAdd={onPressAdd}
       onPressItem={onPressItem}
       onSelectedChange={onSelectedChange}
-    />
+    />,
   );
   test('passed the props', () => {
     expect(
@@ -47,7 +48,7 @@ describe('OptionPicker', () => {
         onSelectedChange,
         label,
         placeholder,
-      })
+      }),
     ).toBeDefined();
     expect(getByText(label)).toBeDefined();
     expect(getByPlaceholder(placeholder)).toBeDefined();
@@ -83,7 +84,7 @@ describe('OptionPicker', () => {
         onChangeText={onChangeText}
         label={label}
         placeholder={placeholder}
-      />
+      />,
     );
 
     expect(output).toMatchSnapshot();

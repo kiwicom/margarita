@@ -3,12 +3,11 @@
 import * as React from 'react';
 import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { getStatusBarHeight } from '../utils/StatusBarHeight';
 
+import { getStatusBarHeight } from '../utils/StatusBarHeight';
 import { StyleSheet } from '../PlatformStyleSheet';
 import InformativeNotification from './InformativeNotification';
 import ImportantNotification from './ImportantNotification';
-
 import type {
   OnLayout,
   NotificationStyleType,
@@ -53,18 +52,18 @@ export default class Notification extends React.Component<Props, State> {
     notificationMessage: '',
   };
 
-  lastCallTimestamp = null;
-  defferedHideAlert = undefined;
-  hideTimeout: TimeoutID;
-
   componentWillUnmount() {
     clearTimeout(this.hideTimeout);
   }
 
+  defferedHideAlert = undefined;
+  hideTimeout: TimeoutID;
+  lastCallTimestamp = null;
+
   internalToggleNotification(
     notificationStyle: NotificationStyleType,
     title: React.Node | string,
-    message: React.Node | string
+    message: React.Node | string,
   ) {
     const { isOpen } = this.state;
     const { notificationType } = this.props;
@@ -78,10 +77,10 @@ export default class Notification extends React.Component<Props, State> {
           notificationTitle: title,
           notificationMessage: message,
         },
-        () => this.showNotification()
+        () => this.showNotification(),
       );
-    } else {
-      isInformative && this.hideNotification();
+    } else if (isInformative) {
+      this.hideNotification();
     }
   }
 
@@ -110,7 +109,7 @@ export default class Notification extends React.Component<Props, State> {
   toggleNotification = (
     notificationStyle: NotificationStyleType,
     title: React.Node | string,
-    message: React.Node | string
+    message: React.Node | string,
   ) => {
     const { notificationType } = this.props;
     const { isOpen } = this.state;
@@ -132,7 +131,7 @@ export default class Notification extends React.Component<Props, State> {
       this.internalToggleNotification(notificationStyle, title, message);
       this.defferedHideAlert = setTimeout(
         () => this.hideNotification(),
-        DISPLAY_DURATION
+        DISPLAY_DURATION,
       );
     }
 
@@ -144,7 +143,7 @@ export default class Notification extends React.Component<Props, State> {
       clearTimeout(this.defferedHideAlert);
       this.defferedHideAlert = setTimeout(
         () => this.hideNotification(),
-        DISPLAY_DURATION
+        DISPLAY_DURATION,
       );
     }
 
@@ -190,7 +189,7 @@ export default class Notification extends React.Component<Props, State> {
   dismissNotification = () => {
     const { onDismiss } = this.props;
     this.hideNotification();
-    onDismiss && onDismiss();
+    onDismiss?.();
   };
 
   render() {

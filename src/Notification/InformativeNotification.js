@@ -6,7 +6,6 @@ import { Animated } from 'react-native';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
-
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|

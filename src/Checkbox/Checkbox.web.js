@@ -3,6 +3,7 @@
 /* eslint jsx-a11y/label-has-associated-control: 0 jsx-a11y/label-has-for:0 */
 
 import * as React from 'react';
+
 import CheckboxShared from './CheckboxShared';
 import type { Props } from './CheckboxTypes';
 
