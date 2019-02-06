@@ -9,13 +9,14 @@ import {
 } from '../dataloaders/ItinerariesloaderTypes';
 import createLocationLoader, {
   type Locations,
+  type LocationInput,
 } from '../dataloaders/Locationsloader';
 import bookingsLoader, { type Booking } from '../dataloaders/BookingsLoader';
 
 export type GraphqlContextType = {|
   +dataLoader: {|
     +itineraries: DataLoader<ItinerariesSearchParameters, ItinerariesType[]>,
-    +locations: DataLoader<{ term: string }, Locations>,
+    +locations: DataLoader<LocationInput, Locations>,
     +bookings: {| +load: () => Booking[] |},
   |},
 |};

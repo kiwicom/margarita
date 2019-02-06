@@ -13,6 +13,7 @@ describe('locationsByTerm query', () => {
             id
             slug
             name
+            countryFlagURL
           }
         }
       }
@@ -30,6 +31,7 @@ Object {
       "edges": Array [
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
             "id": "TG9jYXRpb246cHJhZ3VlX2N6",
             "name": "Prague",
             "slug": "prague-czechia",
@@ -37,6 +39,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246UFJH",
             "name": "Václav Havel Airport Prague",
             "slug": "vaclav-havel-airport-prague-prague-czechia",
@@ -44,6 +47,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
             "id": "TG9jYXRpb246cHJhZ3VlLWNhc3RsZV9wb2k=",
             "name": "Prague Castle",
             "slug": "prague-castle",
@@ -51,6 +55,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
             "id": "TG9jYXRpb246b2xkLXRvd24tc3F1YXJlLXByYWd1ZV9wb2k=",
             "name": "Old Town Square, Prague",
             "slug": "old-town-square",
@@ -58,6 +63,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246Q1otUFJBRy1QUkE2",
             "name": "Prague ,Hradčanská",
             "slug": "prague-prague-czechia",
@@ -65,6 +71,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246UEZM",
             "name": "Prague - Florenc Bus Station",
             "slug": "florenc-bus-station-prague-czechia",
@@ -72,6 +79,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246Q1otUFJBRy1QUkEy",
             "name": "Prague - Libeň",
             "slug": "prague-liben-prague-czechia",
@@ -79,6 +87,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246Q1otUFJBRy1QUkFH",
             "name": "Prague Anděl",
             "slug": "prague-andel-prague-czechia",
@@ -86,6 +95,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246Q1otUFJBRy1QUkEw",
             "name": "Prague East (Černý Most)",
             "slug": "prague-east-cerny-most-prague-czechia",
@@ -93,6 +103,7 @@ Object {
         },
         Object {
           "node": Object {
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
             "id": "TG9jYXRpb246Q1otUFJBRy1QUkE0",
             "name": "Prague Roztyly",
             "slug": "prague-roztyly-prague-czechia",
