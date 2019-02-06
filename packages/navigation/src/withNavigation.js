@@ -14,10 +14,8 @@ type Props = {
 
 export const withNavigation = <PassedProps: {}>(
   WrappedComponent: React.ComponentType<PassedProps>,
-): React.ComponentType<$Diff<PassedProps, Props>> => {
-  return class extends React.Component<PassedProps> {
-    render() {
-      return <WrappedComponent {...this.props} navigation={{ navigate }} />;
-    }
-  };
+): React.StatelessFunctionalComponent<$Diff<PassedProps, Props>> => {
+  return (props: PassedProps) => (
+    <WrappedComponent {...props} navigation={{ navigate }} />
+  );
 };
