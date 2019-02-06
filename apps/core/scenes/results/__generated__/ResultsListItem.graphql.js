@@ -13,42 +13,31 @@ declare export opaque type ResultsListItem$ref: FragmentReference;
 export type ResultsListItem = {|
   +sectors: ?$ReadOnlyArray<?{|
     +duration: ?number,
-    +departureTime: ?{|
-      +local: ?any,
-      +utc: ?any,
-    |},
-    +arrivalTime: ?{|
-      +local: ?any,
-      +utc: ?any,
-    |},
     +destination: ?{|
-      +name: ?string,
-      +locationId: ?string,
+      +name: ?string
     |},
     +origin: ?{|
-      +name: ?string,
-      +locationId: ?string,
+      +name: ?string
     |},
     +segments: ?$ReadOnlyArray<?{|
-      +departureTime: ?{|
-        +local: ?any,
-        +utc: ?any,
-      |},
-      +duration: ?number,
+      +id: string,
       +arrivalTime: ?{|
         +local: ?any,
         +utc: ?any,
       |},
-      +transporter: ?{|
-        +name: ?string
+      +departureTime: ?{|
+        +local: ?any,
+        +utc: ?any,
       |},
       +destination: ?{|
-        +name: ?string,
-        +locationId: ?string,
+        +name: ?string
       |},
+      +duration: ?number,
       +origin: ?{|
-        +name: ?string,
-        +locationId: ?string,
+        +name: ?string
+      |},
+      +transporter: ?{|
+        +name: ?string
       |},
     |}>,
   |}>,
@@ -73,6 +62,35 @@ v1 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "name",
+    "args": null,
+    "storageKey": null
+  }
+],
+v2 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "destination",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Location",
+  "plural": false,
+  "selections": v1
+},
+v3 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "origin",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Location",
+  "plural": false,
+  "selections": v1
+},
+v4 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "local",
     "args": null,
     "storageKey": null
@@ -84,64 +102,7 @@ v1 = [
     "args": null,
     "storageKey": null
   }
-],
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "departureTime",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "DateType",
-  "plural": false,
-  "selections": v1
-},
-v3 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "arrivalTime",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "DateType",
-  "plural": false,
-  "selections": v1
-},
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = [
-  v4,
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "locationId",
-    "args": null,
-    "storageKey": null
-  }
-],
-v6 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "destination",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Location",
-  "plural": false,
-  "selections": v5
-},
-v7 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "origin",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Location",
-  "plural": false,
-  "selections": v5
-};
+];
 return {
   "kind": "Fragment",
   "name": "ResultsListItem",
@@ -161,8 +122,6 @@ return {
         v0,
         v2,
         v3,
-        v6,
-        v7,
         {
           "kind": "LinkedField",
           "alias": null,
@@ -172,6 +131,33 @@ return {
           "concreteType": "Segment",
           "plural": true,
           "selections": [
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "id",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "arrivalTime",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "DateType",
+              "plural": false,
+              "selections": v4
+            },
+            {
+              "kind": "LinkedField",
+              "alias": null,
+              "name": "departureTime",
+              "storageKey": null,
+              "args": null,
+              "concreteType": "DateType",
+              "plural": false,
+              "selections": v4
+            },
             v2,
             v0,
             v3,
@@ -183,12 +169,8 @@ return {
               "args": null,
               "concreteType": "Transporter",
               "plural": false,
-              "selections": [
-                v4
-              ]
-            },
-            v6,
-            v7
+              "selections": v1
+            }
           ]
         }
       ]
@@ -222,5 +204,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c83cc6c9a4071a50bc1480bbe29c8668';
+(node/*: any*/).hash = '362c14dcf0762d9e5d99f8c560bd68a2';
 module.exports = node;

@@ -1,55 +1,48 @@
 // @flow
 
-export type Price = {|
-  +amount: ?number,
-  +currency: ?string,
-|};
-
-export type Time = {|
-  +local: ?string,
-  +utc: ?string,
-|};
+import BadgesContainer from './BadgesContainer';
 
 export type Transporter = {|
   +name: ?string,
 |};
 
-export type Vehicle = {|
-  +type: ?string,
-  +uniqueNo: ?string,
-|};
-export type LocationArea = {|
-  +id: ?string,
-  +code: ?string,
-  +locationId: ?string,
-  +name: ?string,
-  +slug: ?string,
-  +flagURL: ?string,
+export type Segment = {|
+  +id?: string,
+  +arrivalTime: ?{|
+    +local: ?any,
+    +utc: ?any,
+  |},
+  +departureTime: ?{|
+    +local: ?any,
+    +utc: ?any,
+  |},
+  +destination: ?{|
+    +name: ?string,
+  |},
+  +duration: ?number,
+  +origin: ?{|
+    +name: ?string,
+  |},
+  +transporter: ?Transporter,
 |};
 
-export type Location = {|
-  +id: ?string,
-  +locationId: ?string,
-  +name: ?string,
-  +timezone: ?string,
-  +country: ?LocationArea,
-  +slug: ?string,
-|};
-export type Segment = {|
-  +arrivalTime: ?Time,
-  +departureTime: ?Time,
-  +destination: ?Location,
-  +duration: ?number,
-  +id: ?string,
-  +origin: ?Location,
-  +transporter: ?Transporter | ?Array<?Transporter>,
-  +vehicle: ?Vehicle | ?Array<?Vehicle>,
-|};
 export type Sector = {|
-  +arrivalTime: ?Time,
-  +departureTime: ?Time,
-  +destination: ?Location,
   +duration: ?number,
-  +origin: ?Location,
-  +segments: ?Array<Segment>,
+  +destination: ?{|
+    +name: ?string,
+  |},
+  +origin: ?{|
+    +name: ?string,
+  |},
+  +segments: ?$ReadOnlyArray<?Segment>,
+  +transporters: ?Array<?Transporter>,
+|};
+
+export type ItineraryCardProps = {|
+  +sectors?: ?$ReadOnlyArray<?Sector>,
+  ...React.ElementProps<typeof BadgesContainer>,
+  +price: {|
+    +amount: number,
+    +currency: string,
+  |},
 |};

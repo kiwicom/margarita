@@ -7,11 +7,31 @@ import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { uniq } from 'ramda';
 
-import type { Segment } from './ItineraryCardTypes';
+import type { Segment, Transporter } from './ItineraryCardTypes';
 import TimelineArrow from './TimelineArrow';
 
 type Props = {|
-  +segment: Segment,
+  +segment: ?{|
+    +id?: string,
+    +arrivalTime: ?{|
+      +local: ?any,
+      +utc: ?any,
+    |},
+    +departureTime: ?{|
+      +local: ?any,
+      +utc: ?any,
+    |},
+    +destination: ?{|
+      +name: ?string,
+    |},
+    +duration: ?number,
+    +origin: ?{|
+      +name: ?string,
+    |},
+    +transporter: ?Array<?Transporter>,
+  |},
+
+  // ?Segment,
 |};
 const timeSimpleFormat = 'H:mm';
 const dateFormat = 'ddd D MMM';
@@ -26,60 +46,54 @@ const getDuration = durationInMinutes => {
   );
 };
 
-const mapCarriers = transporters => {
+const mapTransporters = transporters => {
   const carriers =
-    transporters && Array.isArray(transporters)
-      ? uniq(
-          transporters.map(t => ({
-            name: '',
-            code: t && t.name,
-          })),
-        )
-      : [
-          {
-            name: '',
-            code: transporters?.name,
-          },
-        ];
+    transporters &&
+    uniq(
+      transporters.map(transporter => ({
+        name: '',
+        code: transporter && transporter.name,
+      })),
+    );
 
   return carriers;
 };
 
 export default function TripSegment({ segment }: Props) {
-  console.log('segment.transporter', segment.transporter);
+  console.log('segment.transporter', segment?.transporter);
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.carrierLogo}>
           <CarrierLogo
             size="medium"
-            carriers={mapCarriers(segment.transporter)}
+            carriers={mapTransporters(segment?.transporter)}
           />
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
             <Text style={styles.highlightedText} numberOfLines={1}>
-              {getFormattedDate(segment.departureTime?.local)}
+              {getFormattedDate(segment?.departureTime?.local)}
             </Text>
             <Text style={styles.highlightedText} numberOfLines={1}>
-              {getFormattedDate(segment.arrivalTime?.local)}
+              {getFormattedDate(segment?.arrivalTime?.local)}
             </Text>
           </View>
           <TimelineArrow />
           <View style={styles.places}>
             <Text style={styles.text} numberOfLines={1}>
-              {segment.origin?.name}
+              {segment?.origin?.name}
             </Text>
             <Text style={styles.text} numberOfLines={1}>
-              {segment.destination?.name}
+              {segment?.destination?.name}
             </Text>
           </View>
           <View style={styles.infoItems}>
             <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {getFormattedDate(segment.departureTime?.local, dateFormat)}
+              {getFormattedDate(segment?.departureTime?.local, dateFormat)}
             </Text>
             <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {getDuration(segment.duration)}
+              {getDuration(segment?.duration)}
             </Text>
           </View>
         </View>

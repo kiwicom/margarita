@@ -6,7 +6,10 @@ import * as DateFNS from 'date-fns';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { ItineraryCard } from '@kiwicom/margarita-components';
+import {
+  ItineraryCard,
+  type ItineraryCardProps,
+} from '@kiwicom/margarita-components';
 
 import type { ResultsListItem as ResultsListItemType } from './__generated__/ResultsListItem.graphql';
 
@@ -14,13 +17,27 @@ type Props = {|
   +data: ResultsListItemType,
 |};
 
-export type Route = $PropertyType<ResultsListItemType, 'route'>;
-export type RouteItem = $ElementType<$NonMaybeType<Route>, number>; // number because arrays are number-indexed
+export type Sectors = $PropertyType<ResultsListItemType, 'sectors'>;
+export type Sectors2 = $PropertyType<ItineraryCardProps, 'sectors'>;
+// export type RouteItem = $ElementType<$NonMaybeType<Route>, number>; // number because arrays are number-indexed
 
 class ResultListItem extends React.Component<Props> {
   parseDate = (date: ?Date) => {
     if (date) return DateFNS.parse(date);
     return null;
+  };
+
+  sanitizeSectors = (sectors: Sectors) => {
+    return (
+      sectors &&
+      sectors.map<Sectors2>(sector => ({
+        ...sector,
+        transporters:
+          sector &&
+          sector.segments &&
+          sector.segments.map(segment => segment && segment.transporter),
+      }))
+    );
   };
 
   render() {
@@ -31,7 +48,7 @@ class ResultListItem extends React.Component<Props> {
 
     const { price, sectors } = data;
 
-    console.log('sectors___', data);
+    console.log('sectors', data);
     // @TODO use real badges
     const badges = [
       {
@@ -54,7 +71,7 @@ class ResultListItem extends React.Component<Props> {
     return (
       <View style={styles.card}>
         <ItineraryCard
-          sectors={sectors}
+          sectors={this.sanitizeSectors(sectors)}
           collapsedSectors={true}
           badges={badges}
           price={priceObject}
@@ -70,43 +87,29 @@ export default createFragmentContainer(
     fragment ResultsListItem on Itinerary {
       sectors {
         duration
-        departureTime {
-          local
-          utc
-        }
-        arrivalTime {
-          local
-          utc
-        }
         destination {
           name
-          locationId
         }
         origin {
           name
-          locationId
         }
-        segments {
-          departureTime {
-            local
-            utc
-          }
-          duration
 
+        segments {
+          id
           arrivalTime {
             local
             utc
           }
-          transporter {
-            name
+          departureTime {
+            local
+            utc
           }
           destination {
             name
-            locationId
           }
+          duration
           origin {
             name
-            locationId
           }
           transporter {
             name
