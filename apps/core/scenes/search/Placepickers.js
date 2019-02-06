@@ -9,39 +9,54 @@ import {
 import { Icon, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { withSearchContext, type SearchContextState } from './SearchContext';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type ModalTypes,
+} from './SearchContext';
+import { MODAL_TYPE } from './SearchConstants';
 
 type Props = {|
   +travelFrom: string,
   +travelTo: string,
   +handlePlaceSwitchPress: () => void,
+  +setModalType: ModalTypes => void,
 |};
 
-const handlePlacePress = () => {
-  console.log('TODO'); // eslint-disable-line no-console
-};
+class Placepickers extends React.Component<Props> {
+  handleFromPress = () => {
+    this.props.setModalType(MODAL_TYPE.ORIGIN);
+  };
 
-const Placepickers = (props: Props) => (
-  <View>
-    <TripInput
-      onPress={handlePlacePress}
-      label="From"
-      icon={<Icon name="airplane-takeoff" />}
-      value={props.travelFrom}
-    />
-    <TouchableWithoutFeedback onPress={props.handlePlaceSwitchPress}>
-      <View style={styles.placeSwitch}>
-        <Icon name="replace" color="#7F91A8" />
+  handleToPress = () => {
+    this.props.setModalType(MODAL_TYPE.DESTINATION);
+  };
+
+  render() {
+    const { travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
+    return (
+      <View>
+        <TripInput
+          onPress={this.handleFromPress}
+          label="From"
+          icon={<Icon name="airplane-takeoff" />}
+          value={travelFrom}
+        />
+        <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
+          <View style={styles.placeSwitch}>
+            <Icon name="replace" color="#7F91A8" />
+          </View>
+        </TouchableWithoutFeedback>
+        <TripInput
+          onPress={this.handleToPress}
+          label="To"
+          icon={<Icon name="airplane-landing" />}
+          value={travelTo}
+        />
       </View>
-    </TouchableWithoutFeedback>
-    <TripInput
-      onPress={handlePlacePress}
-      label="To"
-      icon={<Icon name="airplane-landing" />}
-      value={props.travelTo}
-    />
-  </View>
-);
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   placeSwitch: {
@@ -69,11 +84,12 @@ const styles = StyleSheet.create({
 const select = ({
   travelFrom,
   travelTo,
-  actions: { switchFromTo },
+  actions: { switchFromTo, setModalType },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
   handlePlaceSwitchPress: switchFromTo,
+  setModalType,
 });
 
 export default withSearchContext(select)(Placepickers);
