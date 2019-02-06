@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7c57eb0b891179451125ff04ebc3d54a
+ * @relayHash 2cd7a8e4b173416c249b8995e34ecaf5
  */
 
 /* eslint-disable */
@@ -52,12 +52,12 @@ fragment ResultsList on ItineraryConnection {
   edges {
     node {
       id
-      ...ResultsListItem
+      ...ItineraryCard
     }
   }
 }
 
-fragment ResultsListItem on Itinerary {
+fragment ItineraryCard on Itinerary {
   sectors {
     duration
     destination {
@@ -182,7 +182,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  sectors {\n    duration\n    destination {\n      name\n      id\n    }\n    origin {\n      name\n      id\n    }\n    segments {\n      id\n      arrivalTime {\n        local\n        utc\n      }\n      departureTime {\n        local\n        utc\n      }\n      destination {\n        name\n        id\n      }\n      duration\n      origin {\n        name\n        id\n      }\n      transporter {\n        name\n      }\n    }\n  }\n  price {\n    currency\n    amount\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    duration\n    destination {\n      name\n      id\n    }\n    origin {\n      name\n      id\n    }\n    segments {\n      id\n      arrivalTime {\n        local\n        utc\n      }\n      departureTime {\n        local\n        utc\n      }\n      destination {\n        name\n        id\n      }\n      duration\n      origin {\n        name\n        id\n      }\n      transporter {\n        name\n      }\n    }\n  }\n  price {\n    currency\n    amount\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

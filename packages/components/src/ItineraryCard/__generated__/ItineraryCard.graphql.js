@@ -9,8 +9,8 @@
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ResultsListItem$ref: FragmentReference;
-export type ResultsListItem = {|
+declare export opaque type ItineraryCard$ref: FragmentReference;
+export type ItineraryCard = {|
   +sectors: ?$ReadOnlyArray<?{|
     +duration: ?number,
     +destination: ?{|
@@ -45,7 +45,7 @@ export type ResultsListItem = {|
     +currency: ?string,
     +amount: ?number,
   |},
-  +$refType: ResultsListItem$ref,
+  +$refType: ItineraryCard$ref,
 |};
 */
 
@@ -105,7 +105,7 @@ v4 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "ResultsListItem",
+  "name": "ItineraryCard",
   "type": "Itinerary",
   "metadata": null,
   "argumentDefinitions": [],
@@ -204,5 +204,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '362c14dcf0762d9e5d99f8c560bd68a2';
+(node/*: any*/).hash = '78f9be914ee2248c942a0c154d6690a1';
 module.exports = node;

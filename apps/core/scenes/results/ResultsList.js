@@ -7,11 +7,10 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
 import {
   ItineraryCard,
-  type ItineraryCardProps,
+  type ItineraryCardType,
 } from '@kiwicom/margarita-components';
 
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
-import ResultListItem from './ResultsListItem';
 import EmptyResults from './EmptyResults';
 
 type Props = {|
@@ -29,7 +28,7 @@ type ResultItemType = {|
 class ResultsList extends React.Component<Props> {
   resultItem = ({ item }: {| +item: ResultItemType |}) => {
     if (item.node) {
-      return <ResultListItem data={item.node} />;
+      return <ItineraryCard data={item.node} />;
     }
     return null;
   };
@@ -60,7 +59,7 @@ export default createFragmentContainer(
       edges {
         node {
           id
-          ...ResultsListItem
+          ...ItineraryCard
         }
       }
     }

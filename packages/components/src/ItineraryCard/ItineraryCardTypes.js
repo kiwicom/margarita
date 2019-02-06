@@ -39,10 +39,11 @@ export type Sector = {|
 |};
 
 export type ItineraryCardProps = {|
-  +sectors?: ?$ReadOnlyArray<?Sector>,
-  ...React.ElementProps<typeof BadgesContainer>,
-  +price: {|
-    +amount: number,
-    +currency: string,
-  |},
+  // +sectors?: ?$ReadOnlyArray<?Sector>,
+  // ...React.ElementProps<typeof BadgesContainer>,
+  // +price: {|
+  //   +amount: number,
+  //   +currency: string,
+  // |},
+  data: any,
 |};
