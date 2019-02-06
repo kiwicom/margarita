@@ -1,5 +1,6 @@
 // @flow
 
+import { View, Text } from 'react-native';
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
 
@@ -47,8 +48,11 @@ class SearchModal extends React.Component<Props> {
 
   render() {
     return (
-      <Modal visible={this.props.modalType !== 'HIDDEN'} onClose={this.onClose}>
-        {this.props.modalType === 'TRIP_TYPE' && (
+      <Modal
+        visible={this.props.modalType !== MODAL_TYPE.HIDDEN}
+        onClose={this.onClose}
+      >
+        {this.props.modalType === MODAL_TYPE.TRIP_TYPE && (
           <Select
             optionsData={TRIP_TYPE}
             selectedType={this.props.tripType}
@@ -56,7 +60,7 @@ class SearchModal extends React.Component<Props> {
             onClosePress={this.onClose}
           />
         )}
-        {this.props.modalType === 'PASSENGERS' && (
+        {this.props.modalType === MODAL_TYPE.PASSENGERS && (
           <PassengersInputs
             adults={this.props.adults}
             infants={this.props.infants}
@@ -64,6 +68,11 @@ class SearchModal extends React.Component<Props> {
             onClosePress={this.onClose}
             onSavePress={this.handlePassengersSave}
           />
+        )}
+        {this.props.modalType === MODAL_TYPE.DEPARTURE && (
+          <View>
+            <Text>DEPARTURE</Text>
+          </View>
         )}
       </Modal>
     );
