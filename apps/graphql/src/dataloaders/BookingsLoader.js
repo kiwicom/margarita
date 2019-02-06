@@ -33,10 +33,11 @@ type RouteStopTime = {|
   +local: Date,
 |};
 
-type RouteStop = {|
+export type RouteStop = {|
   +cityName: string,
   +cityId: string,
   +time: RouteStopTime,
+  +code: string,
 |};
 
 export type Booking = {|
@@ -63,6 +64,7 @@ const sanitizeRouteStop = (departureArrival: ApiRouteStop) => {
   return {
     cityName: departureArrival.where.name,
     cityId: departureArrival.where.city_id,
+    code: departureArrival.where.code,
     time: {
       utc: departureArrival.when.utc,
       local: departureArrival.when.local,

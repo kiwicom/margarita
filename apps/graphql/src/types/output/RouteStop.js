@@ -3,6 +3,9 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
 import GraphQLSegmentTime from './SegmentTime';
+import GraphQLLocation from './Location';
+import type { RouteStop } from '../../dataloaders/BookingsLoader';
+import type { GraphqlContextType } from '../../services/GraphQLContext';
 
 export default new GraphQLObjectType({
   name: 'RouteStop',
@@ -16,6 +19,20 @@ export default new GraphQLObjectType({
     },
     time: {
       type: GraphQLSegmentTime,
+    },
+    airport: {
+      type: GraphQLLocation,
+      resolve: async (
+        { code }: RouteStop,
+        _: mixed,
+        { dataLoader }: GraphqlContextType,
+      ) => {
+        const airport = await dataLoader.locations.load({ code });
+        if (!Array.isArray(airport) || airport.length < 1) {
+          return null;
+        }
+        return airport[0];
+      },
     },
   },
 });

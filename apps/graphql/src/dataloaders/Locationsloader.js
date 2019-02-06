@@ -9,6 +9,14 @@ import { type ApiResponse, type Location } from './LocationsloaderTypes';
 
 export type Locations = $ReadOnlyArray<Location>;
 
+export type LocationInput =
+  | {|
+      +term: string,
+    |}
+  | {|
+      +code: string,
+    |};
+
 function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
   return locations.map(location => ({
     id: location.id,
@@ -27,9 +35,15 @@ function sanitizeLocations(locations: $PropertyType<ApiResponse, 'locations'>) {
   }));
 }
 
-const fetchLocations = async (ids: $ReadOnlyArray<{| +term: string |}>) => {
+const fetchLocations = async (params: $ReadOnlyArray<LocationInput>) => {
   const data = await Promise.all(
-    ids.map(({ term }) => fetch(`/locations/query?${qs.stringify({ term })}`)),
+    params.map(param => {
+      if (param.term !== undefined) {
+        return fetch(`/locations/query?${qs.stringify({ term: param.term })}`);
+      }
+
+      return fetch(`/locations/id?id=${param.code}`);
+    }),
   );
   return data.map(({ locations }) => sanitizeLocations(locations));
 };
@@ -37,7 +51,7 @@ const fetchLocations = async (ids: $ReadOnlyArray<{| +term: string |}>) => {
 export default () =>
   new OptimisticDataloader(
     async (
-      ids: $ReadOnlyArray<{| +term: string |}>,
+      ids: $ReadOnlyArray<LocationInput>,
     ): Promise<Array<Location[] | Error>> => fetchLocations(ids),
     {
       cacheKeyFn: stringify,

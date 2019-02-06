@@ -204,6 +204,9 @@ type Price {
 }
 
 type RootQuery {
+  """Find a booking by its id"""
+  bookingDetail(id: ID!): CustomerBooking
+
   """Retrieve all your bookings."""
   customerBookings(after: String, first: Int, before: String, last: Int): CustomerBookingConnection
 
