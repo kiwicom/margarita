@@ -13,7 +13,8 @@
   "dependencies": {
     "@kiwicom/margarita-utils": "^0",
     "@kiwicom/universal-components": "0.0.11",
-    "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo"
+    "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^4.0.7",

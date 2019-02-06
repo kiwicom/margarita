@@ -8,38 +8,12 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type TripSegment$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard$ref: FragmentReference;
 export type ItineraryCard = {|
   +sectors: ?$ReadOnlyArray<?{|
-    +duration: ?number,
-    +destination: ?{|
-      +name: ?string
-    |},
-    +origin: ?{|
-      +name: ?string
-    |},
-    +segments: ?$ReadOnlyArray<?{|
-      +id: string,
-      +arrivalTime: ?{|
-        +local: ?any,
-        +utc: ?any,
-      |},
-      +departureTime: ?{|
-        +local: ?any,
-        +utc: ?any,
-      |},
-      +destination: ?{|
-        +name: ?string
-      |},
-      +duration: ?number,
-      +origin: ?{|
-        +name: ?string
-      |},
-      +transporter: ?{|
-        +name: ?string
-      |},
-    |}>,
+    +$fragmentRefs: TripSegment$ref
   |}>,
   +price: ?{|
     +currency: ?string,
@@ -50,60 +24,7 @@ export type ItineraryCard = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "duration",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "name",
-    "args": null,
-    "storageKey": null
-  }
-],
-v2 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "destination",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Location",
-  "plural": false,
-  "selections": v1
-},
-v3 = {
-  "kind": "LinkedField",
-  "alias": null,
-  "name": "origin",
-  "storageKey": null,
-  "args": null,
-  "concreteType": "Location",
-  "plural": false,
-  "selections": v1
-},
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "local",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "utc",
-    "args": null,
-    "storageKey": null
-  }
-];
-return {
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "ItineraryCard",
   "type": "Itinerary",
@@ -119,59 +40,10 @@ return {
       "concreteType": "Sector",
       "plural": true,
       "selections": [
-        v0,
-        v2,
-        v3,
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "segments",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Segment",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "name": "id",
-              "args": null,
-              "storageKey": null
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "arrivalTime",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "DateType",
-              "plural": false,
-              "selections": v4
-            },
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "departureTime",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "DateType",
-              "plural": false,
-              "selections": v4
-            },
-            v2,
-            v0,
-            v3,
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "transporter",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Transporter",
-              "plural": false,
-              "selections": v1
-            }
-          ]
+          "kind": "FragmentSpread",
+          "name": "TripSegment",
+          "args": null
         }
       ]
     },
@@ -202,7 +74,6 @@ return {
     }
   ]
 };
-})();
 // prettier-ignore
-(node/*: any*/).hash = '78f9be914ee2248c942a0c154d6690a1';
+(node/*: any*/).hash = '75596e3d1609d264065f449c0c9744c6';
 module.exports = node;

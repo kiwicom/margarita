@@ -6,32 +6,13 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { uniq } from 'ramda';
+import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { Segment, Transporter } from './ItineraryCardTypes';
+import type { TripSegment as TripSegmentType } from './__generated__/TripSegment.graphql';
 import TimelineArrow from './TimelineArrow';
 
 type Props = {|
-  +segment: ?{|
-    +id?: string,
-    +arrivalTime: ?{|
-      +local: ?any,
-      +utc: ?any,
-    |},
-    +departureTime: ?{|
-      +local: ?any,
-      +utc: ?any,
-    |},
-    +destination: ?{|
-      +name: ?string,
-    |},
-    +duration: ?number,
-    +origin: ?{|
-      +name: ?string,
-    |},
-    +transporter: ?Array<?Transporter>,
-  |},
-
-  // ?Segment,
+  +data: ?TripSegmentType,
 |};
 const timeSimpleFormat = 'H:mm';
 const dateFormat = 'ddd D MMM';
@@ -46,54 +27,56 @@ const getDuration = durationInMinutes => {
   );
 };
 
-const mapTransporters = transporters => {
+const mapTransporters = segments => {
   const carriers =
-    transporters &&
+    segments &&
     uniq(
-      transporters.map(transporter => ({
+      segments.map(segment => ({
         name: '',
-        code: transporter && transporter.name,
+        code: segment && segment.transporter?.name,
       })),
     );
 
   return carriers;
 };
 
-export default function TripSegment({ segment }: Props) {
-  console.log('segment.transporter', segment?.transporter);
+function TripSegment({ data }: Props) {
+  const firstSegment = data?.segments?.[0];
+  const lastSegment =
+    data && data.segments && data.segments[data.segments.length - 1];
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.carrierLogo}>
           <CarrierLogo
             size="medium"
-            carriers={mapTransporters(segment?.transporter)}
+            carriers={mapTransporters(data?.segments)}
           />
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
             <Text style={styles.highlightedText} numberOfLines={1}>
-              {getFormattedDate(segment?.departureTime?.local)}
+              {getFormattedDate(firstSegment?.departureTime?.local)}
             </Text>
             <Text style={styles.highlightedText} numberOfLines={1}>
-              {getFormattedDate(segment?.arrivalTime?.local)}
+              {getFormattedDate(lastSegment?.arrivalTime?.local)}
             </Text>
           </View>
           <TimelineArrow />
           <View style={styles.places}>
             <Text style={styles.text} numberOfLines={1}>
-              {segment?.origin?.name}
+              {firstSegment?.origin?.name}
             </Text>
             <Text style={styles.text} numberOfLines={1}>
-              {segment?.destination?.name}
+              {lastSegment?.destination?.name}
             </Text>
           </View>
           <View style={styles.infoItems}>
             <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {getFormattedDate(segment?.departureTime?.local, dateFormat)}
+              {getFormattedDate(firstSegment?.departureTime?.local, dateFormat)}
             </Text>
             <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {getDuration(segment?.duration)}
+              {getDuration(data?.duration)}
             </Text>
           </View>
         </View>
@@ -101,6 +84,33 @@ export default function TripSegment({ segment }: Props) {
     </View>
   );
 }
+
+export default createFragmentContainer(
+  TripSegment,
+  graphql`
+    fragment TripSegment on Sector {
+      duration
+      segments {
+        arrivalTime {
+          local
+        }
+        departureTime {
+          local
+        }
+        destination {
+          name
+        }
+        duration
+        origin {
+          name
+        }
+        transporter {
+          name
+        }
+      }
+    }
+  `,
+);
 
 const styles = StyleSheet.create({
   container: {

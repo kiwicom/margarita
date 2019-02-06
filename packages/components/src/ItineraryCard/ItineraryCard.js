@@ -1,47 +1,47 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, FlatList } from 'react-native';
+import shortid from 'shortid';
 import { LocalizedPrice, StyleSheet } from '@kiwicom/universal-components';
 import { formatPrice } from '@kiwicom/margarita-utils';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import ItineraryCardRow from './ItineraryCardRow';
-import type { ItineraryCardProps } from './ItineraryCardTypes';
 import BadgesContainer from './BadgesContainer';
 import HorizontalDash from './HorizontalDash';
-import CollapsedSector from './CollapsedSector';
-// import type { ItineraryCard as ItineraryCardType } from './__generated__/ItineraryCard.graphql';
+import TripSegment from './TripSegment';
+import type { TripSegment as TripSegmentType } from './__generated__/TripSegment.graphql';
+import type { ItineraryCard as ItineraryCardType } from './__generated__/ItineraryCard.graphql';
 
 type Props = {|
-  +data: any,
+  +data: ItineraryCardType,
 |};
-// export type Sectors = $PropertyType<ItineraryCardType, 'sectors'>;
-export type Sectors2 = $PropertyType<ItineraryCardProps, 'sectors'>;
+
+type SectorItem = {|
+  item: ?TripSegmentType,
+|};
 
 class ItineraryCard extends React.Component<Props> {
-  sanitizeSectors = (sectors: any) => {
-    return (
-      sectors &&
-      sectors.map<Sectors2>(sector => ({
-        ...sector,
-        transporters:
-          sector &&
-          sector.segments &&
-          sector.segments.map(segment => segment && segment.transporter),
-      }))
-    );
+  renderSectorItem = ({ item }: SectorItem) => {
+    if (item) {
+      return (
+        <ItineraryCardRow>
+          <TripSegment data={item} />
+        </ItineraryCardRow>
+      );
+    }
+    return null;
   };
+
+  keyExtractor = () => shortid.generate();
 
   render() {
     const { data } = this.props;
     if (data == null) {
       return null;
     }
-
-    const { price, sectors } = data;
-    const sanitizedSectors = this.sanitizeSectors(sectors);
     // @TODO use real badges
     const badges = [
       {
@@ -56,21 +56,17 @@ class ItineraryCard extends React.Component<Props> {
       },
     ];
     const priceObject = {
-      amount: parseFloat(price?.amount) ?? 0,
-      currency: price?.currency ?? 'CZK',
+      amount: parseFloat(data.price?.amount) ?? 0,
+      currency: data.price?.currency ?? 'CZK',
     };
-
     return (
       <View style={styles.card}>
         <View>
-          {sanitizedSectors &&
-            sanitizedSectors.map<React.Node>((sector, sectorIndex) => (
-              <CollapsedSector
-                sectors={sanitizedSectors}
-                sector={sector}
-                sectorIndex={sectorIndex}
-              />
-            ))}
+          <FlatList
+            data={data.sectors}
+            keyExtractor={this.keyExtractor}
+            renderItem={this.renderSectorItem}
+          />
           <HorizontalDash />
           <ItineraryCardRow style={styles.lastRow}>
             <BadgesContainer badges={badges} />
@@ -87,37 +83,8 @@ export default createFragmentContainer(
   graphql`
     fragment ItineraryCard on Itinerary {
       sectors {
-        duration
-        destination {
-          name
-        }
-        origin {
-          name
-        }
-
-        segments {
-          id
-          arrivalTime {
-            local
-            utc
-          }
-          departureTime {
-            local
-            utc
-          }
-          destination {
-            name
-          }
-          duration
-          origin {
-            name
-          }
-          transporter {
-            name
-          }
-        }
+        ...TripSegment
       }
-
       price {
         currency
         amount
