@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ios": "EXPO_DEBUG=true expo start --ios",
-    "android": "expo start --android",
+    "start": "EXPO_DEBUG=true expo start --clear",
     "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
-    "preios": "node link-workspaces.js",
-    "preandroid": "node link-workspaces.js",
+    "prestart": "node link-workspaces.js",
     "postinstall": "node scripts/configureApplication.js"
   },
   "private": true,

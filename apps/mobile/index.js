@@ -5,7 +5,10 @@ import * as Expo from 'expo';
 import { Buffer } from 'buffer';
 import Roboto from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-Regular.ttf';
 import OrbitIcons from '@kiwicom/universal-components/lib/fonts/orbit-icons.ttf';
+import { STORYBOOK } from 'react-native-dotenv';
 
+/* eslint-disable-next-line monorepo/no-relative-import */
+import StorybookUI from '../../packages/components/storybook/mobile';
 import SharedApp from './App';
 
 type Props = {||};
@@ -45,7 +48,7 @@ class App extends React.Component<Props, State> {
 
   render() {
     if (this.state.fontsLoaded) {
-      return <SharedApp />;
+      return STORYBOOK === 'true' ? <StorybookUI /> : <SharedApp />;
     }
     return null;
   }
