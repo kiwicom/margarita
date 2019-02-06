@@ -1,0 +1,23 @@
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
+{
+  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=") {
+    id
+    status
+    arrival {
+      ...RouteStopFragment
+    }
+    departure {
+      ...RouteStopFragment
+    }
+    destinationImageUrl
+    passengerCount
+  }
+}

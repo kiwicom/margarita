@@ -1,5 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`matches expected output: BookingDetail.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
+{
+  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=") {
+    id
+    status
+    arrival {
+      ...RouteStopFragment
+    }
+    departure {
+      ...RouteStopFragment
+    }
+    destinationImageUrl
+    passengerCount
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "bookingDetail": {
+      "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=",
+      "status": "confirmed",
+      "arrival": {
+        "cityName": "Paris",
+        "cityId": "paris_fr",
+        "time": {
+          "utc": "2017-09-09T21:30:00.000Z",
+          "local": "2017-09-09T23:30:00.000Z"
+        }
+      },
+      "departure": {
+        "cityName": "London",
+        "cityId": "london_gb",
+        "time": {
+          "utc": "2017-09-09T20:10:00.000Z",
+          "local": "2017-09-09T21:10:00.000Z"
+        }
+      },
+      "destinationImageUrl": "https://images.kiwi.com/photos/600x600/paris_fr.jpg",
+      "passengerCount": 2
+    }
+  }
+}
+`;
+
 exports[`matches expected output: CustomerBookings.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
 fragment RouteStopFragment on RouteStop {
