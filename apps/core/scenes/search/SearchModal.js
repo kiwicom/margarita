@@ -1,8 +1,9 @@
 // @flow
 
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
+import { Text, Icon } from '@kiwicom/universal-components';
 
 import { TRIP_TYPE, MODAL_TYPE } from './SearchConstants';
 import {
@@ -69,9 +70,18 @@ class SearchModal extends React.Component<Props> {
             onSavePress={this.handlePassengersSave}
           />
         )}
-        {this.props.modalType === MODAL_TYPE.DEPARTURE && (
-          <View>
-            <Text>DEPARTURE</Text>
+        {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(
+          this.props.modalType,
+        ) && (
+          <View
+            style={{
+              margin: 25,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <Icon name="information-circle" />
+            <Text> TODO: Add place picker for the {this.props.modalType} </Text>
           </View>
         )}
       </Modal>
