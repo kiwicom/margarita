@@ -36,3 +36,5 @@ export { default as Illustration } from './src/Illustration/Illustration';
 export {
   default as IllustrationWithInformation,
 } from './src/IllustrationWithInformation/IllustrationWithInformation';
+
+export { default as Separator } from './src/separator/Separator';

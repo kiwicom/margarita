@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 446645314418775a3b16a19d747634c1
+ * @relayHash b2da048296989c202eed5850424ddb42
  */
 
 /* eslint-disable */
@@ -37,11 +37,33 @@ query BookingDetailQuery(
 
 fragment TripDetails on CustomerBooking {
   ...Header
+  ...TripInfo
 }
 
 fragment Header on CustomerBooking {
   bookingId: id(opaque: false)
   status
+}
+
+fragment TripInfo on CustomerBooking {
+  ...FromTo
+}
+
+fragment FromTo on CustomerBooking {
+  departure {
+    ...CityName
+  }
+  arrival {
+    ...CityName
+  }
+}
+
+fragment CityName on RouteStop {
+  cityName
+  airport {
+    countryFlagURL
+    id
+  }
 }
 */
 
@@ -61,13 +83,48 @@ v1 = [
     "variableName": "id",
     "type": "ID!"
   }
+],
+v2 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v3 = [
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "cityName",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "airport",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "Location",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "countryFlagURL",
+        "args": null,
+        "storageKey": null
+      },
+      v2
+    ]
+  }
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on CustomerBooking {\n  ...Header\n}\n\nfragment Header on CustomerBooking {\n  bookingId: id(opaque: false)\n  status\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on CustomerBooking {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on CustomerBooking {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on CustomerBooking {\n  ...FromTo\n}\n\nfragment FromTo on CustomerBooking {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -130,12 +187,26 @@ return {
             "storageKey": null
           },
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "id",
+            "name": "departure",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
-          }
+            "concreteType": "RouteStop",
+            "plural": false,
+            "selections": v3
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "arrival",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "RouteStop",
+            "plural": false,
+            "selections": v3
+          },
+          v2
         ]
       }
     ]

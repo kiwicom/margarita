@@ -139,6 +139,7 @@ type Location {
   locationId: String
   timezone: String
   country: LocationArea
+  countryFlagURL: String
 }
 
 type LocationArea {
@@ -229,6 +230,7 @@ type RouteStop {
   cityName: String
   cityId: String
   time: SegmentTime
+  airport: Location
 }
 
 type Sector {

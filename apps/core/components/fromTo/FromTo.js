@@ -10,16 +10,37 @@ import type { FromTo as BookingType } from './__generated__/FromTo.graphql';
 import CityName from './CityName';
 
 type Props = {|
-  +data: BookingType,
+  +data: ?BookingType,
+  +textType: 'white' | 'attention',
+  +fontSize: 'normal' | 'large',
+  +iconColor: string,
+  +withFlags: boolean,
 |};
 
-const FromTo = (props: Props) => (
+const FromTo = ({ data, iconColor, withFlags, ...rest }: Props) => (
   <View style={styles.container}>
-    <CityName data={props.data.departure} />
-    <Icon name="flight-return" color={defaultTokens.paletteWhite} />
-    <CityName data={props.data.arrival} />
+    <CityName
+      prependFlag={withFlags}
+      appendFlag={false}
+      data={data?.departure}
+      {...rest}
+    />
+    <Icon name="flight-return" color={iconColor} />
+    <CityName
+      prependFlag={false}
+      appendFlag={withFlags}
+      data={data?.arrival}
+      {...rest}
+    />
   </View>
 );
+
+FromTo.defaultProps = {
+  textType: 'white',
+  fontSize: 'normal',
+  iconColor: defaultTokens.paletteWhite,
+  withFlags: false,
+};
 
 const styles = StyleSheet.create({
   container: {
