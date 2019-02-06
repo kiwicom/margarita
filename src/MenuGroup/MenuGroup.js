@@ -30,7 +30,7 @@ export default function MenuGroup({
     <>
       {Platform.OS === 'ios' && menuGroupTitle}
       <Card style={styles.card}>
-        {Platform.OS === 'android' && menuGroupTitle}
+        {Platform.OS !== 'ios' && menuGroupTitle}
         {children}
         {footer}
       </Card>

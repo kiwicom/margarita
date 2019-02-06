@@ -26,7 +26,7 @@ export default function MenuGroupTitle({ title, style }: Props) {
       >
         {title}
       </Text>
-      {Platform.OS === 'android' && <Separator style={styles.separator} />}
+      {Platform.OS !== 'ios' && <Separator style={styles.separator} />}
     </>
   );
 }
@@ -39,12 +39,10 @@ const styles = StyleSheet.create({
       textTransform: 'uppercase',
       lineHeight: 17,
     },
-    android: {
-      lineHeight: 19,
-      marginStart: 13,
-      marginTop: 8,
-      marginBottom: 5,
-    },
+    lineHeight: 19,
+    marginStart: 13,
+    marginTop: 8,
+    marginBottom: 5,
   },
   separator: {
     marginHorizontal: -10,

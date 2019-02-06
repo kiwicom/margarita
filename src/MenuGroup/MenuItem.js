@@ -94,10 +94,8 @@ const styles = StyleSheet.create({
       paddingTop: 8.5,
       paddingBottom: 11.5,
     },
-    android: {
-      paddingTop: 6,
-      paddingBottom: 8.5,
-    },
+    paddingTop: 6,
+    paddingBottom: 8.5,
 
     paddingStart: wrapperPaddingStart,
     paddingEnd: 16,
