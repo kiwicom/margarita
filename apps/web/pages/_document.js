@@ -22,6 +22,12 @@ const globalStyle = {
     font-family: 'orbit-icons';
     src: url(${OrbitIconFont});
   }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+    height: 100%;
+    overflow: hidden;
+  }
 `,
 };
 
@@ -51,7 +57,7 @@ export default class MyDocument extends Document {
           />
           <style dangerouslySetInnerHTML={globalStyle} />
         </Head>
-        <body style={{ height: '100%', overflow: 'hidden' }}>
+        <body>
           <Main />
           <NextScript />
         </body>
