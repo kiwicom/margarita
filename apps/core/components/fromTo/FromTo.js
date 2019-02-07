@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Icon } from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { FromTo as BookingType } from './__generated__/FromTo.graphql';
 import CityName from './CityName';
+import FromToIcon from './FromToIcon';
 
 type Props = {|
   +data: ?BookingType,
@@ -25,7 +26,7 @@ const FromTo = ({ data, iconColor, withFlags, ...rest }: Props) => (
       data={data?.departure}
       {...rest}
     />
-    <Icon name="flight-return" color={iconColor} />
+    <FromToIcon data={data} iconColor={iconColor} />
     <CityName
       prependFlag={false}
       appendFlag={withFlags}
@@ -59,6 +60,7 @@ export default createFragmentContainer(
       arrival {
         ...CityName
       }
+      ...FromToIcon
     }
   `,
 );
