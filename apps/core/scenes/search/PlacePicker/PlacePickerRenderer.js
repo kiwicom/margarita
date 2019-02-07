@@ -11,7 +11,7 @@ type Props = {|
   +defaultValue: ?string,
 |};
 
-export default class BookingDetail extends React.Component<Props> {
+export default class PlacePickerRenderer extends React.Component<Props> {
   renderInner = (data: PlacePickerRendererQueryResponse) => {
     return <PlacePickerContent type={this.props.type} locations={data} />;
   };
