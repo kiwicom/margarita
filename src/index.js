@@ -28,6 +28,7 @@ export { SegmentedButton } from './SegmentedButton';
 export { Modal } from './Modal';
 export { TagsInput } from './TagsInput';
 export { OptionPicker } from './OptionPicker';
+export { MenuGroup, MenuItem } from './MenuGroup';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';
