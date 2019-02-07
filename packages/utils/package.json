@@ -4,6 +4,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "lodash.debounce": "^4.0.8",
     "react-fast-compare": "^2.0.4"
   },
   "devDependencies": {

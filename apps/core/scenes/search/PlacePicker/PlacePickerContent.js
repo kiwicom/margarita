@@ -15,6 +15,7 @@ import {
   Icon,
   StyleSheet,
 } from '@kiwicom/universal-components';
+import { debounce } from '@kiwicom/margarita-utils';
 
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql.js';
 
@@ -34,10 +35,10 @@ class PlacePicker extends React.Component<Props, State> {
     text: '',
   };
 
-  handleChangeText = (text: string) => {
+  handleChangeText = debounce((text: string) => {
     this.setState({ text });
     this.props.relay.refetch({ input: { term: text } });
-  };
+  }, 250);
 
   getLabel = () => {
     const { type } = this.props;
@@ -51,7 +52,6 @@ class PlacePicker extends React.Component<Props, State> {
 
   render() {
     const locations = this.props.locations?.locationsByTerm?.edges ?? [];
-    // console.log(this.props.onChoose('BA'));
 
     return (
       <View style={styles.container}>
