@@ -2,8 +2,11 @@
 
 // TODO this is just the temporary Picker will be replaced by the OptionPicker form the 'universal-components'
 
-import { graphql, createRefetchContainer } from '@kiwicom/margarita-relay';
-import { type RelayRefetchProp } from 'react-relay'; // eslint-disable-line no-restricted-imports
+import {
+  graphql,
+  createRefetchContainer,
+  type RelayRefetchProp,
+} from '@kiwicom/margarita-relay';
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
 import {
@@ -35,7 +38,8 @@ class PlacePicker extends React.Component<Props, State> {
     this.props.relay.refetch({ input: { term: text } });
   };
 
-  getLabel = type => {
+  getLabel = () => {
+    const { type } = this.props;
     if (type === 'DESTINATION') {
       return 'To';
     } else if (type === 'ORIGIN') {
@@ -50,7 +54,7 @@ class PlacePicker extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <View>
-          <Text weight="bold">{this.getLabel(this.props.type)}:</Text>
+          <Text weight="bold">{this.getLabel()}:</Text>
           <TextInput
             placeholder="write a place..."
             onChangeText={this.handleChangeText}
@@ -62,9 +66,7 @@ class PlacePicker extends React.Component<Props, State> {
           {locations.map(location => (
             <View style={styles.wrapper} key={location?.node?.id}>
               <Icon name="location" />
-              <Text style={styles.listItem} key={location?.node?.id}>
-                {location?.node?.name}
-              </Text>
+              <Text style={styles.listItem}>{location?.node?.name}</Text>
             </View>
           ))}
         </ScrollView>
