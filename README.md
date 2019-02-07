@@ -28,15 +28,15 @@ cd margarita/
 yarn
 ```
 
-To launch the graphql server:
+To launch the GraphQL server:
 
 - `yarn server`
 
 To launch the client app, you have different options:
 
-- `yarn dev` to launch the _development_ web version;
-- `yarn build; yarn start` to launch the _production_ web version;
-- `yarn ios` or `yarn android` to start the mobile version.
+- `yarn web` to launch the _development_ web version;
+- `yarn export; yarn build; yarn start` to launch the _production_ web version;
+- `yarn mobile` to start the mobile version.
 
 > Note: If `yarn server` is running and you get Network errors on Android, you need to forward your localhost:4000 to the emulator; this is achieved by running `adb reverse tcp:4000 tcp:4000`.
 
@@ -44,13 +44,15 @@ The other available scripts are:
 
 - `yarn analyze` to get an analysis of the bundle size to get the following
   ![yarn-analyze](assets/yarn-analyze.png)
-
+- `yarn dev` to run concurrently `yarn server` and `yarn web`;
 - `yarn lint` to ensure your code is properly formatted;
 - `yarn flow` to ensure your code is respecting the types given to your vaiables;
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
 - `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
   and compile your queries and fragments to generate Flow types, among other things;
-- `yarn landing-page` to run landing page of the app.
+- `yarn landing-page` to run the landing page of the app;
+- `storybook:web` to run the web Storybook for our components in `packages/components`;
+- `storybook:mobile` to run the mobile Storybook for our components in `packages/components`.
 
 ### Initial Configuration
 
