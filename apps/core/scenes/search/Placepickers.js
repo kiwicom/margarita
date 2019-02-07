@@ -8,6 +8,11 @@ import {
 } from '@kiwicom/margarita-components';
 import { Icon, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-utils';
 
 import {
   withSearchContext,
@@ -15,12 +20,14 @@ import {
   type ModalTypes,
 } from './SearchContext';
 import { MODAL_TYPE } from './SearchConstants';
+import PickersWrapper from './PickersWrapper';
 
 type Props = {|
   +travelFrom: string,
   +travelTo: string,
   +handlePlaceSwitchPress: () => void,
   +setModalType: ModalTypes => void,
+  +layout: number,
 |};
 
 class Placepickers extends React.Component<Props> {
@@ -33,17 +40,21 @@ class Placepickers extends React.Component<Props> {
   };
 
   render() {
-    const { travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
+    const { layout, travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
+    const rowLayout = layout >= LAYOUT.largeMobile;
     return (
-      <View>
+      <PickersWrapper layout={layout}>
         <TripInput
+          style={rowLayout && styles.rowInput}
           onPress={this.handleFromPress}
           label="From"
           icon={<Icon name="airplane-takeoff" />}
           value={travelFrom}
         />
         <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
-          <View style={styles.placeSwitch}>
+          <View
+            style={[styles.placeSwitch, rowLayout && styles.rowPlaceSwitch]}
+          >
             <Icon name="replace" color="#7F91A8" />
           </View>
         </TouchableWithoutFeedback>
@@ -53,7 +64,7 @@ class Placepickers extends React.Component<Props> {
           icon={<Icon name="airplane-landing" />}
           value={travelTo}
         />
-      </View>
+      </PickersWrapper>
     );
   }
 }
@@ -79,6 +90,22 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
   },
+  rowInput: {
+    web: {
+      marginEnd: parseInt(defaultTokens.spaceXSmall, 10),
+    },
+  },
+  rowPlaceSwitch: {
+    web: {
+      alignSelf: 'center',
+      right: '50%',
+      marginEnd: -parseInt(defaultTokens.widthIconLarge, 10) * 0.5,
+    },
+  },
+});
+
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
 });
 
 const select = ({
@@ -92,4 +119,6 @@ const select = ({
   setModalType,
 });
 
-export default withSearchContext(select)(Placepickers);
+export default withLayoutContext(layoutSelect)(
+  withSearchContext(select)(Placepickers),
+);

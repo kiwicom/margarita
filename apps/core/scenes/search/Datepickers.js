@@ -1,14 +1,24 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';
 import { Icon, DatePicker, StyleSheet } from '@kiwicom/universal-components';
 import { format, startOfDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-utils';
 
-import { withSearchContext, type SearchContextState } from './SearchContext';
+import {
+  withSearchContext,
+  type TripTypes,
+  type SearchContextState,
+} from './SearchContext';
 import { DATE_FORMAT } from './SearchConstants';
+import PickersWrapper from './PickersWrapper';
 
 type Props = {|
   +tripType: string,
@@ -16,6 +26,8 @@ type Props = {|
   +returnDateFrom: Date,
   +setDepartureDate: Date => void,
   +setReturnDate: Date => void,
+  +setTripType: TripTypes => void,
+  +layout: number,
 |};
 
 type State = {|
@@ -55,12 +67,23 @@ class Datepickers extends React.Component<Props, State> {
   };
 
   handleDateChange = (date: Date) => {
-    switch (this.state.selectDate) {
+    const { selectDate } = this.state;
+    const {
+      tripType,
+      setDepartureDate,
+      setReturnDate,
+      setTripType,
+    } = this.props;
+
+    switch (selectDate) {
       case DATEPICKER_MODE.DEPARTURE:
-        this.props.setDepartureDate(date);
+        setDepartureDate(date);
         break;
       case DATEPICKER_MODE.RETURN:
-        this.props.setReturnDate(date);
+        setReturnDate(date);
+        if (tripType === 'oneWay') {
+          setTripType('return');
+        }
         break;
       default:
         break;
@@ -69,27 +92,36 @@ class Datepickers extends React.Component<Props, State> {
   };
 
   render() {
-    const { tripType, dateFrom, returnDateFrom } = this.props;
+    const { tripType, dateFrom, returnDateFrom, layout } = this.props;
+    const rowLayout = layout >= LAYOUT.largeMobile;
+    const showReturnInput = tripType === 'return' || Platform.OS === 'web';
+    const returnType = tripType === 'return';
     const datePickerDate =
       this.state.selectDate === DATEPICKER_MODE.DEPARTURE
         ? dateFrom
         : returnDateFrom;
+
     return (
       <>
-        <TripInput
-          onPress={this.handleDepartureDatePress}
-          label="Departure"
-          icon={<Icon name="calendar" />}
-          value={format(dateFrom, DATE_FORMAT)}
-        />
-        {tripType === 'return' && (
+        <PickersWrapper layout={layout}>
           <TripInput
-            onPress={this.handleReturnDatePress}
-            label="Return"
+            style={rowLayout && styles.rowInput}
+            onPress={this.handleDepartureDatePress}
+            label="Departure"
             icon={<Icon name="calendar" />}
-            value={format(returnDateFrom, DATE_FORMAT)}
+            value={format(dateFrom, DATE_FORMAT)}
           />
-        )}
+          {showReturnInput && (
+            <TripInput
+              onPress={this.handleReturnDatePress}
+              label={returnType ? 'Return' : ''}
+              icon={<Icon name="calendar" />}
+              value={
+                returnType ? format(returnDateFrom, DATE_FORMAT) : 'No return'
+              }
+            />
+          )}
+        </PickersWrapper>
         <View style={this.state.isDatePickerVisible && styles.picker}>
           <DatePicker
             isVisible={this.state.isDatePickerVisible}
@@ -116,19 +148,31 @@ const styles = StyleSheet.create({
       zIndex: parseInt(defaultTokens.zIndexDefault, 10),
     },
   },
+  rowInput: {
+    web: {
+      marginEnd: parseInt(defaultTokens.spaceXSmall, 10),
+    },
+  },
+});
+
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
 });
 
 const select = ({
   dateFrom,
   returnDateFrom,
   tripType,
-  actions: { setDepartureDate, setReturnDate },
+  actions: { setTripType, setDepartureDate, setReturnDate },
 }: SearchContextState) => ({
   dateFrom,
   returnDateFrom,
   tripType,
+  setTripType,
   setDepartureDate,
   setReturnDate,
 });
 
-export default withSearchContext(select)(Datepickers);
+export default withLayoutContext(layoutSelect)(
+  withSearchContext(select)(Datepickers),
+);

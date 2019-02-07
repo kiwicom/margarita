@@ -1,13 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
-import { StyleSheet, Button } from '@kiwicom/universal-components';
-import {
-  PassengersButton,
-  TripTypeButton,
-  Illustration,
-} from '@kiwicom/margarita-components';
+import { View, Platform } from 'react-native';
+import { StyleSheet, Button, Icon } from '@kiwicom/universal-components';
+import { Illustration } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withNavigation,
@@ -15,17 +11,18 @@ import {
   type Navigation,
 } from '@kiwicom/margarita-navigation';
 import format from 'date-fns/format';
-
 import {
-  withSearchContext,
-  type SearchContextState,
-  type TripTypes,
-  type ModalTypes,
-} from './SearchContext';
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-utils';
+
+import { withSearchContext, type SearchContextState } from './SearchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
-import { TRIP_TYPE, MODAL_TYPE, DATE_FORMAT } from './SearchConstants';
+import { DATE_FORMAT } from './SearchConstants';
+import SearchFormModes from './SearchFormModes';
 
 type Props = {
   +navigation: Navigation,
@@ -36,11 +33,10 @@ type Props = {
   +returnDateFrom: Date,
   +returnDateTo: Date,
   +tripType: string,
-  +setTripType: TripTypes => void,
-  +setModalType: ModalTypes => void,
   +adults: number,
   +infants: number,
   +bags: number,
+  +layout: number,
 };
 
 class Search extends React.Component<Props> {
@@ -72,44 +68,31 @@ class Search extends React.Component<Props> {
     });
   };
 
-  goToPlacePicker = () => {
-    this.props.navigation.navigate(Routes.PLACE_PICKER);
-  };
-
-  handleTripTypePress = () => {
-    this.props.setModalType(MODAL_TYPE.TRIP_TYPE);
-  };
-
-  handlePassengersPress = () => {
-    this.props.setModalType(MODAL_TYPE.PASSENGERS);
-  };
-
   render() {
-    const { tripType, adults, infants, bags } = this.props;
+    const desktopLayout = this.props.layout >= LAYOUT.desktop;
+
     return (
       <>
         <View style={styles.container}>
-          <View style={styles.form}>
+          <View style={[styles.form, desktopLayout && styles.formDesktop]}>
             <Illustration name="Boarding" style={styles.boardingIllustration} />
-            <View style={styles.top}>
-              <TripTypeButton
-                onPress={this.handleTripTypePress}
-                icon={TRIP_TYPE[tripType].icon}
-                label={TRIP_TYPE[tripType].label}
-              />
-              <View style={styles.hSpacer} />
-              <PassengersButton
-                onPress={this.handlePassengersPress}
-                passengers={adults + infants}
-                bags={bags}
-              />
-            </View>
+            <SearchFormModes />
 
-            <Placepickers />
-            <Datepickers />
+            <View style={desktopLayout && styles.inputsDesktop}>
+              <Placepickers />
+              <Datepickers />
 
-            <View style={styles.bottom}>
-              <Button onPress={this.handleSubmitPress} label="Search" />
+              <View
+                style={[styles.bottom, desktopLayout && styles.bottomDesktop]}
+              >
+                <Button
+                  onPress={this.handleSubmitPress}
+                  label="Search"
+                  rightIcon={
+                    Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
+                  }
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -134,16 +117,31 @@ const styles = StyleSheet.create({
     maxWidth: 500,
     marginBottom: 100,
     padding: parseInt(defaultTokens.spaceXSmall, 10),
+    web: {
+      maxWidth: 730,
+      paddingHorizontal: parseInt(defaultTokens.spaceLarge, 10),
+    },
   },
-  hSpacer: {
-    width: parseInt(defaultTokens.spaceXSmall, 10),
+  formDesktop: {
+    web: {
+      maxWidth: 1100,
+    },
   },
-  top: {
-    flexDirection: 'row',
-    marginBottom: parseInt(defaultTokens.spaceMedium, 10),
+  inputsDesktop: {
+    web: {
+      flexDirection: 'row',
+    },
   },
   bottom: {
     marginTop: parseInt(defaultTokens.spaceXSmall, 10),
+    web: {
+      marginTop: 0,
+    },
+  },
+  bottomDesktop: {
+    web: {
+      width: 130,
+    },
   },
   boardingIllustration: {
     marginBottom: 20,
@@ -151,6 +149,10 @@ const styles = StyleSheet.create({
       marginTop: 20,
     },
   },
+});
+
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
 });
 
 const select = ({
@@ -164,7 +166,6 @@ const select = ({
   adults,
   infants,
   bags,
-  actions: { setTripType, setModalType },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -176,8 +177,8 @@ const select = ({
   adults,
   infants,
   bags,
-  setTripType,
-  setModalType,
 });
 
-export default withNavigation(withSearchContext(select)(Search));
+export default withNavigation(
+  withLayoutContext(layoutSelect)(withSearchContext(select)(Search)),
+);
