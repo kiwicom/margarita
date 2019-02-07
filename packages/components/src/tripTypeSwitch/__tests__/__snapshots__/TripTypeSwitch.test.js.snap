@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <Component
+    style={
+      Array [
+        Object {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "marginEnd": 20,
+        },
+        undefined,
+      ]
+    }
+  >
+    <TripTypeSwitchOption
+      label="Return"
+      onSelect={[MockFunction]}
+      selected={true}
+      type="return"
+    />
+    <TripTypeSwitchOption
+      label="One way"
+      onSelect={[MockFunction]}
+      selected={false}
+      type="oneWay"
+    />
+  </Component>,
+}
+`;

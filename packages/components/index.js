@@ -9,6 +9,7 @@ export { default as TripInput } from './src/tripInput/TripInput';
 export { default as Select } from './src/select/Select';
 export { default as Modal } from './src/modal/Modal';
 export { default as TripTypeButton } from './src/tripTypeButton/TripTypeButton';
+export { default as TripTypeSwitch } from './src/tripTypeSwitch/TripTypeSwitch';
 export {
   default as PassengersButton,
 } from './src/passengersButton/PassengersButton';
@@ -36,3 +37,5 @@ export { default as Illustration } from './src/Illustration/Illustration';
 export {
   default as IllustrationWithInformation,
 } from './src/IllustrationWithInformation/IllustrationWithInformation';
+
+export { default as Separator } from './src/separator/Separator';

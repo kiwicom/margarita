@@ -1146,10 +1146,10 @@
   dependencies:
     "@mrtnzlml/utils" "^1.1.1"
 
-"@kiwicom/universal-components@0.0.10":
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.10.tgz#a2d66b1f5371acd21e8a694e55c66ee1c5980980"
-  integrity sha512-c0MO3VTGUISXB1s3M+BFJdygKRUZL5/9nzO+a0gojvbt+PbMTH2DIYCJt+aPZSUn+nWuAaMJWckvGbWcvGG4+g==
+"@kiwicom/universal-components@0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.11.tgz#95f59497efaad99bfede39eec263da4686bf28be"
+  integrity sha512-/e5c77dpv7+WzeYNB41Xn8p/r6zbt2mn/4ZZfNnFDAH7/VhTpouXpl2Tzm6MWPG31XG6pbQEsKpY/0D5tC8J6Q==
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.3.0"
     react-native-modal "^7.0.2"
@@ -14285,10 +14285,10 @@ react-native-view-shot@2.5.0:
   resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-2.5.0.tgz#428a997f470d3148d0067c5b46abd988ef1aa4c0"
   integrity sha512-xFJA+N7wh8Ik/17I4QB24e0a0L3atg1ScVehvtYR5UBTgHdzTFA0ZylvXp9gkZt7V+AT5Pni0H3NQItpqSKFoQ==
 
-react-native-web@^0.9.3:
-  version "0.9.13"
-  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.9.13.tgz#b277ccce2e4985a256ed340823104c08505f3096"
-  integrity sha512-P1nCvBVFrv3J5BXu39iS4A3fR7m0vtGaCAy4MigAtZpakIuara/98h516fDQajPqoVy2T4cQgYZUQAr+FBnppQ==
+react-native-web@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-web/-/react-native-web-0.10.0.tgz#7c67a25d1262f01d462b3a11cc603aef47537d18"
+  integrity sha512-swqplCGSOL1PPFyFf9fnFdLYyFWP9P0tdI5xxmURirjtZH2P+1pF61ApUu5s8Hx8uHDqMXwmVauydXI2sv7tGA==
   dependencies:
     array-find-index "^1.0.2"
     create-react-class "^15.6.2"

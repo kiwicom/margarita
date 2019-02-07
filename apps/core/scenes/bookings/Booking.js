@@ -17,7 +17,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { Booking as BookingType } from './__generated__/Booking.graphql';
 import BookingBadges from './BookingBadges';
-import FromTo from './FromTo';
+import FromTo from '../../components/fromTo/FromTo';
 import DateAndPassengerCount from './DateAndPassengerCount';
 
 type Props = {|

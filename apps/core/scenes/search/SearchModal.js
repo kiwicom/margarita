@@ -1,7 +1,9 @@
 // @flow
 
+import { View } from 'react-native';
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
+import { Text, Icon } from '@kiwicom/universal-components';
 
 import { TRIP_TYPE, MODAL_TYPE } from './SearchConstants';
 import {
@@ -47,8 +49,11 @@ class SearchModal extends React.Component<Props> {
 
   render() {
     return (
-      <Modal visible={this.props.modalType !== 'HIDDEN'} onClose={this.onClose}>
-        {this.props.modalType === 'TRIP_TYPE' && (
+      <Modal
+        visible={this.props.modalType !== MODAL_TYPE.HIDDEN}
+        onClose={this.onClose}
+      >
+        {this.props.modalType === MODAL_TYPE.TRIP_TYPE && (
           <Select
             optionsData={TRIP_TYPE}
             selectedType={this.props.tripType}
@@ -56,7 +61,7 @@ class SearchModal extends React.Component<Props> {
             onClosePress={this.onClose}
           />
         )}
-        {this.props.modalType === 'PASSENGERS' && (
+        {this.props.modalType === MODAL_TYPE.PASSENGERS && (
           <PassengersInputs
             adults={this.props.adults}
             infants={this.props.infants}
@@ -64,6 +69,20 @@ class SearchModal extends React.Component<Props> {
             onClosePress={this.onClose}
             onSavePress={this.handlePassengersSave}
           />
+        )}
+        {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(
+          this.props.modalType,
+        ) && (
+          <View
+            style={{
+              margin: 25,
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}
+          >
+            <Icon name="information-circle" />
+            <Text> TODO: Add place picker for the {this.props.modalType} </Text>
+          </View>
         )}
       </Modal>
     );

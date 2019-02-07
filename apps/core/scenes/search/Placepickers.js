@@ -8,40 +8,66 @@ import {
 } from '@kiwicom/margarita-components';
 import { Icon, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-utils';
 
-import { withSearchContext, type SearchContextState } from './SearchContext';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type ModalTypes,
+} from './SearchContext';
+import { MODAL_TYPE } from './SearchConstants';
+import PickersWrapper from './PickersWrapper';
 
 type Props = {|
   +travelFrom: string,
   +travelTo: string,
   +handlePlaceSwitchPress: () => void,
+  +setModalType: ModalTypes => void,
+  +layout: number,
 |};
 
-const handlePlacePress = () => {
-  console.log('TODO'); // eslint-disable-line no-console
-};
+class Placepickers extends React.Component<Props> {
+  handleFromPress = () => {
+    this.props.setModalType(MODAL_TYPE.ORIGIN);
+  };
 
-const Placepickers = (props: Props) => (
-  <View>
-    <TripInput
-      onPress={handlePlacePress}
-      label="From"
-      icon={<Icon name="airplane-takeoff" />}
-      value={props.travelFrom}
-    />
-    <TouchableWithoutFeedback onPress={props.handlePlaceSwitchPress}>
-      <View style={styles.placeSwitch}>
-        <Icon name="replace" color="#7F91A8" />
-      </View>
-    </TouchableWithoutFeedback>
-    <TripInput
-      onPress={handlePlacePress}
-      label="To"
-      icon={<Icon name="airplane-landing" />}
-      value={props.travelTo}
-    />
-  </View>
-);
+  handleToPress = () => {
+    this.props.setModalType(MODAL_TYPE.DESTINATION);
+  };
+
+  render() {
+    const { layout, travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
+    const rowLayout = layout >= LAYOUT.largeMobile;
+    return (
+      <PickersWrapper layout={layout}>
+        <TripInput
+          style={rowLayout && styles.rowInput}
+          onPress={this.handleFromPress}
+          label="From"
+          icon={<Icon name="airplane-takeoff" />}
+          value={travelFrom}
+        />
+        <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
+          <View
+            style={[styles.placeSwitch, rowLayout && styles.rowPlaceSwitch]}
+          >
+            <Icon name="replace" color="#7F91A8" />
+          </View>
+        </TouchableWithoutFeedback>
+        <TripInput
+          onPress={this.handleToPress}
+          label="To"
+          icon={<Icon name="airplane-landing" />}
+          value={travelTo}
+        />
+      </PickersWrapper>
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   placeSwitch: {
@@ -64,16 +90,35 @@ const styles = StyleSheet.create({
       elevation: 3,
     },
   },
+  rowInput: {
+    web: {
+      marginEnd: parseInt(defaultTokens.spaceXSmall, 10),
+    },
+  },
+  rowPlaceSwitch: {
+    web: {
+      alignSelf: 'center',
+      right: '50%',
+      marginEnd: -parseInt(defaultTokens.widthIconLarge, 10) * 0.5,
+    },
+  },
+});
+
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
 });
 
 const select = ({
   travelFrom,
   travelTo,
-  actions: { switchFromTo },
+  actions: { switchFromTo, setModalType },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
   handlePlaceSwitchPress: switchFromTo,
+  setModalType,
 });
 
-export default withSearchContext(select)(Placepickers);
+export default withLayoutContext(layoutSelect)(
+  withSearchContext(select)(Placepickers),
+);

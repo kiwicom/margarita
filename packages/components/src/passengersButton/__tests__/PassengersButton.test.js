@@ -6,12 +6,18 @@ import { shallow, render, fireEvent } from 'react-native-testing-library';
 import PassengersButton from '../PassengersButton';
 import TouchableWithoutFeedback from '../../TouchableWithoutFeedback';
 
-const passengers = 2;
+const adults = 2;
+const infants = 2;
 const bags = 1;
 const onPress = jest.fn();
 
 const { getByType } = render(
-  <PassengersButton passengers={passengers} bags={bags} onPress={onPress} />,
+  <PassengersButton
+    adults={adults}
+    infants={infants}
+    bags={bags}
+    onPress={onPress}
+  />,
 );
 
 it('should execute onPress method', () => {
@@ -23,7 +29,8 @@ it('renders', () => {
   expect(
     shallow(
       <PassengersButton
-        passengers={passengers}
+        adults={adults}
+        infants={infants}
         bags={bags}
         onPress={onPress}
       />,
