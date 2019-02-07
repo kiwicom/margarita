@@ -5,6 +5,7 @@ import { Dimensions } from 'react-native';
 
 import withContext from '../src/withContext/withContext';
 import { getLayout } from './LayoutContextHelpers';
+import { LAYOUT } from './LayoutConstants';
 
 type Props = {|
   +children: React.Node,
@@ -15,7 +16,7 @@ type State = {|
 |};
 
 const defaultState = {
-  layout: getLayout(Dimensions.get('window').width),
+  layout: LAYOUT.largeDesktop,
 };
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
@@ -33,6 +34,10 @@ export default class LayoutContextProvider extends React.Component<
   }
 
   componentDidMount() {
+    const layout = getLayout(Dimensions.get('window').width);
+    if (this.state.layout !== layout) {
+      this.setState({ layout }); // eslint-disable-line react/no-did-mount-set-state
+    }
     Dimensions.addEventListener('change', this.handleDimensionsChange);
   }
 
