@@ -8,13 +8,11 @@ import logo from '../images/logo.png';
 import { github, codeKiwi } from '../../../../linksConfig';
 
 const linksHeader = [
-  { title: 'About Margarita', url: '/' },
-  { title: 'Playground', url: '#playground' },
-  { title: 'Features', url: '#features' },
-  { title: 'Demo', url: '#demo' },
+  { title: 'About Margarita', link: '/' },
+  { title: 'Playground', link: '#playground' },
   {
     title: 'GitHub',
-    url: github,
+    link: github,
   },
 ];
 
@@ -24,9 +22,9 @@ export default () => (
       <Logo src={logo} alt="Logo" />
     </a>
     <HeaderRight>
-      {linksHeader.map(link => (
-        <LinkNoStyle key={link.title} href={link.url}>
-          <Heading type="title4">{link.title}</Heading>
+      {linksHeader.map(el => (
+        <LinkNoStyle key={el.title} href={el.link}>
+          <Heading type="title4">{el.title}</Heading>
         </LinkNoStyle>
       ))}
     </HeaderRight>
@@ -46,7 +44,8 @@ const Logo = styled.img`
 
 const HeaderRight = styled.div`
   display: flex;
-  width: 34vw;
+  /* width: 34vw; */
+  width: 20vw;
   justify-content: space-between;
 `;
 

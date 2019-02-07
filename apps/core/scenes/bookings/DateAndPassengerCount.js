@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   DateAndPassengerCount,
   graphql`
-    fragment DateAndPassengerCount on CustomerBooking {
+    fragment DateAndPassengerCount on BookingInterface {
       passengerCount
       departure {
         time {

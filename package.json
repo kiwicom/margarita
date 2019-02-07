@@ -2,8 +2,8 @@
   "name": "margarita",
   "license": "MIT",
   "scripts": {
-    "ios": "yarn workspace @kiwicom/margarita-mobile ios",
-    "android": "yarn workspace @kiwicom/margarita-mobile android",
+    "mobile": "yarn workspace @kiwicom/margarita-mobile start",
+    "premobile": "yarn workspace @kiwicom/margarita-components rnstl",
     "web": "yarn workspace @kiwicom/margarita-web dev",
     "dev": "yarn concurrently \"yarn web\" \" yarn server\" ",
     "build": "yarn workspace @kiwicom/margarita-web build",
@@ -19,7 +19,12 @@
     "build:graphql": "yarn workspace @kiwicom/margarita-graphql build",
     "deploy:graphql": "yarn workspace @kiwicom/margarita-graphql deploy",
     "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall",
-    "landing-page": "yarn workspace @kiwicom/margarita-landing-page start"
+    "landing-page": "yarn workspace @kiwicom/margarita-landing-page start",
+    "deploy:landing-page": "yarn workspace @kiwicom/margarita-landing-page deploy",
+    "storybook:web": "yarn workspace @kiwicom/margarita-components storybook",
+    "storybook:mobile": "yarn concurrently \"yarn workspace @kiwicom/margarita-mobile start\" \"yarn workspace @kiwicom/margarita-components storybook:mobile\"",
+    "prestorybook:mobile": "sed -i'' 's/STORYBOOK=false/STORYBOOK=true/g' .env; yarn workspace @kiwicom/margarita-components rnstl",
+    "poststorybook:mobile": "sed -i'' 's/STORYBOOK=true/STORYBOOK=false/g' .env"
   },
   "private": true,
   "workspaces": [

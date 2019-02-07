@@ -26,7 +26,7 @@ export type BookingList = {|
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "BookingList",
-  "type": "CustomerBookingConnection",
+  "type": "BookingInterfaceConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -36,7 +36,7 @@ const node/*: ConcreteFragment*/ = {
       "name": "edges",
       "storageKey": null,
       "args": null,
-      "concreteType": "CustomerBookingEdge",
+      "concreteType": "BookingInterfaceEdge",
       "plural": true,
       "selections": [
         {
@@ -45,7 +45,7 @@ const node/*: ConcreteFragment*/ = {
           "name": "node",
           "storageKey": null,
           "args": null,
-          "concreteType": "CustomerBooking",
+          "concreteType": null,
           "plural": false,
           "selections": [
             {
@@ -74,5 +74,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '355c0ac0e5d4301e3a15aac9c060d9c8';
+(node/*: any*/).hash = 'a0ea9cae867b09fae6c006c9330a3c0c';
 module.exports = node;

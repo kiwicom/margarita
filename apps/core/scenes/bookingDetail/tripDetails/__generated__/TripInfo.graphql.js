@@ -21,7 +21,7 @@ export type TripInfo = {|
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "TripInfo",
-  "type": "CustomerBooking",
+  "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -33,5 +33,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '237ab93fa4a63b2fe092a67ff0c6200e';
+(node/*: any*/).hash = '9c16274a5f5ecacea3eb0b929032b781';
 module.exports = node;

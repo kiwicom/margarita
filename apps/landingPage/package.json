@@ -20,12 +20,14 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "start": "gatsby develop"
+    "start": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
     "eslint-config-react-app": "^3.0.6",
     "eslint-plugin-graphql": "^3.0.1",
-    "gatsby-plugin-eslint": "^2.0.4"
+    "gatsby-plugin-eslint": "^2.0.4",
+    "gh-pages": "^2.0.1"
   },
   "peerDependencies": {
     "@babel/preset-flow": "^7.0.0",

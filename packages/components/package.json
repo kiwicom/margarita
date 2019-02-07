@@ -3,10 +3,37 @@
   "version": "0.0.0",
   "private": true,
   "main": "index.js",
+  "scripts": {
+    "rnstl": "rnstl",
+    "storybook": "start-storybook -p 9009 -c storybook/web -s ../../node_modules/@kiwicom/universal-components/lib/fonts",
+    "prestorybook": "rnstl",
+    "storybook:mobile": "storybook start -c storybook/mobile -p 7007",
+    "prestorybook:mobile": "rnstl"
+  },
   "dependencies": {
     "@kiwicom/margarita-utils": "^0",
     "@kiwicom/universal-components": "0.0.11",
     "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@storybook/addon-actions": "^4.0.7",
+    "@storybook/addon-knobs": "^4.0.7",
+    "@storybook/addon-links": "^4.0.6",
+    "@storybook/addon-ondevice-knobs": "^4.0.7",
+    "@storybook/react": "^4.0.6",
+    "@storybook/react-native": "^4.0.6",
+    "react-native-storybook-loader": "^1.8.0"
+  },
+  "peerDependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.2.0"
+  },
+  "config": {
+    "react-native-storybook-loader": {
+      "searchDir": [
+        "./src"
+      ],
+      "pattern": "**/*.stories.js",
+      "outputFile": "storybook/story-loader.js"
+    }
+  }
 }

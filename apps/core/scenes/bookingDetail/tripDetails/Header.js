@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   Header,
   graphql`
-    fragment Header on CustomerBooking {
+    fragment Header on BookingInterface {
       bookingId: id(opaque: false)
       status
     }

@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   FromTo,
   graphql`
-    fragment FromTo on CustomerBooking {
+    fragment FromTo on BookingInterface {
       departure {
         ...CityName
       }

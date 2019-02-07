@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   BookingList,
   graphql`
-    fragment BookingList on CustomerBookingConnection {
+    fragment BookingList on BookingInterfaceConnection {
       edges {
         node {
           id(opaque: false)
