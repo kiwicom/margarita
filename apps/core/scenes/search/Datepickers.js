@@ -130,6 +130,7 @@ class Datepickers extends React.Component<Props, State> {
             minDate={startOfDay(new Date())}
             onConfirm={this.handleDateChange}
             onDismiss={this.handleDatePickerDismiss}
+            labels={{ cancel: 'Cancel', confirm: 'OK' }}
           />
         </View>
       </>
