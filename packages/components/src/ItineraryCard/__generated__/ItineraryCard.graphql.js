@@ -8,12 +8,12 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-type TripSegment$ref = any;
+type TripSector$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard$ref: FragmentReference;
 export type ItineraryCard = {|
   +sectors: ?$ReadOnlyArray<?{|
-    +$fragmentRefs: TripSegment$ref
+    +$fragmentRefs: TripSector$ref
   |}>,
   +price: ?{|
     +currency: ?string,
@@ -42,7 +42,7 @@ const node/*: ConcreteFragment*/ = {
       "selections": [
         {
           "kind": "FragmentSpread",
-          "name": "TripSegment",
+          "name": "TripSector",
           "args": null
         }
       ]
@@ -75,5 +75,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '75596e3d1609d264065f449c0c9744c6';
+(node/*: any*/).hash = '12da7a532aa8e054cd43163eceb3138b';
 module.exports = node;

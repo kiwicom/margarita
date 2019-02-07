@@ -8,11 +8,11 @@ import * as DateFNS from 'date-fns';
 import { uniq } from 'ramda';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { TripSegment as TripSegmentType } from './__generated__/TripSegment.graphql';
+import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
 
 type Props = {|
-  +data: ?TripSegmentType,
+  +data: ?TripSectorType,
 |};
 const timeSimpleFormat = 'H:mm';
 const dateFormat = 'ddd D MMM';
@@ -40,7 +40,7 @@ const mapTransporters = segments => {
   return carriers;
 };
 
-function TripSegment({ data }: Props) {
+function TripSector({ data }: Props) {
   const firstSegment = data?.segments?.[0];
   const lastSegment =
     data && data.segments && data.segments[data.segments.length - 1];
@@ -86,9 +86,9 @@ function TripSegment({ data }: Props) {
 }
 
 export default createFragmentContainer(
-  TripSegment,
+  TripSector,
   graphql`
-    fragment TripSegment on Sector {
+    fragment TripSector on Sector {
       duration
       segments {
         arrivalTime {

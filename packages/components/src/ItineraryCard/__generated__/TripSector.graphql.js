@@ -9,8 +9,8 @@
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TripSegment$ref: FragmentReference;
-export type TripSegment = {|
+declare export opaque type TripSector$ref: FragmentReference;
+export type TripSector = {|
   +duration: ?number,
   +segments: ?$ReadOnlyArray<?{|
     +arrivalTime: ?{|
@@ -30,7 +30,7 @@ export type TripSegment = {|
       +name: ?string
     |},
   |}>,
-  +$refType: TripSegment$ref,
+  +$refType: TripSector$ref,
 |};
 */
 
@@ -63,7 +63,7 @@ v2 = [
 ];
 return {
   "kind": "Fragment",
-  "name": "TripSegment",
+  "name": "TripSector",
   "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
@@ -135,5 +135,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '5bf0e8799d49c64ede333aabcc6e9c20';
+(node/*: any*/).hash = 'd0ac39910cf31356eb556e84468f28a9';
 module.exports = node;

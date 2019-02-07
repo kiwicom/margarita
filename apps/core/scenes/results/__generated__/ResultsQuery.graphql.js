@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9f7112a2112c15fc70cdd0042082dbc9
+ * @relayHash 71acf811d1334fa47af420e5d5a86b15
  */
 
 /* eslint-disable */
@@ -59,7 +59,7 @@ fragment ResultsList on ItineraryConnection {
 
 fragment ItineraryCard on Itinerary {
   sectors {
-    ...TripSegment
+    ...TripSector
   }
   price {
     currency
@@ -67,7 +67,7 @@ fragment ItineraryCard on Itinerary {
   }
 }
 
-fragment TripSegment on Sector {
+fragment TripSector on Sector {
   duration
   segments {
     arrivalTime {
@@ -149,7 +149,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSegment\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSegment on Sector {\n  duration\n  segments {\n    arrivalTime {\n      local\n    }\n    departureTime {\n      local\n    }\n    destination {\n      name\n      id\n    }\n    duration\n    origin {\n      name\n      id\n    }\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  segments {\n    arrivalTime {\n      local\n    }\n    departureTime {\n      local\n    }\n    destination {\n      name\n      id\n    }\n    duration\n    origin {\n      name\n      id\n    }\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",

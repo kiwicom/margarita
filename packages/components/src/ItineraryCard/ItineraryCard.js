@@ -11,8 +11,8 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import ItineraryCardRow from './ItineraryCardRow';
 import BadgesContainer from './BadgesContainer';
 import HorizontalDash from './HorizontalDash';
-import TripSegment from './TripSegment';
-import type { TripSegment as TripSegmentType } from './__generated__/TripSegment.graphql';
+import TripSector from './TripSector';
+import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import type { ItineraryCard as ItineraryCardType } from './__generated__/ItineraryCard.graphql';
 
 type Props = {|
@@ -20,7 +20,10 @@ type Props = {|
 |};
 
 type SectorItem = {|
-  item: ?TripSegmentType,
+  item: ?{
+    ...TripSectorType,
+    +$fragmentRefs: any,
+  },
 |};
 
 class ItineraryCard extends React.Component<Props> {
@@ -28,7 +31,7 @@ class ItineraryCard extends React.Component<Props> {
     if (item) {
       return (
         <ItineraryCardRow>
-          <TripSegment data={item} />
+          <TripSector data={item} />
         </ItineraryCardRow>
       );
     }
@@ -83,7 +86,7 @@ export default createFragmentContainer(
   graphql`
     fragment ItineraryCard on Itinerary {
       sectors {
-        ...TripSegment
+        ...TripSector
       }
       price {
         currency
