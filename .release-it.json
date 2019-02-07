@@ -1,9 +1,9 @@
 {
   "increment": "conventional:angular",
-  "buildCommand": "yarn build",
-  "changelogCommand": "conventional-changelog -p angular | tail -n +3",
-  "safeBump": false,
-  "src": {
+  "scripts": {
+    "beforeStage": "yarn build"
+  },
+  "git": {
     "commitMessage": "chore: release %s",
     "tagName": "v%s"
   },
