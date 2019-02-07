@@ -12,7 +12,7 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=") {
+  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjE2NDYzNDQ3") {
     id
     status
     arrival {
@@ -30,26 +30,26 @@ fragment RouteStopFragment on RouteStop {
 {
   "data": {
     "bookingDetail": {
-      "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=",
-      "status": "confirmed",
+      "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
+      "status": "closed",
       "arrival": {
-        "cityName": "Paris",
-        "cityId": "paris_fr",
+        "cityName": "Las Palmas",
+        "cityId": "las-palmas_es",
         "time": {
-          "utc": "2017-09-09T21:30:00.000Z",
-          "local": "2017-09-09T23:30:00.000Z"
+          "utc": "2018-11-28T16:20:00.000Z",
+          "local": "2018-11-28T16:20:00.000Z"
         }
       },
       "departure": {
-        "cityName": "London",
-        "cityId": "london_gb",
+        "cityName": "Vienna",
+        "cityId": "vienna_at",
         "time": {
-          "utc": "2017-09-09T20:10:00.000Z",
-          "local": "2017-09-09T21:10:00.000Z"
+          "utc": "2018-11-28T11:20:00.000Z",
+          "local": "2018-11-28T12:20:00.000Z"
         }
       },
-      "destinationImageUrl": "https://images.kiwi.com/photos/600x600/paris_fr.jpg",
-      "passengerCount": 2
+      "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
+      "passengerCount": 1
     }
   }
 }
@@ -67,7 +67,7 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  customerBookings {
+  customerBookings(first: 3) {
     edges {
       node {
         id
@@ -92,74 +92,74 @@ fragment RouteStopFragment on RouteStop {
       "edges": [
         {
           "node": {
-            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=",
-            "status": "confirmed",
+            "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
+            "status": "closed",
             "arrival": {
-              "cityName": "Paris",
-              "cityId": "paris_fr",
+              "cityName": "Las Palmas",
+              "cityId": "las-palmas_es",
               "time": {
-                "utc": "2017-09-09T21:30:00.000Z",
-                "local": "2017-09-09T23:30:00.000Z"
+                "utc": "2018-11-28T16:20:00.000Z",
+                "local": "2018-11-28T16:20:00.000Z"
               }
             },
             "departure": {
-              "cityName": "London",
-              "cityId": "london_gb",
+              "cityName": "Vienna",
+              "cityId": "vienna_at",
               "time": {
-                "utc": "2017-09-09T20:10:00.000Z",
-                "local": "2017-09-09T21:10:00.000Z"
+                "utc": "2018-11-28T11:20:00.000Z",
+                "local": "2018-11-28T12:20:00.000Z"
               }
             },
-            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/paris_fr.jpg",
-            "passengerCount": 2
-          }
-        },
-        {
-          "node": {
-            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjk=",
-            "status": "confirmed",
-            "arrival": {
-              "cityName": "Dubai",
-              "cityId": "dubai_ae",
-              "time": {
-                "utc": "2017-09-09T22:00:00.000Z",
-                "local": "2017-09-10T02:00:00.000Z"
-              }
-            },
-            "departure": {
-              "cityName": "London",
-              "cityId": "london_gb",
-              "time": {
-                "utc": "2017-09-09T07:05:00.000Z",
-                "local": "2017-09-09T08:05:00.000Z"
-              }
-            },
-            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/dubai_ae.jpg",
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
             "passengerCount": 1
           }
         },
         {
           "node": {
-            "id": "Q3VzdG9tZXJCb29raW5nOjI3MDcyMjQ=",
+            "id": "Qm9va2luZ09uZVdheTo2Nzc2Mzcy",
             "status": "confirmed",
             "arrival": {
-              "cityName": "Samara",
-              "cityId": "samara_ru",
+              "cityName": "Moscow",
+              "cityId": "moscow_cf_ru",
               "time": {
-                "utc": "2017-08-18T23:40:00.000Z",
-                "local": "2017-08-19T03:40:00.000Z"
+                "utc": "2018-10-29T12:30:00.000Z",
+                "local": "2018-10-29T15:30:00.000Z"
               }
             },
             "departure": {
               "cityName": "Prague",
               "cityId": "prague_cz",
               "time": {
-                "utc": "2017-08-18T20:05:00.000Z",
-                "local": "2017-08-18T22:05:00.000Z"
+                "utc": "2018-10-29T07:40:00.000Z",
+                "local": "2018-10-29T08:40:00.000Z"
               }
             },
-            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/samara_ru.jpg",
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/moscow_cf_ru.jpg",
             "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo2Njc2NDE5",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Prague",
+              "cityId": "prague_cz",
+              "time": {
+                "utc": "2018-10-23T06:20:00.000Z",
+                "local": "2018-10-23T08:20:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Copenhagen",
+              "cityId": "copenhagen_dk",
+              "time": {
+                "utc": "2018-10-23T05:00:00.000Z",
+                "local": "2018-10-23T07:00:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/prague_cz.jpg",
+            "passengerCount": 3
           }
         }
       ]

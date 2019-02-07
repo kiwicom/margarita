@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   TripDetails,
   graphql`
-    fragment TripDetails on CustomerBooking {
+    fragment TripDetails on BookingInterface {
       ...Header
       ...TripInfo
     }

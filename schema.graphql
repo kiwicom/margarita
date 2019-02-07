@@ -14,8 +14,7 @@ enum BookingDestinationImageDimensions {
   _610x251
 }
 
-"""The bookings for the customer"""
-type CustomerBooking {
+interface BookingInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -27,24 +26,87 @@ type CustomerBooking {
   departure: RouteStop
   destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
   passengerCount: Int
+
+  """OneWay, Multicity or Return"""
+  type: BookingType
 }
 
 """A connection to a list of items."""
-type CustomerBookingConnection {
+type BookingInterfaceConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [CustomerBookingEdge]
+  edges: [BookingInterfaceEdge]
 }
 
 """An edge in a connection."""
-type CustomerBookingEdge {
+type BookingInterfaceEdge {
   """The item at the end of the edge"""
-  node: CustomerBooking
+  node: BookingInterface
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+"""Booking from A to B, B to C and so on, with possible stopovers"""
+type BookingMulticity implements BookingInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  status: String
+  arrival: RouteStop
+  departure: RouteStop
+  destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
+  passengerCount: Int
+
+  """OneWay, Multicity or Return"""
+  type: BookingType
+}
+
+"""Booking from A to B with no return, but possible stopovers"""
+type BookingOneWay implements BookingInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  status: String
+  arrival: RouteStop
+  departure: RouteStop
+  destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
+  passengerCount: Int
+
+  """OneWay, Multicity or Return"""
+  type: BookingType
+}
+
+"""Booking from A to B with return, and possible stopovers"""
+type BookingReturn implements BookingInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  status: String
+  arrival: RouteStop
+  departure: RouteStop
+  destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
+  passengerCount: Int
+
+  """OneWay, Multicity or Return"""
+  type: BookingType
+}
+
+enum BookingType {
+  BOOKING_RETURN
+  BOOKING_MULTICITY
+  BOOKING_ONE_WAY
 }
 
 """
@@ -206,10 +268,10 @@ type Price {
 
 type RootQuery {
   """Find a booking by its id"""
-  bookingDetail(id: ID!): CustomerBooking
+  bookingDetail(id: ID!): BookingInterface
 
   """Retrieve all your bookings."""
-  customerBookings(after: String, first: Int, before: String, last: Int): CustomerBookingConnection
+  customerBookings(after: String, first: Int, before: String, last: Int): BookingInterfaceConnection
 
   """Query for suggested locations based on incomplete names"""
   locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationConnection

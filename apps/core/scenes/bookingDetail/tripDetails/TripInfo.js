@@ -26,7 +26,7 @@ const TripInfo = (props: Props) => {
 export default createFragmentContainer(
   TripInfo,
   graphql`
-    fragment TripInfo on CustomerBooking {
+    fragment TripInfo on BookingInterface {
       ...FromTo
     }
   `,

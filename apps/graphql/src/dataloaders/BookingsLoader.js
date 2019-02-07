@@ -22,10 +22,12 @@ type BookingApiResult = {|
   +flights: $ReadOnlyArray<{|
     +arrival: ApiRouteStop,
     +departure: ApiRouteStop,
+    +return: number,
   |}>,
   +passengers: $ReadOnlyArray<{|
     +id: number,
   |}>,
+  +segments: $ReadOnlyArray<Object> | null,
 |};
 
 type RouteStopTime = {|
@@ -46,6 +48,7 @@ export type Booking = {|
   +arrival: RouteStop,
   +departure: RouteStop,
   +passengerCount: number,
+  +type: 'BookingReturn' | 'BookingMulticity' | 'BookingOneWay',
 |};
 
 const sanitizeBookings = (
@@ -57,7 +60,24 @@ const sanitizeBookings = (
     arrival: sanitizeRouteStop(last(booking.flights).arrival),
     departure: sanitizeRouteStop(head(booking.flights).departure),
     passengerCount: booking.passengers.length,
+    type: detectType(booking),
   }));
+};
+
+const detectType = (booking: BookingApiResult) => {
+  if (Array.isArray(booking.flights)) {
+    const returnFlight = booking.flights.find(flight => flight.return === 1);
+
+    if (returnFlight) {
+      return 'BookingReturn';
+    }
+  }
+
+  if (Array.isArray(booking.segments) && booking.segments.length) {
+    return 'BookingMulticity';
+  }
+
+  return 'BookingOneWay';
 };
 
 const sanitizeRouteStop = (departureArrival: ApiRouteStop) => {

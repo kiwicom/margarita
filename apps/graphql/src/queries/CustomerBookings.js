@@ -8,11 +8,11 @@ import {
 import { type ConnectionArguments } from 'graphql-relay';
 
 import type { Booking } from '../dataloaders/BookingsLoader';
-import GraphQLCustomerBookings from '../types/output/CustomerBookings';
 import type { GraphqlContextType } from '../services/GraphQLContext';
+import GraphQLBookingInterface from '../types/output/BookingInterface';
 
 const { connectionType: AllBookingsConnection } = connectionDefinitions({
-  nodeType: GraphQLCustomerBookings,
+  nodeType: GraphQLBookingInterface,
 });
 
 type Args = {|

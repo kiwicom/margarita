@@ -3,15 +3,15 @@
 import { GraphQLID, GraphQLNonNull } from 'graphql';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
-import GraphQLCustomerBooking from '../types/output/CustomerBookings';
 import type { GraphqlContextType } from '../services/GraphQLContext';
+import BookingInterface from '../types/output/BookingInterface';
 
 type Args = {|
   +id: string,
 |};
 
 export default {
-  type: GraphQLCustomerBooking,
+  type: BookingInterface,
   description: 'Find a booking by its id',
   args: {
     id: {

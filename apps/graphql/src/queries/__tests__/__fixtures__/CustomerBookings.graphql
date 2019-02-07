@@ -8,7 +8,7 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  customerBookings {
+  customerBookings(first: 3) {
     edges {
       node {
         id

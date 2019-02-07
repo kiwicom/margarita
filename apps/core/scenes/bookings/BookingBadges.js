@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   BookingBadges,
   graphql`
-    fragment BookingBadges on CustomerBooking {
+    fragment BookingBadges on BookingInterface {
       id(opaque: false)
       status
     }
