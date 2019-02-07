@@ -1,9 +1,7 @@
 // @flow
 
-import { View } from 'react-native';
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
-import { Text, Icon } from '@kiwicom/universal-components';
 
 import { TRIP_TYPE, MODAL_TYPE } from './SearchConstants';
 import {
@@ -13,11 +11,14 @@ import {
   type ModalTypes,
   type PassengersData,
 } from './SearchContext';
+import PlacePicker from './PlacePicker/PlacePickerRenderer';
 
 type Props = {|
   +onClose: () => void,
   +modalType: $Keys<typeof MODAL_TYPE>,
   +tripType: string,
+  +travelFrom: string,
+  +travelTo: string,
   +setTripType: TripTypes => void,
   +handlePassengersSave: PassengersData => void,
   +setModalType: ModalTypes => void,
@@ -47,42 +48,42 @@ class SearchModal extends React.Component<Props> {
     this.onClose();
   };
 
+  getDefaultPlace = () => {
+    const { modalType, travelFrom, travelTo } = this.props;
+    switch (modalType) {
+      case MODAL_TYPE.ORIGIN:
+        return travelFrom;
+      case MODAL_TYPE.DESTINATION:
+        return travelTo;
+      default:
+        return '';
+    }
+  };
+
   render() {
+    const { adults, bags, infants, modalType, tripType } = this.props;
+
     return (
-      <Modal
-        visible={this.props.modalType !== MODAL_TYPE.HIDDEN}
-        onClose={this.onClose}
-      >
-        {this.props.modalType === MODAL_TYPE.TRIP_TYPE && (
+      <Modal visible={modalType !== MODAL_TYPE.HIDDEN} onClose={this.onClose}>
+        {modalType === MODAL_TYPE.TRIP_TYPE && (
           <Select
             optionsData={TRIP_TYPE}
-            selectedType={this.props.tripType}
+            selectedType={tripType}
             onSelect={this.handleTripTypeSelect}
             onClosePress={this.onClose}
           />
         )}
-        {this.props.modalType === MODAL_TYPE.PASSENGERS && (
+        {modalType === MODAL_TYPE.PASSENGERS && (
           <PassengersInputs
-            adults={this.props.adults}
-            infants={this.props.infants}
-            bags={this.props.bags}
+            adults={adults}
+            infants={infants}
+            bags={bags}
             onClosePress={this.onClose}
             onSavePress={this.handlePassengersSave}
           />
         )}
-        {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(
-          this.props.modalType,
-        ) && (
-          <View
-            style={{
-              margin: 25,
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <Icon name="information-circle" />
-            <Text> TODO: Add place picker for the {this.props.modalType} </Text>
-          </View>
+        {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
+          <PlacePicker type={modalType} defaultValue={this.getDefaultPlace()} />
         )}
       </Modal>
     );
@@ -95,6 +96,8 @@ const select = ({
   adults,
   infants,
   bags,
+  travelFrom,
+  travelTo,
   actions: { setTripType, setModalType, setPassengerData },
 }: SearchContextState) => ({
   tripType,
@@ -105,6 +108,8 @@ const select = ({
   setTripType,
   setModalType,
   setPassengerData,
+  travelFrom,
+  travelTo,
 });
 
 export default withSearchContext(select)(SearchModal);
