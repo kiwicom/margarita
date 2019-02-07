@@ -1,13 +1,19 @@
 // @flow strict
 
 import * as React from 'react';
-import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  StyleSheet,
+  Text,
+  Icon,
+  type StylePropType,
+} from '@kiwicom/universal-components';
 
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 
 type Props = {|
+  +style?: StylePropType,
   +onPress: () => void,
   +icon: React.Element<typeof Icon>,
   +label: string,
@@ -15,19 +21,24 @@ type Props = {|
   +placeholder?: string,
 |};
 
-export default function TripInput(props: Props) {
-  const icon = React.cloneElement(props.icon, {
+export default function TripInput({
+  style,
+  icon,
+  label,
+  value,
+  placeholder,
+  onPress,
+}: Props) {
+  const inputIcon = React.cloneElement(icon, {
     color: defaultTokens.colorIconSecondary,
   });
   return (
-    <TouchableWithoutFeedback onPress={props.onPress}>
-      <View style={styles.container}>
-        <View style={styles.icon}>{icon}</View>
-        <Text>{`${props.label}: `}</Text>
-        {props.value !== '' && <Text type="attention">{props.value}</Text>}
-        {props.value === '' && props.placeholder != null && (
-          <Text>{props.placeholder}</Text>
-        )}
+    <TouchableWithoutFeedback onPress={onPress}>
+      <View style={[styles.container, style]}>
+        {Platform.OS !== 'web' && <View style={styles.icon}>{inputIcon}</View>}
+        <Text style={styles.label}>{label.length > 0 ? `${label}: ` : ''}</Text>
+        {value !== '' && <Text style={styles.value}>{value}</Text>}
+        {value === '' && placeholder != null && <Text>{placeholder}</Text>}
       </View>
     </TouchableWithoutFeedback>
   );
@@ -36,13 +47,34 @@ export default function TripInput(props: Props) {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
+    marginBottom: parseInt(defaultTokens.spaceXSmall, 10),
     padding: 11,
-    borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
-    marginBottom: 8,
     alignItems: 'center',
+    borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    backgroundColor: defaultTokens.backgroundButtonSecondary,
+    web: {
+      flex: 1,
+      height: parseInt(defaultTokens.heightInputNormal, 10),
+      borderRadius: 3,
+      backgroundColor: defaultTokens.paletteWhite,
+      borderWidth: 1,
+      borderColor: defaultTokens.paletteInkLighter,
+    },
   },
   icon: {
     marginEnd: 10,
+  },
+  label: {
+    color: defaultTokens.paletteInkNormal,
+    web: {
+      color: defaultTokens.colorTextSecondary,
+    },
+  },
+  value: {
+    color: defaultTokens.colorTextAttention,
+    web: {
+      color: defaultTokens.paletteInkNormal,
+      fontWeight: defaultTokens.fontWeightMedium,
+    },
   },
 });

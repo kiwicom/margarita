@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
+import { LayoutContextProvider } from '@kiwicom/margarita-utils';
 
 import Navbar from './Navbar';
 
@@ -15,10 +16,12 @@ type Props = {|
  */
 export default function Layout({ children }: Props) {
   return (
-    <View style={styles.container}>
-      <Navbar />
-      {children}
-    </View>
+    <LayoutContextProvider>
+      <View style={styles.container}>
+        <Navbar />
+        {children}
+      </View>
+    </LayoutContextProvider>
   );
 }
 
