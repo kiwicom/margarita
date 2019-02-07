@@ -32,6 +32,7 @@ export { default as Illustration } from './src/Illustration/Illustration';
 export {
   default as IllustrationWithInformation,
 } from './src/IllustrationWithInformation/IllustrationWithInformation';
+export { default as PassengerCard } from './src/passengerCard/PassengerCard';
 
 export { default as Separator } from './src/separator/Separator';
 export { default as ShareIcon } from './src/shareIcon/ShareIcon';

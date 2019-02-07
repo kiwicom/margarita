@@ -1,0 +1,222 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders blank 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomWidth": 2,
+        "borderColor": "#e8edf1",
+        "borderRadius": 6,
+        "borderTopWidth": 2,
+        "borderWidth": 1,
+        "marginHorizontal": 8,
+        "paddingHorizontal": 16,
+        "shadowColor": "rgba(23, 27, 30, 0.2)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 1,
+        },
+        "shadowOpacity": 0.3,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingBottom": 16,
+          "paddingTop": 12,
+        }
+      }
+    >
+      <Icon
+        name="passenger"
+      />
+      <Text
+        size="large"
+      >
+        0. Passenger
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 60,
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <PassengerCardDetail
+        label="Nationality"
+        style="normal"
+        value=""
+      />
+      <PassengerCardDetail
+        label="Date of birth"
+        style="normal"
+        value=""
+      />
+      <PassengerCardDetail
+        label="ID"
+        style="id_row_wrapper"
+        value=""
+      />
+    </Component>
+    <Separator />
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 120,
+          "justifyContent": "space-between",
+          "paddingTop": 12,
+        }
+      }
+    >
+      <PassengerCardDetail
+        label="Travel Insurance"
+        style="normal"
+        value=""
+      />
+      <Component
+        style={
+          Object {
+            "flexGrow": 3,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
+          }
+          type="secondary"
+        >
+          Bags
+        </Text>
+        <Component />
+      </Component>
+    </Component>
+  </Component>,
+}
+`;
+
+exports[`renders with passenger info 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "backgroundColor": "white",
+        "borderBottomWidth": 2,
+        "borderColor": "#e8edf1",
+        "borderRadius": 6,
+        "borderTopWidth": 2,
+        "borderWidth": 1,
+        "marginHorizontal": 8,
+        "paddingHorizontal": 16,
+        "shadowColor": "rgba(23, 27, 30, 0.2)",
+        "shadowOffset": Object {
+          "height": 1,
+          "width": 1,
+        },
+        "shadowOpacity": 0.3,
+      }
+    }
+  >
+    <Component
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingBottom": 16,
+          "paddingTop": 12,
+        }
+      }
+    >
+      <Icon
+        name="passenger"
+      />
+      <Text
+        size="large"
+      >
+        Mr. John Doe
+      </Text>
+    </Component>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 60,
+          "justifyContent": "space-between",
+        }
+      }
+    >
+      <PassengerCardDetail
+        label="Nationality"
+        style="normal"
+        value="Russian"
+      />
+      <PassengerCardDetail
+        label="Date of birth"
+        style="normal"
+        value="22/04/1980"
+      />
+      <PassengerCardDetail
+        label="ID"
+        style="id_row_wrapper"
+        value="DF45SV9"
+      />
+    </Component>
+    <Separator />
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "height": 120,
+          "justifyContent": "space-between",
+          "paddingTop": 12,
+        }
+      }
+    >
+      <PassengerCardDetail
+        label="Travel Insurance"
+        style="normal"
+        value="Travel Inusurance Name"
+      />
+      <Component
+        style={
+          Object {
+            "flexGrow": 3,
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "paddingBottom": 8,
+            }
+          }
+          type="secondary"
+        >
+          Bags
+        </Text>
+        <Component>
+          <BagInformation
+            count={2}
+            type="40x15x30cm, 3kg"
+          />
+          <BagInformation
+            count={1}
+            type="55x20x40cm, 8kg"
+          />
+        </Component>
+      </Component>
+    </Component>
+  </Component>,
+}
+`;
