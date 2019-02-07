@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5937df4ba67c28527a9962e40f328155
+ * @relayHash 8be6f9bc2b7c44b22060dce01261331a
  */
 
 /* eslint-disable */
@@ -39,6 +39,7 @@ fragment PlacePickerContent_locations_2VV6jB on RootQuery {
       node {
         id
         name
+        locationId
       }
     }
   }
@@ -59,7 +60,7 @@ return {
   "operationKind": "query",
   "name": "PlacePickerContentRefetchQuery",
   "id": null,
-  "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n}\n",
+  "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,6 +133,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "name",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "locationId",
                     "args": null,
                     "storageKey": null
                   }

@@ -9,11 +9,19 @@ import PlacePickerContent from './PlacePickerContent';
 type Props = {|
   +type: string,
   +defaultValue: ?string,
+  +onChoose: string => void,
+  +setModalType: string => void,
 |};
 
 export default class PlacePickerRenderer extends React.Component<Props> {
   renderInner = (data: PlacePickerRendererQueryResponse) => {
-    return <PlacePickerContent type={this.props.type} locations={data} />;
+    return (
+      <PlacePickerContent
+        type={this.props.type}
+        locations={data}
+        onChoose={this.props.onChoose}
+      />
+    );
   };
 
   render() {

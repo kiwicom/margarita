@@ -16,6 +16,7 @@ export type PlacePickerContent_locations = {|
       +node: ?{|
         +id: string,
         +name: ?string,
+        +locationId: ?string,
       |}
     |}>
   |},
@@ -87,6 +88,13 @@ const node/*: ConcreteFragment*/ = {
                   "name": "name",
                   "args": null,
                   "storageKey": null
+                },
+                {
+                  "kind": "ScalarField",
+                  "alias": null,
+                  "name": "locationId",
+                  "args": null,
+                  "storageKey": null
                 }
               ]
             }
@@ -97,5 +105,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '9bea2beef1bf3f7c340eba5e138cbac3';
+(node/*: any*/).hash = '0f0d8960ca060b4400ea821cd852030f';
 module.exports = node;

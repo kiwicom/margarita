@@ -24,6 +24,8 @@ type Props = {|
   +setModalType: ModalTypes => void,
   ...$ReadOnly<PassengersData>,
   +setPassengerData: ($ReadOnly<PassengersData>) => void,
+  +setTravelTo: string => void,
+  +setTravelFrom: string => void,
 |};
 
 class SearchModal extends React.Component<Props> {
@@ -60,6 +62,18 @@ class SearchModal extends React.Component<Props> {
     }
   };
 
+  handleSetPlace = (placeId: string) => {
+    const { modalType, setTravelTo, setTravelFrom, setModalType } = this.props;
+    if (modalType === MODAL_TYPE.ORIGIN) {
+      setTravelFrom(placeId);
+      setModalType(MODAL_TYPE.HIDDEN);
+    }
+    if (modalType === MODAL_TYPE.DESTINATION) {
+      setTravelTo(placeId);
+      setModalType(MODAL_TYPE.HIDDEN);
+    }
+  };
+
   render() {
     const { adults, bags, infants, modalType, tripType } = this.props;
 
@@ -83,7 +97,11 @@ class SearchModal extends React.Component<Props> {
           />
         )}
         {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
-          <PlacePicker type={modalType} defaultValue={this.getDefaultPlace()} />
+          <PlacePicker
+            type={modalType}
+            defaultValue={this.getDefaultPlace()}
+            onChoose={this.handleSetPlace}
+          />
         )}
       </Modal>
     );
@@ -98,7 +116,13 @@ const select = ({
   bags,
   travelFrom,
   travelTo,
-  actions: { setTripType, setModalType, setPassengerData },
+  actions: {
+    setModalType,
+    setPassengerData,
+    setTripType,
+    setTravelTo,
+    setTravelFrom,
+  },
 }: SearchContextState) => ({
   tripType,
   modalType,
@@ -110,6 +134,8 @@ const select = ({
   setPassengerData,
   travelFrom,
   travelTo,
+  setTravelTo,
+  setTravelFrom,
 });
 
 export default withSearchContext(select)(SearchModal);

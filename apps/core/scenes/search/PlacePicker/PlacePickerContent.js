@@ -8,7 +8,7 @@ import {
   type RelayRefetchProp,
 } from '@kiwicom/margarita-relay';
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, TouchableWithoutFeedback } from 'react-native';
 import {
   Text,
   TextInput,
@@ -22,6 +22,7 @@ type Props = {|
   +locations: ?PlacePickerContentType,
   +type: string,
   +relay: RelayRefetchProp,
+  +onChoose: string => void,
 |};
 
 type State = {|
@@ -50,6 +51,7 @@ class PlacePicker extends React.Component<Props, State> {
 
   render() {
     const locations = this.props.locations?.locationsByTerm?.edges ?? [];
+    // console.log(this.props.onChoose('BA'));
 
     return (
       <View style={styles.container}>
@@ -64,10 +66,15 @@ class PlacePicker extends React.Component<Props, State> {
         </View>
         <ScrollView style={styles.list}>
           {locations.map(location => (
-            <View style={styles.wrapper} key={location?.node?.id}>
-              <Icon name="location" />
-              <Text style={styles.listItem}>{location?.node?.name}</Text>
-            </View>
+            <TouchableWithoutFeedback
+              onPress={() => this.props.onChoose(location.node.locationId)}
+              key={location?.node?.id}
+            >
+              <View style={styles.wrapper}>
+                <Icon name="location" />
+                <Text style={styles.listItem}>{location?.node?.name}</Text>
+              </View>
+            </TouchableWithoutFeedback>
           ))}
         </ScrollView>
       </View>
@@ -88,6 +95,7 @@ export default createRefetchContainer(
             node {
               id
               name
+              locationId
             }
           }
         }

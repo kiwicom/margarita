@@ -34,6 +34,8 @@ type State = {|
     +setTripType: TripTypes => void,
     +setModalType: ModalTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
+    +setTravelFrom: string => void,
+    +setTravelTo: string => void,
   },
 |};
 
@@ -59,6 +61,8 @@ const defaultState = {
     setTripType: noop,
     setModalType: noop,
     setPassengerData: noop,
+    setTravelFrom: noop,
+    setTravelTo: noop,
   },
 };
 
@@ -80,6 +84,8 @@ export default class SearchContextProvider extends React.Component<
         setTripType: this.setTripType,
         setModalType: this.setModalType,
         setPassengerData: this.setPassengerData,
+        setTravelFrom: this.setTravelFrom,
+        setTravelTo: this.setTravelTo,
       },
     };
   }
@@ -105,6 +111,15 @@ export default class SearchContextProvider extends React.Component<
         returnDateTo: returnDate,
       };
     });
+  };
+
+  // TODO use a place name and placeId
+  setTravelFrom = (placeId: string) => {
+    this.setState({ travelFrom: placeId });
+  };
+
+  setTravelTo = (placeId: string) => {
+    this.setState({ travelTo: placeId });
   };
 
   setReturnDate = (date: Date) => {
