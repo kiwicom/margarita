@@ -12,12 +12,42 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
 import logo from '../images/logo.png';
+import {
+  termsAndConditions,
+  termsOfUse,
+  privacyPolicy,
+  security,
+  codeKiwiInstagram,
+  codeKiwiTwitter,
+  kiwiLinkedIn,
+  codeKiwiFacebook,
+  codeKiwi,
+} from '../../../../linksConfig';
 
 const links = [
-  { title: 'Terms & Conditions', link: 'https://github.com/kiwicom/margarita' },
-  { title: 'Terms of Use', link: 'https://github.com/kiwicom/margarita' },
-  { title: 'Privacy Policy', link: 'https://github.com/kiwicom/margarita' },
-  { title: 'Security', link: 'https://github.com/kiwicom/margarita' },
+  { title: 'Terms & Conditions', url: termsAndConditions },
+  { title: 'Terms of Use', url: termsOfUse },
+  { title: 'Privacy Policy', url: privacyPolicy },
+  { title: 'Security', url: security },
+];
+
+const icons = [
+  {
+    url: codeKiwiInstagram,
+    icon: <Instagram customColor={defaultTokens.colorIconTertiary} />,
+  },
+  {
+    url: codeKiwiTwitter,
+    icon: <Twitter customColor={defaultTokens.colorIconTertiary} />,
+  },
+  {
+    url: kiwiLinkedIn,
+    icon: <Linkedin customColor={defaultTokens.colorIconTertiary} />,
+  },
+  {
+    url: codeKiwiFacebook,
+    icon: <Facebook customColor={defaultTokens.colorIconTertiary} />,
+  },
 ];
 
 export default () => (
@@ -25,30 +55,23 @@ export default () => (
     <Separator />
     <Footer>
       <FooterLeftContainer>
-        <a href="https://code.kiwi.com/">
+        <a href={codeKiwi}>
           <Logo src={logo} alt="Logo" />
         </a>
         <FooterLeftLinks>
-          {links.map(el => (
-            <LinkNoStyle href={el.link} key={el.title}>
-              <Text type="secondary">{el.title}</Text>
+          {links.map(link => (
+            <LinkNoStyle href={link.url} key={link.url}>
+              <Text type="secondary">{link.title}</Text>
             </LinkNoStyle>
           ))}
         </FooterLeftLinks>
       </FooterLeftContainer>
       <FooterRightContainer>
-        <a href="https://code.kiwi.com/">
-          <Instagram customColor={defaultTokens.colorIconSecondary} />
-        </a>
-        <a href="https://code.kiwi.com/">
-          <Twitter customColor={defaultTokens.colorIconSecondary} />
-        </a>
-        <a href="https://code.kiwi.com/">
-          <Linkedin customColor={defaultTokens.colorIconSecondary} />
-        </a>
-        <a href="https://code.kiwi.com/">
-          <Facebook customColor={defaultTokens.colorIconSecondary} />
-        </a>
+        {icons.map(icon => (
+          <a href={icon.url} key={icon.url}>
+            {icon.icon}
+          </a>
+        ))}
       </FooterRightContainer>
     </Footer>
   </Container>
@@ -57,19 +80,18 @@ export default () => (
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 3vh;
 `;
 
 const Footer = styled.div`
   display: flex;
   justify-content: space-between;
-  height: 10vh;
+  height: 105px;
   align-items: center;
 `;
 
 const Logo = styled.img`
-  height: 38px;
-  padding-left: 2vw;
+  height: 42px;
+  padding-left: 48px;
 `;
 
 const LinkNoStyle = styled.a`
@@ -80,17 +102,18 @@ const FooterLeftContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 32vw;
+  width: 44vw;
 `;
 
 const FooterLeftLinks = styled.div`
   display: flex;
-  width: 22vw;
-  justify-content: space-around;
+  width: 40vw;
+  justify-content: space-evenly;
 `;
 
 const FooterRightContainer = styled.div`
   display: flex;
   width: 14vw;
   justify-content: space-around;
+  padding-right: 35px;
 `;

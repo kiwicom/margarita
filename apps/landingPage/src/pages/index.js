@@ -3,15 +3,18 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import Header from '../components/header';
-import Footer from '../components/footer';
-import Demo from '../components/demo';
-import Info from '../components/info';
-import Headline from '../components/headline';
-import Playground from '../components/playground';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Demo from '../components/Demo';
+import Info from '../components/Info';
+import Headline from '../components/Headline';
+import Playground from '../components/Playground';
 
-const iframeWidth = 1200;
-const iframeHeight = 800;
+const windowWidth = window.innerWidth;
+const windowHeight = window.innerHeight;
+
+const iframeWidth = windowWidth - 250;
+const iframeHeight = windowHeight - 200;
 
 export default () => (
   <LandingPage>
@@ -35,5 +38,4 @@ const GlobalStyle = createGlobalStyle`
 const LandingPage = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 12vw 0 12vw;
 `;
