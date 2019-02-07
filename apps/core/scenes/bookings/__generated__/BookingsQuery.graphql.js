@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 265a1ace01ecfb1699d6e73b3913f140
+ * @relayHash 470e7e11b6f9215dba9119cf54de457f
  */
 
 /* eslint-disable */
@@ -30,16 +30,17 @@ query BookingsQuery {
   }
 }
 
-fragment BookingList on CustomerBookingConnection {
+fragment BookingList on BookingInterfaceConnection {
   edges {
     node {
+      __typename
       id(opaque: false)
       ...Booking
     }
   }
 }
 
-fragment Booking on CustomerBooking {
+fragment Booking on BookingInterface {
   destinationImageUrl(dimensions: _1200x628)
   relayId: id
   ...BookingBadges
@@ -47,12 +48,12 @@ fragment Booking on CustomerBooking {
   ...DateAndPassengerCount
 }
 
-fragment BookingBadges on CustomerBooking {
+fragment BookingBadges on BookingInterface {
   id(opaque: false)
   status
 }
 
-fragment FromTo on CustomerBooking {
+fragment FromTo on BookingInterface {
   departure {
     ...CityName
   }
@@ -61,7 +62,7 @@ fragment FromTo on CustomerBooking {
   }
 }
 
-fragment DateAndPassengerCount on CustomerBooking {
+fragment DateAndPassengerCount on BookingInterface {
   passengerCount
   departure {
     time {
@@ -117,7 +118,7 @@ return {
   "operationKind": "query",
   "name": "BookingsQuery",
   "id": null,
-  "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on CustomerBookingConnection {\n  edges {\n    node {\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on CustomerBooking {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges\n  ...FromTo\n  ...DateAndPassengerCount\n}\n\nfragment BookingBadges on CustomerBooking {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo on CustomerBooking {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment DateAndPassengerCount on CustomerBooking {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
+  "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on BookingInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on BookingInterface {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges\n  ...FromTo\n  ...DateAndPassengerCount\n}\n\nfragment BookingBadges on BookingInterface {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment DateAndPassengerCount on BookingInterface {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,7 +133,7 @@ return {
         "name": "customerBookings",
         "storageKey": null,
         "args": null,
-        "concreteType": "CustomerBookingConnection",
+        "concreteType": "BookingInterfaceConnection",
         "plural": false,
         "selections": [
           {
@@ -155,7 +156,7 @@ return {
         "name": "customerBookings",
         "storageKey": null,
         "args": null,
-        "concreteType": "CustomerBookingConnection",
+        "concreteType": "BookingInterfaceConnection",
         "plural": false,
         "selections": [
           {
@@ -164,7 +165,7 @@ return {
             "name": "edges",
             "storageKey": null,
             "args": null,
-            "concreteType": "CustomerBookingEdge",
+            "concreteType": "BookingInterfaceEdge",
             "plural": true,
             "selections": [
               {
@@ -173,9 +174,16 @@ return {
                 "name": "node",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "CustomerBooking",
+                "concreteType": null,
                 "plural": false,
                 "selections": [
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "__typename",
+                    "args": null,
+                    "storageKey": null
+                  },
                   {
                     "kind": "ScalarField",
                     "alias": null,

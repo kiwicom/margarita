@@ -34,7 +34,7 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "FromTo",
-  "type": "CustomerBooking",
+  "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -62,5 +62,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '49959b403dbc1e28db96672ebf36b119';
+(node/*: any*/).hash = 'd550200ed286c58853a6c0b3700cbb76';
 module.exports = node;

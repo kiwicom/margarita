@@ -8,7 +8,7 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjI3MDcyNTE=") {
+  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjE2NDYzNDQ3") {
     id
     status
     arrival {

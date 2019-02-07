@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b2da048296989c202eed5850424ddb42
+ * @relayHash b1b47c19a73e5bfc79683d13af42779e
  */
 
 /* eslint-disable */
@@ -30,26 +30,27 @@ query BookingDetailQuery(
   $id: ID!
 ) {
   bookingDetail(id: $id) {
+    __typename
     ...TripDetails
     id
   }
 }
 
-fragment TripDetails on CustomerBooking {
+fragment TripDetails on BookingInterface {
   ...Header
   ...TripInfo
 }
 
-fragment Header on CustomerBooking {
+fragment Header on BookingInterface {
   bookingId: id(opaque: false)
   status
 }
 
-fragment TripInfo on CustomerBooking {
+fragment TripInfo on BookingInterface {
   ...FromTo
 }
 
-fragment FromTo on CustomerBooking {
+fragment FromTo on BookingInterface {
   departure {
     ...CityName
   }
@@ -124,7 +125,7 @@ return {
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on CustomerBooking {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on CustomerBooking {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on CustomerBooking {\n  ...FromTo\n}\n\nfragment FromTo on CustomerBooking {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -139,7 +140,7 @@ return {
         "name": "bookingDetail",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CustomerBooking",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
@@ -162,9 +163,16 @@ return {
         "name": "bookingDetail",
         "storageKey": null,
         "args": v1,
-        "concreteType": "CustomerBooking",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": "bookingId",

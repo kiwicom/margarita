@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   withNavigation(Booking),
   graphql`
-    fragment Booking on CustomerBooking {
+    fragment Booking on BookingInterface {
       destinationImageUrl(dimensions: _1200x628)
       relayId: id
       ...BookingBadges
