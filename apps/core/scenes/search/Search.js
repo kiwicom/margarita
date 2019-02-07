@@ -55,8 +55,8 @@ class Search extends React.Component<Props> {
       tripType,
     } = this.props;
     this.props.navigation.navigate(Routes.RESULTS, {
-      travelFrom,
-      travelTo,
+      travelFrom: travelFrom?.locationId,
+      travelTo: travelTo?.locationId,
       dateFrom: format(dateFrom, DATE_FORMAT),
       dateTo: format(dateTo, DATE_FORMAT),
       ...(tripType === 'return'

@@ -9,7 +9,7 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Routes } from '@kiwicom/margarita-navigation';
 
-import { SearchScreen, ResultsScreen, PlacePickerScreen } from '../screens';
+import { SearchScreen, ResultsScreen } from '../screens';
 
 type NavigationOptions = {};
 type NavigationProps = {};
@@ -25,9 +25,6 @@ const StackNavigator: NavigationNavigator<
     },
     [Routes.RESULTS]: {
       screen: ResultsScreen,
-    },
-    [Routes.PLACE_PICKER]: {
-      screen: PlacePickerScreen,
     },
   }: NavigationRouteConfigMap),
   {

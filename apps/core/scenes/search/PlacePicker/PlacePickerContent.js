@@ -53,11 +53,13 @@ class PlacePicker extends React.Component<Props, State> {
   render() {
     const locations = this.props.locations?.locationsByTerm?.edges ?? [];
 
+    // TODO create function for this.props.onChoose(location.node)}
     return (
       <View style={styles.container}>
         <View>
           <Text weight="bold">{this.getLabel()}:</Text>
           <TextInput
+            autofoucs
             placeholder="write a place..."
             onChangeText={this.handleChangeText}
             value={this.state.text}
@@ -67,7 +69,7 @@ class PlacePicker extends React.Component<Props, State> {
         <ScrollView style={styles.list}>
           {locations.map(location => (
             <TouchableWithoutFeedback
-              onPress={() => this.props.onChoose(location.node.locationId)}
+              onPress={() => this.props.onChoose(location.node)}
               key={location?.node?.id}
             >
               <View style={styles.wrapper}>
