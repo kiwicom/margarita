@@ -9,6 +9,7 @@
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
 type CityName$ref = any;
+type FromToIcon$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FromTo$ref: FragmentReference;
 export type FromTo = {|
@@ -18,6 +19,7 @@ export type FromTo = {|
   +arrival: ?{|
     +$fragmentRefs: CityName$ref
   |},
+  +$fragmentRefs: FromToIcon$ref,
   +$refType: FromTo$ref,
 |};
 */
@@ -57,10 +59,15 @@ return {
       "concreteType": "RouteStop",
       "plural": false,
       "selections": v0
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "FromToIcon",
+      "args": null
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'd550200ed286c58853a6c0b3700cbb76';
+(node/*: any*/).hash = 'bc9d18042c74ecfc2f100fe2ccff7d12';
 module.exports = node;

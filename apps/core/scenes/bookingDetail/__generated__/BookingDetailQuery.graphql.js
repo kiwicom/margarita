@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b1b47c19a73e5bfc79683d13af42779e
+ * @relayHash d24d404c94215d7f96bbe64e230e6d37
  */
 
 /* eslint-disable */
@@ -57,6 +57,7 @@ fragment FromTo on BookingInterface {
   arrival {
     ...CityName
   }
+  ...FromToIcon
 }
 
 fragment CityName on RouteStop {
@@ -65,6 +66,10 @@ fragment CityName on RouteStop {
     countryFlagURL
     id
   }
+}
+
+fragment FromToIcon on BookingInterface {
+  type
 }
 */
 
@@ -125,7 +130,7 @@ return {
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on BookingInterface {\n  type\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -213,6 +218,13 @@ return {
             "concreteType": "RouteStop",
             "plural": false,
             "selections": v3
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "type",
+            "args": null,
+            "storageKey": null
           },
           v2
         ]
