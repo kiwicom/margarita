@@ -5,8 +5,8 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { FlatList, View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { ItineraryCard } from '@kiwicom/margarita-components';
 
+import { ItineraryCard } from '../../components/ItineraryCard';
 import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
 import EmptyResults from './EmptyResults';
 

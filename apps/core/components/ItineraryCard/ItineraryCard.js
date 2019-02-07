@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View, FlatList } from 'react-native';
-import shortid from 'shortid';
 import { LocalizedPrice, StyleSheet } from '@kiwicom/universal-components';
 import { formatPrice } from '@kiwicom/margarita-utils';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
@@ -38,7 +37,7 @@ class ItineraryCard extends React.Component<Props> {
     return null;
   };
 
-  keyExtractor = () => shortid.generate();
+  keyExtractor = (_, index) => `${index}`;
 
   render() {
     const { data } = this.props;

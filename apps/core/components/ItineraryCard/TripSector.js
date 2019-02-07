@@ -3,55 +3,29 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
-import * as DateFNS from 'date-fns';
-import { uniq } from 'ramda';
+import { Text, StyleSheet } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { last, head } from 'ramda';
 
 import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
+import Transporters from './Transporters';
+import { getFormattedDate, getDuration, dateFormat } from './TripSectorHelpers';
 
 type Props = {|
   +data: ?TripSectorType,
 |};
-const timeSimpleFormat = 'H:mm';
-const dateFormat = 'ddd D MMM';
-
-const getFormattedDate = (time, format = timeSimpleFormat) =>
-  DateFNS.format(DateFNS.parse(time), format);
-
-const getDuration = durationInMinutes => {
-  return (
-    durationInMinutes &&
-    `${Math.floor(durationInMinutes / 60)}h ${durationInMinutes % 60}m`
-  );
-};
-
-const mapTransporters = segments => {
-  const carriers =
-    segments &&
-    uniq(
-      segments.map(segment => ({
-        name: '',
-        code: segment && segment.transporter?.name,
-      })),
-    );
-
-  return carriers;
-};
 
 function TripSector({ data }: Props) {
-  const firstSegment = data?.segments?.[0];
-  const lastSegment =
-    data && data.segments && data.segments[data.segments.length - 1];
+  const segments = data?.segments ?? [];
+  const firstSegment = head(segments);
+  const lastSegment = last(segments);
+
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.carrierLogo}>
-          <CarrierLogo
-            size="medium"
-            carriers={mapTransporters(data?.segments)}
-          />
+          <Transporters data={data} />
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
@@ -104,10 +78,8 @@ export default createFragmentContainer(
         origin {
           name
         }
-        transporter {
-          name
-        }
       }
+      ...Transporters
     }
   `,
 );

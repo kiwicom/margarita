@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 71acf811d1334fa47af420e5d5a86b15
+ * @relayHash 6284ae73eaa20f644b53f13a2b5c3447
  */
 
 /* eslint-disable */
@@ -85,6 +85,13 @@ fragment TripSector on Sector {
       name
       id
     }
+    id
+  }
+  ...Transporters
+}
+
+fragment Transporters on Sector {
+  segments {
     transporter {
       name
     }
@@ -149,7 +156,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  segments {\n    arrivalTime {\n      local\n    }\n    departureTime {\n      local\n    }\n    destination {\n      name\n      id\n    }\n    duration\n    origin {\n      name\n      id\n    }\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  segments {\n    arrivalTime {\n      local\n    }\n    departureTime {\n      local\n    }\n    destination {\n      name\n      id\n    }\n    duration\n    origin {\n      name\n      id\n    }\n    id\n  }\n  ...Transporters\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -269,6 +276,7 @@ return {
                             "plural": false,
                             "selections": v6
                           },
+                          v2,
                           {
                             "kind": "LinkedField",
                             "alias": null,
@@ -280,8 +288,7 @@ return {
                             "selections": [
                               v5
                             ]
-                          },
-                          v2
+                          }
                         ]
                       }
                     ]

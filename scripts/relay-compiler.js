@@ -21,7 +21,7 @@ fs.writeFileSync(path.join(__dirname, '..', 'schema.graphql'), clientSchema);
 
 _x('yarn', [
   'relay-compiler',
-  '--src=./',
+  '--src=./apps',
   '--schema=./schema.graphql',
   '--verbose',
   ...process.argv.slice(2),

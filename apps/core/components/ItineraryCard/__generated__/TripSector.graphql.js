@@ -8,6 +8,7 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type Transporters$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripSector$ref: FragmentReference;
 export type TripSector = {|
@@ -26,10 +27,8 @@ export type TripSector = {|
     +origin: ?{|
       +name: ?string
     |},
-    +transporter: ?{|
-      +name: ?string
-    |},
   |}>,
+  +$fragmentRefs: Transporters$ref,
   +$refType: TripSector$ref,
 |};
 */
@@ -118,22 +117,17 @@ return {
           "concreteType": "Location",
           "plural": false,
           "selections": v2
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "transporter",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Transporter",
-          "plural": false,
-          "selections": v2
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "Transporters",
+      "args": null
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'd0ac39910cf31356eb556e84468f28a9';
+(node/*: any*/).hash = '37fc4afd1fff23322180119d7d6c6497';
 module.exports = node;
