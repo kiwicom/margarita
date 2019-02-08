@@ -11,6 +11,7 @@ import {
   StyleSheet,
 } from '@kiwicom/universal-components';
 
+import { MODAL_TYPE } from '../SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
@@ -42,8 +43,8 @@ type State = {|
 |};
 
 const setDefaultValue = (pickerType: string, from: string, to: string) => {
-  if (pickerType === 'ORIGIN') return from;
-  if (pickerType === 'DESTINATION') return to;
+  if (pickerType === MODAL_TYPE.ORIGIN) return from;
+  if (pickerType === MODAL_TYPE.DESTINATION) return to;
   return '';
 };
 
@@ -62,9 +63,9 @@ class PlacePickerContent extends React.Component<Props, State> {
   getLabel = () => {
     const { type } = this.props;
 
-    if (type === 'DESTINATION') {
+    if (type === MODAL_TYPE.DESTINATION) {
       return 'To';
-    } else if (type === 'ORIGIN') {
+    } else if (type === MODAL_TYPE.ORIGIN) {
       return 'From';
     }
     return null;
@@ -78,13 +79,13 @@ class PlacePickerContent extends React.Component<Props, State> {
   handleListItemClick = location => {
     const { type, setTravelFrom, setTravelTo, setModalType } = this.props;
 
-    if (type === 'ORIGIN') {
+    if (type === MODAL_TYPE.ORIGIN) {
       setTravelFrom(location);
     }
-    if (type === 'DESTINATION') {
+    if (type === MODAL_TYPE.DESTINATION) {
       setTravelTo(location);
     }
-    setModalType('HIDDEN');
+    setModalType(MODAL_TYPE.HIDDEN);
   };
 
   render() {
@@ -111,6 +112,7 @@ class PlacePickerContent extends React.Component<Props, State> {
 
 const styles = StyleSheet.create({
   container: {
+    height: '50%',
     margin: 10,
   },
 });
