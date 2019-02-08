@@ -67,7 +67,10 @@ The other available scripts are:
 
    - `GRAPHQL_URL`
      - URL of GraphQL server
-     - E. g.: http://127.0.0.1:4000
+     - E. g.: `'http://127.0.0.1:4000'`
+   - `STORYBOOK`
+     - Decides if storybook or the app should be loaded
+     - E. g.: `'false'`
 
    **apps/graphql/.env**:
 
@@ -75,10 +78,10 @@ The other available scripts are:
      - Get your API key here: https://tequila.kiwi.com
    - `BASE_URL`
      - URL of REST server
-     - E. g.: https://kiwicom-test.apigee.net/
+     - E. g.: `'https://kiwicom-test.apigee.net/'`
    - `NODE_ENV`
      - Type of NodeJS environment.
-     - E. g.: development
+     - E. g.: `'development'`
 
 ## Developing
 
