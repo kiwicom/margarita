@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Text, Separator } from '@kiwicom/orbit-components/lib/';
+import { Separator } from '@kiwicom/orbit-components/lib/';
 import {
   Instagram,
   Linkedin,
@@ -13,23 +13,12 @@ import styled from 'styled-components';
 
 import logo from '../images/logo.png';
 import {
-  termsAndConditions,
-  termsOfUse,
-  privacyPolicy,
-  security,
   codeKiwiInstagram,
   codeKiwiTwitter,
   kiwiLinkedIn,
   codeKiwiFacebook,
   codeKiwi,
 } from '../../../../linksConfig';
-
-const links = [
-  { title: 'Terms & Conditions', url: termsAndConditions },
-  { title: 'Terms of Use', url: termsOfUse },
-  { title: 'Privacy Policy', url: privacyPolicy },
-  { title: 'Security', url: security },
-];
 
 const icons = [
   {
@@ -58,13 +47,6 @@ export default () => (
         <a href={codeKiwi}>
           <Logo src={logo} alt="Logo" />
         </a>
-        <FooterLeftLinks>
-          {links.map(link => (
-            <LinkNoStyle href={link.url} key={link.url}>
-              <Text type="secondary">{link.title}</Text>
-            </LinkNoStyle>
-          ))}
-        </FooterLeftLinks>
       </FooterLeftContainer>
       <FooterRightContainer>
         {icons.map(icon => (
@@ -94,10 +76,6 @@ const Logo = styled.img`
   padding-left: 48px;
 `;
 
-const LinkNoStyle = styled.a`
-  text-decoration: none;
-`;
-
 const FooterLeftContainer = styled.div`
   display: flex;
   align-items: center;
@@ -105,15 +83,10 @@ const FooterLeftContainer = styled.div`
   width: 44vw;
 `;
 
-const FooterLeftLinks = styled.div`
-  display: flex;
-  width: 40vw;
-  justify-content: space-evenly;
-`;
-
 const FooterRightContainer = styled.div`
   display: flex;
   width: 14vw;
   justify-content: space-around;
   padding-right: 35px;
+  flex-wrap: wrap;
 `;

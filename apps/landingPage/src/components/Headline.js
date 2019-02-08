@@ -5,12 +5,13 @@ import { Heading, Text, Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
-import { github, margarita } from '../../../../linksConfig';
 import kiwiLogo from '../images/logo.png';
 import reactLogo from '../images/react-logo.png';
 import tequilaLogo from '../images/tequila-logo.png';
 import graphqlLogo from '../images/graphql-logo.png';
 import airport from '../images/airport.jpg';
+import { github, margarita } from '../../../../linksConfig';
+import { BREAKPOINTS } from '../mediaQueriesConfig';
 
 export default () => (
   <Headline>
@@ -81,6 +82,10 @@ const Headline = styled.div`
 const HeadlineTextContainer = styled.div`
   align-self: flex-start;
   padding: 11vh 0 8vh 10vw;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    padding-left: 4vw;
+    padding-top: 4vh;
+  }
 `;
 
 const Container = styled.div`
@@ -92,13 +97,20 @@ const ContainerTop = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 6vh;
-  width: 94vw;
-  padding-left: 2vw;
+  width: 100vw;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    justify-content: space-around;
+    width: 94vw;
+    padding-left: 0;
+  }
 `;
 
 const HeaderAndDesignWrapper = styled.div`
   width: 50vw;
-  padding-left: 6vw;
+  padding-left: 10vw;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    padding-left: 0;
+  }
 `;
 
 const BackgroundGradientAccent = styled.div`
@@ -114,18 +126,34 @@ const BackgroundGradientAccent = styled.div`
     50%,
     ${defaultTokens.paletteWhite}
   );
+
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    display: none;
+  }
 `;
 
 const GreenRectangle = styled.div`
   height: 167px;
   width: 3vh;
   background-color: ${defaultTokens.paletteProductNormal};
+
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    display: none;
+  }
 `;
 
 const ContainerIcons = styled.div`
   display: flex;
   justify-content: space-around;
   width: 28vw;
+  margin-right: 3vw;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    flex-wrap: wrap;
+    height: 17vh;
+  }
+  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+    width: 38vw;
+  }
 `;
 
 const ContainerBottom = styled.div`
@@ -140,11 +168,22 @@ const ContainerLeftText = styled.div`
   justify-content: space-around;
   width: 26vw;
   height: 300px;
-  padding-left: 6vw;
+  padding-left: 8vw;
+
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    width: 80vw;
+    align-items: center;
+    padding-left: 8vw;
+    padding-top: 4vh;
+  }
 `;
 
 const WrapperText = styled.div`
   width: 25vw;
+
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    width: 80vw;
+  }
 `;
 
 const WrapperButtons = styled.div`
@@ -162,6 +201,10 @@ const PlaneImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
+  margin-right: 3vw;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    display: none;
+  }
 `;
 
 const LinkNoStyle = styled.a`
