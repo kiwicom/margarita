@@ -60,6 +60,23 @@ jobs:
           root: .
           paths: .
 
+  build-and-deploy-landing-page:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - add_ssh_keys:
+          fingerprints:
+            - "56:b8:5a:30:ca:27:22:43:2d:9a:9e:42:4b:e6:a1:9a"
+      - run:
+          name: Configure Git User
+          command: |
+            git config user.email "me@robincussol.com"
+            git config user.name "GH Pages Bot"
+      - run:
+          name: Deploy landing page
+          command: yarn deploy:landing-page
+
   build-and-deploy-graphql:
     <<: *defaults
     steps:
@@ -99,6 +116,13 @@ workflows:
           requires:
             - install-dependencies
       - build-and-deploy-graphql:
+          requires:
+            - lint
+            - unit-tests
+          filters:
+            branches:
+              only: master
+      - build-and-deploy-landing-page:
           requires:
             - lint
             - unit-tests
