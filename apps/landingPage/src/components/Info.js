@@ -5,14 +5,15 @@ import { Heading, Text, Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
-import placeholderPhone from '../images/ios-frame.png';
+import booking from '../images/bookings.png';
+import results from '../images/results.png';
+import search from '../images/search.png';
 import { documentation } from '../../../../linksConfig';
+import { BREAKPOINTS } from '../mediaQueriesConfig';
 
 type Props = {|
   +iframeWidth: number,
 |};
-
-// const features = ['Search', 'Booking', 'MMB', 'Payments'];
 
 export default ({ iframeWidth }: Props) => (
   <Container id="features">
@@ -32,17 +33,10 @@ export default ({ iframeWidth }: Props) => (
     </Header>
     <ImagesAndGradientWrapper>
       <BackgroundGradientAccent />
-      <PhoneImage src={placeholderPhone} alt="placeholder" />
-      <PhoneImage src={placeholderPhone} alt="placeholder" />
-      <PhoneImage src={placeholderPhone} alt="placeholder" />
+      <PhoneImage src={search} alt="search" />
+      <PhoneImage src={results} alt="results" />
+      <PhoneImage src={booking} alt="booking" />
     </ImagesAndGradientWrapper>
-    {/* <ContainerBottom>
-        {features.map(feature => (
-            <Heading type="title2">{feature}</Heading>
-          </Box>
-        ))}
-      </WrapperBoxes>
-    </ContainerBottom> */}
   </Container>
 );
 
@@ -51,6 +45,9 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 80px;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    padding-top: 20px;
+  }
 `;
 
 const Header = styled.div`
@@ -60,6 +57,10 @@ const Header = styled.div`
   align-items: center;
   height: 250px;
   padding-bottom: 60px;
+
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    height: 400px;
+  }
 `;
 
 const WrapperText = styled.div`
@@ -82,6 +83,7 @@ const PhoneImage = styled.img`
 const ImagesAndGradientWrapper = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 `;
 
 const BackgroundGradientAccent = styled.div`
@@ -96,28 +98,3 @@ const BackgroundGradientAccent = styled.div`
     ${defaultTokens.paletteWhite}
   );
 `;
-
-// const ContainerBottom = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   width: 100vw;
-//   padding: 50px 0 40px 0;
-// `;
-// const WrapperBoxes = styled.div`
-//   display: flex;
-//   justify-content: space-evenly;
-//   width: 80vw;
-//   padding-top: 40px;
-// `;
-// const Box = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100px;
-//   width: 260px;
-//   box-shadow: ${defaultTokens.boxShadowActionable};
-//   border-radius: ${defaultTokens.borderRadiusNormal};
-//   border: ${defaultTokens.borderStyleCard} ${defaultTokens.borderWidthCard}
-//     ${defaultTokens.borderColorCard};
-// `;

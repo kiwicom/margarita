@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import logo from '../images/logo.png';
 import { github, codeKiwi } from '../../../../linksConfig';
+import { BREAKPOINTS } from '../mediaQueriesConfig';
 
 const linksHeader = [
   { title: 'About Margarita', link: '/' },
@@ -34,19 +35,35 @@ export default () => (
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 3vh 3vw 0 2vw;
+  padding-top: 2vw;
   align-items: center;
 `;
 
 const Logo = styled.img`
   height: 42px;
+  padding-left: 2vw;
 `;
 
 const HeaderRight = styled.div`
   display: flex;
-  /* width: 34vw; */
   width: 20vw;
   justify-content: space-between;
+  padding-right: 3vw;
+  @media (max-width: ${BREAKPOINTS.DESKTOP}px) {
+    width: 30vw;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+    width: 70vw;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    width: 80vw;
+    align-items: center;
+    justify-content: space-evenly;
+  }
 `;
 
 const LinkNoStyle = styled.a`
