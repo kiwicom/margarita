@@ -2,46 +2,66 @@
 
 // TODO this is just the temporary Picker will be replaced by the OptionPicker form the 'universal-components'
 
-import {
-  graphql,
-  createRefetchContainer,
-  type RelayRefetchProp,
-} from '@kiwicom/margarita-relay';
 import * as React from 'react';
-import { View, ScrollView, TouchableWithoutFeedback } from 'react-native';
+import { View } from 'react-native';
 import {
   Text,
   TextInput,
   Icon,
   StyleSheet,
 } from '@kiwicom/universal-components';
-import { debounce } from '@kiwicom/margarita-utils';
 
-import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql.js';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type Location,
+} from '../SearchContext';
+import PlacePickerList from './PlacePickerList';
+
+type Locations = $ReadOnlyArray<?{|
+  +node: ?{|
+    +id: string,
+    +name: ?string,
+    +locationId: ?string,
+  |},
+|}>;
 
 type Props = {|
-  +locations: ?PlacePickerContentType,
-  +type: string,
-  +relay: RelayRefetchProp,
-  +onChoose: string => void,
+  +locations: Locations,
+  +onChangeText: string => void,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
+  +type: 'DESTINATION' | 'ORIGIN',
+  +setTravelTo: Location => void,
+  +setTravelFrom: Location => void,
+  +setModalType: string => void,
 |};
 
 type State = {|
   text: string,
 |};
 
-class PlacePicker extends React.Component<Props, State> {
-  state = {
-    text: '',
-  };
+const setDefaultValue = (pickerType: string, from: string, to: string) => {
+  if (pickerType === 'ORIGIN') return from;
+  if (pickerType === 'DESTINATION') return to;
+  return '';
+};
 
-  handleChangeText = debounce((text: string) => {
-    this.setState({ text });
-    this.props.relay.refetch({ input: { term: text } });
-  }, 250);
+class PlacePickerContent extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: setDefaultValue(
+        props.type,
+        props.travelFrom?.name,
+        props.travelTo?.name,
+      ),
+    };
+  }
 
   getLabel = () => {
     const { type } = this.props;
+
     if (type === 'DESTINATION') {
       return 'To';
     } else if (type === 'ORIGIN') {
@@ -50,10 +70,24 @@ class PlacePicker extends React.Component<Props, State> {
     return null;
   };
 
-  render() {
-    const locations = this.props.locations?.locationsByTerm?.edges ?? [];
+  handleChangeText = (text: string) => {
+    this.setState({ text });
+    this.props.onChangeText(text);
+  };
 
-    // TODO create function for this.props.onChoose(location.node)}
+  handleListItemClick = location => {
+    const { type, setTravelFrom, setTravelTo, setModalType } = this.props;
+
+    if (type === 'ORIGIN') {
+      setTravelFrom(location);
+    }
+    if (type === 'DESTINATION') {
+      setTravelTo(location);
+    }
+    setModalType('HIDDEN');
+  };
+
+  render() {
     return (
       <View style={styles.container}>
         <View>
@@ -66,63 +100,33 @@ class PlacePicker extends React.Component<Props, State> {
             prefix={<Icon name="search" />}
           />
         </View>
-        <ScrollView style={styles.list}>
-          {locations.map(location => (
-            <TouchableWithoutFeedback
-              onPress={() => this.props.onChoose(location.node)}
-              key={location?.node?.id}
-            >
-              <View style={styles.wrapper}>
-                <Icon name="location" />
-                <Text style={styles.listItem}>{location?.node?.name}</Text>
-              </View>
-            </TouchableWithoutFeedback>
-          ))}
-        </ScrollView>
+        <PlacePickerList
+          locations={this.props.locations}
+          onPressItem={this.handleListItemClick}
+        />
       </View>
     );
   }
 }
 
-export default createRefetchContainer(
-  PlacePicker,
-  {
-    locations: graphql`
-      fragment PlacePickerContent_locations on RootQuery
-        @argumentDefinitions(
-          input: { type: "LocationsByTermInput!", defaultValue: { term: "" } }
-        ) {
-        locationsByTerm(input: $input) {
-          edges {
-            node {
-              id
-              name
-              locationId
-            }
-          }
-        }
-      }
-    `,
-  },
-  graphql`
-    query PlacePickerContentRefetchQuery($input: LocationsByTermInput!) {
-      ...PlacePickerContent_locations @arguments(input: $input)
-    }
-  `,
-);
-
 const styles = StyleSheet.create({
   container: {
     margin: 10,
   },
-  wrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  list: {
-    marginStart: 25,
-  },
-  listItem: {
-    paddingVertical: 10,
-  },
 });
+
+const select = ({
+  travelFrom,
+  travelTo,
+  modalType,
+  actions: { setTravelTo, setTravelFrom, setModalType },
+}: SearchContextState) => ({
+  setTravelFrom,
+  setTravelTo,
+  travelFrom,
+  travelTo,
+  type: modalType,
+  setModalType,
+});
+
+export default withSearchContext(select)(PlacePickerContent);

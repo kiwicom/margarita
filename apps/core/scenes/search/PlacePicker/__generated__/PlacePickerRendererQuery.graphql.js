@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6e25977cbcee1f5a1915ac5602521652
+ * @relayHash 1b69fed2232a91c9d9a8e1c5d2e62fff
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type PlacePickerContent_locations$ref = any;
+type PlacePickerRefetchContainer_locations$ref = any;
 export type LocationsByTermInput = {
   term: string
 };
@@ -17,7 +17,7 @@ export type PlacePickerRendererQueryVariables = {|
   input: LocationsByTermInput
 |};
 export type PlacePickerRendererQueryResponse = {|
-  +$fragmentRefs: PlacePickerContent_locations$ref
+  +$fragmentRefs: PlacePickerRefetchContainer_locations$ref
 |};
 export type PlacePickerRendererQuery = {|
   variables: PlacePickerRendererQueryVariables,
@@ -30,10 +30,10 @@ export type PlacePickerRendererQuery = {|
 query PlacePickerRendererQuery(
   $input: LocationsByTermInput!
 ) {
-  ...PlacePickerContent_locations_2VV6jB
+  ...PlacePickerRefetchContainer_locations_2VV6jB
 }
 
-fragment PlacePickerContent_locations_2VV6jB on RootQuery {
+fragment PlacePickerRefetchContainer_locations_2VV6jB on RootQuery {
   locationsByTerm(input: $input) {
     edges {
       node {
@@ -60,7 +60,7 @@ return {
   "operationKind": "query",
   "name": "PlacePickerRendererQuery",
   "id": null,
-  "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n      }\n    }\n  }\n}\n",
+  "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerRefetchContainer_locations_2VV6jB\n}\n\nfragment PlacePickerRefetchContainer_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n      }\n    }\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -71,7 +71,7 @@ return {
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "PlacePickerContent_locations",
+        "name": "PlacePickerRefetchContainer_locations",
         "args": [
           {
             "kind": "Variable",
@@ -154,5 +154,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '62b7fdcc1fcf8cb0eaec47f5611fb7ca';
+(node/*: any*/).hash = '97f6ca2876b819220bb76699ca31becf';
 module.exports = node;

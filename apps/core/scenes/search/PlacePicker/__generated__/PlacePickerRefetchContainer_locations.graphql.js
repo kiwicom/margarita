@@ -9,8 +9,8 @@
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type PlacePickerContent_locations$ref: FragmentReference;
-export type PlacePickerContent_locations = {|
+declare export opaque type PlacePickerRefetchContainer_locations$ref: FragmentReference;
+export type PlacePickerRefetchContainer_locations = {|
   +locationsByTerm: ?{|
     +edges: ?$ReadOnlyArray<?{|
       +node: ?{|
@@ -20,14 +20,14 @@ export type PlacePickerContent_locations = {|
       |}
     |}>
   |},
-  +$refType: PlacePickerContent_locations$ref,
+  +$refType: PlacePickerRefetchContainer_locations$ref,
 |};
 */
 
 
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "name": "PlacePickerContent_locations",
+  "name": "PlacePickerRefetchContainer_locations",
   "type": "RootQuery",
   "metadata": null,
   "argumentDefinitions": [
@@ -105,5 +105,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '0f0d8960ca060b4400ea821cd852030f';
+(node/*: any*/).hash = '84eb57c2559cd6f71b9b51fa0c3fd4c0';
 module.exports = node;

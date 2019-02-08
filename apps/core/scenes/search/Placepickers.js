@@ -24,8 +24,8 @@ import { MODAL_TYPE } from './SearchConstants';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|
-  +travelFrom: Location,
-  +travelTo: Location,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
   +handlePlaceSwitchPress: () => void,
   +setModalType: ModalTypes => void,
   +layout: number,

@@ -10,6 +10,7 @@ import {
   type TripTypes,
   type ModalTypes,
   type PassengersData,
+  type Location,
 } from './SearchContext';
 import PlacePicker from './PlacePicker/PlacePickerRenderer';
 
@@ -17,15 +18,15 @@ type Props = {|
   +onClose: () => void,
   +modalType: $Keys<typeof MODAL_TYPE>,
   +tripType: string,
-  +travelFrom: string,
-  +travelTo: string,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
   +setTripType: TripTypes => void,
   +handlePassengersSave: PassengersData => void,
   +setModalType: ModalTypes => void,
   ...$ReadOnly<PassengersData>,
   +setPassengerData: ($ReadOnly<PassengersData>) => void,
-  +setTravelTo: string => void,
-  +setTravelFrom: string => void,
+  +setTravelTo: Location => void,
+  +setTravelFrom: Location => void,
 |};
 
 class SearchModal extends React.Component<Props> {
@@ -58,19 +59,7 @@ class SearchModal extends React.Component<Props> {
       case MODAL_TYPE.DESTINATION:
         return travelTo;
       default:
-        return '';
-    }
-  };
-
-  handleSetPlace = (placeId: string) => {
-    const { modalType, setTravelTo, setTravelFrom, setModalType } = this.props;
-    if (modalType === MODAL_TYPE.ORIGIN) {
-      setTravelFrom(placeId);
-      setModalType(MODAL_TYPE.HIDDEN);
-    }
-    if (modalType === MODAL_TYPE.DESTINATION) {
-      setTravelTo(placeId);
-      setModalType(MODAL_TYPE.HIDDEN);
+        return null;
     }
   };
 
@@ -97,11 +86,7 @@ class SearchModal extends React.Component<Props> {
           />
         )}
         {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
-          <PlacePicker
-            type={modalType}
-            defaultValue={this.getDefaultPlace()}
-            onChoose={this.handleSetPlace}
-          />
+          <PlacePicker defaultPlace={this.getDefaultPlace()} />
         )}
       </Modal>
     );

@@ -20,9 +20,9 @@ export type PassengersData = {|
 |};
 
 export type Location = {|
-  +id: string,
-  +locationId: string,
-  +name: string,
+  +id: ?string,
+  +locationId: ?string,
+  +name: ?string,
 |};
 
 type State = {|
