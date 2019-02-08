@@ -41,7 +41,6 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
       infants: input.passengers.infants ?? 0,
     }),
     curr: 'EUR',
-    limit: 10, // TODO pagination
   };
 
   return params;
@@ -65,6 +64,7 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
 
   return itineraries.map(itinerary => {
     return {
+      id: itinerary.id,
       type: getItineraryType(itinerary.routes),
       startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
       endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
@@ -81,39 +81,10 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
         itinerary.countryFrom?.code,
       ),
       sectors: mapSectors(itinerary.route, itinerary.routes),
-
-      // old structure which we want to keep in new structure
-      id: itinerary.id,
       price: {
         currency: response.currency,
         amount: itinerary.price,
       },
-
-      // old structure
-      airlines: itinerary.airlines,
-      flyFrom: itinerary.flyFrom,
-      flyTo: itinerary.flyTo,
-      localDeparture: DateFNS.parse(itinerary.local_departure),
-      localArrival: DateFNS.parse(itinerary.local_arrival),
-      routes: itinerary.routes,
-      route:
-        itinerary.route &&
-        itinerary.route.map(routeItem => ({
-          airline: routeItem.airline ?? '',
-          arrival: {
-            city: routeItem.cityTo ?? '',
-            cityCode: routeItem.flyTo ?? '',
-            localTime: DateFNS.parse(routeItem.local_arrival) ?? null,
-            utcTime: DateFNS.parse(routeItem.utc_arrival) ?? null,
-          },
-          departure: {
-            city: routeItem.cityFrom ?? '',
-            cityCode: routeItem.flyFrom ?? '',
-            localTime: DateFNS.parse(routeItem.local_departure) ?? null,
-            utcTime: DateFNS.parse(routeItem.utc_departure) ?? null,
-          },
-          id: routeItem.id ?? '',
-        })),
     };
   });
 };
