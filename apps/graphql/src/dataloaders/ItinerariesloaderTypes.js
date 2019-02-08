@@ -16,21 +16,6 @@ export type ItinerariesSearchParameters = {|
   |},
 |};
 
-export type TripSegment = {|
-  +city: string,
-  +cityCode: string,
-  +localTime: ?Date,
-  +utcTime: ?Date,
-|};
-export type RouteItem = {|
-  +airline: string,
-  +arrival: TripSegment,
-  +departure: TripSegment,
-  +id: string,
-|};
-
-// start - new structure
-
 export type Price = {|
   +amount: ?number,
   +currency: ?string,
@@ -70,8 +55,8 @@ export type Sector = {|
   +segments: ?Array<Segment>,
 |};
 
-export type newItinerariesStructureType = {|
-  id: string,
+export type ItinerariesType = {|
+  +id: string,
   +type: ?string,
   +price: ?Price,
   +origin: ?Location,
@@ -79,20 +64,6 @@ export type newItinerariesStructureType = {|
   +startTime: ?Time,
   +endTime: ?Time,
   +sectors: ?Array<Sector>,
-|};
-// end - new structure
-
-export type ItinerariesType = {|
-  +airlines: Array<string>,
-  +id: string,
-  +flyFrom: string,
-  +flyTo: string,
-  +localDeparture: Date,
-  +localArrival: Date,
-  +price: Price,
-  +route: Array<RouteItem>,
-  +routes: Array<Array<string>>,
-  ...newItinerariesStructureType,
 |};
 
 export type ApiRouteItem = {|
