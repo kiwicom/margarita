@@ -101,7 +101,6 @@ workflows:
       - build-and-deploy-graphql:
           requires:
             - lint
-            - flow
             - unit-tests
           filters:
             branches:
