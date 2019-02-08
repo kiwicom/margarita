@@ -67,7 +67,7 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  customerBookings(first: 3) {
+  customerBookings {
     edges {
       node {
         id
@@ -160,6 +160,366 @@ fragment RouteStopFragment on RouteStop {
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/prague_cz.jpg",
             "passengerCount": 3
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo3NDg0MTU0",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Birmingham",
+              "cityId": "birmingham_gb",
+              "time": {
+                "utc": "2018-09-29T06:40:00.000Z",
+                "local": "2018-09-29T07:40:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Vienna",
+              "cityId": "vienna_at",
+              "time": {
+                "utc": "2018-09-28T14:35:00.000Z",
+                "local": "2018-09-28T16:35:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/birmingham_gb.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo4MTQyODI4",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "St. John s",
+              "cityId": "st-johns_nl_ca",
+              "time": {
+                "utc": "2018-09-21T12:31:00.000Z",
+                "local": "2018-09-21T10:01:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Madrid",
+              "cityId": "madrid_es",
+              "time": {
+                "utc": "2018-09-20T19:30:00.000Z",
+                "local": "2018-09-20T21:30:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/st-johns_nl_ca.jpg",
+            "passengerCount": 2
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo2Njc2Mzcy",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Kutaisi",
+              "cityId": "kutaisi_ge",
+              "time": {
+                "utc": "2018-09-11T21:55:00.000Z",
+                "local": "2018-09-12T01:55:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Prague",
+              "cityId": "prague_cz",
+              "time": {
+                "utc": "2018-09-11T18:20:00.000Z",
+                "local": "2018-09-11T20:20:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/kutaisi_ge.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ011bHRpY2l0eTo3ODg2NDAy",
+            "status": "closed",
+            "arrival": {
+              "cityName": "Prague",
+              "cityId": "prague_cz",
+              "time": {
+                "utc": "2018-09-12T13:45:00.000Z",
+                "local": "2018-09-12T15:45:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Las Palmas",
+              "cityId": "las-palmas_es",
+              "time": {
+                "utc": "2018-09-06T19:45:00.000Z",
+                "local": "2018-09-06T20:45:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/prague_cz.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo3NDc0ODcw",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Hong Kong",
+              "cityId": "hong-kong_cn",
+              "time": {
+                "utc": "2018-08-31T03:05:00.000Z",
+                "local": "2018-08-31T11:05:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Vienna",
+              "cityId": "vienna_at",
+              "time": {
+                "utc": "2018-08-30T11:30:00.000Z",
+                "local": "2018-08-30T13:30:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/hong-kong_cn.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo2NjkxNTcy",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Palma, Majorca",
+              "cityId": "palma_es",
+              "time": {
+                "utc": "2018-08-24T05:35:00.000Z",
+                "local": "2018-08-24T07:35:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Vienna",
+              "cityId": "vienna_at",
+              "time": {
+                "utc": "2018-08-24T03:20:00.000Z",
+                "local": "2018-08-24T05:20:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/palma_es.jpg",
+            "passengerCount": 2
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo3ODA3MzU1",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Copenhagen",
+              "cityId": "copenhagen_dk",
+              "time": {
+                "utc": "2018-08-23T20:45:00.000Z",
+                "local": "2018-08-23T22:45:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Prague",
+              "cityId": "prague_cz",
+              "time": {
+                "utc": "2018-08-23T19:25:00.000Z",
+                "local": "2018-08-23T21:25:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/copenhagen_dk.jpg",
+            "passengerCount": 3
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ011bHRpY2l0eTo2Njc2NTI0",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Bratislava",
+              "cityId": "bratislava_sk",
+              "time": {
+                "utc": "2018-08-25T11:55:00.000Z",
+                "local": "2018-08-25T13:55:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Bratislava",
+              "cityId": "bratislava_sk",
+              "time": {
+                "utc": "2018-07-16T09:50:00.000Z",
+                "local": "2018-07-16T11:50:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/bratislava_sk.jpg",
+            "passengerCount": 2
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo3MDA1Nzg1",
+            "status": "closed",
+            "arrival": {
+              "cityName": "Brno",
+              "cityId": "brno_cz",
+              "time": {
+                "utc": "2018-06-24T07:20:00.000Z",
+                "local": "2018-06-24T09:20:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Ostrava",
+              "cityId": "ostrava_cz",
+              "time": {
+                "utc": "2018-06-24T05:00:00.000Z",
+                "local": "2018-06-24T07:00:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/brno_cz.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo3MDM1Njgz",
+            "status": "closed",
+            "arrival": {
+              "cityName": "Frankfurt",
+              "cityId": "frankfurt_de",
+              "time": {
+                "utc": "2018-06-13T11:16:00.000Z",
+                "local": "2018-06-13T13:16:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Cologne",
+              "cityId": "cologne_de",
+              "time": {
+                "utc": "2018-06-13T10:31:00.000Z",
+                "local": "2018-06-13T12:31:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/frankfurt_de.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo3MDA1NTYy",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Munich",
+              "cityId": "munich_de",
+              "time": {
+                "utc": "2018-06-13T03:10:00.000Z",
+                "local": "2018-06-13T05:10:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Regensburg",
+              "cityId": "regensburg_de",
+              "time": {
+                "utc": "2018-06-13T01:45:00.000Z",
+                "local": "2018-06-13T03:45:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/munich_de.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo2NjkxMjc4",
+            "status": "closed",
+            "arrival": {
+              "cityName": "Cartagena",
+              "cityId": "cartagena_co",
+              "time": {
+                "utc": "2018-06-03T05:54:00.000Z",
+                "local": "2018-06-03T00:54:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "São Paulo",
+              "cityId": "sao-paulo_sp_br",
+              "time": {
+                "utc": "2018-06-02T14:45:00.000Z",
+                "local": "2018-06-02T11:45:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/cartagena_co.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo2NjkxMTYz",
+            "status": "confirmed",
+            "arrival": {
+              "cityName": "Denver",
+              "cityId": "denver_co_us",
+              "time": {
+                "utc": "2018-05-17T04:34:00.000Z",
+                "local": "2018-05-16T22:34:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Chicago",
+              "cityId": "chicago_il_us",
+              "time": {
+                "utc": "2018-05-17T01:55:00.000Z",
+                "local": "2018-05-16T20:55:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/denver_co_us.jpg",
+            "passengerCount": 2
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo2Njc2NDU4",
+            "status": "closed",
+            "arrival": {
+              "cityName": "Stockholm",
+              "cityId": "stockholm_se",
+              "time": {
+                "utc": "2018-05-16T10:35:00.000Z",
+                "local": "2018-05-16T12:35:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Katowice",
+              "cityId": "katowice_pl",
+              "time": {
+                "utc": "2018-05-16T08:50:00.000Z",
+                "local": "2018-05-16T10:50:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/stockholm_se.jpg",
+            "passengerCount": 1
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheTo2NjkxNjc4",
+            "status": "refunded",
+            "arrival": {
+              "cityName": "Oslo",
+              "cityId": "oslo_no",
+              "time": {
+                "utc": "2018-05-09T12:05:00.000Z",
+                "local": "2018-05-09T14:05:00.000Z"
+              }
+            },
+            "departure": {
+              "cityName": "Wrocław",
+              "cityId": "wroclaw_pl",
+              "time": {
+                "utc": "2018-05-09T10:10:00.000Z",
+                "local": "2018-05-09T12:10:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/oslo_no.jpg",
+            "passengerCount": 1
           }
         }
       ]
