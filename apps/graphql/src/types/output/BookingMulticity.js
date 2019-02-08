@@ -3,7 +3,7 @@
 import { GraphQLObjectType } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
-import type { Booking } from '../../dataloaders/BookingsLoader';
+import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
 
 const NAME = 'BookingMulticity';
 

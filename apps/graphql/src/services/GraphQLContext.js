@@ -11,7 +11,8 @@ import createLocationLoader, {
   type Locations,
   type LocationInput,
 } from '../dataloaders/Locationsloader';
-import bookingsLoader, { type Booking } from '../dataloaders/BookingsLoader';
+import bookingsLoader from '../dataloaders/bookingsLoader/BookingsLoader';
+import type { Booking } from '../dataloaders/bookingsLoader/BookingFlowTypes';
 
 export type GraphqlContextType = {|
   +dataLoader: {|

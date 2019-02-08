@@ -9,7 +9,7 @@ import {
 import globalID from '@kiwicom/graphql-global-id';
 
 import GraphQLRouteStop from './RouteStop';
-import type { Booking } from '../../dataloaders/BookingsLoader';
+import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
 import GraphQLBookingType from './BookingType';
 
 export const commonFields = {
@@ -44,10 +44,10 @@ export const commonFields = {
         defaultValue: '600x600',
       },
     },
-    resolve: (
-      { arrival: { cityId } }: Booking,
-      args: {| +dimensions: string |},
-    ) => `https://images.kiwi.com/photos/${args.dimensions}/${cityId}.jpg`,
+    resolve: ({ arrival }: Booking, args: {| +dimensions: string |}) => {
+      const cityId = arrival?.cityId ?? '';
+      return `https://images.kiwi.com/photos/${args.dimensions}/${cityId}.jpg`;
+    },
   },
   passengerCount: {
     type: GraphQLInt,
