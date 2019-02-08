@@ -63,8 +63,18 @@ jobs:
   build-and-deploy-landing-page:
     <<: *defaults
     steps:
-      - attach_workspace:
-          at: ~/margarita
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
       - add_ssh_keys:
           fingerprints:
             - "56:b8:5a:30:ca:27:22:43:2d:9a:9e:42:4b:e6:a1:9a"
