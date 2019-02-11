@@ -22,11 +22,8 @@ export default function withContext<T>(
       }
 
       render() {
-        const children = React.cloneElement(
-          this.props.children,
-          (this.props: Object),
-        );
-        return children;
+        const { children, ...props } = this.props;
+        return React.cloneElement(children, ({ ...props }: Object));
       }
     }
 
@@ -35,9 +32,11 @@ export default function withContext<T>(
       static navigationOptions = Component.navigationOptions;
       renderInner = (state: T) => {
         const stateProps = select(state);
+        const { children, ...props } = this.props;
+
         return (
-          <WithShouldComponentUpdate {...this.props} {...stateProps}>
-            <Component />
+          <WithShouldComponentUpdate {...props} {...stateProps}>
+            <Component>{children}</Component>
           </WithShouldComponentUpdate>
         );
       };
