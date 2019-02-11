@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text -- Android should have the correct font family 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Array [
+        undefined,
+        Object {
+          "fontFamily": "Roboto",
+        },
+      ],
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- Android should have the correct font family 2`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontWeight": "700",
+      },
+      Array [
+        undefined,
+        Object {
+          "fontFamily": "RobotoBold",
+        },
+      ],
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- Android should have the correct font family 3`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontStyle": "italic",
+      },
+      Array [
+        undefined,
+        Object {
+          "fontFamily": "RobotoItalic",
+        },
+      ],
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- Android should have the correct font family 4`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontStyle": "italic",
+      },
+      Object {
+        "fontWeight": "700",
+      },
+      Array [
+        undefined,
+        Object {
+          "fontFamily": "RobotoBoldItalic",
+        },
+      ],
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
