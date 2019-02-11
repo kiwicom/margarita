@@ -6,9 +6,10 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Icon,
   StyleSheet,
-  Text,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
+
+import Text from '../text/Text';
 
 type Trip = {|
   +city: string,
@@ -46,30 +47,34 @@ export default function SearchParamsSummary({
     <View style={styles.container}>
       <View style={styles.headerLeftContainer}>
         <View style={styles.citiesContainer}>
-          <Text style={styles.departureCity}>{departure?.city || ''}</Text>
+          <Text weight="bold" style={styles.city}>
+            {departure?.city}
+          </Text>
           <Icon name={icon} />
-          <Text style={styles.arrivalCity}>{arrival?.city || ''}</Text>
+          <Text weight="bold" style={styles.city}>
+            {arrival?.city}
+          </Text>
         </View>
         <View style={styles.row}>
           {tripType === 'OneWay' ? (
             <AdaptableBadge
               style={styles.badge}
               textStyle={styles.badgeText}
-              text={departure?.localizedDate ?? ''}
+              text={departure?.localizedDate}
             />
           ) : (
             <>
               <AdaptableBadge
                 style={styles.badge}
                 textStyle={styles.badgeText}
-                text={departure?.localizedDate ?? ''}
+                text={departure?.localizedDate}
               />
               <Text style={styles.connector}> to </Text>
               {/* @TODO localize string `to` */}
               <AdaptableBadge
                 style={styles.badge}
                 textStyle={styles.badgeText}
-                text={arrival?.localizedDate ?? ''}
+                text={arrival?.localizedDate}
               />
             </>
           )}
@@ -101,15 +106,8 @@ const styles = StyleSheet.create({
     paddingStart: 16,
     flex: 1,
   },
-  departureCity: {
-    fontWeight: 'bold',
+  city: {
     marginEnd: 5,
-    fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
-    color: defaultTokens.colorTextAttention,
-  },
-  arrivalCity: {
-    fontWeight: 'bold',
-    marginStart: 5,
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
     color: defaultTokens.colorTextAttention,
   },
