@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShareIcon -- android should match the snapshot 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "orbit-icons",
+        "includeFontPadding": false,
+        "textAlignVertical": "center",
+      },
+      Object {
+        "fontSize": 24,
+        "height": 24,
+        "lineHeight": 24,
+        "width": 24,
+      },
+      Object {
+        "color": "#46515e",
+      },
+      undefined,
+    ]
+  }
+>
+  
+</Text>
+`;

@@ -4,8 +4,8 @@ import * as React from 'react';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import { Text } from '@kiwicom/universal-components';
 
-import TripDetails from './tripDetails/TripDetails';
 import type { BookingDetailQueryResponse } from './__generated__/BookingDetailQuery.graphql';
+import BookingDetailWrapper from './BookingDetailWrapper';
 
 type Props = {|
   +bookingId: ?string,
@@ -13,7 +13,7 @@ type Props = {|
 
 export default class BookingDetail extends React.Component<Props> {
   renderInner = (props: BookingDetailQueryResponse) => {
-    return <TripDetails data={props.bookingDetail} />;
+    return <BookingDetailWrapper data={props.bookingDetail} />;
   };
 
   render() {
@@ -25,7 +25,7 @@ export default class BookingDetail extends React.Component<Props> {
         query={graphql`
           query BookingDetailQuery($id: ID!) {
             bookingDetail(id: $id) {
-              ...TripDetails
+              ...BookingDetailWrapper
             }
           }
         `}

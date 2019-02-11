@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     web: {
       flexDirection: 'row',
       flexWrap: 'wrap',
+      justifyContent: 'center',
     },
   },
   title: {
