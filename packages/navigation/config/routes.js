@@ -11,4 +11,6 @@ export default {
   MANAGE_SHARE_BOOKING: 'mmb/share-booking',
   MANAGE_HELP: 'mmb/help',
   MANAGE_OTHER: 'mmb/other',
+  SERVICES_FLIGHT_SERVICES: 'mmb/flight-services',
+  SERVICES_TRIP_SERVICES: 'mmb/trip-services',
 };
