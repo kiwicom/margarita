@@ -15,19 +15,17 @@ it('renders', () => {
     ),
   ).toMatchInlineSnapshot(`
 Object {
-  "output": <LayoutContextProvider>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "overflow": "hidden",
-        }
+  "output": <Component
+    style={
+      Object {
+        "flex": 1,
+        "overflow": "hidden",
       }
-    >
-      <Navbar />
-      <Component />
-    </Component>
-  </LayoutContextProvider>,
+    }
+  >
+    <Navbar />
+    <Component />
+  </Component>,
 }
 `);
 });
@@ -42,20 +40,18 @@ it('renders with multiple children', () => {
     ),
   ).toMatchInlineSnapshot(`
 Object {
-  "output": <LayoutContextProvider>
-    <Component
-      style={
-        Object {
-          "flex": 1,
-          "overflow": "hidden",
-        }
+  "output": <Component
+    style={
+      Object {
+        "flex": 1,
+        "overflow": "hidden",
       }
-    >
-      <Navbar />
-      <Component />
-      <Component />
-    </Component>
-  </LayoutContextProvider>,
+    }
+  >
+    <Navbar />
+    <Component />
+    <Component />
+  </Component>,
 }
 `);
 });
