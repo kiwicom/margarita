@@ -9,6 +9,7 @@ import type {
   ApiFlight,
   ApiRouteStop,
   TypeSpecificData,
+  Segment,
 } from './BookingFlowTypes';
 
 const sanitizeBookings = (
@@ -36,7 +37,7 @@ const getTypeSpecificData = (
     return sanitizeReturn(booking);
   }
   if (type === 'BookingMulticity') {
-    sanitizeMulticity(booking);
+    return sanitizeMulticity(booking);
   }
   return sanitizeOneWay(booking);
 };
@@ -109,15 +110,18 @@ const sanitizeMulticity = (booking: BookingApiResult) => {
 
   return {
     segments,
-    trips: Object.keys(trips).map(key => trips[key]),
+    trips: Object.keys(trips).reduce((acc, key) => {
+      return [...acc, ...trips[key]];
+    }, []),
     departure: head(segments)?.departure,
     arrival: last(segments)?.arrival,
   };
 };
 
-const sanitizeFlight = (flight: ApiFlight) => {
+const sanitizeFlight = (flight: ApiFlight): Segment => {
   return {
     isReturn: flight.return === 1,
+    id: flight.id,
     departure: sanitizeRouteStop(flight.departure),
     arrival: sanitizeRouteStop(flight.arrival),
   };
