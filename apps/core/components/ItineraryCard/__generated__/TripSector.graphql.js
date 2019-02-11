@@ -8,26 +8,25 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type LocalTime$ref = any;
+type LocationName$ref = any;
 type Transporters$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripSector$ref: FragmentReference;
 export type TripSector = {|
   +duration: ?number,
-  +segments: ?$ReadOnlyArray<?{|
-    +arrivalTime: ?{|
-      +local: ?any
-    |},
-    +departureTime: ?{|
-      +local: ?any
-    |},
-    +destination: ?{|
-      +name: ?string
-    |},
-    +duration: ?number,
-    +origin: ?{|
-      +name: ?string
-    |},
-  |}>,
+  +arrivalTime: ?{|
+    +$fragmentRefs: LocalTime$ref
+  |},
+  +departureTime: ?{|
+    +$fragmentRefs: LocalTime$ref
+  |},
+  +destination: ?{|
+    +$fragmentRefs: LocationName$ref
+  |},
+  +origin: ?{|
+    +$fragmentRefs: LocationName$ref
+  |},
   +$fragmentRefs: Transporters$ref,
   +$refType: TripSector$ref,
 |};
@@ -35,29 +34,18 @@ export type TripSector = {|
 
 
 const node/*: ConcreteFragment*/ = (function(){
-var v0 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "duration",
-  "args": null,
-  "storageKey": null
-},
-v1 = [
+var v0 = [
   {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "local",
-    "args": null,
-    "storageKey": null
+    "kind": "FragmentSpread",
+    "name": "LocalTime",
+    "args": null
   }
 ],
-v2 = [
+v1 = [
   {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "name",
-    "args": null,
-    "storageKey": null
+    "kind": "FragmentSpread",
+    "name": "LocationName",
+    "args": null
   }
 ];
 return {
@@ -67,58 +55,52 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    v0,
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "duration",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "segments",
+      "name": "arrivalTime",
       "storageKey": null,
       "args": null,
-      "concreteType": "Segment",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "arrivalTime",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "DateType",
-          "plural": false,
-          "selections": v1
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "departureTime",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "DateType",
-          "plural": false,
-          "selections": v1
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "destination",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Location",
-          "plural": false,
-          "selections": v2
-        },
-        v0,
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "origin",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Location",
-          "plural": false,
-          "selections": v2
-        }
-      ]
+      "concreteType": "DateType",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "departureTime",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "DateType",
+      "plural": false,
+      "selections": v0
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "destination",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Location",
+      "plural": false,
+      "selections": v1
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "origin",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Location",
+      "plural": false,
+      "selections": v1
     },
     {
       "kind": "FragmentSpread",
@@ -129,5 +111,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '37fc4afd1fff23322180119d7d6c6497';
+(node/*: any*/).hash = '77833f7e41242862f9c4ad923909f6bb';
 module.exports = node;

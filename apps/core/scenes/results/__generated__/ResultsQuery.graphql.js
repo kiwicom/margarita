@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6284ae73eaa20f644b53f13a2b5c3447
+ * @relayHash b72129814ae9e5809ad679b86e20897a
  */
 
 /* eslint-disable */
@@ -69,25 +69,29 @@ fragment ItineraryCard on Itinerary {
 
 fragment TripSector on Sector {
   duration
-  segments {
-    arrivalTime {
-      local
-    }
-    departureTime {
-      local
-    }
-    destination {
-      name
-      id
-    }
-    duration
-    origin {
-      name
-      id
-    }
+  arrivalTime {
+    ...LocalTime
+  }
+  departureTime {
+    ...LocalTime
+  }
+  destination {
+    ...LocationName
+    id
+  }
+  origin {
+    ...LocationName
     id
   }
   ...Transporters
+}
+
+fragment LocalTime on DateType {
+  local
+}
+
+fragment LocationName on Location {
+  name
 }
 
 fragment Transporters on Sector {
@@ -124,14 +128,7 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "duration",
-  "args": null,
-  "storageKey": null
-},
-v4 = [
+v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -140,15 +137,15 @@ v4 = [
     "storageKey": null
   }
 ],
-v5 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v6 = [
-  v5,
+v5 = [
+  v4,
   v2
 ];
 return {
@@ -156,7 +153,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  segments {\n    arrivalTime {\n      local\n    }\n    departureTime {\n      local\n    }\n    destination {\n      name\n      id\n    }\n    duration\n    origin {\n      name\n      id\n    }\n    id\n  }\n  ...Transporters\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -225,7 +222,53 @@ return {
                     "concreteType": "Sector",
                     "plural": true,
                     "selections": [
-                      v3,
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "duration",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "arrivalTime",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v3
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "departureTime",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v3
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "destination",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Location",
+                        "plural": false,
+                        "selections": v5
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "origin",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Location",
+                        "plural": false,
+                        "selections": v5
+                      },
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -238,57 +281,16 @@ return {
                           {
                             "kind": "LinkedField",
                             "alias": null,
-                            "name": "arrivalTime",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "DateType",
-                            "plural": false,
-                            "selections": v4
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "departureTime",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "DateType",
-                            "plural": false,
-                            "selections": v4
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "destination",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Location",
-                            "plural": false,
-                            "selections": v6
-                          },
-                          v3,
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "origin",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Location",
-                            "plural": false,
-                            "selections": v6
-                          },
-                          v2,
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
                             "name": "transporter",
                             "storageKey": null,
                             "args": null,
                             "concreteType": "Transporter",
                             "plural": false,
                             "selections": [
-                              v5
+                              v4
                             ]
-                          }
+                          },
+                          v2
                         ]
                       }
                     ]

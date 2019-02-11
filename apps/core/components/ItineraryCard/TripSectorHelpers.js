@@ -4,7 +4,7 @@ import * as DateFNS from 'date-fns';
 
 export const timeSimpleFormat = 'H:mm';
 export const dateFormat = 'ddd D MMM';
-const durationFormat = 'HH[h] m[m]';
+const durationFormat = 'H[h] m[m]';
 export const getFormattedDate = (
   time: ?string,
   format: ?string = timeSimpleFormat,
