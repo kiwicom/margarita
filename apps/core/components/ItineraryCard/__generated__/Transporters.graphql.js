@@ -8,57 +8,50 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-type ItineraryCard$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ResultsList$ref: FragmentReference;
-export type ResultsList = {|
-  +edges: ?$ReadOnlyArray<?{|
-    +node: ?{|
-      +id: string,
-      +$fragmentRefs: ItineraryCard$ref,
+declare export opaque type Transporters$ref: FragmentReference;
+export type Transporters = {|
+  +segments: ?$ReadOnlyArray<?{|
+    +transporter: ?{|
+      +name: ?string
     |}
   |}>,
-  +$refType: ResultsList$ref,
+  +$refType: Transporters$ref,
 |};
 */
 
 
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "name": "ResultsList",
-  "type": "ItineraryConnection",
+  "name": "Transporters",
+  "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "edges",
+      "name": "segments",
       "storageKey": null,
       "args": null,
-      "concreteType": "ItineraryEdge",
+      "concreteType": "Segment",
       "plural": true,
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "node",
+          "name": "transporter",
           "storageKey": null,
           "args": null,
-          "concreteType": "Itinerary",
+          "concreteType": "Transporter",
           "plural": false,
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
-              "name": "id",
+              "name": "name",
               "args": null,
               "storageKey": null
-            },
-            {
-              "kind": "FragmentSpread",
-              "name": "ItineraryCard",
-              "args": null
             }
           ]
         }
@@ -67,5 +60,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '462cd2f500efc18498e1f4a8a96b22ce';
+(node/*: any*/).hash = '7354dcb7e3745e7da6e5fdc91b6ef58e';
 module.exports = node;

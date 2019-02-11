@@ -3,62 +3,51 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Text, StyleSheet, CarrierLogo } from '@kiwicom/universal-components';
+import { Text, StyleSheet } from '@kiwicom/universal-components';
+import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
+import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
+import Transporters from './Transporters';
+import LocalTime from './LocalTime';
+import LocationName from './LocationName';
+import { getDuration, dateFormat } from './TripSectorHelpers';
 
 type Props = {|
-  +arrival: string,
-  +arrivalTime: string,
-  +carrier: $ElementType<
-    $PropertyType<React.ElementProps<typeof CarrierLogo>, 'carriers'>,
-    number,
-  >,
-  +tripDate: string,
-  +departure: string,
-  +departureTime: string,
-  +duration: string,
+  +data: ?TripSectorType,
 |};
 
-export default function TripSegment({
-  arrival,
-  arrivalTime,
-  carrier,
-  departure,
-  departureTime,
-  duration,
-  tripDate,
-}: Props) {
+function TripSector({ data }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.row}>
         <View style={styles.carrierLogo}>
-          <CarrierLogo size="medium" carriers={[carrier]} />
+          <Transporters data={data} />
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
-            <Text style={styles.highlightedText} numberOfLines={1}>
-              {departureTime}
-            </Text>
-            <Text style={styles.highlightedText} numberOfLines={1}>
-              {arrivalTime}
-            </Text>
+            <LocalTime
+              data={data?.departureTime}
+              style={styles.highlightedText}
+            />
+            <LocalTime
+              data={data?.arrivalTime}
+              style={styles.highlightedText}
+            />
           </View>
           <TimelineArrow />
           <View style={styles.places}>
-            <Text style={styles.text} numberOfLines={1}>
-              {departure}
-            </Text>
-            <Text style={styles.text} numberOfLines={1}>
-              {arrival}
-            </Text>
+            <LocationName data={data?.origin} style={styles.text} />
+            <LocationName data={data?.destination} style={styles.text} />
           </View>
           <View style={styles.infoItems}>
+            <LocalTime
+              data={data?.departureTime}
+              dateFormat={dateFormat}
+              style={[styles.text, styles.info]}
+            />
             <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {tripDate}
-            </Text>
-            <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {duration}
+              {getDuration(data?.duration)}
             </Text>
           </View>
         </View>
@@ -66,6 +55,29 @@ export default function TripSegment({
     </View>
   );
 }
+
+export default createFragmentContainer(
+  TripSector,
+  graphql`
+    fragment TripSector on Sector {
+      duration
+      arrivalTime {
+        ...LocalTime
+      }
+      departureTime {
+        ...LocalTime
+      }
+      destination {
+        ...LocationName
+      }
+      duration
+      origin {
+        ...LocationName
+      }
+      ...Transporters
+    }
+  `,
+);
 
 const styles = StyleSheet.create({
   container: {

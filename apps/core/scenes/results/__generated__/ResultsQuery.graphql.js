@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 54884d60516560952febf873eb40c93e
+ * @relayHash b72129814ae9e5809ad679b86e20897a
  */
 
 /* eslint-disable */
@@ -52,33 +52,55 @@ fragment ResultsList on ItineraryConnection {
   edges {
     node {
       id
-      ...ResultsListItem
+      ...ItineraryCard
     }
   }
 }
 
-fragment ResultsListItem on Itinerary {
+fragment ItineraryCard on Itinerary {
+  sectors {
+    ...TripSector
+  }
   price {
     currency
     amount
   }
-  route {
-    airline
-    arrival {
-      city
-      cityCode
-      localTime
-      utcTime
-    }
-    departure {
-      city
-      cityCode
-      localTime
-      utcTime
+}
+
+fragment TripSector on Sector {
+  duration
+  arrivalTime {
+    ...LocalTime
+  }
+  departureTime {
+    ...LocalTime
+  }
+  destination {
+    ...LocationName
+    id
+  }
+  origin {
+    ...LocationName
+    id
+  }
+  ...Transporters
+}
+
+fragment LocalTime on DateType {
+  local
+}
+
+fragment LocationName on Location {
+  name
+}
+
+fragment Transporters on Sector {
+  segments {
+    transporter {
+      name
     }
     id
   }
-  routes
 }
 */
 
@@ -110,38 +132,28 @@ v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
-    "name": "city",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cityCode",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "localTime",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "utcTime",
+    "name": "local",
     "args": null,
     "storageKey": null
   }
+],
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v5 = [
+  v4,
+  v2
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ResultsListItem\n    }\n  }\n}\n\nfragment ResultsListItem on Itinerary {\n  price {\n    currency\n    amount\n  }\n  route {\n    airline\n    arrival {\n      city\n      cityCode\n      localTime\n      utcTime\n    }\n    departure {\n      city\n      cityCode\n      localTime\n      utcTime\n    }\n    id\n  }\n  routes\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -204,6 +216,88 @@ return {
                   {
                     "kind": "LinkedField",
                     "alias": null,
+                    "name": "sectors",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "Sector",
+                    "plural": true,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "duration",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "arrivalTime",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v3
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "departureTime",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v3
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "destination",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Location",
+                        "plural": false,
+                        "selections": v5
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "origin",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Location",
+                        "plural": false,
+                        "selections": v5
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "segments",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Segment",
+                        "plural": true,
+                        "selections": [
+                          {
+                            "kind": "LinkedField",
+                            "alias": null,
+                            "name": "transporter",
+                            "storageKey": null,
+                            "args": null,
+                            "concreteType": "Transporter",
+                            "plural": false,
+                            "selections": [
+                              v4
+                            ]
+                          },
+                          v2
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
                     "name": "price",
                     "storageKey": null,
                     "args": null,
@@ -225,52 +319,6 @@ return {
                         "storageKey": null
                       }
                     ]
-                  },
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "route",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "Route",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "airline",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "arrival",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "TripSegment",
-                        "plural": false,
-                        "selections": v3
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "departure",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "TripSegment",
-                        "plural": false,
-                        "selections": v3
-                      },
-                      v2
-                    ]
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "routes",
-                    "args": null,
-                    "storageKey": null
                   }
                 ]
               }

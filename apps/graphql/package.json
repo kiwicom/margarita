@@ -18,8 +18,7 @@
     "graphql-iso-date": "^3.6.1",
     "graphql-relay": "^0.5.5",
     "json-stable-stringify": "^1.0.1",
-    "querystring": "^0.2.0",
-    "ramda": "^0.26.1"
+    "querystring": "^0.2.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.2.0",

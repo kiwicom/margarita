@@ -38,6 +38,7 @@
     "graphql-iso-date": "^3.6.1",
     "next": "^7.0.2",
     "next-plugin-transpile-modules": "^0.1.3",
+    "ramda": "^0.26.1",
     "react": "16.5.0",
     "react-art": "^16.5.2",
     "react-dom": "^16.6.3",
