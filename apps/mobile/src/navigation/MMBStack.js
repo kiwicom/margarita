@@ -15,6 +15,8 @@ import {
   ShareBookingScreen,
   ManageHelpScreen,
   ManageOtherScreen,
+  FlightServicesScreen,
+  TripServicesScreen,
 } from '../screens';
 
 type NavigationOptions = {};
@@ -54,6 +56,18 @@ const StackNavigator: NavigationNavigator<
       screen: ManageOtherScreen,
       navigationOptions: {
         title: 'Other',
+      },
+    },
+    [Routes.SERVICES_FLIGHT_SERVICES]: {
+      screen: FlightServicesScreen,
+      navigationOptions: {
+        title: 'Flight Services',
+      },
+    },
+    [Routes.SERVICES_TRIP_SERVICES]: {
+      screen: TripServicesScreen,
+      navigationOptions: {
+        title: 'Trip Services',
       },
     },
   }: NavigationRouteConfigMap),

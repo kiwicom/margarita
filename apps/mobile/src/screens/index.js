@@ -8,3 +8,5 @@ export { default as BookingDetailScreen } from './BookingDetailScreen';
 export { default as ShareBookingScreen } from './ShareBookingScreen';
 export { default as ManageHelpScreen } from './ManageHelpScreen';
 export { default as ManageOtherScreen } from './ManageOtherScreen';
+export { default as FlightServicesScreen } from './FlightServicesScreen';
+export { default as TripServicesScreen } from './TripServicesScreen';

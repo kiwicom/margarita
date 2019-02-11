@@ -8,6 +8,10 @@ export { default as BookingDetail } from './scenes/bookingDetail/BookingDetail';
 export { default as ShareBooking } from './scenes/shareBooking/ShareBooking';
 export { default as ManageHelp } from './scenes/manageHelp/ManageHelp';
 export { default as ManageOther } from './scenes/manageOther/ManageOther';
+export { default as TripServices } from './scenes/tripServices/TripServices';
+export {
+  default as FlightServices,
+} from './scenes/flightServices/FlightServices';
 
 // Context
 export {
