@@ -7,6 +7,16 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
+fragment TripFragment on Trip {
+  duration
+  departure {
+    cityName
+  }
+  arrival {
+    cityName
+  }
+}
+
 {
   customerBookings {
     edges {
@@ -21,6 +31,25 @@ fragment RouteStopFragment on RouteStop {
         }
         destinationImageUrl
         passengerCount
+
+        ... on BookingOneWay {
+          trip {
+            ...TripFragment
+          }
+        }
+        ... on BookingReturn {
+          inbound {
+            ...TripFragment
+          }
+          outbound {
+            ...TripFragment
+          }
+        }
+        ... on BookingMulticity {
+          trips {
+            ...TripFragment
+          }
+        }
       }
     }
   }

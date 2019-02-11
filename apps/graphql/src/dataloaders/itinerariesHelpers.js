@@ -4,7 +4,10 @@ import * as DateFNS from 'date-fns';
 
 import type { ApiRouteItem, Sector } from './ItinerariesloaderTypes';
 
-export const differenceInMinutes = (from: ?string, to: ?string) => {
+export const differenceInMinutes = (
+  from: ?string | ?number,
+  to: ?string | ?number,
+) => {
   return from && to ? DateFNS.differenceInMinutes(to, from) : null;
 };
 

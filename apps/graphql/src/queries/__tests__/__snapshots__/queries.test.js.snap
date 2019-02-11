@@ -66,6 +66,16 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
+fragment TripFragment on Trip {
+  duration
+  departure {
+    cityName
+  }
+  arrival {
+    cityName
+  }
+}
+
 {
   customerBookings {
     edges {
@@ -80,6 +90,25 @@ fragment RouteStopFragment on RouteStop {
         }
         destinationImageUrl
         passengerCount
+
+        ... on BookingOneWay {
+          trip {
+            ...TripFragment
+          }
+        }
+        ... on BookingReturn {
+          inbound {
+            ...TripFragment
+          }
+          outbound {
+            ...TripFragment
+          }
+        }
+        ... on BookingMulticity {
+          trips {
+            ...TripFragment
+          }
+        }
       }
     }
   }
@@ -111,7 +140,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trip": {
+              "duration": 300,
+              "departure": {
+                "cityName": "Vienna"
+              },
+              "arrival": {
+                "cityName": "Las Palmas"
+              }
+            }
           }
         },
         {
@@ -135,7 +173,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/moscow_cf_ru.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trip": {
+              "duration": 290,
+              "departure": {
+                "cityName": "Prague"
+              },
+              "arrival": {
+                "cityName": "Moscow"
+              }
+            }
           }
         },
         {
@@ -159,7 +206,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/prague_cz.jpg",
-            "passengerCount": 3
+            "passengerCount": 3,
+            "trip": {
+              "duration": 80,
+              "departure": {
+                "cityName": "Copenhagen"
+              },
+              "arrival": {
+                "cityName": "Prague"
+              }
+            }
           }
         },
         {
@@ -183,7 +239,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/birmingham_gb.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 395,
+              "departure": {
+                "cityName": "Birmingham"
+              },
+              "arrival": {
+                "cityName": "Prague"
+              }
+            },
+            "outbound": {
+              "duration": 965,
+              "departure": {
+                "cityName": "Vienna"
+              },
+              "arrival": {
+                "cityName": "Birmingham"
+              }
+            }
           }
         },
         {
@@ -207,7 +281,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/st-johns_nl_ca.jpg",
-            "passengerCount": 2
+            "passengerCount": 2,
+            "inbound": {
+              "duration": 915,
+              "departure": {
+                "cityName": "St. John s"
+              },
+              "arrival": {
+                "cityName": "Madrid"
+              }
+            },
+            "outbound": {
+              "duration": 1021,
+              "departure": {
+                "cityName": "Madrid"
+              },
+              "arrival": {
+                "cityName": "St. John s"
+              }
+            }
           }
         },
         {
@@ -231,7 +323,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/kutaisi_ge.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 210,
+              "departure": {
+                "cityName": "Kutaisi"
+              },
+              "arrival": {
+                "cityName": "Prague"
+              }
+            },
+            "outbound": {
+              "duration": 215,
+              "departure": {
+                "cityName": "Prague"
+              },
+              "arrival": {
+                "cityName": "Kutaisi"
+              }
+            }
           }
         },
         {
@@ -255,7 +365,27 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/prague_cz.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trips": [
+              {
+                "duration": 255,
+                "departure": {
+                  "cityName": "Las Palmas"
+                },
+                "arrival": {
+                  "cityName": "Dublin"
+                }
+              },
+              {
+                "duration": 150,
+                "departure": {
+                  "cityName": "Dublin"
+                },
+                "arrival": {
+                  "cityName": "Prague"
+                }
+              }
+            ]
           }
         },
         {
@@ -279,7 +409,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/hong-kong_cn.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 1070,
+              "departure": {
+                "cityName": "Hong Kong"
+              },
+              "arrival": {
+                "cityName": "Vienna"
+              }
+            },
+            "outbound": {
+              "duration": 935,
+              "departure": {
+                "cityName": "Vienna"
+              },
+              "arrival": {
+                "cityName": "Hong Kong"
+              }
+            }
           }
         },
         {
@@ -303,7 +451,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/palma_es.jpg",
-            "passengerCount": 2
+            "passengerCount": 2,
+            "inbound": {
+              "duration": 135,
+              "departure": {
+                "cityName": "Palma, Majorca"
+              },
+              "arrival": {
+                "cityName": "Linz"
+              }
+            },
+            "outbound": {
+              "duration": 135,
+              "departure": {
+                "cityName": "Vienna"
+              },
+              "arrival": {
+                "cityName": "Palma, Majorca"
+              }
+            }
           }
         },
         {
@@ -327,7 +493,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/copenhagen_dk.jpg",
-            "passengerCount": 3
+            "passengerCount": 3,
+            "trip": {
+              "duration": 80,
+              "departure": {
+                "cityName": "Prague"
+              },
+              "arrival": {
+                "cityName": "Copenhagen"
+              }
+            }
           }
         },
         {
@@ -351,7 +526,63 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/bratislava_sk.jpg",
-            "passengerCount": 2
+            "passengerCount": 2,
+            "trips": [
+              {
+                "duration": 110,
+                "departure": {
+                  "cityName": "Bratislava"
+                },
+                "arrival": {
+                  "cityName": "Thessaloniki"
+                }
+              },
+              {
+                "duration": 60,
+                "departure": {
+                  "cityName": "Thessaloniki"
+                },
+                "arrival": {
+                  "cityName": "Santorini"
+                }
+              },
+              {
+                "duration": 50,
+                "departure": {
+                  "cityName": "Santorini"
+                },
+                "arrival": {
+                  "cityName": "Athens"
+                }
+              },
+              {
+                "duration": 115,
+                "departure": {
+                  "cityName": "Athens"
+                },
+                "arrival": {
+                  "cityName": "Tel Aviv"
+                }
+              },
+              {
+                "duration": 240,
+                "departure": {
+                  "cityName": "Tel Aviv"
+                },
+                "arrival": {
+                  "cityName": "Warsaw"
+                }
+              },
+              {
+                "duration": 70,
+                "departure": {
+                  "cityName": "Warsaw"
+                },
+                "arrival": {
+                  "cityName": "Bratislava"
+                }
+              }
+            ]
           }
         },
         {
@@ -375,7 +606,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/brno_cz.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 140,
+              "departure": {
+                "cityName": "Brno"
+              },
+              "arrival": {
+                "cityName": "Ostrava"
+              }
+            },
+            "outbound": {
+              "duration": 140,
+              "departure": {
+                "cityName": "Ostrava"
+              },
+              "arrival": {
+                "cityName": "Brno"
+              }
+            }
           }
         },
         {
@@ -399,7 +648,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/frankfurt_de.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trip": {
+              "duration": 45,
+              "departure": {
+                "cityName": "Cologne"
+              },
+              "arrival": {
+                "cityName": "Frankfurt"
+              }
+            }
           }
         },
         {
@@ -423,7 +681,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/munich_de.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 80,
+              "departure": {
+                "cityName": "Munich"
+              },
+              "arrival": {
+                "cityName": "Regensburg"
+              }
+            },
+            "outbound": {
+              "duration": 85,
+              "departure": {
+                "cityName": "Regensburg"
+              },
+              "arrival": {
+                "cityName": "Munich"
+              }
+            }
           }
         },
         {
@@ -447,7 +723,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/cartagena_co.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trip": {
+              "duration": 909,
+              "departure": {
+                "cityName": "São Paulo"
+              },
+              "arrival": {
+                "cityName": "Cartagena"
+              }
+            }
           }
         },
         {
@@ -471,7 +756,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/denver_co_us.jpg",
-            "passengerCount": 2
+            "passengerCount": 2,
+            "trip": {
+              "duration": 159,
+              "departure": {
+                "cityName": "Chicago"
+              },
+              "arrival": {
+                "cityName": "Denver"
+              }
+            }
           }
         },
         {
@@ -495,7 +789,25 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/stockholm_se.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "inbound": {
+              "duration": 110,
+              "departure": {
+                "cityName": "Stockholm"
+              },
+              "arrival": {
+                "cityName": "Kraków"
+              }
+            },
+            "outbound": {
+              "duration": 105,
+              "departure": {
+                "cityName": "Katowice"
+              },
+              "arrival": {
+                "cityName": "Stockholm"
+              }
+            }
           }
         },
         {
@@ -519,7 +831,16 @@ fragment RouteStopFragment on RouteStop {
               }
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/oslo_no.jpg",
-            "passengerCount": 1
+            "passengerCount": 1,
+            "trip": {
+              "duration": 115,
+              "departure": {
+                "cityName": "Wrocław"
+              },
+              "arrival": {
+                "cityName": "Oslo"
+              }
+            }
           }
         }
       ]

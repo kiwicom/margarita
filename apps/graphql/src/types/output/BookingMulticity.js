@@ -1,9 +1,10 @@
 // @flow
 
-import { GraphQLObjectType } from 'graphql';
+import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
+import GraphQLTrip from './Trip';
 
 const NAME = 'BookingMulticity';
 
@@ -14,6 +15,11 @@ const BookingMulticity = new GraphQLObjectType({
   isTypeOf: (value: Booking) => value.type === NAME,
   fields: {
     ...commonFields,
+
+    trips: {
+      type: GraphQLList(GraphQLTrip),
+      resolve: ({ trips }: Booking) => trips,
+    },
   },
 });
 

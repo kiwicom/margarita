@@ -7,12 +7,13 @@ export type ApiRouteStop = {|
     +city_id: string,
   |},
   +when: {|
-    +utc: Date,
-    +local: Date,
+    +utc: number,
+    +local: number,
   |},
 |};
 
 export type ApiFlight = {|
+  +id: string,
   +arrival: ApiRouteStop,
   +departure: ApiRouteStop,
   +return: number,
@@ -29,8 +30,8 @@ export type BookingApiResult = {|
 |};
 
 type RouteStopTime = {|
-  +utc: Date,
-  +local: Date,
+  +utc: number,
+  +local: number,
 |};
 
 export type RouteStop = {|
@@ -40,7 +41,8 @@ export type RouteStop = {|
   +code: string,
 |};
 
-type Segment = {|
+export type Segment = {|
+  +id: string,
   +isReturn: boolean,
   +departure: ?RouteStop,
   +arrival: ?RouteStop,
