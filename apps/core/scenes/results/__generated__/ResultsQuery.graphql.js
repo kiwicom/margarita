@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b72129814ae9e5809ad679b86e20897a
+ * @relayHash b56a35b5e9630921aef8c304889a2f1f
  */
 
 /* eslint-disable */
@@ -59,6 +59,12 @@ fragment ResultsList on ItineraryConnection {
 
 fragment ItineraryCard on Itinerary {
   sectors {
+    departureTime {
+      utc
+    }
+    arrivalTime {
+      utc
+    }
     ...TripSector
   }
   price {
@@ -132,6 +138,13 @@ v3 = [
   {
     "kind": "ScalarField",
     "alias": null,
+    "name": "utc",
+    "args": null,
+    "storageKey": null
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
     "name": "local",
     "args": null,
     "storageKey": null
@@ -153,7 +166,7 @@ return {
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    departureTime {\n      utc\n    }\n    arrivalTime {\n      utc\n    }\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -223,11 +236,14 @@ return {
                     "plural": true,
                     "selections": [
                       {
-                        "kind": "ScalarField",
+                        "kind": "LinkedField",
                         "alias": null,
-                        "name": "duration",
+                        "name": "departureTime",
+                        "storageKey": null,
                         "args": null,
-                        "storageKey": null
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v3
                       },
                       {
                         "kind": "LinkedField",
@@ -240,14 +256,11 @@ return {
                         "selections": v3
                       },
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
-                        "name": "departureTime",
-                        "storageKey": null,
+                        "name": "duration",
                         "args": null,
-                        "concreteType": "DateType",
-                        "plural": false,
-                        "selections": v3
+                        "storageKey": null
                       },
                       {
                         "kind": "LinkedField",

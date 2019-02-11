@@ -10,11 +10,13 @@ import {
 import { formatPrice } from '@kiwicom/margarita-utils';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { nth, omit } from 'ramda';
 
 import ItineraryCardRow from './ItineraryCardRow';
 import BadgesContainer from './BadgesContainer';
 import HorizontalDash from './HorizontalDash';
 import TripSector from './TripSector';
+import SectorBorder from './SectorBorder';
 import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import type { ItineraryCard as ItineraryCardType } from './__generated__/ItineraryCard.graphql';
 
@@ -22,20 +24,35 @@ type Props = {|
   +data: ItineraryCardType,
 |};
 
+export type Sectors = $PropertyType<ItineraryCardType, 'sectors'>;
+export type Sector = $ElementType<$NonMaybeType<Sectors>, number>;
+
 type SectorItem = {|
   item: ?{
+    // ...Sector,
     ...TripSectorType,
+    arrivalTime: any,
     +$fragmentRefs: any,
   },
+  index: ?number,
 |};
 
 class ItineraryCard extends React.Component<Props> {
-  renderSectorItem = ({ item }: SectorItem) => {
+  renderSectorItem = ({ item, index }: SectorItem, sectors) => {
     if (item) {
+      const nextSector = nth(index + 1, sectors);
       return (
-        <ItineraryCardRow>
-          <TripSector data={item} />
-        </ItineraryCardRow>
+        <>
+          <ItineraryCardRow>
+            <TripSector data={omit(['arrivalTime'], item)} />
+          </ItineraryCardRow>
+          {nextSector && (
+            <SectorBorder
+              from={item.arrivalTime?.utc}
+              to={nextSector.departureTime?.utc}
+            />
+          )}
+        </>
       );
     }
     return null;
@@ -75,7 +92,9 @@ class ItineraryCard extends React.Component<Props> {
           <FlatList
             data={data.sectors}
             keyExtractor={this.keyExtractor}
-            renderItem={this.renderSectorItem}
+            renderItem={renderSectorItemData =>
+              this.renderSectorItem(renderSectorItemData, data.sectors)
+            }
           />
         </View>
         {Platform.OS === 'web' ? (
@@ -99,6 +118,12 @@ export default createFragmentContainer(
   graphql`
     fragment ItineraryCard on Itinerary {
       sectors {
+        departureTime {
+          utc
+        }
+        arrivalTime {
+          utc
+        }
         ...TripSector
       }
       price {
