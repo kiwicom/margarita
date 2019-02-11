@@ -2,18 +2,26 @@
 
 import * as React from 'react';
 import { Platform } from 'react-native';
-import { Icon } from '@kiwicom/universal-components';
+import { Icon, type StylePropType } from '@kiwicom/universal-components';
 
-export default function ShareIcon() {
+type Size = 'small' | 'medium' | 'large';
+
+export type Props = {|
+  size?: Size,
+  color?: string,
+  style?: StylePropType,
+|};
+
+export default function ShareIcon(props: Props) {
   switch (Platform.OS) {
     case 'ios': {
-      return <Icon name="share-ios" />;
+      return <Icon {...props} name="share-ios" />;
     }
     case 'android': {
-      return <Icon name="share-android" />;
+      return <Icon {...props} name="share-android" />;
     }
     default: {
-      return <Icon name="share" />;
+      return <Icon {...props} name="share" />;
     }
   }
 }
