@@ -34,3 +34,4 @@ export {
 } from './src/IllustrationWithInformation/IllustrationWithInformation';
 
 export { default as Separator } from './src/separator/Separator';
+export { default as ShareIcon } from './src/shareIcon/ShareIcon';

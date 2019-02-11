@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d24d404c94215d7f96bbe64e230e6d37
+ * @relayHash 538ba0e606defe8aafd23c3ba6165f46
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type TripDetails$ref = any;
+type BookingDetailWrapper$ref = any;
 export type BookingDetailQueryVariables = {|
   id: string
 |};
 export type BookingDetailQueryResponse = {|
   +bookingDetail: ?{|
-    +$fragmentRefs: TripDetails$ref
+    +$fragmentRefs: BookingDetailWrapper$ref
   |}
 |};
 export type BookingDetailQuery = {|
@@ -31,9 +31,13 @@ query BookingDetailQuery(
 ) {
   bookingDetail(id: $id) {
     __typename
-    ...TripDetails
+    ...BookingDetailWrapper
     id
   }
+}
+
+fragment BookingDetailWrapper on BookingInterface {
+  ...TripDetails
 }
 
 fragment TripDetails on BookingInterface {
@@ -130,7 +134,7 @@ return {
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...TripDetails\n    id\n  }\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on BookingInterface {\n  type\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on BookingInterface {\n  type\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -150,7 +154,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "TripDetails",
+            "name": "BookingDetailWrapper",
             "args": null
           }
         ]
@@ -234,5 +238,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '04876d7c90f6b4ab217281deedf4f1a9';
+(node/*: any*/).hash = '2bab57d93afd1e0305918568883c4fc6';
 module.exports = node;
