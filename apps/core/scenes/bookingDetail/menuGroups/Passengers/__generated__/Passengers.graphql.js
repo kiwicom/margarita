@@ -8,36 +8,36 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type Passengers$ref = any;
-type TripDetails$ref = any;
+type PassengersList$ref = any;
+type VisaDetail$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type BookingDetailWrapper$ref: FragmentReference;
-export type BookingDetailWrapper = {|
-  +$fragmentRefs: TripDetails$ref & Passengers$ref,
-  +$refType: BookingDetailWrapper$ref,
+declare export opaque type Passengers$ref: FragmentReference;
+export type Passengers = {|
+  +$fragmentRefs: PassengersList$ref & VisaDetail$ref,
+  +$refType: Passengers$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "BookingDetailWrapper",
+  "name": "Passengers",
   "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "FragmentSpread",
-      "name": "TripDetails",
+      "name": "PassengersList",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "Passengers",
+      "name": "VisaDetail",
       "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'a97aba3a50c4705e2c304e29342ba6d6';
+(node/*: any*/).hash = '951fc68af4ae66cda4ed2dcf5bac580d';
 module.exports = node;

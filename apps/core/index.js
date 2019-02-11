@@ -13,6 +13,9 @@ export {
 } from './scenes/flightServices/FlightServices';
 export { default as Tickets } from './scenes/tickets/Tickets';
 export { default as Timeline } from './scenes/timeline/Timeline';
+export {
+  default as PassengerDetail,
+} from './scenes/passengerDetail/PassengerDetail';
 
 // Context
 export {
