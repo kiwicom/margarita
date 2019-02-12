@@ -85,34 +85,31 @@ const sanitizeReturn = (booking: BookingApiResult) => {
 };
 
 const sanitizeMulticity = (booking: BookingApiResult) => {
-  const trips = {};
-  const bookingSegments = booking.segments ?? [];
-  const segmentIndexes = bookingSegments.map((segmentIndex, index) => {
-    return parseInt(segmentIndex, 10);
-  });
+  const trips = [];
+  const segmentIndexes = booking.segments ?? [];
 
-  let currentTripIndex = 0;
+  const segments = booking.flights.map<Segment>(sanitizeFlight);
 
-  const segments = booking.flights.map((flight, index) => {
-    const segment = sanitizeFlight(flight);
+  const lastIndex = segmentIndexes.reduce(
+    (lastIndex: number, segment: string) => {
+      const indexOfNewSegment = parseInt(segment, 10);
+      const trip = segments.slice(lastIndex, indexOfNewSegment);
+      trips.push(trip);
 
-    if (!trips[currentTripIndex]) {
-      trips[currentTripIndex] = [];
-    }
+      return indexOfNewSegment;
+    },
+    0,
+  );
 
-    trips[currentTripIndex].push(segment);
-
-    if (segmentIndexes.includes(index)) {
-      currentTripIndex++;
-    }
-    return segment;
-  });
+  trips.push(segments.slice(lastIndex));
 
   return {
     segments,
-    trips: Object.keys(trips).reduce((acc, key) => {
-      return [...acc, ...trips[key]];
-    }, []),
+    trips: trips.map(trip => ({
+      departure: head(trip)?.departure,
+      arrival: last(trip)?.arrival,
+      segments: trip,
+    })),
     departure: head(segments)?.departure,
     arrival: last(segments)?.arrival,
   };
@@ -147,6 +144,7 @@ const sanitizeRouteStop = (departureArrival: ?ApiRouteStop) => {
   if (departureArrival == null) {
     return null;
   }
+
   return {
     cityName: departureArrival.where.name,
     cityId: departureArrival.where.city_id,

@@ -529,54 +529,27 @@ fragment TripFragment on Trip {
             "passengerCount": 2,
             "trips": [
               {
-                "duration": 110,
+                "duration": 230,
                 "departure": {
                   "cityName": "Bratislava"
                 },
                 "arrival": {
-                  "cityName": "Thessaloniki"
-                }
-              },
-              {
-                "duration": 60,
-                "departure": {
-                  "cityName": "Thessaloniki"
-                },
-                "arrival": {
                   "cityName": "Santorini"
-                }
-              },
-              {
-                "duration": 50,
-                "departure": {
-                  "cityName": "Santorini"
-                },
-                "arrival": {
-                  "cityName": "Athens"
-                }
-              },
-              {
-                "duration": 115,
-                "departure": {
-                  "cityName": "Athens"
-                },
-                "arrival": {
-                  "cityName": "Tel Aviv"
                 }
               },
               {
                 "duration": 240,
                 "departure": {
-                  "cityName": "Tel Aviv"
+                  "cityName": "Santorini"
                 },
                 "arrival": {
-                  "cityName": "Warsaw"
+                  "cityName": "Tel Aviv"
                 }
               },
               {
-                "duration": 70,
+                "duration": 590,
                 "departure": {
-                  "cityName": "Warsaw"
+                  "cityName": "Tel Aviv"
                 },
                 "arrival": {
                   "cityName": "Bratislava"
