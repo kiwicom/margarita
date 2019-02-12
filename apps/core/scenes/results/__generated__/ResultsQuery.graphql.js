@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a1ffaf354c613ad94f6e8266ba84e74a
+ * @relayHash 7999e847d347a9c9fcb3abc5ade9803b
  */
 
 /* eslint-disable */
@@ -10,7 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type ResultsList$ref = any;
-export type ItinerariesSearchInput = {
+export type ItinerariesSearchInput = {|
   travelFrom: string,
   travelTo?: ?string,
   dateFrom: any,
@@ -18,12 +18,12 @@ export type ItinerariesSearchInput = {
   returnDateFrom?: ?any,
   returnDateTo?: ?any,
   passengers?: ?PassengersInput,
-};
-export type PassengersInput = {
+|};
+export type PassengersInput = {|
   adults?: ?number,
   children?: ?number,
   infants?: ?number,
-};
+|};
 export type ResultsQueryVariables = {|
   input: ItinerariesSearchInput
 |};
@@ -145,8 +145,8 @@ v3 = {
   "storageKey": null
 },
 v4 = [
-  v3,
-  v2
+  (v3/*: any*/),
+  (v2/*: any*/)
 ],
 v5 = [
   {
@@ -159,24 +159,19 @@ v5 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "ResultsQuery",
-  "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  origin {\n    name\n    id\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "ResultsQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "searchItineraries",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "ItineraryConnection",
         "plural": false,
         "selections": [
@@ -192,14 +187,14 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "ResultsQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "searchItineraries",
         "storageKey": null,
-        "args": v1,
+        "args": (v1/*: any*/),
         "concreteType": "ItineraryConnection",
         "plural": false,
         "selections": [
@@ -221,7 +216,7 @@ return {
                 "concreteType": "Itinerary",
                 "plural": false,
                 "selections": [
-                  v2,
+                  (v2/*: any*/),
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -239,7 +234,7 @@ return {
                         "args": null,
                         "concreteType": "Location",
                         "plural": false,
-                        "selections": v4
+                        "selections": (v4/*: any*/)
                       },
                       {
                         "kind": "ScalarField",
@@ -263,7 +258,7 @@ return {
                         "args": null,
                         "concreteType": "DateType",
                         "plural": false,
-                        "selections": v5
+                        "selections": (v5/*: any*/)
                       },
                       {
                         "kind": "LinkedField",
@@ -273,7 +268,7 @@ return {
                         "args": null,
                         "concreteType": "DateType",
                         "plural": false,
-                        "selections": v5
+                        "selections": (v5/*: any*/)
                       },
                       {
                         "kind": "LinkedField",
@@ -283,7 +278,7 @@ return {
                         "args": null,
                         "concreteType": "Location",
                         "plural": false,
-                        "selections": v4
+                        "selections": (v4/*: any*/)
                       },
                       {
                         "kind": "LinkedField",
@@ -303,10 +298,10 @@ return {
                             "concreteType": "Transporter",
                             "plural": false,
                             "selections": [
-                              v3
+                              (v3/*: any*/)
                             ]
                           },
-                          v2
+                          (v2/*: any*/)
                         ]
                       }
                     ]
@@ -343,6 +338,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "ResultsQuery",
+    "id": null,
+    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  origin {\n    name\n    id\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+    "metadata": {}
   }
 };
 })();

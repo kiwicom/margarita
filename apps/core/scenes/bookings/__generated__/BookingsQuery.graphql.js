@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 929f33f7bd7226052b705fa8b7aa29c7
+ * @relayHash aefd63b5a1e0fa3ed0450fca8599e867
  */
 
 /* eslint-disable */
@@ -120,11 +120,6 @@ v1 = {
 };
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "BookingsQuery",
-  "id": null,
-  "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on BookingInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on BookingInterface {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges\n  ...FromTo\n  ...DateAndPassengerCount\n}\n\nfragment BookingBadges on BookingInterface {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment DateAndPassengerCount on BookingInterface {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "BookingsQuery",
@@ -240,8 +235,8 @@ return {
                     "concreteType": "RouteStop",
                     "plural": false,
                     "selections": [
-                      v0,
-                      v1,
+                      (v0/*: any*/),
+                      (v1/*: any*/),
                       {
                         "kind": "LinkedField",
                         "alias": null,
@@ -271,8 +266,8 @@ return {
                     "concreteType": "RouteStop",
                     "plural": false,
                     "selections": [
-                      v0,
-                      v1
+                      (v0/*: any*/),
+                      (v1/*: any*/)
                     ]
                   },
                   {
@@ -296,6 +291,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "BookingsQuery",
+    "id": null,
+    "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on BookingInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on BookingInterface {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges\n  ...FromTo\n  ...DateAndPassengerCount\n}\n\nfragment BookingBadges on BookingInterface {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment DateAndPassengerCount on BookingInterface {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
+    "metadata": {}
   }
 };
 })();

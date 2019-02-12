@@ -1,5 +1,7 @@
 // @flow
 
+import * as React from 'react';
+
 export type ModalProps = {|
   +visible: boolean,
   +onClose: () => void,

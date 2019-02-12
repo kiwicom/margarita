@@ -68,26 +68,28 @@ class SearchModal extends React.Component<Props> {
 
     return (
       <Modal visible={modalType !== MODAL_TYPE.HIDDEN} onClose={this.onClose}>
-        {modalType === MODAL_TYPE.TRIP_TYPE && (
-          <Select
-            optionsData={TRIP_TYPE}
-            selectedType={tripType}
-            onSelect={this.handleTripTypeSelect}
-            onClosePress={this.onClose}
-          />
-        )}
-        {modalType === MODAL_TYPE.PASSENGERS && (
-          <PassengersInputs
-            adults={adults}
-            infants={infants}
-            bags={bags}
-            onClosePress={this.onClose}
-            onSavePress={this.handlePassengersSave}
-          />
-        )}
-        {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
-          <PlacePicker defaultPlace={this.getDefaultPlace()} />
-        )}
+        <>
+          {modalType === MODAL_TYPE.TRIP_TYPE && (
+            <Select
+              optionsData={TRIP_TYPE}
+              selectedType={tripType}
+              onSelect={this.handleTripTypeSelect}
+              onClosePress={this.onClose}
+            />
+          )}
+          {modalType === MODAL_TYPE.PASSENGERS && (
+            <PassengersInputs
+              adults={adults}
+              infants={infants}
+              bags={bags}
+              onClosePress={this.onClose}
+              onSavePress={this.handlePassengersSave}
+            />
+          )}
+          {[MODAL_TYPE.ORIGIN, MODAL_TYPE.DESTINATION].includes(modalType) && (
+            <PlacePicker defaultPlace={this.getDefaultPlace()} />
+          )}
+        </>
       </Modal>
     );
   }

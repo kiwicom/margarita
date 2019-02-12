@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type BookingBadges$ref = any;
 type DateAndPassengerCount$ref = any;
 type FromTo$ref = any;
@@ -22,7 +22,7 @@ export type Booking = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "Booking",
   "type": "BookingInterface",

@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type TripInfo$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripInfoOneWay$ref: FragmentReference;
@@ -20,7 +20,7 @@ export type TripInfoOneWay = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "TripInfoOneWay",
   "type": "BookingInterface",

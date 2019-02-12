@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type LocalTime$ref = any;
 type LocationName$ref = any;
 type Transporters$ref = any;
@@ -33,7 +33,7 @@ export type TripSector = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
+const node/*: ReaderFragment*/ = (function(){
 var v0 = [
   {
     "kind": "FragmentSpread",
@@ -70,7 +70,7 @@ return {
       "args": null,
       "concreteType": "DateType",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -80,7 +80,7 @@ return {
       "args": null,
       "concreteType": "DateType",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -90,7 +90,7 @@ return {
       "args": null,
       "concreteType": "Location",
       "plural": false,
-      "selections": v1
+      "selections": (v1/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -100,7 +100,7 @@ return {
       "args": null,
       "concreteType": "Location",
       "plural": false,
-      "selections": v1
+      "selections": (v1/*: any*/)
     },
     {
       "kind": "FragmentSpread",

@@ -34,7 +34,6 @@
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "babel-plugin-jsx-remove-data-test-id": "^1.2.1",
     "babel-plugin-react-native-web": "^0.10.0",
-    "babel-plugin-relay": "^1.7.0",
     "webpack": "^4.29.1",
     "webpack-bundle-analyzer": "^3.0.4"
   },

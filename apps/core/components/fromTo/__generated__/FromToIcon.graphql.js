@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FromToIcon$ref: FragmentReference;
@@ -18,7 +18,7 @@ export type FromToIcon = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "FromToIcon",
   "type": "FromToInterface",

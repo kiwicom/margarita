@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type PlacePickerList_locations$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type PlacePickerContent_locations$ref: FragmentReference;
@@ -20,7 +20,7 @@ export type PlacePickerContent_locations = {|
 */
 
 
-const node/*: ConcreteFragment*/ = {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "PlacePickerContent_locations",
   "type": "RootQuery",
