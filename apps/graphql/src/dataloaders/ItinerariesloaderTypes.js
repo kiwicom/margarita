@@ -53,6 +53,7 @@ export type Sector = {|
   +duration: ?number,
   +origin: ?Location,
   +segments: ?Array<Segment>,
+  +stopoverDuration: number | null,
 |};
 
 export type ItinerariesType = {|

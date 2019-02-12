@@ -303,6 +303,7 @@ type Sector {
   duration: Int
   origin: Location
   segments: [Segment]
+  stopoverDuration: Int
 }
 
 type Segment {

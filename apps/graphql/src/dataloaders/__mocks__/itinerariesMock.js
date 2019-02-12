@@ -165,6 +165,7 @@ export const oneWaySectors = [
         vehicle: { type: 'aircraft', uniqueNo: '1013' },
       },
     ],
+    stopoverDuration: null,
   },
 ];
 
@@ -296,6 +297,7 @@ export const twoWaySectors = [
         vehicle: { type: null, uniqueNo: 'undefined' },
       },
     ],
+    stopoverDuration: null,
   },
   {
     arrivalTime: { local: null, utc: null },
@@ -371,6 +373,7 @@ export const twoWaySectors = [
         vehicle: { type: null, uniqueNo: 'undefined' },
       },
     ],
+    stopoverDuration: null,
   },
 ];
 
