@@ -34,9 +34,6 @@ type Props = {|
   +travelFrom: ?Location,
   +travelTo: ?Location,
   +type: 'DESTINATION' | 'ORIGIN',
-  +setTravelTo: Location => void,
-  +setTravelFrom: Location => void,
-  +setModalType: string => void,
 |};
 
 type State = {|
@@ -76,18 +73,6 @@ class PlacePickerContent extends React.Component<Props, State> {
     this.props.relay.refetch({ input: { term: text } });
   }, DEBOUNCE_TIME);
 
-  handleListItemClick = location => {
-    const { type, setTravelFrom, setTravelTo, setModalType } = this.props;
-
-    if (type === MODAL_TYPE.ORIGIN) {
-      setTravelFrom(location);
-    }
-    if (type === MODAL_TYPE.DESTINATION) {
-      setTravelTo(location);
-    }
-    setModalType(MODAL_TYPE.HIDDEN);
-  };
-
   render() {
     return (
       <View style={styles.container}>
@@ -100,10 +85,7 @@ class PlacePickerContent extends React.Component<Props, State> {
             prefix={<Icon name="search" />}
           />
         </View>
-        <PlacePickerList
-          locations={this.props.locations?.locationsByTerm}
-          onPressItem={this.handleListItemClick}
-        />
+        <PlacePickerList locations={this.props.locations?.locationsByTerm} />
       </View>
     );
   }
@@ -116,18 +98,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const select = ({
-  travelFrom,
-  travelTo,
-  modalType,
-  actions: { setTravelTo, setTravelFrom, setModalType },
-}: SearchContextState) => ({
-  setTravelFrom,
-  setTravelTo,
+const select = ({ travelFrom, travelTo, modalType }: SearchContextState) => ({
   travelFrom,
   travelTo,
   type: modalType,
-  setModalType,
 });
 
 export default createRefetchContainer(

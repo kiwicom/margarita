@@ -10,29 +10,52 @@ import {
 } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import { type Location } from '../SearchContext';
+import { MODAL_TYPE } from '../SearchConstants';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type Location,
+} from '../SearchContext';
 import type { PlaceItem_item as PlaceItemType } from './__generated__/PlaceItem_item.graphql';
 
 type Props = {|
-  +onPress: Location => void,
   +item: ?PlaceItemType,
+  +modalType: 'DESTINATION' | 'ORIGIN',
+  +setTravelTo: Location => void,
+  +setTravelFrom: Location => void,
+  +setModalType: string => void,
 |};
 
 class PlaceItem extends React.Component<Props> {
-  handlePress = () => {
-    const { item, onPress } = this.props;
-    onPress({
+  handleListItemClick = () => {
+    const {
+      modalType,
+      setTravelFrom,
+      setTravelTo,
+      setModalType,
+      item,
+    } = this.props;
+
+    const location = {
       id: item?.id,
       locationId: item?.locationId,
       name: item?.name,
-    });
+    };
+
+    if (modalType === MODAL_TYPE.ORIGIN) {
+      setTravelFrom(location);
+    }
+    if (modalType === MODAL_TYPE.DESTINATION) {
+      setTravelTo(location);
+    }
+    setModalType(MODAL_TYPE.HIDDEN);
   };
 
   render() {
     const { item } = this.props;
 
     return (
-      <Touchable onPress={this.handlePress}>
+      <Touchable onPress={this.handleListItemClick}>
         <View style={styles.container}>
           <Icon name="location" />
           <Text style={styles.text}>{item?.name}</Text>
@@ -52,8 +75,18 @@ const styles = StyleSheet.create({
   },
 });
 
+const select = ({
+  modalType,
+  actions: { setTravelTo, setTravelFrom, setModalType },
+}: SearchContextState) => ({
+  setTravelFrom,
+  setTravelTo,
+  setModalType,
+  modalType,
+});
+
 export default createFragmentContainer(
-  PlaceItem,
+  withSearchContext(select)(PlaceItem),
   graphql`
     fragment PlaceItem_item on Location {
       id
