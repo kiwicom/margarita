@@ -59,7 +59,7 @@
     "jest-fetch-mock": "^2.0.1",
     "react-native-testing-library": "^1.4.2",
     "react-test-renderer": "^16.7.0",
-    "relay-compiler": "^1.7.0"
+    "relay-compiler": "^2.0.0"
   },
   "resolutions": {
     "**/babel-core": "7.0.0-bridge.0",
