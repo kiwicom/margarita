@@ -8,19 +8,18 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-type CityName$ref = any;
-type FromToIcon$ref = any;
+type TripDate$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type FromTo$ref: FragmentReference;
-export type FromTo = {|
+declare export opaque type TripDates$ref: FragmentReference;
+export type TripDates = {|
   +departure: ?{|
-    +$fragmentRefs: CityName$ref
+    +$fragmentRefs: TripDate$ref
   |},
   +arrival: ?{|
-    +$fragmentRefs: CityName$ref
+    +$fragmentRefs: TripDate$ref
   |},
-  +$fragmentRefs: FromToIcon$ref,
-  +$refType: FromTo$ref,
+  +duration: ?number,
+  +$refType: TripDates$ref,
 |};
 */
 
@@ -29,14 +28,14 @@ const node/*: ConcreteFragment*/ = (function(){
 var v0 = [
   {
     "kind": "FragmentSpread",
-    "name": "CityName",
+    "name": "TripDate",
     "args": null
   }
 ];
 return {
   "kind": "Fragment",
-  "name": "FromTo",
-  "type": "FromToInterface",
+  "name": "TripDates",
+  "type": "Trip",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -61,13 +60,15 @@ return {
       "selections": v0
     },
     {
-      "kind": "FragmentSpread",
-      "name": "FromToIcon",
-      "args": null
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "duration",
+      "args": null,
+      "storageKey": null
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'cac80d27766ea9c87a5e4e4839ea7417';
+(node/*: any*/).hash = 'ed906bedd33fad48f0f1179926faf63d';
 module.exports = node;

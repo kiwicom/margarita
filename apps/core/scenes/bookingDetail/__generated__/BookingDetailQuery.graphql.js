@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 538ba0e606defe8aafd23c3ba6165f46
+ * @relayHash b87794d01a8414413a941acde4c53c73
  */
 
 /* eslint-disable */
@@ -42,7 +42,8 @@ fragment BookingDetailWrapper on BookingInterface {
 
 fragment TripDetails on BookingInterface {
   ...Header
-  ...TripInfo
+  ...TripInfoOneWay
+  type
 }
 
 fragment Header on BookingInterface {
@@ -50,11 +51,20 @@ fragment Header on BookingInterface {
   status
 }
 
-fragment TripInfo on BookingInterface {
-  ...FromTo
+fragment TripInfoOneWay on BookingInterface {
+  ... on BookingOneWay {
+    trip {
+      ...TripInfo
+    }
+  }
 }
 
-fragment FromTo on BookingInterface {
+fragment TripInfo on Trip {
+  ...FromTo
+  ...TripDates
+}
+
+fragment FromTo on FromToInterface {
   departure {
     ...CityName
   }
@@ -62,6 +72,22 @@ fragment FromTo on BookingInterface {
     ...CityName
   }
   ...FromToIcon
+}
+
+fragment TripDates on Trip {
+  departure {
+    ...TripDate
+  }
+  arrival {
+    ...TripDate
+  }
+  duration
+}
+
+fragment TripDate on RouteStop {
+  time {
+    local
+  }
 }
 
 fragment CityName on RouteStop {
@@ -72,7 +98,7 @@ fragment CityName on RouteStop {
   }
 }
 
-fragment FromToIcon on BookingInterface {
+fragment FromToIcon on FromToInterface {
   type
 }
 */
@@ -97,11 +123,18 @@ v1 = [
 v2 = {
   "kind": "ScalarField",
   "alias": null,
+  "name": "type",
+  "args": null,
+  "storageKey": null
+},
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v3 = [
+v4 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -125,7 +158,25 @@ v3 = [
         "args": null,
         "storageKey": null
       },
-      v2
+      v3
+    ]
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "time",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "SegmentTime",
+    "plural": false,
+    "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "local",
+        "args": null,
+        "storageKey": null
+      }
     ]
   }
 ];
@@ -134,7 +185,7 @@ return {
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfo\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfo on BookingInterface {\n  ...FromTo\n}\n\nfragment FromTo on BookingInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on BookingInterface {\n  type\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfoOneWay\n  type\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    trip {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfo on Trip {\n  ...FromTo\n  ...TripDates\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment TripDates on Trip {\n  departure {\n    ...TripDate\n  }\n  arrival {\n    ...TripDate\n  }\n  duration\n}\n\nfragment TripDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -203,34 +254,53 @@ return {
             "args": null,
             "storageKey": null
           },
+          v2,
+          v3,
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "departure",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "RouteStop",
-            "plural": false,
-            "selections": v3
-          },
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "name": "arrival",
-            "storageKey": null,
-            "args": null,
-            "concreteType": "RouteStop",
-            "plural": false,
-            "selections": v3
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "name": "type",
-            "args": null,
-            "storageKey": null
-          },
-          v2
+            "kind": "InlineFragment",
+            "type": "BookingOneWay",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "trip",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Trip",
+                "plural": false,
+                "selections": [
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "departure",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "RouteStop",
+                    "plural": false,
+                    "selections": v4
+                  },
+                  {
+                    "kind": "LinkedField",
+                    "alias": null,
+                    "name": "arrival",
+                    "storageKey": null,
+                    "args": null,
+                    "concreteType": "RouteStop",
+                    "plural": false,
+                    "selections": v4
+                  },
+                  v2,
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "duration",
+                    "args": null,
+                    "storageKey": null
+                  }
+                ]
+              }
+            ]
+          }
         ]
       }
     ]

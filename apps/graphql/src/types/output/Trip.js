@@ -5,9 +5,12 @@ import { GraphQLObjectType, GraphQLInt } from 'graphql';
 import GraphQLRouteStop from './RouteStop';
 import { differenceInMinutes } from '../../dataloaders/itinerariesHelpers';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
+import FromToInterface from './FromToInterface';
+import GraphQLBookingType from './BookingType';
 
 export default new GraphQLObjectType({
   name: 'Trip',
+  interfaces: [FromToInterface],
   description:
     'Single travel from origin to destination, with possible stopovers.',
   fields: {
@@ -31,6 +34,9 @@ export default new GraphQLObjectType({
 
         return differenceInMinutes(departureTimeMs, arrivalTimeMs);
       },
+    },
+    type: {
+      type: GraphQLBookingType,
     },
   },
 });

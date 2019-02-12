@@ -36,3 +36,4 @@ export {
 export { default as Separator } from './src/separator/Separator';
 export { default as ShareIcon } from './src/shareIcon/ShareIcon';
 export { default as Text } from './src/text/Text';
+export { default as Duration } from './src/duration/Duration';
