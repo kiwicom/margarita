@@ -6,7 +6,6 @@ import * as DateFNS from 'date-fns';
 
 import { MODAL_TYPE } from './SearchConstants';
 
-// TODO move types to separate file
 type Props = {|
   +children: React.Node,
 |};
