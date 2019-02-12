@@ -8,32 +8,34 @@ import {
   Icon,
   Touchable,
 } from '@kiwicom/universal-components';
+import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import { type Location } from '../SearchContext';
+import type { PlaceItem_item as PlaceItemType } from './__generated__/PlaceItem_item.graphql';
 
 type Props = {|
   +onPress: Location => void,
-  +location: ?Location,
+  +item: ?PlaceItemType,
 |};
 
 class PlaceItem extends React.Component<Props> {
   handlePress = () => {
-    const { location, onPress } = this.props;
-    location && onPress(location); // eslint-disable-line babel/no-unused-expressions
+    const { item, onPress } = this.props;
+    onPress({
+      id: item?.id,
+      locationId: item?.locationId,
+      name: item?.name,
+    });
   };
 
   render() {
-    const { location } = this.props;
-    if (!location?.locationId || !location?.name) {
-      // eslint-disable-next-line no-console
-      console.warn('Incomplete data for the location!', { location });
-      return null;
-    }
+    const { item } = this.props;
+
     return (
       <Touchable onPress={this.handlePress}>
         <View style={styles.container}>
           <Icon name="location" />
-          <Text style={styles.text}>{location?.name}</Text>
+          <Text style={styles.text}>{item?.name}</Text>
         </View>
       </Touchable>
     );
@@ -50,4 +52,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default PlaceItem;
+export default createFragmentContainer(
+  PlaceItem,
+  graphql`
+    fragment PlaceItem_item on Location {
+      id
+      name
+      locationId
+    }
+  `,
+);

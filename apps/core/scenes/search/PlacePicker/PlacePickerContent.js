@@ -10,25 +10,26 @@ import {
   Icon,
   StyleSheet,
 } from '@kiwicom/universal-components';
+import {
+  graphql,
+  createRefetchContainer,
+  type RelayRefetchProp,
+} from '@kiwicom/margarita-relay';
+import { debounce } from '@kiwicom/margarita-utils';
 
 import { MODAL_TYPE } from '../SearchConstants';
+import { DEBOUNCE_TIME } from '../../../config';
 import {
   withSearchContext,
   type SearchContextState,
   type Location,
 } from '../SearchContext';
 import PlacePickerList from './PlacePickerList';
-
-type Locations = $ReadOnlyArray<?{|
-  +node: ?{|
-    +id: string,
-    +name: ?string,
-    +locationId: ?string,
-  |},
-|}>;
+import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 
 type Props = {|
-  +locations: Locations,
+  locations: ?PlacePickerContentType,
+  relay: RelayRefetchProp,
   +onChangeText: string => void,
   +travelFrom: ?Location,
   +travelTo: ?Location,
@@ -62,7 +63,6 @@ class PlacePickerContent extends React.Component<Props, State> {
 
   getLabel = () => {
     const { type } = this.props;
-
     if (type === MODAL_TYPE.DESTINATION) {
       return 'To';
     } else if (type === MODAL_TYPE.ORIGIN) {
@@ -71,10 +71,10 @@ class PlacePickerContent extends React.Component<Props, State> {
     return null;
   };
 
-  handleChangeText = (text: string) => {
+  handleChangeText = debounce((text: string) => {
     this.setState({ text });
-    this.props.onChangeText(text);
-  };
+    this.props.relay.refetch({ input: { term: text } });
+  }, DEBOUNCE_TIME);
 
   handleListItemClick = location => {
     const { type, setTravelFrom, setTravelTo, setModalType } = this.props;
@@ -101,7 +101,7 @@ class PlacePickerContent extends React.Component<Props, State> {
           />
         </View>
         <PlacePickerList
-          locations={this.props.locations}
+          locations={this.props.locations?.locationsByTerm}
           onPressItem={this.handleListItemClick}
         />
       </View>
@@ -130,4 +130,23 @@ const select = ({
   setModalType,
 });
 
-export default withSearchContext(select)(PlacePickerContent);
+export default createRefetchContainer(
+  withSearchContext(select)(PlacePickerContent),
+  {
+    locations: graphql`
+      fragment PlacePickerContent_locations on RootQuery
+        @argumentDefinitions(
+          input: { type: "LocationsByTermInput!", defaultValue: { term: "" } }
+        ) {
+        locationsByTerm(input: $input) {
+          ...PlacePickerList_locations
+        }
+      }
+    `,
+  },
+  graphql`
+    query PlacePickerContentRefetchQuery($input: LocationsByTermInput!) {
+      ...PlacePickerContent_locations @arguments(input: $input)
+    }
+  `,
+);

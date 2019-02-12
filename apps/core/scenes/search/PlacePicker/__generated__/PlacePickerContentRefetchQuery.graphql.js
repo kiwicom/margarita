@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 685a46e32bdc32b6dc084dcee069adb1
+ * @relayHash 3ecd799dec8392c226d77db1dcc8b1ea
  */
 
 /* eslint-disable */
@@ -9,40 +9,49 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type PlacePickerRefetchContainer_locations$ref = any;
+type PlacePickerContent_locations$ref = any;
 export type LocationsByTermInput = {
   term: string
 };
-export type PlacePickerRefetchContainerQueryVariables = {|
+export type PlacePickerContentRefetchQueryVariables = {|
   input: LocationsByTermInput
 |};
-export type PlacePickerRefetchContainerQueryResponse = {|
-  +$fragmentRefs: PlacePickerRefetchContainer_locations$ref
+export type PlacePickerContentRefetchQueryResponse = {|
+  +$fragmentRefs: PlacePickerContent_locations$ref
 |};
-export type PlacePickerRefetchContainerQuery = {|
-  variables: PlacePickerRefetchContainerQueryVariables,
-  response: PlacePickerRefetchContainerQueryResponse,
+export type PlacePickerContentRefetchQuery = {|
+  variables: PlacePickerContentRefetchQueryVariables,
+  response: PlacePickerContentRefetchQueryResponse,
 |};
 */
 
 
 /*
-query PlacePickerRefetchContainerQuery(
+query PlacePickerContentRefetchQuery(
   $input: LocationsByTermInput!
 ) {
-  ...PlacePickerRefetchContainer_locations_2VV6jB
+  ...PlacePickerContent_locations_2VV6jB
 }
 
-fragment PlacePickerRefetchContainer_locations_2VV6jB on RootQuery {
+fragment PlacePickerContent_locations_2VV6jB on RootQuery {
   locationsByTerm(input: $input) {
-    edges {
-      node {
-        id
-        name
-        locationId
-      }
+    ...PlacePickerList_locations
+  }
+}
+
+fragment PlacePickerList_locations on LocationConnection {
+  edges {
+    node {
+      id
+      ...PlaceItem_item
     }
   }
+}
+
+fragment PlaceItem_item on Location {
+  id
+  name
+  locationId
 }
 */
 
@@ -58,20 +67,20 @@ var v0 = [
 return {
   "kind": "Request",
   "operationKind": "query",
-  "name": "PlacePickerRefetchContainerQuery",
+  "name": "PlacePickerContentRefetchQuery",
   "id": null,
-  "text": "query PlacePickerRefetchContainerQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerRefetchContainer_locations_2VV6jB\n}\n\nfragment PlacePickerRefetchContainer_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n      }\n    }\n  }\n}\n",
+  "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    ...PlacePickerList_locations\n  }\n}\n\nfragment PlacePickerList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...PlaceItem_item\n    }\n  }\n}\n\nfragment PlaceItem_item on Location {\n  id\n  name\n  locationId\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
-    "name": "PlacePickerRefetchContainerQuery",
+    "name": "PlacePickerContentRefetchQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": v0,
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "PlacePickerRefetchContainer_locations",
+        "name": "PlacePickerContent_locations",
         "args": [
           {
             "kind": "Variable",
@@ -85,7 +94,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "PlacePickerRefetchContainerQuery",
+    "name": "PlacePickerContentRefetchQuery",
     "argumentDefinitions": v0,
     "selections": [
       {
@@ -154,5 +163,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '18203c5a9b5ac562328b826a92530ef8';
+(node/*: any*/).hash = '446535d2d95d0778f51e7bfecca46dfe';
 module.exports = node;
