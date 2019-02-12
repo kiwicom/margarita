@@ -17,5 +17,9 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 15,
     paddingVertical: 5,
+    web: {
+      paddingHorizontal: 0,
+      paddingVertical: 0,
+    },
   },
 });
