@@ -3,7 +3,8 @@
   "version": "0.0.11",
   "description": "Component Library for React Native, Expo and React applications",
   "homepage": "https://github.com/kiwicom/universal-components",
-  "main": "lib",
+  "main": "lib/web/index.js",
+  "react-native": "lib/native/index.js",
   "scripts": {
     "docz:dev": "cd docs; yarn; yarn docz:dev",
     "docz:build": "cd docs; yarn; yarn docz:build",
