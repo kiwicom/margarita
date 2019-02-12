@@ -11,12 +11,13 @@ import type { ConcreteFragment } from 'relay-runtime';
 type Header$ref = any;
 type TripInfoMulticity$ref = any;
 type TripInfoOneWay$ref = any;
+type TripInfoReturn$ref = any;
 export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripDetails$ref: FragmentReference;
 export type TripDetails = {|
   +type: ?BookingType,
-  +$fragmentRefs: Header$ref & TripInfoOneWay$ref & TripInfoMulticity$ref,
+  +$fragmentRefs: Header$ref & TripInfoOneWay$ref & TripInfoMulticity$ref & TripInfoReturn$ref,
   +$refType: TripDetails$ref,
 |};
 */
@@ -45,6 +46,11 @@ const node/*: ConcreteFragment*/ = {
       "args": null
     },
     {
+      "kind": "FragmentSpread",
+      "name": "TripInfoReturn",
+      "args": null
+    },
+    {
       "kind": "ScalarField",
       "alias": null,
       "name": "type",
@@ -54,5 +60,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '3a0b9f61af0ed138524d14347f4a60be';
+(node/*: any*/).hash = '09a882cd52438f6f9bc1d55678f04b67';
 module.exports = node;
