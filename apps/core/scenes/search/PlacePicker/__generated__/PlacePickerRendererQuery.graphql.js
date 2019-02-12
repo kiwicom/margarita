@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 42ee0495387536f1d2d77bd1f51b385b
+ * @relayHash a83a6dd17ca9b12ec6d89afe41d5b194
  */
 
 /* eslint-disable */
@@ -10,9 +10,9 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type PlacePickerContent_locations$ref = any;
-export type LocationsByTermInput = {
+export type LocationsByTermInput = {|
   term: string
-};
+|};
 export type PlacePickerRendererQueryVariables = {|
   input: LocationsByTermInput
 |};
@@ -66,17 +66,12 @@ var v0 = [
 ];
 return {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "PlacePickerRendererQuery",
-  "id": null,
-  "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    ...PlacePickerList_locations\n  }\n}\n\nfragment PlacePickerList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...PlaceItem_item\n    }\n  }\n}\n\nfragment PlaceItem_item on Location {\n  id\n  name\n  locationId\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "PlacePickerRendererQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "FragmentSpread",
@@ -95,7 +90,7 @@ return {
   "operation": {
     "kind": "Operation",
     "name": "PlacePickerRendererQuery",
-    "argumentDefinitions": v0,
+    "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
@@ -159,6 +154,13 @@ return {
         ]
       }
     ]
+  },
+  "params": {
+    "operationKind": "query",
+    "name": "PlacePickerRendererQuery",
+    "id": null,
+    "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    ...PlacePickerList_locations\n  }\n}\n\nfragment PlacePickerList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...PlaceItem_item\n    }\n  }\n}\n\nfragment PlaceItem_item on Location {\n  id\n  name\n  locationId\n}\n",
+    "metadata": {}
   }
 };
 })();

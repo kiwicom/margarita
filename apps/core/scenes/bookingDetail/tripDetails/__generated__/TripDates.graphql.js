@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type TripDate$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripDates$ref: FragmentReference;
@@ -24,7 +24,7 @@ export type TripDates = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
+const node/*: ReaderFragment*/ = (function(){
 var v0 = [
   {
     "kind": "FragmentSpread",
@@ -47,7 +47,7 @@ return {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -57,7 +57,7 @@ return {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": v0
+      "selections": (v0/*: any*/)
     },
     {
       "kind": "ScalarField",

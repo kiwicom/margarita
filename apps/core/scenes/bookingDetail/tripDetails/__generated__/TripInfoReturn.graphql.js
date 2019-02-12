@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-import type { ConcreteFragment } from 'relay-runtime';
+import type { ReaderFragment } from 'relay-runtime';
 type FromTo$ref = any;
 type TripDates$ref = any;
 import type { FragmentReference } from "relay-runtime";
@@ -25,7 +25,7 @@ export type TripInfoReturn = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
+const node/*: ReaderFragment*/ = (function(){
 var v0 = [
   {
     "kind": "FragmentSpread",
@@ -57,7 +57,7 @@ return {
           "args": null,
           "concreteType": "Trip",
           "plural": false,
-          "selections": v0
+          "selections": (v0/*: any*/)
         },
         {
           "kind": "LinkedField",
@@ -67,7 +67,7 @@ return {
           "args": null,
           "concreteType": "Trip",
           "plural": false,
-          "selections": v0
+          "selections": (v0/*: any*/)
         }
       ]
     }
