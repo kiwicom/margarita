@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-import { Icon, Text, AdaptableBadge } from '@kiwicom/universal-components';
+import { Icon, AdaptableBadge } from '@kiwicom/universal-components';
 
 import { SearchParamsSummary } from '..';
+
+import Text from '../../text/Text';
 
 const renderSearchParamsSummary = (tripType, component) => {
   const { getByType } = render(

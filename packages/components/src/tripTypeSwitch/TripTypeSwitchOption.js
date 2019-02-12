@@ -1,11 +1,12 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
+import Text from '../text/Text';
 
 type Props = {|
   +type: string,
@@ -25,7 +26,10 @@ export default class TripTypeSwitchOption extends React.Component<Props> {
     return (
       <TouchableWithoutFeedback onPress={this.handlePress}>
         <View>
-          <Text style={[styles.switch, selected && styles.slectedSwitch]}>
+          <Text
+            weight="bold"
+            style={[styles.switch, selected && styles.slectedSwitch]}
+          >
             {label.toUpperCase()}
           </Text>
         </View>
@@ -37,7 +41,6 @@ export default class TripTypeSwitchOption extends React.Component<Props> {
 const styles = StyleSheet.create({
   switch: {
     fontSize: parseInt(defaultTokens.fontSizeTextNormal, 10),
-    fontWeight: 'bold',
     color: defaultTokens.paletteInkLightHover,
     marginEnd: parseInt(defaultTokens.spaceSmall, 10),
   },

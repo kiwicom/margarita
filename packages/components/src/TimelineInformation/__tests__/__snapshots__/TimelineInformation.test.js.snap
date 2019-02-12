@@ -64,6 +64,12 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
           Object {
             "color": "#46B655",
           },
+          Array [
+            undefined,
+            Object {
+              "fontFamily": "Roboto",
+            },
+          ],
         ]
       }
     >

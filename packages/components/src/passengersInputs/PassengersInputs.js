@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Text, Button, StyleSheet } from '@kiwicom/universal-components';
+import { Button, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import Text from '../text/Text';
 import type { Props, State } from './PassengersInputsTypes';
 import PassengersInputsLine from './PassengersInputsLine';
 import {

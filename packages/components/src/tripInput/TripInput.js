@@ -5,12 +5,12 @@ import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   StyleSheet,
-  Text,
   Icon,
   type StylePropType,
 } from '@kiwicom/universal-components';
 
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
+import Text from '../text/Text';
 
 type Props = {|
   +style?: StylePropType,

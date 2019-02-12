@@ -5,10 +5,11 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Icon,
-  Text,
   StyleSheet,
   type StylePropType,
 } from '@kiwicom/universal-components';
+
+import Text from '../text/Text';
 
 type Props = {|
   +icon: React.Element<typeof Icon>,

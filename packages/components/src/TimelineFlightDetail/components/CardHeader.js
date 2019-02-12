@@ -3,13 +3,10 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import {
-  Icon,
-  CarrierLogo,
-  Text,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { Icon, CarrierLogo, StyleSheet } from '@kiwicom/universal-components';
 import { capitalize } from '@kiwicom/margarita-utils';
+
+import Text from '../../text/Text';
 
 type Props = {|
   +expanded: boolean,

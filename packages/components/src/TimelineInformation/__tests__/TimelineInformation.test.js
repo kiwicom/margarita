@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { render } from 'react-native-testing-library';
-import { Icon, Text } from '@kiwicom/universal-components';
+import { Icon } from '@kiwicom/universal-components';
 
 import { TimelineInformation } from '../index';
+import Text from '../../text/Text';
 
 describe('TimelineInformation', () => {
   const informationText = 'Lorem ipsum';
