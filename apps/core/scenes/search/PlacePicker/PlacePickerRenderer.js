@@ -16,7 +16,7 @@ export default class PlacePickerRenderer extends React.Component<Props> {
     return <PlacePickerRefetchContainer locations={data} />;
   };
 
-  setInputVariable = () => {
+  getInputVariable = () => {
     const term = this.props.defaultPlace?.locationId || '';
     return { input: { term } };
   };
@@ -29,7 +29,7 @@ export default class PlacePickerRenderer extends React.Component<Props> {
             ...PlacePickerRefetchContainer_locations @arguments(input: $input)
           }
         `}
-        variables={this.setInputVariable()}
+        variables={this.getInputVariable()}
         render={this.renderInner}
       />
     );

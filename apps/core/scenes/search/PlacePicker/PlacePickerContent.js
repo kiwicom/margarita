@@ -94,7 +94,6 @@ class PlacePickerContent extends React.Component<Props, State> {
         <View>
           <Text weight="bold">{this.getLabel()}:</Text>
           <TextInput
-            autofoucs
             placeholder="write a place..."
             onChangeText={this.handleChangeText}
             value={this.state.text}

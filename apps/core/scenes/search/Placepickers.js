@@ -50,7 +50,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleFromPress}
           label="From"
           icon={<Icon name="airplane-takeoff" />}
-          value={travelFrom?.name || ''}
+          value={travelFrom?.name ?? ''}
         />
         <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
           <View
@@ -63,7 +63,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleToPress}
           label="To"
           icon={<Icon name="airplane-landing" />}
-          value={travelTo?.name || ''}
+          value={travelTo?.name ?? ''}
         />
       </PickersWrapper>
     );

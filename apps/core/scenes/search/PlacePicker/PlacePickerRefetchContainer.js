@@ -11,6 +11,7 @@ import {
 import { debounce } from '@kiwicom/margarita-utils';
 import * as React from 'react';
 
+import { DEBOUNCE_TIME } from '../../../config';
 import PlacePickerContent from './PlacePickerContent';
 import type { PlacePickerRefetchContainer_locations as PlacePickerRefetchContainerType } from './__generated__/PlacePickerRefetchContainer_locations.graphql.js';
 
@@ -22,7 +23,7 @@ type Props = {
 class PlacePickerRefetchContainer extends React.Component<Props> {
   handleChangeText = debounce((text: string) => {
     this.props.relay.refetch({ input: { term: text } });
-  }, 250);
+  }, DEBOUNCE_TIME);
 
   render() {
     const locations = this.props.locations?.locationsByTerm?.edges ?? [];

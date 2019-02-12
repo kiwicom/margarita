@@ -24,16 +24,16 @@ class PlaceItem extends React.Component<Props> {
 
   render() {
     const { location } = this.props;
-    if (!location || !location.locationId || !location.name) {
+    if (!location?.locationId || !location?.name) {
       // eslint-disable-next-line no-console
-      console.error('Incomplete data for the location!');
+      console.warn('Incomplete data for the location!', { location });
       return null;
     }
     return (
       <Touchable onPress={this.handlePress}>
         <View style={styles.container}>
           <Icon name="location" />
-          <Text style={styles.text}>{location.name}</Text>
+          <Text style={styles.text}>{location?.name}</Text>
         </View>
       </Touchable>
     );
