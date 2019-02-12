@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
 
 import withContext from '../src/withContext/withContext';
 import { getLayout } from './LayoutContextHelpers';
@@ -12,11 +12,21 @@ type Props = {|
 |};
 
 type State = {|
+  layoutReady: boolean,
   layout: number,
 |};
 
+/**
+ * NOTE: Default `layoutReady` value needs to be `false` only on web,
+ * where it's switched to `true` together with `layout` value
+ * initialisation inside `componentDidMount` because of Next.js SSR.
+ */
 const defaultState = {
-  layout: LAYOUT.largeDesktop,
+  layoutReady: Platform.OS !== 'web',
+  layout:
+    Platform.OS === 'web'
+      ? LAYOUT.largeDesktop
+      : getLayout(Dimensions.get('window').width),
 };
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
@@ -35,9 +45,14 @@ export default class LayoutContextProvider extends React.Component<
 
   componentDidMount() {
     const layout = getLayout(Dimensions.get('window').width);
-    if (this.state.layout !== layout) {
-      this.setState({ layout }); // eslint-disable-line react/no-did-mount-set-state
+    if (!this.state.layoutReady || this.state.layout !== layout) {
+      // eslint-disable-next-line react/no-did-mount-set-state
+      this.setState({
+        layoutReady: true,
+        layout,
+      });
     }
+
     Dimensions.addEventListener('change', this.handleDimensionsChange);
   }
 
