@@ -40,6 +40,7 @@ class ResultsList extends React.Component<Props> {
     return (
       <View style={styles.cardList}>
         <FlatList
+          contentContainerStyle={styles.container}
           data={data}
           keyExtractor={this.keyExtractor}
           renderItem={this.resultItem}
@@ -67,5 +68,11 @@ const styles = StyleSheet.create({
   cardList: {
     backgroundColor: defaultTokens.backgroundBody,
     flex: 1,
+  },
+  container: {
+    web: {
+      paddingTop: parseInt(defaultTokens.spaceMedium, 10),
+      paddingHorizontal: parseInt(defaultTokens.spaceSmall, 10),
+    },
   },
 });

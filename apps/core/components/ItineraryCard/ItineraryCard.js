@@ -1,8 +1,12 @@
 // @flow
 
 import * as React from 'react';
-import { View, FlatList } from 'react-native';
-import { LocalizedPrice, StyleSheet } from '@kiwicom/universal-components';
+import { View, FlatList, Platform } from 'react-native';
+import {
+  LocalizedPrice,
+  StyleSheet,
+  Icon,
+} from '@kiwicom/universal-components';
 import { formatPrice } from '@kiwicom/margarita-utils';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
@@ -44,6 +48,7 @@ class ItineraryCard extends React.Component<Props> {
     if (data == null) {
       return null;
     }
+
     // @TODO use real badges
     const badges = [
       {
@@ -63,18 +68,27 @@ class ItineraryCard extends React.Component<Props> {
     };
     return (
       <View style={styles.card}>
-        <View>
+        {Platform.OS === 'web' && (
+          <LocalizedPrice localizedPrice={formatPrice(priceObject)} />
+        )}
+        <View style={styles.sectors}>
           <FlatList
             data={data.sectors}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderSectorItem}
           />
-          <HorizontalDash />
-          <ItineraryCardRow style={styles.lastRow}>
-            <BadgesContainer badges={badges} />
-            <LocalizedPrice localizedPrice={formatPrice(priceObject)} />
-          </ItineraryCardRow>
         </View>
+        {Platform.OS === 'web' ? (
+          <Icon name="chevron-down" color={defaultTokens.paletteInkLighter} />
+        ) : (
+          <>
+            <HorizontalDash />
+            <ItineraryCardRow style={styles.lastRow}>
+              <BadgesContainer badges={badges} />
+              <LocalizedPrice localizedPrice={formatPrice(priceObject)} />
+            </ItineraryCardRow>
+          </>
+        )}
       </View>
     );
   }
@@ -107,5 +121,27 @@ const styles = StyleSheet.create({
     borderColor: defaultTokens.borderColorCard,
     borderBottomWidth: 1,
     borderTopWidth: 1,
+    web: {
+      alignSelf: 'center',
+      flexDirection: 'row',
+      alignItems: 'center',
+      width: '100%',
+      maxWidth: 720,
+      padding: parseInt(defaultTokens.spaceMedium, 10),
+      marginBottom: parseInt(defaultTokens.spaceMedium, 10),
+      borderBottomWidth: 0,
+      borderTopWidth: 0,
+      borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
+      boxShadow: '0 2px 4px 0 rgba(23,27,30,.1)',
+      transitionDuration: '0.3s',
+      transitionProperty: 'box-shadow',
+      transitionTimingFunction: 'ease-out',
+    },
+  },
+  sectors: {
+    web: {
+      flex: 1,
+      marginStart: 10,
+    },
   },
 });
