@@ -1,9 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { Icon, Text } from '@kiwicom/universal-components';
+import { Icon } from '@kiwicom/universal-components';
 
 import TimelineInformation from './TimelineInformation';
+import Text from '../text/Text';
 
 type Props = {|
   +differentAirportWarning: string,

@@ -4,7 +4,6 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 import {
-  Text,
   StyleSheet,
   Touchable,
   AdaptableBadge,
@@ -13,6 +12,7 @@ import {
 // import BlackToAlpha from './assets/black-to-alpha-vertical.png'; @TODO
 import CityImage from './Image/CityImage';
 import Placeholder from './Placeholder';
+import Text from '../text/Text';
 
 type Props = {|
   +country: string,

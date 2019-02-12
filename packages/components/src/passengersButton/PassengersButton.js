@@ -2,9 +2,10 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
+import { StyleSheet, Icon } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import Text from '../text/Text';
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import type { Props } from './PassengersButtonTypes';
 
@@ -22,7 +23,8 @@ export default function PassengersButton({ onPress, adults, infants }: Props) {
           color={defaultTokens.paletteInkNormal}
           name="passengers"
         />
-        <Text style={styles.text}>{`${adults + infants} ${label}`}</Text>
+        <Text weight="bold" style={styles.text}>{`${adults +
+          infants} ${label}`}</Text>
         <Icon
           size="small"
           color={defaultTokens.paletteInkNormal}
@@ -41,7 +43,6 @@ const styles = StyleSheet.create({
   text: {
     color: defaultTokens.paletteInkNormal,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
-    fontWeight: 'bold',
     marginHorizontal: 6,
   },
 });

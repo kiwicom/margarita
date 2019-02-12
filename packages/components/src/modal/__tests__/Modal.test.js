@@ -1,9 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { Text } from '@kiwicom/universal-components';
 import { shallow } from 'react-native-testing-library';
 
+import Text from '../../text/Text';
 import Modal from '../Modal';
 
 it('renders', () => {
