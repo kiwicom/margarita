@@ -8,18 +8,12 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
-type TripSector$ref = any;
+type RenderTripSectorItem$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard$ref: FragmentReference;
 export type ItineraryCard = {|
   +sectors: ?$ReadOnlyArray<?{|
-    +departureTime: ?{|
-      +utc: ?any
-    |},
-    +arrivalTime: ?{|
-      +utc: ?any
-    |},
-    +$fragmentRefs: TripSector$ref,
+    +$fragmentRefs: RenderTripSectorItem$ref
   |}>,
   +price: ?{|
     +currency: ?string,
@@ -30,17 +24,7 @@ export type ItineraryCard = {|
 */
 
 
-const node/*: ConcreteFragment*/ = (function(){
-var v0 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "utc",
-    "args": null,
-    "storageKey": null
-  }
-];
-return {
+const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "ItineraryCard",
   "type": "Itinerary",
@@ -57,28 +41,8 @@ return {
       "plural": true,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "departureTime",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "DateType",
-          "plural": false,
-          "selections": v0
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "arrivalTime",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "DateType",
-          "plural": false,
-          "selections": v0
-        },
-        {
           "kind": "FragmentSpread",
-          "name": "TripSector",
+          "name": "RenderTripSectorItem",
           "args": null
         }
       ]
@@ -110,7 +74,6 @@ return {
     }
   ]
 };
-})();
 // prettier-ignore
-(node/*: any*/).hash = '4efa364cd2d04095d3c694ee2884c1a2';
+(node/*: any*/).hash = '99f265bbe45bf32e6384bdf9879e9815';
 module.exports = node;

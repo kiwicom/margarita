@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b56a35b5e9630921aef8c304889a2f1f
+ * @relayHash a1ffaf354c613ad94f6e8266ba84e74a
  */
 
 /* eslint-disable */
@@ -59,18 +59,21 @@ fragment ResultsList on ItineraryConnection {
 
 fragment ItineraryCard on Itinerary {
   sectors {
-    departureTime {
-      utc
-    }
-    arrivalTime {
-      utc
-    }
-    ...TripSector
+    ...RenderTripSectorItem
   }
   price {
     currency
     amount
   }
+}
+
+fragment RenderTripSectorItem on Sector {
+  origin {
+    name
+    id
+  }
+  stopoverDuration
+  ...TripSector
 }
 
 fragment TripSector on Sector {
@@ -134,14 +137,18 @@ v2 = {
   "args": null,
   "storageKey": null
 },
-v3 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "utc",
-    "args": null,
-    "storageKey": null
-  },
+v3 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v4 = [
+  v3,
+  v2
+],
+v5 = [
   {
     "kind": "ScalarField",
     "alias": null,
@@ -149,24 +156,13 @@ v3 = [
     "args": null,
     "storageKey": null
   }
-],
-v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "name",
-  "args": null,
-  "storageKey": null
-},
-v5 = [
-  v4,
-  v2
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "ResultsQuery",
   "id": null,
-  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    departureTime {\n      utc\n    }\n    arrivalTime {\n      utc\n    }\n    ...TripSector\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+  "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  origin {\n    name\n    id\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -238,22 +234,19 @@ return {
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "departureTime",
+                        "name": "origin",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "DateType",
+                        "concreteType": "Location",
                         "plural": false,
-                        "selections": v3
+                        "selections": v4
                       },
                       {
-                        "kind": "LinkedField",
+                        "kind": "ScalarField",
                         "alias": null,
-                        "name": "arrivalTime",
-                        "storageKey": null,
+                        "name": "stopoverDuration",
                         "args": null,
-                        "concreteType": "DateType",
-                        "plural": false,
-                        "selections": v3
+                        "storageKey": null
                       },
                       {
                         "kind": "ScalarField",
@@ -265,22 +258,32 @@ return {
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "destination",
+                        "name": "arrivalTime",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "Location",
+                        "concreteType": "DateType",
                         "plural": false,
                         "selections": v5
                       },
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "origin",
+                        "name": "departureTime",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "DateType",
+                        "plural": false,
+                        "selections": v5
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "destination",
                         "storageKey": null,
                         "args": null,
                         "concreteType": "Location",
                         "plural": false,
-                        "selections": v5
+                        "selections": v4
                       },
                       {
                         "kind": "LinkedField",
@@ -300,7 +303,7 @@ return {
                             "concreteType": "Transporter",
                             "plural": false,
                             "selections": [
-                              v4
+                              v3
                             ]
                           },
                           v2

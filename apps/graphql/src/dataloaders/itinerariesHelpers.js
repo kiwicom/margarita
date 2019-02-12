@@ -106,6 +106,7 @@ export const mapSectors = (
                 ),
               };
             }),
+            stopoverDuration: null,
           };
         })
     );
