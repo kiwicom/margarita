@@ -13,4 +13,6 @@ export default {
   MANAGE_OTHER: 'mmb/other',
   SERVICES_FLIGHT_SERVICES: 'mmb/flight-services',
   SERVICES_TRIP_SERVICES: 'mmb/trip-services',
+  TRIPINFO_TICKETS: 'mmb/tickets',
+  TRIPINFO_TIMELINE: 'mmb/timeline',
 };

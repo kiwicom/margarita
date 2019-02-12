@@ -12,6 +12,8 @@ export { default as TripServices } from './scenes/tripServices/TripServices';
 export {
   default as FlightServices,
 } from './scenes/flightServices/FlightServices';
+export { default as Tickets } from './scenes/tickets/Tickets';
+export { default as Timeline } from './scenes/timeline/Timeline';
 
 // Context
 export {

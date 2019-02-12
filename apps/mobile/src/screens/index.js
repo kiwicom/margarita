@@ -10,3 +10,5 @@ export { default as ManageHelpScreen } from './ManageHelpScreen';
 export { default as ManageOtherScreen } from './ManageOtherScreen';
 export { default as FlightServicesScreen } from './FlightServicesScreen';
 export { default as TripServicesScreen } from './TripServicesScreen';
+export { default as TicketsScreen } from './TicketsScreen';
+export { default as TimelineScreen } from './TimelineScreen';

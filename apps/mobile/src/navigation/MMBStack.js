@@ -17,6 +17,8 @@ import {
   ManageOtherScreen,
   FlightServicesScreen,
   TripServicesScreen,
+  TicketsScreen,
+  TimelineScreen,
 } from '../screens';
 
 type NavigationOptions = {};
@@ -68,6 +70,18 @@ const StackNavigator: NavigationNavigator<
       screen: TripServicesScreen,
       navigationOptions: {
         title: 'Trip Services',
+      },
+    },
+    [Routes.TRIPINFO_TICKETS]: {
+      screen: TicketsScreen,
+      navigationOptions: {
+        title: 'Tickets',
+      },
+    },
+    [Routes.TRIPINFO_TIMELINE]: {
+      screen: TimelineScreen,
+      navigationOptions: {
+        title: 'Timeline',
       },
     },
   }: NavigationRouteConfigMap),
