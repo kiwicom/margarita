@@ -132,6 +132,10 @@ type DateType {
   utc: DateTime
 }
 
+"""
+This data needs to be accessed on a Trip and on BookingOneWay/Return/Multicity,
+so that we can re-use one component to show from to with correct icon
+"""
 interface FromToInterface {
   departure: RouteStop
   arrival: RouteStop

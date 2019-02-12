@@ -48,7 +48,7 @@ export type Segment = {|
   +arrival: ?RouteStop,
 |};
 
-type InboundOutbound = {|
+type Trip = {|
   +departure: ?RouteStop,
   +arrival: ?RouteStop,
   +segments: $ReadOnlyArray<Segment>,
@@ -58,9 +58,9 @@ export type TypeSpecificData = {|
   +segments: $ReadOnlyArray<Segment>,
   +arrival: ?RouteStop,
   +departure: ?RouteStop,
-  +inbound?: InboundOutbound,
-  +outbound?: InboundOutbound,
-  +trips?: $ReadOnlyArray<$ReadOnlyArray<Segment>>,
+  +inbound?: Trip,
+  +outbound?: Trip,
+  +trips?: $ReadOnlyArray<Trip>,
 |};
 
 export type Booking = {|
