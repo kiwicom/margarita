@@ -36,6 +36,7 @@ exports[`MenuGroup hides actionIcon 1`] = `
     >
       <View>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >
@@ -90,6 +91,7 @@ exports[`MenuGroup renders correctly 1`] = `
     >
       <View>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >

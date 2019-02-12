@@ -30,6 +30,7 @@ const Text = ({
   type,
   uppercase,
   weight,
+  expo,
 }: TextType) => {
   const textStyle = [styles.text];
   if (italic) {
@@ -53,6 +54,19 @@ const Text = ({
   if (style) {
     textStyle.push(style);
   }
+
+  if (expo && (Platform.OS === 'ios' || Platform.OS === 'android')) {
+    let fontFamily = styles.normalFontFamily;
+    if (italic && weight === 'bold') {
+      fontFamily = styles.boldItalicFontFamily;
+    } else if (italic) {
+      fontFamily = styles.italicFontFamily;
+    } else if (weight === 'bold') {
+      fontFamily = styles.boldFontFamily;
+    }
+    textStyle.push(fontFamily);
+  }
+
   return (
     <RNText
       data-test={dataTest}
@@ -63,6 +77,11 @@ const Text = ({
     </RNText>
   );
 };
+
+Text.defaultProps = {
+  expo: false,
+};
+
 const styles = StyleSheet.create({
   text: {
     margin: 0,
@@ -78,6 +97,18 @@ const styles = StyleSheet.create({
   ...alignGen(),
   ...colorGen(),
   ...fontSizeGen(),
+  normalFontFamily: {
+    fontFamily: 'Roboto',
+  },
+  boldFontFamily: {
+    fontFamily: 'RobotoBold',
+  },
+  italicFontFamily: {
+    fontFamily: 'RobotoItalic',
+  },
+  boldItalicFontFamily: {
+    fontFamily: 'RobotoBoldItalic',
+  },
 });
 
 export default Text;

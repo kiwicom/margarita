@@ -49,6 +49,7 @@ exports[`MenuGroup renders with icon 1`] = `
       />
       <View>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >
@@ -116,12 +117,14 @@ exports[`MenuGroup renders with label 1`] = `
     >
       <View>
         <Text
+          expo={false}
           size="small"
           type="secondary"
         >
           label
         </Text>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >
@@ -189,12 +192,14 @@ exports[`MenuGroup renders with subTitle 1`] = `
     >
       <View>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >
           test
         </Text>
         <Text
+          expo={false}
           size="small"
           type="secondary"
         >

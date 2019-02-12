@@ -43,6 +43,7 @@ exports[`Stepper should match the snapshot 1`] = `
     touchable={true}
   />
   <Text
+    expo={false}
     style={
       Object {
         "fontSize": 16,

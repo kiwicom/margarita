@@ -65,6 +65,7 @@ exports[`TooltipBubble should match the snapshot 1`] = `
     }
   >
     <Text
+      expo={false}
       style={
         Object {
           "color": "#fff",

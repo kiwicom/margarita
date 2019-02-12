@@ -23,4 +23,5 @@ export type TextType = {|
     | 'warning'
     | 'white',
   +weight?: 'normal' | 'bold',
+  +expo?: boolean,
 |};

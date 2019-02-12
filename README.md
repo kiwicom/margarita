@@ -26,6 +26,9 @@ import { Icon, Text, PageLoader } from "@kiwicom/universal-components";
 import { Font } from "expo";
 import OrbitIcons from "@kiwicom/universal-components/lib/fonts/orbit-icons.ttf";
 import Roboto from "@kiwicom/universal-components/lib/fonts/Roboto/Roboto-Regular.ttf";
+import RobotoItalic from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-Italic.ttf';
+import RobotoBold from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-Bold.ttf';
+import RobotoBoldItalic from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-BoldItalic.ttf';
 
 export default class App extends React.Component {
   state = {
@@ -35,7 +38,10 @@ export default class App extends React.Component {
   componentDidMount() {
     Font.loadAsync({
       "orbit-icons": OrbitIcons,
-      Roboto
+      Roboto,
+      RobotoItalic,
+      RobotoBold,
+      RobotoBoldItalic,
     }).then(() => {
       this.setState({ fontLoaded: true });
     });

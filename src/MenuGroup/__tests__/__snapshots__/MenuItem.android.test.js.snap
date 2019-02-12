@@ -35,6 +35,7 @@ exports[`MenuGroup renders correctly 1`] = `
     >
       <View>
         <Text
+          expo={false}
           size="large"
           type="attention"
         >
