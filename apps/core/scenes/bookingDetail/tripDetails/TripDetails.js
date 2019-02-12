@@ -6,7 +6,7 @@ import { Separator } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
 import Header from './Header';
-import TripInfo from './TripInfo';
+import TripInfoOneWay from './TripInfoOneWay';
 import type { TripDetails as BookingType } from './__generated__/TripDetails.graphql';
 
 type Props = {|
@@ -14,11 +14,12 @@ type Props = {|
 |};
 
 function TripDetails(props: Props) {
+  const type = props.data?.type;
   return (
     <Card style={styles.card}>
       <Header data={props.data} />
       <Separator style={styles.separator} />
-      <TripInfo data={props.data} />
+      {type === 'BOOKING_ONE_WAY' && <TripInfoOneWay data={props.data} />}
     </Card>
   );
 }
@@ -38,7 +39,8 @@ export default createFragmentContainer(
   graphql`
     fragment TripDetails on BookingInterface {
       ...Header
-      ...TripInfo
+      ...TripInfoOneWay
+      type
     }
   `,
 );

@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   FromTo,
   graphql`
-    fragment FromTo on BookingInterface {
+    fragment FromTo on FromToInterface {
       departure {
         ...CityName
       }

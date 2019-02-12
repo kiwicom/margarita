@@ -21,7 +21,7 @@ export type FromToIcon = {|
 const node/*: ConcreteFragment*/ = {
   "kind": "Fragment",
   "name": "FromToIcon",
-  "type": "BookingInterface",
+  "type": "FromToInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -35,5 +35,5 @@ const node/*: ConcreteFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '487e0ca068ea53fa3d899a1f8c7a2960';
+(node/*: any*/).hash = 'bee4e7c76d3903d5a80d859c4ea630e0';
 module.exports = node;

@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works with broken input 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Icon
+    color="#7f91a8"
+    name="clock"
+    size="small"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#7f91a8",
+          "fontSize": 12,
+        },
+        undefined,
+      ]
+    }
+  >
+    0h 0m
+  </Text>
+</Component>
+`;
+
+exports[`works with broken input 2`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <Icon
+    color="#7f91a8"
+    name="clock"
+    size="small"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#7f91a8",
+          "fontSize": 12,
+        },
+        undefined,
+      ]
+    }
+  >
+    0h 0m
+  </Text>
+</Component>
+`;

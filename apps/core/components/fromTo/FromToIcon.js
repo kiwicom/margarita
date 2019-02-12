@@ -38,7 +38,7 @@ export const FromToIcon = (props: Props) => {
 export default createFragmentContainer(
   FromToIcon,
   graphql`
-    fragment FromToIcon on BookingInterface {
+    fragment FromToIcon on FromToInterface {
       type
     }
   `,
