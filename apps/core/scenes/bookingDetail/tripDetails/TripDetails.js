@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { Card, StyleSheet } from '@kiwicom/universal-components';
-import { Separator } from '@kiwicom/margarita-components';
+import { Separator, BookingTypeRenderer } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
 import Header from './Header';
 import TripInfoOneWay from './TripInfoOneWay';
 import TripInfoMulticity from './TripInfoMulticity';
+import TripInfoReturn from './TripInfoReturn';
 import type { TripDetails as BookingType } from './__generated__/TripDetails.graphql';
 
 type Props = {|
@@ -20,8 +21,12 @@ function TripDetails(props: Props) {
     <Card style={styles.card}>
       <Header data={props.data} />
       <Separator style={styles.separator} />
-      {type === 'BOOKING_ONE_WAY' && <TripInfoOneWay data={props.data} />}
-      {type === 'BOOKING_MULTICITY' && <TripInfoMulticity data={props.data} />}
+      <BookingTypeRenderer
+        type={type}
+        oneWayComponent={<TripInfoOneWay data={props.data} />}
+        returnComponent={<TripInfoReturn data={props.data} />}
+        multicityComponent={<TripInfoMulticity data={props.data} />}
+      />
     </Card>
   );
 }
@@ -43,6 +48,7 @@ export default createFragmentContainer(
       ...Header
       ...TripInfoOneWay
       ...TripInfoMulticity
+      ...TripInfoReturn
       type
     }
   `,

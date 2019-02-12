@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b9fb30d41ca862deb3a1064f19180b72
+ * @relayHash d06d143f2958fa4cac2058df3b9a5333
  */
 
 /* eslint-disable */
@@ -44,6 +44,7 @@ fragment TripDetails on BookingInterface {
   ...Header
   ...TripInfoOneWay
   ...TripInfoMulticity
+  ...TripInfoReturn
   type
 }
 
@@ -68,9 +69,16 @@ fragment TripInfoMulticity on BookingInterface {
   }
 }
 
-fragment TripInfo on Trip {
-  ...FromTo
-  ...TripDates
+fragment TripInfoReturn on BookingInterface {
+  ... on BookingReturn {
+    ...FromTo
+    inbound {
+      ...TripDates
+    }
+    outbound {
+      ...TripDates
+    }
+  }
 }
 
 fragment FromTo on FromToInterface {
@@ -110,6 +118,11 @@ fragment CityName on RouteStop {
 fragment FromToIcon on FromToInterface {
   type
 }
+
+fragment TripInfo on Trip {
+  ...FromTo
+  ...TripDates
+}
 */
 
 const node/*: ConcreteRequest*/ = (function(){
@@ -143,53 +156,63 @@ v3 = {
   "args": null,
   "storageKey": null
 },
-v4 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "cityName",
-    "args": null,
-    "storageKey": null
-  },
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "airport",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "Location",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "countryFlagURL",
-        "args": null,
-        "storageKey": null
-      },
-      v3
-    ]
-  },
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "time",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "DateType",
-    "plural": false,
-    "selections": [
-      {
-        "kind": "ScalarField",
-        "alias": null,
-        "name": "local",
-        "args": null,
-        "storageKey": null
-      }
-    ]
-  }
+v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "cityName",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "airport",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Location",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "countryFlagURL",
+      "args": null,
+      "storageKey": null
+    },
+    v3
+  ]
+},
+v6 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "time",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "DateType",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "local",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+},
+v7 = [
+  v4,
+  v5,
+  v6
 ],
-v5 = [
+v8 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "duration",
+  "args": null,
+  "storageKey": null
+},
+v9 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -198,7 +221,7 @@ v5 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": v4
+    "selections": v7
   },
   {
     "kind": "LinkedField",
@@ -208,23 +231,47 @@ v5 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": v4
+    "selections": v7
   },
   v2,
+  v8
+],
+v10 = [
+  v4,
+  v5
+],
+v11 = [
+  v6
+],
+v12 = [
   {
-    "kind": "ScalarField",
+    "kind": "LinkedField",
     "alias": null,
-    "name": "duration",
+    "name": "departure",
+    "storageKey": null,
     "args": null,
-    "storageKey": null
-  }
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": v11
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "arrival",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": v11
+  },
+  v8
 ];
 return {
   "kind": "Request",
   "operationKind": "query",
   "name": "BookingDetailQuery",
   "id": null,
-  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfoOneWay\n  ...TripInfoMulticity\n  type\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    trip {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    trips {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfo on Trip {\n  ...FromTo\n  ...TripDates\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment TripDates on Trip {\n  departure {\n    ...TripDate\n  }\n  arrival {\n    ...TripDate\n  }\n  duration\n}\n\nfragment TripDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
+  "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfoOneWay\n  ...TripInfoMulticity\n  ...TripInfoReturn\n  type\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    trip {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    trips {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...TripDates\n    }\n    outbound {\n      ...TripDates\n    }\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment TripDates on Trip {\n  departure {\n    ...TripDate\n  }\n  arrival {\n    ...TripDate\n  }\n  duration\n}\n\nfragment TripDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment TripInfo on Trip {\n  ...FromTo\n  ...TripDates\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -307,7 +354,7 @@ return {
                 "args": null,
                 "concreteType": "Trip",
                 "plural": false,
-                "selections": v5
+                "selections": v9
               }
             ]
           },
@@ -323,7 +370,53 @@ return {
                 "args": null,
                 "concreteType": "Trip",
                 "plural": true,
-                "selections": v5
+                "selections": v9
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "BookingReturn",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "departure",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "RouteStop",
+                "plural": false,
+                "selections": v10
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "arrival",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "RouteStop",
+                "plural": false,
+                "selections": v10
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "inbound",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Trip",
+                "plural": false,
+                "selections": v12
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "outbound",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Trip",
+                "plural": false,
+                "selections": v12
               }
             ]
           }

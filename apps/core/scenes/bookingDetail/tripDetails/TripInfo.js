@@ -3,11 +3,10 @@
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet } from '@kiwicom/universal-components';
-import { View } from 'react-native';
 
 import type { TripInfo as BookingType } from './__generated__/TripInfo.graphql';
 import FromTo from '../../../components/fromTo/FromTo';
+import FromToWrapper from '../../../components/fromTo/FromToWrapper';
 import TripDates from './TripDates';
 
 type Props = {|
@@ -20,7 +19,7 @@ const TripInfo = (props: Props) => {
   }
   return (
     <>
-      <View style={styles.fromToWrapper}>
+      <FromToWrapper>
         <FromTo
           textType="attention"
           fontSize="large"
@@ -28,17 +27,11 @@ const TripInfo = (props: Props) => {
           data={props.data}
           withFlags={true}
         />
-      </View>
+      </FromToWrapper>
       <TripDates data={props.data} />
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  fromToWrapper: {
-    marginBottom: 16,
-  },
-});
 
 export default createFragmentContainer(
   TripInfo,
