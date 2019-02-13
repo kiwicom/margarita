@@ -1420,14 +1420,15 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.1.0.tgz#e7a6b54d6fb95c01e8b27d5f880dab2fbab8e867"
-  integrity sha512-tTxrabQ64aDZpGcDu+oupVf8uhFlGXQzkrgjHwUTYsOfNZXYmqAvPf45iOF5rfdVH4mzzVz693lbfGHsRE5Npw==
+"@kiwicom/relay@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.6.0.tgz#076b79b89f773852e43747cece86847133f0ff30"
+  integrity sha512-1b0IHkZCDtfQwtD3SdL2cdG4vY1H8yK+PHRR/qNOqmNv/0WmMtVGUw3aPChHx5QEhV4b4i2m2GWEObmW1Ho76A==
   dependencies:
     "@kiwicom/fetch" "^2.0.0"
-    react-relay "^1.7.0"
-    relay-runtime "^1.7.0"
+    react "^16.8.0"
+    react-relay "^2.0.0"
+    relay-runtime "^2.0.0"
 
 "@kiwicom/test-utils@^0.3.1":
   version "0.3.1"
@@ -16014,6 +16015,17 @@ react-relay@^1.7.0:
     prop-types "^15.5.8"
     relay-runtime "1.7.0"
 
+react-relay@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-2.0.0.tgz#967eb66159202264cbf6daa9b1acfa78dfbd13e7"
+  integrity sha512-TLQdW9AVo7Zlu7z81MuNm2Y9Mp3im6rVSKs357uS3cEz6vr2x3ZEQr+HAXDQn8Hb4gFQ+9+iRRlv+hd2Rid/0Q==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fbjs "^1.0.0"
+    nullthrows "^1.1.0"
+    prop-types "^15.5.8"
+    relay-runtime "2.0.0"
+
 react-side-effect@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
@@ -16104,15 +16116,15 @@ react@16.5.0:
     prop-types "^15.6.2"
     schedule "^0.3.0"
 
-react@^16.6.3, react@^16.7.0:
-  version "16.8.0"
-  resolved "https://registry.yarnpkg.com/react/-/react-16.8.0.tgz#8533f0e4af818f448a276eae71681d09e8dd970a"
-  integrity sha512-g+nikW2D48kqgWSPwNo0NH9tIGG3DsQFlrtrQ1kj6W77z5ahyIHG0w8kPpz4Sdj6gyLnz0lEd/xsjOoGge2MYQ==
+react@^16.6.3, react@^16.7.0, react@^16.8.0:
+  version "16.8.1"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.8.1.tgz#ae11831f6cb2a05d58603a976afc8a558e852c4a"
+  integrity sha512-wLw5CFGPdo7p/AgteFz7GblI2JPOos0+biSoxf1FPsGxWQZdN/pj6oToJs1crn61DL3Ln7mN86uZ4j74p31ELQ==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
     prop-types "^15.6.2"
-    scheduler "^0.13.0"
+    scheduler "^0.13.1"
 
 reactcss@^1.2.0:
   version "1.2.3"
@@ -16533,7 +16545,7 @@ relay-compiler@^1.7.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@1.7.0, relay-runtime@^1.7.0:
+relay-runtime@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.7.0.tgz#59cfb5cab361ef630099464e1b364342466cd212"
   integrity sha512-gvx01aRoLHdIMQoIjMQ79js4BR9JZVfF/SoSiLXvWOgDWEnD7RKb80zmCZTByCpka0GwFzkVwBWUy1gW6g0zlQ==
@@ -16541,7 +16553,7 @@ relay-runtime@1.7.0, relay-runtime@^1.7.0:
     babel-runtime "^6.23.0"
     fbjs "0.8.17"
 
-relay-runtime@2.0.0:
+relay-runtime@2.0.0, relay-runtime@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-2.0.0.tgz#0e42df90365cc69f104f7e4b20fdcf975f5a9c0b"
   integrity sha512-o/LPFHTI6+3FLJXM3Ec4N6hzkKYILVHYRJThNX0UQlMnqjTVPR6NO4qFE2QzzEiUS+lys+qfnvBzSmNbSh1zWQ==
@@ -16892,6 +16904,14 @@ scheduler@^0.13.0:
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.0.tgz#e701f62e1b3e78d2bbb264046d4e7260f12184dd"
   integrity sha512-w7aJnV30jc7OsiZQNPVmBc+HooZuvQZIZIShKutC3tnMFMkcwVN9CZRRSSNw03OnSCKmEkK8usmwcw6dqBaLzw==
+  dependencies:
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+
+scheduler@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.13.1.tgz#1a217df1bfaabaf4f1b92a9127d5d732d85a9591"
+  integrity sha512-VJKOkiKIN2/6NOoexuypwSrybx13MY7NSy9RNt8wPvZDMRT1CW6qlpF5jXRToXNHz3uWzbm2elNpZfXfGPqP9A==
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"

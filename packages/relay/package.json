@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@kiwicom/margarita-graphql": "^0",
-    "@kiwicom/relay": "^0.1.0",
+    "@kiwicom/relay": "^0.6.0",
     "react-relay": "^1.7.0"
   },
   "devDependencies": {}
