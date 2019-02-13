@@ -1427,10 +1427,10 @@
   dependencies:
     "@mrtnzlml/utils" "^1.1.1"
 
-"@kiwicom/universal-components@0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.11.tgz#95f59497efaad99bfede39eec263da4686bf28be"
-  integrity sha512-/e5c77dpv7+WzeYNB41Xn8p/r6zbt2mn/4ZZfNnFDAH7/VhTpouXpl2Tzm6MWPG31XG6pbQEsKpY/0D5tC8J6Q==
+"@kiwicom/universal-components@0.0.13":
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.13.tgz#72ea43b6e49a43caeef4904f46db6b0d63fad8bc"
+  integrity sha512-76SBuF3Nht1yHEVjEz8nmaXVxotTrfKY7TvqhBPa4diTeumaTeaV04zkLyuQQkVpwzON9WjuPXFN4/3Vca+8Zw==
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.3.0"
     react-native-modal "^7.0.2"
@@ -16173,9 +16173,9 @@ react-native-modal@^7.0.2:
     prop-types "^15.6.1"
     react-native-animatable "^1.2.4"
 
-"react-native-multi-slider@https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e":
+"react-native-multi-slider@git+https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e":
   version "2.0.3"
-  resolved "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"
+  resolved "git+https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e"
 
 react-native-reanimated@1.0.0-alpha.11:
   version "1.0.0-alpha.11"

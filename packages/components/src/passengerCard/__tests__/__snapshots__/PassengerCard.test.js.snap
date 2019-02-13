@@ -36,6 +36,7 @@ Object {
         name="passenger"
       />
       <Text
+        expo={false}
         size="large"
       >
         0. Passenger
@@ -90,6 +91,7 @@ Object {
         }
       >
         <Text
+          expo={false}
           style={
             Object {
               "paddingBottom": 8,
@@ -142,6 +144,7 @@ Object {
         name="passenger"
       />
       <Text
+        expo={false}
         size="large"
       >
         Mr. John Doe
@@ -196,6 +199,7 @@ Object {
         }
       >
         <Text
+          expo={false}
           style={
             Object {
               "paddingBottom": 8,

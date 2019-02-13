@@ -26,7 +26,7 @@ const TripDate = (props: Props) => {
   const isDateType = props.type === 'date';
   const typeFormat = isDateType ? DAY_MONTH_DATE_FORMAT : HOURS_MINUTES_FORMAT;
   const textSize = isDateType ? 'normal' : 'small';
-  const textType = isDateType ? null : 'secondary';
+  const textType = isDateType ? 'primary' : 'secondary';
   const date = new Date(departureDate);
   return (
     <Text size={textSize} type={textType}>

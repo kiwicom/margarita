@@ -2,14 +2,18 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Icon } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Icon,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import Text from '../text/Text';
 
 type Props = {|
-  +icon: string,
+  +icon: IconNameType,
   +label: string,
   +onPress: () => void,
 |};

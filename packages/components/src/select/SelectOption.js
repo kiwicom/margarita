@@ -2,14 +2,19 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Icon, RadioButton } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Icon,
+  RadioButton,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../text/Text';
 
 type OptionProps = {|
   +id: string,
-  +icon: string,
+  +icon: IconNameType,
   +label: string,
   +selected?: boolean,
   +underline?: boolean,

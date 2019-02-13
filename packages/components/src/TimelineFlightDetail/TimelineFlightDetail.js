@@ -13,9 +13,9 @@ import CardHeader from './components/CardHeader';
 type Props = {|
   +additionalInfo: $PropertyType<AdditionalInfoProps, 'additionalInfo'>,
   +carrier: {|
-    +code: string,
-    +name: string,
-    +type?: 'airline' | 'bus' | 'train',
+    code: string,
+    name: string,
+    type?: 'airline' | 'bus' | 'train',
   |},
   +duration: string,
 |};
@@ -48,7 +48,7 @@ export default function TimelineFlightDetail({
       </View>
       <View style={styles.cardContainer}>
         <Accordion
-          defaultExpanded={true}
+          expandedDefault={true}
           header={Header({ carrier, duration })}
         >
           <AdditionalInfo additionalInfo={additionalInfo} />

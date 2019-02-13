@@ -12,7 +12,10 @@ it('renders', () => {
     shallow(
       <TripInput
         onPress={jest.fn()}
-        icon={<IconMock />}
+        icon={
+          // $FlowExpectedError: TripInput expects Icon component
+          <IconMock />
+        }
         label="label"
         value="value"
       />,
@@ -25,7 +28,10 @@ it('renders with placeholder', () => {
     shallow(
       <TripInput
         onPress={jest.fn()}
-        icon={<IconMock />}
+        icon={
+          // $FlowExpectedError: TripInput expects Icon component
+          <IconMock />
+        }
         label="label"
         value=""
         placeholder="placeholder"
@@ -39,7 +45,10 @@ it('renders correctly with placeholder and value', () => {
     shallow(
       <TripInput
         onPress={jest.fn()}
-        icon={<IconMock />}
+        icon={
+          // $FlowExpectedError: TripInput expects Icon component
+          <IconMock />
+        }
         label="label"
         value="value"
         placeholder="placeholder"

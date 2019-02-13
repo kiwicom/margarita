@@ -8,5 +8,8 @@
     "<rootDir>/apps/landingPage/.cache/__tests__/"
   ],
   "setupFilesAfterEnv": ["<rootDir>/scripts/setupTests.js"],
-  "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"]
+  "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"],
+  "moduleNameMapper": {
+    "^@kiwicom/universal-components$": "@kiwicom/universal-components/lib/native"
+  }
 }

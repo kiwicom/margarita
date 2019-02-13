@@ -4,12 +4,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import {
-  Text,
-  TextInput,
-  Icon,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { Text, TextInput, Icon } from '@kiwicom/universal-components';
 import {
   graphql,
   createRefetchContainer,
@@ -81,14 +76,12 @@ class PlacePickerContent extends React.Component<Props, State> {
     return (
       <>
         <View>
-          <View style={styles.label}>
-            <Text weight="bold">{this.getLabel()}</Text>
-          </View>
           <TextInput
             placeholder="Find a place"
             onChangeText={this.handleChangeText}
             value={this.state.text}
             prefix={<Icon name="search" />}
+            label={<Text weight="bold">{this.getLabel()}:</Text>}
           />
         </View>
         <PlacePickerList locations={this.props.locations?.locationsByTerm} />
@@ -96,12 +89,6 @@ class PlacePickerContent extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  label: {
-    marginBottom: 8,
-  },
-});
 
 const select = ({ travelFrom, travelTo, modalType }: SearchContextState) => ({
   travelFrom,
