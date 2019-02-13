@@ -83,23 +83,23 @@ class TextInput extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      focused: false,
+      focused: props.autoFocus || false,
       value: props.value || '',
     };
   }
 
   myref: ?RNTextInput;
 
-  toggleFocus = () => {
+  setFocus = (value: boolean) => {
     this.setState(state => ({
-      focused: !state.focused,
+      focused: value,
     }));
   };
 
   handleOnFocus = () => {
     const { onFocus, disabled } = this.props;
     if (!disabled) {
-      this.toggleFocus();
+      this.setFocus(true);
       onFocus?.();
     }
   };
@@ -107,7 +107,7 @@ class TextInput extends React.Component<Props, State> {
   handleOnBlur = () => {
     const { onBlur, disabled } = this.props;
     if (!disabled) {
-      this.toggleFocus();
+      this.setFocus(false);
       onBlur?.();
     }
   };
@@ -161,6 +161,7 @@ class TextInput extends React.Component<Props, State> {
       maxLength,
       minLength,
       status = 'default',
+      autoFocus,
     } = this.props;
     const { focused, value } = this.state;
 
@@ -214,6 +215,7 @@ class TextInput extends React.Component<Props, State> {
               </InlineLabel>
             )}
             <RNTextInput
+              autoFocus={autoFocus}
               ref={this.refToTextInput}
               onFocus={this.handleOnFocus}
               onBlur={this.handleOnBlur}

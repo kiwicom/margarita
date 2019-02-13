@@ -74,6 +74,7 @@ const stories = storiesOf('TextInput', module)
     );
     return (
       <TextInput
+        autoFocus
         size={size}
         label={label}
         inlineLabel={inlineLabel}
