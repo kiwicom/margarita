@@ -15,17 +15,80 @@ exports[`OptionPicker render 1`] = `
       autofocus={true}
       fontSize={16}
       label="label"
-      onChangeText={[Function]}
-      onClearPress={[Function]}
-      onKeyPress={[Function]}
+      onChangeText={
+        [MockFunction] {
+          "calls": Array [
+            Array [
+              "CHANGE_TEXT",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      onClearPress={
+        [MockFunction] {
+          "calls": Array [
+            Array [],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        }
+      }
+      onKeyPress={[MockFunction]}
       placeholder="placeholder"
-      tags={Array []}
-      value=""
+      tags={
+        Array [
+          "Berlin",
+        ]
+      }
+      value="Berlin"
     />
   </View>
   <OptionList
-    onAddPress={[Function]}
-    onItemPress={[Function]}
+    onAddPress={[MockFunction]}
+    onItemPress={
+      [MockFunction] {
+        "calls": Array [
+          Array [
+            Object {
+              "id": "prague",
+              "label": "Prague",
+              "subOptions": Array [
+                Object {
+                  "id": "train-station",
+                  "label": "Prague Central Station",
+                  "text": "5 km from city center",
+                  "type": "train",
+                },
+                Object {
+                  "id": "airport",
+                  "label": "Václav Havel Airport",
+                  "text": "5 km from city center",
+                  "type": "airplane",
+                },
+              ],
+              "text": "Czech Republic",
+              "type": "destination",
+            },
+          ],
+        ],
+        "results": Array [
+          Object {
+            "type": "return",
+            "value": undefined,
+          },
+        ],
+      }
+    }
     options={
       Array [
         Object {

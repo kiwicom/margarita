@@ -2,23 +2,38 @@
 
 import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import { withKnobs, text } from '@storybook/addon-knobs';
+import { withKnobs, text, select, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import OptionPicker from './OptionPicker';
-import mockedPlaces from './mocks/places';
+import mockedPlaces, { Prague } from './mocks/places';
 
 storiesOf('OptionPicker', module)
   .addDecorator(getStory => getStory())
   .addDecorator(withKnobs)
-  .add('Playground', () => (
-    <OptionPicker
-      label={text('label', 'From:') || ''}
-      placeholder={text('placeholder', 'Departure point')}
-      onChangeText={action('onChangeText')}
-      onPressAdd={action('onPressAdd')}
-      onPressItem={action('onPressItem')}
-      options={mockedPlaces}
-      onSelectedChange={action('change')}
-    />
-  ));
+  .add('Playground', () => {
+    const onChangeText = action('onChangeText');
+    const onClearPress = action('onClearPress');
+    const onPressAdd = action('onPressAdd');
+    const onPressItem = action('onPressItem');
+    const selected = select('selected', {
+      None: null,
+      Prague: [Prague],
+    });
+    const options = object('Options', mockedPlaces);
+    const label = text('label', 'From:');
+    const placeholder = text('placeholder', 'Departure point');
+
+    return (
+      <OptionPicker
+        selected={selected}
+        onClearPress={onClearPress}
+        label={label}
+        placeholder={placeholder}
+        onChangeText={onChangeText}
+        onPressAdd={onPressAdd}
+        onPressItem={onPressItem}
+        options={options}
+      />
+    );
+  });
