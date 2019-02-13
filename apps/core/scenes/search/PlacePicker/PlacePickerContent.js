@@ -28,8 +28,8 @@ import PlacePickerList from './PlacePickerList';
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 
 type Props = {|
-  locations: ?PlacePickerContentType,
-  relay: RelayRefetchProp,
+  +locations: ?PlacePickerContentType,
+  +relay: RelayRefetchProp,
   +onChangeText: string => void,
   +travelFrom: ?Location,
   +travelTo: ?Location,
@@ -41,8 +41,12 @@ type State = {|
 |};
 
 const setDefaultValue = (pickerType: string, from: string, to: string) => {
-  if (pickerType === MODAL_TYPE.ORIGIN) return from;
-  if (pickerType === MODAL_TYPE.DESTINATION) return to;
+  if (pickerType === MODAL_TYPE.ORIGIN) {
+    return from;
+  }
+  if (pickerType === MODAL_TYPE.DESTINATION) {
+    return to;
+  }
   return '';
 };
 
