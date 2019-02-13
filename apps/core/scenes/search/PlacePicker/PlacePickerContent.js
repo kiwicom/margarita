@@ -79,26 +79,27 @@ class PlacePickerContent extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={styles.container}>
+      <>
         <View>
-          <Text weight="bold">{this.getLabel()}:</Text>
+          <View style={styles.label}>
+            <Text weight="bold">{this.getLabel()}</Text>
+          </View>
           <TextInput
-            placeholder="write a place..."
+            placeholder="Find a place"
             onChangeText={this.handleChangeText}
             value={this.state.text}
             prefix={<Icon name="search" />}
           />
         </View>
         <PlacePickerList locations={this.props.locations?.locationsByTerm} />
-      </View>
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    height: '50%',
-    margin: 10,
+  label: {
+    marginBottom: 8,
   },
 });
 
