@@ -1,9 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import PlaceItem from './PlaceItem';
 import type { PlacePickerList_locations as PlacePickerListTypes } from './__generated__/PlacePickerList_locations.graphql';
@@ -11,21 +12,33 @@ import type { PlacePickerList_locations as PlacePickerListTypes } from './__gene
 type Props = {|
   +locations: ?PlacePickerListTypes,
 |};
+const resultItem = ({ item }) => {
+  if (item.node) {
+    return <PlaceItem item={item?.node} textContainerStyle={styles.item} />;
+  }
+  return null;
+};
+
+const keyExtractor = item => item?.node?.id;
 
 const PlacePickerList = (props: Props) => {
   const locations = props.locations?.edges || [];
   return (
-    <ScrollView style={styles.container}>
-      {locations.map(location => (
-        <PlaceItem key={location?.node?.id} item={location?.node} />
-      ))}
-    </ScrollView>
+    <View style={styles.container}>
+      <FlatList
+        contentContainerStyle={styles.container}
+        data={locations}
+        keyExtractor={keyExtractor}
+        renderItem={resultItem}
+      />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    marginStart: 25,
+  item: {
+    borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
+    borderBottomColor: defaultTokens.borderColorCard,
   },
 });
 
