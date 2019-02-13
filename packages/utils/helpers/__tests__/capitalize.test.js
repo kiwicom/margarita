@@ -27,4 +27,9 @@ describe('capitalize', () => {
       }),
     );
   });
+
+  it('handles null and undefined values without crashing', () => {
+    expect(capitalize(null)).toBeNull();
+    expect(capitalize(undefined)).toBeNull();
+  });
 });
