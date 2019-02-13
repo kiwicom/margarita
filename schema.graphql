@@ -292,7 +292,7 @@ type RootQuery {
 type RouteStop {
   cityName: String
   cityId: String
-  time: SegmentTime
+  time: DateType
   airport: Location
 }
 
@@ -320,12 +320,6 @@ type Segment {
   origin: Location
   transporter: Transporter
   vehicle: Vehicle
-}
-
-"""Time of the segment in utc and local time."""
-type SegmentTime {
-  utc: DateTime
-  local: DateTime
 }
 
 type Transporter {

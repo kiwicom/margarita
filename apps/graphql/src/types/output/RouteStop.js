@@ -2,7 +2,7 @@
 
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
-import GraphQLSegmentTime from './SegmentTime';
+import GraphQLDateType from './DateType';
 import GraphQLLocation from './Location';
 import type { RouteStop } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
 import type { GraphqlContextType } from '../../services/GraphQLContext';
@@ -18,7 +18,7 @@ export default new GraphQLObjectType({
       type: GraphQLString,
     },
     time: {
-      type: GraphQLSegmentTime,
+      type: GraphQLDateType,
     },
     airport: {
       type: GraphQLLocation,
