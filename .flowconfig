@@ -62,6 +62,7 @@ node_modules/react-native/flow-github/
 flow-typed/
 
 [options]
+server.max_workers=4
 emoji=true
 
 module.name_mapper='^react-native$' -> 'react-native-web'
