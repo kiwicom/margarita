@@ -50,7 +50,7 @@
     "@kiwicom/eslint-config": "^2.7.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
-    "babel-plugin-relay": "^1.7.0",
+    "babel-plugin-relay": "^2.0.0",
     "concurrently": "^4.1.0",
     "eslint": "^5.13.0",
     "flow-bin": "^0.92.1",
