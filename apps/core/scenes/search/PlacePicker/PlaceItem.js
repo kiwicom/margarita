@@ -7,8 +7,10 @@ import {
   StyleSheet,
   Icon,
   Touchable,
+  StylePropType,
 } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { MODAL_TYPE } from '../SearchConstants';
 import {
@@ -24,6 +26,7 @@ type Props = {|
   +setTravelTo: Location => void,
   +setTravelFrom: Location => void,
   +setModalType: string => void,
+  +textContainerStyle?: StylePropType,
 |};
 
 class PlaceItem extends React.Component<Props> {
@@ -52,13 +55,20 @@ class PlaceItem extends React.Component<Props> {
   };
 
   render() {
-    const { item } = this.props;
+    const { item, textContainerStyle } = this.props;
 
     return (
       <Touchable onPress={this.handleListItemClick}>
         <View style={styles.container}>
-          <Icon name="location" />
-          <Text style={styles.text}>{item?.name}</Text>
+          <View style={styles.iconContainer}>
+            <Icon
+              color={defaultTokens.backgroundButtonPrimary}
+              name="location"
+            />
+          </View>
+          <View style={[styles.textContainer, textContainerStyle]}>
+            <Text>{item?.name}</Text>
+          </View>
         </View>
       </Touchable>
     );
@@ -68,10 +78,17 @@ class PlaceItem extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'flex-end',
   },
-  text: {
-    paddingVertical: 10,
+  iconContainer: {
+    paddingBottom: 8,
+  },
+  textContainer: {
+    flex: 1,
+    marginLeft: 4,
+    paddingLeft: 8,
+    paddingBottom: 8,
+    paddingTop: 24,
   },
 });
 

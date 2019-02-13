@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
+import { View } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
 
 import type { PlacePickerRendererQueryResponse } from './__generated__/PlacePickerRendererQuery.graphql';
 import PlacePickerContent from './PlacePickerContent';
@@ -21,17 +23,27 @@ export default class PlacePickerRenderer extends React.Component<Props> {
     return { input: { term } };
   };
 
+  // @TODO remove View wrapper when new modal from universal-components will came up
   render() {
     return (
-      <QueryRenderer
-        query={graphql`
-          query PlacePickerRendererQuery($input: LocationsByTermInput!) {
-            ...PlacePickerContent_locations @arguments(input: $input)
-          }
-        `}
-        variables={this.getInputVariable()}
-        render={this.renderInner}
-      />
+      <View style={styles.container}>
+        <QueryRenderer
+          query={graphql`
+            query PlacePickerRendererQuery($input: LocationsByTermInput!) {
+              ...PlacePickerContent_locations @arguments(input: $input)
+            }
+          `}
+          variables={this.getInputVariable()}
+          render={this.renderInner}
+        />
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    margin: 15,
+    height: '70%',
+  },
+});
