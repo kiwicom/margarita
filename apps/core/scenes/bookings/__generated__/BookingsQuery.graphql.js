@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash dd16b1e6fa27aab0b90b7566edefa823
+ * @relayHash 929f33f7bd7226052b705fa8b7aa29c7
  */
 
 /* eslint-disable */
@@ -248,7 +248,7 @@ return {
                         "name": "time",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "SegmentTime",
+                        "concreteType": "DateType",
                         "plural": false,
                         "selections": [
                           {

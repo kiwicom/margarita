@@ -51,7 +51,7 @@ const node/*: ConcreteFragment*/ = {
           "name": "time",
           "storageKey": null,
           "args": null,
-          "concreteType": "SegmentTime",
+          "concreteType": "DateType",
           "plural": false,
           "selections": [
             {
