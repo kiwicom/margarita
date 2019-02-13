@@ -8,7 +8,7 @@ import { Text } from '../Text';
 import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 
 type Props = {|
-  +text: React.Node | string,
+  +text: ?React.Node,
   +style?: StylePropType,
   +textStyle?: StylePropType,
   +icon?: React.Node,

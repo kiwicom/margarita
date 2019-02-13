@@ -41,6 +41,7 @@ node_modules/react-native/flow/
 node_modules/react-native/flow-github/
 
 [options]
+server.max_workers=4
 emoji=true
 
 esproposal.optional_chaining=enable

@@ -1,5 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Icon renders a question mark if the icon name is invalid 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Array [
+        Object {
+          "fontSize": 32,
+          "height": 32,
+          "lineHeight": 32,
+          "width": 32,
+        },
+        Object {
+          "color": "red",
+        },
+        undefined,
+      ],
+    ]
+  }
+>
+  ?
+</Text>
+`;
+
 exports[`Icon should match snapshot diff between regular and custom icon 1`] = `
 "Snapshot Diff:
 - First value

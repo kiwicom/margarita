@@ -6,7 +6,7 @@ import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 export type TextType = {|
   align?: 'left' | 'right' | 'center' | 'justify',
-  +children: React.Node,
+  +children: ?React.Node,
   +dataTest?: string,
   +italic?: boolean,
   numberOfLines?: ?number,

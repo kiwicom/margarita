@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Text as RNText } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import { Text } from '../Text';
 import {
   StyleSheet,
   type PlatformStyleObjectType,
@@ -11,16 +12,11 @@ import {
 import iconsMap from './icons.json';
 import type { Props } from './IconTypes';
 
-const getIconCharacter = name => {
-  const icon = iconsMap[name];
-  if (!icon) {
-    throw Error(`Icon with name "${name}" does not exist.`);
+const sanitizeIconCharacter = (iconCharacter: string) => {
+  if (/^E(.{3})$/.test(iconCharacter)) {
+    return String.fromCharCode(parseInt(iconCharacter, 16));
   }
-
-  if (/^E(.{3})$/.test(iconsMap[name].character)) {
-    return String.fromCharCode(parseInt(iconsMap[name].character, 16));
-  }
-  return iconsMap[name].character;
+  return iconCharacter;
 };
 
 export default function Icon({
@@ -29,9 +25,18 @@ export default function Icon({
   size = 'medium',
   style,
 }: Props) {
+  if (name == null) {
+    return <Text style={[styles[size], { color }, style]}>?</Text>;
+  }
+
+  const icon = iconsMap[name];
+  if (!icon) {
+    return <Text style={[styles[size], { color }, style]}>?</Text>;
+  }
+
   return (
     <RNText style={[styles.icon, styles[size], { color }, style]}>
-      {getIconCharacter(name)}
+      {sanitizeIconCharacter(icon.character)}
     </RNText>
   );
 }
