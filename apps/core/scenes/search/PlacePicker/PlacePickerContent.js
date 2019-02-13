@@ -2,55 +2,82 @@
 
 // TODO this is just the temporary Picker will be replaced by the OptionPicker form the 'universal-components'
 
-import {
-  graphql,
-  createRefetchContainer,
-  type RelayRefetchProp,
-} from '@kiwicom/margarita-relay';
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import {
   Text,
   TextInput,
   Icon,
   StyleSheet,
 } from '@kiwicom/universal-components';
+import {
+  graphql,
+  createRefetchContainer,
+  type RelayRefetchProp,
+} from '@kiwicom/margarita-relay';
+import { debounce } from '@kiwicom/margarita-utils';
 
-import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql.js';
+import { MODAL_TYPE } from '../SearchConstants';
+import { DEBOUNCE_TIME } from '../../../config';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type Location,
+} from '../SearchContext';
+import PlacePickerList from './PlacePickerList';
+import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 
 type Props = {|
   +locations: ?PlacePickerContentType,
-  +type: string,
   +relay: RelayRefetchProp,
+  +onChangeText: string => void,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
+  +type: 'DESTINATION' | 'ORIGIN',
 |};
 
 type State = {|
   text: string,
 |};
 
-class PlacePicker extends React.Component<Props, State> {
-  state = {
-    text: '',
-  };
+const setDefaultValue = (pickerType: string, from: string, to: string) => {
+  if (pickerType === MODAL_TYPE.ORIGIN) {
+    return from;
+  }
+  if (pickerType === MODAL_TYPE.DESTINATION) {
+    return to;
+  }
+  return '';
+};
 
-  handleChangeText = (text: string) => {
-    this.setState({ text });
-    this.props.relay.refetch({ input: { term: text } });
-  };
+class PlacePickerContent extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: setDefaultValue(
+        props.type,
+        props.travelFrom?.name,
+        props.travelTo?.name,
+      ),
+    };
+  }
 
   getLabel = () => {
     const { type } = this.props;
-    if (type === 'DESTINATION') {
+    if (type === MODAL_TYPE.DESTINATION) {
       return 'To';
-    } else if (type === 'ORIGIN') {
+    } else if (type === MODAL_TYPE.ORIGIN) {
       return 'From';
     }
     return null;
   };
 
-  render() {
-    const locations = this.props.locations?.locationsByTerm?.edges ?? [];
+  handleChangeText = debounce((text: string) => {
+    this.setState({ text });
+    this.props.relay.refetch({ input: { term: text } });
+  }, DEBOUNCE_TIME);
 
+  render() {
     return (
       <View style={styles.container}>
         <View>
@@ -62,21 +89,27 @@ class PlacePicker extends React.Component<Props, State> {
             prefix={<Icon name="search" />}
           />
         </View>
-        <ScrollView style={styles.list}>
-          {locations.map(location => (
-            <View style={styles.wrapper} key={location?.node?.id}>
-              <Icon name="location" />
-              <Text style={styles.listItem}>{location?.node?.name}</Text>
-            </View>
-          ))}
-        </ScrollView>
+        <PlacePickerList locations={this.props.locations?.locationsByTerm} />
       </View>
     );
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    height: '50%',
+    margin: 10,
+  },
+});
+
+const select = ({ travelFrom, travelTo, modalType }: SearchContextState) => ({
+  travelFrom,
+  travelTo,
+  type: modalType,
+});
+
 export default createRefetchContainer(
-  PlacePicker,
+  withSearchContext(select)(PlacePickerContent),
   {
     locations: graphql`
       fragment PlacePickerContent_locations on RootQuery
@@ -84,12 +117,7 @@ export default createRefetchContainer(
           input: { type: "LocationsByTermInput!", defaultValue: { term: "" } }
         ) {
         locationsByTerm(input: $input) {
-          edges {
-            node {
-              id
-              name
-            }
-          }
+          ...PlacePickerList_locations
         }
       }
     `,
@@ -100,19 +128,3 @@ export default createRefetchContainer(
     }
   `,
 );
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 10,
-  },
-  wrapper: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  list: {
-    marginStart: 25,
-  },
-  listItem: {
-    paddingVertical: 10,
-  },
-});

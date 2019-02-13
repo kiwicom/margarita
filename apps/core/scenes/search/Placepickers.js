@@ -18,13 +18,14 @@ import {
   withSearchContext,
   type SearchContextState,
   type ModalTypes,
+  type Location,
 } from './SearchContext';
 import { MODAL_TYPE } from './SearchConstants';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|
-  +travelFrom: string,
-  +travelTo: string,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
   +handlePlaceSwitchPress: () => void,
   +setModalType: ModalTypes => void,
   +layout: number,
@@ -49,7 +50,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleFromPress}
           label="From"
           icon={<Icon name="airplane-takeoff" />}
-          value={travelFrom}
+          value={travelFrom?.name ?? ''}
         />
         <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
           <View
@@ -62,7 +63,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleToPress}
           label="To"
           icon={<Icon name="airplane-landing" />}
-          value={travelTo}
+          value={travelTo?.name ?? ''}
         />
       </PickersWrapper>
     );

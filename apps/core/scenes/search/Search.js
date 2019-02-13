@@ -17,7 +17,11 @@ import {
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
 
-import { withSearchContext, type SearchContextState } from './SearchContext';
+import {
+  withSearchContext,
+  type SearchContextState,
+  type Location,
+} from './SearchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
@@ -26,8 +30,8 @@ import SearchFormModes from './SearchFormModes';
 
 type Props = {
   +navigation: Navigation,
-  +travelFrom: string,
-  +travelTo: string,
+  +travelFrom: ?Location,
+  +travelTo: ?Location,
   +dateFrom: Date,
   +dateTo: Date,
   +returnDateFrom: Date,
@@ -55,8 +59,8 @@ class Search extends React.Component<Props> {
       tripType,
     } = this.props;
     this.props.navigation.navigate(Routes.RESULTS, {
-      travelFrom,
-      travelTo,
+      travelFrom: travelFrom?.locationId,
+      travelTo: travelTo?.locationId,
       dateFrom: format(dateFrom, DATE_FORMAT),
       dateTo: format(dateTo, DATE_FORMAT),
       ...(tripType === 'return'

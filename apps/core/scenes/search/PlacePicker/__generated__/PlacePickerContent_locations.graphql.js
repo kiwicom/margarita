@@ -8,16 +8,12 @@
 
 /*::
 import type { ConcreteFragment } from 'relay-runtime';
+type PlacePickerList_locations$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type PlacePickerContent_locations$ref: FragmentReference;
 export type PlacePickerContent_locations = {|
   +locationsByTerm: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string,
-        +name: ?string,
-      |}
-    |}>
+    +$fragmentRefs: PlacePickerList_locations$ref
   |},
   +$refType: PlacePickerContent_locations$ref,
 |};
@@ -57,45 +53,14 @@ const node/*: ConcreteFragment*/ = {
       "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "edges",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "LocationEdge",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "node",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "Location",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "id",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                }
-              ]
-            }
-          ]
+          "kind": "FragmentSpread",
+          "name": "PlacePickerList_locations",
+          "args": null
         }
       ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '9bea2beef1bf3f7c340eba5e138cbac3';
+(node/*: any*/).hash = '84d47451c81ef9241761f1fbad2b7ea9';
 module.exports = node;

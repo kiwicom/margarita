@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c49948a22c8bf7d6e6b5aaf0d12271fa
+ * @relayHash 42ee0495387536f1d2d77bd1f51b385b
  */
 
 /* eslint-disable */
@@ -35,13 +35,23 @@ query PlacePickerRendererQuery(
 
 fragment PlacePickerContent_locations_2VV6jB on RootQuery {
   locationsByTerm(input: $input) {
-    edges {
-      node {
-        id
-        name
-      }
+    ...PlacePickerList_locations
+  }
+}
+
+fragment PlacePickerList_locations on LocationConnection {
+  edges {
+    node {
+      id
+      ...PlaceItem_item
     }
   }
+}
+
+fragment PlaceItem_item on Location {
+  id
+  name
+  locationId
 }
 */
 
@@ -59,7 +69,7 @@ return {
   "operationKind": "query",
   "name": "PlacePickerRendererQuery",
   "id": null,
-  "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n      }\n    }\n  }\n}\n",
+  "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    ...PlacePickerList_locations\n  }\n}\n\nfragment PlacePickerList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...PlaceItem_item\n    }\n  }\n}\n\nfragment PlaceItem_item on Location {\n  id\n  name\n  locationId\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -132,6 +142,13 @@ return {
                     "kind": "ScalarField",
                     "alias": null,
                     "name": "name",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "locationId",
                     "args": null,
                     "storageKey": null
                   }

@@ -22,3 +22,4 @@ export { default as withContext } from './src/withContext/withContext';
 
 // other
 export const noop = () => {};
+export { default as debounce } from 'lodash/debounce';

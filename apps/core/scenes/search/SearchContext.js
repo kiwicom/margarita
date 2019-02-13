@@ -17,10 +17,17 @@ export type PassengersData = {|
   infants: number,
   bags: number,
 |};
+
+export type Location = {|
+  +id: ?string,
+  +locationId: ?string,
+  +name: ?string,
+|};
+
 type State = {|
   tripType: TripTypes,
-  travelFrom: string,
-  travelTo: string,
+  travelFrom: ?Location,
+  travelTo: ?Location,
   dateFrom: Date,
   dateTo: Date,
   returnDateFrom: Date,
@@ -34,6 +41,8 @@ type State = {|
     +setTripType: TripTypes => void,
     +setModalType: ModalTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
+    +setTravelFrom: Location => void,
+    +setTravelTo: Location => void,
   },
 |};
 
@@ -42,8 +51,8 @@ const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
 
 const defaultState = {
   tripType: 'return',
-  travelFrom: 'OSL',
-  travelTo: 'PRG',
+  travelFrom: null,
+  travelTo: null,
   dateFrom: defaultDepartureDate,
   dateTo: defaultDepartureDate,
   returnDateFrom: defaultReturnDate,
@@ -59,6 +68,8 @@ const defaultState = {
     setTripType: noop,
     setModalType: noop,
     setPassengerData: noop,
+    setTravelFrom: noop,
+    setTravelTo: noop,
   },
 };
 
@@ -80,6 +91,8 @@ export default class SearchContextProvider extends React.Component<
         setTripType: this.setTripType,
         setModalType: this.setModalType,
         setPassengerData: this.setPassengerData,
+        setTravelFrom: this.setTravelFrom,
+        setTravelTo: this.setTravelTo,
       },
     };
   }
@@ -105,6 +118,14 @@ export default class SearchContextProvider extends React.Component<
         returnDateTo: returnDate,
       };
     });
+  };
+
+  setTravelFrom = (location: Location) => {
+    this.setState({ travelFrom: location });
+  };
+
+  setTravelTo = (location: Location) => {
+    this.setState({ travelTo: location });
   };
 
   setReturnDate = (date: Date) => {

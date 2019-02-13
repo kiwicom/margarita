@@ -5,15 +5,20 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 
 import type { PlacePickerRendererQueryResponse } from './__generated__/PlacePickerRendererQuery.graphql';
 import PlacePickerContent from './PlacePickerContent';
+import { type Location } from '../SearchContext';
 
 type Props = {|
-  +type: string,
-  +defaultValue: ?string,
+  +defaultPlace: ?Location,
 |};
 
 export default class PlacePickerRenderer extends React.Component<Props> {
   renderInner = (data: PlacePickerRendererQueryResponse) => {
-    return <PlacePickerContent type={this.props.type} locations={data} />;
+    return <PlacePickerContent locations={data} />;
+  };
+
+  getInputVariable = () => {
+    const term = this.props.defaultPlace?.locationId || '';
+    return { input: { term } };
   };
 
   render() {
@@ -24,7 +29,7 @@ export default class PlacePickerRenderer extends React.Component<Props> {
             ...PlacePickerContent_locations @arguments(input: $input)
           }
         `}
-        variables={{ input: { term: this.props.defaultValue ?? '' } }}
+        variables={this.getInputVariable()}
         render={this.renderInner}
       />
     );
