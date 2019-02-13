@@ -5,6 +5,7 @@ import { ManageHelp } from '@kiwicom/margarita-core';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { type NavigationScreenProp } from 'react-navigation';
+import { MMB_BACKGROUND_COLOR } from '@kiwicom/margarita-config';
 
 type NavigationParams = {||};
 
@@ -23,6 +24,6 @@ export default function ManageHelpScreen(props: Props) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#e5e5e5', // There is no orbit token for this color
+    backgroundColor: MMB_BACKGROUND_COLOR,
   },
 });
