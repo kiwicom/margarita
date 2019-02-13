@@ -162,6 +162,7 @@ class TextInput extends React.Component<Props, State> {
       minLength,
       status = 'default',
       autoFocus,
+      autoCorrect = true,
     } = this.props;
     const { focused, value } = this.state;
 
@@ -215,6 +216,7 @@ class TextInput extends React.Component<Props, State> {
               </InlineLabel>
             )}
             <RNTextInput
+              autoCorrect={autoCorrect}
               autoFocus={autoFocus}
               ref={this.refToTextInput}
               onFocus={this.handleOnFocus}

@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 export type Props = {|
+  +autoCorrect?: boolean,
   +autoFocus?: boolean,
   +size?: 'small' | 'normal',
   +placeholder?: string,

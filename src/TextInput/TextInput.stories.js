@@ -72,8 +72,10 @@ const stories = storiesOf('TextInput', module)
       ['default', 'success', 'warning'],
       'default',
     );
+    const autoCorrect = boolean('autoCorrect', true);
     return (
       <TextInput
+        autoCorrect={autoCorrect}
         autoFocus
         size={size}
         label={label}

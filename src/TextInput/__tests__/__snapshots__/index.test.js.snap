@@ -10,7 +10,7 @@ exports[`TextInput should match snapshot diff between small and normal input 1`]
 -           \\"height\\": 44,
 +           \\"height\\": 32,
           },
-@@ -79,3 +79,3 @@
+@@ -80,3 +80,3 @@
             Object {
 -             \\"height\\": 44,
 +             \\"height\\": 32,
