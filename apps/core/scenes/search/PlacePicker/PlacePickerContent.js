@@ -16,9 +16,9 @@ import {
   type RelayRefetchProp,
 } from '@kiwicom/margarita-relay';
 import { debounce } from '@kiwicom/margarita-utils';
+import { DEBOUNCE_TIME } from '@kiwicom/margarita-config';
 
 import { MODAL_TYPE } from '../SearchConstants';
-import { DEBOUNCE_TIME } from '../../../config';
 import {
   withSearchContext,
   type SearchContextState,
