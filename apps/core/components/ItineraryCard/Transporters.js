@@ -19,16 +19,20 @@ const mapTransporters = (segments: SegmentsType) => {
     uniq(
       segments.map(segment => ({
         name: '',
-        code: segment && segment.transporter?.name,
+        code: (segment && segment.transporter?.name) ?? '',
       })),
     );
 
   return carriers;
 };
 function Transporters({ data }: Props) {
-  return (
-    <CarrierLogo size="medium" carriers={mapTransporters(data?.segments)} />
-  );
+  const carriers = mapTransporters(data?.segments);
+
+  if (carriers == null) {
+    return null;
+  }
+
+  return <CarrierLogo size="medium" carriers={carriers} />;
 }
 
 export default createFragmentContainer(

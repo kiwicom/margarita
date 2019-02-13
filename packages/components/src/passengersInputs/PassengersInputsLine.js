@@ -2,13 +2,18 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Icon, Stepper, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Icon,
+  Stepper,
+  StyleSheet,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../text/Text';
 
 type Props = {|
-  +icon: string,
+  +icon: IconNameType,
   +label: string,
   +value: number,
   +min?: number,

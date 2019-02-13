@@ -6,7 +6,7 @@
   "dependencies": {
     "@kiwicom/margarita-navigation": "^0.0.0",
     "@kiwicom/orbit-design-tokens": "^0.3.0",
-    "@kiwicom/universal-components": "0.0.11",
+    "@kiwicom/universal-components": "0.0.13",
     "@kiwicom/margarita-config":"^0",
     "@kiwicom/margarita-components":"^0",
     "@kiwicom/margarita-utils":"^0",

@@ -8,12 +8,9 @@ exports[`Text -- Android should have the correct font family 1`] = `
         "fontFamily": "Roboto",
         "margin": 0,
       },
-      Array [
-        undefined,
-        Object {
-          "fontFamily": "Roboto",
-        },
-      ],
+      Object {
+        "fontFamily": "Roboto",
+      },
     ]
   }
 >
@@ -32,12 +29,9 @@ exports[`Text -- Android should have the correct font family 2`] = `
       Object {
         "fontWeight": "700",
       },
-      Array [
-        undefined,
-        Object {
-          "fontFamily": "RobotoBold",
-        },
-      ],
+      Object {
+        "fontFamily": "RobotoBold",
+      },
     ]
   }
 >
@@ -56,12 +50,9 @@ exports[`Text -- Android should have the correct font family 3`] = `
       Object {
         "fontStyle": "italic",
       },
-      Array [
-        undefined,
-        Object {
-          "fontFamily": "RobotoItalic",
-        },
-      ],
+      Object {
+        "fontFamily": "RobotoItalic",
+      },
     ]
   }
 >
@@ -83,12 +74,9 @@ exports[`Text -- Android should have the correct font family 4`] = `
       Object {
         "fontWeight": "700",
       },
-      Array [
-        undefined,
-        Object {
-          "fontFamily": "RobotoBoldItalic",
-        },
-      ],
+      Object {
+        "fontFamily": "RobotoBoldItalic",
+      },
     ]
   }
 >

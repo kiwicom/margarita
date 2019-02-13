@@ -14,7 +14,7 @@ const baseImagePath = (name, resolution: number) =>
 
 const RESOLUTIONS = [1, 2, 3];
 
-export default function Illustration({ name, style }: IllustrationProps) {
+export default function Illustration({ name, style = {} }: IllustrationProps) {
   return (
     <img
       src={baseImagePath(name, 1)}

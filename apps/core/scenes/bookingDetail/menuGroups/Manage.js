@@ -35,7 +35,10 @@ class ManageMenuGroup extends React.Component<Props> {
     return (
       <MenuGroup title="manage" titleStyle={styles.menuGroupTitle}>
         <MenuItem
-          icon={<ShareIcon />}
+          icon={
+            // $FlowExpectedError clashing with class RNW$Text extends React$Component<RNW$Text$Props> from react-native-web flow-typed definitions
+            <ShareIcon />
+          }
           title="Invite co-traveller"
           onPress={this.onPressInvite}
         />

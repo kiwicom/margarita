@@ -21,6 +21,8 @@ type Props = {|
   +layout: number,
 |};
 
+const noop = () => {}; // @TODO
+
 const ItineraryCardWrapper = ({ localizedPrice, children, layout }: Props) => {
   const mobileLayout = layout < LAYOUT.largeMobile;
 
@@ -44,6 +46,7 @@ const ItineraryCardWrapper = ({ localizedPrice, children, layout }: Props) => {
             label="Show Detail"
             type="secondary"
             rightIcon={<Icon name="chevron-down" />}
+            onPress={noop}
           />
         </View>
       )}

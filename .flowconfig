@@ -33,6 +33,13 @@
 ; Problems with this library which react-native-storybook-loader depends on
 .*/node_modules/findup/.*
 
+; TODO in universal-components
+<PROJECT_ROOT>/node_modules/@kiwicom/universal-components/lib/web/Loader/PageLoader.js.flow
+<PROJECT_ROOT>/node_modules/@kiwicom/universal-components/lib/web/TextInput/TextInput.js.flow
+<PROJECT_ROOT>/node_modules/@kiwicom/universal-components/lib/web/Text/Text.js.flow
+<PROJECT_ROOT>/node_modules/@kiwicom/universal-components/lib/web/TagsInput/components/InputField.js.flow
+<PROJECT_ROOT>/node_modules/@kiwicom/universal-components/lib/web/PlatformStyleSheet/StyleSheet.js.flow
+
 [include]
 
 [untyped]

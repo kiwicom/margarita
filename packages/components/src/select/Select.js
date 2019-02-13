@@ -2,7 +2,11 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Button } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Button,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import SelectOption from './SelectOption';
@@ -10,7 +14,7 @@ import SelectOption from './SelectOption';
 type Props = {|
   +optionsData: {
     [string]: {|
-      +icon: string,
+      +icon: IconNameType,
       +label: string,
     |},
   },

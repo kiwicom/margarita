@@ -11,9 +11,9 @@ import Text from '../../text/Text';
 type Props = {|
   +expanded: boolean,
   +carrier: {|
-    +code: string,
-    +name: string,
-    +type?: 'airline' | 'bus' | 'train',
+    code: string,
+    name: string,
+    type?: 'airline' | 'bus' | 'train',
   |},
   +duration: string,
 |};

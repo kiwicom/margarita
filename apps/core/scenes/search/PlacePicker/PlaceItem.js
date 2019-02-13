@@ -7,7 +7,7 @@ import {
   StyleSheet,
   Icon,
   Touchable,
-  StylePropType,
+  type StylePropType,
 } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
