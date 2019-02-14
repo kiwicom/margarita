@@ -23,10 +23,9 @@ export type BookingApiResult = {|
   +bid: number,
   +status: string,
   +flights: Array<ApiFlight>,
-  +passengers: $ReadOnlyArray<{|
-    +id: number,
-  |}>,
+  +passengers: Array<Passenger>,
   +segments: $ReadOnlyArray<string> | null,
+  +contact: ContactDetails,
 |};
 
 type RouteStopTime = {|
@@ -63,12 +62,32 @@ export type TypeSpecificData = {|
   +trips?: $ReadOnlyArray<Trip>,
 |};
 
+export type Passenger = {|
+  +bags: number,
+  +birthday: string,
+  +category: string,
+  +firstname: string,
+  +id: number,
+  +insuranceType: string,
+  +lastname: string,
+  +nationality: string,
+  +title: string,
+  +visaRequired: boolean,
+|};
+
+export type ContactDetails = {|
+  +email: string,
+  +phone: string,
+|};
+
 export type Booking = {|
   +bid: number,
   +status: string,
   +arrival: RouteStop,
   +departure: RouteStop,
   +passengerCount: number,
+  +passengers: Array<Passenger>,
+  +contact: ContactDetails,
   +type: 'BookingReturn' | 'BookingMulticity' | 'BookingOneWay',
   ...TypeSpecificData,
 |};

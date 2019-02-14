@@ -5,17 +5,27 @@ import {
   GraphQLString,
   GraphQLEnumType,
   GraphQLInt,
+  GraphQLList,
 } from 'graphql';
 import globalID from '@kiwicom/graphql-global-id';
 
 import GraphQLRouteStop from './RouteStop';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
 import GraphQLBookingType from './BookingType';
+import GraphQLContactDetails from './ContactDetails';
+import GraphQLPassenger from './Passenger';
 
 export const commonFields = {
   id: globalID(({ bid }) => bid),
   status: {
     type: GraphQLString,
+  },
+  contactDetails: {
+    type: GraphQLContactDetails,
+    resolve: ({ contact }: Booking) => contact,
+  },
+  passengers: {
+    type: new GraphQLList(GraphQLPassenger),
   },
   arrival: {
     type: GraphQLRouteStop,
