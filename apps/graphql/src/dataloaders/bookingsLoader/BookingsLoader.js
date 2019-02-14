@@ -10,6 +10,7 @@ import type {
   ApiRouteStop,
   TypeSpecificData,
   Segment,
+  Passenger,
 } from './BookingFlowTypes';
 
 const sanitizeBookings = (
@@ -18,16 +19,37 @@ const sanitizeBookings = (
   return bookings.map(booking => {
     const type = detectType(booking);
     const typeSpecificData = getTypeSpecificData(booking, type);
-
+    const passengers = sanitizePassengers(booking);
     return {
       bid: booking.bid,
       status: booking.status,
       passengerCount: booking.passengers.length,
+      contact: {
+        email: booking.contact.email,
+        phone: booking.contact.phone,
+      },
+      passengers,
       type,
       ...typeSpecificData,
     };
   });
 };
+
+const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
+  booking.passengers.map(passenger => {
+    return {
+      id: passenger.id,
+      bags: passenger.bags,
+      birthday: passenger.birthday,
+      category: passenger.category,
+      firstname: passenger.firstname,
+      insuranceType: passenger.insuranceType,
+      lastname: passenger.lastname,
+      nationality: passenger.nationality,
+      title: passenger.title,
+      visaRequired: false,
+    };
+  });
 
 export const getTypeSpecificData = (
   booking: BookingApiResult,
