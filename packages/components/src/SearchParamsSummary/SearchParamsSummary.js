@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Image, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Icon,
@@ -9,6 +9,7 @@ import {
   AdaptableBadge,
 } from '@kiwicom/universal-components';
 
+import AlphaToWhite from './assets/alpha-to-white-horizontal.png';
 import Text from '../text/Text';
 
 type Trip = {|
@@ -46,6 +47,13 @@ export default function SearchParamsSummary({
   return (
     <View style={styles.container}>
       <View style={styles.headerLeftContainer}>
+        {Platform.OS !== 'web' && (
+          <Image
+            source={AlphaToWhite}
+            style={styles.gradientOverlap}
+            resizeMode="stretch"
+          />
+        )}
         <View style={styles.citiesContainer}>
           <Text weight="bold" style={styles.city}>
             {departure?.city}
@@ -55,7 +63,8 @@ export default function SearchParamsSummary({
             {arrival?.city}
           </Text>
         </View>
-        <View style={styles.row}>
+
+        <View style={styles.date}>
           {tripType === 'OneWay' ? (
             <AdaptableBadge
               style={styles.badge}
@@ -84,26 +93,34 @@ export default function SearchParamsSummary({
   );
 }
 
+const headerHeight = 72;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    height: 64,
+    height: headerHeight,
     borderBottomWidth: 1,
     borderBottomColor: defaultTokens.paletteInkLighter,
+    paddingLeft: 16,
   },
   connector: {
     color: defaultTokens.paletteInkDark,
+    paddingHorizontal: 4,
   },
   citiesContainer: {
     flexDirection: 'row',
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 3,
-    paddingTop: 8,
+    paddingTop: 4,
   },
   headerLeftContainer: {
     flexDirection: 'column',
     paddingStart: 16,
+    ios: {
+      paddingLeft: 16,
+    },
+    android: {
+      paddingLeft: 40,
+    },
+    alignItems: Platform.OS === 'web' ? 'center' : null,
     flex: 1,
   },
   city: {
@@ -119,9 +136,16 @@ const styles = StyleSheet.create({
     backgroundColor: defaultTokens.paletteCloudNormal,
     alignSelf: 'center',
   },
-  row: {
+  date: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingBottom: 8,
+  },
+  gradientOverlap: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: headerHeight - 1,
+    zIndex: parseFloat(defaultTokens.zIndexDefault),
   },
 });

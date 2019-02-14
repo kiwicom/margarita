@@ -22,6 +22,9 @@ const StackNavigator: NavigationNavigator<
   ({
     [Routes.SEARCH]: {
       screen: SearchScreen,
+      navigationOptions: {
+        headerTruncatedBackTitle: null,
+      },
     },
     [Routes.RESULTS]: {
       screen: ResultsScreen,

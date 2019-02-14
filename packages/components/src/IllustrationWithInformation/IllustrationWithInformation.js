@@ -40,10 +40,13 @@ const styles = StyleSheet.create({
     fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
     color: defaultTokens.colorTextAttention,
     paddingBottom: 20,
+    paddingHorizontal: 10,
   },
   description: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     color: defaultTokens.colorTextSecondary,
     paddingBottom: 40,
+    paddingHorizontal: 10,
+    textAlign: 'center',
   },
 });
