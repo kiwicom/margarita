@@ -49,10 +49,24 @@ type State = {|
 const defaultDepartureDate = new Date();
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
 
+// TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
+const defaultPlaces = {
+  origin: {
+    id: 'TG9jYXRpb246cHJhZ3VlX2N6',
+    locationId: 'prague_cz',
+    name: 'Prague',
+  },
+  departure: {
+    id: 'TG9jYXRpb246b3Nsb19ubw==',
+    locationId: 'oslo_no',
+    name: 'Oslo',
+  },
+};
+
 const defaultState = {
   tripType: 'return',
-  travelFrom: null,
-  travelTo: null,
+  travelFrom: defaultPlaces.origin,
+  travelTo: defaultPlaces.departure,
   dateFrom: defaultDepartureDate,
   dateTo: defaultDepartureDate,
   returnDateFrom: defaultReturnDate,
