@@ -62,7 +62,6 @@ module.exports = {
         ],
       },
     ],
-    'import/no-extraneous-dependencies': OFF,
   },
 
   // set each global variable name equal to true to allow the variable to be overwritten or

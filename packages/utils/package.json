@@ -9,5 +9,13 @@
   },
   "devDependencies": {
     "fast-check": "^1.10.1"
+  },
+  "peerDependencies": {
+    "react": "^",
+    "date-fns": "^",
+    "expo-localization": "^",
+    "intl": "^",
+    "react-native": "^",
+    "react-test-renderer": "^"
   }
 }
