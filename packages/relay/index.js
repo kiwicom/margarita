@@ -1,14 +1,13 @@
 // @flow strict
 
-/* eslint-disable no-restricted-imports, no-unused-vars */
-import { type RelayRefetchProp } from 'react-relay';
+import type { RefetchRelayProp } from '@kiwicom/relay';
 
 export {
   graphql,
   createPaginationContainer,
   createRefetchContainer,
   createFragmentContainer,
-  RelayRefetchProp,
-} from 'react-relay';
+} from '@kiwicom/relay';
 
 export { default as QueryRenderer } from './src/QueryRenderer';
+export type RelayRefetchProp = RefetchRelayProp;

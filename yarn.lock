@@ -1391,7 +1391,7 @@
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
 
-"@kiwicom/js@0":
+"@kiwicom/js@^0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.2.0.tgz#dff952bd4acaedc3a6edfb11714f1c7aeb430a6e"
   integrity sha512-ft/DLW75P7Ft0YgCHivfz/awOEkrXFMiuG97ZlrLfcTdBmwawrmP4IeUzhAeDxihluBqyvGoa9OWJYVSVlLCWQ==
@@ -1417,13 +1417,13 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.9.0":
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.9.0.tgz#aa393555a6d6faf5d51834bec7b34ad3a0c0afc9"
-  integrity sha512-J6mohuVHm6pf6L71yK++0Rtasm+mOQxFFskmUITkS03MftWHuePNexlgLWD84IQBAorMosrOaCAw/muhybOUJA==
+"@kiwicom/relay@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.10.0.tgz#f679e30db0d0f808a323acb8e5e05622f7142d55"
+  integrity sha512-PBrea9CuQMjzdP7RCcErInTKnMIlFC05AWQ2rq/ED2FRNsZ+Ix2UXABsjTM9MopZoem3ioiQl7ZhJEbc1++k9A==
   dependencies:
     "@kiwicom/fetch" "^2.0.0"
-    "@kiwicom/js" "0"
+    "@kiwicom/js" "^0"
     react-relay "^2.0.0"
     relay-compiler "^2.0.0"
     relay-runtime "^2.0.0"
