@@ -26,7 +26,6 @@
     "next-images": "^1.0.4",
     "next-plugin-transpile-modules": "^0.1.3",
     "react-native-web": "^0.10.0",
-    "schedule": "^0.4.0",
     "url-search-params-polyfill": "^5.0.0"
   },
   "devDependencies": {

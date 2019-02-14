@@ -41,8 +41,7 @@
     "ramda": "^0.26.1",
     "react": "16.5.0",
     "react-art": "^16.5.2",
-    "react-dom": "^16.6.3",
-    "schedule": "^0.4.0"
+    "react-dom": "^16.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",
