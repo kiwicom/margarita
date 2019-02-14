@@ -151,6 +151,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     web: {
       marginTop: 20,
+      height: 200,
     },
   },
 });

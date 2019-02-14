@@ -4,12 +4,12 @@ import * as React from 'react';
 import { shallow } from 'react-native-testing-library';
 import { View } from 'react-native';
 
-import Layout from '../Layout';
+import { Layout } from '../Layout';
 
 it('renders', () => {
   expect(
     shallow(
-      <Layout>
+      <Layout layoutReady>
         <View />
       </Layout>,
     ),
@@ -23,8 +23,10 @@ Object {
       }
     }
   >
-    <Navbar />
-    <Component />
+    <React.Fragment>
+      <Navbar />
+      <Component />
+    </React.Fragment>
   </Component>,
 }
 `);
@@ -33,7 +35,7 @@ Object {
 it('renders with multiple children', () => {
   expect(
     shallow(
-      <Layout>
+      <Layout layoutReady>
         <View />
         <View />
       </Layout>,
@@ -48,9 +50,11 @@ Object {
       }
     }
   >
-    <Navbar />
-    <Component />
-    <Component />
+    <React.Fragment>
+      <Navbar />
+      <Component />
+      <Component />
+    </React.Fragment>
   </Component>,
 }
 `);
