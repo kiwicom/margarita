@@ -10,6 +10,8 @@ type Props = {|
       +params: {|
         +travelFrom: string,
         +travelTo: string,
+        +travelFromName: string,
+        +travelToName: string,
         +dateFrom: string,
         +dateTo: string,
         +returnDateFrom: string,
