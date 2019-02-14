@@ -25,7 +25,7 @@ type Args = {|
   ...$Exact<ConnectionArguments>,
 |};
 
-export default {
+const Itineraries = {
   name: 'SearchItineraries',
   description: 'Query to fetch all itineraries(flights, busses, trains)',
   args: {
@@ -41,3 +41,5 @@ export default {
     return connectionFromArray<ItinerariesType>(itineraries, args);
   },
 };
+
+export default Itineraries;

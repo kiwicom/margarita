@@ -1339,13 +1339,13 @@
     "@babel/preset-react" "^7.0.0"
     babel-plugin-relay "^2.0.0"
 
-"@kiwicom/eslint-config@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.7.0.tgz#8fd8ac2c3216c2d68a36a2551782bd646e495981"
-  integrity sha512-kove1QlbUKqXxdpW3vqAQfZPo9mrpL3FK8GFxWx66F+XQQBlCP1k3DpBMVMNcyd5HCl9WzdyiEdpFbc8rdSobg==
+"@kiwicom/eslint-config@^2.11.0":
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.11.0.tgz#877ff0de0149a75034427e5d0c0fcb0547813ef6"
+  integrity sha512-XCtddKc7qeaZFqDCo8sSbwwTm06OiRBp5xEB7kRCIMFzZtWKwNRJ26WyMFbfdaLLTM9P9UjtoG1ltInz3M+zMg==
   dependencies:
     chalk "^2.4.2"
-    create-jest-runner "^0.4.1"
+    create-jest-runner "^0.5.0"
     eslint-config-prettier "^4.0.0"
     eslint-plugin-babel "^5.3.0"
     eslint-plugin-dependencies "^2.4.0"
@@ -1354,12 +1354,13 @@
     eslint-plugin-import "^2.16.0"
     eslint-plugin-jest "^22.2.1"
     eslint-plugin-kiwi-graphql "^1"
+    eslint-plugin-kiwicom-incubator "^0"
     eslint-plugin-monorepo "^0.2.1"
     eslint-plugin-node "^8.0.1"
     eslint-plugin-prefer-object-spread "^1.2.1"
     eslint-plugin-prettier "^3.0.1"
     eslint-plugin-react "^7.12.4"
-    eslint-plugin-react-hooks "^0.0.0"
+    eslint-plugin-react-hooks "^1.0.1"
     eslint-plugin-react-native "^3.6.0"
     eslint-plugin-relay "^1.0.0"
     is-ci "^2.0.0"
@@ -5922,12 +5923,12 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-create-jest-runner@^0.4.1:
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.4.1.tgz#eeda15bc0f9dc622ef2de5a7fd9a0f1a2c2eb62d"
-  integrity sha512-JOy675JMZ3b05F3VfAAi6Igme3pVBWu7Rt+gbW9ujAiX/Dua7+G47O7IbfiUU/FZjXhtipu/tz930b++UMGQEA==
+create-jest-runner@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/create-jest-runner/-/create-jest-runner-0.5.0.tgz#dee44a6172ad96126164c4882eec98e83ad6928a"
+  integrity sha512-QsafAE65AA7UVQl8STpiPBQSE6cInxDLKe4B0rieYiHZjxajZq/uj9o6E4mXNX9UD+Rk7ZKWv1JVgMl30cNckw==
   dependencies:
-    jest-worker "^23.2.0"
+    jest-worker "^24.0.0"
     throat "^4.1.0"
 
 create-react-class@^15.6.2, create-react-class@^15.6.3:
@@ -7322,6 +7323,11 @@ eslint-plugin-kiwi-graphql@^1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-kiwi-graphql/-/eslint-plugin-kiwi-graphql-1.0.1.tgz#18e3f61937b352d439e8ad69ac705d11df2e94f9"
   integrity sha512-syeVd3zn3NdKpkcSj99+M9gM7oRElHG8NvFRA9WBiNcGOv1XAVCzoXb+MmHbeR2Ow8VavlXLGMec7zATSXeYIw==
 
+eslint-plugin-kiwicom-incubator@^0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-kiwicom-incubator/-/eslint-plugin-kiwicom-incubator-0.1.0.tgz#222b110ac327ab509e685401f0a2d60ad3435a3a"
+  integrity sha512-uBeD+Y+c0ku3Lkzez7JcWmxFGYoudfVHfLiCIXkPifD32yyPeozGICY88FJj6GaNHVWm5azYsyece4k3+V4Pww==
+
 eslint-plugin-monorepo@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-monorepo/-/eslint-plugin-monorepo-0.2.1.tgz#96cfc4af241077675f40d7017377897fb8ea537b"
@@ -7359,10 +7365,10 @@ eslint-plugin-prettier@^3.0.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react-hooks@^0.0.0:
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-0.0.0.tgz#9988f14082a159931c3dfa9ba699130457da927a"
-  integrity sha512-SXyU7C3E8AJbXKMdb10P/zHazcxzfuWR5OFwAVZKXVU7P/H56NLszVG6WdQBo9Pt80FfnPXtUGGbWhs3/98N4w==
+eslint-plugin-react-hooks@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.0.1.tgz#76b6fb4edafab02eab0090078977687157605dd9"
+  integrity sha512-yNhvY7EFBp0mq0Bt8BHoS57GwJ4e1qSYdvDFSfPnjmiSmyGUfQFQGcQs4K0JQFDGopWkURWq58psbUJIhWZ2Kg==
 
 eslint-plugin-react-native-globals@^0.1.1:
   version "0.1.2"

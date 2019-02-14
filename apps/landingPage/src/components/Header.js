@@ -17,22 +17,23 @@ const linksHeader = [
   },
 ];
 
-export default () => (
-  <Header>
-    <a href={codeKiwi}>
-      <Logo src={logo} alt="Logo" />
-    </a>
-    <HeaderRight>
-      {linksHeader.map(el => (
-        <LinkNoStyle key={el.title} href={el.link}>
-          <Heading type="title4">{el.title}</Heading>
-        </LinkNoStyle>
-      ))}
-    </HeaderRight>
-  </Header>
-);
-
-const Header = styled.div`
+export default function Header() {
+  return (
+    <HeaderContainer>
+      <a href={codeKiwi}>
+        <Logo src={logo} alt="Logo" />
+      </a>
+      <HeaderRight>
+        {linksHeader.map(el => (
+          <LinkNoStyle key={el.title} href={el.link}>
+            <Heading type="title4">{el.title}</Heading>
+          </LinkNoStyle>
+        ))}
+      </HeaderRight>
+    </HeaderContainer>
+  );
+}
+const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 2vw;

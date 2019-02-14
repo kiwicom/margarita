@@ -32,8 +32,10 @@ const error = (message: string | Object): void => {
   console.error(prefix + chalk.red.bold(' error ') + formatMessage(message)); // eslint-disable-line no-console
 };
 
-export default {
+const Logger = {
   info,
   warning,
   error,
 };
+
+export default Logger;

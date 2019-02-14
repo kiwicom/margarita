@@ -11,24 +11,25 @@ type Props = {|
   +iframeHeight: number,
 |};
 
-export default ({ iframeWidth, iframeHeight }: Props) => (
-  <Playground id="playground">
-    <HeadingContainer>
-      <Heading type="title1">Try it out!</Heading>
-      <Heading type="title2">It has its own GraphQL server</Heading>
-    </HeadingContainer>
-    <ContainerIframe>
-      <WrapperIframe>
-        <Iframe
-          title="GraphQL playground"
-          src="https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql"
-        />
-      </WrapperIframe>
-    </ContainerIframe>
-  </Playground>
-);
-
-const Playground = styled.div`
+export default function Playground({ iframeWidth, iframeHeight }: Props) {
+  return (
+    <PlaygroundContainer id="playground">
+      <HeadingContainer>
+        <Heading type="title1">Try it out!</Heading>
+        <Heading type="title2">It has its own GraphQL server</Heading>
+      </HeadingContainer>
+      <ContainerIframe>
+        <WrapperIframe>
+          <Iframe
+            title="GraphQL playground"
+            src="https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql"
+          />
+        </WrapperIframe>
+      </ContainerIframe>
+    </PlaygroundContainer>
+  );
+}
+const PlaygroundContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding-top: 80px;

@@ -39,32 +39,34 @@ const icons = [
   },
 ];
 
-export default () => (
-  <Container>
-    <Separator />
-    <Footer>
-      <FooterLeftContainer>
-        <a href={codeKiwi}>
-          <Logo src={logo} alt="Logo" />
-        </a>
-      </FooterLeftContainer>
-      <FooterRightContainer>
-        {icons.map(icon => (
-          <a href={icon.url} key={icon.url}>
-            {icon.icon}
+export default function Footer() {
+  return (
+    <Container>
+      <Separator />
+      <FooterContainer>
+        <FooterLeftContainer>
+          <a href={codeKiwi}>
+            <Logo src={logo} alt="Logo" />
           </a>
-        ))}
-      </FooterRightContainer>
-    </Footer>
-  </Container>
-);
+        </FooterLeftContainer>
+        <FooterRightContainer>
+          {icons.map(icon => (
+            <a href={icon.url} key={icon.url}>
+              {icon.icon}
+            </a>
+          ))}
+        </FooterRightContainer>
+      </FooterContainer>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-const Footer = styled.div`
+const FooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   height: 105px;

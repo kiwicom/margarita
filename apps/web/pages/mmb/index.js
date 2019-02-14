@@ -5,8 +5,10 @@ import { Bookings } from '@kiwicom/margarita-core';
 
 import Layout from '../../components/Layout';
 
-export default () => (
-  <Layout>
-    <Bookings />
-  </Layout>
-);
+export default function IndexPage() {
+  return (
+    <Layout>
+      <Bookings />
+    </Layout>
+  );
+}

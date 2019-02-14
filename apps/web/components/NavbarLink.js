@@ -23,8 +23,7 @@ export default class NavbarLink extends React.Component<Props, State> {
 
   componentDidMount() {
     if (Router.route === this.props.route) {
-      // Should have been done in the constructor, but we cannot access Router in constructor, since it executes on server
-      this.setState({ isActive: true }); // eslint-disable-line react/no-did-mount-set-state
+      this.setState({ isActive: true });
     }
   }
 

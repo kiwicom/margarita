@@ -46,7 +46,6 @@ export default class LayoutContextProvider extends React.Component<
   componentDidMount() {
     const layout = getLayout(Dimensions.get('window').width);
     if (!this.state.layoutReady || this.state.layout !== layout) {
-      // eslint-disable-next-line react/no-did-mount-set-state
       this.setState({
         layoutReady: true,
         layout,

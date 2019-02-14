@@ -156,6 +156,8 @@ const sanitizeRouteStop = (departureArrival: ?ApiRouteStop) => {
   };
 };
 
-export default {
+const BookingsLoader = {
   load: () => sanitizeBookings(bookings),
 };
+
+export default BookingsLoader;
