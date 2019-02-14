@@ -36,7 +36,7 @@
     "babel-plugin-react-native-web": "^0.10.0",
     "babel-plugin-relay": "^1.7.0",
     "webpack": "^4.29.1",
-    "webpack-bundle-analyzer": "^3.0.3"
+    "webpack-bundle-analyzer": "^3.0.4"
   },
   "peerDependencies": {
     "@babel/preset-flow": "^7.0.0",
