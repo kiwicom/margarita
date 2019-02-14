@@ -1394,6 +1394,11 @@
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
 
+"@kiwicom/js@0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.2.0.tgz#dff952bd4acaedc3a6edfb11714f1c7aeb430a6e"
+  integrity sha512-ft/DLW75P7Ft0YgCHivfz/awOEkrXFMiuG97ZlrLfcTdBmwawrmP4IeUzhAeDxihluBqyvGoa9OWJYVSVlLCWQ==
+
 "@kiwicom/orbit-components@^0.28.2":
   version "0.28.2"
   resolved "https://registry.yarnpkg.com/@kiwicom/orbit-components/-/orbit-components-0.28.2.tgz#4a17085d62b68ab756d066847c464e777ca2ccd7"
@@ -1415,14 +1420,16 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.1.0.tgz#e7a6b54d6fb95c01e8b27d5f880dab2fbab8e867"
-  integrity sha512-tTxrabQ64aDZpGcDu+oupVf8uhFlGXQzkrgjHwUTYsOfNZXYmqAvPf45iOF5rfdVH4mzzVz693lbfGHsRE5Npw==
+"@kiwicom/relay@^0.9.0":
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.9.0.tgz#aa393555a6d6faf5d51834bec7b34ad3a0c0afc9"
+  integrity sha512-J6mohuVHm6pf6L71yK++0Rtasm+mOQxFFskmUITkS03MftWHuePNexlgLWD84IQBAorMosrOaCAw/muhybOUJA==
   dependencies:
     "@kiwicom/fetch" "^2.0.0"
-    react-relay "^1.7.0"
-    relay-runtime "^1.7.0"
+    "@kiwicom/js" "0"
+    react-relay "^2.0.0"
+    relay-compiler "^2.0.0"
+    relay-runtime "^2.0.0"
 
 "@kiwicom/test-utils@^0.3.1":
   version "0.3.1"
@@ -15986,6 +15993,17 @@ react-relay@^1.7.0:
     prop-types "^15.5.8"
     relay-runtime "1.7.0"
 
+react-relay@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-2.0.0.tgz#967eb66159202264cbf6daa9b1acfa78dfbd13e7"
+  integrity sha512-TLQdW9AVo7Zlu7z81MuNm2Y9Mp3im6rVSKs357uS3cEz6vr2x3ZEQr+HAXDQn8Hb4gFQ+9+iRRlv+hd2Rid/0Q==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fbjs "^1.0.0"
+    nullthrows "^1.1.0"
+    prop-types "^15.5.8"
+    relay-runtime "2.0.0"
+
 react-side-effect@^1.1.0:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-1.1.5.tgz#f26059e50ed9c626d91d661b9f3c8bb38cd0ff2d"
@@ -16461,7 +16479,7 @@ relateurl@0.2.x:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler@2.0.0:
+relay-compiler@2.0.0, relay-compiler@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-2.0.0.tgz#f51b8e4fdf337b24ceb45cb7f80dac2729ab132a"
   integrity sha512-OcWHdFJAp9++8xhES5rZMDolB2USKn940bc/jDMYrMyHtVM+FnvlZaXDSvXpOjlzPeucpDYPiqFlx+/UQoGF2g==
@@ -16505,7 +16523,7 @@ relay-compiler@^1.7.0:
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@1.7.0, relay-runtime@^1.7.0:
+relay-runtime@1.7.0:
   version "1.7.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-1.7.0.tgz#59cfb5cab361ef630099464e1b364342466cd212"
   integrity sha512-gvx01aRoLHdIMQoIjMQ79js4BR9JZVfF/SoSiLXvWOgDWEnD7RKb80zmCZTByCpka0GwFzkVwBWUy1gW6g0zlQ==
@@ -16513,7 +16531,7 @@ relay-runtime@1.7.0, relay-runtime@^1.7.0:
     babel-runtime "^6.23.0"
     fbjs "0.8.17"
 
-relay-runtime@2.0.0:
+relay-runtime@2.0.0, relay-runtime@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-2.0.0.tgz#0e42df90365cc69f104f7e4b20fdcf975f5a9c0b"
   integrity sha512-o/LPFHTI6+3FLJXM3Ec4N6hzkKYILVHYRJThNX0UQlMnqjTVPR6NO4qFE2QzzEiUS+lys+qfnvBzSmNbSh1zWQ==
