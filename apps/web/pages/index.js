@@ -7,15 +7,17 @@ import { StyleSheet } from '@kiwicom/universal-components';
 
 import Layout from '../components/Layout';
 
-export default () => (
-  <Layout>
-    <View style={styles.page}>
-      <SearchContextProvider>
-        <Search />
-      </SearchContextProvider>
-    </View>
-  </Layout>
-);
+export default function IndexPage() {
+  return (
+    <Layout>
+      <View style={styles.page}>
+        <SearchContextProvider>
+          <Search />
+        </SearchContextProvider>
+      </View>
+    </Layout>
+  );
+}
 
 const styles = StyleSheet.create({
   page: {

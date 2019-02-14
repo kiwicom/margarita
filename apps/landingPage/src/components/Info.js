@@ -15,30 +15,32 @@ type Props = {|
   +iframeWidth: number,
 |};
 
-export default ({ iframeWidth }: Props) => (
-  <Container id="features">
-    <Header>
-      <Heading>It's cross-platform</Heading>
-      <WrapperText>
-        <Text size="large" align="center">
-          PLACEHOLDER!!!!!You've had a look at Tequila, but you've preffered
-          yourTequila Tequila mixed with something else. Just grab
-          Margarita.You've had a look at Tequila, but you've always preffered
-          your Tequila mixed with something else.u've had a look at Tequ
-        </Text>
-      </WrapperText>
-      <Button type="secondary" width={125}>
-        <LinkNoStyle href={documentation}>Link to Docs</LinkNoStyle>
-      </Button>
-    </Header>
-    <ImagesAndGradientWrapper>
-      <BackgroundGradientAccent />
-      <PhoneImage src={search} alt="search" />
-      <PhoneImage src={results} alt="results" />
-      <PhoneImage src={booking} alt="booking" />
-    </ImagesAndGradientWrapper>
-  </Container>
-);
+export default function Info({ iframeWidth }: Props) {
+  return (
+    <Container id="features">
+      <Header>
+        <Heading>It's cross-platform</Heading>
+        <WrapperText>
+          <Text size="large" align="center">
+            PLACEHOLDER!!!!!You've had a look at Tequila, but you've preffered
+            yourTequila Tequila mixed with something else. Just grab
+            Margarita.You've had a look at Tequila, but you've always preffered
+            your Tequila mixed with something else.u've had a look at Tequ
+          </Text>
+        </WrapperText>
+        <Button type="secondary" width={125}>
+          <LinkNoStyle href={documentation}>Link to Docs</LinkNoStyle>
+        </Button>
+      </Header>
+      <ImagesAndGradientWrapper>
+        <BackgroundGradientAccent />
+        <PhoneImage src={search} alt="search" />
+        <PhoneImage src={results} alt="results" />
+        <PhoneImage src={booking} alt="booking" />
+      </ImagesAndGradientWrapper>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   display: flex;

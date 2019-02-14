@@ -48,8 +48,8 @@ const fetchLocations = async (params: $ReadOnlyArray<LocationInput>) => {
   return data.map(({ locations }) => sanitizeLocations(locations));
 };
 
-export default () =>
-  new OptimisticDataloader(
+export default function locationsLoader() {
+  return new OptimisticDataloader(
     async (
       ids: $ReadOnlyArray<LocationInput>,
     ): Promise<Array<Location[] | Error>> => fetchLocations(ids),
@@ -57,3 +57,4 @@ export default () =>
       cacheKeyFn: stringify,
     },
   );
+}

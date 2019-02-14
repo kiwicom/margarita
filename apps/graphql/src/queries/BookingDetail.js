@@ -10,7 +10,7 @@ type Args = {|
   +id: string,
 |};
 
-export default {
+const BookingDetail = {
   type: BookingInterface,
   description: 'Find a booking by its id',
   args: {
@@ -31,3 +31,5 @@ export default {
     return booking;
   },
 };
+
+export default BookingDetail;

@@ -89,8 +89,8 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
   });
 };
 
-export default () =>
-  new OptimisticDataloader(
+export default function itinerariasLoader() {
+  return new OptimisticDataloader(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
     ): Promise<Array<ItinerariesType[] | Error>> => fetchItineraries(keys),
@@ -98,3 +98,4 @@ export default () =>
       cacheKeyFn: stringify,
     },
   );
+}

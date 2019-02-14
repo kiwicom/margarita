@@ -22,10 +22,12 @@ export type GraphqlContextType = {|
   |},
 |};
 
-export default () => ({
-  dataLoader: {
-    itineraries: createItinerariesLoader(),
-    locations: createLocationLoader(),
-    bookings: bookingsLoader,
-  },
-});
+export default function createContext() {
+  return {
+    dataLoader: {
+      itineraries: createItinerariesLoader(),
+      locations: createLocationLoader(),
+      bookings: bookingsLoader,
+    },
+  };
+}

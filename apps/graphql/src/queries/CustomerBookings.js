@@ -19,7 +19,7 @@ type Args = {|
   ...$Exact<ConnectionArguments>,
 |};
 
-export default {
+const CustomerBookings = {
   type: AllBookingsConnection,
   description: 'Retrieve all your bookings.',
   args: {
@@ -35,3 +35,5 @@ export default {
     return connectionFromArray<Booking>(bookings, args);
   },
 };
+
+export default CustomerBookings;

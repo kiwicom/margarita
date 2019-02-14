@@ -1,6 +1,6 @@
 // @flow
 
-export default {
+const Routes = {
   SEARCH_TAB: 'search-tab',
   BOOKING_TAB: 'booking-tab',
   SEARCH: 'search',
@@ -16,3 +16,5 @@ export default {
   TRIPINFO_TICKETS: 'mmb/tickets',
   TRIPINFO_TIMELINE: 'mmb/timeline',
 };
+
+export default Routes;

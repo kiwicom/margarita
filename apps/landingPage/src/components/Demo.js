@@ -20,22 +20,24 @@ const links = [
   { title: 'Code.kiwi.com', link: codeKiwi },
 ];
 
-export default () => (
-  <Container>
-    <HeadingWrapper>
-      <Heading type="title1">More links to explore</Heading>
-    </HeadingWrapper>
-    <LinksWrapper>
-      {links.map(el => {
-        return (
-          <Button type="white" key={el.link}>
-            <LinkNoStyle href={el.link}>{el.title}</LinkNoStyle>
-          </Button>
-        );
-      })}
-    </LinksWrapper>
-  </Container>
-);
+export default function Demo() {
+  return (
+    <Container>
+      <HeadingWrapper>
+        <Heading type="title1">More links to explore</Heading>
+      </HeadingWrapper>
+      <LinksWrapper>
+        {links.map(el => {
+          return (
+            <Button type="white" key={el.link}>
+              <LinkNoStyle href={el.link}>{el.title}</LinkNoStyle>
+            </Button>
+          );
+        })}
+      </LinksWrapper>
+    </Container>
+  );
+}
 
 const Container = styled.div`
   display: flex;

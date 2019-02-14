@@ -13,67 +13,71 @@ import airport from '../images/airport.jpg';
 import { github, margarita } from '../../../../linksConfig';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
-export default () => (
-  <Headline>
-    <HeadlineTextContainer>
-      <Heading type="display">
-        Ever dreamt of building the next Kiwi.com?
-      </Heading>
-    </HeadlineTextContainer>
-    <Container>
-      <ContainerTop>
-        <HeaderAndDesignWrapper>
-          <BackgroundGradientAccent>
-            <GreenRectangle />
-          </BackgroundGradientAccent>
-          <Heading type="title2">
-            You've had a look at Tequila, but you've always preffered your
-            Tequila mixed with something else. Just grab a Margarita.
-          </Heading>
-        </HeaderAndDesignWrapper>
-        <ContainerIcons>
-          <img src={kiwiLogo} height={43} alt="kiwi_logo" />
-          <img src={reactLogo} height={45} alt="react_logo" />
-          <img src={tequilaLogo} height={43} alt="tequila_logo" />
-          <img src={graphqlLogo} height={43} alt="graphql_logo" />
-        </ContainerIcons>
-      </ContainerTop>
-      <ContainerBottom>
-        <ContainerLeftText>
-          <Heading>Get started</Heading>
-          <WrapperText>
-            <Text size="large">
-              PLACEHOLDER!!!!!You've had a look at Tequila, but you've preffered
-              yourTequila Tequila mixed with something else. Just grab
-              Margarita.You've had a look at Tequila, but you've always
-              preffered your Tequila mixed with something else.
-            </Text>
-          </WrapperText>
-          <WrapperButtons>
-            <Button>
-              <LinkNoStyle href={margarita} color={defaultTokens.paletteWhite}>
-                Get started
-              </LinkNoStyle>
-            </Button>
-            <WrapperRightButton>
-              <Button type="white">
+export default function Headline() {
+  return (
+    <HeadlineContainer>
+      <HeadlineTextContainer>
+        <Heading type="display">
+          Ever dreamt of building the next Kiwi.com?
+        </Heading>
+      </HeadlineTextContainer>
+      <Container>
+        <ContainerTop>
+          <HeaderAndDesignWrapper>
+            <BackgroundGradientAccent>
+              <GreenRectangle />
+            </BackgroundGradientAccent>
+            <Heading type="title2">
+              You've had a look at Tequila, but you've always preffered your
+              Tequila mixed with something else. Just grab a Margarita.
+            </Heading>
+          </HeaderAndDesignWrapper>
+          <ContainerIcons>
+            <img src={kiwiLogo} height={43} alt="kiwi_logo" />
+            <img src={reactLogo} height={45} alt="react_logo" />
+            <img src={tequilaLogo} height={43} alt="tequila_logo" />
+            <img src={graphqlLogo} height={43} alt="graphql_logo" />
+          </ContainerIcons>
+        </ContainerTop>
+        <ContainerBottom>
+          <ContainerLeftText>
+            <Heading>Get started</Heading>
+            <WrapperText>
+              <Text size="large">
+                PLACEHOLDER!!!!!You've had a look at Tequila, but you've
+                preffered yourTequila Tequila mixed with something else. Just
+                grab Margarita.You've had a look at Tequila, but you've always
+                preffered your Tequila mixed with something else.
+              </Text>
+            </WrapperText>
+            <WrapperButtons>
+              <Button>
                 <LinkNoStyle
-                  href={github}
-                  color={defaultTokens.colorTextButtonSecondary}
+                  href={margarita}
+                  color={defaultTokens.paletteWhite}
                 >
-                  Link to Github
+                  Get started
                 </LinkNoStyle>
               </Button>
-            </WrapperRightButton>
-          </WrapperButtons>
-        </ContainerLeftText>
-        <PlaneImage />
-      </ContainerBottom>
-    </Container>
-  </Headline>
-);
-
-const Headline = styled.div`
+              <WrapperRightButton>
+                <Button type="white">
+                  <LinkNoStyle
+                    href={github}
+                    color={defaultTokens.colorTextButtonSecondary}
+                  >
+                    Link to Github
+                  </LinkNoStyle>
+                </Button>
+              </WrapperRightButton>
+            </WrapperButtons>
+          </ContainerLeftText>
+          <PlaneImage />
+        </ContainerBottom>
+      </Container>
+    </HeadlineContainer>
+  );
+}
+const HeadlineContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;

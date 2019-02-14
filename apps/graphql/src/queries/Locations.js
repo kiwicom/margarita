@@ -22,7 +22,7 @@ type Args = {|
   ...$Exact<ConnectionArguments>,
 |};
 
-export default {
+const Locations = {
   name: 'Locations',
   type: LocationsConnection,
   description: 'Query for suggested locations based on incomplete names',
@@ -41,3 +41,5 @@ export default {
     return connectionFromArray<Location>([...locations], args);
   },
 };
+
+export default Locations;
