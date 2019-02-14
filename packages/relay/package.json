@@ -5,6 +5,14 @@
   "main": "index.js",
   "dependencies": {
     "@kiwicom/margarita-graphql": "^0",
-    "@kiwicom/relay": "^0.10.0"
+    "@kiwicom/relay": "^0.10.0",
+    "@kiwicom/margarita-components": "^0"
+  },
+  "peerDependencies": {
+    "react": "^",
+    "react-native": "^",
+    "react-relay": "^",
+    "@kiwicom/universal-components": "^",
+    "react-native-dotenv": "^"
   }
 }

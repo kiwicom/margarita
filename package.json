@@ -33,6 +33,8 @@
   ],
   "dependencies": {
     "@kiwicom/margarita-relay": "^0",
+    "@kiwicom/margarita-graphql": "^0",
+    "@kiwicom/margarita-mobile": "^0",
     "better-npm-run": "^0.1.1",
     "date-fns": "^1.30.1",
     "graphql-iso-date": "^3.6.1",
@@ -63,5 +65,9 @@
   "resolutions": {
     "**/babel-core": "7.0.0-bridge.0",
     "babel-jest": "^24"
+  },
+  "peerDependencies": {
+    "jest-fetch-mock": "^",
+    "graphql": "^"
   }
 }

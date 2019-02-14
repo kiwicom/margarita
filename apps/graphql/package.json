@@ -18,6 +18,8 @@
     "graphql-iso-date": "^3.6.1",
     "graphql-relay": "^0.6.0",
     "json-stable-stringify": "^1.0.1",
+    "webpack": "^4.29.1",
+    "uglifyjs-webpack-plugin": "^2.1.1",
     "querystring": "^0.2.0"
   },
   "devDependencies": {
@@ -30,13 +32,13 @@
     "bufferutil": "^4.0.1",
     "flow-aws-lambda": "https://github.com/yarax/flow-aws-lambda#407f59f87889345a77b642fbeac91ff5f89865a1",
     "nodemon": "^1.18.7",
-    "uglifyjs-webpack-plugin": "^2.1.1",
     "utf-8-validate": "^5.0.2",
-    "webpack": "^4.29.1",
     "webpack-cli": "^3.2.3"
   },
   "peerDependencies": {
-    "@babel/preset-flow": "^7.0.0"
+    "@babel/preset-flow": "^7.0.0",
+    "date-fns": "^",
+    "ramda": "^"
   },
   "scripts": {
     "start": "better-npm-run start",

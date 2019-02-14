@@ -13,20 +13,28 @@
     "@kiwicom/margarita-core": "^0",
     "@kiwicom/margarita-navigation": "^0",
     "@kiwicom/margarita-relay": "^0",
+    "@kiwicom/margarita-config": "^0",
+    "@kiwicom/margarita-utils": "^0",
     "expo": "^32.0.5",
     "intl": "^1.2.5",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "get-yarn-workspaces": "https://github.com/viewstools/yarn-workspaces-cra-crna.git#d349ecb223fda7ebca7e0686dc0472534780399c",
+    "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
+    "react-native-dotenv": "^0.2.0",
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {
-    "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
-    "get-yarn-workspaces": "https://github.com/viewstools/yarn-workspaces-cra-crna.git#d349ecb223fda7ebca7e0686dc0472534780399c",
-    "metro-bundler-config-yarn-workspaces": "^1.0.3",
-    "react-native-dotenv": "^0.2.0"
+    "metro-bundler-config-yarn-workspaces": "^1.0.3"
   },
   "peerDependencies": {
     "react": ">=16",
     "react-art": ">=16",
-    "react-dom": ">=16"
+    "react-dom": ">=16",
+    "@kiwicom/universal-components": "^",
+    "@kiwicom/orbit-design-tokens": "^",
+    "rimraf": "^",
+    "metro-config": "^",
+    "date-fns": "^",
+    "ramda": "^"
   }
 }
