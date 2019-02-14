@@ -13,6 +13,8 @@ import ResultsList from './ResultsList';
 type Props = {|
   +travelFrom: string,
   +travelTo: string,
+  +travelFromName: string,
+  +travelToName: string,
   +dateFrom: string,
   +dateTo: string,
   +returnDateFrom: string,
@@ -31,6 +33,8 @@ export default class Results extends React.Component<Props> {
     const {
       travelFrom,
       travelTo,
+      travelFromName,
+      travelToName,
       dateFrom,
       dateTo,
       returnDateFrom,
@@ -49,8 +53,8 @@ export default class Results extends React.Component<Props> {
       <SafeAreaView style={styles.container}>
         <SearchParamsSummary
           tripType={tripType}
-          departure={{ city: travelFrom, localizedDate: from }}
-          arrival={{ city: travelTo, localizedDate: to }}
+          departure={{ city: travelFromName, localizedDate: from }}
+          arrival={{ city: travelToName, localizedDate: to }}
         />
         <QueryRenderer
           query={graphql`
