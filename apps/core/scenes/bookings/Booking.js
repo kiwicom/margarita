@@ -51,7 +51,7 @@ class Booking extends React.Component<Props> {
     return (
       <TouchWrapper onPress={this.onPress}>
         <View style={styles.container}>
-          <Image source={image} style={styles.image} resizeMode="stretch" />
+          <Image source={image} style={styles.image} resizeMode="cover" />
           <Image
             source={BlackToAlpha}
             style={styles.stretchedImage}
