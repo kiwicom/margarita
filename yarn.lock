@@ -1403,13 +1403,6 @@
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.3.0"
 
-"@kiwicom/orbit-design-tokens@^0.2.5":
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/@kiwicom/orbit-design-tokens/-/orbit-design-tokens-0.2.5.tgz#b945e5f792d321aa66ef23bc327000e4ff702e50"
-  integrity sha512-GGtpFuM17pJDYCf7+T31KTbFtM9LyF4XGEQHAAINsxM4SZBCH77sTszmW4mevUzrtrQP0YyznBEi7AEe8bK1gA==
-  dependencies:
-    ramda "^0.25.0"
-
 "@kiwicom/orbit-design-tokens@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/orbit-design-tokens/-/orbit-design-tokens-0.3.0.tgz#5cfc1b5d9a9e4e8f84c9b09769880ebbb9078516"
