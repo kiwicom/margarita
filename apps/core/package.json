@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@kiwicom/margarita-navigation": "^0.0.0",
-    "@kiwicom/orbit-design-tokens": "^0.2.5",
+    "@kiwicom/orbit-design-tokens": "^0.3.0",
     "@kiwicom/universal-components": "0.0.11",
     "@kiwicom/margarita-config":"^0"
   },
