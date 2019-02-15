@@ -22,6 +22,7 @@ export default function CarrierLogo({
       style={[
         styles.wrapper,
         carriersLength > 1 ? sizeStyles[SIZE_OPTIONS.LARGE] : sizeStyles[size],
+        carriersLength > 2 && styles.wrapperSpaceBetween,
       ]}
     >
       {parsedCarriers.map((carrierData, index) => (
@@ -60,9 +61,11 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexWrap: 'wrap',
     flexDirection: 'column',
-    alignContent: 'space-between',
     justifyContent: 'space-between',
     backgroundColor: defaultTokens.backgroundCarrierLogo,
+  },
+  wrapperSpaceBetween: {
+    alignContent: 'space-between',
   },
   logo: {
     backgroundColor: defaultTokens.backgroundCarrierLogo,

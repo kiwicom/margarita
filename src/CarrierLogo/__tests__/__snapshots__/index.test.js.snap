@@ -7,13 +7,21 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
 - <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}]} />
 + <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}, {\\"code\\": \\"TO\\", \\"name\\": \\"Transavia France\\"}, {\\"code\\": \\"VY\\", \\"name\\": \\"Vueling\\"}, {\\"code\\": \\"OK\\", \\"name\\": \\"Czech Airlines\\"}]} />
 
-@@ -17,22 +17,82 @@
-    }
-  >
-    <Image
-      source={
+@@ -10,29 +10,91 @@
+        },
         Object {
--         \\"uri\\": \\"https://images.kiwi.com/airlines/64/FR.png?default=airline.png\\",
+          \\"height\\": 32,
+          \\"width\\": 32,
+        },
++       Object {
++         \\"alignContent\\": \\"space-between\\",
++       },
++     ]
++   }
++ >
++   <Image
++     source={
++       Object {
 +         \\"uri\\": \\"https://images.kiwi.com/airlines/32/FR.png?default=airline.png\\",
 +       }
 +     }
@@ -27,13 +35,15 @@ exports[`CarrierLogo should match snapshot diff 1`] = `
 +           \\"height\\": 15,
 +           \\"width\\": 15,
 +         },
-+         false,
-+       ]
-+     }
+          false,
+        ]
+      }
+- >
 +   />
-+   <Image
-+     source={
-+       Object {
+    <Image
+      source={
+        Object {
+-         \\"uri\\": \\"https://images.kiwi.com/airlines/64/FR.png?default=airline.png\\",
 +         \\"uri\\": \\"https://images.kiwi.com/airlines/32/TO.png?default=airline.png\\",
         }
       }
