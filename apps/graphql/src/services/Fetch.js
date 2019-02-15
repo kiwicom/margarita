@@ -66,7 +66,10 @@ export default async function fetch(
 
     return response.json();
   } catch (err) {
-    Logger.error(err);
+    Logger.error(`status: ${err.response.status} - ${err.response.statusText}`);
+
+    const response = await err.response.json();
+    Logger.error(response.message);
     throw err;
   }
 }
