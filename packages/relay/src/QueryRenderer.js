@@ -4,11 +4,8 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Loader } from '@kiwicom/universal-components';
-import {
-  QueryRenderer,
-  type ReadyState,
-  type GraphQLTaggedNode,
-} from 'react-relay';
+import { QueryRenderer as KiwiQueryRenderer } from '@kiwicom/relay';
+import { type ReadyState, type GraphQLTaggedNode } from 'react-relay';
 import { IllustrationWithInformation } from '@kiwicom/margarita-components';
 
 import environment from './Environment';
@@ -19,7 +16,7 @@ type Props = {|
   +variables?: Object,
 |};
 
-export default class App extends React.Component<Props> {
+export default class QueryRenderer extends React.Component<Props> {
   renderRelayContainer = ({ error, props }: ReadyState) => {
     if (error) {
       return (
@@ -42,7 +39,8 @@ export default class App extends React.Component<Props> {
 
   render() {
     return (
-      <QueryRenderer
+      /* $FlowFixMe: Yes we can send variables to QueryRenderer */
+      <KiwiQueryRenderer
         variables={this.props.variables}
         environment={environment}
         query={this.props.query}
