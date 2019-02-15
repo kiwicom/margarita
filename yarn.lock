@@ -1383,10 +1383,10 @@
   dependencies:
     "@mrtnzlml/utils" "^1.1.1"
 
-"@kiwicom/graphql-utils@^0.3.0":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.3.1.tgz#f9a7ea47c490344d2ad9fd42831fe1672bda5382"
-  integrity sha512-BWu3nrG010HcYIN0uHR6rtZPAh/4liL4YjysD5PuNmwI/W3sqCR1XkQvNvYcqWY7zbtmpj5Hy5uGQNOBOtdzLA==
+"@kiwicom/graphql-utils@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.4.0.tgz#d7f9f349bcd095038087e885b0ca328c2d7ccfa0"
+  integrity sha512-sVuhymUsorBWTH8NJD86kvcHyYazIWoG/nu61aEaBukwfYuV0g8LG2T3Xn5FuR9GeeN41LSrzZbEM7qapwTqAw==
   dependencies:
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
