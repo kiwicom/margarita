@@ -1,0 +1,1136 @@
+{
+  "additional_bags_prices": {
+    "1": 207.65,
+    "2": 415.3
+  },
+  "additional_bookings": {
+    "details": [],
+    "paid": {
+      "bags": 0,
+      "total": 0
+    }
+  },
+  "additional_contacts": [],
+  "airhelp_plus": [],
+  "arrival": {
+    "when": 0,
+    "where": {
+      "code": "TLV",
+      "name": "Tel Aviv"
+    }
+  },
+  "assets": {
+    "additional": [],
+    "additional_bookings": {
+      "invoices": []
+    },
+    "boardingPass": {
+      "SP2808961_4262335": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Bratislava-Thessaloniki_SP2808961_4262335_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP2944652_4440593": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Santorini-Athens_SP2944652_4440593_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808266_5486509": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Warsaw-Bratislava_SP3808266_5486509_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808267_5486510": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/TelAviv-Warsaw_SP3808267_5486510_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808270_5486513": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Athens-TelAviv_SP3808270_5486513_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808271_5486514": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Thessaloniki-Santorini_SP3808271_5486514_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "all": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/6676524_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837"
+    },
+    "boarding_passes": {
+      "SP2808961_4262335": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Bratislava-Thessaloniki_SP2808961_4262335_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP2944652_4440593": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Santorini-Athens_SP2944652_4440593_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808266_5486509": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Warsaw-Bratislava_SP3808266_5486509_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808267_5486510": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/TelAviv-Warsaw_SP3808267_5486510_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808270_5486513": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Athens-TelAviv_SP3808270_5486513_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "SP3808271_5486514": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/Thessaloniki-Santorini_SP3808271_5486514_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+      "all": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/6676524_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837"
+    },
+    "en_confirmation_link": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/1530544653_6676524_confirmation_1d2158083038aac1baf3fbfa8d81aa3b.html",
+    "eticket": "https://mailing-files-dropzone.s3.eu-west-1.amazonaws.com/6676/1530544834_E-ticket_passenger_and_1_more_1d2158083038aac1baf3fbfa8d81aa3b.pdf?v=1530544837",
+    "insurance": null,
+    "invoice": "https://skypicker-invoices.s3.amazonaws.com/invoice_2018_f94b8524dc6a4a24_6676524.pdf",
+    "ru_invoice": null,
+    "transfer_ticket": null
+  },
+  "auth_token": "token",
+  "bag_params": {
+    "hand2_height": 30,
+    "hand2_length": 40,
+    "hand2_note": "",
+    "hand2_weight": 5,
+    "hand2_width": 20,
+    "hand_height": null,
+    "hand_length": null,
+    "hand_note": "",
+    "hand_weight": null,
+    "hand_width": null,
+    "hold_height": 50,
+    "hold_length": 70,
+    "hold_weight": 20,
+    "hold_width": 28,
+    "note": ""
+  },
+  "baggages": {
+    "_available": {
+      "_info": "Temporary presentation, to be moved to Mambo",
+      "combinations": {
+        "hand_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0
+            ],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "infant"
+              ]
+            },
+            "indices": [],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          }
+        ],
+        "hold_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child",
+                "infant"
+              ]
+            },
+            "indices": [],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0
+            ],
+            "price": {
+              "amount": 165.65,
+              "base": 138.04,
+              "currency": "EUR",
+              "service": 27.61,
+              "service_flat": 0
+            }
+          }
+        ]
+      },
+      "definitions": {
+        "hand_bag": [
+          {
+            "category": "personal_item",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 0,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": 90,
+              "height": 30,
+              "length": 40,
+              "weight": 5,
+              "width": 20
+            }
+          }
+        ],
+        "hold_bag": [
+          {
+            "category": "hold_bag",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 165.65,
+              "base": 138.04,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 27.61,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": 148,
+              "height": 50,
+              "length": 70,
+              "weight": 20,
+              "width": 28
+            }
+          }
+        ]
+      },
+      "passenger_combinations": {
+        "hand_bag": {
+          "10148316": 0,
+          "10148317": 0
+        },
+        "hold_bag": {
+          "10148316": 0,
+          "10148317": 0
+        }
+      }
+    },
+    "confirmed": [
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP2808961_4262335",
+        "flight_id": 15024416,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808271_5486514",
+        "flight_id": 15024418,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP2944652_4440593",
+        "flight_id": 15024415,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808270_5486513",
+        "flight_id": 15024417,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808267_5486510",
+        "flight_id": 15024414,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808266_5486509",
+        "flight_id": 15024413,
+        "index": 1,
+        "passenger_id": 10148316,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP2808961_4262335",
+        "flight_id": 15024416,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808271_5486514",
+        "flight_id": 15024418,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP2944652_4440593",
+        "flight_id": 15024415,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808270_5486513",
+        "flight_id": 15024417,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808267_5486510",
+        "flight_id": 15024414,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1692,
+          "length": 55,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 6676524,
+        "flight_fid": "SP3808266_5486509",
+        "flight_id": 15024413,
+        "index": 1,
+        "passenger_id": 10148317,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      }
+    ],
+    "pending": []
+  },
+  "bags": 0,
+  "bags_restrictions": {
+    "hands": {},
+    "holds": {}
+  },
+  "bid": 6676524,
+  "blocked": false,
+  "blockers": [],
+  "blue_ribbon_bags": [],
+  "booked_at": "skypicker",
+  "booking_token": "token",
+  "brand": "kiwicom",
+  "cancel_requested": null,
+  "card_payment": 978.01,
+  "checkin": {
+    "merged_boarding_passes": [],
+    "segments": []
+  },
+  "checkin_deadline": 1535104800,
+  "config": {
+    "allowed_to_change": {
+      "assisted_refund": 48,
+      "bags": 36,
+      "documents": 48,
+      "documents_checkin": 24,
+      "extras": null,
+      "flights": 48,
+      "insurance_add": 24,
+      "insurance_change": 48,
+      "meals": 48,
+      "other": 4,
+      "passengers": 48,
+      "seating": null
+    },
+    "allowed_to_change_segments": true
+  },
+  "contact": {
+    "email": "reactnative@kiwi.com",
+    "phone": "+420 000",
+    "pid": 10148317
+  },
+  "created": 1525274904,
+  "credits_payment": 0,
+  "currency": "EUR",
+  "departure": {
+    "when": 0,
+    "where": {
+      "code": "BTS",
+      "name": "Bratislava"
+    }
+  },
+  "disabled_bags_in_mmb": false,
+  "document_options": {
+    "airport_checkin_price": 140,
+    "checkin_date": 1531569000,
+    "document_need": 2
+  },
+  "fast_track": [],
+  "flight_ids": [
+    "SP3808270_5486513",
+    "SP2808961_4262335",
+    "SP2944652_4440593",
+    "SP3808267_5486510",
+    "SP3808271_5486514",
+    "SP3808266_5486509"
+  ],
+  "flights": [
+    {
+      "airline": {
+        "checkin": 2,
+        "doing_online_checkin": 1,
+        "iata": "FR",
+        "name": "Ryanair",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1531752000,
+          "utc": 1531741200
+        },
+        "where": {
+          "city_id": "thessaloniki_gr",
+          "code": "SKG",
+          "country": "GR",
+          "gate": null,
+          "name": "Thessaloniki",
+          "station": "Thessaloniki International Airport  Macedonia "
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1531741800,
+          "utc": 1531734600
+        },
+        "where": {
+          "city_id": "bratislava_sk",
+          "code": "BTS",
+          "country": "SK",
+          "gate": null,
+          "name": "Bratislava",
+          "station": "Bratislava Airport"
+        }
+      },
+      "flight_no": 2171,
+      "guarantee": false,
+      "guarantee_disclaimer": "",
+      "id": "SP2808961_4262335",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "FR",
+        "name": "Ryanair"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": "2018-07-14",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 0,
+        "doing_online_checkin": null,
+        "iata": "EL",
+        "name": "Ellinair",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1531759200,
+          "utc": 1531748400
+        },
+        "where": {
+          "city_id": "santorini_gr",
+          "code": "JTR",
+          "country": "GR",
+          "gate": null,
+          "name": "Santorini",
+          "station": "Santorini (Thira) National"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": true,
+      "departure": {
+        "when": {
+          "local": 1531755600,
+          "utc": 1531744800
+        },
+        "where": {
+          "city_id": "thessaloniki_gr",
+          "code": "SKG",
+          "country": "GR",
+          "gate": null,
+          "name": "Thessaloniki",
+          "station": "Thessaloniki International Airport  Macedonia "
+        }
+      },
+      "flight_no": 18,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP3808271_5486514",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "EL",
+        "name": "Ellinair"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": null,
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 2,
+        "doing_online_checkin": 1,
+        "iata": "FR",
+        "name": "Ryanair",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1532941800,
+          "utc": 1532931000
+        },
+        "where": {
+          "city_id": "athens_gr",
+          "code": "ATH",
+          "country": "GR",
+          "gate": null,
+          "name": "Athens",
+          "station": "Athens International"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1532938800,
+          "utc": 1532928000
+        },
+        "where": {
+          "city_id": "santorini_gr",
+          "code": "JTR",
+          "country": "GR",
+          "gate": null,
+          "name": "Santorini",
+          "station": "Santorini (Thira) National"
+        }
+      },
+      "flight_no": 1233,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP2944652_4440593",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "FR",
+        "name": "Ryanair"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": "2018-07-28",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 0,
+        "doing_online_checkin": null,
+        "iata": "LY",
+        "name": "El Al Israel Airlines",
+        "payment_card_copy_eticket_requirement": null
+      },
+      "arrival": {
+        "when": {
+          "local": 1532953200,
+          "utc": 1532942400
+        },
+        "where": {
+          "city_id": "tel-aviv_il",
+          "code": "TLV",
+          "country": "IL",
+          "gate": null,
+          "name": "Tel Aviv",
+          "station": "Ben Gurion"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": true,
+      "departure": {
+        "when": {
+          "local": 1532946300,
+          "utc": 1532935500
+        },
+        "where": {
+          "city_id": "athens_gr",
+          "code": "ATH",
+          "country": "GR",
+          "gate": null,
+          "name": "Athens",
+          "station": "Athens International"
+        }
+      },
+      "flight_no": 542,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP3808270_5486513",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "LY",
+        "name": "El Al Israel Airlines"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": null,
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 0,
+        "doing_online_checkin": null,
+        "iata": "LO",
+        "name": "LOT Polish Airlines",
+        "payment_card_copy_eticket_requirement": null
+      },
+      "arrival": {
+        "when": {
+          "local": 1535184300,
+          "utc": 1535177100
+        },
+        "where": {
+          "city_id": "warsaw_pl",
+          "code": "WAW",
+          "country": "PL",
+          "gate": null,
+          "name": "Warsaw",
+          "station": "Warsaw Chopin"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1535173500,
+          "utc": 1535162700
+        },
+        "where": {
+          "city_id": "tel-aviv_il",
+          "code": "TLV",
+          "country": "IL",
+          "gate": null,
+          "name": "Tel Aviv",
+          "station": "Ben Gurion"
+        }
+      },
+      "flight_no": 152,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP3808267_5486510",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "LO",
+        "name": "LOT Polish Airlines"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": null,
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 2,
+        "doing_online_checkin": 1,
+        "iata": "W6",
+        "name": "Wizzair",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1535205300,
+          "utc": 1535198100
+        },
+        "where": {
+          "city_id": "bratislava_sk",
+          "code": "BTS",
+          "country": "SK",
+          "gate": null,
+          "name": "Bratislava",
+          "station": "Bratislava Airport"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": true,
+      "departure": {
+        "when": {
+          "local": 1535201100,
+          "utc": 1535193900
+        },
+        "where": {
+          "city_id": "warsaw_pl",
+          "code": "WAW",
+          "country": "PL",
+          "gate": null,
+          "name": "Warsaw",
+          "station": "Warsaw Chopin"
+        }
+      },
+      "flight_no": 1585,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP3808266_5486509",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "W6",
+        "name": "Wizzair"
+      },
+      "reservation_number": "TESTPNR",
+      "return": 0,
+      "ticket_available_at": "2018-08-23",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    }
+  ],
+  "flights_history": {},
+  "grace_period_fee": null,
+  "grade": {
+    "id": "D",
+    "time": 240
+  },
+  "holidays_package": null,
+  "infants_conditions": {
+    "hand_weight": 0,
+    "trolley": false
+  },
+  "insurance_price": {
+    "skygold": 120.95,
+    "skysilver": 49.2,
+    "travel_basic": 49.2,
+    "travel_plus": 120.95
+  },
+  "is_tat_informed": false,
+  "max_bags": 1,
+  "meals": [],
+  "netverify_requested": true,
+  "original_currency": "CZK",
+  "original_flight_price": null,
+  "original_method": [
+    "zooz"
+  ],
+  "original_price": 25009,
+  "paid_over": "zooz",
+  "passenger_changes": [],
+  "passenger_ids": [
+    10148317,
+    10148316
+  ],
+  "passengers": [
+    {
+      "bags": 0,
+      "birthday": "1985-01-01",
+      "category": "adult",
+      "contact_passenger": true,
+      "firstname": "TEST",
+      "hand_bags": {},
+      "id": 10148317,
+      "insurance_price": null,
+      "insurance_type": "none",
+      "lastname": "TEST",
+      "nationality": "cz",
+      "pkpass": null,
+      "priority_boarding": {
+        "SP2808961_4262335": {
+          "is_ordered": false
+        },
+        "SP2944652_4440593": {
+          "is_ordered": false
+        },
+        "SP3808266_5486509": {
+          "is_ordered": false
+        },
+        "SP3808267_5486510": {
+          "is_ordered": false
+        },
+        "SP3808270_5486513": {
+          "is_ordered": false
+        },
+        "SP3808271_5486514": {
+          "is_ordered": false
+        }
+      },
+      "title": "mr",
+      "travel_document": {
+        "cardno": "12345678XY",
+        "expiration": 1608768000
+      }
+    },
+    {
+      "bags": 0,
+      "birthday": "1985-01-01",
+      "category": "adult",
+      "contact_passenger": false,
+      "firstname": "TEST",
+      "hand_bags": {},
+      "id": 10148316,
+      "insurance_price": null,
+      "insurance_type": "none",
+      "lastname": "TEST",
+      "nationality": "cz",
+      "pkpass": null,
+      "priority_boarding": {
+        "SP2808961_4262335": {
+          "is_ordered": false
+        },
+        "SP2944652_4440593": {
+          "is_ordered": false
+        },
+        "SP3808266_5486509": {
+          "is_ordered": false
+        },
+        "SP3808267_5486510": {
+          "is_ordered": false
+        },
+        "SP3808270_5486513": {
+          "is_ordered": false
+        },
+        "SP3808271_5486514": {
+          "is_ordered": false
+        }
+      },
+      "title": "mr",
+      "travel_document": {
+        "cardno": "12345678XY",
+        "expiration": 1608768000
+      }
+    }
+  ],
+  "pending_additional_services": [],
+  "pending_flight_changes": [],
+  "pending_refunds": [],
+  "pending_requests": [],
+  "price": 978.01,
+  "prices": [
+    "85.67",
+    "52.59",
+    "27.95",
+    "118.88",
+    "114.38",
+    "23.17"
+  ],
+  "refund_methods": [
+    "credits",
+    "zooz"
+  ],
+  "refund_options": [],
+  "refundable_options": {
+    "refundable_until": 1531561800,
+    "requested": null
+  },
+  "reservations_details": {},
+  "route": [
+    "BTS",
+    "TLV"
+  ],
+  "sandbox": 1,
+  "segments": [
+    "2",
+    "4"
+  ],
+  "service_package": null,
+  "status": "confirmed",
+  "ticketing_allowed": null,
+  "transfer_ids": [],
+  "transfers": [],
+  "travel_info": {
+    "10148316": {
+      "0": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "GR",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522369813
+          }
+        ]
+      },
+      "1": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "GR",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521648323
+          },
+          {
+            "country": "IL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1525274856
+          }
+        ]
+      },
+      "2": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "IL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522329824
+          },
+          {
+            "country": "PL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522356559
+          },
+          {
+            "country": "SK",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1550489486
+          }
+        ]
+      }
+    },
+    "10148317": {
+      "0": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "GR",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522369813
+          }
+        ]
+      },
+      "1": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "GR",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521648323
+          },
+          {
+            "country": "IL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1525274856
+          }
+        ]
+      },
+      "2": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "IL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522329824
+          },
+          {
+            "country": "PL",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1522356559
+          },
+          {
+            "country": "SK",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1550489486
+          }
+        ]
+      }
+    }
+  }
+}

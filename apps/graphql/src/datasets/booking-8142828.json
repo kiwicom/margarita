@@ -1,0 +1,1064 @@
+{
+  "additional_bags_prices": {},
+  "additional_bookings": {
+    "details": [
+      {
+        "abid": 539010,
+        "bags": 0,
+        "bid": 8142828,
+        "booked": 1535961203,
+        "booked_at": "skypicker-ios",
+        "category": "update_insurances",
+        "comment": "",
+        "created_at": 1535961202,
+        "credits_from_user": false,
+        "credits_payment_amount": 0,
+        "credits_transaction_id": null,
+        "data": {
+          "data": [
+            {
+              "insurance": "travel_basic",
+              "pid": 12431174,
+              "price": 49.05,
+              "product_num": "07"
+            },
+            {
+              "insurance": "travel_plus",
+              "pid": 12431175,
+              "price": 69.2,
+              "product_num": "09"
+            }
+          ]
+        },
+        "expected_price": 0,
+        "final_status": "confirmed",
+        "payment_currency": "CZK",
+        "payment_expiration": 1535963903,
+        "payment_gate": "zooz",
+        "payment_price": 3045,
+        "payment_token": "token",
+        "payment_token_created": 1535961203,
+        "podio_id": null,
+        "podio_payment_id": 926036740,
+        "price": 118.25,
+        "updated_at": 1535961259,
+        "user_agent": null,
+        "visitor_uniqid": null
+      },
+      {
+        "abid": 535492,
+        "bags": 0,
+        "bid": 8142828,
+        "booked": 1535641989,
+        "booked_at": "skypicker-ios",
+        "category": "update_insurances",
+        "comment": "",
+        "created_at": 1535641988,
+        "credits_from_user": false,
+        "credits_payment_amount": 0,
+        "credits_transaction_id": null,
+        "data": {
+          "data": [
+            {
+              "insurance": "travel_basic",
+              "pid": 12431174,
+              "price": 49.05,
+              "product_num": "07"
+            },
+            {
+              "insurance": "travel_basic",
+              "pid": 12431175,
+              "price": 49.05,
+              "product_num": "07"
+            }
+          ]
+        },
+        "expected_price": 0,
+        "final_status": "confirmed",
+        "payment_currency": "CZK",
+        "payment_expiration": 1535644689,
+        "payment_gate": "zooz",
+        "payment_price": 2527,
+        "payment_token": "token",
+        "payment_token_created": 1535641989,
+        "podio_id": null,
+        "podio_payment_id": 923920196,
+        "price": 98.1,
+        "updated_at": 1535643259,
+        "user_agent": null,
+        "visitor_uniqid": null
+      },
+      {
+        "abid": 525269,
+        "bags": 0,
+        "bid": 8142828,
+        "booked": 1534844477,
+        "booked_at": "skypicker",
+        "category": "update_insurances",
+        "comment": null,
+        "created_at": 1534844476,
+        "credits_from_user": false,
+        "credits_payment_amount": 50.7,
+        "credits_transaction_id": null,
+        "data": {
+          "data": [
+            {
+              "insurance": "travel_basic",
+              "pid": 12431175,
+              "price": 49.05,
+              "product_num": "07"
+            }
+          ],
+          "ordered_by": "pax"
+        },
+        "expected_price": 0,
+        "final_status": "expired",
+        "payment_currency": "EUR",
+        "payment_expiration": 1550491847,
+        "payment_gate": "credits",
+        "payment_price": 0,
+        "payment_token": null,
+        "payment_token_created": null,
+        "podio_id": null,
+        "podio_payment_id": null,
+        "price": 50.7,
+        "updated_at": 1534930920,
+        "user_agent": null,
+        "visitor_uniqid": null
+      }
+    ],
+    "paid": {
+      "bags": 0,
+      "total": 216.35
+    }
+  },
+  "additional_contacts": [],
+  "airhelp_plus": [],
+  "arrival": {
+    "when": 0,
+    "where": {
+      "code": "YYT",
+      "name": "St. John s"
+    }
+  },
+  "assets": {
+    "additional": [
+      {
+        "abid": 535492,
+        "invoice": "https://booking-api.skypicker.com/invoices/invoice_2018_44408bddd0eb4966_8142828_535492.pdf"
+      },
+      {
+        "abid": 539010,
+        "invoice": "https://booking-api.skypicker.com/invoices/invoice_2018_2805647fd80e42eb_8142828_539010.pdf"
+      }
+    ],
+    "additional_bookings": {
+      "invoices": [
+        {
+          "abid": 539010,
+          "invoice": "https://skypicker-invoices.s3.amazonaws.com/invoice_2018_2805647fd80e42eb_8142828_539010.pdf",
+          "ru_invoice": null
+        },
+        {
+          "abid": 535492,
+          "invoice": "https://skypicker-invoices.s3.amazonaws.com/invoice_2018_44408bddd0eb4966_8142828_535492.pdf",
+          "ru_invoice": null
+        }
+      ]
+    },
+    "boardingPass": {
+      "SP4840089_6662289": null,
+      "SP4840089_6662290": null,
+      "SP5854620_7813367": null,
+      "SP6869477_7954345": null,
+      "SP6869480_8970042": null,
+      "all": null
+    },
+    "boarding_passes": {
+      "SP4840089_6662289": null,
+      "SP4840089_6662290": null,
+      "SP5854620_7813367": null,
+      "SP6869477_7954345": null,
+      "SP6869480_8970042": null,
+      "all": null
+    },
+    "en_confirmation_link": null,
+    "eticket": null,
+    "insurance": null,
+    "invoice": "https://skypicker-invoices.s3.amazonaws.com/invoice_2018_b56d03b7689c4149_8142828.pdf",
+    "ru_invoice": null,
+    "transfer_ticket": null
+  },
+  "auth_token": "token",
+  "bag_params": {
+    "hand2_height": null,
+    "hand2_length": null,
+    "hand2_note": "",
+    "hand2_weight": null,
+    "hand2_width": null,
+    "hand_height": 38,
+    "hand_length": 53,
+    "hand_note": "",
+    "hand_weight": 7,
+    "hand_width": 20,
+    "hold_height": null,
+    "hold_length": null,
+    "hold_weight": null,
+    "hold_width": null,
+    "note": ""
+  },
+  "baggages": {
+    "_available": {
+      "_info": "Temporary presentation, to be moved to Mambo",
+      "combinations": {
+        "hand_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0
+            ],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "infant"
+              ]
+            },
+            "indices": [],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          }
+        ],
+        "hold_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child",
+                "infant"
+              ]
+            },
+            "indices": [],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          }
+        ]
+      },
+      "definitions": {
+        "hand_bag": [
+          {
+            "category": "cabin_bag",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 0,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": null,
+              "height": 38,
+              "length": 53,
+              "weight": 7,
+              "width": 20
+            }
+          }
+        ],
+        "hold_bag": []
+      },
+      "passenger_combinations": {
+        "hand_bag": {
+          "12431174": -1,
+          "12431175": -1
+        },
+        "hold_bag": {
+          "12431174": 0,
+          "12431175": 0
+        }
+      }
+    },
+    "confirmed": [
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP6869477_7954345",
+        "flight_id": 18543501,
+        "index": 1,
+        "passenger_id": 12431174,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP4840089_6662290",
+        "flight_id": 18543502,
+        "index": 1,
+        "passenger_id": 12431174,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP4840089_6662289",
+        "flight_id": 18543503,
+        "index": 1,
+        "passenger_id": 12431174,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP5854620_7813367",
+        "flight_id": 18543504,
+        "index": 1,
+        "passenger_id": 12431174,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP6869480_8970042",
+        "flight_id": 18543505,
+        "index": 1,
+        "passenger_id": 12431174,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP6869477_7954345",
+        "flight_id": 18543501,
+        "index": 1,
+        "passenger_id": 12431175,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP4840089_6662290",
+        "flight_id": 18543502,
+        "index": 1,
+        "passenger_id": 12431175,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP4840089_6662289",
+        "flight_id": 18543503,
+        "index": 1,
+        "passenger_id": 12431175,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP5854620_7813367",
+        "flight_id": 18543504,
+        "index": 1,
+        "passenger_id": 12431175,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 38,
+          "id": 3633,
+          "length": 53,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 8142828,
+        "flight_fid": "SP6869480_8970042",
+        "flight_id": 18543505,
+        "index": 1,
+        "passenger_id": 12431175,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      }
+    ],
+    "pending": []
+  },
+  "bags": 0,
+  "bags_restrictions": {
+    "hands": {},
+    "holds": {}
+  },
+  "bid": 8142828,
+  "blocked": false,
+  "blockers": [],
+  "blue_ribbon_bags": [],
+  "booked_at": "skypicker",
+  "booking_token": "token",
+  "brand": "kiwicom",
+  "cancel_requested": null,
+  "card_payment": 1121,
+  "checkin": {
+    "merged_boarding_passes": [],
+    "segments": []
+  },
+  "checkin_deadline": 1538391600,
+  "config": {
+    "allowed_to_change": {
+      "assisted_refund": 48,
+      "bags": 36,
+      "documents": 48,
+      "documents_checkin": 24,
+      "extras": null,
+      "flights": 48,
+      "insurance_add": 24,
+      "insurance_change": 48,
+      "meals": 48,
+      "other": 4,
+      "passengers": 48,
+      "seating": null
+    },
+    "allowed_to_change_segments": true
+  },
+  "contact": {
+    "email": "reactnative@kiwi.com",
+    "phone": "+44 000",
+    "pid": 12431174
+  },
+  "created": 1534758440,
+  "credits_payment": 0,
+  "currency": "EUR",
+  "departure": {
+    "when": 0,
+    "where": {
+      "code": "MAD",
+      "name": "Madrid"
+    }
+  },
+  "disabled_bags_in_mmb": false,
+  "document_options": {
+    "airport_checkin_price": 67,
+    "checkin_date": 1537306200,
+    "document_need": 2
+  },
+  "fast_track": [],
+  "flight_ids": [
+    "SP6869477_7954345",
+    "SP5854620_7813367",
+    "SP4840089_6662290",
+    "SP4840089_6662289",
+    "SP6869480_8970042"
+  ],
+  "flights": [
+    {
+      "airline": {
+        "checkin": 2,
+        "doing_online_checkin": 1,
+        "iata": "FR",
+        "name": "Ryanair",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1537485000,
+          "utc": 1537481400
+        },
+        "where": {
+          "city_id": "dublin_ie",
+          "code": "DUB",
+          "country": "IE",
+          "gate": null,
+          "name": "Dublin",
+          "station": "Dublin"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1537479000,
+          "utc": 1537471800
+        },
+        "where": {
+          "city_id": "madrid_es",
+          "code": "MAD",
+          "country": "ES",
+          "gate": null,
+          "name": "Madrid",
+          "station": "Adolfo Suárez Madrid–Barajas"
+        }
+      },
+      "flight_no": 7157,
+      "guarantee": false,
+      "guarantee_disclaimer": "",
+      "id": "SP5854620_7813367",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "FR",
+        "name": "Ryanair"
+      },
+      "reservation_number": null,
+      "return": 0,
+      "ticket_available_at": "2018-09-18",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 1,
+        "doing_online_checkin": 1,
+        "iata": "WS",
+        "name": "WestJet",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1537524060,
+          "utc": 1537533060
+        },
+        "where": {
+          "city_id": "st-johns_nl_ca",
+          "code": "YYT",
+          "country": "CA",
+          "gate": null,
+          "name": "St. John s",
+          "station": "St. John's International"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": true,
+      "departure": {
+        "when": {
+          "local": 1537518600,
+          "utc": 1537515000
+        },
+        "where": {
+          "city_id": "dublin_ie",
+          "code": "DUB",
+          "country": "IE",
+          "gate": null,
+          "name": "Dublin",
+          "station": "Dublin"
+        }
+      },
+      "flight_no": 17,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP6869477_7954345",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "WS",
+        "name": "WestJet"
+      },
+      "reservation_number": null,
+      "return": 0,
+      "ticket_available_at": "2018-09-20",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 1,
+        "doing_online_checkin": 1,
+        "iata": "WS",
+        "name": "WestJet",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1538429520,
+          "utc": 1538440320
+        },
+        "where": {
+          "city_id": "halifax_ns_ca",
+          "code": "YHZ",
+          "country": "CA",
+          "gate": null,
+          "name": "Halifax",
+          "station": "Halifax Stanfield International"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1538423700,
+          "utc": 1538432700
+        },
+        "where": {
+          "city_id": "st-johns_nl_ca",
+          "code": "YYT",
+          "country": "CA",
+          "gate": null,
+          "name": "St. John s",
+          "station": "St. John's International"
+        }
+      },
+      "flight_no": 3425,
+      "guarantee": false,
+      "guarantee_disclaimer": "",
+      "id": "SP4840089_6662289",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "WS",
+        "name": "WestJet"
+      },
+      "reservation_number": null,
+      "return": 1,
+      "ticket_available_at": "2018-09-30",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 1,
+        "doing_online_checkin": 1,
+        "iata": "WS",
+        "name": "WestJet",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1538468700,
+          "utc": 1538465100
+        },
+        "where": {
+          "city_id": "london_gb",
+          "code": "LGW",
+          "country": "GB",
+          "gate": null,
+          "name": "London",
+          "station": "Gatwick"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1538433300,
+          "utc": 1538444100
+        },
+        "where": {
+          "city_id": "halifax_ns_ca",
+          "code": "YHZ",
+          "country": "CA",
+          "gate": null,
+          "name": "Halifax",
+          "station": "Halifax Stanfield International"
+        }
+      },
+      "flight_no": 24,
+      "guarantee": false,
+      "guarantee_disclaimer": "",
+      "id": "SP4840089_6662290",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "WS",
+        "name": "WestJet"
+      },
+      "reservation_number": null,
+      "return": 1,
+      "ticket_available_at": "2018-09-30",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    },
+    {
+      "airline": {
+        "checkin": 30,
+        "doing_online_checkin": 1,
+        "iata": "U2",
+        "name": "easyJet",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1538494800,
+          "utc": 1538487600
+        },
+        "where": {
+          "city_id": "madrid_es",
+          "code": "MAD",
+          "country": "ES",
+          "gate": null,
+          "name": "Madrid",
+          "station": "Adolfo Suárez Madrid–Barajas"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": true,
+      "departure": {
+        "when": {
+          "local": 1538481900,
+          "utc": 1538478300
+        },
+        "where": {
+          "city_id": "london_gb",
+          "code": "LGW",
+          "country": "GB",
+          "gate": null,
+          "name": "London",
+          "station": "Gatwick"
+        }
+      },
+      "flight_no": 8277,
+      "guarantee": true,
+      "guarantee_disclaimer": "",
+      "id": "SP6869480_8970042",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "U2",
+        "name": "easyJet"
+      },
+      "reservation_number": null,
+      "return": 1,
+      "ticket_available_at": "2018-09-02",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    }
+  ],
+  "flights_history": {},
+  "grace_period_fee": null,
+  "grade": {
+    "id": "B",
+    "time": 60
+  },
+  "holidays_package": null,
+  "infants_conditions": {
+    "hand_weight": 0,
+    "trolley": false
+  },
+  "insurance_price": {
+    "skygold": 69.2,
+    "skysilver": 49.05,
+    "travel_basic": 49.05,
+    "travel_plus": 69.2
+  },
+  "is_tat_informed": false,
+  "max_bags": 1,
+  "meals": [],
+  "netverify_requested": true,
+  "original_currency": "EUR",
+  "original_flight_price": 1121,
+  "original_method": [
+    "zooz"
+  ],
+  "original_price": 1121,
+  "paid_over": "zooz",
+  "passenger_changes": [],
+  "passenger_ids": [
+    12431175,
+    12431174
+  ],
+  "passengers": [
+    {
+      "bags": 0,
+      "birthday": "1985-01-01",
+      "category": "adult",
+      "contact_passenger": false,
+      "firstname": "TEST",
+      "hand_bags": {},
+      "id": 12431175,
+      "insurance_price": null,
+      "insurance_type": "none",
+      "lastname": "TEST",
+      "nationality": "gb",
+      "pkpass": null,
+      "priority_boarding": {
+        "SP4840089_6662289": {
+          "is_ordered": false
+        },
+        "SP4840089_6662290": {
+          "is_ordered": false
+        },
+        "SP5854620_7813367": {
+          "is_ordered": false
+        },
+        "SP6869477_7954345": {
+          "is_ordered": false
+        },
+        "SP6869480_8970042": {
+          "is_ordered": false
+        }
+      },
+      "title": "mr",
+      "travel_document": {
+        "cardno": "123241341",
+        "expiration": 1534896000
+      }
+    },
+    {
+      "bags": 0,
+      "birthday": "1985-01-01",
+      "category": "adult",
+      "contact_passenger": true,
+      "firstname": "TEST",
+      "hand_bags": {},
+      "id": 12431174,
+      "insurance_price": null,
+      "insurance_type": "none",
+      "lastname": "TEST",
+      "nationality": "gb",
+      "pkpass": null,
+      "priority_boarding": {
+        "SP4840089_6662289": {
+          "is_ordered": false
+        },
+        "SP4840089_6662290": {
+          "is_ordered": false
+        },
+        "SP5854620_7813367": {
+          "is_ordered": false
+        },
+        "SP6869477_7954345": {
+          "is_ordered": false
+        },
+        "SP6869480_8970042": {
+          "is_ordered": false
+        }
+      },
+      "title": "mr",
+      "travel_document": {
+        "cardno": null,
+        "expiration": null
+      }
+    }
+  ],
+  "pending_additional_services": [],
+  "pending_flight_changes": [],
+  "pending_refunds": [],
+  "pending_requests": [],
+  "price": 1121,
+  "prices": [
+    "30.59",
+    "236.88",
+    "85.52",
+    "85.52",
+    "38.81"
+  ],
+  "refund_methods": [
+    "credits",
+    "zooz"
+  ],
+  "refund_options": [],
+  "refundable_options": {
+    "refundable_until": 1537299000,
+    "requested": null
+  },
+  "reservations_details": {},
+  "route": [
+    "MAD",
+    "YYT"
+  ],
+  "sandbox": 1,
+  "segments": null,
+  "service_package": null,
+  "status": "confirmed",
+  "ticketing_allowed": null,
+  "transfer_ids": [],
+  "transfers": [],
+  "travel_info": {
+    "12431174": {
+      "0": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "IE",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521648082
+          },
+          {
+            "country": "GB",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1550489147
+          },
+          {
+            "country": "ES",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521647405
+          }
+        ]
+      }
+    },
+    "12431175": {
+      "0": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "IE",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521648082
+          },
+          {
+            "country": "GB",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1550489147
+          },
+          {
+            "country": "ES",
+            "info": "",
+            "status": "ok",
+            "timestamp": 1521647405
+          }
+        ]
+      }
+    }
+  }
+}

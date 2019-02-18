@@ -1,0 +1,563 @@
+{
+  "additional_bags_prices": {
+    "1": 30
+  },
+  "additional_bookings": {
+    "details": [],
+    "paid": {
+      "bags": 0,
+      "total": 0
+    }
+  },
+  "additional_contacts": [],
+  "airhelp_plus": [],
+  "arrival": {
+    "when": 0,
+    "where": {
+      "code": "LPA",
+      "name": "Las Palmas"
+    }
+  },
+  "assets": {
+    "additional": [],
+    "additional_bookings": {
+      "invoices": []
+    },
+    "boardingPass": {
+      "SP8913037_11291936": null,
+      "all": null
+    },
+    "boarding_passes": {
+      "SP8913037_11291936": null,
+      "all": null
+    },
+    "en_confirmation_link": null,
+    "eticket": null,
+    "insurance": null,
+    "invoice": null,
+    "ru_invoice": null,
+    "transfer_ticket": null
+  },
+  "auth_token": "token",
+  "bag_params": {
+    "hand2_height": 25,
+    "hand2_length": 40,
+    "hand2_note": "",
+    "hand2_weight": 5,
+    "hand2_width": 20,
+    "hand_height": 40,
+    "hand_length": 55,
+    "hand_note": "",
+    "hand_weight": 10,
+    "hand_width": 20,
+    "hold_height": 119,
+    "hold_length": 119,
+    "hold_weight": 20,
+    "hold_width": 81,
+    "note": ""
+  },
+  "baggages": {
+    "_available": {
+      "_info": "Temporary presentation, to be moved to Mambo",
+      "combinations": {
+        "hand_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0,
+              1
+            ],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "infant"
+              ]
+            },
+            "indices": [
+              2
+            ],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          }
+        ],
+        "hold_bag": [
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child",
+                "infant"
+              ]
+            },
+            "indices": [],
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "service": 0,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0
+            ],
+            "price": {
+              "amount": 30,
+              "base": 25,
+              "currency": "EUR",
+              "service": 5,
+              "service_flat": 0
+            }
+          },
+          {
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "indices": [
+              0,
+              0
+            ],
+            "price": {
+              "amount": 60,
+              "base": 50,
+              "currency": "EUR",
+              "service": 10,
+              "service_flat": 0
+            }
+          }
+        ]
+      },
+      "definitions": {
+        "hand_bag": [
+          {
+            "category": "personal_item",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 0,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": null,
+              "height": 25,
+              "length": 40,
+              "weight": 5,
+              "width": 20
+            }
+          },
+          {
+            "category": "cabin_bag",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 0,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": null,
+              "height": 40,
+              "length": 55,
+              "weight": 10,
+              "width": 20
+            }
+          },
+          {
+            "category": "cabin_bag",
+            "conditions": {
+              "passenger_groups": [
+                "infant"
+              ]
+            },
+            "price": {
+              "amount": 0,
+              "base": 0,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 0,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": null,
+              "height": 40,
+              "length": 55,
+              "weight": 5,
+              "width": 20
+            }
+          }
+        ],
+        "hold_bag": [
+          {
+            "category": "hold_bag",
+            "conditions": {
+              "passenger_groups": [
+                "adult",
+                "child"
+              ]
+            },
+            "price": {
+              "amount": 30,
+              "base": 25,
+              "currency": "EUR",
+              "merchant": null,
+              "service": 5,
+              "service_flat": 0
+            },
+            "restrictions": {
+              "dimensions_sum": null,
+              "height": 119,
+              "length": 119,
+              "weight": 20,
+              "width": 81
+            }
+          }
+        ]
+      },
+      "passenger_combinations": {
+        "hand_bag": {
+          "13888735": 0
+        },
+        "hold_bag": {
+          "13888735": 1
+        }
+      }
+    },
+    "confirmed": [
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "hold_bag",
+          "height": 119,
+          "id": 796,
+          "length": 119,
+          "weight": 20,
+          "width": 81
+        },
+        "booking_id": 16463447,
+        "flight_fid": "SP8913037_11291936",
+        "flight_id": 20902018,
+        "index": 1,
+        "passenger_id": 13888735,
+        "price": {
+          "amount": 25,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "cabin_bag",
+          "height": 40,
+          "id": 1687,
+          "length": 55,
+          "weight": 10,
+          "width": 20
+        },
+        "booking_id": 16463447,
+        "flight_fid": "SP8913037_11291936",
+        "flight_id": 20902018,
+        "index": 1,
+        "passenger_id": 13888735,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      },
+      {
+        "additional_booking_id": null,
+        "bag": {
+          "category": "personal_item",
+          "height": 25,
+          "id": 2651,
+          "length": 40,
+          "weight": 5,
+          "width": 20
+        },
+        "booking_id": 16463447,
+        "flight_fid": "SP8913037_11291936",
+        "flight_id": 20902018,
+        "index": 1,
+        "passenger_id": 13888735,
+        "price": {
+          "amount": 0,
+          "currency": "EUR"
+        }
+      }
+    ],
+    "pending": []
+  },
+  "bags": 1,
+  "bags_restrictions": {
+    "hands": {},
+    "holds": {
+      "1": {
+        "height": 38,
+        "length": 70,
+        "weight": 20,
+        "width": 50
+      }
+    }
+  },
+  "bid": 16463447,
+  "blocked": false,
+  "blockers": [],
+  "blue_ribbon_bags": [],
+  "booked_at": "skypicker",
+  "booking_token": "bookingtoken",
+  "brand": "kiwicom",
+  "cancel_requested": null,
+  "card_payment": 73.5,
+  "checkin": {
+    "merged_boarding_passes": [],
+    "segments": []
+  },
+  "checkin_deadline": 1543316400,
+  "config": {
+    "allowed_to_change": {
+      "assisted_refund": 48,
+      "bags": 36,
+      "documents": 48,
+      "documents_checkin": 24,
+      "extras": null,
+      "flights": 48,
+      "insurance_add": 24,
+      "insurance_change": 48,
+      "meals": 48,
+      "other": 4,
+      "passengers": 48,
+      "seating": null
+    },
+    "allowed_to_change_segments": true
+  },
+  "contact": {
+    "email": "reactnative@kiwi.com",
+    "phone": "+355 9786896996",
+    "pid": 13888735
+  },
+  "created": 1540820718,
+  "credits_payment": 0,
+  "currency": "EUR",
+  "departure": {
+    "when": 0,
+    "where": {
+      "code": "VIE",
+      "name": "Vienna"
+    }
+  },
+  "disabled_bags_in_mmb": false,
+  "document_options": {
+    "airport_checkin_price": 55,
+    "checkin_date": 1543234800,
+    "document_need": 2
+  },
+  "fast_track": [],
+  "flight_ids": [
+    "SP8913037_11291936"
+  ],
+  "flights": [
+    {
+      "airline": {
+        "checkin": 2,
+        "doing_online_checkin": 1,
+        "iata": "OE",
+        "name": "LaudaMotion",
+        "payment_card_copy_eticket_requirement": false
+      },
+      "arrival": {
+        "when": {
+          "local": 1543422000,
+          "utc": 1543422000
+        },
+        "where": {
+          "city_id": "las-palmas_es",
+          "code": "LPA",
+          "country": "ES",
+          "gate": null,
+          "name": "Las Palmas",
+          "station": "Gran Canaria"
+        }
+      },
+      "bags_recheck_disclaimer": "",
+      "bags_recheck_required": false,
+      "departure": {
+        "when": {
+          "local": 1543407600,
+          "utc": 1543404000
+        },
+        "where": {
+          "city_id": "vienna_at",
+          "code": "VIE",
+          "country": "AT",
+          "gate": null,
+          "name": "Vienna",
+          "station": "Vienna International"
+        }
+      },
+      "flight_no": 2570,
+      "guarantee": false,
+      "guarantee_disclaimer": "",
+      "id": "SP8913037_11291936",
+      "is_cabin_bags_with_priority_boarding": false,
+      "operating_airline": {
+        "iata": "OE",
+        "name": "LaudaMotion"
+      },
+      "reservation_number": null,
+      "return": 0,
+      "ticket_available_at": "2018-11-26",
+      "vehicle": {
+        "manufacturer": null,
+        "meal": null,
+        "model": null,
+        "seats": null,
+        "type": "aircraft"
+      }
+    }
+  ],
+  "flights_history": {},
+  "grace_period_fee": null,
+  "grade": {
+    "id": "B",
+    "time": 60
+  },
+  "holidays_package": null,
+  "infants_conditions": {
+    "hand_weight": 5,
+    "trolley": true
+  },
+  "insurance_price": {
+    "skygold": 44.25,
+    "skysilver": 18,
+    "travel_basic": 18,
+    "travel_plus": 44.25
+  },
+  "is_tat_informed": false,
+  "max_bags": 1,
+  "meals": [],
+  "netverify_requested": true,
+  "original_currency": "CZK",
+  "original_flight_price": null,
+  "original_method": [
+    "zooz"
+  ],
+  "original_price": 1900,
+  "paid_over": "zooz",
+  "passenger_changes": [],
+  "passenger_ids": [
+    13888735
+  ],
+  "passengers": [
+    {
+      "bags": 1,
+      "birthday": "1990-05-20",
+      "category": "adult",
+      "contact_passenger": true,
+      "firstname": "test",
+      "hand_bags": {},
+      "id": 13888735,
+      "insurance_price": null,
+      "insurance_type": "none",
+      "lastname": "test",
+      "nationality": "al",
+      "pkpass": null,
+      "priority_boarding": {
+        "SP8913037_11291936": {
+          "is_ordered": false
+        }
+      },
+      "title": "ms",
+      "travel_document": {
+        "cardno": null,
+        "expiration": null
+      }
+    }
+  ],
+  "pending_additional_services": [],
+  "pending_flight_changes": [],
+  "pending_refunds": [],
+  "pending_requests": [],
+  "price": 73.5,
+  "prices": [
+    "39.89"
+  ],
+  "refund_methods": [
+    "credits",
+    "zooz"
+  ],
+  "refund_options": [],
+  "refundable_options": {
+    "refundable_until": 1543231200,
+    "requested": null
+  },
+  "reservations_details": {},
+  "route": [
+    "VIE",
+    "LPA"
+  ],
+  "sandbox": 1,
+  "segments": null,
+  "service_package": null,
+  "status": "closed",
+  "ticketing_allowed": null,
+  "transfer_ids": [],
+  "transfers": [],
+  "travel_info": {
+    "13888735": {
+      "0": {
+        "health": [],
+        "passport": [],
+        "visa": [
+          {
+            "country": "ES",
+            "info": "",
+            "status": "critical",
+            "timestamp": 1525784898
+          }
+        ]
+      }
+    }
+  }
+}

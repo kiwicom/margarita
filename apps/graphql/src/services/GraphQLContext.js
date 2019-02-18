@@ -13,12 +13,14 @@ import createLocationLoader, {
 } from '../dataloaders/Locationsloader';
 import bookingsLoader from '../dataloaders/bookingsLoader/BookingsLoader';
 import type { Booking } from '../dataloaders/bookingsLoader/BookingFlowTypes';
+import bookingDetailLoader from '../dataloaders/bookingsLoader/BookingDetailLoader';
 
 export type GraphqlContextType = {|
   +dataLoader: {|
     +itineraries: DataLoader<ItinerariesSearchParameters, ItinerariesType[]>,
     +locations: DataLoader<LocationInput, Locations>,
     +bookings: {| +load: () => Booking[] |},
+    +booking: {| +load: (id: string) => Booking |},
   |},
 |};
 
@@ -28,6 +30,7 @@ export default function createContext() {
       itineraries: createItinerariesLoader(),
       locations: createLocationLoader(),
       bookings: bookingsLoader,
+      booking: bookingDetailLoader,
     },
   };
 }
