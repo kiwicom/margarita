@@ -27,6 +27,9 @@ export default new GraphQLObjectType({
         _: mixed,
         { dataLoader }: GraphqlContextType,
       ) => {
+        if (code == null) {
+          return null;
+        }
         const airport = await dataLoader.locations.load({ code });
         if (!Array.isArray(airport) || airport.length < 1) {
           return null;

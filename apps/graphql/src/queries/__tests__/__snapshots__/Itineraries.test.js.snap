@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works 1`] = `
+Object {
+  "data": Object {
+    "searchItineraries": Object {
+      "edges": Array [
+        Object {
+          "node": Object {
+            "sectors": Array [
+              Object {
+                "arrival": Object {
+                  "cityId": "LIM",
+                  "cityName": "Lima",
+                  "time": Object {
+                    "local": "2019-03-03T22:00:00.000Z",
+                    "utc": "2019-03-04T03:00:00.000Z",
+                  },
+                },
+                "departure": Object {
+                  "cityId": "OSL",
+                  "cityName": "Oslo",
+                  "time": Object {
+                    "local": "2019-03-01T18:45:00.000Z",
+                    "utc": "2019-03-01T17:45:00.000Z",
+                  },
+                },
+                "duration": 3435,
+                "segments": Array [
+                  Object {
+                    "arrival": Object {
+                      "cityId": "ARN",
+                      "cityName": "Stockholm",
+                      "time": Object {
+                        "local": "2019-03-01T19:50:00.000Z",
+                        "utc": "2019-03-01T18:50:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "OSL",
+                      "cityName": "Oslo",
+                      "time": Object {
+                        "local": "2019-03-01T18:45:00.000Z",
+                        "utc": "2019-03-01T17:45:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "FLL",
+                      "cityName": "Fort Lauderdale",
+                      "time": Object {
+                        "local": "2019-03-02T19:45:00.000Z",
+                        "utc": "2019-03-03T00:45:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "ARN",
+                      "cityName": "Stockholm",
+                      "time": Object {
+                        "local": "2019-03-02T15:15:00.000Z",
+                        "utc": "2019-03-02T14:15:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "MDE",
+                      "cityName": "Medellín",
+                      "time": Object {
+                        "local": "2019-03-03T02:24:00.000Z",
+                        "utc": "2019-03-03T07:24:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "FLL",
+                      "cityName": "Fort Lauderdale",
+                      "time": Object {
+                        "local": "2019-03-02T22:55:00.000Z",
+                        "utc": "2019-03-03T03:55:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "LIM",
+                      "cityName": "Lima",
+                      "time": Object {
+                        "local": "2019-03-03T22:00:00.000Z",
+                        "utc": "2019-03-04T03:00:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "MDE",
+                      "cityName": "Medellín",
+                      "time": Object {
+                        "local": "2019-03-03T18:50:00.000Z",
+                        "utc": "2019-03-03T23:50:00.000Z",
+                      },
+                    },
+                  },
+                ],
+                "stopoverDuration": null,
+              },
+            ],
+          },
+        },
+        Object {
+          "node": Object {
+            "sectors": Array [
+              Object {
+                "arrival": Object {
+                  "cityId": "LIM",
+                  "cityName": "Lima",
+                  "time": Object {
+                    "local": "2019-03-03T12:11:00.000Z",
+                    "utc": "2019-03-03T17:11:00.000Z",
+                  },
+                },
+                "departure": Object {
+                  "cityId": "OSL",
+                  "cityName": "Oslo",
+                  "time": Object {
+                    "local": "2019-03-01T17:45:00.000Z",
+                    "utc": "2019-03-01T16:45:00.000Z",
+                  },
+                },
+                "duration": 2906,
+                "segments": Array [
+                  Object {
+                    "arrival": Object {
+                      "cityId": "JFK",
+                      "cityName": "New York",
+                      "time": Object {
+                        "local": "2019-03-01T20:00:00.000Z",
+                        "utc": "2019-03-02T01:00:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "OSL",
+                      "cityName": "Oslo",
+                      "time": Object {
+                        "local": "2019-03-01T17:45:00.000Z",
+                        "utc": "2019-03-01T16:45:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "MCO",
+                      "cityName": "Orlando",
+                      "time": Object {
+                        "local": "2019-03-02T11:01:00.000Z",
+                        "utc": "2019-03-02T16:01:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "JFK",
+                      "cityName": "New York",
+                      "time": Object {
+                        "local": "2019-03-02T08:05:00.000Z",
+                        "utc": "2019-03-02T13:05:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "BOG",
+                      "cityName": "Bogotá",
+                      "time": Object {
+                        "local": "2019-03-03T00:15:00.000Z",
+                        "utc": "2019-03-03T05:15:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "MCO",
+                      "cityName": "Orlando",
+                      "time": Object {
+                        "local": "2019-03-02T19:55:00.000Z",
+                        "utc": "2019-03-03T00:55:00.000Z",
+                      },
+                    },
+                  },
+                  Object {
+                    "arrival": Object {
+                      "cityId": "LIM",
+                      "cityName": "Lima",
+                      "time": Object {
+                        "local": "2019-03-03T12:11:00.000Z",
+                        "utc": "2019-03-03T17:11:00.000Z",
+                      },
+                    },
+                    "departure": Object {
+                      "cityId": "BOG",
+                      "cityName": "Bogotá",
+                      "time": Object {
+                        "local": "2019-03-03T09:00:00.000Z",
+                        "utc": "2019-03-03T14:00:00.000Z",
+                      },
+                    },
+                  },
+                ],
+                "stopoverDuration": null,
+              },
+            ],
+          },
+        },
+      ],
+    },
+  },
+}
+`;

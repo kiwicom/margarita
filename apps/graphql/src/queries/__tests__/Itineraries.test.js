@@ -1,15 +1,40 @@
 // @flow
 
 import { graphql } from '../../services/TestingTools';
+import Itineraries from '../../datasets/Itineraries.json';
 
+const routeStopFragment = `
+cityName
+cityId
+time {
+  utc
+  local
+}`;
 it('works', async () => {
-  fetch.mockResponseOnce(JSON.stringify({ data: [{ id: 1 }, { id: 2 }] }));
+  fetch.mockResponseOnce(JSON.stringify(Itineraries));
   const query = `query($input: ItinerariesSearchInput!) {
 
     searchItineraries(input: $input) {
       edges {
         node {
-          id
+          sectors {
+            duration
+            stopoverDuration
+            segments {
+              departure {
+                ${routeStopFragment}
+              }
+              arrival {
+                ${routeStopFragment}
+              }
+            }
+            departure {
+              ${routeStopFragment}
+            }
+            arrival {
+              ${routeStopFragment}
+            }
+          }
         }
       }
     }
@@ -21,24 +46,5 @@ it('works', async () => {
         dateFrom: '2019-05-15',
       },
     }),
-  ).toMatchInlineSnapshot(`
-Object {
-  "data": Object {
-    "searchItineraries": Object {
-      "edges": Array [
-        Object {
-          "node": Object {
-            "id": "SXRpbmVyYXJ5OjE=",
-          },
-        },
-        Object {
-          "node": Object {
-            "id": "SXRpbmVyYXJ5OjI=",
-          },
-        },
-      ],
-    },
-  },
-}
-`);
+  ).toMatchSnapshot();
 });

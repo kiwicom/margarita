@@ -30,15 +30,15 @@ export type BookingApiResult = {|
 |};
 
 type RouteStopTime = {|
-  +utc: number,
-  +local: number,
+  +utc: ?(number | string),
+  +local: ?(number | string),
 |};
 
 export type RouteStop = {|
-  +cityName: string,
-  +cityId: string,
-  +time: RouteStopTime,
-  +code: string,
+  +cityName: ?string,
+  +cityId: ?string,
+  +time: ?RouteStopTime,
+  +code: ?string,
 |};
 
 export type Segment = {|
