@@ -1,5 +1,5 @@
 {
-  "name": "margarita-voyager",
+  "name": "@kiwicom/margarita-voyager",
   "version": "0.1.0",
   "private": true,
   "dependencies": {},
@@ -7,7 +7,6 @@
     "serve": "^10.1.2"
   },
   "scripts": {
-    "start": "yarn serve -s public -p 3002",
-    "deploy": "now public -n margarita-graphql-voyager"
+    "start": "yarn serve -s public -p 3002"
   }
 }
