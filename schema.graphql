@@ -297,13 +297,11 @@ type RouteStop {
 }
 
 type Sector {
-  arrivalTime: DateType
-  departureTime: DateType
-  destination: Location
   duration: Int
-  origin: Location
   segments: [Segment]
   stopoverDuration: Int
+  departure: RouteStop
+  arrival: RouteStop
 }
 
 type Segment {
@@ -320,6 +318,8 @@ type Segment {
   origin: Location
   transporter: Transporter
   vehicle: Vehicle
+  departure: RouteStop
+  arrival: RouteStop
 }
 
 type Transporter {

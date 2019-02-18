@@ -8,47 +8,24 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type FlightTimes$ref = any;
 type LocalTime$ref = any;
-type LocationName$ref = any;
 type Transporters$ref = any;
+type TripCities$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripSector$ref: FragmentReference;
 export type TripSector = {|
   +duration: ?number,
-  +arrivalTime: ?{|
+  +departure: ?{|
     +$fragmentRefs: LocalTime$ref
   |},
-  +departureTime: ?{|
-    +$fragmentRefs: LocalTime$ref
-  |},
-  +destination: ?{|
-    +$fragmentRefs: LocationName$ref
-  |},
-  +origin: ?{|
-    +$fragmentRefs: LocationName$ref
-  |},
-  +$fragmentRefs: Transporters$ref,
+  +$fragmentRefs: FlightTimes$ref & TripCities$ref & Transporters$ref,
   +$refType: TripSector$ref,
 |};
 */
 
 
-const node/*: ReaderFragment*/ = (function(){
-var v0 = [
-  {
-    "kind": "FragmentSpread",
-    "name": "LocalTime",
-    "args": null
-  }
-],
-v1 = [
-  {
-    "kind": "FragmentSpread",
-    "name": "LocationName",
-    "args": null
-  }
-];
-return {
+const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "TripSector",
   "type": "Sector",
@@ -63,44 +40,30 @@ return {
       "storageKey": null
     },
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "arrivalTime",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "DateType",
-      "plural": false,
-      "selections": (v0/*: any*/)
+      "kind": "FragmentSpread",
+      "name": "FlightTimes",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TripCities",
+      "args": null
     },
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "departureTime",
+      "name": "departure",
       "storageKey": null,
       "args": null,
-      "concreteType": "DateType",
+      "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v0/*: any*/)
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "destination",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Location",
-      "plural": false,
-      "selections": (v1/*: any*/)
-    },
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "origin",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Location",
-      "plural": false,
-      "selections": (v1/*: any*/)
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "LocalTime",
+          "args": null
+        }
+      ]
     },
     {
       "kind": "FragmentSpread",
@@ -109,7 +72,6 @@ return {
     }
   ]
 };
-})();
 // prettier-ignore
-(node/*: any*/).hash = '77833f7e41242862f9c4ad923909f6bb';
+(node/*: any*/).hash = '3ea02fcf25ec9f5f4fc17d21b2026659';
 module.exports = node;

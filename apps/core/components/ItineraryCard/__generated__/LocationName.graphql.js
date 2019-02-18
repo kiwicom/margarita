@@ -11,7 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationName$ref: FragmentReference;
 export type LocationName = {|
-  +name: ?string,
+  +cityName: ?string,
   +$refType: LocationName$ref,
 |};
 */
@@ -20,19 +20,19 @@ export type LocationName = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "LocationName",
-  "type": "Location",
+  "type": "RouteStop",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "name",
+      "name": "cityName",
       "args": null,
       "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'e64b67b336396c440d470d30438d54c6';
+(node/*: any*/).hash = '616e0746da3a0b6b920de5887af6afe4';
 module.exports = node;

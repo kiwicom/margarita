@@ -14,7 +14,7 @@ type Props = {|
 function LocationName({ data, style }: Props) {
   return (
     <Text style={style} numberOfLines={1}>
-      {data?.name}
+      {data?.cityName}
     </Text>
   );
 }
@@ -22,8 +22,8 @@ function LocationName({ data, style }: Props) {
 export default createFragmentContainer(
   LocationName,
   graphql`
-    fragment LocationName on Location {
-      name
+    fragment LocationName on RouteStop {
+      cityName
     }
   `,
 );
