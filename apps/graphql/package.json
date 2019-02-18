@@ -9,7 +9,7 @@
     "@kiwicom/graphql-global-id": "^0.4.0",
     "@kiwicom/graphql-utils": "^0.4.0",
     "@kiwicom/test-utils": "^0.3.1",
-    "apollo-server": "^2.2.6",
+    "apollo-server": "^2.4.2",
     "apollo-server-lambda": "^2.3.1",
     "buffer": "^5.2.1",
     "chalk": "^2.4.2",
