@@ -1,0 +1,36 @@
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
+query search {
+  searchItineraries(input: {travelFrom: "OSL", travelTo: "LIM", dateFrom: "2019-03-01", dateTo: "2019-03-01", returnDateFrom: "2019-04-01", returnDateTo: "2019-04-01"}, first: 1) {
+    edges {
+      node {
+        id
+        sectors {
+          duration
+          stopoverDuration
+          segments {
+            departure {
+              ...RouteStopFragment
+            }
+            arrival {
+              ...RouteStopFragment
+            }
+          }
+          departure {
+            ...RouteStopFragment
+          }
+          arrival {
+            ...RouteStopFragment
+          }
+        }
+      }
+    }
+  }
+}
