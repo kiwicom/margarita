@@ -4,16 +4,9 @@ import * as React from 'react';
 import { ShareBooking } from '@kiwicom/margarita-core';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { type NavigationScreenProp } from 'react-navigation';
 import { MMB_BACKGROUND_COLOR } from '@kiwicom/margarita-config';
 
-type NavigationParams = {||};
-
-type Props = {|
-  +navigation: NavigationScreenProp<NavigationParams>,
-|};
-
-export default function ShareBookingScreen(props: Props) {
+export default function ShareBookingScreen() {
   return (
     <View style={styles.container}>
       <ShareBooking />

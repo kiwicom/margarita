@@ -1,16 +1,12 @@
 // @flow
 
 import { ApolloServer } from 'apollo-server-lambda';
-import type { APIGatewayEvent, Context, ProxyCallback } from 'flow-aws-lambda';
+import type { APIGatewayEvent, Context } from 'flow-aws-lambda';
 
 import createContext from '../src/services/GraphQLContext';
 import schema from '../src/Schema';
 
-const server = (
-  event: APIGatewayEvent,
-  context: Context,
-  callback: ProxyCallback,
-) =>
+const server = (event: APIGatewayEvent, context: Context) =>
   new ApolloServer({
     schema,
     context: {
@@ -31,15 +27,11 @@ const server = (
     introspection: true,
   });
 
-exports.handler = (
-  event: APIGatewayEvent,
-  context: Context,
-  callback: ProxyCallback,
-) => {
-  return server(event, context, callback).createHandler({
+exports.handler = (event: APIGatewayEvent, context: Context) => {
+  return server(event, context).createHandler({
     cors: {
       origin: '*',
       allowedHeaders: ['Content-Type', 'Origin', 'Accept'],
     },
-  })(event, context, callback);
+  })(event, context);
 };

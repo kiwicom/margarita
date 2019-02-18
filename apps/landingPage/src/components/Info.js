@@ -11,11 +11,7 @@ import search from '../images/search.png';
 import { documentation } from '../../../../linksConfig';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
-type Props = {|
-  +iframeWidth: number,
-|};
-
-export default function Info({ iframeWidth }: Props) {
+export default function Info() {
   return (
     <Container id="features">
       <Header>

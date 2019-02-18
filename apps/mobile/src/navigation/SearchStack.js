@@ -25,6 +25,11 @@ const StackNavigator: NavigationNavigator<
     },
     [Routes.RESULTS]: {
       screen: ResultsScreen,
+      navigationOptions: {
+        headerTintColor: defaultTokens.paletteProductNormal,
+        headerTitleStyle: { color: defaultTokens.colorTextPrimary },
+        headerTransparent: true,
+      },
     },
   }: NavigationRouteConfigMap),
   {

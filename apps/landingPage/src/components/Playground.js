@@ -6,12 +6,7 @@ import styled from 'styled-components';
 
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
-type Props = {|
-  +iframeWidth: number,
-  +iframeHeight: number,
-|};
-
-export default function Playground({ iframeWidth, iframeHeight }: Props) {
+export default function Playground() {
   return (
     <PlaygroundContainer id="playground">
       <HeadingContainer>
