@@ -29,7 +29,7 @@ const sanitizeBookings = (
   });
 };
 
-const getTypeSpecificData = (
+export const getTypeSpecificData = (
   booking: BookingApiResult,
   type: $PropertyType<Booking, 'type'>,
 ): TypeSpecificData => {
@@ -124,7 +124,7 @@ const sanitizeFlight = (flight: ApiFlight): Segment => {
   };
 };
 
-const detectType = (booking: BookingApiResult) => {
+export const detectType = (booking: BookingApiResult) => {
   if (Array.isArray(booking.flights)) {
     const isReturn = booking.flights.some(flight => flight.return === 1);
 

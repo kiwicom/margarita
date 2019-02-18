@@ -24,9 +24,8 @@ const BookingDetail = {
     args: Args,
     { dataLoader }: GraphqlContextType,
   ) => {
-    const bookingId = parseInt(fromGlobalId(args.id), 10);
-    const bookings = dataLoader.bookings.load();
-    const booking = bookings.find(booking => booking.bid === bookingId);
+    const bookingId = fromGlobalId(args.id);
+    const booking = dataLoader.booking.load(bookingId);
 
     return booking;
   },
