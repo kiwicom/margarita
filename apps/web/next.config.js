@@ -18,7 +18,7 @@ module.exports = withImages(
       '@kiwicom/margarita-navigation',
       '@kiwicom/margarita-config',
     ],
-    webpack: (config, { isServer, defaultLoaders }) => {
+    webpack: (config, { isServer }) => {
       // Bundle Analyzer
       if (ANALYZE) {
         const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');

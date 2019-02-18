@@ -17,7 +17,7 @@ export default function BadgesContainer({ badges }: Props) {
   return (
     <ScrollView horizontal style={styles.container}>
       <>
-        {badges.map((badge, index) => (
+        {badges.map(badge => (
           <Badge key={badge.id} type={badge.type} style={styles.badge}>
             {badge.children}
           </Badge>

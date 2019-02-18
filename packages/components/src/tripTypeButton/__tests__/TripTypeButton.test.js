@@ -16,7 +16,7 @@ const { getByType } = render(
 
 it('should execute onPress method', () => {
   fireEvent(getByType(TouchableWithoutFeedback), 'press');
-  expect(onPress).toHaveBeenCalled();
+  expect(onPress).toHaveBeenCalledWith(undefined);
 });
 
 it('renders', () => {

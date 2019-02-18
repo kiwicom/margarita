@@ -12,7 +12,6 @@ import createContext from './services/GraphQLContext';
 export default function executeTestQuery(
   query: string,
   variables: ?Object,
-  acceptLanguage: ?string,
 ): Promise<Object> {
   return originalGraphQL(schema, query, null, createContext(), variables);
 }

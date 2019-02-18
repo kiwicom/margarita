@@ -44,9 +44,9 @@ type Props = {
 };
 
 class Search extends React.Component<Props> {
-  static navigationOptions = ({ navigation }: any) => ({
+  static navigationOptions = {
     header: null,
-  });
+  };
 
   handleSubmitPress = () => {
     const {
