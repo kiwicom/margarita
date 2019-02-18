@@ -12,8 +12,8 @@ type TripSector$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type RenderTripSectorItem$ref: FragmentReference;
 export type RenderTripSectorItem = {|
-  +origin: ?{|
-    +name: ?string
+  +departure: ?{|
+    +cityName: ?string
   |},
   +stopoverDuration: ?number,
   +$fragmentRefs: TripSector$ref,
@@ -32,16 +32,16 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "origin",
+      "name": "departure",
       "storageKey": null,
       "args": null,
-      "concreteType": "Location",
+      "concreteType": "RouteStop",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "name",
+          "name": "cityName",
           "args": null,
           "storageKey": null
         }
@@ -62,5 +62,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'fe9a0db94e6b5919db76f432dc7cb185';
+(node/*: any*/).hash = 'd2eed3f170f8607793aadb9cb562f5f4';
 module.exports = node;

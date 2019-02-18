@@ -9,8 +9,9 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
 import Transporters from './Transporters';
+import FlightTimes from './FlightTimes';
 import LocalTime from './LocalTime';
-import LocationName from './LocationName';
+import TripCities from './TripCities';
 import { getDuration, dateFormat } from './TripSectorHelpers';
 
 type Props = {|
@@ -26,23 +27,15 @@ function TripSector({ data }: Props) {
         </View>
         <View style={styles.tripItems}>
           <View style={styles.time}>
-            <LocalTime
-              data={data?.departureTime}
-              style={styles.highlightedText}
-            />
-            <LocalTime
-              data={data?.arrivalTime}
-              style={styles.highlightedText}
-            />
+            <FlightTimes data={data} />
           </View>
           <TimelineArrow />
           <View style={styles.places}>
-            <LocationName data={data?.origin} style={styles.text} />
-            <LocationName data={data?.destination} style={styles.text} />
+            <TripCities data={data} />
           </View>
           <View style={styles.infoItems}>
             <LocalTime
-              data={data?.departureTime}
+              data={data?.departure}
               dateFormat={dateFormat}
               style={[styles.text, styles.info]}
             />
@@ -61,19 +54,12 @@ export default createFragmentContainer(
   graphql`
     fragment TripSector on Sector {
       duration
-      arrivalTime {
+      ...FlightTimes
+      ...TripCities
+      departure {
         ...LocalTime
-      }
-      departureTime {
-        ...LocalTime
-      }
-      destination {
-        ...LocationName
       }
       duration
-      origin {
-        ...LocationName
-      }
       ...Transporters
     }
   `,
@@ -101,12 +87,6 @@ const styles = StyleSheet.create({
   time: {
     minWidth: 65,
     paddingHorizontal: 10,
-  },
-  highlightedText: {
-    fontWeight: 'bold',
-    fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-    color: defaultTokens.colorTextAttention,
-    padding: 5,
   },
   places: {
     flex: 1,

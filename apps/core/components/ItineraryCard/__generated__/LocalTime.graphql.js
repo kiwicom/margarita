@@ -11,7 +11,9 @@ import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocalTime$ref: FragmentReference;
 export type LocalTime = {|
-  +local: ?any,
+  +time: ?{|
+    +local: ?any
+  |},
   +$refType: LocalTime$ref,
 |};
 */
@@ -20,19 +22,30 @@ export type LocalTime = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "LocalTime",
-  "type": "DateType",
+  "type": "RouteStop",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "ScalarField",
+      "kind": "LinkedField",
       "alias": null,
-      "name": "local",
+      "name": "time",
+      "storageKey": null,
       "args": null,
-      "storageKey": null
+      "concreteType": "DateType",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "local",
+          "args": null,
+          "storageKey": null
+        }
+      ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '36fe71295f3b1629d313284e3231fe11';
+(node/*: any*/).hash = 'e76cd93daee02f2f588a72ce05437504';
 module.exports = node;

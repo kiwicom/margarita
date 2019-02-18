@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7999e847d347a9c9fcb3abc5ade9803b
+ * @relayHash bc512264467ecb103e9eaa87bffe4a0f
  */
 
 /* eslint-disable */
@@ -68,9 +68,8 @@ fragment ItineraryCard on Itinerary {
 }
 
 fragment RenderTripSectorItem on Sector {
-  origin {
-    name
-    id
+  departure {
+    cityName
   }
   stopoverDuration
   ...TripSector
@@ -78,29 +77,36 @@ fragment RenderTripSectorItem on Sector {
 
 fragment TripSector on Sector {
   duration
-  arrivalTime {
+  ...FlightTimes
+  ...TripCities
+  departure {
     ...LocalTime
-  }
-  departureTime {
-    ...LocalTime
-  }
-  destination {
-    ...LocationName
-    id
-  }
-  origin {
-    ...LocationName
-    id
   }
   ...Transporters
 }
 
-fragment LocalTime on DateType {
-  local
+fragment FlightTimes on Sector {
+  arrival {
+    ...LocalTime
+  }
+  departure {
+    ...LocalTime
+  }
 }
 
-fragment LocationName on Location {
-  name
+fragment TripCities on Sector {
+  arrival {
+    ...LocationName
+  }
+  departure {
+    ...LocationName
+  }
+}
+
+fragment LocalTime on RouteStop {
+  time {
+    local
+  }
 }
 
 fragment Transporters on Sector {
@@ -110,6 +116,10 @@ fragment Transporters on Sector {
     }
     id
   }
+}
+
+fragment LocationName on RouteStop {
+  cityName
 }
 */
 
@@ -140,23 +150,28 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "cityName",
   "args": null,
   "storageKey": null
 },
-v4 = [
-  (v3/*: any*/),
-  (v2/*: any*/)
-],
-v5 = [
-  {
-    "kind": "ScalarField",
-    "alias": null,
-    "name": "local",
-    "args": null,
-    "storageKey": null
-  }
-];
+v4 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "time",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "DateType",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "local",
+      "args": null,
+      "storageKey": null
+    }
+  ]
+};
 return {
   "kind": "Request",
   "fragment": {
@@ -229,12 +244,15 @@ return {
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "origin",
+                        "name": "departure",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "Location",
+                        "concreteType": "RouteStop",
                         "plural": false,
-                        "selections": (v4/*: any*/)
+                        "selections": [
+                          (v3/*: any*/),
+                          (v4/*: any*/)
+                        ]
                       },
                       {
                         "kind": "ScalarField",
@@ -253,32 +271,15 @@ return {
                       {
                         "kind": "LinkedField",
                         "alias": null,
-                        "name": "arrivalTime",
+                        "name": "arrival",
                         "storageKey": null,
                         "args": null,
-                        "concreteType": "DateType",
+                        "concreteType": "RouteStop",
                         "plural": false,
-                        "selections": (v5/*: any*/)
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "departureTime",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "DateType",
-                        "plural": false,
-                        "selections": (v5/*: any*/)
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "destination",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "Location",
-                        "plural": false,
-                        "selections": (v4/*: any*/)
+                        "selections": [
+                          (v4/*: any*/),
+                          (v3/*: any*/)
+                        ]
                       },
                       {
                         "kind": "LinkedField",
@@ -298,7 +299,13 @@ return {
                             "concreteType": "Transporter",
                             "plural": false,
                             "selections": [
-                              (v3/*: any*/)
+                              {
+                                "kind": "ScalarField",
+                                "alias": null,
+                                "name": "name",
+                                "args": null,
+                                "storageKey": null
+                              }
                             ]
                           },
                           (v2/*: any*/)
@@ -343,7 +350,7 @@ return {
     "operationKind": "query",
     "name": "ResultsQuery",
     "id": null,
-    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  origin {\n    name\n    id\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  arrivalTime {\n    ...LocalTime\n  }\n  departureTime {\n    ...LocalTime\n  }\n  destination {\n    ...LocationName\n    id\n  }\n  origin {\n    ...LocationName\n    id\n  }\n  ...Transporters\n}\n\nfragment LocalTime on DateType {\n  local\n}\n\nfragment LocationName on Location {\n  name\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n",
+    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  departure {\n    cityName\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  ...FlightTimes\n  ...TripCities\n  departure {\n    ...LocalTime\n  }\n  ...Transporters\n}\n\nfragment FlightTimes on Sector {\n  arrival {\n    ...LocalTime\n  }\n  departure {\n    ...LocalTime\n  }\n}\n\nfragment TripCities on Sector {\n  arrival {\n    ...LocationName\n  }\n  departure {\n    ...LocationName\n  }\n}\n\nfragment LocalTime on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName on RouteStop {\n  cityName\n}\n",
     "metadata": {}
   }
 };

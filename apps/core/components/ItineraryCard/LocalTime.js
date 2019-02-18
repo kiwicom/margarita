@@ -16,7 +16,7 @@ type Props = {|
 function LocalTime({ data, dateFormat, style }: Props) {
   return (
     <Text style={style} numberOfLines={1}>
-      {getFormattedDate(data?.local, dateFormat)}
+      {getFormattedDate(data?.time?.local, dateFormat)}
     </Text>
   );
 }
@@ -24,8 +24,10 @@ function LocalTime({ data, dateFormat, style }: Props) {
 export default createFragmentContainer(
   LocalTime,
   graphql`
-    fragment LocalTime on DateType {
-      local
+    fragment LocalTime on RouteStop {
+      time {
+        local
+      }
     }
   `,
 );
