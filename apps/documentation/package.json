@@ -1,0 +1,27 @@
+{
+  "name": "@kiwicom/margarita-docs",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "start": "next -p 1337",
+    "build": "next build && next export"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^0.15.0",
+    "mdx-docs": "^2.0.0-alpha.0",
+    "remark-autolink-headings": "^5.1.0",
+    "remark-emoji": "^2.0.2",
+    "remark-images": "^0.16.1",
+    "remark-slug": "^5.1.1",
+    "remark-unwrap-images": "^0.1.0"
+  },
+  "devDependencies": {
+    "@mdx-js/loader": "^0.16.6"
+  },
+  "peerDependencies": {
+    "next": ">= 7",
+    "next-images": ">=1",
+    "react": ">=16",
+    "react-dom": ">=16"
+  }
+}
