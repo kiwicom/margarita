@@ -1,14 +1,19 @@
 // @flow
 
 import * as DateFNS from 'date-fns';
+import { head, last } from 'ramda';
 
-import type { ApiRouteItem, Sector } from './ItinerariesloaderTypes';
+import type { ApiRouteItem, Sector, Segment } from './ItinerariesloaderTypes';
+import type { RouteStop } from './bookingsLoader/BookingFlowTypes';
 
 export const differenceInMinutes = (
   from: ?string | ?number,
   to: ?string | ?number,
 ) => {
-  return from && to ? DateFNS.differenceInMinutes(to, from) : null;
+  if (from == null || to == null) {
+    return null;
+  }
+  return DateFNS.differenceInMinutes(to, from);
 };
 
 export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
@@ -33,85 +38,145 @@ export const getItineraryType = (routes: ?Array<Array<string>>) => {
   return null;
 };
 
-export const sortRoute = (
-  segments: Array<ApiRouteItem>,
-): Array<ApiRouteItem> => {
-  return segments.slice(0).sort((segmentA, segmentB) => {
-    const a = segmentA.utc_departure && new Date(segmentA.utc_departure);
-    const b = segmentB.utc_departure && new Date(segmentB.utc_departure);
-    if (!a || !b) return 0;
-    return a < b ? -1 : a > b ? 1 : 0;
+/**
+ * This function converts route and routes data from REST API to well-structured Sectors with Segments.
+ * Sector = The whole part from source to destination, e.g Oslo -> Prague. A return trip will have 2 sectors
+ * and 1 way trip will have 1 sector. A multicity trip could have 2 or more sectors.
+ * Segment = A part of the sector. Segments could be Oslo -> Warzaw, Warzaw -> Prague
+ */
+export const mapSectors = (
+  routesList: ?(ApiRouteItem[]),
+  routeCodes: ?Array<string[]>,
+): ?Array<Sector> => {
+  if (routesList == null || routeCodes == null) {
+    return null;
+  }
+  const sectors = [];
+  let currentSectorIndex = 0;
+  let currentRouteCode = head(routeCodes) ?? [];
+
+  let { currentSector, currentArrival } = sanitizeSector(
+    routesList,
+    currentRouteCode,
+  );
+
+  sectors[currentSectorIndex] = currentSector;
+
+  routesList.forEach((route: ApiRouteItem) => {
+    const segment = sanitizeSegment(route);
+
+    if (sectors[currentSectorIndex].segments) {
+      sectors[currentSectorIndex].segments.push(segment);
+    }
+
+    if (route.flyTo === currentArrival?.flyTo) {
+      currentSectorIndex++;
+      // $FlowExpectedError: We already tested that routeCodes != null
+      currentRouteCode = routeCodes[currentSectorIndex];
+
+      if (currentRouteCode == null) {
+        return;
+      }
+      // $FlowExpectedError: We already tested that routesList != null
+      const nextSector = sanitizeSector(routesList, currentRouteCode);
+      currentArrival = nextSector.currentArrival;
+      sectors[currentSectorIndex] = nextSector.currentSector;
+    }
   });
+
+  return sectors;
 };
 
-// This function converts route and routes data from REST API to well-structured Sectors with Segments
-export const mapSectors = (
-  routesList: ?Array<ApiRouteItem>,
-  routesMap: ?Array<Array<string>>,
-): ?Array<Sector> => {
-  if (routesList && routesMap) {
-    let routesSubList = sortRoute(routesList);
-    return (
-      routesMap
-        // In first map function looks for corresponding values between schema of the sectors (routeMap) and list of the segments (routeList). When end of the sector is matched it's removed from the original segment list and added to new array
-        .map(routeMap => {
-          const routeListEndSectorIndex = routesSubList.findIndex(
-            routeItem => routeItem.flyTo === routeMap[1],
-          );
-          const tempRoutesSubList = routesSubList;
-          routesSubList = tempRoutesSubList.slice(routeListEndSectorIndex + 1);
-          return tempRoutesSubList.slice(0, routeListEndSectorIndex + 1);
-        })
+const sanitizeSector = (
+  routesList: ApiRouteItem[],
+  currentRouteCode: string[],
+) => {
+  const currentRouteArrivalCode = last(currentRouteCode) ?? '';
+  const currentRouteDepartureCode = head(currentRouteCode) ?? '';
 
-        // Second map is used for mapping proper GraphQL structure
-        .map(sector => {
-          const firstSegment = sector[0];
-          const lastSegment = sector[sector.length - 1];
-          return {
-            destination: mapLocation(lastSegment.flyTo, lastSegment.cityTo),
-            origin: mapLocation(firstSegment.flyFrom, firstSegment.cityFrom),
-            arrivalTime: mapDate(
-              lastSegment.local_arrival,
-              lastSegment.utc_arrival,
-            ),
-            departureTime: mapDate(
-              firstSegment.local_departure,
-              firstSegment.utc_departure,
-            ),
-            duration: differenceInMinutes(
-              firstSegment.utc_departure,
-              lastSegment.utc_arrival,
-            ),
-            segments: sector.map(segment => {
-              return {
-                arrivalTime: mapDate(
-                  segment.local_arrival,
-                  segment.utc_arrival,
-                ),
-                departureTime: mapDate(
-                  segment.local_departure,
-                  segment.utc_departure,
-                ),
-                destination: mapLocation(segment.flyTo, segment.cityTo),
-                duration: differenceInMinutes(
-                  segment.utc_departure,
-                  segment.utc_arrival,
-                ),
-                id: segment.id,
-                origin: mapLocation(segment.flyFrom, segment.cityFrom),
-                transporter: mapTransporter(segment.airline),
-                vehicle: mapVehicle(
-                  segment.vehicle_type,
-                  String(segment.flight_no),
-                ),
-              };
-            }),
-            stopoverDuration: null,
-          };
-        })
-    );
-  }
-  return null;
+  const currentDeparture: ?ApiRouteItem = routesList.find(
+    route => route.flyFrom === currentRouteDepartureCode,
+  );
+
+  const currentArrival: ?ApiRouteItem = routesList.find(
+    route => route.flyTo === currentRouteArrivalCode,
+  );
+
+  const departure = sanitizeRouteStop(
+    apiRouteItemToDeparture(currentDeparture),
+  );
+  const arrival = sanitizeRouteStop(apiRouteItemToArrival(currentArrival));
+
+  const currentSector = {
+    departure,
+    arrival,
+    arrivalTime: {
+      local: arrival.time?.local,
+      utc: arrival.time?.utc,
+    },
+    departureTime: {
+      local: departure.time?.local,
+      utc: departure.time?.utc,
+    },
+    duration: differenceInMinutes(departure.time?.utc, arrival.time?.utc),
+    destination: mapLocation(currentArrival?.flyTo, currentArrival?.cityTo),
+    origin: mapLocation(currentDeparture?.flyFrom, currentDeparture?.cityFrom),
+    segments: [],
+    stopoverDuration: 0,
+  };
+
+  return {
+    currentArrival,
+    currentSector,
+  };
+};
+
+const apiRouteItemToArrival = (routeItem: ?ApiRouteItem) => ({
+  cityName: routeItem?.cityTo,
+  cityId: routeItem?.flyTo,
+  time: {
+    utc: routeItem?.utc_arrival,
+    local: routeItem?.local_arrival,
+  },
+});
+
+const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem) => ({
+  cityName: routeItem?.cityFrom,
+  cityId: routeItem?.flyFrom,
+  time: {
+    utc: routeItem?.utc_departure,
+    local: routeItem?.local_departure,
+  },
+});
+
+const sanitizeRouteStop = ({
+  cityName,
+  cityId,
+  time,
+}: {|
+  +cityName: ?string,
+  +cityId: ?string,
+  +time: {| +utc: ?string, +local: ?string |},
+|}): RouteStop => ({
+  cityName,
+  cityId,
+  time,
+  code: cityId,
+});
+
+const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
+  return {
+    arrivalTime: mapDate(segment?.local_arrival, segment?.utc_arrival),
+    departureTime: mapDate(segment?.local_departure, segment?.utc_departure),
+    destination: mapLocation(segment?.flyTo, segment?.cityTo),
+    duration: differenceInMinutes(segment?.utc_departure, segment?.utc_arrival),
+    id: segment?.id,
+    origin: mapLocation(segment?.flyFrom, segment?.cityFrom),
+    transporter: mapTransporter(segment?.airline),
+    vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
+    departure: sanitizeRouteStop(apiRouteItemToDeparture(segment)),
+    arrival: sanitizeRouteStop(apiRouteItemToArrival(segment)),
+  };
 };
 
 export const mapDate = (local: ?string, utc: ?string) => {

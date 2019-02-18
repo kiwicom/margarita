@@ -27,8 +27,8 @@ export default new GraphQLObjectType({
     duration: {
       type: GraphQLInt,
       resolve: ({ departure, arrival }: Booking) => {
-        const departureRawTime = departure?.time.utc ?? 0;
-        const arrivalRawTime = arrival?.time.utc ?? 0;
+        const departureRawTime = parseInt(departure?.time?.utc, 10) ?? 0;
+        const arrivalRawTime = parseInt(arrival?.time?.utc, 10) ?? 0;
         const departureTimeMs = departureRawTime * 1000;
         const arrivalTimeMs = arrivalRawTime * 1000;
 

@@ -1,0 +1,385 @@
+{
+  "ref_tasks": [],
+  "search_params": {
+    "to_type": "airport",
+    "flyFrom_type": "airport",
+    "seats": {
+      "infants": 0,
+      "passengers": 1,
+      "adults": 1,
+      "children": 0
+    }
+  },
+  "currency_rate": 1,
+  "refresh": [],
+  "connections": [],
+  "currency": "EUR",
+  "del": null,
+  "all_airlines": [],
+  "time": 1,
+  "all_stopover_airports": [],
+  "data": [
+    {
+      "quality": 994.998825,
+      "flyTo": "LIM",
+      "deep_link": "https://mock.url",
+      "nightsInDest": null,
+      "airlines": [
+        "ET",
+        "B6",
+        "VV",
+        "DY"
+      ],
+      "pnr_count": 4,
+      "baglimit": {},
+      "has_airport_change": false,
+      "distance": 11079.54,
+      "type_flights": [
+        "lcc-VV",
+        "lcc-ET",
+        "lcc-DY",
+        "lcc-B6"
+      ],
+      "bags_price": {},
+      "flyFrom": "OSL",
+      "cityFrom": "Oslo",
+      "booking_token": "token-1",
+      "duration": {
+        "total": 206100,
+        "return": 0,
+        "departure": 206100
+      },
+      "id": "3991227978220119_0|3915361603311185_0|8776301839864123_0|12345316616561678_0",
+      "conversion": {
+        "EUR": 525
+      },
+      "countryTo": {
+        "code": "PE",
+        "name": "Peru"
+      },
+      "price": 525,
+      "routes": [
+        [
+          "OSL",
+          "LIM"
+        ]
+      ],
+      "cityTo": "Lima",
+      "transfers": [],
+      "route": [
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": false,
+          "return": 0,
+          "flight_no": 715,
+          "operating_carrier": "ET",
+          "cityTo": "Stockholm",
+          "vehicle_type": "aircraft",
+          "flyFrom": "OSL",
+          "id": "3991227978220119_0",
+          "equipment": "77L",
+          "combination_id": "3991227978220119",
+          "fare_family": "",
+          "flyTo": "ARN",
+          "airline": "ET",
+          "fare_classes": "E",
+          "cityFrom": "Oslo",
+          "last_seen": "2019-02-15T13:18:40.000Z",
+          "guarantee": false,
+          "fare_basis": "EOWNO",
+          "local_arrival": "2019-03-01T19:50:00.000Z",
+          "utc_arrival": "2019-03-01T18:50:00.000Z",
+          "local_departure": "2019-03-01T18:45:00.000Z",
+          "utc_departure": "2019-03-01T17:45:00.000Z"
+        },
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": false,
+          "return": 0,
+          "flight_no": 7035,
+          "operating_carrier": null,
+          "cityTo": "Fort Lauderdale",
+          "vehicle_type": "aircraft",
+          "flyFrom": "ARN",
+          "id": "3915361603311185_0",
+          "equipment": null,
+          "combination_id": "3915361603311185",
+          "fare_family": "",
+          "flyTo": "FLL",
+          "airline": "DY",
+          "fare_classes": "",
+          "cityFrom": "Stockholm",
+          "last_seen": "2019-02-15T12:16:02.000Z",
+          "guarantee": true,
+          "fare_basis": "",
+          "local_arrival": "2019-03-02T19:45:00.000Z",
+          "utc_arrival": "2019-03-03T00:45:00.000Z",
+          "local_departure": "2019-03-02T15:15:00.000Z",
+          "utc_departure": "2019-03-02T14:15:00.000Z"
+        },
+        {
+          "refresh_timestamp": "2019-02-15T14:47:37.000Z",
+          "bags_recheck_required": false,
+          "return": 0,
+          "flight_no": 41,
+          "operating_carrier": "B6",
+          "cityTo": "Medellín",
+          "vehicle_type": "aircraft",
+          "flyFrom": "FLL",
+          "id": "8776301839864123_0",
+          "equipment": "320",
+          "combination_id": "8776301839864123",
+          "fare_family": "",
+          "flyTo": "MDE",
+          "airline": "B6",
+          "fare_classes": "",
+          "cityFrom": "Fort Lauderdale",
+          "last_seen": "2019-02-15T14:47:37.000Z",
+          "guarantee": true,
+          "fare_basis": "",
+          "local_arrival": "2019-03-03T02:24:00.000Z",
+          "utc_arrival": "2019-03-03T07:24:00.000Z",
+          "local_departure": "2019-03-02T22:55:00.000Z",
+          "utc_departure": "2019-03-03T03:55:00.000Z"
+        },
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": false,
+          "return": 0,
+          "flight_no": 441,
+          "operating_carrier": "VV",
+          "cityTo": "Lima",
+          "vehicle_type": "aircraft",
+          "flyFrom": "MDE",
+          "id": "12345316616561678_0",
+          "equipment": "Non",
+          "combination_id": "12345316616561678",
+          "fare_family": "",
+          "flyTo": "LIM",
+          "airline": "VV",
+          "fare_classes": "",
+          "cityFrom": "Medellín",
+          "last_seen": "2019-02-15T12:41:52.000Z",
+          "guarantee": true,
+          "fare_basis": "",
+          "local_arrival": "2019-03-03T22:00:00.000Z",
+          "utc_arrival": "2019-03-04T03:00:00.000Z",
+          "local_departure": "2019-03-03T18:50:00.000Z",
+          "utc_departure": "2019-03-03T23:50:00.000Z"
+        }
+      ],
+      "baggage": {},
+      "facilitated_booking_available": false,
+      "countryFrom": {
+        "code": "NO",
+        "name": "Norway"
+      },
+      "local_arrival": "2019-03-03T22:00:00.000Z",
+      "utc_arrival": "2019-03-04T03:00:00.000Z",
+      "local_departure": "2019-03-01T18:45:00.000Z",
+      "utc_departure": "2019-03-01T17:45:00.000Z"
+    },
+    {
+      "quality": 941.465668,
+      "flyTo": "LIM",
+      "deep_link": "https://mock.url2",
+      "nightsInDest": null,
+      "airlines": [
+        "VH",
+        "DL",
+        "NK",
+        "DY"
+      ],
+      "pnr_count": 4,
+      "baglimit": {
+        "hold_weight": 18
+      },
+      "has_airport_change": false,
+      "distance": 11079.54,
+      "type_flights": [
+        "GDS-r",
+        "lcc-NK",
+        "lcc-DY",
+        "lcc-VH"
+      ],
+      "bags_price": {
+        "1": 165.65
+      },
+      "flyFrom": "OSL",
+      "booking_token": "token-2",
+      "cityFrom": "Oslo",
+      "duration": {
+        "total": 174360,
+        "return": 0,
+        "departure": 174360
+      },
+      "id": "3923058182037843_0|16669696135344215_0|10000058272100155_0|19795607481891218_0",
+      "conversion": {
+        "EUR": 542
+      },
+      "countryTo": {
+        "code": "PE",
+        "name": "Peru"
+      },
+      "price": 542,
+      "routes": [
+        [
+          "OSL",
+          "LIM"
+        ]
+      ],
+      "cityTo": "Lima",
+      "transfers": [],
+      "route": [
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": false,
+          "return": 0,
+          "flight_no": 7001,
+          "operating_carrier": null,
+          "cityTo": "New York",
+          "vehicle_type": "aircraft",
+          "flyFrom": "OSL",
+          "id": "3923058182037843_0",
+          "equipment": null,
+          "combination_id": "3923058182037843",
+          "fare_family": "",
+          "flyTo": "JFK",
+          "airline": "DY",
+          "fare_classes": "",
+          "cityFrom": "Oslo",
+          "last_seen": "2019-02-15T12:58:48.000Z",
+          "guarantee": false,
+          "fare_basis": "",
+          "local_arrival": "2019-03-01T20:00:00.000Z",
+          "utc_arrival": "2019-03-02T01:00:00.000Z",
+          "local_departure": "2019-03-01T17:45:00.000Z",
+          "utc_departure": "2019-03-01T16:45:00.000Z"
+        },
+        {
+          "refresh_timestamp": "2019-02-15T14:15:41.000Z",
+          "bags_recheck_required": true,
+          "return": 0,
+          "flight_no": 2244,
+          "operating_carrier": "DL",
+          "cityTo": "Orlando",
+          "vehicle_type": "aircraft",
+          "flyFrom": "JFK",
+          "id": "16669696135344215_0",
+          "equipment": "321",
+          "combination_id": "16669696135344215",
+          "fare_family": "",
+          "flyTo": "MCO",
+          "airline": "DL",
+          "fare_classes": "E",
+          "cityFrom": "New York",
+          "last_seen": "2019-02-15T14:15:41.000Z",
+          "guarantee": true,
+          "fare_basis": "VAUSA0BP",
+          "local_arrival": "2019-03-02T11:01:00.000Z",
+          "utc_arrival": "2019-03-02T16:01:00.000Z",
+          "local_departure": "2019-03-02T08:05:00.000Z",
+          "utc_departure": "2019-03-02T13:05:00.000Z"
+        },
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": true,
+          "return": 0,
+          "flight_no": 1921,
+          "operating_carrier": null,
+          "cityTo": "Bogotá",
+          "vehicle_type": "aircraft",
+          "flyFrom": "MCO",
+          "id": "10000058272100155_0",
+          "equipment": null,
+          "combination_id": "10000058272100155",
+          "fare_family": "",
+          "flyTo": "BOG",
+          "airline": "NK",
+          "fare_classes": "U",
+          "cityFrom": "Orlando",
+          "last_seen": "2019-02-15T08:09:42.000Z",
+          "guarantee": true,
+          "fare_basis": "UA14NR",
+          "local_arrival": "2019-03-03T00:15:00.000Z",
+          "utc_arrival": "2019-03-03T05:15:00.000Z",
+          "local_departure": "2019-03-02T19:55:00.000Z",
+          "utc_departure": "2019-03-03T00:55:00.000Z"
+        },
+        {
+          "refresh_timestamp": "1970-01-01T00:00:00.000Z",
+          "bags_recheck_required": true,
+          "return": 0,
+          "flight_no": 328,
+          "operating_carrier": null,
+          "cityTo": "Lima",
+          "vehicle_type": "aircraft",
+          "flyFrom": "BOG",
+          "id": "19795607481891218_0",
+          "equipment": null,
+          "combination_id": "19795607481891218",
+          "fare_family": "",
+          "flyTo": "LIM",
+          "airline": "VH",
+          "fare_classes": "",
+          "cityFrom": "Bogotá",
+          "last_seen": "2019-02-15T12:54:00.000Z",
+          "guarantee": true,
+          "fare_basis": "",
+          "local_arrival": "2019-03-03T12:11:00.000Z",
+          "utc_arrival": "2019-03-03T17:11:00.000Z",
+          "local_departure": "2019-03-03T09:00:00.000Z",
+          "utc_departure": "2019-03-03T14:00:00.000Z"
+        }
+      ],
+      "baggage": {
+        "hold": [
+          {
+            "weight": 18,
+            "price": 165.65,
+            "dimensions_sum": 156,
+            "height": 52,
+            "width": 26,
+            "length": 78,
+            "tier": "1"
+          },
+          {
+            "weight": 36,
+            "price": 398.56,
+            "dimensions_sum": 156,
+            "height": 52,
+            "width": 26,
+            "length": 78,
+            "tier": "3"
+          },
+          {
+            "weight": 20,
+            "price": 226.85,
+            "dimensions_sum": 156,
+            "height": 52,
+            "width": 26,
+            "length": 78,
+            "tier": "2"
+          }
+        ],
+        "personal_item": {
+          "width": 10,
+          "price": 0,
+          "length": 33,
+          "weight": 3,
+          "height": 25
+        }
+      },
+      "facilitated_booking_available": false,
+      "countryFrom": {
+        "code": "NO",
+        "name": "Norway"
+      },
+      "local_arrival": "2019-03-03T12:11:00.000Z",
+      "utc_arrival": "2019-03-03T17:11:00.000Z",
+      "local_departure": "2019-03-01T17:45:00.000Z",
+      "utc_departure": "2019-03-01T16:45:00.000Z"
+    }
+  ],
+  "search_id": "365557ea-6145-41da-8789-7f0f78a02453"
+}

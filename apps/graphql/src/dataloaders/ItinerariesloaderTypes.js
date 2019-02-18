@@ -1,6 +1,7 @@
 // @flow
 
 import { type Location } from './LocationsloaderTypes';
+import type { RouteStop } from './bookingsLoader/BookingFlowTypes';
 
 export type ItinerariesSearchParameters = {|
   +travelFrom: string,
@@ -22,8 +23,8 @@ export type Price = {|
 |};
 
 export type Time = {|
-  +local: ?string,
-  +utc: ?string,
+  +local: ?(string | number),
+  +utc: ?(string | number),
 |};
 
 export type Transporter = {|
@@ -44,6 +45,8 @@ export type Segment = {|
   +origin: ?Location,
   +transporter: ?Transporter,
   +vehicle: ?Vehicle,
+  +arrival: ?RouteStop,
+  +departure: ?RouteStop,
 |};
 
 export type Sector = {|
@@ -54,6 +57,8 @@ export type Sector = {|
   +origin: ?Location,
   +segments: ?Array<Segment>,
   +stopoverDuration: number | null,
+  +departure: RouteStop,
+  +arrival: RouteStop,
 |};
 
 export type ItinerariesType = {|
