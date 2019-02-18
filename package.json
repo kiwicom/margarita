@@ -25,7 +25,8 @@
     "storybook:mobile": "yarn concurrently \"yarn workspace @kiwicom/margarita-mobile start\" \"yarn workspace @kiwicom/margarita-components storybook:mobile\"",
     "prestorybook:mobile": "sed -i'' 's/STORYBOOK=false/STORYBOOK=true/g' .env; yarn workspace @kiwicom/margarita-components rnstl",
     "poststorybook:mobile": "sed -i'' 's/STORYBOOK=true/STORYBOOK=false/g' .env",
-    "voyager": "yarn workspace @kiwicom/margarita-voyager start"
+    "voyager": "yarn workspace @kiwicom/margarita-voyager start",
+    "docs": "yarn workspace @kiwicom/margarita-docs start"
   },
   "private": true,
   "workspaces": [
