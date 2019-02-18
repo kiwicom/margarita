@@ -16,23 +16,25 @@ import type {
 const sanitizeBookings = (
   bookings: $ReadOnlyArray<BookingApiResult>,
 ): $ReadOnlyArray<Booking> => {
-  return bookings.map(booking => {
-    const type = detectType(booking);
-    const typeSpecificData = getTypeSpecificData(booking, type);
-    const passengers = sanitizePassengers(booking);
-    return {
-      bid: booking.bid,
-      status: booking.status,
-      passengerCount: booking.passengers.length,
-      contact: {
-        email: booking.contact.email,
-        phone: booking.contact.phone,
-      },
-      passengers,
-      type,
-      ...typeSpecificData,
-    };
-  });
+  return bookings.map(sanitizeBooking);
+};
+
+export const sanitizeBooking = (booking: BookingApiResult) => {
+  const type = detectType(booking);
+  const typeSpecificData = getTypeSpecificData(booking, type);
+  const passengers = sanitizePassengers(booking);
+  return {
+    bid: booking.bid,
+    status: booking.status,
+    passengerCount: booking.passengers.length,
+    contact: {
+      email: booking.contact.email,
+      phone: booking.contact.phone,
+    },
+    passengers,
+    type,
+    ...typeSpecificData,
+  };
 };
 
 const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
@@ -51,7 +53,7 @@ const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
     };
   });
 
-export const getTypeSpecificData = (
+const getTypeSpecificData = (
   booking: BookingApiResult,
   type: $PropertyType<Booking, 'type'>,
 ): TypeSpecificData => {
@@ -146,7 +148,7 @@ const sanitizeFlight = (flight: ApiFlight): Segment => {
   };
 };
 
-export const detectType = (booking: BookingApiResult) => {
+const detectType = (booking: BookingApiResult) => {
   if (Array.isArray(booking.flights)) {
     const isReturn = booking.flights.some(flight => flight.return === 1);
 
