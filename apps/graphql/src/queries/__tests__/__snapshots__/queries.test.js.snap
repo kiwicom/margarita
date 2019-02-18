@@ -252,3 +252,154 @@ fragment TripFragment on Trip {
   }
 }
 `;
+
+exports[`matches expected output: Itineraries.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+fragment RouteStopFragment on RouteStop {
+  cityName
+  cityId
+  time {
+    utc
+    local
+  }
+}
+
+query search {
+  searchItineraries(input: {travelFrom: "OSL", travelTo: "LIM", dateFrom: "2019-03-01", dateTo: "2019-03-01", returnDateFrom: "2019-04-01", returnDateTo: "2019-04-01"}, first: 1) {
+    edges {
+      node {
+        id
+        sectors {
+          duration
+          stopoverDuration
+          segments {
+            departure {
+              ...RouteStopFragment
+            }
+            arrival {
+              ...RouteStopFragment
+            }
+          }
+          departure {
+            ...RouteStopFragment
+          }
+          arrival {
+            ...RouteStopFragment
+          }
+        }
+      }
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "searchItineraries": {
+      "edges": [
+        {
+          "node": {
+            "id": "SXRpbmVyYXJ5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
+            "sectors": [
+              {
+                "duration": 3435,
+                "stopoverDuration": null,
+                "segments": [
+                  {
+                    "departure": {
+                      "cityName": "Oslo",
+                      "cityId": "OSL",
+                      "time": {
+                        "utc": "2019-03-01T17:45:00.000Z",
+                        "local": "2019-03-01T18:45:00.000Z"
+                      }
+                    },
+                    "arrival": {
+                      "cityName": "Stockholm",
+                      "cityId": "ARN",
+                      "time": {
+                        "utc": "2019-03-01T18:50:00.000Z",
+                        "local": "2019-03-01T19:50:00.000Z"
+                      }
+                    }
+                  },
+                  {
+                    "departure": {
+                      "cityName": "Stockholm",
+                      "cityId": "ARN",
+                      "time": {
+                        "utc": "2019-03-02T14:15:00.000Z",
+                        "local": "2019-03-02T15:15:00.000Z"
+                      }
+                    },
+                    "arrival": {
+                      "cityName": "Fort Lauderdale",
+                      "cityId": "FLL",
+                      "time": {
+                        "utc": "2019-03-03T00:45:00.000Z",
+                        "local": "2019-03-02T19:45:00.000Z"
+                      }
+                    }
+                  },
+                  {
+                    "departure": {
+                      "cityName": "Fort Lauderdale",
+                      "cityId": "FLL",
+                      "time": {
+                        "utc": "2019-03-03T03:55:00.000Z",
+                        "local": "2019-03-02T22:55:00.000Z"
+                      }
+                    },
+                    "arrival": {
+                      "cityName": "Medellín",
+                      "cityId": "MDE",
+                      "time": {
+                        "utc": "2019-03-03T07:24:00.000Z",
+                        "local": "2019-03-03T02:24:00.000Z"
+                      }
+                    }
+                  },
+                  {
+                    "departure": {
+                      "cityName": "Medellín",
+                      "cityId": "MDE",
+                      "time": {
+                        "utc": "2019-03-03T23:50:00.000Z",
+                        "local": "2019-03-03T18:50:00.000Z"
+                      }
+                    },
+                    "arrival": {
+                      "cityName": "Lima",
+                      "cityId": "LIM",
+                      "time": {
+                        "utc": "2019-03-04T03:00:00.000Z",
+                        "local": "2019-03-03T22:00:00.000Z"
+                      }
+                    }
+                  }
+                ],
+                "departure": {
+                  "cityName": "Oslo",
+                  "cityId": "OSL",
+                  "time": {
+                    "utc": "2019-03-01T17:45:00.000Z",
+                    "local": "2019-03-01T18:45:00.000Z"
+                  }
+                },
+                "arrival": {
+                  "cityName": "Lima",
+                  "cityId": "LIM",
+                  "time": {
+                    "utc": "2019-03-04T03:00:00.000Z",
+                    "local": "2019-03-03T22:00:00.000Z"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+`;
