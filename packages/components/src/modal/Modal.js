@@ -1,34 +1,69 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { View, Platform } from 'react-native';
+import {
+  StyleSheet,
+  Modal as UCModal,
+  type StylePropType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { Device } from '@kiwicom/margarita-utils';
 
-import type { ModalProps } from './ModalTypes';
-import ModalWrap from './ModalWrap';
+export type Props = {|
+  +children: React.Node,
+  +isVisible: boolean,
+  +wrapperStyle?: StylePropType,
+  +onClose?: () => void,
+|};
 
-const Modal = (props: ModalProps) => {
+export default function Modal({
+  children,
+  isVisible,
+  wrapperStyle,
+  onClose,
+}: Props) {
+  const centerContent = Platform.OS === 'web' || Device.isTablet();
   return (
-    <>
-      {props.visible && <View style={styles.overlay} />}
-      <ModalWrap {...props} />
-    </>
+    <UCModal
+      isVisible={isVisible}
+      onRequestClose={onClose}
+      onBackdropPress={onClose}
+      style={[styles.modal, centerContent && styles.modalCentered]}
+    >
+      <View
+        style={[
+          styles.content,
+          centerContent && styles.contentCentered,
+          wrapperStyle,
+        ]}
+      >
+        {children}
+      </View>
+    </UCModal>
   );
-};
+}
 
 const styles = StyleSheet.create({
-  overlay: {
-    position: 'absolute',
-    zIndex: parseInt(defaultTokens.zIndexModal, 10),
+  modal: {
+    margin: 0,
+    justifyContent: 'flex-end',
+  },
+  modalCentered: {
+    justifyContent: 'center',
+  },
+  content: {
     width: '100%',
-    height: '100%',
-    backgroundColor: defaultTokens.paletteInkDark,
-    opacity: 0.2,
-    android: {
-      elevation: 4, // NOTE: added to move overlay above PlaceSwitch on search screen
-    },
+    backgroundColor: defaultTokens.backgroundModal,
+    borderTopLeftRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    borderTopRightRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    paddingTop: parseInt(defaultTokens.spaceXXSmall, 10),
+    paddingBottom: parseInt(defaultTokens.spaceXXLarge, 10),
+  },
+  contentCentered: {
+    maxWidth: 420,
+    borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    paddingTop: 0,
+    paddingBottom: 0,
   },
 });
-
-export default Modal;

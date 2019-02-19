@@ -9,7 +9,7 @@ import Modal from '../Modal';
 it('renders', () => {
   expect(
     shallow(
-      <Modal visible={true} onClose={jest.fn()}>
+      <Modal isVisible={true} onClose={jest.fn()}>
         <Text>Modal test content</Text>
       </Modal>,
     ),

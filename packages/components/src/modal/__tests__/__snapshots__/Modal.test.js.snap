@@ -2,27 +2,41 @@
 
 exports[`renders 1`] = `
 Object {
-  "output": <React.Fragment>
+  "output": <Modal
+    backdropOpacity={0.5}
+    isVisible={true}
+    onBackdropPress={[MockFunction]}
+    onRequestClose={[MockFunction]}
+    style={
+      Array [
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+        },
+        false,
+      ]
+    }
+  >
     <Component
       style={
-        Object {
-          "backgroundColor": "#171b1e",
-          "height": "100%",
-          "opacity": 0.2,
-          "position": "absolute",
-          "width": "100%",
-          "zIndex": 825,
-        }
+        Array [
+          Object {
+            "backgroundColor": "#fff",
+            "borderTopLeftRadius": 6,
+            "borderTopRightRadius": 6,
+            "paddingBottom": 40,
+            "paddingTop": 4,
+            "width": "100%",
+          },
+          false,
+          undefined,
+        ]
       }
-    />
-    <ModalWrap
-      onClose={[MockFunction]}
-      visible={true}
     >
       <Text>
         Modal test content
       </Text>
-    </ModalWrap>
-  </React.Fragment>,
+    </Component>
+  </Modal>,
 }
 `;
