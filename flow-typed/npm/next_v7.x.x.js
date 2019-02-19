@@ -3,7 +3,7 @@
 
 declare module "next" {
   declare type RequestHandler = (
-    req: http$IncomingMessage,
+    req: http$IncomingMessage<>,
     res: http$ServerResponse,
     parsedUrl: any
   ) => Promise<void>;
@@ -13,27 +13,27 @@ declare module "next" {
     getRequestHandler(): RequestHandler,
     setAssetPrefix(url: string): void,
     render(
-      req: http$IncomingMessage,
+      req: http$IncomingMessage<>,
       res: http$ServerResponse,
       pathname: string,
       query?: Object
     ): Promise<void>,
     renderToHTML(
-      req: http$IncomingMessage,
+      req: http$IncomingMessage<>,
       res: http$ServerResponse,
       pathname: string,
       query?: Object
     ): string,
     renderError(
       err: Error,
-      req: http$IncomingMessage,
+      req: http$IncomingMessage<>,
       res: http$ServerResponse,
       pathname: string,
       query?: Object
     ): Promise<void>,
     renderErrorToHTML(
       err: Error,
-      req: http$IncomingMessage,
+      req: http$IncomingMessage<>,
       res: http$ServerResponse,
       pathname: string,
       query?: Object
