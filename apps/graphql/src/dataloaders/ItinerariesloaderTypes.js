@@ -37,12 +37,8 @@ export type Vehicle = {|
 |};
 
 export type Segment = {|
-  +arrivalTime: ?Time,
-  +departureTime: ?Time,
-  +destination: ?Location,
   +duration: ?number,
   +id: ?string,
-  +origin: ?Location,
   +transporter: ?Transporter,
   +vehicle: ?Vehicle,
   +arrival: ?RouteStop,

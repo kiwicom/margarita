@@ -166,12 +166,8 @@ const sanitizeRouteStop = ({
 
 const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
   return {
-    arrivalTime: mapDate(segment?.local_arrival, segment?.utc_arrival),
-    departureTime: mapDate(segment?.local_departure, segment?.utc_departure),
-    destination: mapLocation(segment?.flyTo, segment?.cityTo),
     duration: differenceInMinutes(segment?.utc_departure, segment?.utc_arrival),
     id: segment?.id,
-    origin: mapLocation(segment?.flyFrom, segment?.cityFrom),
     transporter: mapTransporter(segment?.airline),
     vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
     departure: sanitizeRouteStop(apiRouteItemToDeparture(segment)),
