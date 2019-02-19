@@ -57,7 +57,7 @@
     "babel-eslint": "^10.0.1",
     "concurrently": "^4.1.0",
     "eslint": "^5.14.1",
-    "flow-bin": "^0.92.1",
+    "flow-bin": "^0.93.0",
     "jest": "^24.1.0",
     "jest-expo": "^32.0.0",
     "jest-fetch-mock": "^2.0.1",
