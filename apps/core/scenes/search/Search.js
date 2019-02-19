@@ -78,32 +78,30 @@ class Search extends React.Component<Props> {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
 
     return (
-      <>
-        <View style={styles.container}>
-          <View style={[styles.form, desktopLayout && styles.formDesktop]}>
-            <Illustration name="Boarding" style={styles.boardingIllustration} />
-            <SearchFormModes />
+      <View style={styles.container}>
+        <View style={[styles.form, desktopLayout && styles.formDesktop]}>
+          <Illustration name="Boarding" style={styles.boardingIllustration} />
+          <SearchFormModes />
 
-            <View style={desktopLayout && styles.inputsDesktop}>
-              <Placepickers />
-              <Datepickers />
+          <View style={desktopLayout && styles.inputsDesktop}>
+            <Placepickers />
+            <Datepickers />
 
-              <View
-                style={[styles.bottom, desktopLayout && styles.bottomDesktop]}
-              >
-                <Button
-                  onPress={this.handleSubmitPress}
-                  label="Search"
-                  rightIcon={
-                    Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
-                  }
-                />
-              </View>
+            <View
+              style={[styles.bottom, desktopLayout && styles.bottomDesktop]}
+            >
+              <Button
+                onPress={this.handleSubmitPress}
+                label="Search"
+                rightIcon={
+                  Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
+                }
+              />
             </View>
           </View>
         </View>
         <SearchModal />
-      </>
+      </View>
     );
   }
 }

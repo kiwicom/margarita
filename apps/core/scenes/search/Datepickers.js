@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Platform } from 'react-native';
+import { Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';
 import { Icon, DatePicker, StyleSheet } from '@kiwicom/universal-components';
 import { format, startOfDay } from 'date-fns';
@@ -122,33 +122,21 @@ class Datepickers extends React.Component<Props, State> {
             />
           )}
         </PickersWrapper>
-        <View style={this.state.isDatePickerVisible && styles.picker}>
-          <DatePicker
-            isVisible={this.state.isDatePickerVisible}
-            mode={'date'}
-            date={datePickerDate}
-            minDate={startOfDay(new Date())}
-            onConfirm={this.handleDateChange}
-            onDismiss={this.handleDatePickerDismiss}
-            labels={{ cancel: 'Cancel', confirm: 'OK' }}
-          />
-        </View>
+        <DatePicker
+          isVisible={this.state.isDatePickerVisible}
+          mode={'date'}
+          date={datePickerDate}
+          minDate={startOfDay(new Date())}
+          onConfirm={this.handleDateChange}
+          onDismiss={this.handleDatePickerDismiss}
+          labels={{ cancel: 'Cancel', confirm: 'OK' }}
+        />
       </>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  picker: {
-    web: {
-      position: 'fixed',
-      top: 50,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      zIndex: parseInt(defaultTokens.zIndexDefault, 10),
-    },
-  },
   rowInput: {
     web: {
       marginEnd: parseInt(defaultTokens.spaceXSmall, 10),

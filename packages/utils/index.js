@@ -8,6 +8,7 @@ export { formatPrice } from './localization/CurrencyFormatter';
 export type { Price } from './localization/CurrencyFormatter';
 export { default as DateFormatter } from './localization/DateFormatter';
 export { default as DateUtils } from './localization/DateUtils';
+export { default as Device } from './device/Device';
 
 // LayoutContext
 export { LAYOUT } from './layoutContext/LayoutConstants';
