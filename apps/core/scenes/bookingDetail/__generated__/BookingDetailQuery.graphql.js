@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2c5fc442872e122ee9a22e159b259657
+ * @relayHash c747ad067cee8a35bf96a7c3ccb57ecf
  */
 
 /* eslint-disable */
@@ -60,6 +60,10 @@ fragment PassengersList on BookingInterface {
     id
     ...Passenger
   }
+  bagInfo {
+    type
+    ...Bag
+  }
 }
 
 fragment VisaDetail on BookingInterface {
@@ -74,6 +78,11 @@ fragment Passenger on Passenger {
   firstname
   lastname
   birthday
+}
+
+fragment Bag on Bag {
+  type
+  quantity
 }
 
 fragment Header on BookingInterface {
@@ -460,6 +469,25 @@ return {
               }
             ]
           },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "bagInfo",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Bag",
+            "plural": true,
+            "selections": [
+              (v2/*: any*/),
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "quantity",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
           (v3/*: any*/),
           {
             "kind": "InlineFragment",
@@ -547,7 +575,7 @@ return {
     "operationKind": "query",
     "name": "BookingDetailQuery",
     "id": null,
-    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...SectorDetails\n  ...Passengers\n}\n\nfragment SectorDetails on BookingInterface {\n  ...Header\n  ...SectorInfoOneWay\n  ...SectorInfoMulticity\n  ...SectorInfoReturn\n  ...SegmentContainer\n  type\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SectorInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...SectorDates\n    }\n    outbound {\n      ...SectorDates\n    }\n  }\n}\n\nfragment SegmentContainer on BookingInterface {\n  ...SegmentMap\n}\n\nfragment SegmentMap on BookingInterface {\n  segmentLocations {\n    lat\n    lng\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment SectorDates on Sector {\n  departure {\n    ...SectorDate\n  }\n  arrival {\n    ...SectorDate\n  }\n  duration\n}\n\nfragment SectorDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment SectorInfo on Sector {\n  ...FromTo\n  ...SectorDates\n}\n",
+    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...SectorDetails\n  ...Passengers\n}\n\nfragment SectorDetails on BookingInterface {\n  ...Header\n  ...SectorInfoOneWay\n  ...SectorInfoMulticity\n  ...SectorInfoReturn\n  ...SegmentContainer\n  type\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n  bagInfo {\n    type\n    ...Bag\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag on Bag {\n  type\n  quantity\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SectorInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...SectorDates\n    }\n    outbound {\n      ...SectorDates\n    }\n  }\n}\n\nfragment SegmentContainer on BookingInterface {\n  ...SegmentMap\n}\n\nfragment SegmentMap on BookingInterface {\n  segmentLocations {\n    lat\n    lng\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment SectorDates on Sector {\n  departure {\n    ...SectorDate\n  }\n  arrival {\n    ...SectorDate\n  }\n  duration\n}\n\nfragment SectorDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment SectorInfo on Sector {\n  ...FromTo\n  ...SectorDates\n}\n",
     "metadata": {}
   }
 };

@@ -3,10 +3,12 @@
 import {
   GraphQLObjectType,
   GraphQLString,
-  GraphQLInt,
   GraphQLBoolean,
+  GraphQLList,
 } from 'graphql';
 import globalID from '@kiwicom/graphql-global-id';
+
+import GraphQLBagType from './Bag';
 
 export default new GraphQLObjectType({
   name: 'Passenger',
@@ -14,7 +16,7 @@ export default new GraphQLObjectType({
   fields: {
     id: globalID(({ id }) => id),
     bags: {
-      type: GraphQLInt,
+      type: GraphQLList(GraphQLBagType),
     },
     birthday: {
       type: GraphQLString,

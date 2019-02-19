@@ -61,8 +61,14 @@ export type TypeSpecificData = {|
   +sectors?: $ReadOnlyArray<Sector>,
 |};
 
+export type Bag = {|
+  +type: string,
+  +dimensions: string,
+  +quantity: number,
+|};
+
 export type Passenger = {|
-  +bags: number,
+  +bags: $ReadOnlyArray<Bag>,
   +birthday: string,
   +category: string,
   +firstname: string,

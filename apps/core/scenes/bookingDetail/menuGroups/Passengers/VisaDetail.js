@@ -28,14 +28,13 @@ const VisaDetail = (props: Props) => {
     : defaultTokens.colorIconSuccess;
   const textType = visaRequired ? 'critical' : 'success';
   const text = visaRequired ? 'Visa is required' : 'Visa is not required';
+  const wrapperStyle = [
+    styles.wrapperVisa,
+    visaRequired ? styles.critical : styles.success,
+  ];
 
   return (
-    <View
-      style={[
-        styles.wrapperVisa,
-        visaRequired ? styles.critical : styles.success,
-      ]}
-    >
+    <View style={wrapperStyle}>
       <Icon name="information-circle" color={color} />
       <Text type={textType} size="small" style={styles.paddingTextLeft}>
         {text}
@@ -43,17 +42,6 @@ const VisaDetail = (props: Props) => {
     </View>
   );
 };
-
-export default createFragmentContainer(
-  VisaDetail,
-  graphql`
-    fragment VisaDetail on BookingInterface {
-      passengers {
-        visaRequired
-      }
-    }
-  `,
-);
 
 const styles = StyleSheet.create({
   wrapperVisa: {
@@ -72,3 +60,14 @@ const styles = StyleSheet.create({
     backgroundColor: defaultTokens.backgroundBadgeCritical,
   },
 });
+
+export default createFragmentContainer(
+  VisaDetail,
+  graphql`
+    fragment VisaDetail on BookingInterface {
+      passengers {
+        visaRequired
+      }
+    }
+  `,
+);

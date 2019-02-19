@@ -20,7 +20,7 @@ const Passenger = (props: Props) => {
 
   const passengerWithTitle = `${title}. ${firstname} ${lastname}`;
   return (
-    <View style={styles.passengerWrapper}>
+    <View style={styles.container}>
       <Text type="primary" size="small">
         {passengerWithTitle}
       </Text>
@@ -30,6 +30,15 @@ const Passenger = (props: Props) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingRight: parseInt(defaultTokens.spaceSmall, 10),
+    paddingVertical: parseInt(defaultTokens.spaceXXSmall, 10),
+  },
+});
 
 export default createFragmentContainer(
   Passenger,
@@ -42,12 +51,3 @@ export default createFragmentContainer(
     }
   `,
 );
-
-const styles = StyleSheet.create({
-  passengerWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingRight: parseInt(defaultTokens.spaceSmall, 10),
-    paddingVertical: 6,
-  },
-});
