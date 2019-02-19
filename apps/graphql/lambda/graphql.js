@@ -3,7 +3,7 @@
 import { ApolloServer } from 'apollo-server-lambda';
 import type { APIGatewayEvent, Context, ProxyCallback } from 'flow-aws-lambda';
 
-import createContext from '../src/services/GraphQLContext';
+import createContext from '../src/services/graphqlContext/GraphQLContext';
 import schema from '../src/Schema';
 
 const server = (event: APIGatewayEvent, context: Context) =>

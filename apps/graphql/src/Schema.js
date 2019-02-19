@@ -2,13 +2,13 @@
 
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
-import Itineraries from './queries/Itineraries';
-import Locations from './queries/Locations';
-import CustomerBookings from './queries/CustomerBookings';
-import BookingDetail from './queries/BookingDetail';
-import BookingOneWay from './types/output/BookingOneWay';
-import BookingMulticity from './types/output/BookingMulticity';
-import BookingReturn from './types/output/BookingReturn';
+import SearchItineraries from './apps/itinerary/queries/SearchItineraries';
+import LocationsByTerm from './apps/location/queries/LocationsByTerm';
+import CustomerBookings from './apps/booking/queries/CustomerBookings';
+import BookingDetail from './apps/booking/queries/BookingDetail';
+import BookingOneWay from './apps/booking/types/outputs/BookingOneWay';
+import BookingMulticity from './apps/booking/types/outputs/BookingMulticity';
+import BookingReturn from './apps/booking/types/outputs/BookingReturn';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -16,8 +16,8 @@ const schema = new GraphQLSchema({
     fields: {
       bookingDetail: BookingDetail,
       customerBookings: CustomerBookings,
-      locationsByTerm: Locations,
-      searchItineraries: Itineraries,
+      locationsByTerm: LocationsByTerm,
+      searchItineraries: SearchItineraries,
     },
   }),
   types: [BookingOneWay, BookingReturn, BookingMulticity],

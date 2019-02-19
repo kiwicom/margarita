@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`is able to handle Error objects 1`] = `
+Array [
+  Array [
+    ">[31m[1m error [22m[39mError Message",
+  ],
+]
+`;
+
+exports[`is able to handle unknown objects without fail 1`] = `
+Array [
+  Array [
+    ">[31m[1m error [22m[39m{
+     \\"message\\": \\"Unknown Error Type\\"
+   }",
+  ],
+]
+`;
+
+exports[`prints error message 1`] = `
+Array [
+  Array [
+    ">[31m[1m error [22m[39mError Message",
+  ],
+]
+`;
+
+exports[`prints info message 1`] = `
+Array [
+  Array [
+    ">[34m info [39mInfo Message",
+  ],
+]
+`;
+
+exports[`prints multiline info message 1`] = `
+Array [
+  Array [
+    ">[34m info [39mmultiline
+   info
+   message",
+  ],
+]
+`;
+
+exports[`prints warning message 1`] = `
+Array [
+  Array [
+    ">[33m warn [39mWarning Message",
+  ],
+]
+`;
