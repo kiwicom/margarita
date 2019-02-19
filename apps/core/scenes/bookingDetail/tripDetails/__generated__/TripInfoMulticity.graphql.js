@@ -12,7 +12,7 @@ type TripInfo$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripInfoMulticity$ref: FragmentReference;
 export type TripInfoMulticity = {|
-  +trips?: ?$ReadOnlyArray<?{|
+  +sectors?: ?$ReadOnlyArray<?{|
     +$fragmentRefs: TripInfo$ref
   |}>,
   +$refType: TripInfoMulticity$ref,
@@ -34,10 +34,10 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "trips",
+          "name": "sectors",
           "storageKey": null,
           "args": null,
-          "concreteType": "Trip",
+          "concreteType": "Sector",
           "plural": true,
           "selections": [
             {
@@ -52,5 +52,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'b32c2d8683d3f6c19198a853c11e4289';
+(node/*: any*/).hash = '731221fc024a2976c8126da221e7eb34';
 module.exports = node;

@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   TripDates,
   graphql`
-    fragment TripDates on Trip {
+    fragment TripDates on Sector {
       departure {
         ...TripDate
       }

@@ -36,7 +36,7 @@ const TripInfo = (props: Props) => {
 export default createFragmentContainer(
   TripInfo,
   graphql`
-    fragment TripInfo on Trip {
+    fragment TripInfo on Sector {
       ...FromTo
       ...TripDates
     }

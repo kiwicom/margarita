@@ -66,7 +66,7 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
-fragment TripFragment on Trip {
+fragment SectorFragment on Sector {
   duration
   departure {
     cityName
@@ -92,21 +92,21 @@ fragment TripFragment on Trip {
         passengerCount
 
         ... on BookingOneWay {
-          trip {
-            ...TripFragment
+          sector {
+            ...SectorFragment
           }
         }
         ... on BookingReturn {
           inbound {
-            ...TripFragment
+            ...SectorFragment
           }
           outbound {
-            ...TripFragment
+            ...SectorFragment
           }
         }
         ... on BookingMulticity {
-          trips {
-            ...TripFragment
+          sectors {
+            ...SectorFragment
           }
         }
       }
@@ -141,7 +141,7 @@ fragment TripFragment on Trip {
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
             "passengerCount": 1,
-            "trip": {
+            "sector": {
               "duration": 300,
               "departure": {
                 "cityName": "Vienna"
@@ -216,7 +216,7 @@ fragment TripFragment on Trip {
             },
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/bratislava_sk.jpg",
             "passengerCount": 2,
-            "trips": [
+            "sectors": [
               {
                 "duration": 230,
                 "departure": {

@@ -69,7 +69,7 @@ type BookingMulticity implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
-  trips: [Trip]
+  sectors: [Sector]
 }
 
 """Booking from A to B with no return, but possible stopovers"""
@@ -90,7 +90,7 @@ type BookingOneWay implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
-  trip: Trip
+  sector: Sector
 }
 
 """Booking from A to B with return, and possible stopovers"""
@@ -111,8 +111,8 @@ type BookingReturn implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
-  inbound: Trip
-  outbound: Trip
+  inbound: Sector
+  outbound: Sector
 }
 
 enum BookingType {
@@ -329,12 +329,13 @@ type RouteStop {
   airport: Location
 }
 
-type Sector {
+type Sector implements FromToInterface {
   duration: Int
   segments: [Segment]
   stopoverDuration: Int
   departure: RouteStop
   arrival: RouteStop
+  type: BookingType
 }
 
 type Segment {
@@ -353,14 +354,6 @@ type Segment {
 
 type Transporter {
   name: String
-}
-
-"""Single travel from origin to destination, with possible stopovers."""
-type Trip implements FromToInterface {
-  departure: RouteStop
-  arrival: RouteStop
-  duration: Int
-  type: BookingType
 }
 
 type Vehicle {

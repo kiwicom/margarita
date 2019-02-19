@@ -4,7 +4,7 @@ import { GraphQLObjectType } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
-import GraphQLTrip from './Trip';
+import GraphQLSector from './Sector';
 import FromToInterface from './FromToInterface';
 
 const NAME = 'BookingOneWay';
@@ -16,8 +16,8 @@ const BookingOneWay = new GraphQLObjectType({
   isTypeOf: (value: Booking) => value.type === NAME,
   fields: {
     ...commonFields,
-    trip: {
-      type: GraphQLTrip,
+    sector: {
+      type: GraphQLSector,
       resolve: (booking: Booking) => booking,
     },
   },

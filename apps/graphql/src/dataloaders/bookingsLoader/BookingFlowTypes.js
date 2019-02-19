@@ -47,19 +47,18 @@ export type Segment = {|
   +arrival: ?RouteStop,
 |};
 
-type Trip = {|
+type Sector = {|
   +departure: ?RouteStop,
   +arrival: ?RouteStop,
   +segments: $ReadOnlyArray<Segment>,
+  +duration?: number,
 |};
 
 export type TypeSpecificData = {|
-  +segments: $ReadOnlyArray<Segment>,
-  +arrival: ?RouteStop,
-  +departure: ?RouteStop,
-  +inbound?: Trip,
-  +outbound?: Trip,
-  +trips?: $ReadOnlyArray<Trip>,
+  ...Sector,
+  +inbound?: Sector,
+  +outbound?: Sector,
+  +sectors?: $ReadOnlyArray<Sector>,
 |};
 
 export type Passenger = {|

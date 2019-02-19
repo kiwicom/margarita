@@ -1,6 +1,7 @@
 // @flow
 
 import { head, last } from 'ramda';
+import differenceInMinutes from 'date-fns/difference_in_minutes';
 
 import bookings from '../../datasets/AllBookings.json';
 import type {
@@ -11,6 +12,7 @@ import type {
   TypeSpecificData,
   Segment,
   Passenger,
+  RouteStop,
 } from './BookingFlowTypes';
 
 const sanitizeBookings = (
@@ -67,10 +69,13 @@ const getTypeSpecificData = (
 };
 
 const sanitizeOneWay = (booking: BookingApiResult) => {
+  const arrival = sanitizeRouteStop(last(booking.flights)?.arrival);
+  const departure = sanitizeRouteStop(head(booking.flights)?.departure);
   return {
-    arrival: sanitizeRouteStop(last(booking.flights)?.arrival),
-    departure: sanitizeRouteStop(head(booking.flights)?.departure),
+    arrival,
+    departure,
     segments: booking.flights.map(sanitizeFlight),
+    duration: getDuration(departure, arrival),
   };
 };
 
@@ -89,15 +94,24 @@ const sanitizeReturn = (booking: BookingApiResult) => {
     return segment;
   });
 
+  const inboundDeparture = head(inboundSegments)?.departure;
+  const inboundArrival = last(inboundSegments)?.arrival;
+
   const inbound = {
-    departure: head(inboundSegments)?.departure,
-    arrival: last(inboundSegments)?.arrival,
+    departure: inboundDeparture,
+    arrival: inboundArrival,
     segments: inboundSegments,
+    duration: getDuration(inboundDeparture, inboundArrival),
   };
+
+  const outboundDeparture = head(outboundSegments)?.departure;
+  const outboundArrival = last(outboundSegments)?.arrival;
+
   const outbound = {
-    departure: head(outboundSegments)?.departure,
-    arrival: last(outboundSegments)?.arrival,
+    departure: outboundDeparture,
+    arrival: outboundArrival,
     segments: outboundSegments,
+    duration: getDuration(outboundDeparture, outboundArrival),
   };
   return {
     segments,
@@ -109,7 +123,7 @@ const sanitizeReturn = (booking: BookingApiResult) => {
 };
 
 const sanitizeMulticity = (booking: BookingApiResult) => {
-  const trips = [];
+  const sectors = [];
   const segmentIndexes = booking.segments ?? [];
 
   const segments = booking.flights.map<Segment>(sanitizeFlight);
@@ -117,23 +131,28 @@ const sanitizeMulticity = (booking: BookingApiResult) => {
   const lastIndex = segmentIndexes.reduce(
     (lastIndex: number, segment: string) => {
       const indexOfNewSegment = parseInt(segment, 10);
-      const trip = segments.slice(lastIndex, indexOfNewSegment);
-      trips.push(trip);
+      const sector = segments.slice(lastIndex, indexOfNewSegment);
+      sectors.push(sector);
 
       return indexOfNewSegment;
     },
     0,
   );
 
-  trips.push(segments.slice(lastIndex));
+  sectors.push(segments.slice(lastIndex));
 
   return {
     segments,
-    trips: trips.map(trip => ({
-      departure: head(trip)?.departure,
-      arrival: last(trip)?.arrival,
-      segments: trip,
-    })),
+    sectors: sectors.map(trip => {
+      const departure = head(trip)?.departure;
+      const arrival = last(trip)?.arrival;
+      return {
+        departure,
+        arrival,
+        segments: trip,
+        duration: getDuration(departure, arrival),
+      };
+    }),
     departure: head(segments)?.departure,
     arrival: last(segments)?.arrival,
   };
@@ -146,6 +165,15 @@ const sanitizeFlight = (flight: ApiFlight): Segment => {
     departure: sanitizeRouteStop(flight.departure),
     arrival: sanitizeRouteStop(flight.arrival),
   };
+};
+
+const getDuration = (departure: ?RouteStop, arrival: ?RouteStop) => {
+  const departureRawTime = parseInt(departure?.time?.utc, 10) ?? 0;
+  const arrivalRawTime = parseInt(arrival?.time?.utc, 10) ?? 0;
+  const departureTimeMs = departureRawTime * 1000;
+  const arrivalTimeMs = arrivalRawTime * 1000;
+
+  return differenceInMinutes(arrivalTimeMs, departureTimeMs);
 };
 
 const detectType = (booking: BookingApiResult) => {

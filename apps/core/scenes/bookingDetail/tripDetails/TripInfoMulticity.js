@@ -13,7 +13,7 @@ type Props = {|
 |};
 
 function TripInfoMulticity(props: Props) {
-  const trips = props.data?.trips ?? [];
+  const trips = props.data?.sectors ?? [];
   return trips.map((trip, index) => (
     <React.Fragment key={index}>
       <TripInfo data={trip} />
@@ -34,7 +34,7 @@ export default createFragmentContainer(
   graphql`
     fragment TripInfoMulticity on BookingInterface {
       ... on BookingMulticity {
-        trips {
+        sectors {
           ...TripInfo
         }
       }

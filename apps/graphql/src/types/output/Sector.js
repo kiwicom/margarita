@@ -5,9 +5,12 @@ import { GraphQLObjectType, GraphQLInt, GraphQLList } from 'graphql';
 import { type Sector } from '../../dataloaders/ItinerariesloaderTypes';
 import Segment from './Segment';
 import GraphQLRouteStop from './RouteStop';
+import FromToInterface from './FromToInterface';
+import GraphQLBookingType from './BookingType';
 
 export default new GraphQLObjectType({
   name: 'Sector',
+  interfaces: [FromToInterface],
   fields: {
     duration: {
       type: GraphQLInt,
@@ -25,6 +28,9 @@ export default new GraphQLObjectType({
     },
     arrival: {
       type: GraphQLRouteStop,
+    },
+    type: {
+      type: GraphQLBookingType,
     },
   },
 });

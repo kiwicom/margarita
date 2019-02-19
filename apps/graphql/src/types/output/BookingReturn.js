@@ -4,7 +4,7 @@ import { GraphQLObjectType } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
-import GraphQLTrip from './Trip';
+import GraphQLSector from './Sector';
 import FromToInterface from './FromToInterface';
 
 const NAME = 'BookingReturn';
@@ -18,11 +18,11 @@ const BookingReturn = new GraphQLObjectType({
     ...commonFields,
 
     inbound: {
-      type: GraphQLTrip,
+      type: GraphQLSector,
       resolve: ({ inbound }: Booking) => inbound,
     },
     outbound: {
-      type: GraphQLTrip,
+      type: GraphQLSector,
       resolve: ({ outbound }: Booking) => outbound,
     },
   },

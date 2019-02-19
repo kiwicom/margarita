@@ -11,7 +11,7 @@ type Props = {|
 |};
 
 function TripInfoOneWay(props: Props) {
-  return <TripInfo data={props.data?.trip} />;
+  return <TripInfo data={props.data?.sector} />;
 }
 
 export default createFragmentContainer(
@@ -19,7 +19,7 @@ export default createFragmentContainer(
   graphql`
     fragment TripInfoOneWay on BookingInterface {
       ... on BookingOneWay {
-        trip {
+        sector {
           ...TripInfo
         }
       }

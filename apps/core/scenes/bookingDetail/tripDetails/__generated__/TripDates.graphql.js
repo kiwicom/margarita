@@ -35,7 +35,7 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "TripDates",
-  "type": "Trip",
+  "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -70,5 +70,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'ed906bedd33fad48f0f1179926faf63d';
+(node/*: any*/).hash = '8742130b0816add86a9536dd98a840a3';
 module.exports = node;

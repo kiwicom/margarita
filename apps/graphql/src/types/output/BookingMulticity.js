@@ -4,7 +4,7 @@ import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
 import type { Booking } from '../../dataloaders/bookingsLoader/BookingFlowTypes';
-import GraphQLTrip from './Trip';
+import GraphQLSector from './Sector';
 import FromToInterface from './FromToInterface';
 
 const NAME = 'BookingMulticity';
@@ -17,9 +17,9 @@ const BookingMulticity = new GraphQLObjectType({
   fields: {
     ...commonFields,
 
-    trips: {
-      type: GraphQLList(GraphQLTrip),
-      resolve: ({ trips }: Booking) => trips,
+    sectors: {
+      type: GraphQLList(GraphQLSector),
+      resolve: ({ sectors }: Booking) => sectors,
     },
   },
 });
