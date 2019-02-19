@@ -22,6 +22,8 @@ interface BookingInterface {
   """
   id(opaque: Boolean = true): ID!
   status: String
+  contactDetails: ContactDetails
+  passengers: [Passenger]
   arrival: RouteStop
   departure: RouteStop
   destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
@@ -58,6 +60,8 @@ type BookingMulticity implements BookingInterface & FromToInterface {
   """
   id(opaque: Boolean = true): ID!
   status: String
+  contactDetails: ContactDetails
+  passengers: [Passenger]
   arrival: RouteStop
   departure: RouteStop
   destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
@@ -77,6 +81,8 @@ type BookingOneWay implements BookingInterface & FromToInterface {
   """
   id(opaque: Boolean = true): ID!
   status: String
+  contactDetails: ContactDetails
+  passengers: [Passenger]
   arrival: RouteStop
   departure: RouteStop
   destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
@@ -96,6 +102,8 @@ type BookingReturn implements BookingInterface & FromToInterface {
   """
   id(opaque: Boolean = true): ID!
   status: String
+  contactDetails: ContactDetails
+  passengers: [Passenger]
   arrival: RouteStop
   departure: RouteStop
   destinationImageUrl(dimensions: BookingDestinationImageDimensions = _600x600): String
@@ -111,6 +119,12 @@ enum BookingType {
   BOOKING_RETURN
   BOOKING_MULTICITY
   BOOKING_ONE_WAY
+}
+
+"""Bookings contact email and phone"""
+type ContactDetails {
+  email: String
+  phone: String
 }
 
 """
@@ -263,6 +277,25 @@ type PageInfo {
   endCursor: String
 }
 
+"""Passenger details"""
+type Passenger {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  bags: Int
+  birthday: String
+  category: String
+  firstname: String
+  insuranceType: String
+  lastname: String
+  nationality: String
+  title: String
+  visaRequired: Boolean
+}
+
 input PassengersInput {
   adults: Int
   children: Int
@@ -311,12 +344,8 @@ type Segment {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  arrivalTime: DateType
-  departureTime: DateType
-  destination: Location
-  duration: Int
-  origin: Location
   transporter: Transporter
+  duration: Int
   vehicle: Vehicle
   departure: RouteStop
   arrival: RouteStop
