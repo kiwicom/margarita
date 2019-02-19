@@ -19,6 +19,7 @@ import {
   TripServicesScreen,
   TicketsScreen,
   TimelineScreen,
+  PassengerDetailScreen,
 } from '../screens';
 
 type NavigationOptions = {};
@@ -72,6 +73,12 @@ const StackNavigator: NavigationNavigator<
         title: 'Trip Services',
       },
     },
+    [Routes.PASSENGER_DETAIL]: {
+      screen: PassengerDetailScreen,
+      navigationOptions: {
+        title: 'Passengers',
+      },
+    },
     [Routes.TRIPINFO_TICKETS]: {
       screen: TicketsScreen,
       navigationOptions: {
@@ -82,6 +89,12 @@ const StackNavigator: NavigationNavigator<
       screen: TimelineScreen,
       navigationOptions: {
         title: 'Timeline',
+      },
+    },
+    [Routes.PASSENGER_DETAIL]: {
+      screen: PassengerDetailScreen,
+      navigationOptions: {
+        title: 'Passengers',
       },
     },
   }: NavigationRouteConfigMap),

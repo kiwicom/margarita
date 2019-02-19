@@ -15,6 +15,7 @@ const Routes = {
   SERVICES_TRIP_SERVICES: 'mmb/trip-services',
   TRIPINFO_TICKETS: 'mmb/tickets',
   TRIPINFO_TIMELINE: 'mmb/timeline',
+  PASSENGER_DETAIL: 'mmb/passenger-detail',
 };
 
 export default Routes;

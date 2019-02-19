@@ -10,6 +10,7 @@ import TripDetails from './tripDetails/TripDetails';
 import ManageMenuGroup from './menuGroups/Manage';
 import ServicesMenuGroup from './menuGroups/Services';
 import TripInfoMenuGroup from './menuGroups/TripInfo';
+import Passengers from './menuGroups/Passengers';
 import type { BookingDetailWrapper as BookingDetailWrapperType } from './__generated__/BookingDetailWrapper.graphql';
 
 type Props = {|
@@ -22,6 +23,7 @@ class BookingDetailWrapper extends React.Component<Props> {
       <ScrollView contentContainerStyle={styles.container}>
         <TripDetails data={this.props.data} />
         <TripInfoMenuGroup />
+        <Passengers data={this.props.data} />
         <ServicesMenuGroup />
         <ManageMenuGroup />
       </ScrollView>
@@ -40,6 +42,7 @@ export default createFragmentContainer(
   graphql`
     fragment BookingDetailWrapper on BookingInterface {
       ...TripDetails
+      ...Passengers
     }
   `,
 );
