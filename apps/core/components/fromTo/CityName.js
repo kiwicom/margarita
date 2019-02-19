@@ -18,7 +18,7 @@ type Props = {|
 const CityName = (props: Props) => {
   const flag = (
     <Image
-      source={{ uri: props.data?.airport?.countryFlagURL ?? '' }}
+      source={{ uri: props.data?.stop?.countryFlagURL ?? '' }}
       style={[
         styles.flag,
         props.prependFlag && styles.prepend,
@@ -30,7 +30,7 @@ const CityName = (props: Props) => {
     <View style={styles.row}>
       {props.prependFlag && flag}
       <Text size={props.fontSize} type={props.textType}>
-        {props.data?.cityName}
+        {props.data?.stop?.city?.name}
       </Text>
       {props.appendFlag && flag}
     </View>
@@ -58,9 +58,11 @@ export default createFragmentContainer(
   CityName,
   graphql`
     fragment CityName on RouteStop {
-      cityName
-      airport {
+      stop {
         countryFlagURL
+        city {
+          name
+        }
       }
     }
   `,

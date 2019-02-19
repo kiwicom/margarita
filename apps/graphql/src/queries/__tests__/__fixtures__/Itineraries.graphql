@@ -1,6 +1,4 @@
 fragment RouteStopFragment on RouteStop {
-  cityName
-  cityId
   time {
     utc
     local

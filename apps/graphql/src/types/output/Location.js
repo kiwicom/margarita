@@ -25,6 +25,9 @@ export default new GraphQLObjectType({
     country: {
       type: LocationArea,
     },
+    city: {
+      type: LocationArea,
+    },
     countryFlagURL: {
       type: GraphQLString,
       resolve: ({ country }: Location): string => {

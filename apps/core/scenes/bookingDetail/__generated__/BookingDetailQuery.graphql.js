@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 430c40722255fb5fe163834775af2a26
+ * @relayHash 579ccbe4711feb0834e6046448b887a0
  */
 
 /* eslint-disable */
@@ -135,9 +135,12 @@ fragment TripDate on RouteStop {
 }
 
 fragment CityName on RouteStop {
-  cityName
-  airport {
+  stop {
     countryFlagURL
+    city {
+      name
+      id
+    }
     id
   }
 }
@@ -184,16 +187,9 @@ v3 = {
   "storageKey": null
 },
 v4 = {
-  "kind": "ScalarField",
-  "alias": null,
-  "name": "cityName",
-  "args": null,
-  "storageKey": null
-},
-v5 = {
   "kind": "LinkedField",
   "alias": null,
-  "name": "airport",
+  "name": "stop",
   "storageKey": null,
   "args": null,
   "concreteType": "Location",
@@ -206,10 +202,29 @@ v5 = {
       "args": null,
       "storageKey": null
     },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "city",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "LocationArea",
+      "plural": false,
+      "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        (v3/*: any*/)
+      ]
+    },
     (v3/*: any*/)
   ]
 },
-v6 = {
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -227,19 +242,18 @@ v6 = {
     }
   ]
 },
-v7 = [
+v6 = [
   (v4/*: any*/),
-  (v5/*: any*/),
-  (v6/*: any*/)
+  (v5/*: any*/)
 ],
-v8 = {
+v7 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "duration",
   "args": null,
   "storageKey": null
 },
-v9 = [
+v8 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -248,7 +262,7 @@ v9 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v7/*: any*/)
+    "selections": (v6/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -258,19 +272,18 @@ v9 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v7/*: any*/)
+    "selections": (v6/*: any*/)
   },
   (v2/*: any*/),
-  (v8/*: any*/)
+  (v7/*: any*/)
+],
+v9 = [
+  (v4/*: any*/)
 ],
 v10 = [
-  (v4/*: any*/),
   (v5/*: any*/)
 ],
 v11 = [
-  (v6/*: any*/)
-],
-v12 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -279,7 +292,7 @@ v12 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v11/*: any*/)
+    "selections": (v10/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -289,9 +302,9 @@ v12 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v11/*: any*/)
+    "selections": (v10/*: any*/)
   },
-  (v8/*: any*/)
+  (v7/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -423,7 +436,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v9/*: any*/)
+                "selections": (v8/*: any*/)
               }
             ]
           },
@@ -439,7 +452,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": true,
-                "selections": (v9/*: any*/)
+                "selections": (v8/*: any*/)
               }
             ]
           },
@@ -455,7 +468,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v10/*: any*/)
+                "selections": (v9/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -465,7 +478,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v10/*: any*/)
+                "selections": (v9/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -475,7 +488,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v12/*: any*/)
+                "selections": (v11/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -485,7 +498,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v12/*: any*/)
+                "selections": (v11/*: any*/)
               }
             ]
           }
@@ -497,7 +510,7 @@ return {
     "operationKind": "query",
     "name": "BookingDetailQuery",
     "id": null,
-    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n  ...Passengers\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfoOneWay\n  ...TripInfoMulticity\n  ...TripInfoReturn\n  type\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    trip {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    trips {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...TripDates\n    }\n    outbound {\n      ...TripDates\n    }\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment TripDates on Trip {\n  departure {\n    ...TripDate\n  }\n  arrival {\n    ...TripDate\n  }\n  duration\n}\n\nfragment TripDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  cityName\n  airport {\n    countryFlagURL\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment TripInfo on Trip {\n  ...FromTo\n  ...TripDates\n}\n",
+    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...TripDetails\n  ...Passengers\n}\n\nfragment TripDetails on BookingInterface {\n  ...Header\n  ...TripInfoOneWay\n  ...TripInfoMulticity\n  ...TripInfoReturn\n  type\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment TripInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...TripInfo\n    }\n  }\n}\n\nfragment TripInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...TripDates\n    }\n    outbound {\n      ...TripDates\n    }\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment TripDates on Sector {\n  departure {\n    ...TripDate\n  }\n  arrival {\n    ...TripDate\n  }\n  duration\n}\n\nfragment TripDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment TripInfo on Sector {\n  ...FromTo\n  ...TripDates\n}\n",
     "metadata": {}
   }
 };
