@@ -1420,12 +1420,12 @@
     relay-compiler "^2.0.0"
     relay-runtime "^2.0.0"
 
-"@kiwicom/test-utils@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@kiwicom/test-utils/-/test-utils-0.3.1.tgz#25151e13aedb355658a665e49b6162ec2bb05e75"
-  integrity sha512-O7BmFsDakj4pw9V//tx9Z2z8hec7XenZaJPOzYzs3ESBMz0y2nY0MUsnemdAeP/hqfRdWyDPlhKTsjdrgu/6MQ==
+"@kiwicom/test-utils@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/test-utils/-/test-utils-0.4.0.tgz#ec975cd54c9cd9fce099e14d9cbcae4918914bcf"
+  integrity sha512-aGYfHVpTMNqAizVvHvp2qUOcY3eK59YiPK1rPC6tVZGEINEDL2opRY4R6PhPVpqxKFFg4LfNkojUQRrR15egYw==
   dependencies:
-    "@mrtnzlml/utils" "^1.1.1"
+    "@kiwicom/js" "^0"
 
 "@kiwicom/universal-components@0.0.13":
   version "0.0.13"
@@ -1497,11 +1497,6 @@
   dependencies:
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
-
-"@mrtnzlml/utils@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@mrtnzlml/utils/-/utils-1.1.1.tgz#70182ddb12825ecbb494bffe8596b3ad2b0869ee"
-  integrity sha512-FFvgqzJO4kiVQj6Hb1Qp+PGB7NY32bW95jxietxEnoYe79sUNr4MCWsV7pU7e1UHZ4XsSF2lTh0agr2edEvw2A==
 
 "@nodelib/fs.stat@^1.1.2":
   version "1.1.3"
