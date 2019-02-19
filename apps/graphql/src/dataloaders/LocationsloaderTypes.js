@@ -16,22 +16,29 @@ export type Location = {|
   +timezone: ?string,
   +country: ?LocationArea,
   +slug: ?string,
+  +city: ?LocationArea,
+|};
+
+type ApiLocationArea = {|
+  id: ?string,
+  name: ?string,
+  code: ?string,
+  slug: ?string,
+|};
+
+export type ApiLocation = {|
+  +id: ?string,
+  +locationId: ?string,
+  +name: ?string,
+  +slug: ?string,
+  +timezone: ?string,
+  +type: ?string,
+  +city: ?{
+    ...ApiLocationArea,
+    +country: ?ApiLocationArea,
+  },
 |};
 
 export type ApiResponse = {|
-  +locations: $ReadOnlyArray<{|
-    +id: ?string,
-    +locationId: ?string,
-    +name: ?string,
-    +slug: ?string,
-    +timezone: ?string,
-    +city: ?{
-      +country: ?{
-        id: ?string,
-        name: ?string,
-        code: ?string,
-        slug: ?string,
-      },
-    },
-  |}>,
+  +locations: $ReadOnlyArray<ApiLocation>,
 |};

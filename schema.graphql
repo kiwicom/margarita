@@ -223,6 +223,7 @@ type Location {
   locationId: String
   timezone: String
   country: LocationArea
+  city: LocationArea
   countryFlagURL: String
 }
 
@@ -321,12 +322,15 @@ type RootQuery {
   searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
 }
 
-"""Departure or arrival for a segment"""
+"""Departure or arrival for a segment or sector"""
 type RouteStop {
-  cityName: String
-  cityId: String
+  """Contains utc and local time for arrival/departure of the stop"""
   time: DateType
-  airport: Location
+
+  """
+  This could be bus stop, trainstation, airport, anywhere the Sector or segment comes to a stop
+  """
+  stop: Location
 }
 
 type Sector implements FromToInterface {

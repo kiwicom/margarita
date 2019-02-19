@@ -17,7 +17,7 @@ function RenderTripSectorItem({ data }: Props) {
     <>
       <StopoverDuration
         stopoverDuration={data?.stopoverDuration}
-        locationName={data?.departure?.cityName}
+        locationName={data?.departure?.stop?.city?.name}
       />
       <ItineraryCardRow>
         <TripSector data={data} />
@@ -31,7 +31,11 @@ export default createFragmentContainer(
   graphql`
     fragment RenderTripSectorItem on Sector {
       departure {
-        cityName
+        stop {
+          city {
+            name
+          }
+        }
       }
       stopoverDuration
       ...TripSector

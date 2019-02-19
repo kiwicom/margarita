@@ -1,6 +1,4 @@
 fragment RouteStopFragment on RouteStop {
-  cityName
-  cityId
   time {
     utc
     local
@@ -9,12 +7,6 @@ fragment RouteStopFragment on RouteStop {
 
 fragment SectorFragment on Sector {
   duration
-  departure {
-    cityName
-  }
-  arrival {
-    cityName
-  }
 }
 
 {

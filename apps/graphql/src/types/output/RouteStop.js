@@ -1,6 +1,6 @@
 // @flow
 
-import { GraphQLObjectType, GraphQLString } from 'graphql';
+import { GraphQLObjectType } from 'graphql';
 
 import GraphQLDateType from './DateType';
 import GraphQLLocation from './Location';
@@ -9,18 +9,16 @@ import type { GraphqlContextType } from '../../services/GraphQLContext';
 
 export default new GraphQLObjectType({
   name: 'RouteStop',
-  description: 'Departure or arrival for a segment',
+  description: 'Departure or arrival for a segment or sector',
   fields: {
-    cityName: {
-      type: GraphQLString,
-    },
-    cityId: {
-      type: GraphQLString,
-    },
     time: {
+      description:
+        'Contains utc and local time for arrival/departure of the stop',
       type: GraphQLDateType,
     },
-    airport: {
+    stop: {
+      description:
+        'This could be bus stop, trainstation, airport, anywhere the Sector or segment comes to a stop',
       type: GraphQLLocation,
       resolve: async (
         { code }: RouteStop,
@@ -30,11 +28,11 @@ export default new GraphQLObjectType({
         if (code == null) {
           return null;
         }
-        const airport = await dataLoader.locations.load({ code });
-        if (!Array.isArray(airport) || airport.length < 1) {
+        const stops = await dataLoader.locations.load({ code });
+        if (!Array.isArray(stops) || stops.length < 1) {
           return null;
         }
-        return airport[0];
+        return stops[0];
       },
     },
   },

@@ -133,7 +133,7 @@ const sanitizeSector = (
 
 const apiRouteItemToArrival = (routeItem: ?ApiRouteItem) => ({
   cityName: routeItem?.cityTo,
-  cityId: routeItem?.flyTo,
+  code: routeItem?.flyTo,
   time: {
     utc: routeItem?.utc_arrival,
     local: routeItem?.local_arrival,
@@ -142,7 +142,7 @@ const apiRouteItemToArrival = (routeItem: ?ApiRouteItem) => ({
 
 const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem) => ({
   cityName: routeItem?.cityFrom,
-  cityId: routeItem?.flyFrom,
+  code: routeItem?.flyFrom,
   time: {
     utc: routeItem?.utc_departure,
     local: routeItem?.local_departure,
@@ -151,17 +151,17 @@ const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem) => ({
 
 const sanitizeRouteStop = ({
   cityName,
-  cityId,
+  code,
   time,
 }: {|
   +cityName: ?string,
-  +cityId: ?string,
+  +code: ?string,
   +time: {| +utc: ?string, +local: ?string |},
 |}): RouteStop => ({
   cityName,
-  cityId,
+  cityId: null,
   time,
-  code: cityId,
+  code,
 });
 
 const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
@@ -212,4 +212,5 @@ export const mapLocation = (
   timezone: 'UTC+1',
   country: mapLocationArea(countryCode, countryCode, countryName),
   slug: slug ?? null,
+  city: null,
 });

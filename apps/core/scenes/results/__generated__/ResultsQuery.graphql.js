@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bc512264467ecb103e9eaa87bffe4a0f
+ * @relayHash bcb407ee5f967739ef9edea5cfa7b849
  */
 
 /* eslint-disable */
@@ -69,7 +69,13 @@ fragment ItineraryCard on Itinerary {
 
 fragment RenderTripSectorItem on Sector {
   departure {
-    cityName
+    stop {
+      city {
+        name
+        id
+      }
+      id
+    }
   }
   stopoverDuration
   ...TripSector
@@ -119,7 +125,13 @@ fragment Transporters on Sector {
 }
 
 fragment LocationName on RouteStop {
-  cityName
+  stop {
+    city {
+      name
+      id
+    }
+    id
+  }
 }
 */
 
@@ -150,11 +162,36 @@ v2 = {
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "cityName",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
 v4 = {
+  "kind": "LinkedField",
+  "alias": null,
+  "name": "stop",
+  "storageKey": null,
+  "args": null,
+  "concreteType": "Location",
+  "plural": false,
+  "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "city",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "LocationArea",
+      "plural": false,
+      "selections": [
+        (v3/*: any*/),
+        (v2/*: any*/)
+      ]
+    },
+    (v2/*: any*/)
+  ]
+},
+v5 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -250,8 +287,8 @@ return {
                         "concreteType": "RouteStop",
                         "plural": false,
                         "selections": [
-                          (v3/*: any*/),
-                          (v4/*: any*/)
+                          (v4/*: any*/),
+                          (v5/*: any*/)
                         ]
                       },
                       {
@@ -277,8 +314,8 @@ return {
                         "concreteType": "RouteStop",
                         "plural": false,
                         "selections": [
-                          (v4/*: any*/),
-                          (v3/*: any*/)
+                          (v5/*: any*/),
+                          (v4/*: any*/)
                         ]
                       },
                       {
@@ -299,13 +336,7 @@ return {
                             "concreteType": "Transporter",
                             "plural": false,
                             "selections": [
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "name",
-                                "args": null,
-                                "storageKey": null
-                              }
+                              (v3/*: any*/)
                             ]
                           },
                           (v2/*: any*/)
@@ -350,7 +381,7 @@ return {
     "operationKind": "query",
     "name": "ResultsQuery",
     "id": null,
-    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  departure {\n    cityName\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  ...FlightTimes\n  ...TripCities\n  departure {\n    ...LocalTime\n  }\n  ...Transporters\n}\n\nfragment FlightTimes on Sector {\n  arrival {\n    ...LocalTime\n  }\n  departure {\n    ...LocalTime\n  }\n}\n\nfragment TripCities on Sector {\n  arrival {\n    ...LocationName\n  }\n  departure {\n    ...LocationName\n  }\n}\n\nfragment LocalTime on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName on RouteStop {\n  cityName\n}\n",
+    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n}\n\nfragment RenderTripSectorItem on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment TripSector on Sector {\n  duration\n  ...FlightTimes\n  ...TripCities\n  departure {\n    ...LocalTime\n  }\n  ...Transporters\n}\n\nfragment FlightTimes on Sector {\n  arrival {\n    ...LocalTime\n  }\n  departure {\n    ...LocalTime\n  }\n}\n\nfragment TripCities on Sector {\n  arrival {\n    ...LocationName\n  }\n  departure {\n    ...LocationName\n  }\n}\n\nfragment LocalTime on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

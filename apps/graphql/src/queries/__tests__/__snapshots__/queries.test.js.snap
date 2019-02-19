@@ -3,8 +3,6 @@
 exports[`matches expected output: BookingDetail.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
 fragment RouteStopFragment on RouteStop {
-  cityName
-  cityId
   time {
     utc
     local
@@ -33,16 +31,12 @@ fragment RouteStopFragment on RouteStop {
       "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
       "status": "closed",
       "arrival": {
-        "cityName": "Las Palmas",
-        "cityId": "las-palmas_es",
         "time": {
           "utc": "2018-11-28T16:20:00.000Z",
           "local": "2018-11-28T16:20:00.000Z"
         }
       },
       "departure": {
-        "cityName": "Vienna",
-        "cityId": "vienna_at",
         "time": {
           "utc": "2018-11-28T11:20:00.000Z",
           "local": "2018-11-28T12:20:00.000Z"
@@ -58,8 +52,6 @@ fragment RouteStopFragment on RouteStop {
 exports[`matches expected output: CustomerBookings.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
 fragment RouteStopFragment on RouteStop {
-  cityName
-  cityId
   time {
     utc
     local
@@ -68,12 +60,6 @@ fragment RouteStopFragment on RouteStop {
 
 fragment SectorFragment on Sector {
   duration
-  departure {
-    cityName
-  }
-  arrival {
-    cityName
-  }
 }
 
 {
@@ -124,16 +110,12 @@ fragment SectorFragment on Sector {
             "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
             "status": "closed",
             "arrival": {
-              "cityName": "Las Palmas",
-              "cityId": "las-palmas_es",
               "time": {
                 "utc": "2018-11-28T16:20:00.000Z",
                 "local": "2018-11-28T16:20:00.000Z"
               }
             },
             "departure": {
-              "cityName": "Vienna",
-              "cityId": "vienna_at",
               "time": {
                 "utc": "2018-11-28T11:20:00.000Z",
                 "local": "2018-11-28T12:20:00.000Z"
@@ -142,13 +124,7 @@ fragment SectorFragment on Sector {
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
             "passengerCount": 1,
             "sector": {
-              "duration": 300,
-              "departure": {
-                "cityName": "Vienna"
-              },
-              "arrival": {
-                "cityName": "Las Palmas"
-              }
+              "duration": 300
             }
           }
         },
@@ -157,16 +133,12 @@ fragment SectorFragment on Sector {
             "id": "Qm9va2luZ1JldHVybjo4MTQyODI4",
             "status": "confirmed",
             "arrival": {
-              "cityName": "St. John s",
-              "cityId": "st-johns_nl_ca",
               "time": {
                 "utc": "2018-09-21T12:31:00.000Z",
                 "local": "2018-09-21T10:01:00.000Z"
               }
             },
             "departure": {
-              "cityName": "Madrid",
-              "cityId": "madrid_es",
               "time": {
                 "utc": "2018-09-20T19:30:00.000Z",
                 "local": "2018-09-20T21:30:00.000Z"
@@ -175,22 +147,10 @@ fragment SectorFragment on Sector {
             "destinationImageUrl": "https://images.kiwi.com/photos/600x600/st-johns_nl_ca.jpg",
             "passengerCount": 2,
             "inbound": {
-              "duration": 915,
-              "departure": {
-                "cityName": "St. John s"
-              },
-              "arrival": {
-                "cityName": "Madrid"
-              }
+              "duration": 915
             },
             "outbound": {
-              "duration": 1021,
-              "departure": {
-                "cityName": "Madrid"
-              },
-              "arrival": {
-                "cityName": "St. John s"
-              }
+              "duration": 1021
             }
           }
         },
@@ -199,16 +159,12 @@ fragment SectorFragment on Sector {
             "id": "Qm9va2luZ011bHRpY2l0eTo2Njc2NTI0",
             "status": "confirmed",
             "arrival": {
-              "cityName": "Bratislava",
-              "cityId": "bratislava_sk",
               "time": {
                 "utc": "2018-08-25T11:55:00.000Z",
                 "local": "2018-08-25T13:55:00.000Z"
               }
             },
             "departure": {
-              "cityName": "Bratislava",
-              "cityId": "bratislava_sk",
               "time": {
                 "utc": "2018-07-16T09:50:00.000Z",
                 "local": "2018-07-16T11:50:00.000Z"
@@ -218,31 +174,13 @@ fragment SectorFragment on Sector {
             "passengerCount": 2,
             "sectors": [
               {
-                "duration": 230,
-                "departure": {
-                  "cityName": "Bratislava"
-                },
-                "arrival": {
-                  "cityName": "Santorini"
-                }
+                "duration": 230
               },
               {
-                "duration": 240,
-                "departure": {
-                  "cityName": "Santorini"
-                },
-                "arrival": {
-                  "cityName": "Tel Aviv"
-                }
+                "duration": 240
               },
               {
-                "duration": 590,
-                "departure": {
-                  "cityName": "Tel Aviv"
-                },
-                "arrival": {
-                  "cityName": "Bratislava"
-                }
+                "duration": 590
               }
             ]
           }
@@ -256,8 +194,6 @@ fragment SectorFragment on Sector {
 exports[`matches expected output: Itineraries.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
 fragment RouteStopFragment on RouteStop {
-  cityName
-  cityId
   time {
     utc
     local
@@ -307,16 +243,12 @@ query search {
                 "segments": [
                   {
                     "departure": {
-                      "cityName": "Oslo",
-                      "cityId": "OSL",
                       "time": {
                         "utc": "2019-03-01T17:45:00.000Z",
                         "local": "2019-03-01T18:45:00.000Z"
                       }
                     },
                     "arrival": {
-                      "cityName": "Stockholm",
-                      "cityId": "ARN",
                       "time": {
                         "utc": "2019-03-01T18:50:00.000Z",
                         "local": "2019-03-01T19:50:00.000Z"
@@ -325,16 +257,12 @@ query search {
                   },
                   {
                     "departure": {
-                      "cityName": "Stockholm",
-                      "cityId": "ARN",
                       "time": {
                         "utc": "2019-03-02T14:15:00.000Z",
                         "local": "2019-03-02T15:15:00.000Z"
                       }
                     },
                     "arrival": {
-                      "cityName": "Fort Lauderdale",
-                      "cityId": "FLL",
                       "time": {
                         "utc": "2019-03-03T00:45:00.000Z",
                         "local": "2019-03-02T19:45:00.000Z"
@@ -343,16 +271,12 @@ query search {
                   },
                   {
                     "departure": {
-                      "cityName": "Fort Lauderdale",
-                      "cityId": "FLL",
                       "time": {
                         "utc": "2019-03-03T03:55:00.000Z",
                         "local": "2019-03-02T22:55:00.000Z"
                       }
                     },
                     "arrival": {
-                      "cityName": "Medellín",
-                      "cityId": "MDE",
                       "time": {
                         "utc": "2019-03-03T07:24:00.000Z",
                         "local": "2019-03-03T02:24:00.000Z"
@@ -361,16 +285,12 @@ query search {
                   },
                   {
                     "departure": {
-                      "cityName": "Medellín",
-                      "cityId": "MDE",
                       "time": {
                         "utc": "2019-03-03T23:50:00.000Z",
                         "local": "2019-03-03T18:50:00.000Z"
                       }
                     },
                     "arrival": {
-                      "cityName": "Lima",
-                      "cityId": "LIM",
                       "time": {
                         "utc": "2019-03-04T03:00:00.000Z",
                         "local": "2019-03-03T22:00:00.000Z"
@@ -379,16 +299,12 @@ query search {
                   }
                 ],
                 "departure": {
-                  "cityName": "Oslo",
-                  "cityId": "OSL",
                   "time": {
                     "utc": "2019-03-01T17:45:00.000Z",
                     "local": "2019-03-01T18:45:00.000Z"
                   }
                 },
                 "arrival": {
-                  "cityName": "Lima",
-                  "cityId": "LIM",
                   "time": {
                     "utc": "2019-03-04T03:00:00.000Z",
                     "local": "2019-03-03T22:00:00.000Z"
