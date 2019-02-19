@@ -29,6 +29,7 @@ export { Modal } from './Modal';
 export { TagsInput } from './TagsInput';
 export { OptionPicker } from './OptionPicker';
 export { MenuGroup, MenuItem } from './MenuGroup';
+export { Picker } from './Picker';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

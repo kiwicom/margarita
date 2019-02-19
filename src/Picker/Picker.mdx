@@ -1,0 +1,30 @@
+---
+name: Picker
+menu: Components
+route: /picker
+---
+
+import { Playground, PropsTable } from 'docz'
+import { View } from 'react-native'
+import { Picker } from '.'
+
+# Picker
+
+## Properties
+
+<PropsTable of={Picker} />
+
+## Basic usage
+
+<Playground>
+   <Picker
+      optionsData={[
+         { label: 'Option A', value: 'a' },
+         { label: 'Option B', value: 'b' },
+      ]}
+      selectedValue={'a'}
+      onValueChange={(value) => {}}
+   />
+</Playground>
+
+

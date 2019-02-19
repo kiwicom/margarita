@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Picker renders 1`] = `
+Object {
+  "output": <View>
+    <Button
+      label="A"
+      onPress={[Function]}
+      rightIcon={
+        <Icon
+          name="chevron-right"
+        />
+      }
+      type="secondary"
+    />
+    <Modal
+      backdropOpacity={0.5}
+      isVisible={false}
+      onBackdropPress={[Function]}
+      onRequestClose={[Function]}
+      style={
+        Object {
+          "justifyContent": "flex-end",
+          "margin": 0,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#fff",
+            "borderTopEndRadius": 6,
+            "borderTopStartRadius": 6,
+            "paddingBottom": 40,
+            "paddingTop": 4,
+            "width": "100%",
+          }
+        }
+      >
+        <NativePicker
+          onValueChange={[Function]}
+          optionsData={
+            Array [
+              Object {
+                "label": "A",
+                "value": "a",
+              },
+              Object {
+                "label": "B",
+                "value": "b",
+              },
+            ]
+          }
+          selectedValue="a"
+          style={
+            Object {
+              "width": "100%",
+            }
+          }
+        />
+        <View
+          style={
+            Object {
+              "marginHorizontal": 8,
+            }
+          }
+        >
+          <Button
+            label="OK"
+            onPress={[Function]}
+            type="secondary"
+          />
+        </View>
+      </View>
+    </Modal>
+  </View>,
+}
+`;
