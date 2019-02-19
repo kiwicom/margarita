@@ -7,7 +7,7 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
-fragment TripFragment on Trip {
+fragment SectorFragment on Sector {
   duration
   departure {
     cityName
@@ -33,21 +33,21 @@ fragment TripFragment on Trip {
         passengerCount
 
         ... on BookingOneWay {
-          trip {
-            ...TripFragment
+          sector {
+            ...SectorFragment
           }
         }
         ... on BookingReturn {
           inbound {
-            ...TripFragment
+            ...SectorFragment
           }
           outbound {
-            ...TripFragment
+            ...SectorFragment
           }
         }
         ... on BookingMulticity {
-          trips {
-            ...TripFragment
+          sectors {
+            ...SectorFragment
           }
         }
       }

@@ -55,7 +55,7 @@ return {
           "name": "inbound",
           "storageKey": null,
           "args": null,
-          "concreteType": "Trip",
+          "concreteType": "Sector",
           "plural": false,
           "selections": (v0/*: any*/)
         },
@@ -65,7 +65,7 @@ return {
           "name": "outbound",
           "storageKey": null,
           "args": null,
-          "concreteType": "Trip",
+          "concreteType": "Sector",
           "plural": false,
           "selections": (v0/*: any*/)
         }

@@ -12,7 +12,7 @@ type TripInfo$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripInfoOneWay$ref: FragmentReference;
 export type TripInfoOneWay = {|
-  +trip?: ?{|
+  +sector?: ?{|
     +$fragmentRefs: TripInfo$ref
   |},
   +$refType: TripInfoOneWay$ref,
@@ -34,10 +34,10 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "trip",
+          "name": "sector",
           "storageKey": null,
           "args": null,
-          "concreteType": "Trip",
+          "concreteType": "Sector",
           "plural": false,
           "selections": [
             {
@@ -52,5 +52,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '39fd999cab98a9cc6dbc14d8e4e5fa62';
+(node/*: any*/).hash = '8be64c41a16d01934ea8a434cdab20bd';
 module.exports = node;

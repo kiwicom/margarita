@@ -22,7 +22,7 @@ export type TripInfo = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "TripInfo",
-  "type": "Trip",
+  "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -39,5 +39,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'bb7c773980479ad85c2f0299912c74af';
+(node/*: any*/).hash = '1cd4c30128894edb57016d5e5065d813';
 module.exports = node;
