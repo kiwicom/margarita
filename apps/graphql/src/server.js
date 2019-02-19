@@ -4,9 +4,9 @@ import '@babel/polyfill';
 
 import { ApolloServer } from 'apollo-server';
 
-import createContext from './services/GraphQLContext';
+import createContext from './services/graphqlContext/GraphQLContext';
 import schema from './Schema';
-import Logger from './services/Logger';
+import Logger from './services/logger/Logger';
 
 const server = new ApolloServer({
   schema,

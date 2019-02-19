@@ -1,0 +1,192 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: BookingDetail.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+fragment RouteStopFragment on RouteStop {
+  time {
+    utc
+    local
+  }
+}
+
+{
+  bookingDetail(id:"Q3VzdG9tZXJCb29raW5nOjE2NDYzNDQ3") {
+    id
+    status
+    arrival {
+      ...RouteStopFragment
+    }
+    departure {
+      ...RouteStopFragment
+    }
+    destinationImageUrl
+    passengerCount
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "bookingDetail": {
+      "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
+      "status": "closed",
+      "arrival": {
+        "time": {
+          "utc": "2018-11-28T16:20:00.000Z",
+          "local": "2018-11-28T16:20:00.000Z"
+        }
+      },
+      "departure": {
+        "time": {
+          "utc": "2018-11-28T11:20:00.000Z",
+          "local": "2018-11-28T12:20:00.000Z"
+        }
+      },
+      "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
+      "passengerCount": 1
+    }
+  }
+}
+`;
+
+exports[`matches expected output: CustomerBookings.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+fragment RouteStopFragment on RouteStop {
+  time {
+    utc
+    local
+  }
+}
+
+fragment SectorFragment on Sector {
+  duration
+}
+
+{
+  customerBookings {
+    edges {
+      node {
+        id
+        status
+        arrival {
+          ...RouteStopFragment
+        }
+        departure {
+          ...RouteStopFragment
+        }
+        destinationImageUrl
+        passengerCount
+
+        ... on BookingOneWay {
+          sector {
+            ...SectorFragment
+          }
+        }
+        ... on BookingReturn {
+          inbound {
+            ...SectorFragment
+          }
+          outbound {
+            ...SectorFragment
+          }
+        }
+        ... on BookingMulticity {
+          sectors {
+            ...SectorFragment
+          }
+        }
+      }
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "customerBookings": {
+      "edges": [
+        {
+          "node": {
+            "id": "Qm9va2luZ09uZVdheToxNjQ2MzQ0Nw==",
+            "status": "closed",
+            "arrival": {
+              "time": {
+                "utc": "2018-11-28T16:20:00.000Z",
+                "local": "2018-11-28T16:20:00.000Z"
+              }
+            },
+            "departure": {
+              "time": {
+                "utc": "2018-11-28T11:20:00.000Z",
+                "local": "2018-11-28T12:20:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/las-palmas_es.jpg",
+            "passengerCount": 1,
+            "sector": {
+              "duration": 300
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ1JldHVybjo4MTQyODI4",
+            "status": "confirmed",
+            "arrival": {
+              "time": {
+                "utc": "2018-09-21T12:31:00.000Z",
+                "local": "2018-09-21T10:01:00.000Z"
+              }
+            },
+            "departure": {
+              "time": {
+                "utc": "2018-09-20T19:30:00.000Z",
+                "local": "2018-09-20T21:30:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/st-johns_nl_ca.jpg",
+            "passengerCount": 2,
+            "inbound": {
+              "duration": 915
+            },
+            "outbound": {
+              "duration": 1021
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "Qm9va2luZ011bHRpY2l0eTo2Njc2NTI0",
+            "status": "confirmed",
+            "arrival": {
+              "time": {
+                "utc": "2018-08-25T11:55:00.000Z",
+                "local": "2018-08-25T13:55:00.000Z"
+              }
+            },
+            "departure": {
+              "time": {
+                "utc": "2018-07-16T09:50:00.000Z",
+                "local": "2018-07-16T11:50:00.000Z"
+              }
+            },
+            "destinationImageUrl": "https://images.kiwi.com/photos/600x600/bratislava_sk.jpg",
+            "passengerCount": 2,
+            "sectors": [
+              {
+                "duration": 230
+              },
+              {
+                "duration": 240
+              },
+              {
+                "duration": 590
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}
+`;
