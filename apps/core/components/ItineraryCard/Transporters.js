@@ -1,6 +1,7 @@
 // @flow
 
 import * as React from 'react';
+import { Platform } from 'react-native';
 import { CarrierLogo } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { uniq } from 'ramda';
@@ -25,6 +26,7 @@ const mapTransporters = (segments: SegmentsType) => {
 
   return carriers;
 };
+
 function Transporters({ data }: Props) {
   const carriers = mapTransporters(data?.segments);
 
@@ -32,7 +34,12 @@ function Transporters({ data }: Props) {
     return null;
   }
 
-  return <CarrierLogo size="medium" carriers={carriers} />;
+  return (
+    <CarrierLogo
+      size={Platform.OS === 'web' ? 'large' : 'medium'}
+      carriers={carriers}
+    />
+  );
 }
 
 export default createFragmentContainer(

@@ -1,10 +1,15 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Text, StyleSheet } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { View, Platform } from 'react-native';
+import { Text, StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-utils';
 
 import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
@@ -16,41 +21,50 @@ import { getDuration, dateFormat } from './TripSectorHelpers';
 
 type Props = {|
   +data: ?TripSectorType,
+  +layout: number,
 |};
 
-function TripSector({ data }: Props) {
+function TripSector({ data, layout }: Props) {
+  const wideLayout = layout >= LAYOUT.largeMobile;
   return (
     <View style={styles.container}>
-      <View style={styles.row}>
-        <View style={styles.carrierLogo}>
-          <Transporters data={data} />
+      <View style={styles.carrierLogo}>
+        <Transporters data={data} />
+      </View>
+      <View style={styles.tripItems}>
+        <View
+          style={[styles.leftSection, wideLayout && styles.leftSectionWide]}
+        >
+          <FlightTimes data={data} />
+          {Platform.OS !== 'web' && <TimelineArrow />}
+          <TripCities data={data} />
         </View>
-        <View style={styles.tripItems}>
-          <View style={styles.time}>
-            <FlightTimes data={data} />
-          </View>
-          <TimelineArrow />
-          <View style={styles.places}>
-            <TripCities data={data} />
-          </View>
-          <View style={styles.infoItems}>
-            <LocalTime
-              data={data?.departure}
-              dateFormat={dateFormat}
-              style={[styles.text, styles.info]}
-            />
-            <Text style={[styles.text, styles.info]} numberOfLines={1}>
-              {getDuration(data?.duration)}
-            </Text>
-          </View>
+        <View
+          style={[styles.rightSection, wideLayout && styles.rightSectionWide]}
+        >
+          <LocalTime
+            data={data?.departure}
+            dateFormat={dateFormat}
+            style={[styles.infoText, styles.dateText]}
+          />
+          <Text
+            style={[styles.infoText, styles.durationText]}
+            numberOfLines={1}
+          >
+            {getDuration(data?.duration)}
+          </Text>
         </View>
       </View>
     </View>
   );
 }
 
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
+});
+
 export default createFragmentContainer(
-  TripSector,
+  withLayoutContext(layoutSelect)(TripSector),
   graphql`
     fragment TripSector on Sector {
       duration
@@ -67,39 +81,68 @@ export default createFragmentContainer(
 
 const styles = StyleSheet.create({
   container: {
-    height: 70,
-  },
-  row: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 0,
+    height: 70,
+    web: {
+      height: 'auto',
+    },
   },
   carrierLogo: {
-    width: 30,
+    paddingEnd: parseInt(defaultTokens.spaceMedium, 10),
+    web: {
+      paddingEnd: 30,
+    },
   },
   tripItems: {
+    flex: 1,
     flexDirection: 'row',
-    flex: 1,
     alignItems: 'center',
-    paddingVertical: 5,
   },
-  time: {
-    minWidth: 65,
-    paddingHorizontal: 10,
+  leftSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    web: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+      marginEnd: parseInt(defaultTokens.spaceMedium, 10),
+    },
   },
-  places: {
+  leftSectionWide: {
+    web: {
+      minWidth: 180,
+    },
+  },
+  rightSection: {
     flex: 1,
-  },
-  text: {
-    fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
-    lineHeight: 17,
-    padding: 5,
-  },
-  infoItems: {
     alignItems: 'flex-end',
   },
-  info: {
+  rightSectionWide: {
+    web: {
+      alignItems: 'flex-start',
+    },
+  },
+  infoText: {
+    fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     color: defaultTokens.colorTextSecondary,
+    lineHeight: 17,
+    padding: 5,
+    web: {
+      padding: 0,
+    },
+  },
+  dateText: {
+    web: {
+      fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
+      color: '#2e353b', // @TODO repeating value - should be added to design-tokens
+    },
+  },
+  durationText: {
+    web: {
+      marginTop: parseInt(defaultTokens.spaceXXSmall, 10),
+      lineHeight: 14,
+      color: defaultTokens.paletteInkLight,
+    },
   },
 });
