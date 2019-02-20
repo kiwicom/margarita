@@ -9,6 +9,10 @@ const routes = [
   { name: 'Home', path: '/' },
   { name: 'Getting Started', path: '/getting-started' },
   { name: 'Apps', path: '/apps' },
+  { name: 'Apps/GraphQL Server', path: '/apps/graphql' },
+  { name: 'Apps/Mobile', path: '/apps/mobile' },
+  { name: 'Apps/Web', path: '/apps/web' },
+  { name: 'Contributing', path: '/contributing' },
 ];
 
 const components = {
