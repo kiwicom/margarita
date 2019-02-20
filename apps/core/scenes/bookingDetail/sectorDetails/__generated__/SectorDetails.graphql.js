@@ -9,23 +9,23 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 type Header$ref = any;
-type TripInfoMulticity$ref = any;
-type TripInfoOneWay$ref = any;
-type TripInfoReturn$ref = any;
+type SectorInfoMulticity$ref = any;
+type SectorInfoOneWay$ref = any;
+type SectorInfoReturn$ref = any;
 export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TripDetails$ref: FragmentReference;
-export type TripDetails = {|
+declare export opaque type SectorDetails$ref: FragmentReference;
+export type SectorDetails = {|
   +type: ?BookingType,
-  +$fragmentRefs: Header$ref & TripInfoOneWay$ref & TripInfoMulticity$ref & TripInfoReturn$ref,
-  +$refType: TripDetails$ref,
+  +$fragmentRefs: Header$ref & SectorInfoOneWay$ref & SectorInfoMulticity$ref & SectorInfoReturn$ref,
+  +$refType: SectorDetails$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TripDetails",
+  "name": "SectorDetails",
   "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
@@ -37,17 +37,17 @@ const node/*: ReaderFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TripInfoOneWay",
+      "name": "SectorInfoOneWay",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "TripInfoMulticity",
+      "name": "SectorInfoMulticity",
       "args": null
     },
     {
       "kind": "FragmentSpread",
-      "name": "TripInfoReturn",
+      "name": "SectorInfoReturn",
       "args": null
     },
     {
@@ -60,5 +60,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '09a882cd52438f6f9bc1d55678f04b67';
+(node/*: any*/).hash = '037497d5b4afa4e91ab0e83b999af2ec';
 module.exports = node;

@@ -6,7 +6,7 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import TripDetails from './tripDetails/TripDetails';
+import SectorDetails from './sectorDetails/SectorDetails';
 import ManageMenuGroup from './menuGroups/Manage';
 import ServicesMenuGroup from './menuGroups/Services';
 import TripInfoMenuGroup from './menuGroups/TripInfo';
@@ -21,7 +21,7 @@ class BookingDetailWrapper extends React.Component<Props> {
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <TripDetails data={this.props.data} />
+        <SectorDetails data={this.props.data} />
         <TripInfoMenuGroup />
         <Passengers data={this.props.data} />
         <ServicesMenuGroup />
@@ -41,7 +41,7 @@ export default createFragmentContainer(
   BookingDetailWrapper,
   graphql`
     fragment BookingDetailWrapper on BookingInterface {
-      ...TripDetails
+      ...SectorDetails
       ...Passengers
     }
   `,

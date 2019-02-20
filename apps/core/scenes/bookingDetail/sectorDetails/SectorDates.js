@@ -6,24 +6,24 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import { Duration } from '@kiwicom/margarita-components';
 import { View } from 'react-native';
 
-import TripDate from './TripDate';
-import type { TripDates as BookingType } from './__generated__/TripDates.graphql';
+import SectorDate from './SectorDate';
+import type { SectorDates as BookingType } from './__generated__/SectorDates.graphql';
 
 type Props = {|
   +data: ?BookingType,
 |};
 
-const TripDates = (props: Props) => {
+const SectorDates = (props: Props) => {
   return (
     <>
       <View style={styles.row}>
-        <TripDate data={props.data?.departure} type="date" />
-        <TripDate data={props.data?.arrival} type="date" />
+        <SectorDate data={props.data?.departure} type="date" />
+        <SectorDate data={props.data?.arrival} type="date" />
       </View>
       <View style={styles.row}>
-        <TripDate data={props.data?.departure} type="time" />
+        <SectorDate data={props.data?.departure} type="time" />
         <Duration duration={props.data?.duration} />
-        <TripDate data={props.data?.arrival} type="time" />
+        <SectorDate data={props.data?.arrival} type="time" />
       </View>
     </>
   );
@@ -37,14 +37,14 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  TripDates,
+  SectorDates,
   graphql`
-    fragment TripDates on Sector {
+    fragment SectorDates on Sector {
       departure {
-        ...TripDate
+        ...SectorDate
       }
       arrival {
-        ...TripDate
+        ...SectorDate
       }
       duration
     }

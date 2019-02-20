@@ -9,19 +9,19 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 type FromTo$ref = any;
-type TripDates$ref = any;
+type SectorDates$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TripInfo$ref: FragmentReference;
-export type TripInfo = {|
-  +$fragmentRefs: FromTo$ref & TripDates$ref,
-  +$refType: TripInfo$ref,
+declare export opaque type SectorInfo$ref: FragmentReference;
+export type SectorInfo = {|
+  +$fragmentRefs: FromTo$ref & SectorDates$ref,
+  +$refType: SectorInfo$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TripInfo",
+  "name": "SectorInfo",
   "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
@@ -33,11 +33,11 @@ const node/*: ReaderFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "TripDates",
+      "name": "SectorDates",
       "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '1cd4c30128894edb57016d5e5065d813';
+(node/*: any*/).hash = '6f8aa25ef39b14234be17384f6f2541a';
 module.exports = node;

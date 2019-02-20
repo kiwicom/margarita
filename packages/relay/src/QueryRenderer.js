@@ -39,7 +39,6 @@ export default class QueryRenderer extends React.Component<Props> {
 
   render() {
     return (
-      /* $FlowFixMe: Yes we can send variables to QueryRenderer */
       <KiwiQueryRenderer
         variables={this.props.variables}
         environment={environment}

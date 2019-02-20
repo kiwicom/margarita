@@ -6,16 +6,16 @@ import { Separator, BookingTypeRenderer } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
 import Header from './Header';
-import TripInfoOneWay from './TripInfoOneWay';
-import TripInfoMulticity from './TripInfoMulticity';
-import TripInfoReturn from './TripInfoReturn';
-import type { TripDetails as BookingType } from './__generated__/TripDetails.graphql';
+import SectorInfoOneWay from './SectorInfoOneWay';
+import SectorInfoMulticity from './SectorInfoMulticity';
+import SectorInfoReturn from './SectorInfoReturn';
+import type { SectorDetails as BookingType } from './__generated__/SectorDetails.graphql';
 
 type Props = {|
   +data: ?BookingType,
 |};
 
-function TripDetails(props: Props) {
+function SectorDetails(props: Props) {
   const type = props.data?.type;
   return (
     <Card style={styles.card}>
@@ -23,9 +23,9 @@ function TripDetails(props: Props) {
       <Separator style={styles.separator} />
       <BookingTypeRenderer
         type={type}
-        oneWayComponent={<TripInfoOneWay data={props.data} />}
-        returnComponent={<TripInfoReturn data={props.data} />}
-        multicityComponent={<TripInfoMulticity data={props.data} />}
+        oneWayComponent={<SectorInfoOneWay data={props.data} />}
+        returnComponent={<SectorInfoReturn data={props.data} />}
+        multicityComponent={<SectorInfoMulticity data={props.data} />}
       />
     </Card>
   );
@@ -42,13 +42,13 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  TripDetails,
+  SectorDetails,
   graphql`
-    fragment TripDetails on BookingInterface {
+    fragment SectorDetails on BookingInterface {
       ...Header
-      ...TripInfoOneWay
-      ...TripInfoMulticity
-      ...TripInfoReturn
+      ...SectorInfoOneWay
+      ...SectorInfoMulticity
+      ...SectorInfoReturn
       type
     }
   `,

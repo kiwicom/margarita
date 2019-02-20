@@ -5,18 +5,18 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { Separator } from '@kiwicom/margarita-components';
 import { StyleSheet } from '@kiwicom/universal-components';
 
-import TripInfo from './TripInfo';
-import type { TripInfoMulticity as BookingType } from './__generated__/TripInfoMulticity.graphql';
+import SectorInfo from './SectorInfo';
+import type { SectorInfoMulticity as BookingType } from './__generated__/SectorInfoMulticity.graphql';
 
 type Props = {|
   +data: ?BookingType,
 |};
 
-function TripInfoMulticity(props: Props) {
+function SectorInfoMulticity(props: Props) {
   const trips = props.data?.sectors ?? [];
   return trips.map((trip, index) => (
     <React.Fragment key={index}>
-      <TripInfo data={trip} />
+      <SectorInfo data={trip} />
       <Separator style={styles.separator} />
     </React.Fragment>
   ));
@@ -30,12 +30,12 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  TripInfoMulticity,
+  SectorInfoMulticity,
   graphql`
-    fragment TripInfoMulticity on BookingInterface {
+    fragment SectorInfoMulticity on BookingInterface {
       ... on BookingMulticity {
         sectors {
-          ...TripInfo
+          ...SectorInfo
         }
       }
     }
