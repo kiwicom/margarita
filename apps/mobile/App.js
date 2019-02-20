@@ -7,6 +7,7 @@ import {
   type NavigationState,
 } from 'react-navigation';
 import { SearchContextProvider } from '@kiwicom/margarita-core';
+import { AlertContextProvider } from '@kiwicom/margarita-components';
 import { LayoutContextProvider } from '@kiwicom/margarita-utils';
 
 import TabNavigator from './src/navigation/TabNavigator';
@@ -24,7 +25,9 @@ export default function App() {
   return (
     <LayoutContextProvider>
       <SearchContextProvider>
-        <AppContainer />
+        <AlertContextProvider>
+          <AppContainer />
+        </AlertContextProvider>
       </SearchContextProvider>
     </LayoutContextProvider>
   );
