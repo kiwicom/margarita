@@ -10,7 +10,7 @@ import {
 } from '@kiwicom/universal-components';
 
 // import BlackToAlpha from './assets/black-to-alpha-vertical.png'; @TODO
-import CityImage from './Image/CityImage';
+import CityImage from './image/CityImage';
 import Placeholder from './Placeholder';
 import Text from '../text/Text';
 

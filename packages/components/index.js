@@ -1,6 +1,6 @@
 // @flow
 
-import BlackToAlpha from './src/PlaceCard/assets/black-to-alpha-vertical.png';
+import BlackToAlpha from './src/placeCard/assets/black-to-alpha-vertical.png';
 
 export {
   default as TouchableWithoutFeedback,
@@ -16,22 +16,22 @@ export {
 export {
   default as PassengersInputs,
 } from './src/passengersInputs/PassengersInputs';
-export { SearchParamsSummary } from './src/SearchParamsSummary';
+export { SearchParamsSummary } from './src/searchParamsSummary';
 export {
   TimelineInformation,
   TimelineDate,
   TimelineDifferentAirport,
   TimelineCabinBaggage,
   TimelinePriorityBoarding,
-} from './src/TimelineInformation';
-export { PlaceCard } from './src/PlaceCard';
+} from './src/timelineInformation';
+export { PlaceCard } from './src/placeCard';
 export { BlackToAlpha };
-export { Shimmer } from './src/Shimmer';
-export { TimelineFlightDetail } from './src/TimelineFlightDetail';
-export { default as Illustration } from './src/Illustration/Illustration';
+export { Shimmer } from './src/shimmer';
+export { TimelineFlightDetail } from './src/timelineFlightDetail';
+export { default as Illustration } from './src/illustration/Illustration';
 export {
   default as IllustrationWithInformation,
-} from './src/IllustrationWithInformation/IllustrationWithInformation';
+} from './src/illustrationWithInformation/IllustrationWithInformation';
 export { default as PassengerCard } from './src/passengerCard/PassengerCard';
 
 export { default as Separator } from './src/separator/Separator';

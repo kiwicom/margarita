@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
 
-import { Shimmer } from '../Shimmer';
+import { Shimmer } from '../shimmer';
 
 const Placeholder = () => (
   <View style={styles.container}>

@@ -5,8 +5,8 @@ import { View } from 'react-native';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { type IllustrationNameType } from '../Illustration/IllustrationTypes';
-import Illustration from '../Illustration/Illustration';
+import { type IllustrationNameType } from '../illustration/IllustrationTypes';
+import Illustration from '../illustration/Illustration';
 
 type Props = {|
   +text: string,
