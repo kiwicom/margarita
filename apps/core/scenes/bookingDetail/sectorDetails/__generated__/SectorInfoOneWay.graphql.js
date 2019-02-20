@@ -8,21 +8,21 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type TripInfo$ref = any;
+type SectorInfo$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TripInfoOneWay$ref: FragmentReference;
-export type TripInfoOneWay = {|
+declare export opaque type SectorInfoOneWay$ref: FragmentReference;
+export type SectorInfoOneWay = {|
   +sector?: ?{|
-    +$fragmentRefs: TripInfo$ref
+    +$fragmentRefs: SectorInfo$ref
   |},
-  +$refType: TripInfoOneWay$ref,
+  +$refType: SectorInfoOneWay$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TripInfoOneWay",
+  "name": "SectorInfoOneWay",
   "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
@@ -42,7 +42,7 @@ const node/*: ReaderFragment*/ = {
           "selections": [
             {
               "kind": "FragmentSpread",
-              "name": "TripInfo",
+              "name": "SectorInfo",
               "args": null
             }
           ]
@@ -52,5 +52,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '8be64c41a16d01934ea8a434cdab20bd';
+(node/*: any*/).hash = 'bd0cf6a7fd809286ceb3504ecfd17c3c';
 module.exports = node;

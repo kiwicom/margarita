@@ -4,16 +4,16 @@ import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { TripInfo as BookingType } from './__generated__/TripInfo.graphql';
+import type { SectorInfo as BookingType } from './__generated__/SectorInfo.graphql';
 import FromTo from '../../../components/fromTo/FromTo';
 import FromToWrapper from '../../../components/fromTo/FromToWrapper';
-import TripDates from './TripDates';
+import SectorDates from './SectorDates';
 
 type Props = {|
   +data: ?BookingType,
 |};
 
-const TripInfo = (props: Props) => {
+const SectorInfo = (props: Props) => {
   if (props.data == null) {
     return null;
   }
@@ -28,17 +28,17 @@ const TripInfo = (props: Props) => {
           withFlags={true}
         />
       </FromToWrapper>
-      <TripDates data={props.data} />
+      <SectorDates data={props.data} />
     </>
   );
 };
 
 export default createFragmentContainer(
-  TripInfo,
+  SectorInfo,
   graphql`
-    fragment TripInfo on Sector {
+    fragment SectorInfo on Sector {
       ...FromTo
-      ...TripDates
+      ...SectorDates
     }
   `,
 );

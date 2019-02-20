@@ -9,14 +9,14 @@ import {
 } from '@kiwicom/margarita-config';
 import { formatDate } from '@kiwicom/margarita-utils';
 
-import type { TripDate as BookingType } from './__generated__/TripDate.graphql';
+import type { SectorDate as BookingType } from './__generated__/SectorDate.graphql';
 
 type Props = {|
   +data: ?BookingType,
   +type: 'date' | 'time',
 |};
 
-const TripDate = (props: Props) => {
+const SectorDate = (props: Props) => {
   const departureDate = props.data?.time?.local;
 
   if (departureDate == null) {
@@ -36,9 +36,9 @@ const TripDate = (props: Props) => {
 };
 
 export default createFragmentContainer(
-  TripDate,
+  SectorDate,
   graphql`
-    fragment TripDate on RouteStop {
+    fragment SectorDate on RouteStop {
       time {
         local
       }

@@ -9,19 +9,19 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type TripDate$ref: FragmentReference;
-export type TripDate = {|
+declare export opaque type SectorDate$ref: FragmentReference;
+export type SectorDate = {|
   +time: ?{|
     +local: ?any
   |},
-  +$refType: TripDate$ref,
+  +$refType: SectorDate$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "TripDate",
+  "name": "SectorDate",
   "type": "RouteStop",
   "metadata": null,
   "argumentDefinitions": [],
@@ -47,5 +47,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'd773f1c343466d866393519a2102c1e0';
+(node/*: any*/).hash = '29e1427c0ff14b583a9a3c428f1c6252';
 module.exports = node;

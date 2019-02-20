@@ -7,14 +7,14 @@ import { StyleSheet, Text } from '@kiwicom/universal-components';
 
 import FromTo from '../../../components/fromTo/FromTo';
 import FromToWrapper from '../../../components/fromTo/FromToWrapper';
-import TripDates from './TripDates';
-import type { TripInfoReturn as BookingType } from './__generated__/TripInfoReturn.graphql';
+import SectorDates from './SectorDates';
+import type { SectorInfoReturn as BookingType } from './__generated__/SectorInfoReturn.graphql';
 
 type Props = {|
   +data: ?BookingType,
 |};
 
-function TripInfoReturn(props: Props) {
+function SectorInfoReturn(props: Props) {
   return (
     <>
       <FromToWrapper>
@@ -29,11 +29,11 @@ function TripInfoReturn(props: Props) {
       <Text style={styles.title} type="secondary">
         DEPARTURE
       </Text>
-      <TripDates data={props.data?.outbound} />
+      <SectorDates data={props.data?.outbound} />
       <Text style={[styles.title, styles.return]} type="secondary">
         RETURN
       </Text>
-      <TripDates data={props.data?.inbound} />
+      <SectorDates data={props.data?.inbound} />
     </>
   );
 }
@@ -48,16 +48,16 @@ const styles = StyleSheet.create({
 });
 
 export default createFragmentContainer(
-  TripInfoReturn,
+  SectorInfoReturn,
   graphql`
-    fragment TripInfoReturn on BookingInterface {
+    fragment SectorInfoReturn on BookingInterface {
       ... on BookingReturn {
         ...FromTo
         inbound {
-          ...TripDates
+          ...SectorDates
         }
         outbound {
-          ...TripDates
+          ...SectorDates
         }
       }
     }
