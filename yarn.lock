@@ -1338,10 +1338,10 @@
     "@babel/preset-react" "^7.0.0"
     babel-plugin-relay "^2.0.0"
 
-"@kiwicom/eslint-config@^2.11.0":
-  version "2.12.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.12.0.tgz#e530e7fd954c5970359ce0fb95501394f21f188a"
-  integrity sha512-N3dtbcj4dGaSiPu7RVbNVbDZljIF6mxj4XGrdNqBzLL1+JKwWiitQ2kDChkeyZz/pWIDWI+UGW/yBfTHC6bgHw==
+"@kiwicom/eslint-config@^2.15.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.15.0.tgz#1fafa0905aa777aa8271d73cabd2bacf94f492fb"
+  integrity sha512-YdH6jMiHf41SIhlceRqijyBZO+vn1zAf19m8UJc5nazWiER9CGR5stS++FwYStUDkj4s1Eqfuzs7eqTUTk9i1g==
   dependencies:
     chalk "^2.4.2"
     create-jest-runner "^0.5.0"
@@ -1352,6 +1352,7 @@
     eslint-plugin-flowtype "^3.2.1"
     eslint-plugin-import "^2.16.0"
     eslint-plugin-jest "^22.2.1"
+    eslint-plugin-jsx-a11y "^6.2.1"
     eslint-plugin-kiwi-graphql "^1"
     eslint-plugin-kiwicom-incubator "^0"
     eslint-plugin-monorepo "^0.2.1"
@@ -7574,7 +7575,7 @@ eslint-plugin-jest@^22.2.1:
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.3.0.tgz#a10f10dedfc92def774ec9bb5bfbd2fb8e1c96d2"
   integrity sha512-P1mYVRNlOEoO5T9yTqOfucjOYf1ktmJ26NjwjH8sxpCFQa6IhBGr5TpKl3hcAAT29hOsRJVuMWmTsHoUVo9FoA==
 
-eslint-plugin-jsx-a11y@^6.0.3:
+eslint-plugin-jsx-a11y@^6.0.3, eslint-plugin-jsx-a11y@^6.2.1:
   version "6.2.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jsx-a11y/-/eslint-plugin-jsx-a11y-6.2.1.tgz#4ebba9f339b600ff415ae4166e3e2e008831cf0c"
   integrity sha512-cjN2ObWrRz0TTw7vEcGQrx+YltMvZoOEx4hWU8eEERDnBIU00OTq7Vr+jA7DFKxiwLNv4tTh5Pq2GUNEa8b6+w==
