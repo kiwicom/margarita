@@ -143,6 +143,7 @@ class TextInput extends React.Component<Props, State> {
 
   clearValue = () => {
     this.setState({ value: '' });
+    this.props.onChangeText && this.props.onChangeText('');
   };
 
   render() {
