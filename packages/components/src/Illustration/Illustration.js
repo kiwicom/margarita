@@ -25,6 +25,7 @@ export default function Illustration({ name, style = {} }: IllustrationProps) {
         alignSelf: 'center',
         ...StyleSheet.flatten(style),
       }}
+      alt={`${name}-image`}
     />
   );
 }
