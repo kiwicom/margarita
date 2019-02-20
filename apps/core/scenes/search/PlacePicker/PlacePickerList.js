@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Keyboard } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
@@ -29,6 +29,8 @@ const PlacePickerList = (props: Props) => {
         contentContainerStyle={styles.container}
         data={locations}
         keyExtractor={keyExtractor}
+        keyboardShouldPersistTaps="always"
+        onScroll={Keyboard.dismiss}
         renderItem={resultItem}
       />
     </View>

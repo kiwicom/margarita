@@ -82,6 +82,8 @@ class PlacePickerContent extends React.Component<Props, State> {
             value={this.state.text}
             prefix={<Icon name="search" />}
             label={<Text weight="bold">{this.getLabel()}:</Text>}
+            autoCorrect={false}
+            autoFocus
           />
         </View>
         <PlacePickerList locations={this.props.locations?.locationsByTerm} />
