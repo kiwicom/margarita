@@ -20,8 +20,11 @@ import type {
 
 const dateFormat = 'DD/MM/YYYY';
 
+const stripTimeZoneOffset = (date: Date) =>
+  DateFNS.addMinutes(date, date.getTimezoneOffset());
+
 const parseDate = (date: Date) =>
-  DateFNS.format(DateFNS.parse(date), dateFormat);
+  DateFNS.format(DateFNS.parse(stripTimeZoneOffset(date)), dateFormat);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
   const params = {
