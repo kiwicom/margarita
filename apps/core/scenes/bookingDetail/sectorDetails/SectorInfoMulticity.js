@@ -17,7 +17,7 @@ function SectorInfoMulticity(props: Props) {
   return trips.map((trip, index) => (
     <React.Fragment key={index}>
       <SectorInfo data={trip} />
-      <Separator style={styles.separator} />
+      {index !== trips.length - 1 && <Separator style={styles.separator} />}
     </React.Fragment>
   ));
 }

@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+Object {
+  "output": <React.Fragment>
+    <Touchable
+      accessibilityComponentType="button"
+      accessibilityTraits="button"
+      borderlessRipple={false}
+      disabled={false}
+      onPress={[Function]}
+      rippleColor="rgba(0, 0, 0, 0.32)"
+    >
+      <AnimatedComponent
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+              "flex": 1,
+            },
+            Object {
+              "transform": Array [
+                Object {
+                  "rotate": "0deg",
+                },
+                Object {
+                  "perspective": 1000,
+                },
+              ],
+            },
+          ]
+        }
+      >
+        <Icon
+          color="#00a991"
+          name="chevron-down"
+        />
+      </AnimatedComponent>
+    </Touchable>
+  </React.Fragment>,
+}
+`;
