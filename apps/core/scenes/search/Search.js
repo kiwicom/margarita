@@ -3,7 +3,12 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { StyleSheet, Button, Icon } from '@kiwicom/universal-components';
-import { Illustration } from '@kiwicom/margarita-components';
+import {
+  Illustration,
+  withAlertContext,
+  type AlertContextState,
+  type AlertContent,
+} from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withNavigation,
@@ -41,6 +46,7 @@ type Props = {
   +infants: number,
   +bags: number,
   +layout: number,
+  +setAlertContent: (alertContent: AlertContent | null) => void,
 };
 
 class Search extends React.Component<Props> {
@@ -58,20 +64,26 @@ class Search extends React.Component<Props> {
       returnDateTo,
       tripType,
     } = this.props;
-    this.props.navigation.navigate(Routes.RESULTS, {
-      travelFrom: travelFrom?.locationId,
-      travelTo: travelTo?.locationId,
-      travelFromName: travelFrom?.name,
-      travelToName: travelTo?.name,
-      dateFrom: format(dateFrom, DATE_FORMAT),
-      dateTo: format(dateTo, DATE_FORMAT),
-      ...(tripType === 'return'
-        ? {
-            returnDateFrom: format(returnDateFrom, DATE_FORMAT),
-            returnDateTo: format(returnDateTo, DATE_FORMAT),
-          }
-        : {}),
-    });
+    if (travelFrom == null) {
+      this.props.setAlertContent({
+        message: 'Please fill this form completely before you proceed',
+      });
+    } else {
+      this.props.navigation.navigate(Routes.RESULTS, {
+        travelFrom: travelFrom.locationId,
+        travelTo: travelTo?.locationId,
+        travelFromName: travelFrom.name,
+        travelToName: travelTo?.name,
+        dateFrom: format(dateFrom, DATE_FORMAT),
+        dateTo: format(dateTo, DATE_FORMAT),
+        ...(tripType === 'return'
+          ? {
+              returnDateFrom: format(returnDateFrom, DATE_FORMAT),
+              returnDateTo: format(returnDateTo, DATE_FORMAT),
+            }
+          : {}),
+      });
+    }
   };
 
   render() {
@@ -160,7 +172,7 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
   layout,
 });
 
-const select = ({
+const selectSearchContextState = ({
   travelFrom,
   travelTo,
   dateFrom,
@@ -184,6 +196,16 @@ const select = ({
   bags,
 });
 
+const selectAlertContextState = ({
+  actions: { setAlertContent },
+}: AlertContextState) => ({
+  setAlertContent,
+});
+
 export default withNavigation(
-  withLayoutContext(layoutSelect)(withSearchContext(select)(Search)),
+  withLayoutContext(layoutSelect)(
+    withAlertContext(selectAlertContextState)(
+      withSearchContext(selectSearchContextState)(Search),
+    ),
+  ),
 );
