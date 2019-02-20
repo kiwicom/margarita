@@ -1,8 +1,9 @@
 // @flow
 
 import * as React from 'react';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import type { FlightTimes as FlightTimesType } from './__generated__/FlightTimes.graphql';
@@ -13,18 +14,31 @@ type Props = {|
 |};
 
 const FlightTimes = (props: Props) => (
-  <>
-    <LocalTime data={props.data?.departure} style={styles.highlightedText} />
-    <LocalTime data={props.data?.arrival} style={styles.highlightedText} />
-  </>
+  <View style={styles.container}>
+    <LocalTime data={props.data?.departure} style={styles.text} />
+    {Platform.OS === 'web' && <Text style={styles.text}> - </Text>}
+    <LocalTime data={props.data?.arrival} style={styles.text} />
+  </View>
 );
 
 const styles = StyleSheet.create({
-  highlightedText: {
+  container: {
+    minWidth: 55,
+    web: {
+      flexDirection: 'row',
+    },
+  },
+  text: {
     fontWeight: 'bold',
     fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
     color: defaultTokens.colorTextAttention,
     padding: 5,
+    web: {
+      fontWeight: defaultTokens.fontWeightMedium,
+      color: '#2e353b', // @TODO repeating value - should be added to design-tokens
+      padding: 0,
+      lineHeight: 17,
+    },
   },
 });
 
