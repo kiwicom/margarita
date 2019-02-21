@@ -12,6 +12,7 @@ import HorizontalDash from './HorizontalDash';
 type Props = {|
   +localizedPrice: string,
   +children: React.Node,
+  +detailOpened?: boolean,
 |};
 
 export default function ItineraryCardWrapper({
@@ -36,7 +37,7 @@ export default function ItineraryCardWrapper({
     <View style={styles.card}>
       {children}
       <HorizontalDash />
-      <ItineraryCardRow style={styles.lastRow}>
+      <ItineraryCardRow style={styles.footer}>
         <BadgesContainer badges={badges} />
         <LocalizedPrice localizedPrice={localizedPrice} />
       </ItineraryCardRow>
@@ -45,17 +46,15 @@ export default function ItineraryCardWrapper({
 }
 
 const styles = StyleSheet.create({
-  lastRow: {
+  card: {
+    borderColor: defaultTokens.borderColorCard,
+    borderBottomWidth: parseInt(defaultTokens.borderWidthCard, 10),
+    borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
+  },
+  footer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
     marginBottom: 5,
     marginTop: 2,
-  },
-  card: {
-    marginBottom: 10,
-    backgroundColor: defaultTokens.backgroundCard,
-    borderColor: defaultTokens.borderColorCard,
-    borderBottomWidth: parseInt(defaultTokens.borderWidthCard, 10),
-    borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
   },
 });

@@ -13,18 +13,24 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
+  noop,
 } from '@kiwicom/margarita-utils';
 
 type Props = {|
   +localizedPrice: string,
   +children: React.Node,
+  +detailOpened?: boolean,
   +layout: number,
 |};
 
-const noop = () => {}; // @TODO
-
-const ItineraryCardWrapper = ({ localizedPrice, children, layout }: Props) => {
+const ItineraryCardWrapper = ({
+  localizedPrice,
+  children,
+  detailOpened,
+  layout,
+}: Props) => {
   const mobileLayout = layout < LAYOUT.largeMobile;
+  const chevronIconName = detailOpened ? 'chevron-up' : 'chevron-down';
 
   return (
     <View style={styles.card}>
@@ -36,16 +42,19 @@ const ItineraryCardWrapper = ({ localizedPrice, children, layout }: Props) => {
         )}
         <View style={styles.sectors}>{children}</View>
         {!mobileLayout && (
-          <Icon name="chevron-down" color={defaultTokens.paletteInkLighter} />
+          <Icon
+            name={chevronIconName}
+            color={defaultTokens.paletteInkLighter}
+          />
         )}
       </View>
       {mobileLayout && (
         <View style={styles.footer}>
           <LocalizedPrice localizedPrice={localizedPrice} />
           <Button
-            label="Show Detail"
+            label={detailOpened ? 'Hide' : 'Show Detail'}
             type="secondary"
-            rightIcon={<Icon name="chevron-down" />}
+            rightIcon={<Icon name={chevronIconName} />}
             onPress={noop}
           />
         </View>
@@ -56,14 +65,7 @@ const ItineraryCardWrapper = ({ localizedPrice, children, layout }: Props) => {
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: defaultTokens.backgroundCard,
-    alignSelf: 'center',
-    width: '100%',
-    maxWidth: 720,
     padding: parseInt(defaultTokens.spaceMedium, 10),
-    marginBottom: parseInt(defaultTokens.spaceMedium, 10),
-    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
-    boxShadow: '0 2px 4px 0 rgba(23,27,30,.1)',
   },
   row: {
     flexDirection: 'row',
