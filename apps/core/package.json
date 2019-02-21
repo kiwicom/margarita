@@ -10,13 +10,15 @@
     "@kiwicom/margarita-config":"^0",
     "@kiwicom/margarita-components":"^0",
     "@kiwicom/margarita-utils":"^0",
-    "@kiwicom/margarita-relay":"^0"
+    "@kiwicom/margarita-relay":"^0",
+    "@kiwicom/margarita-map":"^0"
   },
   "peerDependencies": {
     "react": "^",
     "react-native": "^",
     "date-fns": "^",
     "ramda": "^",
-    "react-native-testing-library": "^"
+    "react-native-testing-library": "^",
+    "expo": "^"
   }
 }

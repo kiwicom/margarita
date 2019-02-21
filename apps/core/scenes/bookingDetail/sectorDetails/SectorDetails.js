@@ -5,6 +5,7 @@ import { Card, StyleSheet } from '@kiwicom/universal-components';
 import { Separator, BookingTypeRenderer } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { View } from 'react-native';
 
 import Header from './Header';
 import SectorInfoOneWay from './SectorInfoOneWay';
@@ -21,14 +22,16 @@ function SectorDetails(props: Props) {
   const type = props.data?.type;
   return (
     <Card style={styles.card}>
-      <Header data={props.data} />
-      <Separator style={styles.separator} />
-      <BookingTypeRenderer
-        type={type}
-        oneWayComponent={<SectorInfoOneWay data={props.data} />}
-        returnComponent={<SectorInfoReturn data={props.data} />}
-        multicityComponent={<SectorInfoMulticity data={props.data} />}
-      />
+      <View style={styles.cardPaddingContainer}>
+        <Header data={props.data} />
+        <Separator style={styles.separator} />
+        <BookingTypeRenderer
+          type={type}
+          oneWayComponent={<SectorInfoOneWay data={props.data} />}
+          returnComponent={<SectorInfoReturn data={props.data} />}
+          multicityComponent={<SectorInfoMulticity data={props.data} />}
+        />
+      </View>
       <Separator style={styles.bottomSeparator} />
       <SegmentContainer />
     </Card>
@@ -37,17 +40,19 @@ function SectorDetails(props: Props) {
 
 const styles = StyleSheet.create({
   card: {
-    paddingHorizontal: 18,
+    paddingHorizontal: 0,
     borderBottomWidth: StyleSheet.hairlineWidth,
     borderBottomColor: defaultTokens.paletteInkLighter,
     paddingBottom: 0,
+  },
+  cardPaddingContainer: {
+    paddingHorizontal: 18,
   },
   separator: {
     marginTop: 7,
     marginBottom: 17.5,
   },
   bottomSeparator: {
-    marginHorizontal: -18,
     marginTop: 16,
   },
 });

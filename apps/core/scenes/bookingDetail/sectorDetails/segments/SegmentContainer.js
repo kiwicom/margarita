@@ -10,6 +10,8 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Animated } from 'react-native';
 
+import SegmentMap from './SegmentMap';
+
 type Props = {||};
 
 type State = {|
@@ -72,7 +74,12 @@ export default class SegmentContainer extends React.Component<Props, State> {
             />
           </Animated.View>
         </Touchable>
-        {this.state.expandSegments && <Text>TODO: Put segment data</Text>}
+        {this.state.expandSegments && (
+          <>
+            <Text>TODO: Put segment data</Text>
+            <SegmentMap />
+          </>
+        )}
       </>
     );
   }
