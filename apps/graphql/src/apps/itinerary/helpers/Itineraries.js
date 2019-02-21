@@ -213,4 +213,5 @@ export const mapLocation = (
   country: mapLocationArea(countryCode, countryCode, countryName),
   slug: slug ?? null,
   city: null,
+  type: null,
 });

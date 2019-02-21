@@ -6,6 +6,7 @@
         slug
         name
         countryFlagURL
+        type
         city {
           id
           name

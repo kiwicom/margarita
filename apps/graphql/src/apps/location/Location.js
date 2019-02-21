@@ -18,6 +18,7 @@ export type Location = {|
   +slug: ?string,
   +city: ?LocationArea,
   +coordinates?: Coordinates,
+  +type: ?string,
 |};
 
 type ApiLocationArea = {|
