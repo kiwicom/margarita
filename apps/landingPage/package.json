@@ -10,7 +10,7 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.21",
     "gatsby-source-filesystem": "^2.0.21",
-    "gatsby-transformer-sharp": "^2.1.13",
+    "gatsby-transformer-sharp": "^2.1.14",
     "react-helmet": "^5.2.0",
     "styled-components": "^4.1.3"
   },
