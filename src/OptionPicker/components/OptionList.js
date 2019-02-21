@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { FlatList, Keyboard } from 'react-native';
 
 import Option from './Option';
 import { areSelectedOptionsChanged } from '../helpers';
@@ -20,20 +20,31 @@ export default class OptionList extends React.Component<Props> {
     return areSelectedOptionsChanged(options, nextProps.options);
   }
 
+  renderOption = ({ item }: { item: OptionType }) => {
+    const { onItemPress, onAddPress } = this.props;
+    return (
+      <Option
+        option={item}
+        key={item.id}
+        onItemPress={onItemPress}
+        onAddPress={onAddPress}
+      />
+    );
+  };
+
+  keyExtractor = (item: OptionType) => item.id;
+
   render() {
-    const { options, onItemPress, onAddPress } = this.props;
+    const { options } = this.props;
 
     return (
-      <ScrollView>
-        {options.map(option => (
-          <Option
-            option={option}
-            key={option.id}
-            onItemPress={onItemPress}
-            onAddPress={onAddPress}
-          />
-        ))}
-      </ScrollView>
+      <FlatList
+        keyboardShouldPersistTaps="always"
+        onScroll={Keyboard.dismiss}
+        data={options}
+        renderItem={this.renderOption}
+        keyExtractor={this.keyExtractor}
+      />
     );
   }
 }

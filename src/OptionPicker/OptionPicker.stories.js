@@ -16,10 +16,14 @@ storiesOf('OptionPicker', module)
     const onClearPress = action('onClearPress');
     const onPressAdd = action('onPressAdd');
     const onPressItem = action('onPressItem');
-    const selected = select('selected', {
-      None: null,
-      Prague: [Prague],
-    });
+    const selected = select(
+      'selected',
+      {
+        None: null,
+        Prague: [Prague],
+      },
+      null,
+    );
     const options = object('Options', mockedPlaces);
     const label = text('label', 'From:');
     const placeholder = text('placeholder', 'Departure point');

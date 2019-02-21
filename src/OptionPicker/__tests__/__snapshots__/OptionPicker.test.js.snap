@@ -12,7 +12,8 @@ exports[`OptionPicker render 1`] = `
     }
   >
     <TagsInput
-      autofocus={true}
+      autoCorrect={false}
+      autoFocus={true}
       fontSize={16}
       label="label"
       onChangeText={

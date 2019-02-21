@@ -44,7 +44,7 @@ export default function OptionPicker(props: Props) {
     <View>
       <View style={styles.inputWrapper}>
         <TagsInput
-          autofocus
+          autoFocus
           tags={tags}
           onClearPress={onClearPress}
           value={text}
