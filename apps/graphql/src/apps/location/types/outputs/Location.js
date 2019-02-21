@@ -4,6 +4,7 @@ import { GraphQLObjectType, GraphQLString } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
 import LocationArea from './LocationArea';
+import GraphQLCoordinate from './Coordinate';
 import type { Location } from '../../Location';
 
 export default new GraphQLObjectType({
@@ -27,6 +28,9 @@ export default new GraphQLObjectType({
     },
     city: {
       type: LocationArea,
+    },
+    coordinates: {
+      type: GraphQLCoordinate,
     },
     countryFlagURL: {
       type: GraphQLString,
