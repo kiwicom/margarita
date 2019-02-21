@@ -16827,10 +16827,10 @@ remark-emoji@^2.0.2:
     node-emoji "^1.8.1"
     unist-util-visit "^1.4.0"
 
-remark-images@^0.16.1:
-  version "0.16.8"
-  resolved "https://registry.yarnpkg.com/remark-images/-/remark-images-0.16.8.tgz#d44b49ac39349cc5e156def8b5b967d5bacf7479"
-  integrity sha512-fFfsoyb0chyD7Hrbe6eBusjE/jQAKAoNuN88WH2BwggQg2Up5I+kCYMvrrmVT0EXW10dEUDuAb6IXA603TVAWg==
+remark-images@^0.17.0:
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/remark-images/-/remark-images-0.17.0.tgz#6070749e4b551962c6abf9dcc99873fcf858b1e0"
+  integrity sha512-HjOGqt7Lrq8P1Ru2d9NR2ML/Yb7l6iU9ggcMFSQX4heHMO4qo93X3d0a3bycdYe9Fg/zZfj045HnRrMzPMwm5w==
   dependencies:
     is-url "^1.2.2"
     unist-util-visit "^1.3.0"
