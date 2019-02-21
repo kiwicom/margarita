@@ -6,7 +6,7 @@ import { formatPrice } from '@kiwicom/margarita-utils';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { StyleSheet, Hoverable } from '@kiwicom/universal-components';
+import { StyleSheet, Hoverable, Card } from '@kiwicom/universal-components';
 
 import RenderTripSectorItem from './RenderTripSectorItem';
 import ItineraryCardWrapper from './ItineraryCardWrapper';
@@ -74,7 +74,7 @@ class ItineraryCard extends React.Component<Props, State> {
     const localizedPrice = formatPrice(priceObject);
 
     return (
-      <View
+      <Card
         style={[
           styles.container,
           (hovered || detailOpened) && styles.containerElevated,
@@ -105,7 +105,7 @@ class ItineraryCard extends React.Component<Props, State> {
             onClose={this.handleDetailClose}
           />
         )}
-      </View>
+      </Card>
     );
   }
 }
@@ -127,8 +127,13 @@ export default createFragmentContainer(
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultTokens.backgroundCard,
-    marginBottom: 10,
+    padding: 0,
+    ios: {
+      marginBottom: 8,
+    },
+    android: {
+      marginVertical: 4,
+    },
     web: {
       alignSelf: 'center',
       width: '100%',
