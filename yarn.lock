@@ -1338,10 +1338,10 @@
     "@babel/preset-react" "^7.0.0"
     babel-plugin-relay "^2.0.0"
 
-"@kiwicom/eslint-config@^2.15.0":
-  version "2.15.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.15.0.tgz#1fafa0905aa777aa8271d73cabd2bacf94f492fb"
-  integrity sha512-YdH6jMiHf41SIhlceRqijyBZO+vn1zAf19m8UJc5nazWiER9CGR5stS++FwYStUDkj4s1Eqfuzs7eqTUTk9i1g==
+"@kiwicom/eslint-config@^2.15.2":
+  version "2.15.2"
+  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-2.15.2.tgz#ee03994a294c235ab4baace5cbfaacf46db4fbc4"
+  integrity sha512-6/IaqrhmbWsbm5wqEMMe8YHbZ4tBvZLK6sg/NCgZwQP4MbVDTizVT6UGpdoOn6cjHaYBYA7gfkIySeqhHlZKOw==
   dependencies:
     chalk "^2.4.2"
     create-jest-runner "^0.5.0"
@@ -1351,9 +1351,8 @@
     eslint-plugin-eslint-comments "^3.0.1"
     eslint-plugin-flowtype "^3.2.1"
     eslint-plugin-import "^2.16.0"
-    eslint-plugin-jest "^22.2.1"
+    eslint-plugin-jest "^22.3.0"
     eslint-plugin-jsx-a11y "^6.2.1"
-    eslint-plugin-kiwi-graphql "^1"
     eslint-plugin-kiwicom-incubator "^0"
     eslint-plugin-monorepo "^0.2.1"
     eslint-plugin-node "^8.0.1"
@@ -7523,7 +7522,7 @@ eslint-plugin-import@^2.16.0, eslint-plugin-import@^2.9.0:
     read-pkg-up "^2.0.0"
     resolve "^1.9.0"
 
-eslint-plugin-jest@^22.2.1:
+eslint-plugin-jest@^22.3.0:
   version "22.3.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-jest/-/eslint-plugin-jest-22.3.0.tgz#a10f10dedfc92def774ec9bb5bfbd2fb8e1c96d2"
   integrity sha512-P1mYVRNlOEoO5T9yTqOfucjOYf1ktmJ26NjwjH8sxpCFQa6IhBGr5TpKl3hcAAT29hOsRJVuMWmTsHoUVo9FoA==
@@ -7541,11 +7540,6 @@ eslint-plugin-jsx-a11y@^6.0.3, eslint-plugin-jsx-a11y@^6.2.1:
     emoji-regex "^7.0.2"
     has "^1.0.3"
     jsx-ast-utils "^2.0.1"
-
-eslint-plugin-kiwi-graphql@^1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-kiwi-graphql/-/eslint-plugin-kiwi-graphql-1.0.1.tgz#18e3f61937b352d439e8ad69ac705d11df2e94f9"
-  integrity sha512-syeVd3zn3NdKpkcSj99+M9gM7oRElHG8NvFRA9WBiNcGOv1XAVCzoXb+MmHbeR2Ow8VavlXLGMec7zATSXeYIw==
 
 eslint-plugin-kiwicom-incubator@^0:
   version "0.1.0"
