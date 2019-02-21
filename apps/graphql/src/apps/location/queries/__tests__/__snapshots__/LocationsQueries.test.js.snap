@@ -10,6 +10,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
         slug
         name
         countryFlagURL
+        type
         city {
           id
           name
@@ -34,6 +35,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-czechia",
             "name": "Prague",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "type": "CITY",
             "city": null,
             "coordinates": {
               "lat": 50.075538,
@@ -47,6 +49,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "vaclav-havel-airport-prague-prague-czechia",
             "name": "Václav Havel Airport Prague",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "AIRPORT",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -63,6 +66,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-castle",
             "name": "Prague Castle",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "type": "SPECIAL",
             "city": null,
             "coordinates": {
               "lat": 50.090811,
@@ -76,6 +80,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "old-town-square",
             "name": "Old Town Square, Prague",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "type": "SPECIAL",
             "city": null,
             "coordinates": {
               "lat": 50.087462,
@@ -89,6 +94,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-prague-czechia",
             "name": "Prague ,Hradčanská",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -105,6 +111,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "florenc-bus-station-prague-czechia",
             "name": "Prague - Florenc Bus Station",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -121,6 +128,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-liben-prague-czechia",
             "name": "Prague - Libeň",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -137,6 +145,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-andel-prague-czechia",
             "name": "Prague Anděl",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -153,6 +162,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-east-cerny-most-prague-czechia",
             "name": "Prague East (Černý Most)",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
@@ -169,6 +179,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
             "slug": "prague-roztyly-prague-czechia",
             "name": "Prague Roztyly",
             "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "type": "BUS_STATION",
             "city": {
               "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
               "name": "Prague"
