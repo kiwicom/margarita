@@ -17,7 +17,7 @@ afterEach(() => {
 it('prints info message', () => {
   Logger.info('Info Message');
 
-  expect(console.log).toHaveBeenCalled();
+  expect(console.log).toHaveBeenCalledTimes(1);
   expect(console.log.mock.calls).toMatchSnapshot();
 });
 
@@ -26,28 +26,28 @@ it('prints multiline info message', () => {
 info
 message`);
 
-  expect(console.log).toHaveBeenCalled();
+  expect(console.log).toHaveBeenCalledTimes(1);
   expect(console.log.mock.calls).toMatchSnapshot();
 });
 
 it('prints warning message', () => {
   Logger.warning('Warning Message');
 
-  expect(console.warn).toHaveBeenCalled();
+  expect(console.warn).toHaveBeenCalledTimes(1);
   expect(console.warn.mock.calls).toMatchSnapshot();
 });
 
 it('prints error message', () => {
   Logger.error('Error Message');
 
-  expect(console.error).toHaveBeenCalled();
+  expect(console.error).toHaveBeenCalledTimes(1);
   expect(console.error.mock.calls).toMatchSnapshot();
 });
 
 it('is able to handle Error objects', () => {
   Logger.error(new Error('Error Message'));
 
-  expect(console.error).toHaveBeenCalled();
+  expect(console.error).toHaveBeenCalledTimes(1);
   expect(console.error.mock.calls).toMatchSnapshot();
 });
 
@@ -56,6 +56,6 @@ it('is able to handle unknown objects without fail', () => {
     message: 'Unknown Error Type',
   });
 
-  expect(console.error).toHaveBeenCalled();
+  expect(console.error).toHaveBeenCalledTimes(1);
   expect(console.error.mock.calls).toMatchSnapshot();
 });
