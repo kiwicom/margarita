@@ -27,7 +27,7 @@ export {
 export { PlaceCard } from './src/placeCard';
 export { BlackToAlpha };
 export { Shimmer } from './src/shimmer';
-export { TimelineFlightDetail } from './src/timelineFlightDetail';
+export { TimelineTransportDetail } from './src/timelineTransportDetail';
 export { default as Illustration } from './src/illustration/Illustration';
 export {
   default as IllustrationWithInformation,

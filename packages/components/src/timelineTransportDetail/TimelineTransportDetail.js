@@ -29,7 +29,7 @@ const Header = ({ carrier, duration }: HeaderProps) => (expanded: boolean) => (
   <CardHeader carrier={carrier} expanded={expanded} duration={duration} />
 );
 
-export default function TimelineFlightDetail({
+export default function TimelineTransportDetail({
   carrier,
   duration,
   additionalInfo,
@@ -48,7 +48,7 @@ export default function TimelineFlightDetail({
       </View>
       <View style={styles.cardContainer}>
         <Accordion
-          expandedDefault={true}
+          expandedDefault={false}
           header={Header({ carrier, duration })}
         >
           <AdditionalInfo additionalInfo={additionalInfo} />
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
   },
   line: {
     paddingStart: 20,
-    paddingEnd: 14,
+    paddingEnd: 5,
   },
   strip: {
     height: 17,

@@ -18,11 +18,7 @@ type Props = {|
   +duration: string,
 |};
 
-export default function TimelineFlightDetail({
-  expanded,
-  carrier,
-  duration,
-}: Props) {
+export default function CardHeader({ expanded, carrier, duration }: Props) {
   const iconName = expanded ? 'show-less' : 'show-more';
 
   const modeOfTransport =
