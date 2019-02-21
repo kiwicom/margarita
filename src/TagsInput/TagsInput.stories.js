@@ -3,7 +3,13 @@
 import React from 'react';
 import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
-import { text, withKnobs, object, number } from '@storybook/addon-knobs';
+import {
+  text,
+  withKnobs,
+  object,
+  number,
+  boolean,
+} from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import TagsInput from './TagsInput';
@@ -18,7 +24,7 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
-        autofocus
+        autoFocus
       />
     </View>
   ))
@@ -29,7 +35,7 @@ storiesOf('TagsInput', module)
         onChangeText={action('onChangeText')}
         label="From:"
         placeholder="Departure point"
-        autofocus
+        autoFocus
       />
     </View>
   ))
@@ -42,12 +48,14 @@ storiesOf('TagsInput', module)
       step: 1,
     });
     const label = text('Label', 'From:');
+    const autoCorrect = boolean('Auto correct', false);
 
     const placeholder = text('Placeholder', 'Departure point');
     return (
       <View style={{ margin: 20 }}>
         <TagsInput
-          autofocus
+          autoCorrect={autoCorrect}
+          autoFocus
           fontSize={fontSize}
           tags={tags}
           onChangeText={action('onChangeText')}

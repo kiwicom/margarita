@@ -25,7 +25,8 @@ type Props = {|
   +onKeyPress?: (e: Event) => void,
   +placeholder?: string,
   +value?: string,
-  +autofocus: boolean,
+  +autoFocus: boolean,
+  +autoCorrect: boolean,
 |};
 
 type State = {
@@ -50,7 +51,8 @@ export default class TagsInput extends React.Component<Props, State> {
   static defaultProps = {
     fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
     tags: [],
-    autofocus: false,
+    autoFocus: false,
+    autoCorrect: false,
   };
 
   constructor(props: Props) {
@@ -60,7 +62,7 @@ export default class TagsInput extends React.Component<Props, State> {
 
     this.state = {
       value: props.value || '',
-      isFocus: props.autofocus,
+      isFocus: props.autoFocus,
     };
   }
 
@@ -119,7 +121,8 @@ export default class TagsInput extends React.Component<Props, State> {
       label,
       onKeyPress,
       tags,
-      autofocus,
+      autoFocus,
+      autoCorrect,
     } = this.props;
     const { isFocus, value } = this.state;
 
@@ -156,7 +159,8 @@ export default class TagsInput extends React.Component<Props, State> {
           >
             <TagsContainer tags={tags} fontSize={fontSize} />
             <InputField
-              autofocus={autofocus}
+              autoCorrect={autoCorrect}
+              autoFocus={autoFocus}
               onKeyPress={onKeyPress}
               onFocus={this.handleOnFocus}
               onBlur={this.handleOnBlur}

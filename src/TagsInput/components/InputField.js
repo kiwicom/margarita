@@ -21,7 +21,8 @@ type Props = {|
   +maxWidth?: number,
   +placeholder?: string,
   +onKeyPress?: (e: ViewLayoutEvent) => void,
-  +autofocus?: boolean,
+  +autoFocus?: boolean,
+  +autoCorrect?: boolean,
 |};
 
 type State = {|
@@ -100,7 +101,8 @@ class InputField extends React.Component<Props, State> {
       onFocus,
       onBlur,
       onKeyPress,
-      autofocus,
+      autoFocus,
+      autoCorrect,
     } = this.props;
     const { componentWidth } = this.state;
 
@@ -116,7 +118,8 @@ class InputField extends React.Component<Props, State> {
     return (
       <View style={styles.container}>
         <TextInput
-          autoFocus={autofocus}
+          autoCorrect={autoCorrect}
+          autoFocus={autoFocus}
           onKeyPress={onKeyPress}
           onBlur={onBlur}
           onFocus={onFocus}
