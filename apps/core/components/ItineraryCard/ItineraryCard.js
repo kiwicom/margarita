@@ -16,6 +16,7 @@ import type { RenderTripSectorItem as RenderTripSectorItemType } from './__gener
 
 type Props = {|
   +data: ItineraryCardType,
+  +onBookPress: () => void,
 |};
 
 type State = {|
@@ -62,7 +63,7 @@ class ItineraryCard extends React.Component<Props, State> {
 
   render() {
     const { detailOpened, hovered } = this.state;
-    const { data } = this.props;
+    const { data, onBookPress } = this.props;
     if (data == null) {
       return null;
     }
@@ -103,6 +104,7 @@ class ItineraryCard extends React.Component<Props, State> {
           <ItineraryDetail
             localizedPrice={localizedPrice}
             onClose={this.handleDetailClose}
+            onBookPress={onBookPress}
           />
         )}
       </Card>
