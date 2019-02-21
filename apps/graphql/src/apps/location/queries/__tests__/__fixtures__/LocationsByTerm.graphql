@@ -1,0 +1,20 @@
+{
+  locationsByTerm(input: { term: "Prague" }) {
+    edges {
+      node {
+        id
+        slug
+        name
+        countryFlagURL
+        city {
+          id
+          name
+        }
+        coordinates {
+          lat
+          lng
+        }
+      }
+    }
+  }
+}

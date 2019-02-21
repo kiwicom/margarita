@@ -24,6 +24,10 @@ function sanitizeLocations(locations: $ReadOnlyArray<ApiLocation>) {
     name: location.name,
     slug: location.slug,
     timezone: location.timezone,
+    coordinates: {
+      lat: location.location.lat,
+      lng: location.location.lon,
+    },
     country: {
       id: location.city?.country?.id ?? '',
       locationId: location.city?.country?.id,

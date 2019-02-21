@@ -17,6 +17,7 @@ export type Location = {|
   +country: ?LocationArea,
   +slug: ?string,
   +city: ?LocationArea,
+  +coordinates?: Coordinates,
 |};
 
 type ApiLocationArea = {|
@@ -24,6 +25,11 @@ type ApiLocationArea = {|
   name: ?string,
   code: ?string,
   slug: ?string,
+|};
+
+type Coordinates = {|
+  +lat: number,
+  +lng: number,
 |};
 
 export type ApiLocation = {|
@@ -37,6 +43,10 @@ export type ApiLocation = {|
     ...ApiLocationArea,
     +country: ?ApiLocationArea,
   },
+  +location: {|
+    +lat: number,
+    +lon: number,
+  |},
 |};
 
 export type ApiResponse = {|

@@ -1,0 +1,186 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: LocationsByTerm.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+{
+  locationsByTerm(input: { term: "Prague" }) {
+    edges {
+      node {
+        id
+        slug
+        name
+        countryFlagURL
+        city {
+          id
+          name
+        }
+        coordinates {
+          lat
+          lng
+        }
+      }
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "locationsByTerm": {
+      "edges": [
+        {
+          "node": {
+            "id": "TG9jYXRpb246cHJhZ3VlX2N6",
+            "slug": "prague-czechia",
+            "name": "Prague",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "city": null,
+            "coordinates": {
+              "lat": 50.075538,
+              "lng": 14.4378
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246UFJH",
+            "slug": "vaclav-havel-airport-prague-prague-czechia",
+            "name": "Václav Havel Airport Prague",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.100833,
+              "lng": 14.26
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246cHJhZ3VlLWNhc3RsZV9wb2k=",
+            "slug": "prague-castle",
+            "name": "Prague Castle",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "city": null,
+            "coordinates": {
+              "lat": 50.090811,
+              "lng": 14.400523
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246b2xkLXRvd24tc3F1YXJlLXByYWd1ZV9wb2k=",
+            "slug": "old-town-square",
+            "name": "Old Town Square, Prague",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/anywhere.png",
+            "city": null,
+            "coordinates": {
+              "lat": 50.087462,
+              "lng": 14.421211
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q1otUFJBRy1QUkE2",
+            "slug": "prague-prague-czechia",
+            "name": "Prague ,Hradčanská",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.096993,
+              "lng": 14.402517
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246UEZM",
+            "slug": "florenc-bus-station-prague-czechia",
+            "name": "Prague - Florenc Bus Station",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.089525,
+              "lng": 14.440954
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q1otUFJBRy1QUkEy",
+            "slug": "prague-liben-prague-czechia",
+            "name": "Prague - Libeň",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.100761,
+              "lng": 14.502088
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q1otUFJBRy1QUkFH",
+            "slug": "prague-andel-prague-czechia",
+            "name": "Prague Anděl",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.068608,
+              "lng": 14.404425
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q1otUFJBRy1QUkEw",
+            "slug": "prague-east-cerny-most-prague-czechia",
+            "name": "Prague East (Černý Most)",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.108898,
+              "lng": 14.577435
+            }
+          }
+        },
+        {
+          "node": {
+            "id": "TG9jYXRpb246Q1otUFJBRy1QUkE0",
+            "slug": "prague-roztyly-prague-czechia",
+            "name": "Prague Roztyly",
+            "countryFlagURL": "https://images.kiwi.com/flags/32x32/cz.png",
+            "city": {
+              "id": "TG9jYXRpb25BcmVhOnByYWd1ZV9jeg==",
+              "name": "Prague"
+            },
+            "coordinates": {
+              "lat": 50.037867,
+              "lng": 14.476984
+            }
+          }
+        }
+      ]
+    }
+  }
+}
+`;
