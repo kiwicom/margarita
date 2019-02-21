@@ -10,11 +10,13 @@ import ItineraryDetailWrapper from './ItineraryDetailWrapper';
 type Props = {|
   +localizedPrice: string,
   +onClose: () => void,
+  +onBookPress: string => void,
 |};
 
 export default class ItineraryDetail extends React.Component<Props> {
   handleBookPress = () => {
-    // @TODO redirect to booking screen
+    this.props.onBookPress('lol'); // @TODO use real ID
+    this.props.onClose();
   };
 
   render() {

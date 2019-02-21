@@ -9,7 +9,7 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Routes } from '@kiwicom/margarita-navigation';
 
-import { SearchScreen, ResultsScreen } from '../screens';
+import { SearchScreen, ResultsScreen, ResultDetailScreen } from '../screens';
 
 type NavigationOptions = {};
 type NavigationProps = {};
@@ -33,6 +33,9 @@ const StackNavigator: NavigationNavigator<
         headerTitleStyle: { color: defaultTokens.colorTextPrimary },
         headerTransparent: true,
       },
+    },
+    [Routes.RESULT_DETAIL]: {
+      screen: ResultDetailScreen,
     },
   }: NavigationRouteConfigMap),
   {
