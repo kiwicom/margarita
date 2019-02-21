@@ -17,6 +17,7 @@ module.exports = withImages(
       '@kiwicom/universal-components',
       '@kiwicom/margarita-navigation',
       '@kiwicom/margarita-config',
+      '@kiwicom/margarita-map',
     ],
     webpack: (config, { isServer }) => {
       // Bundle Analyzer
