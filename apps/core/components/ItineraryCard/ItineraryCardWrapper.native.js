@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet, LocalizedPrice } from '@kiwicom/universal-components';
 
 import ItineraryCardRow from './ItineraryCardRow';
@@ -34,7 +33,7 @@ export default function ItineraryCardWrapper({
   ];
 
   return (
-    <View style={styles.card}>
+    <View>
       {children}
       <HorizontalDash />
       <ItineraryCardRow style={styles.footer}>
@@ -46,11 +45,6 @@ export default function ItineraryCardWrapper({
 }
 
 const styles = StyleSheet.create({
-  card: {
-    borderColor: defaultTokens.borderColorCard,
-    borderBottomWidth: parseInt(defaultTokens.borderWidthCard, 10),
-    borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
-  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
