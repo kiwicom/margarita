@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   container: {
     height: 22,
     paddingVertical: 2,
-    paddingHorizontal: 7,
+    paddingHorizontal: 5,
     backgroundColor: defaultTokens.paletteCloudLight,
     borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
     borderColor: defaultTokens.paletteInkLighter,
