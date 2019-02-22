@@ -5,7 +5,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 
 import { Text } from '../Text';
-import { StyleSheet } from '../PlatformStyleSheet';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 
 type Props = {|
   +children: React.Node,
@@ -13,6 +13,7 @@ type Props = {|
   +disabled?: boolean,
   +required?: boolean,
   +inlineLabel?: boolean,
+  +style?: StylePropType,
 |};
 
 const getAsteriksStyle = (filled, disabled) => {
@@ -35,9 +36,12 @@ export default function FormLabel({
   filled,
   disabled,
   inlineLabel,
+  style,
 }: Props) {
   return (
-    <View style={inlineLabel ? styles.inlineFormLabel : styles.formLabel}>
+    <View
+      style={[inlineLabel ? styles.inlineFormLabel : styles.formLabel, style]}
+    >
       {required && (
         <Asteriks filled={filled} disabled={disabled}>
           *{' '}

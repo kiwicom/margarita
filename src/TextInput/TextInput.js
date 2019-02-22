@@ -154,6 +154,7 @@ class TextInput extends React.Component<Props, State> {
       required,
       prefix,
       inlineLabel,
+      labelContainerStyle,
       suffix,
       type = 'text',
       error,
@@ -183,7 +184,12 @@ class TextInput extends React.Component<Props, State> {
       <TouchableWithoutFeedback onPress={this.focusTextInput}>
         <View style={styles.inputWrapper}>
           {label != null && !inlineLabel && (
-            <FormLabel filled={!!value} required={required} disabled={disabled}>
+            <FormLabel
+              style={[styles.labelContainer, labelContainerStyle]}
+              filled={!!value}
+              required={required}
+              disabled={disabled}
+            >
               {label}
             </FormLabel>
           )}
@@ -206,6 +212,7 @@ class TextInput extends React.Component<Props, State> {
             {label != null && inlineLabel && (
               <InlineLabel>
                 <FormLabel
+                  style={labelContainerStyle}
                   filled={!!value}
                   inlineLabel
                   required={required}
@@ -339,6 +346,9 @@ const styles = StyleSheet.create({
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,
+  },
+  labelContainer: {
+    marginLeft: 10,
   },
   ...fontSizeGen(),
   ...heightGen(),

@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 
+import { type StylePropType } from '../PlatformStyleSheet';
+
 export type Props = {|
   +autoCorrect?: boolean,
   +autoFocus?: boolean,
@@ -23,6 +25,7 @@ export type Props = {|
   +error?: React.Node,
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
+  +labelContainerStyle?: StylePropType,
 |};
 
 export type State = {|
