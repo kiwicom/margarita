@@ -8,12 +8,15 @@ import {
   GraphQLList,
 } from 'graphql';
 import globalID from '@kiwicom/graphql-global-id';
+import { uniq } from 'ramda';
 
 import GraphQLRouteStop from '../../../common/types/outputs/RouteStop';
 import type { Booking } from '../../Booking';
 import GraphQLBookingType from '../enums/BookingType';
 import GraphQLContactDetails from './ContactDetails';
 import GraphQLPassenger from './Passenger';
+import GraphQLCoordinate from '../../../common/types/outputs/Coordinate';
+import type { GraphqlContextType } from '../../../../services/graphqlContext/GraphQLContext';
 
 export const commonFields = {
   id: globalID(({ bid }) => bid),
@@ -65,6 +68,38 @@ export const commonFields = {
   type: {
     type: GraphQLBookingType,
     description: 'OneWay, Multicity or Return',
+  },
+  segmentLocations: {
+    type: GraphQLList(GraphQLCoordinate),
+    description:
+      'This contains the gps-coordinates for all stops on the booking',
+    resolve: async (
+      { segments }: Booking,
+      _: mixed,
+      { dataLoader }: GraphqlContextType,
+    ) => {
+      const locationCodes = segments.reduce((acc, curr) => {
+        return [
+          ...acc,
+          { code: curr.departure?.code ?? '' },
+          { code: curr.arrival?.code ?? '' },
+        ];
+      }, []);
+
+      const locations = await dataLoader.locations.loadMany(
+        uniq(locationCodes),
+      );
+
+      return locations.reduce((acc, curr) => {
+        return [
+          ...acc,
+          ...curr.map(location => ({
+            lat: location.coordinates?.lat,
+            lng: location.coordinates?.lng,
+          })),
+        ];
+      }, []);
+    },
   },
 };
 export default new GraphQLInterfaceType({
