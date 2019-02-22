@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "next": "^7.0.2",
+    "next": "^8.0.2",
     "react-navigation": "^3.0.9"
   },
   "peerDependencies": {
