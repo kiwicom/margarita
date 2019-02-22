@@ -4,7 +4,7 @@ import { GraphQLObjectType, GraphQLString } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
 import LocationArea from './LocationArea';
-import GraphQLCoordinate from './Coordinate';
+import GraphQLCoordinate from '../../../common/types/outputs/Coordinate';
 import type { Location } from '../../Location';
 
 export default new GraphQLObjectType({
