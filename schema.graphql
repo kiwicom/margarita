@@ -2,6 +2,20 @@ schema {
   query: RootQuery
 }
 
+"""Passenger's bag type and quantity"""
+type Bag {
+  type: BagType
+  quantity: Int
+  dimensions: String
+}
+
+"""Bag types"""
+enum BagType {
+  CABIN_BAG
+  PERSONAL_ITEM
+  CHECKED_BAGGAGE
+}
+
 enum BookingDestinationImageDimensions {
   _1200x628
   _1280x720
@@ -34,6 +48,9 @@ interface BookingInterface {
 
   """This contains the gps-coordinates for all stops on the booking"""
   segmentLocations: [Coordinate]
+
+  """Total count of bags by the type"""
+  bagInfo: [Bag]
 }
 
 """A connection to a list of items."""
@@ -75,6 +92,9 @@ type BookingMulticity implements BookingInterface & FromToInterface {
 
   """This contains the gps-coordinates for all stops on the booking"""
   segmentLocations: [Coordinate]
+
+  """Total count of bags by the type"""
+  bagInfo: [Bag]
   sectors: [Sector]
 }
 
@@ -99,6 +119,9 @@ type BookingOneWay implements BookingInterface & FromToInterface {
 
   """This contains the gps-coordinates for all stops on the booking"""
   segmentLocations: [Coordinate]
+
+  """Total count of bags by the type"""
+  bagInfo: [Bag]
   sector: Sector
 }
 
@@ -123,6 +146,9 @@ type BookingReturn implements BookingInterface & FromToInterface {
 
   """This contains the gps-coordinates for all stops on the booking"""
   segmentLocations: [Coordinate]
+
+  """Total count of bags by the type"""
+  bagInfo: [Bag]
   inbound: Sector
   outbound: Sector
 }
@@ -243,6 +269,7 @@ type Location {
   country: LocationArea
   city: LocationArea
   coordinates: Coordinate
+  type: LocationType
   countryFlagURL: String
 }
 
@@ -282,6 +309,19 @@ input LocationsByTermInput {
   term: String!
 }
 
+enum LocationType {
+  STATION
+  AIRPORT
+  BUS_STATION
+  CITY
+  SUBDIVISION
+  COUNTRY
+  REGION
+  CONTINENT
+  AUTONOMOUS_TERRITORY
+  SPECIAL
+}
+
 """Information about pagination in a connection."""
 type PageInfo {
   """When paginating forwards, are there more items?"""
@@ -305,7 +345,7 @@ type Passenger {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  bags: Int
+  bags: [Bag]
   birthday: String
   category: String
   firstname: String

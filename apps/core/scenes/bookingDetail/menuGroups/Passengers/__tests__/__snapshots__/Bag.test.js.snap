@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag component doesnt render if quantity is 0 1`] = `
+Object {
+  "output": <React.Fragment />,
+}
+`;
+
+exports[`Bag component renders CABIN_BAG type 1`] = `
+Object {
+  "output": <React.Fragment>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "paddingVertical": 4,
+        }
+      }
+    >
+      <Icon
+        color="#7f91a8"
+        name="baggage-checked"
+        size="small"
+      />
+      <Text
+        expo={false}
+        size="small"
+        type="primary"
+      >
+        3 Cabin bags
+      </Text>
+    </Component>
+  </React.Fragment>,
+}
+`;
+
+exports[`Bag component renders CHECKED_BAGGAGE type 1`] = `
+Object {
+  "output": <React.Fragment>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "paddingVertical": 4,
+        }
+      }
+    >
+      <Icon
+        color="#7f91a8"
+        name="baggage-checked"
+        size="small"
+      />
+      <Text
+        expo={false}
+        size="small"
+        type="primary"
+      >
+        3 Checked baggage
+      </Text>
+    </Component>
+  </React.Fragment>,
+}
+`;
+
+exports[`Bag component renders PERSONAL_ITEM type 1`] = `
+Object {
+  "output": <React.Fragment>
+    <Component
+      style={
+        Object {
+          "flexDirection": "row",
+          "paddingVertical": 4,
+        }
+      }
+    >
+      <Icon
+        color="#7f91a8"
+        name="baggage-checked"
+        size="small"
+      />
+      <Text
+        expo={false}
+        size="small"
+        type="primary"
+      >
+        3 Personal items
+      </Text>
+    </Component>
+  </React.Fragment>,
+}
+`;

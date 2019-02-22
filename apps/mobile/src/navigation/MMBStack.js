@@ -91,12 +91,6 @@ const StackNavigator: NavigationNavigator<
         title: 'Timeline',
       },
     },
-    [Routes.PASSENGER_DETAIL]: {
-      screen: PassengerDetailScreen,
-      navigationOptions: {
-        title: 'Passengers',
-      },
-    },
   }: NavigationRouteConfigMap),
   {
     defaultNavigationOptions: {

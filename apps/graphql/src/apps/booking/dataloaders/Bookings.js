@@ -15,6 +15,16 @@ import type {
   RouteStop,
 } from '../Booking';
 
+const cabinBag = '55x40x20, 10kg';
+const personalItem = '35x20x20';
+const checkedBaggage = '70x50x38, 15kg';
+
+const bags = [
+  { type: 'Cabin bag', dimensions: cabinBag, quantity: 1 },
+  { type: 'Personal item', dimensions: personalItem, quantity: 1 },
+  { type: 'Checked baggage', dimensions: checkedBaggage, quantity: 2 },
+];
+
 const sanitizeBookings = (
   bookings: $ReadOnlyArray<BookingApiResult>,
 ): $ReadOnlyArray<Booking> => {
@@ -43,7 +53,7 @@ const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
   booking.passengers.map(passenger => {
     return {
       id: passenger.id,
-      bags: passenger.bags,
+      bags,
       birthday: passenger.birthday,
       category: passenger.category,
       firstname: passenger.firstname,

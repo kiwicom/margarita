@@ -11,10 +11,11 @@ import globalID from '@kiwicom/graphql-global-id';
 import { uniq } from 'ramda';
 
 import GraphQLRouteStop from '../../../common/types/outputs/RouteStop';
-import type { Booking } from '../../Booking';
+import type { Booking, Bag } from '../../Booking';
 import GraphQLBookingType from '../enums/BookingType';
 import GraphQLContactDetails from './ContactDetails';
 import GraphQLPassenger from './Passenger';
+import GraphQLBag from './Bag';
 import GraphQLCoordinate from '../../../common/types/outputs/Coordinate';
 import type { GraphqlContextType } from '../../../../services/graphqlContext/GraphQLContext';
 
@@ -101,7 +102,54 @@ export const commonFields = {
       }, []);
     },
   },
+  bagInfo: {
+    type: GraphQLList(GraphQLBag),
+    description: 'Total count of bags by the type',
+    resolve: ({ passengers }: Booking): $ReadOnlyArray<Bag> => {
+      const CABIN_BAG = 'Cabin bag';
+      const PERSONAL_ITEM = 'Personal item';
+      const CHECKED_BAGGAGE = 'Checked baggage';
+
+      const cabinBag = {
+        type: CABIN_BAG,
+        dimensions: '',
+        quantity: 0,
+      };
+      const personalItem = {
+        type: PERSONAL_ITEM,
+        dimensions: '',
+        quantity: 0,
+      };
+      const checkedBaggage = {
+        type: CHECKED_BAGGAGE,
+        dimensions: '',
+        quantity: 0,
+      };
+      passengers.forEach(passenger => {
+        passenger.bags.forEach(bag => {
+          switch (bag.type) {
+            case CABIN_BAG:
+              cabinBag.quantity += bag.quantity;
+              cabinBag.dimensions = bag.dimensions;
+              break;
+            case PERSONAL_ITEM:
+              personalItem.quantity += bag.quantity;
+              personalItem.dimensions = bag.dimensions;
+              break;
+            case CHECKED_BAGGAGE:
+              checkedBaggage.quantity += bag.quantity;
+              checkedBaggage.dimensions = bag.dimensions;
+              break;
+            default:
+              break;
+          }
+        });
+      });
+      return [personalItem, cabinBag, checkedBaggage];
+    },
+  },
 };
+
 export default new GraphQLInterfaceType({
   name: 'BookingInterface',
   fields: commonFields,
