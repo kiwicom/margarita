@@ -1324,10 +1324,15 @@
   resolved "https://registry.yarnpkg.com/@icons/material/-/material-0.2.4.tgz#e90c9f71768b3736e76d7dd6783fc6c2afa88bc8"
   integrity sha512-QPcGmICAPbGLGb6F/yNf/KzKqvFx8z5qx3D1yFqVAjoFmXK35EgyW+cJ57Te3CNsmzblwtzakLGFqHPqrfb4Tw==
 
-"@kiwicom/babel-preset-kiwicom@^2.1.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/babel-preset-kiwicom/-/babel-preset-kiwicom-2.2.0.tgz#bb2383b1f8924456bfca4c8b83dee7e948cc75a9"
-  integrity sha512-axr7KqlW8MmhHdSFjTxfaZ+nv9X7HNUHw0a4Vjdbyz8O7M6FuZdoxlZ3hsUf0MzRUc7Ncectw4HdiJJkPCitQg==
+"@kiwicom/babel-plugin-orbit-components@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/babel-plugin-orbit-components/-/babel-plugin-orbit-components-1.2.0.tgz#288a5571dff0efd3be083fa76765edda2058e010"
+  integrity sha512-NWC2TMHUaDV5wQMp494W5pVVJxH1EA6wyLj9LVcEdc2Z2K6FvwInHkPRea2ZQJwsh06Co1neD9QMmXPOAocPXg==
+
+"@kiwicom/babel-preset-kiwicom@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/babel-preset-kiwicom/-/babel-preset-kiwicom-2.4.0.tgz#4532fc10d40c9636a53988481ac03de4606ff94c"
+  integrity sha512-MT+O8nCZUFPrJO6K2u5kVLMDPix5BoU7h18QJrv0NYvFmQhaIGXw1RmRnkDW07aBsyatuqwEyfo/sQn07qc2vg==
   dependencies:
     "@babel/plugin-proposal-class-properties" "^7.3.0"
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.2.0"
@@ -1336,6 +1341,7 @@
     "@babel/plugin-transform-flow-strip-types" "^7.2.3"
     "@babel/preset-env" "^7.3.1"
     "@babel/preset-react" "^7.0.0"
+    "@kiwicom/babel-plugin-orbit-components" "^1.2.0"
     babel-plugin-relay "^2.0.0"
 
 "@kiwicom/eslint-config@^2.15.3":
