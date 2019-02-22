@@ -33,7 +33,7 @@ function SectorDetails(props: Props) {
         />
       </View>
       <Separator style={styles.bottomSeparator} />
-      <SegmentContainer />
+      <SegmentContainer data={props.data} />
     </Card>
   );
 }
@@ -65,6 +65,7 @@ export default createFragmentContainer(
       ...SectorInfoOneWay
       ...SectorInfoMulticity
       ...SectorInfoReturn
+      ...SegmentContainer
       type
     }
   `,

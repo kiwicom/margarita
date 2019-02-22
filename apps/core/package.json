@@ -4,21 +4,24 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@kiwicom/margarita-components": "^0",
+    "@kiwicom/margarita-config": "^0",
+    "@kiwicom/margarita-map": "^0",
     "@kiwicom/margarita-navigation": "^0.0.0",
+    "@kiwicom/margarita-relay": "^0",
+    "@kiwicom/margarita-utils": "^0",
     "@kiwicom/orbit-design-tokens": "^0.3.0",
     "@kiwicom/universal-components": "0.0.13",
-    "@kiwicom/margarita-config":"^0",
-    "@kiwicom/margarita-components":"^0",
-    "@kiwicom/margarita-utils":"^0",
-    "@kiwicom/margarita-relay":"^0",
-    "@kiwicom/margarita-map":"^0"
+    "geolib": "^2.0.24",
+    "memoize-one": "^5.0.0"
   },
   "peerDependencies": {
+    "date-fns": "^",
+    "expo": "^",
+    "ramda": "^",
     "react": "^",
     "react-native": "^",
-    "date-fns": "^",
-    "ramda": "^",
     "react-native-testing-library": "^",
-    "expo": "^"
+    "json-stable-stringify": "^"
   }
 }

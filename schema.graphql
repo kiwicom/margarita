@@ -31,6 +31,9 @@ interface BookingInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
+
+  """This contains the gps-coordinates for all stops on the booking"""
+  segmentLocations: [Coordinate]
 }
 
 """A connection to a list of items."""
@@ -69,6 +72,9 @@ type BookingMulticity implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
+
+  """This contains the gps-coordinates for all stops on the booking"""
+  segmentLocations: [Coordinate]
   sectors: [Sector]
 }
 
@@ -90,6 +96,9 @@ type BookingOneWay implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
+
+  """This contains the gps-coordinates for all stops on the booking"""
+  segmentLocations: [Coordinate]
   sector: Sector
 }
 
@@ -111,6 +120,9 @@ type BookingReturn implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
+
+  """This contains the gps-coordinates for all stops on the booking"""
+  segmentLocations: [Coordinate]
   inbound: Sector
   outbound: Sector
 }
@@ -125,6 +137,12 @@ enum BookingType {
 type ContactDetails {
   email: String
   phone: String
+}
+
+"""GPS coordinate"""
+type Coordinate {
+  lat: Float
+  lng: Float
 }
 
 """
@@ -224,6 +242,7 @@ type Location {
   timezone: String
   country: LocationArea
   city: LocationArea
+  coordinates: Coordinate
   countryFlagURL: String
 }
 
