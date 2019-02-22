@@ -9,6 +9,7 @@ export { Card } from './Card';
 export { CarrierLogo } from './CarrierLogo';
 export { Checkbox } from './Checkbox';
 export { FilterButton } from './FilterButton';
+export { FormLabel } from './FormLabel';
 export { Icon } from './Icon';
 export { Loader, PageLoader } from './Loader';
 export { Notification } from './Notification';
