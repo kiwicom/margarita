@@ -1390,10 +1390,10 @@
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
 
-"@kiwicom/js@^0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.2.0.tgz#dff952bd4acaedc3a6edfb11714f1c7aeb430a6e"
-  integrity sha512-ft/DLW75P7Ft0YgCHivfz/awOEkrXFMiuG97ZlrLfcTdBmwawrmP4IeUzhAeDxihluBqyvGoa9OWJYVSVlLCWQ==
+"@kiwicom/js@^0", "@kiwicom/js@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.3.0.tgz#67b0f24e13f4e13c0e53ed908895660d104b70ff"
+  integrity sha512-frHRiHuwwlqx/SSVpBXUO0Njf8GbU85B5SsTWJ9yXs16m0FkEXDAEE+TWAZKmdWB1OgvgH3OQJgBagA86qaSxg==
 
 "@kiwicom/orbit-components@^0.31.0":
   version "0.31.0"
@@ -1420,12 +1420,12 @@
     relay-compiler "^2.0.0"
     relay-runtime "^2.0.0"
 
-"@kiwicom/test-utils@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/test-utils/-/test-utils-0.4.0.tgz#ec975cd54c9cd9fce099e14d9cbcae4918914bcf"
-  integrity sha512-aGYfHVpTMNqAizVvHvp2qUOcY3eK59YiPK1rPC6tVZGEINEDL2opRY4R6PhPVpqxKFFg4LfNkojUQRrR15egYw==
+"@kiwicom/test-utils@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/test-utils/-/test-utils-0.5.0.tgz#08e907fc6f41f9ccdf21f93f2c58773682ec8232"
+  integrity sha512-FPJLVs3HI1/6mU3C/x0lbbJ0lyyB+V4R1NW2PkA/vzonBaBUy5UYtLyUe6JsTD7G4dU37KQvqmR9wHFE3VYMhA==
   dependencies:
-    "@kiwicom/js" "^0"
+    "@kiwicom/js" "^0.3.0"
 
 "@kiwicom/universal-components@0.0.13":
   version "0.0.13"
