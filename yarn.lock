@@ -1395,10 +1395,10 @@
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.2.0.tgz#dff952bd4acaedc3a6edfb11714f1c7aeb430a6e"
   integrity sha512-ft/DLW75P7Ft0YgCHivfz/awOEkrXFMiuG97ZlrLfcTdBmwawrmP4IeUzhAeDxihluBqyvGoa9OWJYVSVlLCWQ==
 
-"@kiwicom/orbit-components@^0.31.0":
-  version "0.31.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/orbit-components/-/orbit-components-0.31.0.tgz#8de4d669f531574aa2bab277cfa4504dbf604250"
-  integrity sha512-cOtVjR78rl+79KACrwpEqaONoLEv/pXYVn8UlbsnP6i7wD66we5rxYM/lFsY3/5ER9XzWNmVx4+sWvSVCXLpEA==
+"@kiwicom/orbit-components@^0.32.0":
+  version "0.32.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/orbit-components/-/orbit-components-0.32.0.tgz#32773976d3eeedc8dcdfddb78aae276ced997bb3"
+  integrity sha512-dPqlh8iUjOdHLuXvj2yrJAX3HApseeivdgMN2fi9qkatEbR2GXl1Oh2+5tpFsOoViFa8BxIT8DcFV7NvuQNe6Q==
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.3.0"
 

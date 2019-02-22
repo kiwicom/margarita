@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.1.0",
   "dependencies": {
-    "@kiwicom/orbit-components": "^0.31.0",
+    "@kiwicom/orbit-components": "^0.32.0",
     "@kiwicom/orbit-design-tokens": "^0.3.0",
     "gatsby": "^2.1.0",
     "gatsby-plugin-manifest": "^2.0.15",
