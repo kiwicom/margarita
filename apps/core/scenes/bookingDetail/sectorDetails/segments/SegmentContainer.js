@@ -8,18 +8,22 @@ import {
   StyleSheet,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Animated } from 'react-native';
+import { Animated, Platform } from 'react-native';
+import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import SegmentMap from './SegmentMap';
+import type { SegmentContainer as BookingType } from './__generated__/SegmentContainer.graphql';
 
-type Props = {||};
+type Props = {|
+  +data: ?BookingType,
+|};
 
 type State = {|
   +expandSegments: boolean,
   +isDisabled: boolean,
 |};
 
-export default class SegmentContainer extends React.Component<Props, State> {
+export class SegmentContainer extends React.Component<Props, State> {
   constructor() {
     super();
 
@@ -77,7 +81,7 @@ export default class SegmentContainer extends React.Component<Props, State> {
         {this.state.expandSegments && (
           <>
             <Text>TODO: Put segment data</Text>
-            <SegmentMap />
+            {Platform.OS !== 'web' && <SegmentMap data={this.props.data} />}
           </>
         )}
       </>
@@ -91,3 +95,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
 });
+
+export default createFragmentContainer(
+  SegmentContainer,
+  graphql`
+    fragment SegmentContainer on BookingInterface {
+      ...SegmentMap
+    }
+  `,
+);
