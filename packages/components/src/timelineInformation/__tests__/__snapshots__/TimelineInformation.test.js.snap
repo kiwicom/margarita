@@ -12,7 +12,7 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
         "borderWidth": 0.5,
         "flexDirection": "row",
         "height": 22,
-        "paddingHorizontal": 7,
+        "paddingHorizontal": 5,
         "paddingVertical": 2,
       },
       Object {

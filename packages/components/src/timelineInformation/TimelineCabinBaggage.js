@@ -2,16 +2,24 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Icon, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Icon,
+  StyleSheet,
+  type StylePropType,
+} from '@kiwicom/universal-components';
 
 import TimelineInformation from './TimelineInformation';
 import Text from '../text/Text';
 
 type Props = {|
   +cabinBaggageWarning: string,
+  +containerStyle?: StylePropType,
 |};
 
-export default function TimelineCabinBaggage({ cabinBaggageWarning }: Props) {
+export default function TimelineCabinBaggage({
+  cabinBaggageWarning,
+  containerStyle,
+}: Props) {
   return (
     <TimelineInformation
       icon={
@@ -20,7 +28,7 @@ export default function TimelineCabinBaggage({ cabinBaggageWarning }: Props) {
       information={
         <Text style={styles.information}>{cabinBaggageWarning}</Text>
       }
-      containerStyle={styles.container}
+      containerStyle={[styles.container, containerStyle]}
     />
   );
 }
