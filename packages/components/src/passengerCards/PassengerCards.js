@@ -58,6 +58,7 @@ export default class PassengerCards extends React.Component<Props> {
 const styles = StyleSheet.create({
   addButtonContainer: {
     alignItems: 'center',
+    marginBottom: parseFloat(defaultTokens.spaceSmall),
   },
   container: {
     android: {
