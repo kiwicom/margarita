@@ -3,13 +3,14 @@
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { View, Platform } from 'react-native';
-import { Text, StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
+import { Duration } from '@kiwicom/margarita-components';
 
 import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
 import TimelineArrow from './TimelineArrow';
@@ -17,7 +18,7 @@ import Transporters from './Transporters';
 import FlightTimes from './FlightTimes';
 import LocalTime from './LocalTime';
 import TripCities from './TripCities';
-import { getDuration, dateFormat } from './TripSectorHelpers';
+import { dateFormat } from './TripSectorHelpers';
 
 type Props = {|
   +data: ?TripSectorType,
@@ -47,12 +48,11 @@ function TripSector({ data, layout }: Props) {
             dateFormat={dateFormat}
             style={[styles.infoText, styles.dateText]}
           />
-          <Text
+          <Duration
             style={[styles.infoText, styles.durationText]}
-            numberOfLines={1}
-          >
-            {getDuration(data?.duration)}
-          </Text>
+            showIcon={false}
+            duration={data?.duration}
+          />
         </View>
       </View>
     </View>
