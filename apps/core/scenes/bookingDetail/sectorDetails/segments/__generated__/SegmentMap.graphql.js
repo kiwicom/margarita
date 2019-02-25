@@ -8,6 +8,7 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type MapLines$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap$ref: FragmentReference;
 export type SegmentMap = {|
@@ -15,6 +16,7 @@ export type SegmentMap = {|
     +lat: ?number,
     +lng: ?number,
   |}>,
+  +$fragmentRefs: MapLines$ref,
   +$refType: SegmentMap$ref,
 |};
 */
@@ -27,6 +29,11 @@ const node/*: ReaderFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "FragmentSpread",
+      "name": "MapLines",
+      "args": null
+    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -55,5 +62,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '2fcaab6c7c9aedbea3682d057bb63f2d';
+(node/*: any*/).hash = 'bb5302dab5dc33141bc8df0cf96a6755';
 module.exports = node;

@@ -9,6 +9,7 @@ import memoize from 'memoize-one';
 import stringify from 'json-stable-stringify';
 
 import type { SegmentMap as BookingType } from './__generated__/SegmentMap.graphql';
+import MapLines from './MapLines';
 
 type Props = {|
   +data: ?BookingType,
@@ -63,7 +64,6 @@ class SegmentMap extends React.Component<Props> {
         rotateEnabled={false}
         onMapReady={this.fit}
       >
-        {/* TODO: This should be improved with lines and arrows indicating to from */}
         {coordinates.map(coordinate => (
           <MapView.Marker
             key={stringify(coordinate)}
@@ -73,6 +73,7 @@ class SegmentMap extends React.Component<Props> {
             }}
           />
         ))}
+        <MapLines data={this.props.data} />
       </MapView>
     );
   }
@@ -89,6 +90,7 @@ export default createFragmentContainer(
   SegmentMap,
   graphql`
     fragment SegmentMap on BookingInterface {
+      ...MapLines
       segmentLocations {
         lat
         lng
