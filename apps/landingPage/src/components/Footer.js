@@ -11,6 +11,7 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from '../mediaQueriesConfig';
 import logo from '../images/logo.png';
 import {
   codeKiwiInstagram,
@@ -71,6 +72,11 @@ const FooterContainer = styled.div`
   justify-content: space-between;
   height: 105px;
   align-items: center;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    flex-direction: column;
+    height: 25vh;
+    justify-content: space-evenly;
+  }
 `;
 
 const Logo = styled.img`
@@ -90,5 +96,9 @@ const FooterRightContainer = styled.div`
   width: 14vw;
   justify-content: space-around;
   padding-right: 35px;
-  flex-wrap: wrap;
+  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    width: 65vw;
+    padding: 0;
+    align-items: center;
+  }
 `;

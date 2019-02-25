@@ -10,12 +10,6 @@ import Info from '../components/Info';
 import Headline from '../components/Headline';
 import Playground from '../components/Playground';
 
-const windowWidth = (typeof window !== `undefined` && window.innerWidth) || 0; //eslint-disable-line
-const windowHeight = (typeof window !== `undefined` && window.innerHeight) || 0; //eslint-disable-line
-
-const iframeWidth = windowWidth - 250;
-const iframeHeight = windowHeight - 200;
-
 type Props = {||};
 
 export default class App extends React.Component<Props> {
@@ -24,10 +18,10 @@ export default class App extends React.Component<Props> {
       <LandingPage>
         <GlobalStyle />
         <Header />
-        <Headline iframeWidth={iframeWidth} />
-        <Info iframeWidth={iframeWidth} />
-        <Playground iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
-        <Demo iframeHeight={iframeHeight} iframeWidth={iframeWidth} />
+        <Headline />
+        <Playground />
+        <Info />
+        <Demo />
         <Footer />
       </LandingPage>
     );

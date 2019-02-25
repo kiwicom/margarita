@@ -30,7 +30,7 @@ export default function Demo() {
         {links.map(el => {
           return (
             <Button type="white" key={el.link}>
-              <LinkNoStyle href={el.link}>{el.title}</LinkNoStyle>
+              <LinkWithoutStyle href={el.link}>{el.title}</LinkWithoutStyle>
             </Button>
           );
         })}
@@ -62,7 +62,7 @@ const LinksWrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-const LinkNoStyle = styled.a`
+const LinkWithoutStyle = styled.a`
   text-decoration: none;
   color: ${defaultTokens.colorTextButtonSecondary};
 `;

@@ -25,9 +25,9 @@ export default function Header() {
       </a>
       <HeaderRight>
         {linksHeader.map(el => (
-          <LinkNoStyle key={el.title} href={el.link}>
+          <LinkWithoutStyle key={el.title} href={el.link}>
             <Heading type="title4">{el.title}</Heading>
-          </LinkNoStyle>
+          </LinkWithoutStyle>
         ))}
       </HeaderRight>
     </HeaderContainer>
@@ -67,6 +67,6 @@ const HeaderRight = styled.div`
   }
 `;
 
-const LinkNoStyle = styled.a`
+const LinkWithoutStyle = styled.a`
   text-decoration: none;
 `;
