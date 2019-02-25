@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 
+import { type StylePropType } from '../PlatformStyleSheet';
 import type { IconNameType } from '../types/_generated-types';
 
 export type PickerOption = {|
@@ -10,6 +11,8 @@ export type PickerOption = {|
 |};
 
 export type Props = {|
+  +label?: React.Node,
+  +labelContainerStyle?: StylePropType,
   /**
    * Array with options data
    */

@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
-import { select, withKnobs } from '@storybook/addon-knobs';
+import { select, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
 import icons from '../Icon/icons.json';
@@ -23,6 +23,7 @@ const onValueChange = action('onValueChange');
 storiesOf('Picker', module)
   .addDecorator(withKnobs)
   .add('Playground', () => {
+    const label = text('Label');
     const selected = select(
       'selectedValue',
       optionsData.map(data => data.value),
@@ -42,6 +43,7 @@ storiesOf('Picker', module)
         placeholder="Select option"
         confirmLabel="OK"
         iconName={iconName}
+        label={label}
       />
     );
   });

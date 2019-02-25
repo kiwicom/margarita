@@ -7,6 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
+import { FormLabel } from '../FormLabel';
 
 /**
  * NOTE: `DEFAULT_OPTION` is used to show placeholder text
@@ -26,7 +27,14 @@ export default class Picker extends React.Component<Props> {
   };
 
   render() {
-    const { optionsData, selectedValue, placeholder, iconName } = this.props;
+    const {
+      optionsData,
+      selectedValue,
+      placeholder,
+      iconName,
+      label,
+      labelContainerStyle,
+    } = this.props;
     const showValue =
       selectedValue &&
       optionsData.findIndex(option => option.value === selectedValue) !== -1;
@@ -48,22 +56,27 @@ export default class Picker extends React.Component<Props> {
     ];
 
     return (
-      <View style={styles.container}>
-        <View pointerEvents="none" style={styles.icon}>
-          <Icon name={iconName ?? 'chevron-down'} />
+      <View>
+        {label != null && (
+          <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+        )}
+        <View style={styles.container}>
+          <View pointerEvents="none" style={styles.icon}>
+            <Icon name={iconName ?? 'chevron-down'} />
+          </View>
+          <select
+            value={showValue ? selectedValue : DEFAULT_OPTION}
+            onChange={this.handleChange}
+            style={{
+              ...webStyles.picker,
+              color: showValue
+                ? defaultTokens.colorTextInput
+                : defaultTokens.colorTextInputDisabled,
+            }}
+          >
+            {pickerOptions}
+          </select>
         </View>
-        <select
-          value={showValue ? selectedValue : DEFAULT_OPTION}
-          onChange={this.handleChange}
-          style={{
-            ...webStyles.picker,
-            color: showValue
-              ? defaultTokens.colorTextInput
-              : defaultTokens.colorTextInputDisabled,
-          }}
-        >
-          {pickerOptions}
-        </select>
       </View>
     );
   }

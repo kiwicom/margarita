@@ -11,6 +11,7 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
 import { getSelectedLabel } from './PickerHelpers';
 import NativePicker from './NativePicker';
+import { FormLabel } from '../FormLabel';
 
 export type State = {|
   open: boolean,
@@ -75,7 +76,14 @@ export default class Picker extends React.Component<Props, State> {
 
   render() {
     const { open, selectedValue, pickerValue } = this.state;
-    const { optionsData, confirmLabel, placeholder, iconName } = this.props;
+    const {
+      optionsData,
+      confirmLabel,
+      placeholder,
+      iconName,
+      label,
+      labelContainerStyle,
+    } = this.props;
     const selectedLabel = getSelectedLabel(
       optionsData,
       selectedValue,
@@ -84,34 +92,39 @@ export default class Picker extends React.Component<Props, State> {
 
     return (
       <View>
-        <Button
-          onPress={this.handleOpenPress}
-          type="secondary"
-          label={selectedLabel}
-          rightIcon={<Icon name={iconName ?? 'chevron-right'} />}
-        />
-        <Modal
-          isVisible={open}
-          style={styles.modal}
-          onRequestClose={this.handleModalClose}
-          onBackdropPress={this.handleModalClose}
-        >
-          <View style={styles.container}>
-            <NativePicker
-              optionsData={optionsData}
-              selectedValue={pickerValue}
-              style={styles.picker}
-              onValueChange={this.handlePickerValueChange}
-            />
-            <View style={styles.confirmContainer}>
-              <Button
-                onPress={this.handleOkPress}
-                type="secondary"
-                label={confirmLabel}
+        {label != null && (
+          <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+        )}
+        <View>
+          <Button
+            onPress={this.handleOpenPress}
+            type="secondary"
+            label={selectedLabel}
+            rightIcon={<Icon name={iconName ?? 'chevron-right'} />}
+          />
+          <Modal
+            isVisible={open}
+            style={styles.modal}
+            onRequestClose={this.handleModalClose}
+            onBackdropPress={this.handleModalClose}
+          >
+            <View style={styles.container}>
+              <NativePicker
+                optionsData={optionsData}
+                selectedValue={pickerValue}
+                style={styles.picker}
+                onValueChange={this.handlePickerValueChange}
               />
+              <View style={styles.confirmContainer}>
+                <Button
+                  onPress={this.handleOkPress}
+                  type="secondary"
+                  label={confirmLabel}
+                />
+              </View>
             </View>
-          </View>
-        </Modal>
+          </Modal>
+        </View>
       </View>
     );
   }

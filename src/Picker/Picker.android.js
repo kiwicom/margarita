@@ -10,6 +10,7 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
 import { getSelectedLabel } from './PickerHelpers';
 import NativePicker from './NativePicker';
+import { FormLabel } from '../FormLabel';
 
 const Picker = ({
   optionsData,
@@ -17,6 +18,8 @@ const Picker = ({
   onValueChange,
   placeholder = '',
   iconName,
+  label,
+  labelContainerStyle,
 }: Props) => {
   const selectedLabel = getSelectedLabel(
     optionsData,
@@ -25,15 +28,20 @@ const Picker = ({
   );
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.label}>{selectedLabel}</Text>
-      <Icon name={iconName ?? 'chevron-right'} style={styles.icon} />
-      <NativePicker
-        optionsData={optionsData}
-        selectedValue={selectedValue}
-        style={styles.picker}
-        onValueChange={onValueChange}
-      />
+    <View>
+      {label != null && (
+        <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+      )}
+      <View style={styles.container}>
+        <Text style={styles.label}>{selectedLabel}</Text>
+        <Icon name={iconName ?? 'chevron-right'} style={styles.icon} />
+        <NativePicker
+          optionsData={optionsData}
+          selectedValue={selectedValue}
+          style={styles.picker}
+          onValueChange={onValueChange}
+        />
+      </View>
     </View>
   );
 };
