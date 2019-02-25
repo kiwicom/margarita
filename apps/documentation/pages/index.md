@@ -1,7 +1,7 @@
-import logo from '../../../assets/logo.png';
-import search from '../../../assets/search.png';
-import results from '../../../assets/results.png';
-import bookings from '../../../assets/bookings.png';
+import logo from '../assets/logo.png';
+import search from '../assets/search.png';
+import results from '../assets/results.png';
+import bookings from '../assets/bookings.png';
 
 <div align="center">
 <img src={logo} alt="Margarita" title="Margarita" width="300"/>

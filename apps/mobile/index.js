@@ -8,11 +8,12 @@ import RobotoItalic from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-
 import RobotoBold from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-Bold.ttf';
 import RobotoBoldItalic from '@kiwicom/universal-components/lib/fonts/Roboto/Roboto-BoldItalic.ttf';
 import OrbitIcons from '@kiwicom/universal-components/lib/fonts/orbit-icons.ttf';
-import { STORYBOOK } from 'react-native-dotenv';
 
-/* eslint-disable-next-line monorepo/no-relative-import */
-import StorybookUI from '../../packages/components/storybook/mobile';
 import SharedApp from './App';
+
+if (__DEV__) {
+  Expo.KeepAwake.activate();
+}
 
 type Props = {||};
 type State = {|
@@ -54,7 +55,7 @@ class App extends React.Component<Props, State> {
 
   render() {
     if (this.state.fontsLoaded) {
-      return STORYBOOK === 'true' ? <StorybookUI /> : <SharedApp />;
+      return <SharedApp />;
     }
     return null;
   }

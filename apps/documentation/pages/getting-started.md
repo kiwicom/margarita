@@ -24,9 +24,6 @@ yarn
    - `GRAPHQL_URL`
      - URL of GraphQL server
      - E. g.: `'http://127.0.0.1:4000'`
-   - `STORYBOOK`
-     - Decides if storybook or the app should be loaded
-     - E. g.: `'false'`
 
    **apps/graphql/.env**:
 
@@ -63,6 +60,4 @@ The other available scripts are:
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
 - `yarn relay` to get the latest schema of the [graphql server](https://github.com/kiwicom/margarita/tree/master/apps/graphql)
   and compile your queries and fragments to generate Flow types, among other things;
-- `yarn landing-page` to run the landing page of the app;
-- `storybook:web` to run the web Storybook for our components in `packages/components`;
-- `storybook:mobile` to run the mobile Storybook for our components in `packages/components`.
+- `yarn landing-page` to run the landing page of the app.
