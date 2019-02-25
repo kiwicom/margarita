@@ -15,7 +15,6 @@ exports[`works with broken input 1`] = `
     size="small"
   />
   <Text
-    expo={false}
     style={
       Array [
         Object {
@@ -46,7 +45,6 @@ exports[`works with broken input 2`] = `
     size="small"
   />
   <Text
-    expo={false}
     style={
       Array [
         Object {

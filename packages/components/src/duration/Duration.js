@@ -3,17 +3,19 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import {
-  Text,
   StyleSheet,
   Icon,
   type StylePropType,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import Text from '../text/Text';
+
 type Props = {|
   +showIcon: boolean,
   +duration: ?number,
   +style?: StylePropType,
+  +weight?: 'normal' | 'bold',
   +iconStyle?: StylePropType,
 |};
 
@@ -43,7 +45,12 @@ export default function Duration(props: Props) {
           style={props.iconStyle}
         />
       )}
-      <Text style={[styleSheet.durationText, props.style]}>{duration}</Text>
+      <Text
+        weight={props.weight}
+        style={[styleSheet.durationText, props.style]}
+      >
+        {duration}
+      </Text>
     </View>
   );
 }
