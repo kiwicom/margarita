@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
@@ -20,13 +20,13 @@ type Props = {|
 class BookingDetailWrapper extends React.Component<Props> {
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <View style={styles.container}>
         <SectorDetails data={this.props.data} />
         <TripInfoMenuGroup />
         <Passengers data={this.props.data} />
         <ServicesMenuGroup />
         <ManageMenuGroup />
-      </ScrollView>
+      </View>
     );
   }
 }

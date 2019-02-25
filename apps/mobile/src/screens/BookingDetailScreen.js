@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { BookingDetail } from '@kiwicom/margarita-core';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { type NavigationScreenProp } from 'react-navigation';
 import { MMB_BACKGROUND_COLOR } from '@kiwicom/margarita-config';
@@ -18,9 +18,9 @@ type Props = {|
 export default function BookingsDetailScreen(props: Props) {
   const bookingId = props.navigation.getParam('id');
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <BookingDetail bookingId={bookingId} />
-    </View>
+    </ScrollView>
   );
 }
 

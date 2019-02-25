@@ -23,6 +23,7 @@ it('renders', () => {
       },
       "shadowOpacity": 0.25,
       "shadowRadius": 3,
+      "zIndex": 100,
     }
   }
 >

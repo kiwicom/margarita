@@ -5,6 +5,7 @@ import { View, Image } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import Router from 'next/router';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import NavbarLink from './NavbarLink';
 
@@ -34,6 +35,7 @@ export default function Navbar() {
 
 const styles = StyleSheet.create({
   navbar: {
+    zIndex: parseInt(defaultTokens.zIndexSticky, 10),
     height: 50,
     shadowColor: '#000',
     shadowOpacity: 0.25,
