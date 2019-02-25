@@ -12,18 +12,20 @@ type Props = {|
 |};
 
 const ChildrenWrapper = styled.div({
-  marginTop: defaultTokens.spaceXSmall,
-  marginLeft: '5%',
-  marginRight: '5%',
+  zIndex: -1,
+  overflowY: 'auto',
+  paddingTop: defaultTokens.spaceXSmall,
+  paddingLeft: '5%',
+  paddingRight: '5%',
   [`@media (min-width: ${LAYOUT.largeMobile}px) and (max-width: ${
     LAYOUT.tablet
   }px)`]: {
-    marginLeft: '15%',
-    marginRight: '15%',
+    paddingLeft: '15%',
+    paddingRight: '15%',
   },
   [`@media (min-width: ${LAYOUT.tablet}px)`]: {
-    marginLeft: '25%',
-    marginRight: '25%',
+    paddingLeft: '25%',
+    paddingRight: '25%',
   },
 });
 
