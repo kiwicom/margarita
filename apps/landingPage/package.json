@@ -6,7 +6,7 @@
     "@kiwicom/orbit-components": "^0.32.0",
     "@kiwicom/orbit-design-tokens": "^0.3.0",
     "gatsby": "^2.1.0",
-    "gatsby-plugin-manifest": "^2.0.15",
+    "gatsby-plugin-manifest": "^2.0.19",
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.21",
     "gatsby-source-filesystem": "^2.0.21",
