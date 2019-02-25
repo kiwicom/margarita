@@ -49,7 +49,7 @@ jobs:
             - v1-0-jest-cache-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-0-jest-cache-
-      - run: yarn test
+      - run: yarn test --maxWorkers=2
       - save_cache:
           key: v1-0-jest-cache-{{ checksum "package.json" }}
           paths:

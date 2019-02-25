@@ -23,7 +23,7 @@ const onValueChange = action('onValueChange');
 storiesOf('Picker', module)
   .addDecorator(withKnobs)
   .add('Playground', () => {
-    const label = text('Label');
+    const label = text('Label', 'Label');
     const selected = select(
       'selectedValue',
       optionsData.map(data => data.value),

@@ -185,7 +185,7 @@ class TextInput extends React.Component<Props, State> {
         <View style={styles.inputWrapper}>
           {label != null && !inlineLabel && (
             <FormLabel
-              style={[styles.labelContainer, labelContainerStyle]}
+              style={labelContainerStyle}
               filled={!!value}
               required={required}
               disabled={disabled}
@@ -346,9 +346,6 @@ const styles = StyleSheet.create({
   },
   textInputPrefix: {
     color: defaultTokens.colorTextInputPrefix,
-  },
-  labelContainer: {
-    marginLeft: 10,
   },
   ...fontSizeGen(),
   ...heightGen(),
