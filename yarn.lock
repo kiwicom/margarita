@@ -1674,15 +1674,6 @@
     global "^4.3.2"
     util-deprecate "^1.0.2"
 
-"@storybook/channel-postmessage@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-4.1.12.tgz#44dc87ca80d87b613da8359566816d309f201cf7"
-  integrity sha512-AidzY/KuqNei2uoLB0Ny1F/aCUNDAsyiFsG1foyXQpM3rX7VCIy5qC90ouNVwKBKB3fjeDyTjdsgVFCejcM2fQ==
-  dependencies:
-    "@storybook/channels" "4.1.12"
-    global "^4.3.2"
-    json-stringify-safe "^5.0.1"
-
 "@storybook/channel-postmessage@4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/channel-postmessage/-/channel-postmessage-4.1.13.tgz#c36e254fb765cd41b541eb46ee26a1eec8dd2953"
@@ -1709,11 +1700,6 @@
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-4.1.13.tgz#4b58d1f17916e6ba1ee633f0c014edb5b7b26b17"
   integrity sha512-58GNagdBKagAGDVhdkNVB2cFOLBDAft7Ky2qDdha9pZyyTwJy5VqchvNQokv7kgwCusmic2vYEO35fVY1/v2cQ==
-
-"@storybook/client-logger@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-4.1.12.tgz#501fa0ccefd0c363a1afb5550e5a34814a8d09d2"
-  integrity sha512-G/ZzPxURIjTiDaWKlQxxhAhFMT5CR16Twxz8pJzDISi36cbNibf9KtkKf88w6iDB9PRsUcCMXSOqFFiZs+RpFA==
 
 "@storybook/client-logger@4.1.13":
   version "4.1.13"
@@ -1761,76 +1747,6 @@
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-4.1.13.tgz#f919062bf1ffa9f90ab53138262e06d75e8f0d85"
   integrity sha512-nRado+I9Jxv9CSH/u0qECbaTQpuoBCJ6+9sJm2lg04jjBvczqmjCi7RoY0NTlVp2VbVeAjht74KMOAfPQ2D+IA==
-
-"@storybook/core@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/core/-/core-4.1.12.tgz#f1e8f3e6abf833501173023bd3633c405513355a"
-  integrity sha512-CkV0MOCXO0Py9Tp/WQalatc/p6TM6XICvXkW/oN+6ymnlFHfQio4h/qMFppMeQCXXmuUoNorS6LG8aiIc9bAww==
-  dependencies:
-    "@babel/plugin-proposal-class-properties" "^7.2.0"
-    "@babel/preset-env" "^7.2.0"
-    "@emotion/core" "^0.13.1"
-    "@emotion/provider" "^0.11.2"
-    "@emotion/styled" "^0.10.6"
-    "@storybook/addons" "4.1.12"
-    "@storybook/channel-postmessage" "4.1.12"
-    "@storybook/client-logger" "4.1.12"
-    "@storybook/core-events" "4.1.12"
-    "@storybook/node-logger" "4.1.12"
-    "@storybook/ui" "4.1.12"
-    airbnb-js-shims "^1 || ^2"
-    autoprefixer "^9.3.1"
-    babel-plugin-macros "^2.4.2"
-    babel-preset-minify "^0.5.0 || 0.6.0-alpha.5"
-    boxen "^2.0.0"
-    case-sensitive-paths-webpack-plugin "^2.1.2"
-    chalk "^2.4.1"
-    child-process-promise "^2.2.1"
-    cli-table3 "0.5.1"
-    commander "^2.19.0"
-    common-tags "^1.8.0"
-    core-js "^2.5.7"
-    css-loader "^1.0.1"
-    detect-port "^1.2.3"
-    dotenv-webpack "^1.5.7"
-    ejs "^2.6.1"
-    eventemitter3 "^3.1.0"
-    express "^4.16.3"
-    file-loader "^2.0.0"
-    file-system-cache "^1.0.5"
-    find-cache-dir "^2.0.0"
-    fs-extra "^7.0.1"
-    global "^4.3.2"
-    html-webpack-plugin "^4.0.0-beta.2"
-    inquirer "^6.2.0"
-    interpret "^1.1.0"
-    ip "^1.1.5"
-    json5 "^2.1.0"
-    lazy-universal-dotenv "^2.0.0"
-    node-fetch "^2.2.0"
-    opn "^5.4.0"
-    postcss-flexbugs-fixes "^4.1.0"
-    postcss-loader "^3.0.0"
-    pretty-hrtime "^1.0.3"
-    prop-types "^15.6.2"
-    qs "^6.5.2"
-    raw-loader "^0.5.1"
-    react-dev-utils "^6.1.0"
-    redux "^4.0.1"
-    regenerator-runtime "^0.12.1"
-    resolve "^1.8.1"
-    resolve-from "^4.0.0"
-    semver "^5.6.0"
-    serve-favicon "^2.5.0"
-    shelljs "^0.8.2"
-    spawn-promise "^0.1.8"
-    style-loader "^0.23.1"
-    svg-url-loader "^2.3.2"
-    terser-webpack-plugin "^1.1.0"
-    url-loader "^1.1.2"
-    webpack "^4.23.1"
-    webpack-dev-middleware "^3.4.0"
-    webpack-hot-middleware "^2.24.3"
 
 "@storybook/core@4.1.13":
   version "4.1.13"
@@ -1910,17 +1826,6 @@
     "@storybook/react-komposer" "^2.0.1"
     "@storybook/react-simple-di" "^1.2.1"
     babel-runtime "6.x.x"
-
-"@storybook/node-logger@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/node-logger/-/node-logger-4.1.12.tgz#3e22f93d49a77a59f735ec0491fbbfb7fbcb2761"
-  integrity sha512-t+nS1ZHTGV54PHMhX7WlOkV3xbx19ueBxxl7qkwoqvuUDJ084ZzWuKfTjm4DTzLknBaeY2Dtt6iEFx8TPeQq/Q==
-  dependencies:
-    chalk "^2.4.1"
-    core-js "^2.5.7"
-    npmlog "^4.1.2"
-    pretty-hrtime "^1.0.3"
-    regenerator-runtime "^0.12.1"
 
 "@storybook/node-logger@4.1.13":
   version "4.1.13"
@@ -2014,17 +1919,17 @@
   dependencies:
     babel-runtime "^6.5.0"
 
-"@storybook/react@^4.0.6":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-4.1.12.tgz#5d5d0a1ef1a038ed860238ad6c8fac8a178a78a8"
-  integrity sha512-6af16BWnQrRyljsITqh/i3qcYs6+FxmWPY70N2gJasMEZOPe9ZEvOSsMTCdq6MN2uDtmca0mAbKLdsCqfMO/Sw==
+"@storybook/react@^4.1.13":
+  version "4.1.13"
+  resolved "https://registry.yarnpkg.com/@storybook/react/-/react-4.1.13.tgz#829c8a5001b17508dde7adaa43db4ab8c175be7f"
+  integrity sha512-JtM7w0wGjRkV3bLbfPscuXi3ecM1McX+PPAO2JheKpbSs2avySky4tAmjkD8mfdc7XasVn/GdAq2ToAww/ibZg==
   dependencies:
     "@babel/plugin-transform-react-constant-elements" "^7.2.0"
     "@babel/preset-flow" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
     "@emotion/styled" "^0.10.6"
-    "@storybook/core" "4.1.12"
-    "@storybook/node-logger" "4.1.12"
+    "@storybook/core" "4.1.13"
+    "@storybook/node-logger" "4.1.13"
     "@svgr/webpack" "^4.0.3"
     babel-plugin-named-asset-import "^0.2.3"
     babel-plugin-react-docgen "^2.0.0"
@@ -2039,34 +1944,6 @@
     regenerator-runtime "^0.12.1"
     semver "^5.6.0"
     webpack "^4.23.1"
-
-"@storybook/ui@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/ui/-/ui-4.1.12.tgz#fc67abbc0c2d0fc1d0665fd34b169a4bb1c3c409"
-  integrity sha512-LmYiS0X4bwdK0drHkKw3uEzfFe1rrARYmTe67IoWiC8+APihVrpJqgdYa4nbcTZgr1pUr5vKWtk0wXr76jbJsg==
-  dependencies:
-    "@emotion/core" "^0.13.1"
-    "@emotion/provider" "^0.11.2"
-    "@emotion/styled" "^0.10.6"
-    "@storybook/components" "4.1.12"
-    "@storybook/core-events" "4.1.12"
-    "@storybook/mantra-core" "^1.7.2"
-    "@storybook/podda" "^1.2.3"
-    "@storybook/react-komposer" "^2.0.5"
-    deep-equal "^1.0.1"
-    eventemitter3 "^3.1.0"
-    fuse.js "^3.3.0"
-    global "^4.3.2"
-    keycode "^2.2.0"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    qs "^6.5.2"
-    react "^16.7.0"
-    react-dom "^16.7.0"
-    react-fuzzy "^0.5.2"
-    react-lifecycles-compat "^3.0.4"
-    react-modal "^3.6.1"
-    react-treebeard "^3.1.0"
 
 "@storybook/ui@4.1.13":
   version "4.1.13"

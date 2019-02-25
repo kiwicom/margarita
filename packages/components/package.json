@@ -21,7 +21,7 @@
     "@storybook/addon-knobs": "^4.0.7",
     "@storybook/addon-links": "^4.0.6",
     "@storybook/addon-ondevice-knobs": "^4.0.7",
-    "@storybook/react": "^4.0.6",
+    "@storybook/react": "^4.1.13",
     "react-native-storybook-loader": "^1.8.0"
   },
   "peerDependencies": {
