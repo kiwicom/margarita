@@ -4,7 +4,7 @@ import * as React from 'react';
 import { BookingDetail } from '@kiwicom/margarita-core';
 import { withRouter, type Router } from 'next/router';
 
-import MMBWrapper from './components/Wrapper';
+import MMBWrapper from '../../components/Wrapper';
 
 type Props = {|
   +router: Router,

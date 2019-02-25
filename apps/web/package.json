@@ -47,6 +47,7 @@
     "@kiwicom/universal-components": "^",
     "@kiwicom/orbit-design-tokens": "^",
     "react-test-renderer": "^",
-    "react-native-testing-library": "^"
+    "react-native-testing-library": "^",
+    "styled-components": "^"
   }
 }

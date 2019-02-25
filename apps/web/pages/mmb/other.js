@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ManageOther } from '@kiwicom/margarita-core';
 
-import MMBWrapper from './components/Wrapper';
+import MMBWrapper from '../../components/Wrapper';
 
 const ManageOtherScreen = () => (
   <MMBWrapper>
