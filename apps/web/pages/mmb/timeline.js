@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Timeline } from '@kiwicom/margarita-core';
 
-import MMBWrapper from './components/Wrapper';
+import MMBWrapper from '../../components/Wrapper';
 
 const TimelineScreen = () => (
   <MMBWrapper>

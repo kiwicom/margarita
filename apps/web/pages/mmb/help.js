@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { ManageHelp } from '@kiwicom/margarita-core';
 
-import MMBWrapper from './components/Wrapper';
+import MMBWrapper from '../../components/Wrapper';
 
 const ManageHelpScreen = () => (
   <MMBWrapper>
