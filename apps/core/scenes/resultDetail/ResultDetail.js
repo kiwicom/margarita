@@ -2,13 +2,18 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Card,
+  TextInput,
+  Picker,
+} from '@kiwicom/universal-components';
+import { HeaderWithIcon, PassengerCards } from '@kiwicom/margarita-components';
 import {
   withNavigation,
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
-import { PassengerCards } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 type Props = {|
@@ -16,13 +21,37 @@ type Props = {|
   +navigation: Navigation,
 |};
 
-class ResultDetail extends React.Component<Props> {
+type State = {|
+  +email: ?string,
+  +phoneNumber: ?string,
+  +phoneCountryCode: ?string,
+|};
+
+class ResultDetail extends React.Component<Props, State> {
+  state = {
+    email: null,
+    phoneNumber: null,
+    phoneCountryCode: null,
+  };
+
   handlePassengerEditPress = id => {
     if (id) {
       this.props.navigation.navigate(Routes.PASSENGER_FORM, {
         id,
       });
     }
+  };
+
+  handleChangeEmail = email => {
+    this.setState({ email });
+  };
+
+  handleChangePhoneNumber = phoneNumber => {
+    this.setState({ phoneNumber });
+  };
+
+  handleChangePhoneCountryCode = phoneCountryCode => {
+    this.setState({ phoneCountryCode });
   };
 
   render() {
@@ -52,6 +81,17 @@ class ResultDetail extends React.Component<Props> {
       },
     ];
 
+    const phoneCountryCodeData = [
+      {
+        label: '+420',
+        value: '+420',
+      },
+      {
+        label: '+421',
+        value: '+421',
+      },
+    ];
+
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -60,6 +100,39 @@ class ResultDetail extends React.Component<Props> {
             onActionPress={this.handlePassengerEditPress}
             actionIconName="edit"
           />
+          <Card>
+            <HeaderWithIcon label="Contact details" iconName="contact-email" />
+            <View style={styles.line}>
+              <TextInput
+                onChangeText={this.handleChangeEmail}
+                label="E-mail"
+                type="email"
+                autoCorrect={false}
+              />
+            </View>
+            <View style={[styles.line, styles.row]}>
+              <View style={styles.countryCode}>
+                <Picker
+                  selectedValue={this.state.phoneCountryCode}
+                  optionsData={phoneCountryCodeData}
+                  onValueChange={this.handleChangePhoneCountryCode}
+                  placeholder="Select"
+                  confirmLabel="OK"
+                  label="Country code"
+                  iconName="show-more"
+                />
+              </View>
+
+              <View style={styles.phoneNumber}>
+                <TextInput
+                  onChangeText={this.handleChangeEmail}
+                  label="Phone number"
+                  autoCorrect={false}
+                  type="number"
+                />
+              </View>
+            </View>
+          </Card>
         </ScrollView>
       </View>
     );
@@ -70,6 +143,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: defaultTokens.backgroundBody,
+  },
+  line: {
+    marginTop: parseFloat(defaultTokens.spaceMedium),
+  },
+  row: {
+    flexDirection: 'row',
+  },
+  countryCode: {
+    minWidth: 112,
+  },
+  phoneNumber: {
+    flex: 1,
+    marginLeft: parseFloat(defaultTokens.spaceSmall),
   },
 });
 
