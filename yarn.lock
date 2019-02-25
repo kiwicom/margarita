@@ -9334,10 +9334,10 @@ gatsby-plugin-eslint@^2.0.4:
   resolved "https://registry.yarnpkg.com/gatsby-plugin-eslint/-/gatsby-plugin-eslint-2.0.4.tgz#24bed84e9059310332a6fbfd3a41406d46755a29"
   integrity sha512-4aqUf+0NZ9pTE69tq2TNKPk0JHkMkjWB1Pd7r9k+LZMFUXRR2irxUQF2UpFoCCsktrsprb/5xqnGvoV2a2CH1Q==
 
-gatsby-plugin-manifest@^2.0.15:
-  version "2.0.17"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.17.tgz#1e2c3329b1a58bdf77186866dd9e94da54ac6e68"
-  integrity sha512-8NMt34U4Qzo7LKctAtVdLbIVNPjHndCQ32MDm7BPfBMrqp61mhCLKZkZOuHLJiaoiBDQPW0AvXOL6nblUfv3wA==
+gatsby-plugin-manifest@^2.0.19:
+  version "2.0.19"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.0.19.tgz#5f8bd5e18dec1f91e5a552faeab0eb4a63e213d2"
+  integrity sha512-pUjjVgWdL2hhT2UnP5uUeweQsH2546dMcjjCLt/b6ho79u3K8lX14tYQoss1XEeEIpyEviZ16ur+g4EppP74cA==
   dependencies:
     "@babel/runtime" "^7.0.0"
     bluebird "^3.5.0"
