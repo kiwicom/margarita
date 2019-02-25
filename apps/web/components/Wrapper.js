@@ -4,6 +4,7 @@ import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 import { LAYOUT } from '@kiwicom/margarita-utils';
+import { ScrollView } from 'react-native';
 
 import Layout from './Layout';
 
@@ -11,19 +12,20 @@ type Props = {|
   +children: React.Node,
 |};
 
-const ChildrenWrapper = styled.div({
-  marginTop: defaultTokens.spaceXSmall,
-  marginLeft: '5%',
-  marginRight: '5%',
+const ChildrenWrapper = styled(ScrollView)({
+  flex: 1,
+  paddingTop: defaultTokens.spaceXSmall,
+  paddingLeft: '5%',
+  paddingRight: '5%',
   [`@media (min-width: ${LAYOUT.largeMobile}px) and (max-width: ${
     LAYOUT.tablet
   }px)`]: {
-    marginLeft: '15%',
-    marginRight: '15%',
+    paddingLeft: '15%',
+    paddingRight: '15%',
   },
   [`@media (min-width: ${LAYOUT.tablet}px)`]: {
-    marginLeft: '25%',
-    marginRight: '25%',
+    paddingLeft: '25%',
+    paddingRight: '25%',
   },
 });
 
