@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
+<img src="./apps/documentation/assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
 </div>
 
 # Margarita
@@ -13,9 +13,9 @@ This project is a living example of a client app you could start building with T
 - 🚀 GraphQL Voyager: https://margarita-graphql-voyager.now.sh/
 
 <div align="center">
-<img src="./assets/search.png" alt="Search" title="Search" width="200"/>
-<img src="./assets/results.png" alt="Results" title="Results" width="200"/>
-<img src="./assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
+<img src="./apps/documentation/assets/search.png" alt="Search" title="Search" width="200"/>
+<img src="./apps/documentation/assets/results.png" alt="Results" title="Results" width="200"/>
+<img src="./apps/documentation/assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
 </div>
 
 ## Installing / Getting started
@@ -50,9 +50,7 @@ The other available scripts are:
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
 - `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
   and compile your queries and fragments to generate Flow types, among other things;
-- `yarn landing-page` to run the landing page of the app;
-- `storybook:web` to run the web Storybook for our components in `packages/components`;
-- `storybook:mobile` to run the mobile Storybook for our components in `packages/components`.
+- `yarn landing-page` to run the landing page of the app.
 
 ### Initial Configuration
 
@@ -68,9 +66,6 @@ The other available scripts are:
    - `GRAPHQL_URL`
      - URL of GraphQL server
      - E. g.: `'http://127.0.0.1:4000'`
-   - `STORYBOOK`
-     - Decides if storybook or the app should be loaded
-     - E. g.: `'false'`
 
    **apps/graphql/.env**:
 
