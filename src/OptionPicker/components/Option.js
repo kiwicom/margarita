@@ -3,12 +3,12 @@
 import * as React from 'react';
 
 import { RowOption } from '../../RowOption';
-import type { OptionType } from '../OptionPickerTypes';
+import type { OptionTypeInterface } from '../OptionPickerTypes';
 
 type Props = {|
-  +option: OptionType,
-  +onItemPress: (option: OptionType) => void,
-  +onAddPress: (option: OptionType) => void,
+  +option: OptionTypeInterface,
+  +onItemPress: (option: OptionTypeInterface) => void,
+  +onAddPress: (option: OptionTypeInterface) => void,
 |};
 
 // todo add to helpers
@@ -47,9 +47,9 @@ function RenderSubOptions({
   onAddPress,
   onItemPress,
 }: {
-  options: Array<OptionType>,
-  onAddPress: (option: OptionType) => void,
-  onItemPress: (option: OptionType) => void,
+  options: Array<OptionTypeInterface>,
+  onAddPress: (option: OptionTypeInterface) => void,
+  onItemPress: (option: OptionTypeInterface) => void,
 }) {
   return options.map((option, index) => {
     const isLast = options.length - 1 === index;

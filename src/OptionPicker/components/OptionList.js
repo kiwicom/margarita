@@ -5,12 +5,12 @@ import { FlatList, Keyboard } from 'react-native';
 
 import Option from './Option';
 import { areSelectedOptionsChanged } from '../helpers';
-import type { OptionType } from '../OptionPickerTypes';
+import type { OptionTypeInterface } from '../OptionPickerTypes';
 
 type Props = {|
-  +options: OptionType[],
-  +onItemPress: (option: OptionType) => void,
-  +onAddPress: (option: OptionType) => void,
+  +options: OptionTypeInterface[],
+  +onItemPress: (option: OptionTypeInterface) => void,
+  +onAddPress: (option: OptionTypeInterface) => void,
 |};
 
 export default class OptionList extends React.Component<Props> {
@@ -20,7 +20,7 @@ export default class OptionList extends React.Component<Props> {
     return areSelectedOptionsChanged(options, nextProps.options);
   }
 
-  renderOption = ({ item }: { item: OptionType }) => {
+  renderOption = ({ item }: { item: OptionTypeInterface }) => {
     const { onItemPress, onAddPress } = this.props;
     return (
       <Option
@@ -32,7 +32,12 @@ export default class OptionList extends React.Component<Props> {
     );
   };
 
-  keyExtractor = (item: OptionType) => item.id;
+  keyExtractor = (item: OptionTypeInterface) => {
+    if (typeof item.id === 'number') {
+      return item.id.toString();
+    }
+    return item.id;
+  };
 
   render() {
     const { options } = this.props;

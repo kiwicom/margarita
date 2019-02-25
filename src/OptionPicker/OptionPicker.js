@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { OptionType } from './OptionPickerTypes';
+import type { OptionTypeInterface } from './OptionPickerTypes';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { TagsInput } from '../TagsInput';
 import OptionList from './components/OptionList';
@@ -12,14 +12,14 @@ import OptionList from './components/OptionList';
 type Props = {|
   +onChangeText: string => void,
   +onClearPress: () => void,
-  +onPressAdd: OptionType => void,
-  +onPressItem: OptionType => void,
+  +onPressAdd: OptionTypeInterface => void,
+  +onPressItem: OptionTypeInterface => void,
   +text?: string,
   +label?: string,
   +onKeyPress?: Event => void,
-  +options?: Array<OptionType>,
+  +options?: Array<OptionTypeInterface>,
   +placeholder?: string,
-  +selected?: ?Array<OptionType>,
+  +selected?: ?Array<OptionTypeInterface>,
 |};
 
 type Event = { nativeEvent: { key: string } };

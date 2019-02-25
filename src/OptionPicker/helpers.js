@@ -1,8 +1,8 @@
 // @flow
 
-import type { OptionType } from './OptionPickerTypes';
+import type { OptionTypeInterface } from './OptionPickerTypes';
 
-export function getOptionsIds(options: OptionType[]) {
+export function getOptionsIds(options: OptionTypeInterface[]) {
   return options.reduce((result, option) => {
     let ids = [option.id];
     if (option.subOptions) {
@@ -15,8 +15,8 @@ export function getOptionsIds(options: OptionType[]) {
 }
 
 export function areSelectedOptionsChanged(
-  optionsA: OptionType[],
-  optionsB: OptionType[],
+  optionsA: OptionTypeInterface[],
+  optionsB: OptionTypeInterface[],
 ) {
   const optionsIdsB = getOptionsIds(optionsB);
   const optionsIdsA = getOptionsIds(optionsA);
