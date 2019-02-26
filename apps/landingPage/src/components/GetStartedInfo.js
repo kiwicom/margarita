@@ -57,44 +57,48 @@ const ContainerLeftText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 26vw;
-  height: 300px;
-  padding-left: 8vw;
+  height: 320px;
+  width: 80vw;
+  padding-left: 0;
+  padding-top: 4vh;
+  align-items: flex-start;
 
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
-    width: 80vw;
-    padding-left: 0;
-    padding-top: 4vh;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
     align-items: center;
   }
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    align-items: flex-start;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    flex-direction: 'row';
+    width: 26vw;
+    padding: 0 0 0 8vw;
+    height: 280px;
   }
 `;
 
 const WrapperText = styled.div`
-  width: 25vw;
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
-    width: 85vw;
+  width: 85vw;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: 25vw;
   }
 `;
 
 const WrapperButtons = styled.div`
   display: flex;
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+  width: 80vw;
+  flex-direction: column;
+  margin-top: 20px;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}) and (max-width: ${BREAKPOINTS.TABLET}px) {
     width: 60vw;
-    flex-direction: column;
-    margin-top: 20px;
   }
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 80vw;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: unset;
+    flex-direction: row;
   }
 `;
 
 const WrapperRightButton = styled.div`
-  margin-left: 1vw;
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
-    margin: 10px 0 0 0;
+  margin-top: 10px;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    margin: 0 0 0 1vw;
   }
 `;
 

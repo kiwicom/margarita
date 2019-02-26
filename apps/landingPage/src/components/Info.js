@@ -34,7 +34,10 @@ type Props = {|
 
 class Info extends React.Component<Props> {
   render() {
-    const alignment = this.props.width > BREAKPOINTS.TABLET ? 'left' : 'center';
+    const alignment =
+      this.props.width < BREAKPOINTS.BIG_MOBILE ? 'left' : 'center';
+    const isMobile = this.props.width <= BREAKPOINTS.BIG_MOBILE;
+    const buttonAlignment = isMobile ? 'flex-start' : 'center';
     return (
       <Container id="features">
         <Header>
@@ -46,7 +49,7 @@ class Info extends React.Component<Props> {
               {text}
             </Text>
           </WrapperText>
-          <WrapperButton allignment="flex-start">
+          <WrapperButton allignment={buttonAlignment}>
             <Button type="secondary" width={125}>
               <LinkWithoutStyle href={documentation}>
                 Link to Docs
@@ -97,39 +100,37 @@ const Header = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 250px;
-  padding-bottom: 60px;
-
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    height: 240px;
-    padding-bottom: 40px;
+  height: 240px;
+  padding-bottom: 40px;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    height: 250px;
+    padding-bottom: 60px;
   }
 `;
 
 const Title = styled.div`
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    align-self: flex-start;
+  align-self: flex-start;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    align-self: center;
   }
 `;
 const WrapperText = styled.div`
   display: flex;
   justify-content: center;
-  width: 600px;
-  margin: 3vh 0 2vh 0;
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+  width: 90vw;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
     width: 80vw;
     margin: 0;
   }
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 90vw;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: 600px;
+    margin: 3vh 0 2vh 0;
   }
 `;
 
 const WrapperButton = styled.div`
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    align-self: ${props => props.allignment};
-    margin-top: 20px;
-  }
+  align-self: ${props => props.allignment};
+  margin-top: 20px;
 `;
 
 const LinkWithoutStyle = styled.a`
@@ -138,19 +139,20 @@ const LinkWithoutStyle = styled.a`
 `;
 
 const Phones = styled.div`
-  flex-wrap: nowrap;
-  @media (max-width: 1025px) {
-    display: flex;
-    overflow-x: auto;
-    width: 100vw;
+  display: flex;
+  overflow-x: auto;
+  width: 100vw;
+  @media (min-width: 1025px) {
+    flex-wrap: nowrap;
+    width: unset;
   }
 `;
 
 const PhoneImage = styled.img`
-  height: ${phoneImageHeight.DESKTOP}px;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    height: ${phoneImageHeight.MOBILE}px;
-    flex: 0 0 auto;
+  height: ${phoneImageHeight.MOBILE}px;
+  flex: 0 0 auto;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    height: ${phoneImageHeight.DESKTOP}px;
   }
 `;
 
@@ -165,14 +167,14 @@ const BackgroundGradientAccent = styled.div`
   z-index: -1;
   height: 50vh;
   width: 100vw;
-  margin-top: ${phoneImageHeight.DESKTOP / 2}px;
+  margin-top: ${phoneImageHeight.MOBILE / 2}px;
   background-image: linear-gradient(
     #e9eef1,
     10%,
     ${defaultTokens.paletteWhite}
   );
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    margin-top: ${phoneImageHeight.MOBILE / 2}px;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    margin-top: ${phoneImageHeight.DESKTOP / 2}px;
   }
 `;
 
@@ -189,8 +191,9 @@ const CardListWrapper = styled.div`
   width: 80vw;
   padding-top: 40px;
   flex-wrap: wrap;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    flex-direction: column;
+  flex-direction: column;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    flex-direction: row;
   }
 `;
 
@@ -198,17 +201,16 @@ const CardWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100px;
-  width: 270px;
+  width: 80vw;
+  height: 125px;
+  margin-bottom: 20px;
   box-shadow: ${defaultTokens.boxShadowActionable};
   border-radius: ${defaultTokens.borderRadiusNormal};
   border: ${defaultTokens.borderStyleCard} ${defaultTokens.borderWidthCard}
     ${defaultTokens.borderColorCard};
-  margin-bottom: 20px;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 80vw;
-    height: 125px;
-    margin-bottom: 20px;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: 270px;
+    height: 100px;
   }
 `;
 
