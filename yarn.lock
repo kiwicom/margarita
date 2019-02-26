@@ -1373,12 +1373,12 @@
     strip-ansi "^5.0.0"
     text-table "^0.2.0"
 
-"@kiwicom/fetch@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.1.0.tgz#f34e6b244a492ef7ba567524b6ed3d9afe829d1b"
-  integrity sha512-ygaJZxxxp6H/Mm6Q+vqOke+UzIDG/Ml3OdQvFELXakUdjIHYqHWekGELq4BnO2tBLinx1aOtDgXQFbTEfxmqFA==
+"@kiwicom/fetch@^2.0.0", "@kiwicom/fetch@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.1.1.tgz#d6464a629693f9ae873b2980c548e80f5d5c008e"
+  integrity sha512-kv6p3zd1D73Ew5uEdmZdWPFLS/IiOsk+WNMtWV1ANz7O5t33y5+oY9QzKAcbOyzAy41Xczf9WREd+0w92reflA==
   dependencies:
-    "@kiwicom/js" "^0"
+    "@kiwicom/js" "^0.3.0"
     cross-fetch "^3.0.0"
 
 "@kiwicom/graphql-global-id@^0.5.0":
@@ -1396,7 +1396,12 @@
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
 
-"@kiwicom/js@^0", "@kiwicom/js@^0.3.0":
+"@kiwicom/js@^0", "@kiwicom/js@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.4.0.tgz#d96f4efd84302b73fafdb5be3080651fd0ece40a"
+  integrity sha512-bGF8s50g70k//6VJ52g3zySygAc5Ok3FEQQ1LD+i2XaUz9uPy+azpj2Ig0fqfDnNK5UK1YNH9O8ea9Pf1LIF8Q==
+
+"@kiwicom/js@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.3.0.tgz#67b0f24e13f4e13c0e53ed908895660d104b70ff"
   integrity sha512-frHRiHuwwlqx/SSVpBXUO0Njf8GbU85B5SsTWJ9yXs16m0FkEXDAEE+TWAZKmdWB1OgvgH3OQJgBagA86qaSxg==
@@ -1415,16 +1420,16 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.11.0":
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.11.0.tgz#ccfcf944916d7f5ecca9fbc56b1d8d09926ca5fd"
-  integrity sha512-FZmW4Le5B7zDa53fNoNmYn8d5xrZq0EZfVNvOSIcSAZqO8tr+ra4bz1SDPGIJO721SJ/OKxD8AopJgcRxQu/Dw==
+"@kiwicom/relay@^0.17.0":
+  version "0.17.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.17.0.tgz#53f0bff58574abbe8c0cf8554ff47e9d1abc56da"
+  integrity sha512-RcMwxDsnyK5NZpZ08L8DjzGOyU8umaIdo/yVSmKxqwFCoHuv7iAUFXaPd8P/MapP4hUhSRS4Sr8uLDGyrBv85w==
   dependencies:
-    "@kiwicom/fetch" "^2.0.0"
-    "@kiwicom/js" "^0"
-    react-relay "^2.0.0"
-    relay-compiler "^2.0.0"
-    relay-runtime "^2.0.0"
+    "@kiwicom/fetch" "^2.1.1"
+    "@kiwicom/js" "^0.4.0"
+    react-relay "^3.0.0"
+    relay-compiler "^3.0.0"
+    relay-runtime "^3.0.0"
 
 "@kiwicom/test-utils@^0.5.0":
   version "0.5.0"
@@ -16335,16 +16340,16 @@ react-proxy@^1.1.7:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
 
-react-relay@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-2.0.0.tgz#967eb66159202264cbf6daa9b1acfa78dfbd13e7"
-  integrity sha512-TLQdW9AVo7Zlu7z81MuNm2Y9Mp3im6rVSKs357uS3cEz6vr2x3ZEQr+HAXDQn8Hb4gFQ+9+iRRlv+hd2Rid/0Q==
+react-relay@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-relay/-/react-relay-3.0.0.tgz#b3fe7931f812a6700e2420a853adb74156e162b9"
+  integrity sha512-HZQ1CXhF2EBt6f5XG2nWoT5FZIn9zdoHeo8+u5rqQ3fCRBr4qmvLihfehWlCcYCcx57pnAiqsjUdJmwxGUmbsg==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
     nullthrows "^1.1.0"
     prop-types "^15.5.8"
-    relay-runtime "2.0.0"
+    relay-runtime "3.0.0"
 
 react-side-effect@^1.1.0:
   version "1.1.5"
@@ -16812,10 +16817,10 @@ relateurl@0.2.x:
   resolved "https://registry.yarnpkg.com/relateurl/-/relateurl-0.2.7.tgz#54dbf377e51440aca90a4cd274600d3ff2d888a9"
   integrity sha1-VNvzd+UUQKypCkzSdGANP/LYiKk=
 
-relay-compiler@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-2.0.0.tgz#f51b8e4fdf337b24ceb45cb7f80dac2729ab132a"
-  integrity sha512-OcWHdFJAp9++8xhES5rZMDolB2USKn940bc/jDMYrMyHtVM+FnvlZaXDSvXpOjlzPeucpDYPiqFlx+/UQoGF2g==
+relay-compiler@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/relay-compiler/-/relay-compiler-3.0.0.tgz#689015f2aa638296c82c5761e5b4cdb09aed7139"
+  integrity sha512-wCD1FV4IKCfeNZdNrdeRjAWl23C3hcInmBbR+rOE/w345+IoXwh1W4o152opRfwHMqPIC5YjyrWh2O73vJYGLw==
   dependencies:
     "@babel/generator" "^7.0.0"
     "@babel/parser" "^7.0.0"
@@ -16830,14 +16835,22 @@ relay-compiler@^2.0.0:
     fbjs "^1.0.0"
     immutable "~3.7.6"
     nullthrows "^1.1.0"
-    relay-runtime "2.0.0"
+    relay-runtime "3.0.0"
     signedsource "^1.0.0"
     yargs "^9.0.0"
 
-relay-runtime@2.0.0, relay-runtime@^2.0.0:
+relay-runtime@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-2.0.0.tgz#0e42df90365cc69f104f7e4b20fdcf975f5a9c0b"
   integrity sha512-o/LPFHTI6+3FLJXM3Ec4N6hzkKYILVHYRJThNX0UQlMnqjTVPR6NO4qFE2QzzEiUS+lys+qfnvBzSmNbSh1zWQ==
+  dependencies:
+    "@babel/runtime" "^7.0.0"
+    fbjs "^1.0.0"
+
+relay-runtime@3.0.0, relay-runtime@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/relay-runtime/-/relay-runtime-3.0.0.tgz#a024e1d80c9a71e76495f3a15e8f3f40113385e2"
+  integrity sha512-P9pDoAaqku9m5MTMjampwo+0vsNd2Nv8x78GpWuxPxvqJusqz8MBpu0RVBViIpLzCn77Pegw2ihtXgQSBdvs0w==
   dependencies:
     "@babel/runtime" "^7.0.0"
     fbjs "^1.0.0"
