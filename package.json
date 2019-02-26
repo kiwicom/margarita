@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "description": "Component Library for React Native, Expo and React applications",
   "homepage": "https://github.com/kiwicom/universal-components",
   "main": "lib/web/index.js",
