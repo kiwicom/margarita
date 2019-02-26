@@ -1,3 +1,0 @@
-[build]
-  publish = "apps/web/out"
-  command = "echo GRAPHQL_URL=$GRAPHQL_URL > .env; yarn build && yarn export"

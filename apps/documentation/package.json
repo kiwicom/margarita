@@ -4,7 +4,9 @@
   "version": "0.0.0",
   "scripts": {
     "start": "next -p 1337",
-    "build": "next build && next export"
+    "build": "next build",
+    "export": "next export",
+    "deploy": "next build && next export"
   },
   "dependencies": {
     "@mdx-js/mdx": "^0.17.5",
