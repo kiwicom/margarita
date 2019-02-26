@@ -35,7 +35,8 @@ exports.handler = (
   return server(event, context).createHandler({
     cors: {
       origin: '*',
-      allowedHeaders: ['Content-Type', 'Origin', 'Accept', 'X-Client'],
+      allowedHeaders: ['Content-Type', 'Origin', 'Accept'],
+      exposedHeaders: ['X-Client'],
     },
   })(event, context, callback);
 };
