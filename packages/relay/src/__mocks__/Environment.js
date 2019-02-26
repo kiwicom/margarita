@@ -3,5 +3,5 @@
 import { createEnvironment, createNetworkFetcher } from '@kiwicom/relay';
 
 export default createEnvironment({
-  fetcherFn: createNetworkFetcher(''),
+  fetcherFn: createNetworkFetcher('', { 'X-Client': 'mock' }),
 });
