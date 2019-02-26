@@ -1,18 +1,17 @@
 // @flow
 
 import * as React from 'react';
-import {
-  Touchable,
-  Icon,
-  Text,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { Touchable, Icon, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Animated, Platform } from 'react-native';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { BookingTypeRenderer } from '@kiwicom/margarita-components';
 
 import SegmentMap from './SegmentMap';
 import type { SegmentContainer as BookingType } from './__generated__/SegmentContainer.graphql';
+import SectorsListOneWay from '../SectorsListOneWay';
+import SectorsListReturn from '../SectorsListReturn';
+import SectorsListMulticity from '../SectorsListMulticity';
 
 type Props = {|
   +data: ?BookingType,
@@ -80,7 +79,14 @@ export class SegmentContainer extends React.Component<Props, State> {
         </Touchable>
         {this.state.expandSegments && (
           <>
-            <Text>TODO: Put segment data</Text>
+            <BookingTypeRenderer
+              type={this.props.data?.type}
+              oneWayComponent={<SectorsListOneWay data={this.props.data} />}
+              returnComponent={<SectorsListReturn data={this.props.data} />}
+              multicityComponent={
+                <SectorsListMulticity data={this.props.data} />
+              }
+            />
             {Platform.OS !== 'web' && <SegmentMap data={this.props.data} />}
           </>
         )}
@@ -100,7 +106,11 @@ export default createFragmentContainer(
   SegmentContainer,
   graphql`
     fragment SegmentContainer on BookingInterface {
+      ...SectorsListOneWay
+      ...SectorsListReturn
+      ...SectorsListMulticity
       ...SegmentMap
+      type
     }
   `,
 );

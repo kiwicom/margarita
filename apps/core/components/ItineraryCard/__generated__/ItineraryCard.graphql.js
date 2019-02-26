@@ -8,6 +8,7 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type ItineraryDetail$ref = any;
 type RenderTripSectorItem$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard$ref: FragmentReference;
@@ -19,6 +20,7 @@ export type ItineraryCard = {|
     +currency: ?string,
     +amount: ?number,
   |},
+  +$fragmentRefs: ItineraryDetail$ref,
   +$refType: ItineraryCard$ref,
 |};
 */
@@ -71,9 +73,14 @@ const node/*: ReaderFragment*/ = {
           "storageKey": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ItineraryDetail",
+      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '99f265bbe45bf32e6384bdf9879e9815';
+(node/*: any*/).hash = 'cfe99b35b01f7b08c86b76110ee92bb2';
 module.exports = node;
