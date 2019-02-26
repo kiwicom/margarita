@@ -1,4 +1,4 @@
-import yarnAnalyse from '../../../assets/yarn-analyze.png';
+import yarnAnalyse from '../assets/yarn-analyze.png';
 
 # Getting Started
 
