@@ -69,36 +69,42 @@ const Container = styled.div`
 
 const FooterContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  height: 105px;
   align-items: center;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    flex-direction: column;
-    height: 25vh;
-    justify-content: space-evenly;
+  flex-direction: column;
+  height: 25vh;
+  justify-content: space-evenly;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    flex-direction: row;
+    height: 105px;
+    justify-content: space-between;
   }
 `;
 
 const Logo = styled.img`
   height: 42px;
-  padding-left: 48px;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    padding-left: 48px;
+  }
 `;
 
 const FooterLeftContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 44vw;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    width: 44vw;
+  }
 `;
 
 const FooterRightContainer = styled.div`
   display: flex;
-  width: 14vw;
   justify-content: space-around;
-  padding-right: 35px;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 65vw;
-    padding: 0;
-    align-items: center;
+  width: 65vw;
+  padding: 0;
+  align-items: center;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    align-items: flex-start;
+    width: 160px;
+    padding-right: 35px;
   }
 `;

@@ -47,23 +47,18 @@ const Logo = styled.img`
 
 const HeaderRight = styled.div`
   display: flex;
-  width: 20vw;
-  justify-content: space-between;
   padding-right: 3vw;
-  @media (max-width: ${BREAKPOINTS.DESKTOP}px) {
-    width: 30vw;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+  width: 80vw;
+  align-items: center;
+  justify-content: space-evenly;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
     width: 70vw;
-    align-items: center;
-    justify-content: space-evenly;
   }
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 80vw;
-    align-items: center;
-    justify-content: space-evenly;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) and (max-width: ${BREAKPOINTS.DESKTOP}px) {
+    width: 30vw;
+  }
+  @media (min-width: ${BREAKPOINTS.DESKTOP}px) {
+    width: 20vw;
   }
 `;
 
