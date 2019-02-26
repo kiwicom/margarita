@@ -46,9 +46,6 @@ interface BookingInterface {
   """OneWay, Multicity or Return"""
   type: BookingType
 
-  """This contains the gps-coordinates for all stops on the booking"""
-  segmentLocations: [Coordinate]
-
   """Total count of bags by the type"""
   bagInfo: [Bag]
 }
@@ -90,9 +87,6 @@ type BookingMulticity implements BookingInterface & FromToInterface {
   """OneWay, Multicity or Return"""
   type: BookingType
 
-  """This contains the gps-coordinates for all stops on the booking"""
-  segmentLocations: [Coordinate]
-
   """Total count of bags by the type"""
   bagInfo: [Bag]
   sectors: [Sector]
@@ -117,9 +111,6 @@ type BookingOneWay implements BookingInterface & FromToInterface {
   """OneWay, Multicity or Return"""
   type: BookingType
 
-  """This contains the gps-coordinates for all stops on the booking"""
-  segmentLocations: [Coordinate]
-
   """Total count of bags by the type"""
   bagInfo: [Bag]
   sector: Sector
@@ -143,9 +134,6 @@ type BookingReturn implements BookingInterface & FromToInterface {
 
   """OneWay, Multicity or Return"""
   type: BookingType
-
-  """This contains the gps-coordinates for all stops on the booking"""
-  segmentLocations: [Coordinate]
 
   """Total count of bags by the type"""
   bagInfo: [Bag]
