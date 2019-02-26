@@ -102,6 +102,7 @@ class ItineraryCard extends React.Component<Props, State> {
         </Hoverable>
         {detailOpened && (
           <ItineraryDetail
+            data={data}
             localizedPrice={localizedPrice}
             onClose={this.handleDetailClose}
             onBookPress={onBookPress}
@@ -123,6 +124,7 @@ export default createFragmentContainer(
         currency
         amount
       }
+      ...ItineraryDetail
     }
   `,
 );
