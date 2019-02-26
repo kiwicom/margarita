@@ -21,7 +21,9 @@
     "landing-page": "yarn workspace @kiwicom/margarita-landing-page start",
     "deploy:landing-page": "yarn workspace @kiwicom/margarita-landing-page deploy",
     "voyager": "yarn workspace @kiwicom/margarita-voyager start",
-    "docs": "yarn workspace @kiwicom/margarita-docs start"
+    "docs": "yarn workspace @kiwicom/margarita-docs start",
+    "storybook:web:margarita-components": "yarn workspace @kiwicom/margarita-components storybook",
+    "storybook:mobile:margarita-components": "yarn workspace @kiwicom/margarita-mobile-storybook start:margarita-components"
   },
   "private": true,
   "workspaces": [
