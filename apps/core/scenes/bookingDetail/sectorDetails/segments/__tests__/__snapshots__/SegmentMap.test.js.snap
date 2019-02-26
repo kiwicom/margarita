@@ -1,0 +1,606 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with MulticityBooking 1`] = `
+<MapView
+  initialRegion={
+    Object {
+      "latitude": 10.122433,
+      "latitudeDelta": 1,
+      "longitude": 15.373298,
+      "longitudeDelta": 1,
+    }
+  }
+  onMapReady={[Function]}
+  pitchEnabled={false}
+  rotateEnabled={false}
+  style={
+    Object {
+      "flex": 1,
+      "height": 200,
+    }
+  }
+  zoomEnabled={false}
+>
+  <SegmentMapMarker
+    latitude={14}
+    longitude={24}
+    name="departure-4"
+  />
+  <SegmentMapMarker
+    latitude={5}
+    longitude={6}
+    name="arrivalCity-4"
+  />
+  <SegmentMapMarker
+    latitude={15}
+    longitude={25}
+    name="departure-5"
+  />
+  <SegmentMapMarker
+    latitude={6}
+    longitude={7}
+    name="arrivalCity-5"
+  />
+  <ForwardRef(Relay(MapLines))
+    data={
+      Object {
+        "$fragmentRefs": null,
+        "$refType": null,
+        "inbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 3,
+                    "longitude": 4,
+                  },
+                  "locationId": "arrival-2",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 12,
+                    "longitude": 22,
+                  },
+                  "locationId": "departure-2",
+                },
+              },
+            },
+          ],
+        },
+        "outbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 4,
+                    "longitude": 5,
+                  },
+                  "locationId": "arrival-3",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 13,
+                    "longitude": 23,
+                  },
+                  "locationId": "departure-3",
+                },
+              },
+            },
+          ],
+        },
+        "sector": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 2,
+                    "longitude": 3,
+                  },
+                  "locationId": "arrival-1",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 11,
+                    "longitude": 21,
+                  },
+                  "locationId": "departure-1",
+                },
+              },
+            },
+          ],
+        },
+        "sectors": Array [
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 5,
+                      "longitude": 6,
+                    },
+                    "locationId": "arrival-4",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 14,
+                      "longitude": 24,
+                    },
+                    "locationId": "departure-4",
+                  },
+                },
+              },
+            ],
+          },
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 6,
+                      "longitude": 7,
+                    },
+                    "locationId": "arrival-5",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 15,
+                      "longitude": 25,
+                    },
+                    "locationId": "departure-5",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        "type": "BOOKING_MULTICITY",
+      }
+    }
+  />
+</MapView>
+`;
+
+exports[`renders correctly with OneWayBooking 1`] = `
+<MapView
+  initialRegion={
+    Object {
+      "latitude": 6.58031,
+      "latitudeDelta": 1,
+      "longitude": 11.918627,
+      "longitudeDelta": 1,
+    }
+  }
+  onMapReady={[Function]}
+  pitchEnabled={false}
+  rotateEnabled={false}
+  style={
+    Object {
+      "flex": 1,
+      "height": 200,
+    }
+  }
+  zoomEnabled={false}
+>
+  <SegmentMapMarker
+    latitude={11}
+    longitude={21}
+    name="departure-1"
+  />
+  <SegmentMapMarker
+    latitude={2}
+    longitude={3}
+    name="arrivalCity-1"
+  />
+  <ForwardRef(Relay(MapLines))
+    data={
+      Object {
+        "$fragmentRefs": null,
+        "$refType": null,
+        "inbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 3,
+                    "longitude": 4,
+                  },
+                  "locationId": "arrival-2",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 12,
+                    "longitude": 22,
+                  },
+                  "locationId": "departure-2",
+                },
+              },
+            },
+          ],
+        },
+        "outbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 4,
+                    "longitude": 5,
+                  },
+                  "locationId": "arrival-3",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 13,
+                    "longitude": 23,
+                  },
+                  "locationId": "departure-3",
+                },
+              },
+            },
+          ],
+        },
+        "sector": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 2,
+                    "longitude": 3,
+                  },
+                  "locationId": "arrival-1",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 11,
+                    "longitude": 21,
+                  },
+                  "locationId": "departure-1",
+                },
+              },
+            },
+          ],
+        },
+        "sectors": Array [
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 5,
+                      "longitude": 6,
+                    },
+                    "locationId": "arrival-4",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 14,
+                      "longitude": 24,
+                    },
+                    "locationId": "departure-4",
+                  },
+                },
+              },
+            ],
+          },
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 6,
+                      "longitude": 7,
+                    },
+                    "locationId": "arrival-5",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 15,
+                      "longitude": 25,
+                    },
+                    "locationId": "departure-5",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        "type": "BOOKING_ONE_WAY",
+      }
+    }
+  />
+</MapView>
+`;
+
+exports[`renders correctly with ReturnBooking 1`] = `
+<MapView
+  initialRegion={
+    Object {
+      "latitude": 8.09869,
+      "latitudeDelta": 1,
+      "longitude": 13.399013,
+      "longitudeDelta": 1,
+    }
+  }
+  onMapReady={[Function]}
+  pitchEnabled={false}
+  rotateEnabled={false}
+  style={
+    Object {
+      "flex": 1,
+      "height": 200,
+    }
+  }
+  zoomEnabled={false}
+>
+  <SegmentMapMarker
+    latitude={13}
+    longitude={23}
+    name="departure-3"
+  />
+  <SegmentMapMarker
+    latitude={4}
+    longitude={5}
+    name="arrivalCity-3"
+  />
+  <SegmentMapMarker
+    latitude={12}
+    longitude={22}
+    name="departure-2"
+  />
+  <SegmentMapMarker
+    latitude={3}
+    longitude={4}
+    name="arrivalCity-2"
+  />
+  <ForwardRef(Relay(MapLines))
+    data={
+      Object {
+        "$fragmentRefs": null,
+        "$refType": null,
+        "inbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 3,
+                    "longitude": 4,
+                  },
+                  "locationId": "arrival-2",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-2",
+                  },
+                  "coordinates": Object {
+                    "latitude": 12,
+                    "longitude": 22,
+                  },
+                  "locationId": "departure-2",
+                },
+              },
+            },
+          ],
+        },
+        "outbound": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 4,
+                    "longitude": 5,
+                  },
+                  "locationId": "arrival-3",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-3",
+                  },
+                  "coordinates": Object {
+                    "latitude": 13,
+                    "longitude": 23,
+                  },
+                  "locationId": "departure-3",
+                },
+              },
+            },
+          ],
+        },
+        "sector": Object {
+          "segments": Array [
+            Object {
+              "arrival": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "arrivalCity-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 2,
+                    "longitude": 3,
+                  },
+                  "locationId": "arrival-1",
+                },
+              },
+              "departure": Object {
+                "stop": Object {
+                  "city": Object {
+                    "name": "departure-1",
+                  },
+                  "coordinates": Object {
+                    "latitude": 11,
+                    "longitude": 21,
+                  },
+                  "locationId": "departure-1",
+                },
+              },
+            },
+          ],
+        },
+        "sectors": Array [
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 5,
+                      "longitude": 6,
+                    },
+                    "locationId": "arrival-4",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-4",
+                    },
+                    "coordinates": Object {
+                      "latitude": 14,
+                      "longitude": 24,
+                    },
+                    "locationId": "departure-4",
+                  },
+                },
+              },
+            ],
+          },
+          Object {
+            "segments": Array [
+              Object {
+                "arrival": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "arrivalCity-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 6,
+                      "longitude": 7,
+                    },
+                    "locationId": "arrival-5",
+                  },
+                },
+                "departure": Object {
+                  "stop": Object {
+                    "city": Object {
+                      "name": "departure-5",
+                    },
+                    "coordinates": Object {
+                      "latitude": 15,
+                      "longitude": 25,
+                    },
+                    "locationId": "departure-5",
+                  },
+                },
+              },
+            ],
+          },
+        ],
+        "type": "BOOKING_RETURN",
+      }
+    }
+  />
+</MapView>
+`;
