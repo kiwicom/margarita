@@ -1438,10 +1438,10 @@
   dependencies:
     "@kiwicom/js" "^0.3.0"
 
-"@kiwicom/universal-components@0.0.13":
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.13.tgz#72ea43b6e49a43caeef4904f46db6b0d63fad8bc"
-  integrity sha512-76SBuF3Nht1yHEVjEz8nmaXVxotTrfKY7TvqhBPa4diTeumaTeaV04zkLyuQQkVpwzON9WjuPXFN4/3Vca+8Zw==
+"@kiwicom/universal-components@0.0.14":
+  version "0.0.14"
+  resolved "https://registry.yarnpkg.com/@kiwicom/universal-components/-/universal-components-0.0.14.tgz#c0bbc30892ed01bef2c661c2bf294f3e48cd780e"
+  integrity sha512-kUO27yRu2AgVkUULFsVwpQ/+6Mh2Jx+gHyv9f4wgvCTzPwka/XAzwUimqfbTfp5vpR6QYEwVcbIequ7j5x/iHg==
   dependencies:
     "@kiwicom/orbit-design-tokens" "^0.3.0"
     react-native-modal "^7.0.2"
