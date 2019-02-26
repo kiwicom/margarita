@@ -85,7 +85,7 @@ jobs:
             git config user.name "GH Pages Bot"
       - run:
           name: Deploy landing page
-          command: yarn deploy:landing-page
+          command: yarn landing-page:deploy
 
   build-and-deploy-graphql:
     <<: *defaults
@@ -106,10 +106,10 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Build GraphQL lambda
-          command: yarn build:graphql
+          command: yarn graphql:build
       - run:
           name: Deploy GraphQL lambda
-          command: yarn deploy:graphql
+          command: yarn graphql:deploy
 
 workflows:
   version: 2

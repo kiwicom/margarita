@@ -42,15 +42,18 @@ To launch the client app, you have different options:
 
 The other available scripts are:
 
-- `yarn analyze` to get an analysis of the bundle size to get the following
+- `yarn web:analyze` to get an analysis of the bundle size to get the following
   ![yarn-analyze](assets/yarn-analyze.png)
 - `yarn dev` to run concurrently `yarn server` and `yarn web`;
 - `yarn lint` to ensure your code is properly formatted;
 - `yarn flow` to ensure your code is respecting the types given to your vaiables;
+- `yarn test` to run the test suites;
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
-- `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
+- `yarn relay` to get the latest schema of the [graphql server](apps/graphql)
   and compile your queries and fragments to generate Flow types, among other things;
 - `yarn landing-page` to run the landing page of the app;
+- `yarn docs` to run the documentation website, available at http://localhost:1337;
+- `yarn voyager` to run the Voyager (represents the GraphQL types as an interactive graph), available at http://localhost:3002;
 - `storybook:web:margarita-components` to run the web version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:9009;
 - `storybook:mobile:margarita-components` to run the mobile version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:7007 for the web UI controlling the Storybook Expo application.
 
