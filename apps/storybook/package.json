@@ -13,7 +13,7 @@
     "rnstl:margarita-components": "rnstl --searchDir='../../packages/components/src'"
   },
   "dependencies": {
-    "@kiwicom/universal-components": "0.0.13",
+    "@kiwicom/universal-components": "0.0.14",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-knobs": "^4.1.13",
     "@storybook/addon-links": "^4.1.13",
