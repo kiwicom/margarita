@@ -50,7 +50,9 @@ The other available scripts are:
 - `yarn test-ci` to ensure your code should pass the Continuous Integration (CI) tests;
 - `yarn relay` to get the latest schema of the [graphql server](packages/graphql)
   and compile your queries and fragments to generate Flow types, among other things;
-- `yarn landing-page` to run the landing page of the app.
+- `yarn landing-page` to run the landing page of the app;
+- `storybook:web:margarita-components` to run the web version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:9009;
+- `storybook:mobile:margarita-components` to run the mobile version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:7007 for the web UI controlling the Storybook Expo application.
 
 ### Initial Configuration
 

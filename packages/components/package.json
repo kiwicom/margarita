@@ -4,11 +4,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "rnstl": "rnstl",
-    "storybook": "start-storybook -p 9009 -c storybook/web -s ../../node_modules/@kiwicom/universal-components/lib/fonts",
-    "prestorybook": "rnstl",
-    "storybook:mobile": "storybook start -c storybook/mobile -p 7007",
-    "prestorybook:mobile": "rnstl"
+    "storybook": "start-storybook -p 9009 -c storybook -s ../../node_modules/@kiwicom/universal-components/lib/fonts",
+    "storybook:mobile": "yarn workspace @kiwicom/margarita-mobile-storybook start:margarita-components"
   },
   "dependencies": {
     "@kiwicom/margarita-utils": "^0",
@@ -22,29 +19,20 @@
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-ondevice-knobs": "^4.1.13",
     "@storybook/react": "^4.1.13",
-    "react-native-storybook-loader": "^1.8.0"
+    "react-native-web-image-loader": "^0.0.7"
   },
   "peerDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
-    "@storybook/react": "^",
+    "@kiwicom/orbit-design-tokens": "^",
     "@storybook/addon-actions": "^",
-    "@storybook/addon-links": "^",
     "@storybook/addon-knobs": "^",
+    "@storybook/addon-links": "^",
     "@storybook/addon-ondevice-knobs": "^",
+    "@storybook/react": "^",
     "react": "^",
     "react-native": "^",
-    "@kiwicom/orbit-design-tokens": "^",
     "react-native-testing-library": "^",
-    "styled-components": "^",
-    "react-test-renderer": "^"
-  },
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "./src"
-      ],
-      "pattern": "**/*.stories.js",
-      "outputFile": "storybook/story-loader.js"
-    }
+    "react-test-renderer": "^",
+    "styled-components": "^"
   }
 }

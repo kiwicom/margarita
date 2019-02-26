@@ -7,4 +7,4 @@ apps/web/out
 apps/web/.next
 apps/landingPage/.cache
 apps/landingPage/public
-packages/components/storybook/story-loader.js
+apps/storybook/config/storyLoader.js
