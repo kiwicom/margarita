@@ -1381,12 +1381,12 @@
     "@kiwicom/js" "^0.3.0"
     cross-fetch "^3.0.0"
 
-"@kiwicom/graphql-global-id@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-global-id/-/graphql-global-id-0.5.0.tgz#ec869e90a8d7f8831ac7a1f1e4eaeb7bdf5df371"
-  integrity sha512-2VpA9Fml9kcRXVR1oDUXanQFphot6HKJQ92Cj81BQ4/STHHjnNO3INeZ0mL9OhrCMAhBQhTXu4mOCjiJ73fMgg==
+"@kiwicom/graphql-global-id@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-global-id/-/graphql-global-id-0.6.0.tgz#618b2481ac74cc169cf2edfe534140ce0c56278e"
+  integrity sha512-YlsQKCd8W4DFsTTOgUjyEhJLd3N8qWyDWxGjUy1iGlv6risonFVz66BEr5p9AISxoRG4MzdHoWWp3qH8AD9TJg==
   dependencies:
-    "@kiwicom/js" "^0"
+    "@kiwicom/js" "^0.3.0"
 
 "@kiwicom/graphql-utils@^0.4.0":
   version "0.4.0"
@@ -1396,15 +1396,15 @@
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
 
-"@kiwicom/js@^0", "@kiwicom/js@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.4.0.tgz#d96f4efd84302b73fafdb5be3080651fd0ece40a"
-  integrity sha512-bGF8s50g70k//6VJ52g3zySygAc5Ok3FEQQ1LD+i2XaUz9uPy+azpj2Ig0fqfDnNK5UK1YNH9O8ea9Pf1LIF8Q==
-
 "@kiwicom/js@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.3.0.tgz#67b0f24e13f4e13c0e53ed908895660d104b70ff"
   integrity sha512-frHRiHuwwlqx/SSVpBXUO0Njf8GbU85B5SsTWJ9yXs16m0FkEXDAEE+TWAZKmdWB1OgvgH3OQJgBagA86qaSxg==
+
+"@kiwicom/js@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.4.0.tgz#d96f4efd84302b73fafdb5be3080651fd0ece40a"
+  integrity sha512-bGF8s50g70k//6VJ52g3zySygAc5Ok3FEQQ1LD+i2XaUz9uPy+azpj2Ig0fqfDnNK5UK1YNH9O8ea9Pf1LIF8Q==
 
 "@kiwicom/orbit-components@^0.32.0":
   version "0.32.0"
