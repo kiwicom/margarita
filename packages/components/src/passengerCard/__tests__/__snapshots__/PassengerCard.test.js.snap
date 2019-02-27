@@ -5,8 +5,7 @@ Object {
   "output": <Card
     style={
       Object {
-        "marginHorizontal": 8,
-        "paddingHorizontal": 16,
+        "marginBottom": 12,
       }
     }
   >
@@ -106,8 +105,7 @@ Object {
   "output": <Card
     style={
       Object {
-        "marginHorizontal": 8,
-        "paddingHorizontal": 16,
+        "marginBottom": 12,
       }
     }
   >

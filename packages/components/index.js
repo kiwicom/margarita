@@ -33,11 +33,7 @@ export {
   default as IllustrationWithInformation,
 } from './src/illustrationWithInformation/IllustrationWithInformation';
 export { default as PassengerCard } from './src/passengerCard/PassengerCard';
-export {
-  default as PassengerCardTypes,
-} from './src/passengerCard/PassengerCardTypes';
 export { default as PassengerCards } from './src/passengerCards/PassengerCards';
-
 export { default as Separator } from './src/separator/Separator';
 export { default as ShareIcon } from './src/shareIcon/ShareIcon';
 export { default as Text } from './src/text/Text';
@@ -45,14 +41,18 @@ export { default as Duration } from './src/duration/Duration';
 export {
   default as BookingTypeRenderer,
 } from './src/bookingTypeRenderer/BookingTypeRenderer';
-
 export { default as Alert } from './src/alert/Alert';
-
 export {
   default as AlertContextProvider,
   withAlertContext,
 } from './src/alert/AlertContext';
+
+// types
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
 export {
   default as StopoverDuration,
 } from './src/stopoverDuration/StopoverDuration';
+export type {
+  PassengerCardType,
+  PassengerCardActionType,
+} from './src/passengerCard/PassengerCardTypes';
