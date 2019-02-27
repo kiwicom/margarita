@@ -17199,10 +17199,10 @@ remark-emoji@^2.0.2:
     node-emoji "^1.8.1"
     unist-util-visit "^1.4.0"
 
-remark-images@^0.17.0:
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/remark-images/-/remark-images-0.17.0.tgz#6070749e4b551962c6abf9dcc99873fcf858b1e0"
-  integrity sha512-HjOGqt7Lrq8P1Ru2d9NR2ML/Yb7l6iU9ggcMFSQX4heHMO4qo93X3d0a3bycdYe9Fg/zZfj045HnRrMzPMwm5w==
+remark-images@^0.18.0:
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/remark-images/-/remark-images-0.18.0.tgz#887bacc03766f4f92becc0986c6b93c35a9bc7d4"
+  integrity sha512-Y/4/Y2s+U3/rzcrD0GrWPpwmlN66bap3AOh9kP91ujZmJjrwpmvx2Q9kc14RnD9Lq4zMBpn1GjSuDXyDfOCH8w==
   dependencies:
     is-url "^1.2.2"
     unist-util-visit "^1.3.0"
