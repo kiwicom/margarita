@@ -9,7 +9,7 @@ import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 export type Props = {|
   +optionsData: $ReadOnlyArray<PickerOption>,
   +onValueChange: (value: string) => void,
-  +selectedValue: string,
+  +selectedValue: ?string,
   +style: StylePropType,
 |};
 

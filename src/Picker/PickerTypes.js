@@ -20,7 +20,7 @@ export type Props = {|
   /**
    * Dispatched on value change
    */
-  +onValueChange: (value: string) => void,
+  +onValueChange: (value: ?string) => void,
   /**
    * Confirm button label, supported only on iOS
    */
@@ -28,7 +28,7 @@ export type Props = {|
   /**
    * Selected option value
    */
-  +selectedValue: string,
+  +selectedValue: ?string,
   /**
    * Placeholder text displayed if no option is selected
    */

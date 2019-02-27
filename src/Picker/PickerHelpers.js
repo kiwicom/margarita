@@ -4,7 +4,7 @@ import type { PickerOption } from './PickerTypes';
 
 export const getSelectedLabel = (
   optionsData: $ReadOnlyArray<PickerOption>,
-  value: string,
+  value: ?string,
   placeholder: string = '',
 ): string => {
   const selectedOption = optionsData.find(option => option.value === value);
