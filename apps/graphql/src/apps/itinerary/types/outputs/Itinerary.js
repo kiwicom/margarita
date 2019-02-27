@@ -36,6 +36,7 @@ export default new GraphQLObjectType({
     },
     startTime: { type: GraphQLDateType },
     type: { type: GraphQLString },
+    bookingToken: { type: GraphQLString },
   },
 });
 

@@ -14,12 +14,12 @@ type Props = {|
   +data: ?ItineraryType,
   +localizedPrice: string,
   +onClose: () => void,
-  +onBookPress: string => void,
+  +onBookPress: (?string) => void,
 |};
 
 class ItineraryDetail extends React.Component<Props> {
   handleBookPress = () => {
-    this.props.onBookPress('lol'); // @TODO use real ID
+    this.props.onBookPress(this.props.data?.bookingToken);
     this.props.onClose();
   };
 
@@ -53,6 +53,7 @@ export default createFragmentContainer(
   ItineraryDetail,
   graphql`
     fragment ItineraryDetail on Itinerary {
+      bookingToken
       ...SectorsList
     }
   `,

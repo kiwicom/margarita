@@ -60,6 +60,7 @@ export type Sector = {|
 export type ItinerariesType = {|
   +id: string,
   +type: ?string,
+  +bookingToken: ?string,
   +price: ?Price,
   +origin: ?Location,
   +destination: ?Location,
@@ -107,5 +108,6 @@ export type ApiResponseType = {|
     +utc_arrival: string,
     +route: Array<ApiRouteItem>,
     +routes: Array<Array<string>>,
+    +booking_token: string,
   |}>,
 |};
