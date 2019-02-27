@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2eff900ff9c97c6bf03254e395bcc738
+ * @relayHash 194a4c069bc82dbc017d982de9a2dea7
  */
 
 /* eslint-disable */
@@ -865,16 +865,16 @@ return {
           (v3/*: any*/),
           {
             "kind": "InlineFragment",
-            "type": "BookingMulticity",
+            "type": "BookingOneWay",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "sectors",
+                "name": "sector",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Sector",
-                "plural": true,
+                "plural": false,
                 "selections": (v13/*: any*/)
               }
             ]
@@ -927,16 +927,16 @@ return {
           },
           {
             "kind": "InlineFragment",
-            "type": "BookingOneWay",
+            "type": "BookingMulticity",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "sector",
+                "name": "sectors",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Sector",
-                "plural": false,
+                "plural": true,
                 "selections": (v13/*: any*/)
               }
             ]
