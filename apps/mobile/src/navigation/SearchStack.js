@@ -36,6 +36,9 @@ const StackNavigator: NavigationNavigator<
     },
     [Routes.RESULT_DETAIL]: {
       screen: ResultDetailScreen,
+      navigationOptions: {
+        title: 'My Booking',
+      },
     },
   }: NavigationRouteConfigMap),
   {

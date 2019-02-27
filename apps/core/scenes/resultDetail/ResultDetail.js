@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { withNavigation } from '@kiwicom/margarita-navigation';
 import { PassengerCards } from '@kiwicom/margarita-components';
@@ -13,7 +13,9 @@ type Props = {|
 
 class ResultDetail extends React.Component<Props> {
   handlePassengerEditPress = id => {
-    alert(`ID: ${id}`); // @TODO
+    if (id) {
+      alert(id); // @TODO
+    }
   };
 
   render() {
@@ -45,11 +47,13 @@ class ResultDetail extends React.Component<Props> {
 
     return (
       <View style={styles.container}>
-        <PassengerCards
-          passengerCards={passengerCards}
-          onActionPress={this.handlePassengerEditPress}
-          actionIconName="edit"
-        />
+        <ScrollView>
+          <PassengerCards
+            passengerCards={passengerCards}
+            onActionPress={this.handlePassengerEditPress}
+            actionIconName="edit"
+          />
+        </ScrollView>
       </View>
     );
   }

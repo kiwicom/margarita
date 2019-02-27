@@ -1,13 +1,13 @@
 // @flow
 
-import { IconNameType } from '@kiwicom/universal-components';
+import { type IconNameType } from '@kiwicom/universal-components';
 
 export type Bag = {|
   +count: number,
   +type: string,
 |};
 
-export type PassengerCardProps = {|
+export type PassengerCardType = {|
   +name: string,
   +gender: 'female' | 'male' | 'other',
   +nationality: string,
@@ -16,6 +16,9 @@ export type PassengerCardProps = {|
   +insurance: string,
   +bags: null | Array<Bag>,
   +passengerCount: number,
+|};
+
+export type PassengerCardActionType = {|
   +actionIconName?: IconNameType,
-  +onActionPress: () => void,
+  +onActionPress?: (?string) => void,
 |};

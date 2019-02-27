@@ -9,7 +9,10 @@ import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
 import ExtendedTouchable from '../ExtendedTouchable';
-import { type PassengerCardProps } from './PassengerCardTypes';
+import {
+  type PassengerCardType,
+  type PassengerCardActionType,
+} from './PassengerCardTypes';
 
 function getTitle(gender) {
   switch (gender) {
@@ -22,9 +25,27 @@ function getTitle(gender) {
   }
 }
 
-class PassengerCard extends React.Component<PassengerCardProps> {
+type Props = {|
+  ...PassengerCardType,
+  ...PassengerCardActionType,
+|};
+
+class PassengerCard extends React.Component<Props> {
+  static defaultProps = {
+    passengerCount: 1,
+    name: '',
+    gender: 'other',
+    nationality: '',
+    dateOfBirth: '',
+    id: '',
+    insurance: '',
+    bags: null,
+  };
+
   handleActionPress = () => {
-    this.props.onActionPress(this.props.id);
+    if (this.props.onActionPress) {
+      this.props.onActionPress(this.props.id);
+    }
   };
 
   render() {
@@ -103,26 +124,15 @@ class PassengerCard extends React.Component<PassengerCardProps> {
   }
 }
 
-PassengerCard.defaultProps = {
-  passengerCount: 1,
-  name: '',
-  gender: 'other',
-  nationality: '',
-  dateOfBirth: '',
-  id: '',
-  insurance: '',
-  bags: null,
-};
-
 const styles = StyleSheet.create({
   container: {
-    marginBottom: parseFloat(defaultTokens.spaceSmall),
+    marginBottom: parseInt(defaultTokens.spaceSmall, 10),
   },
   containerName: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: parseFloat(defaultTokens.spaceSmall),
-    paddingBottom: parseFloat(defaultTokens.spaceMedium),
+    paddingTop: parseInt(defaultTokens.spaceSmall, 10),
+    paddingBottom: parseInt(defaultTokens.spaceMedium, 10),
   },
   passengerName: {
     flex: 1,
@@ -142,7 +152,7 @@ const styles = StyleSheet.create({
     flexGrow: 3,
   },
   textPadding: {
-    paddingBottom: parseFloat(defaultTokens.spaceXSmall),
+    paddingBottom: parseInt(defaultTokens.spaceXSmall, 10),
   },
 });
 
