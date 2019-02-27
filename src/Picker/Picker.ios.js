@@ -15,8 +15,8 @@ import { FormLabel } from '../FormLabel';
 
 export type State = {|
   open: boolean,
-  selectedValue: string,
-  pickerValue: string,
+  selectedValue: ?string,
+  pickerValue: ?string,
 |};
 
 export default class Picker extends React.Component<Props, State> {
