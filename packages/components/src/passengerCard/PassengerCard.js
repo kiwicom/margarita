@@ -2,12 +2,19 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Text, StyleSheet, Icon } from '@kiwicom/universal-components';
+import {
+  Text,
+  StyleSheet,
+  Icon,
+  Card,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
+import ExtendedTouchable from '../ExtendedTouchable';
 
 type Bag = {|
   +count: number,
@@ -23,6 +30,8 @@ type Props = {|
   +insurance: string,
   +bags: null | Array<Bag>,
   +passengerCount: number,
+  +actionIconName?: IconNameType,
+  +onActionPress?: () => void,
 |};
 
 function getTitle(gender) {
@@ -45,11 +54,22 @@ export default function PassengerCard(props: Props) {
   const { nationality, dateOfBirth, id, insurance, bags } = props;
 
   return (
-    <View style={styles.container}>
+    <Card style={styles.container}>
       <View style={styles.containerName}>
         <Icon name="passenger" />
-        <Text size="large">{passenger}</Text>
+        <Text style={styles.passengerName} size="large">
+          {passenger}
+        </Text>
+        {props.onActionPress && props.actionIconName && (
+          <ExtendedTouchable onPress={props.onActionPress}>
+            <Icon
+              name={props.actionIconName}
+              color={defaultTokens.backgroundButtonPrimary}
+            />
+          </ExtendedTouchable>
+        )}
       </View>
+
       <View style={styles.containerTop}>
         <PassengerCardDetail
           value={nationality}
@@ -86,7 +106,7 @@ export default function PassengerCard(props: Props) {
           </View>
         </View>
       </View>
-    </View>
+    </Card>
   );
 }
 
@@ -104,17 +124,8 @@ PassengerCard.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     paddingHorizontal: parseInt(defaultTokens.spaceMedium, 10),
-    borderColor: defaultTokens.borderColorCard,
-    borderTopWidth: 2,
-    borderBottomWidth: 2,
-    backgroundColor: 'white',
     ios: {
       marginHorizontal: parseInt(defaultTokens.spaceXSmall, 10),
-      borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
-      borderWidth: 1,
-      shadowOffset: { width: 1, height: 1 },
-      shadowColor: 'rgba(23, 27, 30, 0.2)',
-      shadowOpacity: 0.3,
     },
   },
   containerName: {
@@ -122,6 +133,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: parseInt(defaultTokens.spaceSmall, 10),
     paddingBottom: parseInt(defaultTokens.spaceMedium, 10),
+  },
+  passengerName: {
+    flex: 1,
   },
   containerTop: {
     flexDirection: 'row',

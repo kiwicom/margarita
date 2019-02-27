@@ -10,6 +10,12 @@ type Props = {|
   +accessibilityTraits: string,
   +accessibilityComponentType: string,
   +style?: StylePropType,
+  +hitSlop?: {
+    left: number,
+    right: number,
+    top: number,
+    bottom: number,
+  },
   +onMouseEnter?: () => void,
   +onMouseLeave?: () => void,
 |};
