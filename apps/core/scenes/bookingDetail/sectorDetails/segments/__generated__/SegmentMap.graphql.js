@@ -250,16 +250,16 @@ return {
     },
     {
       "kind": "InlineFragment",
-      "type": "BookingMulticity",
+      "type": "BookingOneWay",
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "sectors",
+          "name": "sector",
           "storageKey": null,
           "args": null,
           "concreteType": "Sector",
-          "plural": true,
+          "plural": false,
           "selections": (v1/*: any*/)
         }
       ]
@@ -292,16 +292,16 @@ return {
     },
     {
       "kind": "InlineFragment",
-      "type": "BookingOneWay",
+      "type": "BookingMulticity",
       "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "sector",
+          "name": "sectors",
           "storageKey": null,
           "args": null,
           "concreteType": "Sector",
-          "plural": false,
+          "plural": true,
           "selections": (v1/*: any*/)
         }
       ]

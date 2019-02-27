@@ -19,9 +19,10 @@ export type PassengersData = {|
 |};
 
 export type Location = {|
-  +id: ?string,
+  +id: ?string | number,
   +locationId: ?string,
   +name: ?string,
+  +type: ?string,
 |};
 
 type State = {|
@@ -55,11 +56,13 @@ const defaultPlaces = {
     id: 'TG9jYXRpb246cHJhZ3VlX2N6',
     locationId: 'prague_cz',
     name: 'Prague',
+    type: 'destination',
   },
   departure: {
     id: 'TG9jYXRpb246b3Nsb19ubw==',
     locationId: 'oslo_no',
     name: 'Oslo',
+    type: 'destination',
   },
 };
 

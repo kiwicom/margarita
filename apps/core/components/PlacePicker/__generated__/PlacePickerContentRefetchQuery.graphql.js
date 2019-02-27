@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a83a6dd17ca9b12ec6d89afe41d5b194
+ * @relayHash 237d73e37d835b4d5452555bfc96ba40
  */
 
 /* eslint-disable */
@@ -13,21 +13,21 @@ type PlacePickerContent_locations$ref = any;
 export type LocationsByTermInput = {|
   term: string
 |};
-export type PlacePickerRendererQueryVariables = {|
+export type PlacePickerContentRefetchQueryVariables = {|
   input: LocationsByTermInput
 |};
-export type PlacePickerRendererQueryResponse = {|
+export type PlacePickerContentRefetchQueryResponse = {|
   +$fragmentRefs: PlacePickerContent_locations$ref
 |};
-export type PlacePickerRendererQuery = {|
-  variables: PlacePickerRendererQueryVariables,
-  response: PlacePickerRendererQueryResponse,
+export type PlacePickerContentRefetchQuery = {|
+  variables: PlacePickerContentRefetchQueryVariables,
+  response: PlacePickerContentRefetchQueryResponse,
 |};
 */
 
 
 /*
-query PlacePickerRendererQuery(
+query PlacePickerContentRefetchQuery(
   $input: LocationsByTermInput!
 ) {
   ...PlacePickerContent_locations_2VV6jB
@@ -35,23 +35,15 @@ query PlacePickerRendererQuery(
 
 fragment PlacePickerContent_locations_2VV6jB on RootQuery {
   locationsByTerm(input: $input) {
-    ...PlacePickerList_locations
-  }
-}
-
-fragment PlacePickerList_locations on LocationConnection {
-  edges {
-    node {
-      id
-      ...PlaceItem_item
+    edges {
+      node {
+        id
+        name
+        locationId
+        type
+      }
     }
   }
-}
-
-fragment PlaceItem_item on Location {
-  id
-  name
-  locationId
 }
 */
 
@@ -68,7 +60,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "PlacePickerRendererQuery",
+    "name": "PlacePickerContentRefetchQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -89,7 +81,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "PlacePickerRendererQuery",
+    "name": "PlacePickerContentRefetchQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -146,6 +138,13 @@ return {
                     "name": "locationId",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "type",
+                    "args": null,
+                    "storageKey": null
                   }
                 ]
               }
@@ -157,13 +156,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "PlacePickerRendererQuery",
+    "name": "PlacePickerContentRefetchQuery",
     "id": null,
-    "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    ...PlacePickerList_locations\n  }\n}\n\nfragment PlacePickerList_locations on LocationConnection {\n  edges {\n    node {\n      id\n      ...PlaceItem_item\n    }\n  }\n}\n\nfragment PlaceItem_item on Location {\n  id\n  name\n  locationId\n}\n",
+    "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n        type\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '62b7fdcc1fcf8cb0eaec47f5611fb7ca';
+(node/*: any*/).hash = '446535d2d95d0778f51e7bfecca46dfe';
 module.exports = node;
