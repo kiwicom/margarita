@@ -223,6 +223,7 @@ type Itinerary {
   sectors: [Sector]
   startTime: DateType
   type: String
+  bookingToken: String
 }
 
 """A connection to a list of items."""

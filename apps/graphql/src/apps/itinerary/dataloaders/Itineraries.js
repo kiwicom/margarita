@@ -69,6 +69,7 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
     return {
       id: itinerary.id,
       type: getItineraryType(itinerary.routes),
+      bookingToken: itinerary.booking_token,
       startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
       endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
       destination: mapLocation(

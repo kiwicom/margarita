@@ -12,6 +12,7 @@ type SectorsList$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryDetail$ref: FragmentReference;
 export type ItineraryDetail = {|
+  +bookingToken: ?string,
   +$fragmentRefs: SectorsList$ref,
   +$refType: ItineraryDetail$ref,
 |};
@@ -26,6 +27,13 @@ const node/*: ReaderFragment*/ = {
   "argumentDefinitions": [],
   "selections": [
     {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "bookingToken",
+      "args": null,
+      "storageKey": null
+    },
+    {
       "kind": "FragmentSpread",
       "name": "SectorsList",
       "args": null
@@ -33,5 +41,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'c19ada0d66e56ba4687de344f235102b';
+(node/*: any*/).hash = '620667d7de647e75640afbc29c24ce0e';
 module.exports = node;
