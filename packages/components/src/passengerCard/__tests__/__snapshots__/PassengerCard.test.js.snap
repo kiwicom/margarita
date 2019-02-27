@@ -2,23 +2,11 @@
 
 exports[`renders blank 1`] = `
 Object {
-  "output": <Component
+  "output": <Card
     style={
       Object {
-        "backgroundColor": "white",
-        "borderBottomWidth": 2,
-        "borderColor": "#e8edf1",
-        "borderRadius": 6,
-        "borderTopWidth": 2,
-        "borderWidth": 1,
         "marginHorizontal": 8,
         "paddingHorizontal": 16,
-        "shadowColor": "rgba(23, 27, 30, 0.2)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 1,
-        },
-        "shadowOpacity": 0.3,
       }
     }
   >
@@ -38,6 +26,11 @@ Object {
       <Text
         expo={false}
         size="large"
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
       >
         0. Passenger
       </Text>
@@ -104,29 +97,17 @@ Object {
         <Component />
       </Component>
     </Component>
-  </Component>,
+  </Card>,
 }
 `;
 
 exports[`renders with passenger info 1`] = `
 Object {
-  "output": <Component
+  "output": <Card
     style={
       Object {
-        "backgroundColor": "white",
-        "borderBottomWidth": 2,
-        "borderColor": "#e8edf1",
-        "borderRadius": 6,
-        "borderTopWidth": 2,
-        "borderWidth": 1,
         "marginHorizontal": 8,
         "paddingHorizontal": 16,
-        "shadowColor": "rgba(23, 27, 30, 0.2)",
-        "shadowOffset": Object {
-          "height": 1,
-          "width": 1,
-        },
-        "shadowOpacity": 0.3,
       }
     }
   >
@@ -146,6 +127,11 @@ Object {
       <Text
         expo={false}
         size="large"
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
       >
         Mr. John Doe
       </Text>
@@ -221,6 +207,6 @@ Object {
         </Component>
       </Component>
     </Component>
-  </Component>,
+  </Card>,
 }
 `;
