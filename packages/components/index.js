@@ -49,3 +49,6 @@ export {
   withAlertContext,
 } from './src/alert/AlertContext';
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
+export {
+  default as StopoverDuration,
+} from './src/stopoverDuration/StopoverDuration';

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 196da215fd8a05bef50ffdcbfeda47d9
+ * @relayHash 8fbc1c8a5fe4ed6ff8a2eede3615e362
  */
 
 /* eslint-disable */
@@ -93,6 +93,25 @@ fragment SectorsList on Itinerary {
 }
 
 fragment SectorDetail on Sector {
+  ...SectorStopoverDuration
+  ...SectorHeader
+}
+
+fragment SectorStopoverDuration on Sector {
+  stopoverDuration
+  departure {
+    stop {
+      city {
+        name
+        id
+      }
+      id
+    }
+  }
+}
+
+fragment SectorHeader on Sector {
+  duration
   arrival {
     stop {
       city {
@@ -404,7 +423,7 @@ return {
     "operationKind": "query",
     "name": "ResultsQuery",
     "id": null,
-    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail\n}\n\nfragment RenderTripSectorItem on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment ItineraryDetail on Itinerary {\n  ...SectorsList\n}\n\nfragment SectorsList on Itinerary {\n  sectors {\n    ...SectorDetail\n  }\n}\n\nfragment SectorDetail on Sector {\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  ...FlightTimes\n  ...TripCities\n  departure {\n    ...LocalTime\n  }\n  ...Transporters\n}\n\nfragment FlightTimes on Sector {\n  arrival {\n    ...LocalTime\n  }\n  departure {\n    ...LocalTime\n  }\n}\n\nfragment TripCities on Sector {\n  arrival {\n    ...LocationName\n  }\n  departure {\n    ...LocationName\n  }\n}\n\nfragment LocalTime on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query ResultsQuery(\n  $input: ItinerariesSearchInput!\n) {\n  searchItineraries(input: $input) {\n    ...ResultsList\n  }\n}\n\nfragment ResultsList on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard\n    }\n  }\n}\n\nfragment ItineraryCard on Itinerary {\n  sectors {\n    ...RenderTripSectorItem\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail\n}\n\nfragment RenderTripSectorItem on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector\n}\n\nfragment ItineraryDetail on Itinerary {\n  ...SectorsList\n}\n\nfragment SectorsList on Itinerary {\n  sectors {\n    ...SectorDetail\n  }\n}\n\nfragment SectorDetail on Sector {\n  ...SectorStopoverDuration\n  ...SectorHeader\n}\n\nfragment SectorStopoverDuration on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment TripSector on Sector {\n  duration\n  ...FlightTimes\n  ...TripCities\n  departure {\n    ...LocalTime\n  }\n  ...Transporters\n}\n\nfragment FlightTimes on Sector {\n  arrival {\n    ...LocalTime\n  }\n  departure {\n    ...LocalTime\n  }\n}\n\nfragment TripCities on Sector {\n  arrival {\n    ...LocationName\n  }\n  departure {\n    ...LocationName\n  }\n}\n\nfragment LocalTime on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

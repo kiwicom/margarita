@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`works without location 1`] = `
+<React.Fragment>
+  Stays 
+  about 2 hours
+</React.Fragment>
+`;
+
+exports[`works without location 2`] = `
+<React.Fragment>
+  Stays 
+  about 2 hours
+</React.Fragment>
+`;

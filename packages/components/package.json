@@ -33,6 +33,7 @@
     "react-native": "^",
     "react-native-testing-library": "^",
     "react-test-renderer": "^",
-    "styled-components": "^"
+    "styled-components": "^",
+    "date-fns": "^"
   }
 }

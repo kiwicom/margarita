@@ -2,23 +2,29 @@
 
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { StopoverDuration } from '@kiwicom/margarita-components';
 
-import StopoverDuration from './StopoverDuration';
 import TripSector from './TripSector';
 import ItineraryCardRow from './ItineraryCardRow';
 import type { RenderTripSectorItem as RenderTripSectorItemType } from './__generated__/RenderTripSectorItem.graphql';
+import StopoverDurationWrapper from './StopoverDurationWrapper';
 
 type Props = {|
   +data: ?RenderTripSectorItemType,
 |};
 
 function RenderTripSectorItem({ data }: Props) {
+  const stopoverDuration = data?.stopoverDuration;
   return (
     <>
-      <StopoverDuration
-        stopoverDuration={data?.stopoverDuration}
-        locationName={data?.departure?.stop?.city?.name}
-      />
+      {stopoverDuration && (
+        <StopoverDurationWrapper>
+          <StopoverDuration
+            stopoverDuration={stopoverDuration}
+            locationName={data?.departure?.stop?.city?.name}
+          />
+        </StopoverDurationWrapper>
+      )}
       <ItineraryCardRow>
         <TripSector data={data} />
       </ItineraryCardRow>

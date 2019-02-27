@@ -3,10 +3,8 @@
 import * as React from 'react';
 import * as DateFNS from 'date-fns';
 
-import StopoverDurationWrapper from './StopoverDurationWrapper';
-
 type Props = {|
-  +stopoverDuration: ?number,
+  +stopoverDuration: number,
   +locationName: ?string,
 |};
 
@@ -20,14 +18,10 @@ export default function StopoverDuration({
   stopoverDuration,
   locationName,
 }: Props) {
-  if (stopoverDuration == null) {
-    return null;
-  }
-
   return (
-    <StopoverDurationWrapper>
+    <>
       Stays {getDuration(stopoverDuration)}
       {locationName && ` in ${locationName}`}
-    </StopoverDurationWrapper>
+    </>
   );
 }
