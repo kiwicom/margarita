@@ -19,7 +19,7 @@ type Props = {|
 |};
 
 function SectorDetails(props: Props) {
-  const type = props.data?.type;
+  const type = props.data?.__typename;
   return (
     <Card style={styles.card}>
       <View style={styles.cardPaddingContainer}>
@@ -61,12 +61,12 @@ export default createFragmentContainer(
   SectorDetails,
   graphql`
     fragment SectorDetails on BookingInterface {
-      ...Header
+      __typename
       ...SectorInfoOneWay
-      ...SectorInfoMulticity
       ...SectorInfoReturn
+      ...SectorInfoMulticity
+      ...Header
       ...SegmentContainer
-      type
     }
   `,
 );

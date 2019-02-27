@@ -32,11 +32,9 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   SectorInfoMulticity,
   graphql`
-    fragment SectorInfoMulticity on BookingInterface {
-      ... on BookingMulticity {
-        sectors {
-          ...SectorInfo
-        }
+    fragment SectorInfoMulticity on BookingMulticity {
+      sectors {
+        ...SectorInfo
       }
     }
   `,

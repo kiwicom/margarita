@@ -12,10 +12,10 @@ type DrawSegmentLine$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ReturnSegmentLines$ref: FragmentReference;
 export type ReturnSegmentLines = {|
-  +inbound?: ?{|
+  +inbound: ?{|
     +$fragmentRefs: DrawSegmentLine$ref
   |},
-  +outbound?: ?{|
+  +outbound: ?{|
     +$fragmentRefs: DrawSegmentLine$ref
   |},
   +$refType: ReturnSegmentLines$ref,
@@ -34,39 +34,33 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "ReturnSegmentLines",
-  "type": "BookingInterface",
+  "type": "BookingReturn",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "InlineFragment",
-      "type": "BookingReturn",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "inbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "outbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        }
-      ]
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "inbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "outbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c6afb184447ba42da84cb93c80db4547';
+(node/*: any*/).hash = '526edb0809eac5acc0c2b3095b5f5845';
 module.exports = node;

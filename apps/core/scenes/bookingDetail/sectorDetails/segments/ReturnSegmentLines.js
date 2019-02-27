@@ -29,14 +29,12 @@ const ReturnSegmentLines = (props: Props) => {
 export default createFragmentContainer(
   ReturnSegmentLines,
   graphql`
-    fragment ReturnSegmentLines on BookingInterface {
-      ... on BookingReturn {
-        inbound {
-          ...DrawSegmentLine
-        }
-        outbound {
-          ...DrawSegmentLine
-        }
+    fragment ReturnSegmentLines on BookingReturn {
+      inbound {
+        ...DrawSegmentLine
+      }
+      outbound {
+        ...DrawSegmentLine
       }
     }
   `,

@@ -44,7 +44,7 @@ interface BookingInterface {
   passengerCount: Int
 
   """OneWay, Multicity or Return"""
-  type: BookingType
+  type: BookingType @deprecated(reason: "Use __typename instead")
 
   """Total count of bags by the type"""
   bagInfo: [Bag]
@@ -85,7 +85,7 @@ type BookingMulticity implements BookingInterface & FromToInterface {
   passengerCount: Int
 
   """OneWay, Multicity or Return"""
-  type: BookingType
+  type: BookingType @deprecated(reason: "Use __typename instead")
 
   """Total count of bags by the type"""
   bagInfo: [Bag]
@@ -109,7 +109,7 @@ type BookingOneWay implements BookingInterface & FromToInterface {
   passengerCount: Int
 
   """OneWay, Multicity or Return"""
-  type: BookingType
+  type: BookingType @deprecated(reason: "Use __typename instead")
 
   """Total count of bags by the type"""
   bagInfo: [Bag]
@@ -133,7 +133,7 @@ type BookingReturn implements BookingInterface & FromToInterface {
   passengerCount: Int
 
   """OneWay, Multicity or Return"""
-  type: BookingType
+  type: BookingType @deprecated(reason: "Use __typename instead")
 
   """Total count of bags by the type"""
   bagInfo: [Bag]

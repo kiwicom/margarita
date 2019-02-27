@@ -17,11 +17,9 @@ function SectorsListOneWay(props: Props) {
 export default createFragmentContainer(
   SectorsListOneWay,
   graphql`
-    fragment SectorsListOneWay on BookingInterface {
-      ... on BookingOneWay {
-        sector {
-          ...SectorDetail
-        }
+    fragment SectorsListOneWay on BookingOneWay {
+      sector {
+        ...SectorDetail
       }
     }
   `,

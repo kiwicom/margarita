@@ -12,11 +12,10 @@ type SectorsListMulticity$ref = any;
 type SectorsListOneWay$ref = any;
 type SectorsListReturn$ref = any;
 type SegmentMap$ref = any;
-export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentContainer$ref: FragmentReference;
 export type SegmentContainer = {|
-  +type: ?BookingType,
+  +__typename: string,
   +$fragmentRefs: SectorsListOneWay$ref & SectorsListReturn$ref & SectorsListMulticity$ref & SegmentMap$ref,
   +$refType: SegmentContainer$ref,
 |};
@@ -30,6 +29,13 @@ const node/*: ReaderFragment*/ = {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "__typename",
+      "args": null,
+      "storageKey": null
+    },
     {
       "kind": "FragmentSpread",
       "name": "SectorsListOneWay",
@@ -49,16 +55,9 @@ const node/*: ReaderFragment*/ = {
       "kind": "FragmentSpread",
       "name": "SegmentMap",
       "args": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "name": "type",
-      "args": null,
-      "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'd547ebecba101b26ec139833bff8728b';
+(node/*: any*/).hash = 'b32d3d2b86838454da4d9aa1f9196a6e';
 module.exports = node;
