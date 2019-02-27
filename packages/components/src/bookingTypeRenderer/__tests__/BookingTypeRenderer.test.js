@@ -15,22 +15,22 @@ const getComponent = (type: string) => (
   />
 );
 
-it('renders only oneWayComponent for type BOOKING_ONE_WAY', () => {
-  const { getByTestId } = render(getComponent('BOOKING_ONE_WAY'));
+it('renders only oneWayComponent for type BookingOneWay', () => {
+  const { getByTestId } = render(getComponent('BookingOneWay'));
   expect(getByTestId('oneWay')).toBeDefined();
   expect(() => getByTestId('return')).toThrow();
   expect(() => getByTestId('multicity')).toThrow();
 });
 
-it('renders only returnComponent for type BOOKING_RETURN', () => {
-  const { getByTestId } = render(getComponent('BOOKING_RETURN'));
+it('renders only returnComponent for type BookingReturn', () => {
+  const { getByTestId } = render(getComponent('BookingReturn'));
   expect(getByTestId('return')).toBeDefined();
   expect(() => getByTestId('multicity')).toThrow();
   expect(() => getByTestId('oneWay')).toThrow();
 });
 
-it('renders only multicityComponent for type BOOKING_MULTICITY', () => {
-  const { getByTestId } = render(getComponent('BOOKING_MULTICITY'));
+it('renders only multicityComponent for type BookingMulticity', () => {
+  const { getByTestId } = render(getComponent('BookingMulticity'));
   expect(getByTestId('multicity')).toBeDefined();
   expect(() => getByTestId('return')).toThrow();
   expect(() => getByTestId('oneWay')).toThrow();

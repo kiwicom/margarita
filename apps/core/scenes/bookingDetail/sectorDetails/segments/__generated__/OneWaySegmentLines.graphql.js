@@ -12,7 +12,7 @@ type DrawSegmentLine$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type OneWaySegmentLines$ref: FragmentReference;
 export type OneWaySegmentLines = {|
-  +sector?: ?{|
+  +sector: ?{|
     +$fragmentRefs: DrawSegmentLine$ref
   |},
   +$refType: OneWaySegmentLines$ref,
@@ -23,34 +23,28 @@ export type OneWaySegmentLines = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "OneWaySegmentLines",
-  "type": "BookingInterface",
+  "type": "BookingOneWay",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "InlineFragment",
-      "type": "BookingOneWay",
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "sector",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "sector",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "FragmentSpread",
-              "name": "DrawSegmentLine",
-              "args": null
-            }
-          ]
+          "kind": "FragmentSpread",
+          "name": "DrawSegmentLine",
+          "args": null
         }
       ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '0223bf29a24949067ab0a616240e58df';
+(node/*: any*/).hash = '244aab80a07526383897130f74118c16';
 module.exports = node;

@@ -28,11 +28,9 @@ const MulticitySegmentLines = (props: Props) => {
 export default createFragmentContainer(
   MulticitySegmentLines,
   graphql`
-    fragment MulticitySegmentLines on BookingInterface {
-      ... on BookingMulticity {
-        sectors {
-          ...DrawSegmentLine
-        }
+    fragment MulticitySegmentLines on BookingMulticity {
+      sectors {
+        ...DrawSegmentLine
       }
     }
   `,

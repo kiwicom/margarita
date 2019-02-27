@@ -13,10 +13,10 @@ type SectorDates$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorInfoReturn$ref: FragmentReference;
 export type SectorInfoReturn = {|
-  +inbound?: ?{|
+  +inbound: ?{|
     +$fragmentRefs: SectorDates$ref
   |},
-  +outbound?: ?{|
+  +outbound: ?{|
     +$fragmentRefs: SectorDates$ref
   |},
   +$fragmentRefs: FromTo$ref,
@@ -36,44 +36,38 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "SectorInfoReturn",
-  "type": "BookingInterface",
+  "type": "BookingReturn",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "InlineFragment",
-      "type": "BookingReturn",
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "FromTo",
-          "args": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "inbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "outbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "FromTo",
+      "args": null
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "inbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "outbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '8971c649fb81fae561fa9afeffd18084';
+(node/*: any*/).hash = '51c8897adfa7963a2180ac6daa2ba255';
 module.exports = node;

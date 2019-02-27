@@ -50,15 +50,13 @@ const styles = StyleSheet.create({
 export default createFragmentContainer(
   SectorInfoReturn,
   graphql`
-    fragment SectorInfoReturn on BookingInterface {
-      ... on BookingReturn {
-        ...FromTo
-        inbound {
-          ...SectorDates
-        }
-        outbound {
-          ...SectorDates
-        }
+    fragment SectorInfoReturn on BookingReturn {
+      ...FromTo
+      inbound {
+        ...SectorDates
+      }
+      outbound {
+        ...SectorDates
       }
     }
   `,

@@ -11,11 +11,11 @@ type Props = {|
 
 export default function BookingTypeRenderer(props: Props) {
   switch (props.type) {
-    case 'BOOKING_ONE_WAY':
+    case 'BookingOneWay':
       return props.oneWayComponent;
-    case 'BOOKING_RETURN':
+    case 'BookingReturn':
       return props.returnComponent;
-    case 'BOOKING_MULTICITY':
+    case 'BookingMulticity':
       return props.multicityComponent;
     default:
       return null;

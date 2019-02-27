@@ -66,6 +66,7 @@ export const commonFields = {
   type: {
     type: GraphQLBookingType,
     description: 'OneWay, Multicity or Return',
+    deprecationReason: 'Use __typename instead',
   },
   bagInfo: {
     type: GraphQLList(GraphQLBag),

@@ -16,7 +16,7 @@ type Props = {|
 const MapLines = (props: Props) => {
   return (
     <BookingTypeRenderer
-      type={props.data?.type}
+      type={props.data?.__typename}
       oneWayComponent={<OneWaySegmentLines data={props.data} />}
       returnComponent={<ReturnSegmentLines data={props.data} />}
       multicityComponent={<MulticitySegmentLines data={props.data} />}
@@ -27,7 +27,7 @@ export default createFragmentContainer(
   MapLines,
   graphql`
     fragment MapLines on BookingInterface {
-      type
+      __typename
       ...OneWaySegmentLines
       ...ReturnSegmentLines
       ...MulticitySegmentLines

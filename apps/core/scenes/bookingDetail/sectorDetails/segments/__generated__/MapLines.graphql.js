@@ -11,11 +11,10 @@ import type { ReaderFragment } from 'relay-runtime';
 type MulticitySegmentLines$ref = any;
 type OneWaySegmentLines$ref = any;
 type ReturnSegmentLines$ref = any;
-export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type MapLines$ref: FragmentReference;
 export type MapLines = {|
-  +type: ?BookingType,
+  +__typename: string,
   +$fragmentRefs: OneWaySegmentLines$ref & ReturnSegmentLines$ref & MulticitySegmentLines$ref,
   +$refType: MapLines$ref,
 |};
@@ -32,7 +31,7 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "type",
+      "name": "__typename",
       "args": null,
       "storageKey": null
     },
@@ -54,5 +53,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'd4693996bfecaa40d89b70cd32c54744';
+(node/*: any*/).hash = '0cdb7793c30d7078f99786aea2b64ae8';
 module.exports = node;

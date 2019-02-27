@@ -22,14 +22,12 @@ function SectorsListReturn(props: Props) {
 export default createFragmentContainer(
   SectorsListReturn,
   graphql`
-    fragment SectorsListReturn on BookingInterface {
-      ... on BookingReturn {
-        inbound {
-          ...SectorDetail
-        }
-        outbound {
-          ...SectorDetail
-        }
+    fragment SectorsListReturn on BookingReturn {
+      inbound {
+        ...SectorDetail
+      }
+      outbound {
+        ...SectorDetail
       }
     }
   `,

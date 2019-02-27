@@ -18,11 +18,9 @@ const OneWaySegmentLines = (props: Props) => (
 export default createFragmentContainer(
   OneWaySegmentLines,
   graphql`
-    fragment OneWaySegmentLines on BookingInterface {
-      ... on BookingOneWay {
-        sector {
-          ...DrawSegmentLine
-        }
+    fragment OneWaySegmentLines on BookingOneWay {
+      sector {
+        ...DrawSegmentLine
       }
     }
   `,

@@ -80,7 +80,7 @@ export class SegmentContainer extends React.Component<Props, State> {
         {this.state.expandSegments && (
           <>
             <BookingTypeRenderer
-              type={this.props.data?.type}
+              type={this.props.data?.__typename}
               oneWayComponent={<SectorsListOneWay data={this.props.data} />}
               returnComponent={<SectorsListReturn data={this.props.data} />}
               multicityComponent={
@@ -106,11 +106,11 @@ export default createFragmentContainer(
   SegmentContainer,
   graphql`
     fragment SegmentContainer on BookingInterface {
+      __typename
       ...SectorsListOneWay
       ...SectorsListReturn
       ...SectorsListMulticity
       ...SegmentMap
-      type
     }
   `,
 );

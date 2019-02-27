@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f791381aabf54dc45144f2c72ae0c9b3
+ * @relayHash 9ae193710fb283e8e69b67e8ba1963d0
  */
 
 /* eslint-disable */
@@ -42,12 +42,12 @@ fragment BookingDetailWrapper on BookingInterface {
 }
 
 fragment SectorDetails on BookingInterface {
-  ...Header
+  __typename
   ...SectorInfoOneWay
-  ...SectorInfoMulticity
   ...SectorInfoReturn
+  ...SectorInfoMulticity
+  ...Header
   ...SegmentContainer
-  type
 }
 
 fragment Passengers on BookingInterface {
@@ -85,71 +85,59 @@ fragment Bag on Bag {
   quantity
 }
 
+fragment SectorInfoOneWay on BookingOneWay {
+  sector {
+    ...SectorInfo
+  }
+}
+
+fragment SectorInfoReturn on BookingReturn {
+  ...FromTo
+  inbound {
+    ...SectorDates
+  }
+  outbound {
+    ...SectorDates
+  }
+}
+
+fragment SectorInfoMulticity on BookingMulticity {
+  sectors {
+    ...SectorInfo
+  }
+}
+
 fragment Header on BookingInterface {
   bookingId: id(opaque: false)
   status
 }
 
-fragment SectorInfoOneWay on BookingInterface {
-  ... on BookingOneWay {
-    sector {
-      ...SectorInfo
-    }
-  }
-}
-
-fragment SectorInfoMulticity on BookingInterface {
-  ... on BookingMulticity {
-    sectors {
-      ...SectorInfo
-    }
-  }
-}
-
-fragment SectorInfoReturn on BookingInterface {
-  ... on BookingReturn {
-    ...FromTo
-    inbound {
-      ...SectorDates
-    }
-    outbound {
-      ...SectorDates
-    }
-  }
-}
-
 fragment SegmentContainer on BookingInterface {
+  __typename
   ...SectorsListOneWay
   ...SectorsListReturn
   ...SectorsListMulticity
   ...SegmentMap
-  type
 }
 
-fragment SectorsListOneWay on BookingInterface {
-  ... on BookingOneWay {
-    sector {
-      ...SectorDetail
-    }
+fragment SectorsListOneWay on BookingOneWay {
+  sector {
+    ...SectorDetail
   }
 }
 
-fragment SectorsListReturn on BookingInterface {
-  ... on BookingReturn {
-    inbound {
-      ...SectorDetail
-    }
-    outbound {
-      ...SectorDetail
-    }
+fragment SectorsListReturn on BookingReturn {
+  inbound {
+    ...SectorDetail
+  }
+  outbound {
+    ...SectorDetail
   }
 }
 
-fragment SectorsListMulticity on BookingInterface {
-  ... on BookingMulticity {
-    sectors {
-      ...SectorDetail
-    }
+fragment SectorsListMulticity on BookingMulticity {
+  sectors {
+    ...SectorDetail
   }
 }
 
@@ -297,36 +285,30 @@ fragment SegmentMap on BookingInterface {
 }
 
 fragment MapLines on BookingInterface {
-  type
+  __typename
   ...OneWaySegmentLines
   ...ReturnSegmentLines
   ...MulticitySegmentLines
 }
 
-fragment OneWaySegmentLines on BookingInterface {
-  ... on BookingOneWay {
-    sector {
-      ...DrawSegmentLine
-    }
+fragment OneWaySegmentLines on BookingOneWay {
+  sector {
+    ...DrawSegmentLine
   }
 }
 
-fragment ReturnSegmentLines on BookingInterface {
-  ... on BookingReturn {
-    inbound {
-      ...DrawSegmentLine
-    }
-    outbound {
-      ...DrawSegmentLine
-    }
+fragment ReturnSegmentLines on BookingReturn {
+  inbound {
+    ...DrawSegmentLine
+  }
+  outbound {
+    ...DrawSegmentLine
   }
 }
 
-fragment MulticitySegmentLines on BookingInterface {
-  ... on BookingMulticity {
-    sectors {
-      ...DrawSegmentLine
-    }
+fragment MulticitySegmentLines on BookingMulticity {
+  sectors {
+    ...DrawSegmentLine
   }
 }
 
@@ -364,6 +346,11 @@ fragment SectorDetail on Sector {
       id
     }
   }
+}
+
+fragment SectorInfo on Sector {
+  ...FromTo
+  ...SectorDates
 }
 
 fragment FromTo on FromToInterface {
@@ -405,11 +392,6 @@ fragment CityName on RouteStop {
 
 fragment FromToIcon on FromToInterface {
   type
-}
-
-fragment SectorInfo on Sector {
-  ...FromTo
-  ...SectorDates
 }
 */
 
@@ -483,10 +465,7 @@ v5 = {
     (v3/*: any*/)
   ]
 },
-v6 = [
-  (v5/*: any*/)
-],
-v7 = {
+v6 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -504,6 +483,10 @@ v7 = {
     }
   ]
 },
+v7 = [
+  (v5/*: any*/),
+  (v6/*: any*/)
+],
 v8 = {
   "kind": "ScalarField",
   "alias": null,
@@ -599,8 +582,36 @@ v11 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
+    "selections": (v7/*: any*/)
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "arrival",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": (v7/*: any*/)
+  },
+  (v2/*: any*/),
+  (v8/*: any*/),
+  (v10/*: any*/)
+],
+v12 = [
+  (v5/*: any*/)
+],
+v13 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "departure",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
     "selections": [
-      (v7/*: any*/)
+      (v6/*: any*/)
     ]
   },
   {
@@ -612,7 +623,7 @@ v11 = [
     "concreteType": "RouteStop",
     "plural": false,
     "selections": [
-      (v7/*: any*/),
+      (v6/*: any*/),
       {
         "kind": "LinkedField",
         "alias": null,
@@ -628,35 +639,6 @@ v11 = [
       }
     ]
   },
-  (v8/*: any*/),
-  (v10/*: any*/)
-],
-v12 = [
-  (v5/*: any*/),
-  (v7/*: any*/)
-],
-v13 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "departure",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "RouteStop",
-    "plural": false,
-    "selections": (v12/*: any*/)
-  },
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "arrival",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "RouteStop",
-    "plural": false,
-    "selections": (v12/*: any*/)
-  },
-  (v2/*: any*/),
   (v8/*: any*/),
   (v10/*: any*/)
 ];
@@ -799,6 +781,22 @@ return {
           (v3/*: any*/),
           {
             "kind": "InlineFragment",
+            "type": "BookingOneWay",
+            "selections": [
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "sector",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Sector",
+                "plural": false,
+                "selections": (v11/*: any*/)
+              }
+            ]
+          },
+          {
+            "kind": "InlineFragment",
             "type": "BookingReturn",
             "selections": [
               {
@@ -809,7 +807,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v6/*: any*/)
+                "selections": (v12/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -819,7 +817,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v6/*: any*/)
+                "selections": (v12/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -829,7 +827,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v11/*: any*/)
+                "selections": (v13/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -839,7 +837,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v11/*: any*/)
+                "selections": (v13/*: any*/)
               }
             ]
           },
@@ -855,23 +853,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": true,
-                "selections": (v13/*: any*/)
-              }
-            ]
-          },
-          {
-            "kind": "InlineFragment",
-            "type": "BookingOneWay",
-            "selections": [
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "sector",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "Sector",
-                "plural": false,
-                "selections": (v13/*: any*/)
+                "selections": (v11/*: any*/)
               }
             ]
           }
@@ -883,7 +865,7 @@ return {
     "operationKind": "query",
     "name": "BookingDetailQuery",
     "id": null,
-    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...SectorDetails\n  ...Passengers\n}\n\nfragment SectorDetails on BookingInterface {\n  ...Header\n  ...SectorInfoOneWay\n  ...SectorInfoMulticity\n  ...SectorInfoReturn\n  ...SegmentContainer\n  type\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n  bagInfo {\n    type\n    ...Bag\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag on Bag {\n  type\n  quantity\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SectorInfoOneWay on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoMulticity on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...SectorInfo\n    }\n  }\n}\n\nfragment SectorInfoReturn on BookingInterface {\n  ... on BookingReturn {\n    ...FromTo\n    inbound {\n      ...SectorDates\n    }\n    outbound {\n      ...SectorDates\n    }\n  }\n}\n\nfragment SegmentContainer on BookingInterface {\n  ...SectorsListOneWay\n  ...SectorsListReturn\n  ...SectorsListMulticity\n  ...SegmentMap\n  type\n}\n\nfragment SectorsListOneWay on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...SectorDetail\n    }\n  }\n}\n\nfragment SectorsListReturn on BookingInterface {\n  ... on BookingReturn {\n    inbound {\n      ...SectorDetail\n    }\n    outbound {\n      ...SectorDetail\n    }\n  }\n}\n\nfragment SectorsListMulticity on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...SectorDetail\n    }\n  }\n}\n\nfragment SegmentMap on BookingInterface {\n  ...MapLines\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines on BookingInterface {\n  type\n  ...OneWaySegmentLines\n  ...ReturnSegmentLines\n  ...MulticitySegmentLines\n}\n\nfragment OneWaySegmentLines on BookingInterface {\n  ... on BookingOneWay {\n    sector {\n      ...DrawSegmentLine\n    }\n  }\n}\n\nfragment ReturnSegmentLines on BookingInterface {\n  ... on BookingReturn {\n    inbound {\n      ...DrawSegmentLine\n    }\n    outbound {\n      ...DrawSegmentLine\n    }\n  }\n}\n\nfragment MulticitySegmentLines on BookingInterface {\n  ... on BookingMulticity {\n    sectors {\n      ...DrawSegmentLine\n    }\n  }\n}\n\nfragment DrawSegmentLine on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail on Sector {\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment SectorDates on Sector {\n  departure {\n    ...SectorDate\n  }\n  arrival {\n    ...SectorDate\n  }\n  duration\n}\n\nfragment SectorDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n\nfragment SectorInfo on Sector {\n  ...FromTo\n  ...SectorDates\n}\n",
+    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...SectorDetails\n  ...Passengers\n}\n\nfragment SectorDetails on BookingInterface {\n  __typename\n  ...SectorInfoOneWay\n  ...SectorInfoReturn\n  ...SectorInfoMulticity\n  ...Header\n  ...SegmentContainer\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n  bagInfo {\n    type\n    ...Bag\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag on Bag {\n  type\n  quantity\n}\n\nfragment SectorInfoOneWay on BookingOneWay {\n  sector {\n    ...SectorInfo\n  }\n}\n\nfragment SectorInfoReturn on BookingReturn {\n  ...FromTo\n  inbound {\n    ...SectorDates\n  }\n  outbound {\n    ...SectorDates\n  }\n}\n\nfragment SectorInfoMulticity on BookingMulticity {\n  sectors {\n    ...SectorInfo\n  }\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SegmentContainer on BookingInterface {\n  __typename\n  ...SectorsListOneWay\n  ...SectorsListReturn\n  ...SectorsListMulticity\n  ...SegmentMap\n}\n\nfragment SectorsListOneWay on BookingOneWay {\n  sector {\n    ...SectorDetail\n  }\n}\n\nfragment SectorsListReturn on BookingReturn {\n  inbound {\n    ...SectorDetail\n  }\n  outbound {\n    ...SectorDetail\n  }\n}\n\nfragment SectorsListMulticity on BookingMulticity {\n  sectors {\n    ...SectorDetail\n  }\n}\n\nfragment SegmentMap on BookingInterface {\n  ...MapLines\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines on BookingInterface {\n  __typename\n  ...OneWaySegmentLines\n  ...ReturnSegmentLines\n  ...MulticitySegmentLines\n}\n\nfragment OneWaySegmentLines on BookingOneWay {\n  sector {\n    ...DrawSegmentLine\n  }\n}\n\nfragment ReturnSegmentLines on BookingReturn {\n  inbound {\n    ...DrawSegmentLine\n  }\n  outbound {\n    ...DrawSegmentLine\n  }\n}\n\nfragment MulticitySegmentLines on BookingMulticity {\n  sectors {\n    ...DrawSegmentLine\n  }\n}\n\nfragment DrawSegmentLine on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail on Sector {\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorInfo on Sector {\n  ...FromTo\n  ...SectorDates\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment SectorDates on Sector {\n  departure {\n    ...SectorDate\n  }\n  arrival {\n    ...SectorDate\n  }\n  duration\n}\n\nfragment SectorDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
     "metadata": {}
   }
 };

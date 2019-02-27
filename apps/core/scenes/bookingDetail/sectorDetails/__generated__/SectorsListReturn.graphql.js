@@ -12,10 +12,10 @@ type SectorDetail$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorsListReturn$ref: FragmentReference;
 export type SectorsListReturn = {|
-  +inbound?: ?{|
+  +inbound: ?{|
     +$fragmentRefs: SectorDetail$ref
   |},
-  +outbound?: ?{|
+  +outbound: ?{|
     +$fragmentRefs: SectorDetail$ref
   |},
   +$refType: SectorsListReturn$ref,
@@ -34,39 +34,33 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "SectorsListReturn",
-  "type": "BookingInterface",
+  "type": "BookingReturn",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "InlineFragment",
-      "type": "BookingReturn",
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "inbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "outbound",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Sector",
-          "plural": false,
-          "selections": (v0/*: any*/)
-        }
-      ]
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "inbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
+    },
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "outbound",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Sector",
+      "plural": false,
+      "selections": (v0/*: any*/)
     }
   ]
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c8a3b7957286ce031ea3a5ad0ede0bf7';
+(node/*: any*/).hash = 'd5537769375e65635ab7bd9c27d292fd';
 module.exports = node;

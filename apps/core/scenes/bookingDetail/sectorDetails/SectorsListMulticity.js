@@ -20,11 +20,9 @@ function SectorsListMulticity(props: Props) {
 export default createFragmentContainer(
   SectorsListMulticity,
   graphql`
-    fragment SectorsListMulticity on BookingInterface {
-      ... on BookingMulticity {
-        sectors {
-          ...SectorDetail
-        }
+    fragment SectorsListMulticity on BookingMulticity {
+      sectors {
+        ...SectorDetail
       }
     }
   `,
