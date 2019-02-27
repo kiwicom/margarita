@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup renders correctly 1`] = `
+<React.Fragment>
+  <Card
+    style={
+      Object {
+        "padding": 0,
+      }
+    }
+  >
+    <MenuGroupTitle
+      title="Title"
+    />
+    <MenuItem
+      onPress={[MockFunction]}
+      title="test"
+    />
+  </Card>
+</React.Fragment>
+`;

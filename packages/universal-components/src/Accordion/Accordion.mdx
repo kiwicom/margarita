@@ -1,0 +1,33 @@
+---
+name: Accordion
+menu: Components
+route: /accordion
+---
+
+import { Playground, PropsTable } from 'docz'
+import { View } from 'react-native'
+import { Accordion } from '.'
+import { Text } from '../Text'
+
+
+# Accordion
+
+## Properties
+
+<PropsTable of={Accordion} />
+
+## Basic usage
+
+<Playground>
+   <Accordion header={expanded => (
+    <View style={{minHeight: 55, justifyContent: 'center'}}>
+      <Text style={{color: !expanded ? 'green' : 'orange'}}>
+        Accordion Header {expanded ? 'expanded' : 'closed'}
+      </Text>
+    </View>
+  )}>
+      <Text>Hidden content</Text>
+    </Accordion>
+</Playground>
+
+

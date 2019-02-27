@@ -444,7 +444,7 @@ declare module 'react-native-web/dist/exports/PixelRatio/index' {
 declare module 'react-native-web/dist/exports/Platform/index' {
   declare module.exports: {
     OS: 'web',
-    select: (obj: {}) => string
+    select: (obj: {}) => any
   };
 }
 
@@ -583,7 +583,7 @@ declare module 'react-native-web/dist/exports/TextInput/index' {
     multiline?: boolean,
     numberOfLines?: number,
     onChange?: () => void,
-    onChangeText?: () => void,
+    onChangeText?: (value: string) => void,
     onKeyPress?: () => void,
     onSelectionChange?: () => void,
     onSubmitEditing?: () => void,

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Stepper should match snapshot diff between small and normal input 1`] = `
+"Snapshot Diff:
+- <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} />
++ <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} showNumber={false} />
+
+@@ -65,14 +65,2 @@
+    </View>
+-   <Text
+-     style={
+-       Array [
+-         Object {
+-           \\"fontFamily\\": \\"Roboto\\",
+-           \\"margin\\": 0,
+-         },
+-       ]
+-     }
+-   >
+-     0
+-   </Text>
+    <View"
+`;
+
+exports[`Stepper should match the snapshot 1`] = `
+<Component
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+    }
+  }
+>
+  <StepperButton
+    icon={
+      <Icon
+        color="#7f91a8"
+        name="minus"
+        size="small"
+      />
+    }
+    onPress={[MockFunction]}
+    touchable={true}
+  />
+  <Text
+    expo={false}
+    style={
+      Object {
+        "fontSize": 16,
+        "paddingHorizontal": 20,
+      }
+    }
+  >
+    0
+  </Text>
+  <StepperButton
+    icon={
+      <Icon
+        color="#7f91a8"
+        name="plus"
+        size="small"
+      />
+    }
+    onPress={[MockFunction]}
+    touchable={true}
+  />
+</Component>
+`;

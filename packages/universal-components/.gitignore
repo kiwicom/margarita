@@ -1,0 +1,8 @@
+# Storybook
+storybook-static
+
+# Docz.site - documentation generating tool
+**/.docz/*
+
+#build
+lib/

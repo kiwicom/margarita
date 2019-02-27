@@ -16,7 +16,7 @@ type Props = {|
   +children: ?React.Node,
   +dataTest?: string,
   +italic?: boolean,
-  numberOfLines?: ?number,
+  numberOfLines?: number,
   size?: 'normal' | 'large' | 'small',
   +style?: StylePropType,
   +uppercase?: boolean,

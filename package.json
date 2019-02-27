@@ -18,6 +18,8 @@
     "voyager": "yarn workspace @kiwicom/margarita-voyager start",
     "storybook:web:margarita-components": "yarn workspace @kiwicom/margarita-components storybook",
     "storybook:mobile:margarita-components": "yarn workspace @kiwicom/margarita-mobile-storybook start:margarita-components",
+    "storybook:web:universal-components": "yarn workspace @kiwicom/universal-components storybook",
+    "storybook:mobile:universal-components": "yarn workspace @kiwicom/margarita-mobile-storybook start:universal-components",
     "relay": "yarn babel-node scripts/relay-compiler.js",
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",

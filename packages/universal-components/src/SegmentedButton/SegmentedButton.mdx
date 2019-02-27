@@ -1,0 +1,30 @@
+---
+name: SegmentedButton
+menu: Components
+route: /segmented-button
+---
+
+import { Playground, PropsTable } from 'docz'
+import { View } from 'react-native'
+import { SegmentedButton } from '.'
+
+# SegmentedButton
+
+## Properties
+
+<PropsTable of={SegmentedButton} />
+
+## Basic usage
+
+<Playground>
+   <SegmentedButton
+      segmentsData={[
+         { label: 'Left', value: 'L' },
+         { label: 'Right', value: 'R' },
+      ]}
+      selectedValue={'L'}
+      onValueChange={(value) => {}}
+   />
+</Playground>
+
+

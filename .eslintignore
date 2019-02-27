@@ -8,4 +8,6 @@ apps/web/.next
 apps/landingPage/.cache
 apps/landingPage/public
 apps/storybook/config/storyLoader.js
-packages/components/storybook/story-loader.js
+packages/universal-components/lib
+packages/universal-components/storybook-static
+packages/universal-components/src/types/_generated-types/index.js

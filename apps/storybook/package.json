@@ -10,7 +10,10 @@
     "prestart": "node scripts/linkWorkspaces.js",
     "start:margarita-components": "yarn start",
     "prestart:margarita-components": "yarn rnstl:margarita-components",
-    "rnstl:margarita-components": "rnstl --searchDir='../../packages/components/src'"
+    "rnstl:margarita-components": "rnstl --searchDir='../../packages/components/src'",
+    "start:universal-components": "yarn start",
+    "prestart:universal-components": "yarn rnstl:universal-components",
+    "rnstl:universal-components": "rnstl --searchDir='../../packages/universal-components/src'"
   },
   "dependencies": {
     "@kiwicom/universal-components": "0.0.14",

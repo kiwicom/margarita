@@ -5,11 +5,14 @@
     "<rootDir>/node_modules/",
     "<rootDir>/.expo/",
     "__tests__/__mocks__",
-    "<rootDir>/apps/landingPage/.cache/__tests__/"
+    "<rootDir>/apps/landingPage/.cache/__tests__/",
+    "<rootDir>/packages/universal-components/examples/"
   ],
   "setupFilesAfterEnv": ["<rootDir>/scripts/setupTests.js"],
   "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"],
   "moduleNameMapper": {
-    "^@kiwicom/universal-components$": "@kiwicom/universal-components/lib/native"
+    "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|less)$": "<rootDir>/__mocks__/styleMock.js",
+    "^@kiwicom/universal-components$": "<rootDir>/packages/universal-components/src"
   }
 }
