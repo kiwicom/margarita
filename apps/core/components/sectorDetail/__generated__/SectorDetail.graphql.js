@@ -8,16 +8,12 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type SectorHeader$ref = any;
+type SectorStopoverDuration$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorDetail$ref: FragmentReference;
 export type SectorDetail = {|
-  +arrival: ?{|
-    +stop: ?{|
-      +city: ?{|
-        +name: ?string
-      |}
-    |}
-  |},
+  +$fragmentRefs: SectorStopoverDuration$ref & SectorHeader$ref,
   +$refType: SectorDetail$ref,
 |};
 */
@@ -31,47 +27,17 @@ const node/*: ReaderFragment*/ = {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "arrival",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "RouteStop",
-      "plural": false,
-      "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "stop",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "Location",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "name": "city",
-              "storageKey": null,
-              "args": null,
-              "concreteType": "LocationArea",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "kind": "FragmentSpread",
+      "name": "SectorStopoverDuration",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "SectorHeader",
+      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '315355fc7eb0a57a7e7907e8635f54af';
+(node/*: any*/).hash = '40f984d22e2e0a9c6b2d196160bb9c44';
 module.exports = node;
