@@ -59,7 +59,7 @@
     "jest-expo": "^32.0.0",
     "jest-fetch-mock": "^2.0.1",
     "react-native-testing-library": "^1.4.2",
-    "react-test-renderer": "^16.7.0"
+    "react-test-renderer": "^16.8.3"
   },
   "resolutions": {
     "**/babel-core": "7.0.0-bridge.0",
