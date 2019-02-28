@@ -5,7 +5,7 @@
   "license": "MIT",
   "dependencies": {
     "next": "^8.0.3",
-    "react-navigation": "^3.0.9"
+    "react-navigation": "^3.3.2"
   },
   "peerDependencies": {
     "react": "*"
