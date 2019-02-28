@@ -25,28 +25,30 @@ export default function Playground() {
 const PlaygroundContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
   align-items: center;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    padding-top: 20px;
+  padding-top: 20px;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    padding-top: 80px;
   }
 `;
 
 const WrapperIframe = styled.div`
   position: relative;
-  padding-top: 36.25%
   overflow: hidden;
   margin-bottom: 20px;
-  width: 80vw;
-  @media (max-width: ${BREAKPOINTS.DESKTOP}px) {
+  width: 100vw;
+  padding-top: 110%;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) and (max-width: ${BREAKPOINTS.DESKTOP}px) {
+    width: 80vw;
     padding-top: 50%;
   }
-  @media (max-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
+    width: 80vw;
     padding-top: 60%;
   }
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 100vw;
-    padding-top: 110%;
+  @media (min-width: ${BREAKPOINTS.DESKTOP}px) {
+    width: 80vw;
+    padding-top: 36.25%;
   }
 `;
 

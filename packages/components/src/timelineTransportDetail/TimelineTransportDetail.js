@@ -17,7 +17,7 @@ type Props = {|
     name: string,
     type?: 'airline' | 'bus' | 'train',
   |},
-  +duration: string,
+  +duration: ?number,
 |};
 
 type HeaderProps = $Rest<

@@ -29,7 +29,7 @@ export default function Demo() {
       <LinksWrapper>
         {links.map(el => {
           return (
-            <Button type="white" key={el.link}>
+            <Button type="white" key={el.title}>
               <LinkWithoutStyle href={el.link}>{el.title}</LinkWithoutStyle>
             </Button>
           );
@@ -48,18 +48,20 @@ const Container = styled.div`
 `;
 
 const HeadingWrapper = styled.div`
-  padding-top: 50px;
-  @media (max-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    padding-top: 0;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    padding-top: 40px;
   }
 `;
 
 const LinksWrapper = styled.div`
   display: flex;
-  width: 34vw;
+  width: 85vw;
   justify-content: space-around;
   padding: 30px 0 40px 0;
   flex-wrap: wrap;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: 34vw;
+  }
 `;
 
 const LinkWithoutStyle = styled.a`
