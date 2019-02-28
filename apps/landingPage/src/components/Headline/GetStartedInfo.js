@@ -5,9 +5,9 @@ import { Heading, Text, Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
-import { github, margarita } from '../../../../linksConfig';
-import { BREAKPOINTS } from '../mediaQueriesConfig';
-import { withWindowSize } from './withWindowSize';
+import { github, margarita } from '../../../../../linksConfig';
+import { BREAKPOINTS } from '../../mediaQueriesConfig';
+import { withWindowSize } from '../withWindowSize';
 
 type Props = {|
   +width: number,
