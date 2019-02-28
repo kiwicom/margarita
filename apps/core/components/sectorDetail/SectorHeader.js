@@ -7,7 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { SectorHeader as SectorType } from './__generated__/SectorHeader.graphql';
+import type { SectorHeader_data as SectorType } from './__generated__/SectorHeader_data.graphql';
 
 type Props = {|
   +data: ?SectorType,
@@ -50,10 +50,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorHeader,
-  graphql`
-    fragment SectorHeader on Sector {
+export default createFragmentContainer(SectorHeader, {
+  data: graphql`
+    fragment SectorHeader_data on Sector {
       duration
       arrival {
         stop {
@@ -64,4 +63,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

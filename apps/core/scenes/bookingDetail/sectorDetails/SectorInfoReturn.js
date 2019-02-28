@@ -8,7 +8,7 @@ import { StyleSheet, Text } from '@kiwicom/universal-components';
 import FromTo from '../../../components/fromTo/FromTo';
 import FromToWrapper from '../../../components/fromTo/FromToWrapper';
 import SectorDates from './SectorDates';
-import type { SectorInfoReturn as BookingType } from './__generated__/SectorInfoReturn.graphql';
+import type { SectorInfoReturn_data as BookingType } from './__generated__/SectorInfoReturn_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -47,17 +47,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorInfoReturn,
-  graphql`
-    fragment SectorInfoReturn on BookingReturn {
-      ...FromTo
+export default createFragmentContainer(SectorInfoReturn, {
+  data: graphql`
+    fragment SectorInfoReturn_data on BookingReturn {
+      ...FromTo_data
       inbound {
-        ...SectorDates
+        ...SectorDates_data
       }
       outbound {
-        ...SectorDates
+        ...SectorDates_data
       }
     }
   `,
-);
+});

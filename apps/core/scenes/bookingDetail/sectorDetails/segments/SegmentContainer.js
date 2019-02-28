@@ -8,7 +8,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { BookingTypeRenderer } from '@kiwicom/margarita-components';
 
 import SegmentMap from './SegmentMap';
-import type { SegmentContainer as BookingType } from './__generated__/SegmentContainer.graphql';
+import type { SegmentContainer_data as BookingType } from './__generated__/SegmentContainer_data.graphql';
 import SectorsListOneWay from '../SectorsListOneWay';
 import SectorsListReturn from '../SectorsListReturn';
 import SectorsListMulticity from '../SectorsListMulticity';
@@ -102,15 +102,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SegmentContainer,
-  graphql`
-    fragment SegmentContainer on BookingInterface {
+export default createFragmentContainer(SegmentContainer, {
+  data: graphql`
+    fragment SegmentContainer_data on BookingInterface {
       __typename
-      ...SectorsListOneWay
-      ...SectorsListReturn
-      ...SectorsListMulticity
-      ...SegmentMap
+      ...SectorsListOneWay_data
+      ...SectorsListReturn_data
+      ...SectorsListMulticity_data
+      ...SegmentMap_data
     }
   `,
-);
+});

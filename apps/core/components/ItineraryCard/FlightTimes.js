@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { FlightTimes as FlightTimesType } from './__generated__/FlightTimes.graphql';
+import type { FlightTimes_data as FlightTimesType } from './__generated__/FlightTimes_data.graphql';
 import LocalTime from './LocalTime';
 
 type Props = {|
@@ -42,16 +42,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  FlightTimes,
-  graphql`
-    fragment FlightTimes on Sector {
+export default createFragmentContainer(FlightTimes, {
+  data: graphql`
+    fragment FlightTimes_data on Sector {
       arrival {
-        ...LocalTime
+        ...LocalTime_data
       }
       departure {
-        ...LocalTime
+        ...LocalTime_data
       }
     }
   `,
-);
+});

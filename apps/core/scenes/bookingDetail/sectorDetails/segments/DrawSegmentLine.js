@@ -7,7 +7,7 @@ import { MapView } from '@kiwicom/margarita-map';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import stringify from 'json-stable-stringify';
 
-import type { DrawSegmentLine as SegmentType } from './__generated__/DrawSegmentLine.graphql';
+import type { DrawSegmentLine_data as SegmentType } from './__generated__/DrawSegmentLine_data.graphql';
 
 type Props = {|
   +data: ?SegmentType,
@@ -32,10 +32,9 @@ const DrawSegmentLine = (props: Props) => {
   });
 };
 
-export default createFragmentContainer(
-  DrawSegmentLine,
-  graphql`
-    fragment DrawSegmentLineStopCoordinates on RouteStop {
+export default createFragmentContainer(DrawSegmentLine, {
+  coordinates: graphql`
+    fragment DrawSegmentLine_coordinates on RouteStop {
       stop {
         coordinates {
           latitude: lat
@@ -43,15 +42,17 @@ export default createFragmentContainer(
         }
       }
     }
-    fragment DrawSegmentLine on Sector {
+  `,
+  data: graphql`
+    fragment DrawSegmentLine_data on Sector {
       segments {
         departure {
-          ...DrawSegmentLineStopCoordinates @relay(mask: false)
+          ...DrawSegmentLine_coordinates @relay(mask: false)
         }
         arrival {
-          ...DrawSegmentLineStopCoordinates @relay(mask: false)
+          ...DrawSegmentLine_coordinates @relay(mask: false)
         }
       }
     }
   `,
-);
+});

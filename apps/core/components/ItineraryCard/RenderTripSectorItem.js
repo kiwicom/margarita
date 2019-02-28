@@ -6,7 +6,7 @@ import { StopoverDuration } from '@kiwicom/margarita-components';
 
 import TripSector from './TripSector';
 import ItineraryCardRow from './ItineraryCardRow';
-import type { RenderTripSectorItem as RenderTripSectorItemType } from './__generated__/RenderTripSectorItem.graphql';
+import type { RenderTripSectorItem_data as RenderTripSectorItemType } from './__generated__/RenderTripSectorItem_data.graphql';
 import StopoverDurationWrapper from './StopoverDurationWrapper';
 
 type Props = {|
@@ -32,10 +32,9 @@ function RenderTripSectorItem({ data }: Props) {
   );
 }
 
-export default createFragmentContainer(
-  RenderTripSectorItem,
-  graphql`
-    fragment RenderTripSectorItem on Sector {
+export default createFragmentContainer(RenderTripSectorItem, {
+  data: graphql`
+    fragment RenderTripSectorItem_data on Sector {
       departure {
         stop {
           city {
@@ -44,7 +43,7 @@ export default createFragmentContainer(
         }
       }
       stopoverDuration
-      ...TripSector
+      ...TripSector_data
     }
   `,
-);
+});

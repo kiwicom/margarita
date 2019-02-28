@@ -6,7 +6,7 @@ import { Text, StopoverDuration } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { SectorStopoverDuration as SectorType } from './__generated__/SectorStopoverDuration.graphql';
+import type { SectorStopoverDuration_data as SectorType } from './__generated__/SectorStopoverDuration_data.graphql';
 
 type Props = {|
   +data: ?SectorType,
@@ -39,10 +39,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorStopoverDuration,
-  graphql`
-    fragment SectorStopoverDuration on Sector {
+export default createFragmentContainer(SectorStopoverDuration, {
+  data: graphql`
+    fragment SectorStopoverDuration_data on Sector {
       stopoverDuration
       departure {
         stop {
@@ -53,4 +52,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

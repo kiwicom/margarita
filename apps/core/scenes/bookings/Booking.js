@@ -15,7 +15,7 @@ import {
 } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { Booking as BookingType } from './__generated__/Booking.graphql';
+import type { Booking_data as BookingType } from './__generated__/Booking_data.graphql';
 import BookingBadges from './BookingBadges';
 import FromTo from '../../components/fromTo/FromTo';
 import DateAndPassengerCount from './DateAndPassengerCount';
@@ -114,15 +114,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  withNavigation(Booking),
-  graphql`
-    fragment Booking on BookingInterface {
+export default createFragmentContainer(withNavigation(Booking), {
+  data: graphql`
+    fragment Booking_data on BookingInterface {
       destinationImageUrl(dimensions: _1200x628)
       relayId: id
-      ...BookingBadges
-      ...FromTo
-      ...DateAndPassengerCount
+      ...BookingBadges_data
+      ...FromTo_data
+      ...DateAndPassengerCount_data
     }
   `,
-);
+});

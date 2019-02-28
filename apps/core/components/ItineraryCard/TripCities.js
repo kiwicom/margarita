@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet, Icon } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { TripCities as TripCitiesType } from './__generated__/TripCities.graphql';
+import type { TripCities_data as TripCitiesType } from './__generated__/TripCities_data.graphql';
 import LocationName from './LocationName';
 
 type Props = {|
@@ -48,16 +48,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  TripCities,
-  graphql`
-    fragment TripCities on Sector {
+export default createFragmentContainer(TripCities, {
+  data: graphql`
+    fragment TripCities_data on Sector {
       arrival {
-        ...LocationName
+        ...LocationName_data
       }
       departure {
-        ...LocationName
+        ...LocationName_data
       }
     }
   `,
-);
+});

@@ -5,7 +5,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { type StylePropType, Text } from '@kiwicom/universal-components';
 
 import { getFormattedDate } from './TripSectorHelpers';
-import type { LocalTime as LocalTimeType } from './__generated__/LocalTime.graphql';
+import type { LocalTime_data as LocalTimeType } from './__generated__/LocalTime_data.graphql';
 
 type Props = {|
   +data: ?LocalTimeType,
@@ -21,13 +21,12 @@ function LocalTime({ data, dateFormat, style }: Props) {
   );
 }
 
-export default createFragmentContainer(
-  LocalTime,
-  graphql`
-    fragment LocalTime on RouteStop {
+export default createFragmentContainer(LocalTime, {
+  data: graphql`
+    fragment LocalTime_data on RouteStop {
       time {
         local
       }
     }
   `,
-);
+});

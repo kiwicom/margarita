@@ -12,7 +12,7 @@ import SectorInfoOneWay from './SectorInfoOneWay';
 import SectorInfoMulticity from './SectorInfoMulticity';
 import SectorInfoReturn from './SectorInfoReturn';
 import SegmentContainer from './segments/SegmentContainer';
-import type { SectorDetails as BookingType } from './__generated__/SectorDetails.graphql';
+import type { SectorDetails_data as BookingType } from './__generated__/SectorDetails_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -57,16 +57,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorDetails,
-  graphql`
-    fragment SectorDetails on BookingInterface {
+export default createFragmentContainer(SectorDetails, {
+  data: graphql`
+    fragment SectorDetails_data on BookingInterface {
       __typename
-      ...SectorInfoOneWay
-      ...SectorInfoReturn
-      ...SectorInfoMulticity
-      ...Header
-      ...SegmentContainer
+      ...SectorInfoOneWay_data
+      ...SectorInfoReturn_data
+      ...SectorInfoMulticity_data
+      ...Header_data
+      ...SegmentContainer_data
     }
   `,
-);
+});

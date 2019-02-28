@@ -16,7 +16,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import PassengersList from './PassengersList';
 import VisaDetail from './VisaDetail';
-import type { Passengers as PassengersType } from './__generated__/Passengers.graphql';
+import type { Passengers_data as PassengersType } from './__generated__/Passengers_data.graphql';
 
 type Props = {|
   +data: ?PassengersType,
@@ -56,14 +56,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const passengersFragment = createFragmentContainer(
-  Passengers,
-  graphql`
-    fragment Passengers on BookingInterface {
-      ...PassengersList
-      ...VisaDetail
+const passengersFragment = createFragmentContainer(Passengers, {
+  data: graphql`
+    fragment Passengers_data on BookingInterface {
+      ...PassengersList_data
+      ...VisaDetail_data
     }
   `,
-);
+});
 
 export default withNavigation(passengersFragment);

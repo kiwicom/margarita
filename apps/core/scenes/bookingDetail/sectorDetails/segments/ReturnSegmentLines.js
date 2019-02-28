@@ -5,7 +5,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { SECTOR_COLOR_CODES } from '@kiwicom/margarita-config';
 
 import DrawSegmentLine from './DrawSegmentLine';
-import type { ReturnSegmentLines as SegmentType } from './__generated__/ReturnSegmentLines.graphql';
+import type { ReturnSegmentLines_data as SegmentType } from './__generated__/ReturnSegmentLines_data.graphql';
 
 type Props = {|
   +data: ?SegmentType,
@@ -26,16 +26,15 @@ const ReturnSegmentLines = (props: Props) => {
   );
 };
 
-export default createFragmentContainer(
-  ReturnSegmentLines,
-  graphql`
-    fragment ReturnSegmentLines on BookingReturn {
+export default createFragmentContainer(ReturnSegmentLines, {
+  data: graphql`
+    fragment ReturnSegmentLines_data on BookingReturn {
       inbound {
-        ...DrawSegmentLine
+        ...DrawSegmentLine_data
       }
       outbound {
-        ...DrawSegmentLine
+        ...DrawSegmentLine_data
       }
     }
   `,
-);
+});

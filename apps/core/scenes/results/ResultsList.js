@@ -12,7 +12,7 @@ import {
 } from '@kiwicom/margarita-navigation';
 
 import { ItineraryCard } from '../../components/ItineraryCard';
-import type { ResultsList as ResultsListType } from './__generated__/ResultsList.graphql';
+import type { ResultsList_data as ResultsListType } from './__generated__/ResultsList_data.graphql';
 import EmptyResults from './EmptyResults';
 
 type Props = {|
@@ -62,19 +62,18 @@ class ResultsList extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  withNavigation(ResultsList),
-  graphql`
-    fragment ResultsList on ItineraryConnection {
+export default createFragmentContainer(withNavigation(ResultsList), {
+  data: graphql`
+    fragment ResultsList_data on ItineraryConnection {
       edges {
         node {
           id
-          ...ItineraryCard
+          ...ItineraryCard_data
         }
       }
     }
   `,
-);
+});
 
 const styles = StyleSheet.create({
   cardList: {

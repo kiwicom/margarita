@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Icon } from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import type { FromToIcon as BookingType } from './__generated__/FromToIcon.graphql';
+import type { FromToIcon_data as BookingType } from './__generated__/FromToIcon_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -35,11 +35,10 @@ export const FromToIcon = (props: Props) => {
   return null;
 };
 
-export default createFragmentContainer(
-  FromToIcon,
-  graphql`
-    fragment FromToIcon on FromToInterface {
+export default createFragmentContainer(FromToIcon, {
+  data: graphql`
+    fragment FromToIcon_data on FromToInterface {
       type
     }
   `,
-);
+});

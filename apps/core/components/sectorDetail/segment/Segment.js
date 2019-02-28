@@ -16,7 +16,7 @@ import {
   getFormattedDate,
   dateFormat,
 } from '../../ItineraryCard/TripSectorHelpers';
-import type { Segment as SegmentType } from './__generated__/Segment.graphql';
+import type { Segment_data as SegmentType } from './__generated__/Segment_data.graphql';
 
 type Props = {|
   +data: ?SegmentType,
@@ -54,23 +54,22 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  Segment,
-  graphql`
-    fragment Segment on Segment {
+export default createFragmentContainer(Segment, {
+  data: graphql`
+    fragment Segment_data on Segment {
       duration
       arrival {
-        ...SegmentStopInfo
+        ...SegmentStopInfo_data
       }
       departure {
         time {
           local
         }
-        ...SegmentStopInfo
+        ...SegmentStopInfo_data
       }
       transporter {
         name
       }
     }
   `,
-);
+});

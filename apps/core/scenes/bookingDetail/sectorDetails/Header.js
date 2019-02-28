@@ -6,7 +6,7 @@ import { Text, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { Header as BookingType } from './__generated__/Header.graphql';
+import type { Header_data as BookingType } from './__generated__/Header_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -46,12 +46,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  Header,
-  graphql`
-    fragment Header on BookingInterface {
+export default createFragmentContainer(Header, {
+  data: graphql`
+    fragment Header_data on BookingInterface {
       bookingId: id(opaque: false)
       status
     }
   `,
-);
+});
