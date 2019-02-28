@@ -7,6 +7,7 @@ import { Icon, CarrierLogo, StyleSheet } from '@kiwicom/universal-components';
 import { capitalize } from '@kiwicom/margarita-utils';
 
 import Text from '../../text/Text';
+import Duration from '../../duration/Duration';
 
 type Props = {|
   +expanded: boolean,
@@ -15,7 +16,7 @@ type Props = {|
     name: string,
     type?: 'airline' | 'bus' | 'train',
   |},
-  +duration: string,
+  +duration: ?number,
 |};
 
 export default function CardHeader({ expanded, carrier, duration }: Props) {
@@ -41,9 +42,7 @@ export default function CardHeader({ expanded, carrier, duration }: Props) {
       </View>
       <View style={[styles.section, styles.row]}>
         <View style={styles.duration}>
-          <Text type="primary" align="right" size="small">
-            {duration}
-          </Text>
+          <Duration showIcon={false} duration={duration} />
         </View>
         <Icon name={iconName} color={defaultTokens.paletteInkNormal} />
       </View>
