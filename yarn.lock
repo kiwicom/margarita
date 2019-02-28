@@ -1640,26 +1640,6 @@
     react-inspector "^2.3.0"
     uuid "^3.3.2"
 
-"@storybook/addon-knobs@^4.0.7":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-4.1.12.tgz#6066443f0700036b07025844c87b007e8f8bd715"
-  integrity sha512-CLLEeMU3XtKmvzYfFin6K0+mqcHD1xU3bp7yxWEkgAW5ktCRZudOJlt/qQqf5WzC5GWAxLqQ0d3xTa1gVpINag==
-  dependencies:
-    "@emotion/styled" "^0.10.6"
-    "@storybook/addons" "4.1.12"
-    "@storybook/components" "4.1.12"
-    "@storybook/core-events" "4.1.12"
-    copy-to-clipboard "^3.0.8"
-    core-js "^2.5.7"
-    escape-html "^1.0.3"
-    fast-deep-equal "^2.0.1"
-    global "^4.3.2"
-    prop-types "^15.6.2"
-    qs "^6.5.2"
-    react-color "^2.14.1"
-    react-lifecycles-compat "^3.0.4"
-    util-deprecate "^1.0.2"
-
 "@storybook/addon-knobs@^4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/addon-knobs/-/addon-knobs-4.1.13.tgz#7a5688903fde1726c168aa188216aaaafb3eb498"
