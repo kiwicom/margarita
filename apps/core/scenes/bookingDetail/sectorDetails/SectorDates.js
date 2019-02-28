@@ -7,7 +7,7 @@ import { Duration } from '@kiwicom/margarita-components';
 import { View } from 'react-native';
 
 import SectorDate from './SectorDate';
-import type { SectorDates as BookingType } from './__generated__/SectorDates.graphql';
+import type { SectorDates_data as BookingType } from './__generated__/SectorDates_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -36,17 +36,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorDates,
-  graphql`
-    fragment SectorDates on Sector {
+export default createFragmentContainer(SectorDates, {
+  data: graphql`
+    fragment SectorDates_data on Sector {
       departure {
-        ...SectorDate
+        ...SectorDate_data
       }
       arrival {
-        ...SectorDate
+        ...SectorDate_data
       }
       duration
     }
   `,
-);
+});

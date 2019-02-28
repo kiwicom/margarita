@@ -9,7 +9,7 @@ import {
 } from '@kiwicom/margarita-config';
 import { formatDate } from '@kiwicom/margarita-utils';
 
-import type { SectorDate as BookingType } from './__generated__/SectorDate.graphql';
+import type { SectorDate_data as BookingType } from './__generated__/SectorDate_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -35,13 +35,12 @@ const SectorDate = (props: Props) => {
   );
 };
 
-export default createFragmentContainer(
-  SectorDate,
-  graphql`
-    fragment SectorDate on RouteStop {
+export default createFragmentContainer(SectorDate, {
+  data: graphql`
+    fragment SectorDate_data on RouteStop {
       time {
         local
       }
     }
   `,
-);
+});

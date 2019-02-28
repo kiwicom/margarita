@@ -6,7 +6,7 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { FromTo as BookingType } from './__generated__/FromTo.graphql';
+import type { FromTo_data as BookingType } from './__generated__/FromTo_data.graphql';
 import CityName from './CityName';
 import FromToIcon from './FromToIcon';
 
@@ -50,17 +50,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  FromTo,
-  graphql`
-    fragment FromTo on FromToInterface {
+export default createFragmentContainer(FromTo, {
+  data: graphql`
+    fragment FromTo_data on FromToInterface {
       departure {
-        ...CityName
+        ...CityName_data
       }
       arrival {
-        ...CityName
+        ...CityName_data
       }
-      ...FromToIcon
+      ...FromToIcon_data
     }
   `,
-);
+});

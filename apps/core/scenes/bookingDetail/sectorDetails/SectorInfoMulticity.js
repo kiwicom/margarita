@@ -6,7 +6,7 @@ import { Separator } from '@kiwicom/margarita-components';
 import { StyleSheet } from '@kiwicom/universal-components';
 
 import SectorInfo from './SectorInfo';
-import type { SectorInfoMulticity as BookingType } from './__generated__/SectorInfoMulticity.graphql';
+import type { SectorInfoMulticity_data as BookingType } from './__generated__/SectorInfoMulticity_data.graphql';
 
 type Props = {|
   +data: ?BookingType,
@@ -29,13 +29,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SectorInfoMulticity,
-  graphql`
-    fragment SectorInfoMulticity on BookingMulticity {
+export default createFragmentContainer(SectorInfoMulticity, {
+  data: graphql`
+    fragment SectorInfoMulticity_data on BookingMulticity {
       sectors {
-        ...SectorInfo
+        ...SectorInfo_data
       }
     }
   `,
-);
+});

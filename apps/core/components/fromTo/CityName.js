@@ -5,7 +5,7 @@ import { Text, StyleSheet } from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { Image, View } from 'react-native';
 
-import type { CityName as CityNameType } from './__generated__/CityName.graphql';
+import type { CityName_data as CityNameType } from './__generated__/CityName_data.graphql';
 
 type Props = {|
   +data: ?CityNameType,
@@ -54,10 +54,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  CityName,
-  graphql`
-    fragment CityName on RouteStop {
+export default createFragmentContainer(CityName, {
+  data: graphql`
+    fragment CityName_data on RouteStop {
       stop {
         countryFlagURL
         city {
@@ -66,4 +65,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

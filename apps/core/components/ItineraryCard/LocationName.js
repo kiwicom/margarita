@@ -4,7 +4,7 @@ import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { type StylePropType, Text } from '@kiwicom/universal-components';
 
-import type { LocationName as LocationNameType } from './__generated__/LocationName.graphql';
+import type { LocationName_data as LocationNameType } from './__generated__/LocationName_data.graphql';
 
 type Props = {|
   +data: ?LocationNameType,
@@ -19,10 +19,9 @@ function LocationName({ data, style }: Props) {
   );
 }
 
-export default createFragmentContainer(
-  LocationName,
-  graphql`
-    fragment LocationName on RouteStop {
+export default createFragmentContainer(LocationName, {
+  data: graphql`
+    fragment LocationName_data on RouteStop {
       stop {
         city {
           name
@@ -30,4 +29,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

@@ -1430,10 +1430,10 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.17.0.tgz#53f0bff58574abbe8c0cf8554ff47e9d1abc56da"
-  integrity sha512-RcMwxDsnyK5NZpZ08L8DjzGOyU8umaIdo/yVSmKxqwFCoHuv7iAUFXaPd8P/MapP4hUhSRS4Sr8uLDGyrBv85w==
+"@kiwicom/relay@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.19.0.tgz#91edf897ceabbc932a349a3f8641b0b32cae2b75"
+  integrity sha512-Z1cmyhUsQq5JKLt3BNPGfSjlGc9f6jxJneX9eNjlrqzcDS6qb+bYtUzdQZ/8Nn3WvymMYBx2q4RfJHIc6bRZ2w==
   dependencies:
     "@kiwicom/fetch" "^2.1.1"
     "@kiwicom/js" "^0.4.0"

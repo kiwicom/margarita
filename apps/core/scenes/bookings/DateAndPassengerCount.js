@@ -7,7 +7,7 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import format from 'date-fns/format';
 import { DAY_MONTH_DATE_FORMAT } from '@kiwicom/margarita-config';
 
-import type { DateAndPassengerCount as BookingType } from './__generated__/DateAndPassengerCount.graphql';
+import type { DateAndPassengerCount_data as BookingType } from './__generated__/DateAndPassengerCount_data.graphql';
 
 type Props = {|
   +data: BookingType,
@@ -47,10 +47,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  DateAndPassengerCount,
-  graphql`
-    fragment DateAndPassengerCount on BookingInterface {
+export default createFragmentContainer(DateAndPassengerCount, {
+  data: graphql`
+    fragment DateAndPassengerCount_data on BookingInterface {
       passengerCount
       departure {
         time {
@@ -59,4 +58,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

@@ -4,7 +4,7 @@ import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { SectorInfo as BookingType } from './__generated__/SectorInfo.graphql';
+import type { SectorInfo_data as BookingType } from './__generated__/SectorInfo_data.graphql';
 import FromTo from '../../../components/fromTo/FromTo';
 import FromToWrapper from '../../../components/fromTo/FromToWrapper';
 import SectorDates from './SectorDates';
@@ -33,12 +33,11 @@ const SectorInfo = (props: Props) => {
   );
 };
 
-export default createFragmentContainer(
-  SectorInfo,
-  graphql`
-    fragment SectorInfo on Sector {
-      ...FromTo
-      ...SectorDates
+export default createFragmentContainer(SectorInfo, {
+  data: graphql`
+    fragment SectorInfo_data on Sector {
+      ...FromTo_data
+      ...SectorDates_data
     }
   `,
-);
+});
