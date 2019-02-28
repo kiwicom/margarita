@@ -6,12 +6,14 @@ import {
   StyleSheet,
   Icon,
   type StylePropType,
+  type IconNameType,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../text/Text';
 
 type Props = {|
+  +iconName?: IconNameType,
   +showIcon: boolean,
   +duration: ?number,
   +style?: StylePropType,
@@ -39,7 +41,7 @@ export default function Duration(props: Props) {
     <View style={styleSheet.row}>
       {props.showIcon && (
         <Icon
-          name="clock"
+          name={props.iconName ?? 'clock'}
           size="small"
           color={defaultTokens.colorTextSecondary}
           style={props.iconStyle}
