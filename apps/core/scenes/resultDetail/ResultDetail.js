@@ -3,18 +3,25 @@
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { withNavigation } from '@kiwicom/margarita-navigation';
+import {
+  withNavigation,
+  Routes,
+  type Navigation,
+} from '@kiwicom/margarita-navigation';
 import { PassengerCards } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 type Props = {|
   +detailId: ?string,
+  +navigation: Navigation,
 |};
 
 class ResultDetail extends React.Component<Props> {
   handlePassengerEditPress = id => {
     if (id) {
-      alert(id); // @TODO
+      this.props.navigation.navigate(Routes.PASSENGER_FORM, {
+        id,
+      });
     }
   };
 
