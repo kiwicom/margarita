@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CarrierLogo getCarrierImageUri > should return correct path 1`] = `"https://images.kiwi.com/airlines/128/TO.png?default=airline.png"`;
+
+exports[`CarrierLogo should match snapshot diff 1`] = `
+"Snapshot Diff:
+- <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}]} />
++ <CarrierLogo carriers={[{\\"code\\": \\"FR\\", \\"name\\": \\"Ryanair\\"}, {\\"code\\": \\"TO\\", \\"name\\": \\"Transavia France\\"}, {\\"code\\": \\"VY\\", \\"name\\": \\"Vueling\\"}, {\\"code\\": \\"OK\\", \\"name\\": \\"Czech Airlines\\"}]} />
+
+@@ -10,29 +10,91 @@
+        },
+        Object {
+          \\"height\\": 32,
+          \\"width\\": 32,
+        },
++       Object {
++         \\"alignContent\\": \\"space-between\\",
++       },
++     ]
++   }
++ >
++   <Image
++     source={
++       Object {
++         \\"uri\\": \\"https://images.kiwi.com/airlines/32/FR.png?default=airline.png\\",
++       }
++     }
++     style={
++       Array [
++         Object {
++           \\"backgroundColor\\": \\"transparent\\",
++           \\"borderRadius\\": 3,
++         },
++         Object {
++           \\"height\\": 15,
++           \\"width\\": 15,
++         },
+          false,
+        ]
+      }
+- >
++   />
+    <Image
+      source={
+        Object {
+-         \\"uri\\": \\"https://images.kiwi.com/airlines/64/FR.png?default=airline.png\\",
++         \\"uri\\": \\"https://images.kiwi.com/airlines/32/TO.png?default=airline.png\\",
+        }
+      }
+      style={
+        Array [
+          Object {
+            \\"backgroundColor\\": \\"transparent\\",
+            \\"borderRadius\\": 3,
+          },
+          Object {
+-           \\"height\\": 32,
+-           \\"width\\": 32,
++           \\"height\\": 15,
++           \\"width\\": 15,
++         },
++         false,
++       ]
++     }
++   />
++   <Image
++     source={
++       Object {
++         \\"uri\\": \\"https://images.kiwi.com/airlines/32/VY.png?default=airline.png\\",
++       }
++     }
++     style={
++       Array [
++         Object {
++           \\"backgroundColor\\": \\"transparent\\",
++           \\"borderRadius\\": 3,
++         },
++         Object {
++           \\"height\\": 15,
++           \\"width\\": 15,
++         },
++         false,
++       ]
++     }
++   />
++   <Image
++     source={
++       Object {
++         \\"uri\\": \\"https://images.kiwi.com/airlines/32/OK.png?default=airline.png\\",
++       }
++     }
++     style={
++       Array [
++         Object {
++           \\"backgroundColor\\": \\"transparent\\",
++           \\"borderRadius\\": 3,
++         },
++         Object {
++           \\"height\\": 15,
++           \\"width\\": 15,
+          },
+          false,
+        ]
+      }
+    />"
+`;

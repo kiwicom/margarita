@@ -1,0 +1,140 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal - native should match snapshot 1`] = `
+<Modal
+  animationType="none"
+  hardwareAccelerated={false}
+  hideModalContentWhileAnimating={true}
+  onModalHide={[Function]}
+  onRequestClose={[Function]}
+  scrollOffset={0}
+  scrollOffsetMax={0}
+  scrollTo={null}
+  supportedOrientations={
+    Array [
+      "portrait",
+      "landscape",
+    ]
+  }
+  swipeThreshold={100}
+  transparent={true}
+  visible={false}
+>
+  <View
+    accessible={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 0,
+        "height": 1334,
+        "left": 0,
+        "opacity": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "width": 750,
+      }
+    }
+  />
+  <View
+    hideModalContentWhileAnimating={true}
+    onModalHide={[Function]}
+    pointerEvents="box-none"
+    scrollOffset={0}
+    scrollOffsetMax={0}
+    scrollTo={null}
+    style={
+      Object {
+        "flex": 1,
+        "justifyContent": "center",
+        "margin": 37.5,
+        "transform": Array [
+          Object {
+            "translateY": 0,
+          },
+        ],
+      }
+    }
+    supportedOrientations={
+      Array [
+        "portrait",
+        "landscape",
+      ]
+    }
+    swipeThreshold={100}
+  >
+    <Text
+      style={
+        Array [
+          Object {
+            "fontFamily": "Roboto",
+            "margin": 0,
+          },
+        ]
+      }
+    >
+      Modal test content
+    </Text>
+  </View>
+</Modal>
+`;
+
+exports[`Modal - web should match snapshot 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "height": "100%",
+        "justifyContent": "center",
+        "start": 0,
+        "top": 0,
+        "width": "100%",
+        "zIndex": 825,
+      },
+      undefined,
+    ]
+  }
+>
+  <View
+    accessible={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "height": "100%",
+          "width": "100%",
+        },
+        Object {
+          "backgroundColor": "#171b1e",
+          "opacity": 0.5,
+        },
+      ]
+    }
+    testID="backdrop"
+  />
+  <Text
+    style={
+      Array [
+        Object {
+          "fontFamily": "Roboto",
+          "margin": 0,
+        },
+      ]
+    }
+  >
+    Modal test content
+  </Text>
+</View>
+`;

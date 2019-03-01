@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup renders correctly 1`] = `
+<React.Fragment>
+  <MenuGroupTitle
+    title="Title"
+  />
+  <Card
+    style={
+      Object {
+        "borderBottomWidth": 0.5,
+        "borderColor": "#bac7d5",
+        "borderTopWidth": 0.5,
+        "padding": 0,
+      }
+    }
+  >
+    <MenuItem
+      onPress={[MockFunction]}
+      title="test"
+    />
+  </Card>
+</React.Fragment>
+`;

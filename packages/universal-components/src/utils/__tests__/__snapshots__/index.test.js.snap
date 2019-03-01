@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createStylesGenerator 1`] = `
+Object {
+  "large": Object {
+    "fontSize": 16,
+  },
+  "medium": Object {
+    "fontSize": 14,
+  },
+  "small": Object {
+    "fontSize": 12,
+  },
+}
+`;
