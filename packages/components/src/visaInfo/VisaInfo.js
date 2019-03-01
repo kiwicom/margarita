@@ -4,25 +4,12 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-
-import type { VisaDetail_data as VisaDetailType } from './__generated__/VisaDetail_data.graphql';
 
 type Props = {|
-  +data: ?VisaDetailType,
+  +visaRequired: ?boolean,
 |};
 
-type VisaRequiredType = {
-  +visaRequired: ?boolean,
-};
-
-const isVisaRequired = (
-  passengers: $ReadOnlyArray<?VisaRequiredType>,
-): boolean => passengers.some(passenger => passenger?.visaRequired);
-
-const VisaDetail = (props: Props) => {
-  const passengers = props.data?.passengers;
-  const visaRequired = passengers && isVisaRequired(passengers);
+export default function VisaInfo({ visaRequired }: Props) {
   const color = visaRequired
     ? defaultTokens.colorIconCritical
     : defaultTokens.colorIconSuccess;
@@ -41,7 +28,7 @@ const VisaDetail = (props: Props) => {
       </Text>
     </View>
   );
-};
+}
 
 const styles = StyleSheet.create({
   wrapperVisa: {
@@ -59,14 +46,4 @@ const styles = StyleSheet.create({
   critical: {
     backgroundColor: defaultTokens.backgroundBadgeCritical,
   },
-});
-
-export default createFragmentContainer(VisaDetail, {
-  data: graphql`
-    fragment VisaDetail_data on BookingInterface {
-      passengers {
-        visaRequired
-      }
-    }
-  `,
 });

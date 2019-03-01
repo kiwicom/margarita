@@ -15,7 +15,7 @@ import {
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import PassengersList from './PassengersList';
-import VisaDetail from './VisaDetail';
+import VisaInfoSummary from './VisaInfoSummary';
 import type { Passengers_data as PassengersType } from './__generated__/Passengers_data.graphql';
 
 type Props = {|
@@ -43,7 +43,7 @@ class Passengers extends React.Component<Props> {
             onPress={this.onPress}
           />
         </MenuGroup>
-        <VisaDetail data={this.props.data} />
+        <VisaInfoSummary data={this.props.data} />
       </>
     );
   }
@@ -60,7 +60,7 @@ const passengersFragment = createFragmentContainer(Passengers, {
   data: graphql`
     fragment Passengers_data on BookingInterface {
       ...PassengersList_data
-      ...VisaDetail_data
+      ...VisaInfoSummary_data
     }
   `,
 });

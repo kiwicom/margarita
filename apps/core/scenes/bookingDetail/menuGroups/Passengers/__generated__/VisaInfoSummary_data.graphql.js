@@ -9,19 +9,19 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type VisaDetail_data$ref: FragmentReference;
-export type VisaDetail_data = {|
+declare export opaque type VisaInfoSummary_data$ref: FragmentReference;
+export type VisaInfoSummary_data = {|
   +passengers: ?$ReadOnlyArray<?{|
     +visaRequired: ?boolean
   |}>,
-  +$refType: VisaDetail_data$ref,
+  +$refType: VisaInfoSummary_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "VisaDetail_data",
+  "name": "VisaInfoSummary_data",
   "type": "BookingInterface",
   "metadata": null,
   "argumentDefinitions": [],
@@ -47,5 +47,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '8787d57ea94c8baf990054b619553fd4';
+(node/*: any*/).hash = 'a6ab9975c1091f6ddb00daf9ad95348c';
 module.exports = node;
