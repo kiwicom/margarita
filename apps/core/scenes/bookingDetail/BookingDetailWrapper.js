@@ -11,7 +11,7 @@ import ManageMenuGroup from './menuGroups/Manage';
 import ServicesMenuGroup from './menuGroups/Services';
 import TripInfoMenuGroup from './menuGroups/TripInfo';
 import Passengers from './menuGroups/Passengers';
-import type { BookingDetailWrapper as BookingDetailWrapperType } from './__generated__/BookingDetailWrapper.graphql';
+import type { BookingDetailWrapper_data as BookingDetailWrapperType } from './__generated__/BookingDetailWrapper_data.graphql';
 
 type Props = {|
   +data: ?BookingDetailWrapperType,
@@ -37,12 +37,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  BookingDetailWrapper,
-  graphql`
-    fragment BookingDetailWrapper on BookingInterface {
-      ...SectorDetails
-      ...Passengers
+export default createFragmentContainer(BookingDetailWrapper, {
+  data: graphql`
+    fragment BookingDetailWrapper_data on BookingInterface {
+      ...SectorDetails_data
+      ...Passengers_data
     }
   `,
-);
+});

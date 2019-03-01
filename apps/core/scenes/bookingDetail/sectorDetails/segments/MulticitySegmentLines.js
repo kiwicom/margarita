@@ -6,7 +6,7 @@ import { SECTOR_COLOR_CODES } from '@kiwicom/margarita-config';
 import { last } from 'ramda';
 
 import DrawSegmentLine from './DrawSegmentLine';
-import type { MulticitySegmentLines as SegmentType } from './__generated__/MulticitySegmentLines.graphql';
+import type { MulticitySegmentLines_data as SegmentType } from './__generated__/MulticitySegmentLines_data.graphql';
 
 type Props = {|
   +data: ?SegmentType,
@@ -25,13 +25,12 @@ const MulticitySegmentLines = (props: Props) => {
   });
 };
 
-export default createFragmentContainer(
-  MulticitySegmentLines,
-  graphql`
-    fragment MulticitySegmentLines on BookingMulticity {
+export default createFragmentContainer(MulticitySegmentLines, {
+  data: graphql`
+    fragment MulticitySegmentLines_data on BookingMulticity {
       sectors {
-        ...DrawSegmentLine
+        ...DrawSegmentLine_data
       }
     }
   `,
-);
+});

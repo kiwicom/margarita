@@ -9,7 +9,12 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Routes } from '@kiwicom/margarita-navigation';
 
-import { SearchScreen, ResultsScreen, ResultDetailScreen } from '../screens';
+import {
+  SearchScreen,
+  ResultsScreen,
+  ResultDetailScreen,
+  PassengerFormScreen,
+} from '../screens';
 
 type NavigationOptions = {};
 type NavigationProps = {};
@@ -38,6 +43,12 @@ const StackNavigator: NavigationNavigator<
       screen: ResultDetailScreen,
       navigationOptions: {
         title: 'My Booking',
+      },
+    },
+    [Routes.PASSENGER_FORM]: {
+      screen: PassengerFormScreen,
+      navigationOptions: {
+        title: 'Edit Passenger',
       },
     },
   }: NavigationRouteConfigMap),

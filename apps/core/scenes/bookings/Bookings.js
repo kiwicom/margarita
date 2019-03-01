@@ -17,7 +17,7 @@ export default class Bookings extends React.Component<{||}> {
         query={graphql`
           query BookingsQuery {
             customerBookings {
-              ...BookingList
+              ...BookingList_data
             }
           }
         `}

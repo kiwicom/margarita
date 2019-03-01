@@ -11,8 +11,8 @@ import { StyleSheet, Hoverable, Card } from '@kiwicom/universal-components';
 import RenderTripSectorItem from './RenderTripSectorItem';
 import ItineraryCardWrapper from './ItineraryCardWrapper';
 import ItineraryDetail from './itineraryDetail/ItineraryDetail';
-import type { ItineraryCard as ItineraryCardType } from './__generated__/ItineraryCard.graphql';
-import type { RenderTripSectorItem as RenderTripSectorItemType } from './__generated__/RenderTripSectorItem.graphql';
+import type { ItineraryCard_data as ItineraryCardType } from './__generated__/ItineraryCard_data.graphql';
+import type { RenderTripSectorItem_data as RenderTripSectorItemType } from './__generated__/RenderTripSectorItem_data.graphql';
 
 type Props = {|
   +data: ItineraryCardType,
@@ -113,21 +113,20 @@ class ItineraryCard extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(
-  ItineraryCard,
-  graphql`
-    fragment ItineraryCard on Itinerary {
+export default createFragmentContainer(ItineraryCard, {
+  data: graphql`
+    fragment ItineraryCard_data on Itinerary {
       sectors {
-        ...RenderTripSectorItem
+        ...RenderTripSectorItem_data
       }
       price {
         currency
         amount
       }
-      ...ItineraryDetail
+      ...ItineraryDetail_data
     }
   `,
-);
+});
 
 const styles = StyleSheet.create({
   container: {

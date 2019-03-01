@@ -8,7 +8,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import Passenger from './Passenger';
 import Bag from './Bag';
-import type { PassengersList as PassengersType } from './__generated__/PassengersList.graphql';
+import type { PassengersList_data as PassengersType } from './__generated__/PassengersList_data.graphql';
 
 type Props = {|
   +data: ?PassengersType,
@@ -36,18 +36,17 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  PassengersList,
-  graphql`
-    fragment PassengersList on BookingInterface {
+export default createFragmentContainer(PassengersList, {
+  data: graphql`
+    fragment PassengersList_data on BookingInterface {
       passengers {
         id
-        ...Passenger
+        ...Passenger_data
       }
       bagInfo {
         type
-        ...Bag
+        ...Bag_data
       }
     }
   `,
-);
+});

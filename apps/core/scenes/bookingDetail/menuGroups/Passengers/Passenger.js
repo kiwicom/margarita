@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { Passenger as PassengerType } from './__generated__/Passenger.graphql';
+import type { Passenger_data as PassengerType } from './__generated__/Passenger_data.graphql';
 
 type Props = {|
   +data: ?PassengerType,
@@ -40,14 +40,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  Passenger,
-  graphql`
-    fragment Passenger on Passenger {
+export default createFragmentContainer(Passenger, {
+  data: graphql`
+    fragment Passenger_data on Passenger {
       title
       firstname
       lastname
       birthday
     }
   `,
-);
+});

@@ -8,7 +8,7 @@ import { getCenter } from 'geolib';
 import memoize from 'memoize-one';
 import { uniqBy, prop } from 'ramda';
 
-import type { SegmentMap as BookingType } from './__generated__/SegmentMap.graphql';
+import type { SegmentMap as BookingType } from './__generated__/SegmentMap_data.graphql';
 import MapLines from './MapLines';
 import SegmentMapMarker from './SegmentMapMarker';
 
@@ -100,6 +100,7 @@ const mapSegmentsToMarkerData = (segments: Segments) => {
   );
 };
 
+// eslint-disable-next-line relay/generated-flow-types
 export class SegmentMap extends React.Component<Props> {
   map: ?React.Ref<typeof MapView>;
 
@@ -157,10 +158,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SegmentMap,
-  graphql`
-    fragment SegmentMapStop on RouteStop {
+export default createFragmentContainer(SegmentMap, {
+  segmentMapStop: graphql`
+    fragment SegmentMap_segmentMapStop on RouteStop {
       stop {
         locationId
         city {
@@ -172,37 +172,41 @@ export default createFragmentContainer(
         }
       }
     }
-    fragment SegmentMapSegment on Sector {
+  `,
+  segmentMapSegment: graphql`
+    fragment SegmentMap_segmentMapSegment on Sector {
       segments {
         arrival {
-          ...SegmentMapStop @relay(mask: false)
+          ...SegmentMap_segmentMapStop @relay(mask: false)
         }
         departure {
-          ...SegmentMapStop @relay(mask: false)
-        }
-      }
-    }
-    fragment SegmentMap on BookingInterface {
-      ...MapLines
-      type
-      ... on BookingOneWay {
-        sector {
-          ...SegmentMapSegment @relay(mask: false)
-        }
-      }
-      ... on BookingReturn {
-        inbound {
-          ...SegmentMapSegment @relay(mask: false)
-        }
-        outbound {
-          ...SegmentMapSegment @relay(mask: false)
-        }
-      }
-      ... on BookingMulticity {
-        sectors {
-          ...SegmentMapSegment @relay(mask: false)
+          ...SegmentMap_segmentMapStop @relay(mask: false)
         }
       }
     }
   `,
-);
+  data: graphql`
+    fragment SegmentMap_data on BookingInterface {
+      ...MapLines_data
+      type
+      ... on BookingOneWay {
+        sector {
+          ...SegmentMap_segmentMapSegment @relay(mask: false)
+        }
+      }
+      ... on BookingReturn {
+        inbound {
+          ...SegmentMap_segmentMapSegment @relay(mask: false)
+        }
+        outbound {
+          ...SegmentMap_segmentMapSegment @relay(mask: false)
+        }
+      }
+      ... on BookingMulticity {
+        sectors {
+          ...SegmentMap_segmentMapSegment @relay(mask: false)
+        }
+      }
+    }
+  `,
+});

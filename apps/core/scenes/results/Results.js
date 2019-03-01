@@ -60,7 +60,7 @@ export default class Results extends React.Component<Props> {
           query={graphql`
             query ResultsQuery($input: ItinerariesSearchInput!) {
               searchItineraries(input: $input) {
-                ...ResultsList
+                ...ResultsList_data
               }
             }
           `}
