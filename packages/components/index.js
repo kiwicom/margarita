@@ -46,6 +46,7 @@ export {
   default as AlertContextProvider,
   withAlertContext,
 } from './src/alert/AlertContext';
+export { default as VisaInfo } from './src/visaInfo/VisaInfo';
 
 // types
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
