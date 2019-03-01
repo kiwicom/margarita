@@ -17,6 +17,7 @@ export default function Button({
   rightIcon,
   sublabel,
   label,
+  circled = false,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -27,6 +28,7 @@ export default function Button({
     rightIcon,
     sublabel,
     label,
+    circled,
   };
 
   return (

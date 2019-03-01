@@ -19,6 +19,7 @@ type Props = {|
   +testID?: string,
   +sublabel?: React.Node,
   +label?: React.Node,
+  +circled?: boolean,
 |};
 
 export default function ButtonInner({
@@ -26,14 +27,15 @@ export default function ButtonInner({
   type = 'primary',
   testID: testIDProps,
   children,
-  leftIcon: originalleftIcon,
+  leftIcon: originalLeftIcon,
   rightIcon: originalRightIcon,
   sublabel,
   label,
+  circled,
 }: Props) {
-  const leftIcon = originalleftIcon
-    ? React.cloneElement(originalleftIcon, { color: textColor[type] })
-    : originalleftIcon;
+  const leftIcon = originalLeftIcon
+    ? React.cloneElement(originalLeftIcon, { color: textColor[type] })
+    : originalLeftIcon;
   const rightIcon = originalRightIcon
     ? React.cloneElement(originalRightIcon, { color: textColor[type] })
     : originalRightIcon;
@@ -57,6 +59,7 @@ export default function ButtonInner({
         disabled && styleSheet.disabled,
         theme(type).wrapper,
         justifyContent,
+        circled && styleSheet.buttonCircled,
       ]}
       testID={testID}
     >
@@ -114,6 +117,9 @@ const styleSheet = StyleSheet.create({
     paddingVertical: 11,
     height: parseInt(defaultTokens.heightButtonNormal, 10),
     borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+  },
+  buttonCircled: {
+    borderRadius: parseInt(defaultTokens.heightButtonNormal, 10) / 2,
   },
   disabled: {
     opacity: 0.5,

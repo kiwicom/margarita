@@ -24,6 +24,7 @@ export default function Button({
   href,
   block,
   label,
+  circled,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -33,6 +34,7 @@ export default function Button({
     leftIcon,
     rightIcon,
     label,
+    circled,
   };
 
   if (href) {

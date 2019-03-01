@@ -28,4 +28,5 @@ export type Props = {|
   +href?: string,
   +block?: boolean,
   +label?: React.Node,
+  +circled?: boolean,
 |};

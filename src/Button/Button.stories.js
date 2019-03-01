@@ -60,6 +60,7 @@ storiesOf('Button', module)
       href = text('href', '');
       block = boolean('block', false);
     }
+    const circled = boolean('circled', false);
     const label = text('label', 'Playground button');
     return (
       <Button
@@ -72,6 +73,7 @@ storiesOf('Button', module)
         sublabel={sublabel}
         href={href}
         block={block}
+        circled={circled}
         label={label}
       />
     );

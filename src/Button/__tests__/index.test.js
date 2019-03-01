@@ -22,6 +22,7 @@ const href = 'https://lolilol.com';
 const block = false;
 const type = 'info';
 const testID = 'testID';
+const circled = false;
 
 afterEach(() => {
   Platform.OS = originalPlatform;
@@ -42,6 +43,7 @@ describe('Button - web', () => {
       block={block}
       testID={testID}
       label={buttonText}
+      circled={circled}
     />,
   );
 
@@ -66,6 +68,7 @@ describe('Button - web', () => {
         href,
         block,
         testID,
+        circled,
       }),
     ).toBeDefined();
   });
@@ -106,6 +109,7 @@ describe('Button - web', () => {
         disabled={disabled}
         href={href}
         block={block}
+        circled={circled}
       >
         {buttonText}
       </ButtonWeb>,
@@ -125,6 +129,7 @@ describe('Button - web', () => {
         disabled={disabled}
         href={href}
         block={block}
+        circled={circled}
       >
         {buttonText}
       </ButtonWeb>,
@@ -150,6 +155,7 @@ describe('Button - native', () => {
       block={block}
       testID={testID}
       label={buttonText}
+      circled={circled}
     />,
   );
 
@@ -178,6 +184,7 @@ describe('Button - native', () => {
         href,
         block,
         testID,
+        circled,
       }),
     ).toBeDefined();
   });
@@ -194,6 +201,7 @@ describe('Button - native', () => {
         disabled={disabled}
         href={href}
         block={block}
+        circled={circled}
       >
         {buttonText}
       </ButtonNative>,
@@ -213,6 +221,7 @@ describe('Button - native', () => {
         disabled={disabled}
         href={href}
         block={block}
+        circled={circled}
       >
         {buttonText}
       </ButtonNative>,
