@@ -4,7 +4,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "storybook": "start-storybook -p 9009 -c storybook -s ../../node_modules/@kiwicom/universal-components/lib/fonts",
+    "storybook": "start-storybook -p 9009 -c storybook -s ../universal-components/fonts",
     "storybook:mobile": "yarn workspace @kiwicom/margarita-mobile-storybook start:margarita-components"
   },
   "dependencies": {

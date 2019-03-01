@@ -2,8 +2,8 @@
 
 exports[`Picker renders 1`] = `
 Object {
-  "output": <View>
-    <View>
+  "output": <Component>
+    <Component>
       <Button
         label="A"
         onPress={[Function]}
@@ -26,7 +26,7 @@ Object {
           }
         }
       >
-        <View
+        <Component
           style={
             Object {
               "backgroundColor": "#fff",
@@ -59,7 +59,7 @@ Object {
               }
             }
           />
-          <View
+          <Component
             style={
               Object {
                 "marginHorizontal": 8,
@@ -71,10 +71,10 @@ Object {
               onPress={[Function]}
               type="secondary"
             />
-          </View>
-        </View>
+          </Component>
+        </Component>
       </Modal>
-    </View>
-  </View>,
+    </Component>
+  </Component>,
 }
 `;

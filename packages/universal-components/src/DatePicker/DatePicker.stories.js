@@ -91,5 +91,5 @@ class DateTimePicker extends React.Component<Props, State> {
 
 storiesOf('DatePicker', module)
   .addDecorator(withKnobs)
-  .lokiSkip('Playground', () => <DateTimePicker />)
+  .add('Playground', () => <DateTimePicker />)
   .add('Default', () => <DateTimePicker isOpen />);

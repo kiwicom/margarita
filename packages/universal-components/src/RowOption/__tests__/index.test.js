@@ -36,11 +36,11 @@ describe('RowOption', () => {
 
   it('should execute onItemPress function', () => {
     fireEvent(getByTestId('item-button'), 'press');
-    expect(onItemPress).toHaveBeenCalled();
+    expect(onItemPress).toHaveBeenCalledWith(undefined);
   });
 
   it('should execute onAddPress function', () => {
     fireEvent(getByTestId('add-button'), 'press');
-    expect(onAddPress).toHaveBeenCalled();
+    expect(onAddPress).toHaveBeenCalledWith(undefined);
   });
 });

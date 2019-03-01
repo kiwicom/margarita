@@ -2,7 +2,7 @@
 
 exports[`SegmentedButton renders 1`] = `
 Object {
-  "output": <View
+  "output": <Component
     style={
       Object {
         "backgroundColor": "#e8edf1",
@@ -28,6 +28,6 @@ Object {
       onPress={[MockFunction]}
       value="b"
     />
-  </View>,
+  </Component>,
 }
 `;

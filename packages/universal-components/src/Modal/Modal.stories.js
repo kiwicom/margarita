@@ -58,7 +58,7 @@ class SampleModal extends React.Component<Props, State> {
 }
 
 storiesOf('Modal', module)
-  .lokiSkip('Playground', () => <SampleModal />)
+  .add('Playground', () => <SampleModal />)
   .add('Default', () => <SampleModal isVisible />);
 
 const styles = StyleSheet.create({

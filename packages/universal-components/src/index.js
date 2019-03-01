@@ -43,3 +43,21 @@ export type {
   StyleObjectType,
   PlatformStyleObjectType,
 } from './PlatformStyleSheet';
+
+/* Fonts */
+
+import Roboto from '../fonts/Roboto/Roboto-Regular.ttf';
+import RobotoItalic from '../fonts/Roboto/Roboto-Italic.ttf';
+import RobotoBold from '../fonts/Roboto/Roboto-Bold.ttf';
+import RobotoBoldItalic from '../fonts/Roboto/Roboto-BoldItalic.ttf';
+import OrbitIcons from '../fonts/orbit-icons.ttf';
+
+const Fonts = {
+  Roboto,
+  RobotoItalic,
+  RobotoBold,
+  RobotoBoldItalic,
+  OrbitIcons,
+};
+
+export { Fonts };

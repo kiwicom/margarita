@@ -91,9 +91,7 @@ class TextInput extends React.Component<Props, State> {
   myref: ?RNTextInput;
 
   setFocus = (value: boolean) => {
-    this.setState(state => ({
-      focused: value,
-    }));
+    this.setState({ focused: value });
   };
 
   handleOnFocus = () => {
@@ -142,8 +140,9 @@ class TextInput extends React.Component<Props, State> {
   };
 
   clearValue = () => {
+    const { onChangeText } = this.props;
     this.setState({ value: '' });
-    this.props.onChangeText && this.props.onChangeText('');
+    onChangeText?.('');
   };
 
   render() {

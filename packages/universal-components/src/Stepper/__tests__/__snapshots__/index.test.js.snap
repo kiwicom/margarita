@@ -23,7 +23,7 @@ exports[`Stepper should match snapshot diff between small and normal input 1`] =
 `;
 
 exports[`Stepper should match the snapshot 1`] = `
-<View
+<Component
   style={
     Object {
       "alignItems": "center",
@@ -64,5 +64,5 @@ exports[`Stepper should match the snapshot 1`] = `
     onPress={[MockFunction]}
     touchable={true}
   />
-</View>
+</Component>
 `;

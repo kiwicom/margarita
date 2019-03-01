@@ -10,6 +10,6 @@
   "setupFilesAfterEnv": ["<rootDir>/scripts/setupTests.js"],
   "transformIgnorePatterns": ["/node_modules/(?!@kiwicom)/"],
   "moduleNameMapper": {
-    "^@kiwicom/universal-components$": "@kiwicom/universal-components/lib/native"
+    "^@kiwicom/universal-components$": "<rootDir>/packages/universal-components/src"
   }
 }

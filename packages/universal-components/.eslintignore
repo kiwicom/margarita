@@ -1,2 +1,3 @@
-# Example folder
-examples/*
+lib/
+storybook-static
+src/types/_generated-types/index.js

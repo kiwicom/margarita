@@ -1,10 +1,5 @@
 {
-  "presets": [
-    "module:metro-react-native-babel-preset"
-  ],
-  "exclude": [
-    "**/*.png",
-    "**/*.gif",
-    "**/*.jpg"
-  ]
+  "presets": ["babel-preset-expo"],
+  "plugins": ["@babel/plugin-proposal-optional-chaining"],
+  "exclude": ["**/*.png", "**/*.gif", "**/*.jpg"]
 }

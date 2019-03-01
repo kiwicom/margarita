@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OptionPicker render 1`] = `
-<View>
-  <View
+<Component>
+  <Component
     style={
       Object {
         "borderBottomColor": "#bac7d5",
@@ -25,7 +25,7 @@ exports[`OptionPicker render 1`] = `
           ],
           "results": Array [
             Object {
-              "type": "return",
+              "isThrow": false,
               "value": undefined,
             },
           ],
@@ -38,7 +38,7 @@ exports[`OptionPicker render 1`] = `
           ],
           "results": Array [
             Object {
-              "type": "return",
+              "isThrow": false,
               "value": undefined,
             },
           ],
@@ -53,7 +53,7 @@ exports[`OptionPicker render 1`] = `
       }
       value="Berlin"
     />
-  </View>
+  </Component>
   <OptionList
     onAddPress={[MockFunction]}
     onItemPress={
@@ -84,7 +84,7 @@ exports[`OptionPicker render 1`] = `
         ],
         "results": Array [
           Object {
-            "type": "return",
+            "isThrow": false,
             "value": undefined,
           },
         ],
@@ -141,5 +141,5 @@ exports[`OptionPicker render 1`] = `
       ]
     }
   />
-</View>
+</Component>
 `;

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MenuGroup renders with icon 1`] = `
-<View
+<Component
   style={
     Object {
       "marginBottom": -0.5,
@@ -26,7 +26,7 @@ exports[`MenuGroup renders with icon 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -47,7 +47,7 @@ exports[`MenuGroup renders with icon 1`] = `
           ]
         }
       />
-      <View>
+      <Component>
         <Text
           expo={false}
           size="large"
@@ -55,8 +55,8 @@ exports[`MenuGroup renders with icon 1`] = `
         >
           test
         </Text>
-      </View>
-      <View
+      </Component>
+      <Component
         style={
           Object {
             "alignItems": "flex-end",
@@ -68,8 +68,8 @@ exports[`MenuGroup renders with icon 1`] = `
           color="#00a991"
           name="chevron-right"
         />
-      </View>
-    </View>
+      </Component>
+    </Component>
   </Touchable>
   <Separator
     style={
@@ -78,11 +78,11 @@ exports[`MenuGroup renders with icon 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`MenuGroup renders with label 1`] = `
-<View
+<Component
   style={
     Object {
       "marginBottom": -0.5,
@@ -107,7 +107,7 @@ exports[`MenuGroup renders with label 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -115,7 +115,7 @@ exports[`MenuGroup renders with label 1`] = `
         }
       }
     >
-      <View>
+      <Component>
         <Text
           expo={false}
           size="small"
@@ -130,8 +130,8 @@ exports[`MenuGroup renders with label 1`] = `
         >
           test
         </Text>
-      </View>
-      <View
+      </Component>
+      <Component
         style={
           Object {
             "alignItems": "flex-end",
@@ -143,8 +143,8 @@ exports[`MenuGroup renders with label 1`] = `
           color="#00a991"
           name="chevron-right"
         />
-      </View>
-    </View>
+      </Component>
+    </Component>
   </Touchable>
   <Separator
     style={
@@ -153,11 +153,11 @@ exports[`MenuGroup renders with label 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;
 
 exports[`MenuGroup renders with subTitle 1`] = `
-<View
+<Component
   style={
     Object {
       "marginBottom": -0.5,
@@ -182,7 +182,7 @@ exports[`MenuGroup renders with subTitle 1`] = `
       }
     }
   >
-    <View
+    <Component
       style={
         Object {
           "alignItems": "center",
@@ -190,7 +190,7 @@ exports[`MenuGroup renders with subTitle 1`] = `
         }
       }
     >
-      <View>
+      <Component>
         <Text
           expo={false}
           size="large"
@@ -205,8 +205,8 @@ exports[`MenuGroup renders with subTitle 1`] = `
         >
           sub
         </Text>
-      </View>
-      <View
+      </Component>
+      <Component
         style={
           Object {
             "alignItems": "flex-end",
@@ -218,8 +218,8 @@ exports[`MenuGroup renders with subTitle 1`] = `
           color="#00a991"
           name="chevron-right"
         />
-      </View>
-    </View>
+      </Component>
+    </Component>
   </Touchable>
   <Separator
     style={
@@ -228,5 +228,5 @@ exports[`MenuGroup renders with subTitle 1`] = `
       }
     }
   />
-</View>
+</Component>
 `;

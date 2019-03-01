@@ -39,7 +39,7 @@ storiesOf('TagsInput', module)
       />
     </View>
   ))
-  .lokiSkip('Playground', () => {
+  .add('Playground', () => {
     const tags = object('Tags', ['Prague']);
     const fontSize = number('fontSize', 16, {
       range: true,

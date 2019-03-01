@@ -128,7 +128,8 @@ export default class AndroidDatePicker extends React.Component<Props> {
         const day = date.getDate();
         customDate = new Date(year, month, day, hour, minute);
       } else {
-        customDate = new Date().setHours(hour).setMinutes(minute);
+        customDate = new Date();
+        customDate.setHours(hour, minute);
       }
       onConfirm(customDate);
     } else {

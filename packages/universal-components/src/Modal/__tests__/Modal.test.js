@@ -23,7 +23,7 @@ describe('Modal - web', () => {
 
   it('should execute onBackdropPress method', () => {
     fireEvent(getByTestId('backdrop'), 'press');
-    expect(onBackdropPress).toHaveBeenCalled();
+    expect(onBackdropPress).toHaveBeenCalledWith(undefined);
   });
 
   it('should match snapshot', () => {
