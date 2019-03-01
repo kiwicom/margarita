@@ -9,7 +9,7 @@
     "deploy": "next build && next export"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^0.18.2",
+    "@mdx-js/mdx": "^0.19.0",
     "mdx-docs": "^2.0.0-alpha.0",
     "remark-autolink-headings": "^5.1.0",
     "remark-emoji": "^2.0.2",
