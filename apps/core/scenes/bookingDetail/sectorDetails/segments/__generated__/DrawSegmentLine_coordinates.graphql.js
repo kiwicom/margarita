@@ -10,15 +10,14 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type DrawSegmentLine_coordinates$ref: FragmentReference;
-export type DrawSegmentLine_coordinates = {|
-  +stop: ?{|
-    +coordinates: ?{|
+export type DrawSegmentLine_coordinates = {
+  +stop: ?{
+    +coordinates: ?{
       +latitude: ?number,
       +longitude: ?number,
-    |}
-  |},
-  +$refType: DrawSegmentLine_coordinates$ref,
-|};
+    }
+  }
+};
 */
 
 
@@ -26,7 +25,9 @@ const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "DrawSegmentLine_coordinates",
   "type": "RouteStop",
-  "metadata": null,
+  "metadata": {
+    "mask": false
+  },
   "argumentDefinitions": [],
   "selections": [
     {
@@ -68,5 +69,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '8559f21f2f997dcc8f2417d86f1a6e31';
+(node/*: any*/).hash = 'e68ab242c4f85dab6fc06bfe9af7a396';
 module.exports = node;

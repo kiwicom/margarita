@@ -10,35 +10,34 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap_segmentMapSegment$ref: FragmentReference;
-export type SegmentMap_segmentMapSegment = {|
-  +segments: ?$ReadOnlyArray<?{|
-    +arrival: ?{|
-      +stop: ?{|
+export type SegmentMap_segmentMapSegment = {
+  +segments: ?$ReadOnlyArray<?{
+    +arrival: ?{
+      +stop: ?{
         +locationId: ?string,
-        +city: ?{|
+        +city: ?{
           +name: ?string
-        |},
-        +coordinates: ?{|
+        },
+        +coordinates: ?{
           +latitude: ?number,
           +longitude: ?number,
-        |},
-      |}
-    |},
-    +departure: ?{|
-      +stop: ?{|
+        },
+      }
+    },
+    +departure: ?{
+      +stop: ?{
         +locationId: ?string,
-        +city: ?{|
+        +city: ?{
           +name: ?string
-        |},
-        +coordinates: ?{|
+        },
+        +coordinates: ?{
           +latitude: ?number,
           +longitude: ?number,
-        |},
-      |}
-    |},
-  |}>,
-  +$refType: SegmentMap_segmentMapSegment$ref,
-|};
+        },
+      }
+    },
+  }>
+};
 */
 
 
@@ -110,7 +109,9 @@ return {
   "kind": "Fragment",
   "name": "SegmentMap_segmentMapSegment",
   "type": "Sector",
-  "metadata": null,
+  "metadata": {
+    "mask": false
+  },
   "argumentDefinitions": [],
   "selections": [
     {
@@ -148,5 +149,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '5748dbaa65fcc179fdfd3dad3285f580';
+(node/*: any*/).hash = '22bbe109ea57138bb76fab5b3f47704b';
 module.exports = node;

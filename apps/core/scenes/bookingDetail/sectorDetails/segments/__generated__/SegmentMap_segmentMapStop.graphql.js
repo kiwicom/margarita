@@ -10,19 +10,18 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap_segmentMapStop$ref: FragmentReference;
-export type SegmentMap_segmentMapStop = {|
-  +stop: ?{|
+export type SegmentMap_segmentMapStop = {
+  +stop: ?{
     +locationId: ?string,
-    +city: ?{|
+    +city: ?{
       +name: ?string
-    |},
-    +coordinates: ?{|
+    },
+    +coordinates: ?{
       +latitude: ?number,
       +longitude: ?number,
-    |},
-  |},
-  +$refType: SegmentMap_segmentMapStop$ref,
-|};
+    },
+  }
+};
 */
 
 
@@ -30,7 +29,9 @@ const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "SegmentMap_segmentMapStop",
   "type": "RouteStop",
-  "metadata": null,
+  "metadata": {
+    "mask": false
+  },
   "argumentDefinitions": [],
   "selections": [
     {
@@ -97,5 +98,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '3b9a11ddcf96dbec110eb9f2e5849808';
+(node/*: any*/).hash = 'fca4d730d1e3ef0998a0c659979250d7';
 module.exports = node;

@@ -8,31 +8,13 @@ import { getCenter } from 'geolib';
 import memoize from 'memoize-one';
 import { uniqBy, prop } from 'ramda';
 
-import type { SegmentMap as BookingType } from './__generated__/SegmentMap_data.graphql';
+import type { SegmentMap_data as BookingType } from './__generated__/SegmentMap_data.graphql';
 import MapLines from './MapLines';
 import SegmentMapMarker from './SegmentMapMarker';
 
 type Props = {|
   +data: ?BookingType,
 |};
-
-type RouteStop = {|
-  +stop: ?{|
-    +city: ?{|
-      +name: ?string,
-    |},
-    +locationId: ?string,
-    +coordinates: ?{|
-      +latitude: ?number,
-      +longitude: ?number,
-    |},
-  |},
-|};
-
-type Segments = ?$ReadOnlyArray<?{|
-  +arrival: ?RouteStop,
-  +departure: ?RouteStop,
-|}>;
 
 type MarkerData = {|
   +latitude: ?number,
@@ -74,7 +56,7 @@ const getMulticitySegments = (props: Props) => {
   }, []);
 };
 
-const mapSegmentsToMarkerData = (segments: Segments) => {
+const mapSegmentsToMarkerData = segments => {
   if (segments == null) {
     return [];
   }
@@ -158,33 +140,37 @@ const styles = StyleSheet.create({
   },
 });
 
+// eslint-disable-next-line babel/no-unused-expressions
+graphql`
+  fragment SegmentMap_segmentMapStop on RouteStop @relay(mask: false) {
+    stop {
+      locationId
+      city {
+        name
+      }
+      coordinates {
+        latitude: lat
+        longitude: lng
+      }
+    }
+  }
+`;
+
+// eslint-disable-next-line babel/no-unused-expressions
+graphql`
+  fragment SegmentMap_segmentMapSegment on Sector @relay(mask: false) {
+    segments {
+      arrival {
+        ...SegmentMap_segmentMapStop @relay(mask: false)
+      }
+      departure {
+        ...SegmentMap_segmentMapStop @relay(mask: false)
+      }
+    }
+  }
+`;
+
 export default createFragmentContainer(SegmentMap, {
-  segmentMapStop: graphql`
-    fragment SegmentMap_segmentMapStop on RouteStop {
-      stop {
-        locationId
-        city {
-          name
-        }
-        coordinates {
-          latitude: lat
-          longitude: lng
-        }
-      }
-    }
-  `,
-  segmentMapSegment: graphql`
-    fragment SegmentMap_segmentMapSegment on Sector {
-      segments {
-        arrival {
-          ...SegmentMap_segmentMapStop @relay(mask: false)
-        }
-        departure {
-          ...SegmentMap_segmentMapStop @relay(mask: false)
-        }
-      }
-    }
-  `,
   data: graphql`
     fragment SegmentMap_data on BookingInterface {
       ...MapLines_data

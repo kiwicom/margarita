@@ -32,17 +32,19 @@ const DrawSegmentLine = (props: Props) => {
   });
 };
 
-export default createFragmentContainer(DrawSegmentLine, {
-  coordinates: graphql`
-    fragment DrawSegmentLine_coordinates on RouteStop {
-      stop {
-        coordinates {
-          latitude: lat
-          longitude: lng
-        }
+// eslint-disable-next-line babel/no-unused-expressions
+graphql`
+  fragment DrawSegmentLine_coordinates on RouteStop @relay(mask: false) {
+    stop {
+      coordinates {
+        latitude: lat
+        longitude: lng
       }
     }
-  `,
+  }
+`;
+
+export default createFragmentContainer(DrawSegmentLine, {
   data: graphql`
     fragment DrawSegmentLine_data on Sector {
       segments {
