@@ -6,7 +6,7 @@ import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { VisaDetail as VisaDetailType } from './__generated__/VisaDetail.graphql';
+import type { VisaDetail_data as VisaDetailType } from './__generated__/VisaDetail_data.graphql';
 
 type Props = {|
   +data: ?VisaDetailType,
@@ -61,13 +61,12 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  VisaDetail,
-  graphql`
-    fragment VisaDetail on BookingInterface {
+export default createFragmentContainer(VisaDetail, {
+  data: graphql`
+    fragment VisaDetail_data on BookingInterface {
       passengers {
         visaRequired
       }
     }
   `,
-);
+});

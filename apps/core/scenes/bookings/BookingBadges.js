@@ -11,7 +11,7 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { capitalize } from '@kiwicom/margarita-utils';
 
-import type { BookingBadges as BookingType } from './__generated__/BookingBadges.graphql';
+import type { BookingBadges_data as BookingType } from './__generated__/BookingBadges_data.graphql';
 
 type Props = {|
   +data: BookingType,
@@ -76,12 +76,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  BookingBadges,
-  graphql`
-    fragment BookingBadges on BookingInterface {
+export default createFragmentContainer(BookingBadges, {
+  data: graphql`
+    fragment BookingBadges_data on BookingInterface {
       id(opaque: false)
       status
     }
   `,
-);
+});

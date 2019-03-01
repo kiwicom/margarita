@@ -6,7 +6,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { View } from 'react-native';
 
-import type { Bag as BagType } from './__generated__/Bag.graphql';
+import type { Bag_data as BagType } from './__generated__/Bag_data.graphql';
 
 type Props = {|
   +data: ?BagType,
@@ -62,12 +62,11 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  Bag,
-  graphql`
-    fragment Bag on Bag {
+export default createFragmentContainer(Bag, {
+  data: graphql`
+    fragment Bag_data on Bag {
       type
       quantity
     }
   `,
-);
+});

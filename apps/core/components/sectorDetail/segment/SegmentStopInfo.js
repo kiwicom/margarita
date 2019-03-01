@@ -8,7 +8,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import SegmentStopInfoRow from './SegmentStopInfoRow';
 import { getFormattedDate } from '../../ItineraryCard/TripSectorHelpers';
-import type { SegmentStopInfo as RouteStopType } from './__generated__/SegmentStopInfo.graphql';
+import type { SegmentStopInfo_data as RouteStopType } from './__generated__/SegmentStopInfo_data.graphql';
 
 type Props = {|
   +data: ?RouteStopType,
@@ -39,10 +39,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  SegmentStopInfo,
-  graphql`
-    fragment SegmentStopInfo on RouteStop {
+export default createFragmentContainer(SegmentStopInfo, {
+  data: graphql`
+    fragment SegmentStopInfo_data on RouteStop {
       time {
         local
       }
@@ -52,4 +51,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

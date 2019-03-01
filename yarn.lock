@@ -1383,12 +1383,12 @@
     strip-ansi "^5.0.0"
     text-table "^0.2.0"
 
-"@kiwicom/fetch@^2.0.0", "@kiwicom/fetch@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.1.1.tgz#d6464a629693f9ae873b2980c548e80f5d5c008e"
-  integrity sha512-kv6p3zd1D73Ew5uEdmZdWPFLS/IiOsk+WNMtWV1ANz7O5t33y5+oY9QzKAcbOyzAy41Xczf9WREd+0w92reflA==
+"@kiwicom/fetch@^2.1.1", "@kiwicom/fetch@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.2.0.tgz#190d9352f299c8fbe7b12b5bece9469684c2eeed"
+  integrity sha512-7B49i+td2r/S0jm1jhTKzK+a5/KDFTvKdmgmgY1XQDcOaBgWGmlhSv/YmkT2wbjHDE6uxv5tzU0kYrc/sbrWew==
   dependencies:
-    "@kiwicom/js" "^0.3.0"
+    "@kiwicom/js" "^0.4.0"
     cross-fetch "^3.0.0"
 
 "@kiwicom/graphql-global-id@^0.6.0":
@@ -1430,10 +1430,10 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.17.0":
-  version "0.17.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.17.0.tgz#53f0bff58574abbe8c0cf8554ff47e9d1abc56da"
-  integrity sha512-RcMwxDsnyK5NZpZ08L8DjzGOyU8umaIdo/yVSmKxqwFCoHuv7iAUFXaPd8P/MapP4hUhSRS4Sr8uLDGyrBv85w==
+"@kiwicom/relay@^0.19.0":
+  version "0.19.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.19.0.tgz#91edf897ceabbc932a349a3f8641b0b32cae2b75"
+  integrity sha512-Z1cmyhUsQq5JKLt3BNPGfSjlGc9f6jxJneX9eNjlrqzcDS6qb+bYtUzdQZ/8Nn3WvymMYBx2q4RfJHIc6bRZ2w==
   dependencies:
     "@kiwicom/fetch" "^2.1.1"
     "@kiwicom/js" "^0.4.0"

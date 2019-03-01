@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import type { SectorsListReturn as BookingType } from './__generated__/SectorsListReturn.graphql';
+import type { SectorsListReturn_data as BookingType } from './__generated__/SectorsListReturn_data.graphql';
 import SectorDetail from '../../../components/sectorDetail/SectorDetail';
 
 type Props = {|
@@ -19,16 +19,15 @@ function SectorsListReturn(props: Props) {
   );
 }
 
-export default createFragmentContainer(
-  SectorsListReturn,
-  graphql`
-    fragment SectorsListReturn on BookingReturn {
+export default createFragmentContainer(SectorsListReturn, {
+  data: graphql`
+    fragment SectorsListReturn_data on BookingReturn {
       inbound {
-        ...SectorDetail
+        ...SectorDetail_data
       }
       outbound {
-        ...SectorDetail
+        ...SectorDetail_data
       }
     }
   `,
-);
+});

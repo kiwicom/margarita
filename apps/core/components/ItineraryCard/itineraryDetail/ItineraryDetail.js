@@ -6,7 +6,7 @@ import { Button, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
-import type { ItineraryDetail as ItineraryType } from './__generated__/ItineraryDetail.graphql';
+import type { ItineraryDetail_data as ItineraryType } from './__generated__/ItineraryDetail_data.graphql';
 import ItineraryDetailWrapper from './ItineraryDetailWrapper';
 import SectorsList from './SectorsList';
 
@@ -49,15 +49,14 @@ class ItineraryDetail extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(
-  ItineraryDetail,
-  graphql`
-    fragment ItineraryDetail on Itinerary {
+export default createFragmentContainer(ItineraryDetail, {
+  data: graphql`
+    fragment ItineraryDetail_data on Itinerary {
       bookingToken
-      ...SectorsList
+      ...SectorsList_data
     }
   `,
-);
+});
 
 const styles = StyleSheet.create({
   container: {

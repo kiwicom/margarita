@@ -6,7 +6,7 @@ import { ScrollView, View } from 'react-native';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import type { BookingList as BookingListType } from './__generated__/BookingList.graphql';
+import type { BookingList_data as BookingListType } from './__generated__/BookingList_data.graphql';
 import Booking from './Booking';
 
 type Props = {|
@@ -53,16 +53,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(
-  BookingList,
-  graphql`
-    fragment BookingList on BookingInterfaceConnection {
+export default createFragmentContainer(BookingList, {
+  data: graphql`
+    fragment BookingList_data on BookingInterfaceConnection {
       edges {
         node {
           id(opaque: false)
-          ...Booking
+          ...Booking_data
         }
       }
     }
   `,
-);
+});

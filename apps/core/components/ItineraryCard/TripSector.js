@@ -12,7 +12,7 @@ import {
 } from '@kiwicom/margarita-utils';
 import { Duration } from '@kiwicom/margarita-components';
 
-import type { TripSector as TripSectorType } from './__generated__/TripSector.graphql';
+import type { TripSector_data as TripSectorType } from './__generated__/TripSector_data.graphql';
 import TimelineArrow from './TimelineArrow';
 import Transporters from './Transporters';
 import FlightTimes from './FlightTimes';
@@ -65,18 +65,20 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
 
 export default createFragmentContainer(
   withLayoutContext(layoutSelect)(TripSector),
-  graphql`
-    fragment TripSector on Sector {
-      duration
-      ...FlightTimes
-      ...TripCities
-      departure {
-        ...LocalTime
+  {
+    data: graphql`
+      fragment TripSector_data on Sector {
+        duration
+        ...FlightTimes_data
+        ...TripCities_data
+        departure {
+          ...LocalTime_data
+        }
+        duration
+        ...Transporters_data
       }
-      duration
-      ...Transporters
-    }
-  `,
+    `,
+  },
 );
 
 const styles = StyleSheet.create({

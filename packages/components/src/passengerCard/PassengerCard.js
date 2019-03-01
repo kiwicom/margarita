@@ -2,37 +2,17 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import {
-  Text,
-  StyleSheet,
-  Icon,
-  Card,
-  type IconNameType,
-} from '@kiwicom/universal-components';
+import { Text, StyleSheet, Icon, Card } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
 import ExtendedTouchable from '../ExtendedTouchable';
-
-type Bag = {|
-  +count: number,
-  +type: string,
-|};
-
-type Props = {|
-  +name: string,
-  +gender: 'female' | 'male' | 'other',
-  +nationality: string,
-  +dateOfBirth: string,
-  +id: string,
-  +insurance: string,
-  +bags: null | Array<Bag>,
-  +passengerCount: number,
-  +actionIconName?: IconNameType,
-  +onActionPress?: () => void,
-|};
+import {
+  type PassengerCardType,
+  type PassengerCardActionType,
+} from './PassengerCardTypes';
 
 function getTitle(gender) {
   switch (gender) {
@@ -45,88 +25,108 @@ function getTitle(gender) {
   }
 }
 
-export default function PassengerCard(props: Props) {
-  const newPassenger = `${props.passengerCount}. Passenger`;
-  const title = getTitle(props.gender);
-  const passengerWithTitle = `${title} ${props.name}`;
-  const passenger = props.name ? passengerWithTitle : newPassenger;
+type Props = {|
+  ...PassengerCardType,
+  ...PassengerCardActionType,
+|};
 
-  const { nationality, dateOfBirth, id, insurance, bags } = props;
+class PassengerCard extends React.Component<Props> {
+  static defaultProps = {
+    passengerCount: 1,
+    name: '',
+    gender: 'other',
+    nationality: '',
+    dateOfBirth: '',
+    id: '',
+    insurance: '',
+    bags: null,
+  };
 
-  return (
-    <Card style={styles.container}>
-      <View style={styles.containerName}>
-        <Icon name="passenger" />
-        <Text style={styles.passengerName} size="large">
-          {passenger}
-        </Text>
-        {props.onActionPress && props.actionIconName && (
-          <ExtendedTouchable onPress={props.onActionPress}>
-            <Icon
-              name={props.actionIconName}
-              color={defaultTokens.backgroundButtonPrimary}
-            />
-          </ExtendedTouchable>
-        )}
-      </View>
+  handleActionPress = () => {
+    if (this.props.onActionPress) {
+      this.props.onActionPress(this.props.id);
+    }
+  };
 
-      <View style={styles.containerTop}>
-        <PassengerCardDetail
-          value={nationality}
-          label="Nationality"
-          style="normal"
-        />
-        <PassengerCardDetail
-          value={dateOfBirth}
-          label="Date of birth"
-          style="normal"
-        />
-        <PassengerCardDetail value={id} label="ID" style="id_row_wrapper" />
-      </View>
-      <Separator />
-      <View style={styles.containerBottom}>
-        <PassengerCardDetail
-          value={insurance}
-          label="Travel Insurance"
-          style="normal"
-        />
-        <View style={styles.bagsRowWrapper}>
-          <Text type="secondary" style={styles.textPadding}>
-            Bags
+  render() {
+    const {
+      name,
+      gender,
+      nationality,
+      dateOfBirth,
+      id,
+      insurance,
+      passengerCount,
+      bags,
+      actionIconName,
+      onActionPress,
+    } = this.props;
+    const newPassenger = `${passengerCount}. Passenger`;
+    const title = getTitle(gender);
+    const passengerWithTitle = `${title} ${name}`;
+    const passenger = name ? passengerWithTitle : newPassenger;
+
+    return (
+      <Card style={styles.container}>
+        <View style={styles.containerName}>
+          <Icon name="passenger" />
+          <Text style={styles.passengerName} size="large">
+            {passenger}
           </Text>
-          <View>
-            {bags &&
-              bags.map(bag => (
-                <BagInformation
-                  key={bag.type}
-                  count={bag.count}
-                  type={bag.type}
-                />
-              ))}
+          {onActionPress && actionIconName && (
+            <ExtendedTouchable onPress={this.handleActionPress}>
+              <Icon
+                name={actionIconName}
+                color={defaultTokens.backgroundButtonPrimary}
+              />
+            </ExtendedTouchable>
+          )}
+        </View>
+
+        <View style={styles.containerTop}>
+          <PassengerCardDetail
+            value={nationality}
+            label="Nationality"
+            style="normal"
+          />
+          <PassengerCardDetail
+            value={dateOfBirth}
+            label="Date of birth"
+            style="normal"
+          />
+          <PassengerCardDetail value={id} label="ID" style="id_row_wrapper" />
+        </View>
+        <Separator />
+        <View style={styles.containerBottom}>
+          <PassengerCardDetail
+            value={insurance}
+            label="Travel Insurance"
+            style="normal"
+          />
+          <View style={styles.bagsRowWrapper}>
+            <Text type="secondary" style={styles.textPadding}>
+              Bags
+            </Text>
+            <View>
+              {bags &&
+                bags.map(bag => (
+                  <BagInformation
+                    key={bag.type}
+                    count={bag.count}
+                    type={bag.type}
+                  />
+                ))}
+            </View>
           </View>
         </View>
-      </View>
-    </Card>
-  );
+      </Card>
+    );
+  }
 }
-
-PassengerCard.defaultProps = {
-  passengerCount: 1,
-  name: '',
-  gender: 'other',
-  nationality: '',
-  dateOfBirth: '',
-  id: '',
-  insurance: '',
-  bags: null,
-};
 
 const styles = StyleSheet.create({
   container: {
-    paddingHorizontal: parseInt(defaultTokens.spaceMedium, 10),
-    ios: {
-      marginHorizontal: parseInt(defaultTokens.spaceXSmall, 10),
-    },
+    marginBottom: parseInt(defaultTokens.spaceSmall, 10),
   },
   containerName: {
     flexDirection: 'row',
@@ -155,3 +155,5 @@ const styles = StyleSheet.create({
     paddingBottom: parseInt(defaultTokens.spaceXSmall, 10),
   },
 });
+
+export default PassengerCard;

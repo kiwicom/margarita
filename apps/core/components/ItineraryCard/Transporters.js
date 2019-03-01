@@ -6,7 +6,7 @@ import { CarrierLogo } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { uniq } from 'ramda';
 
-import type { Transporters as TransportersType } from './__generated__/Transporters.graphql';
+import type { Transporters_data as TransportersType } from './__generated__/Transporters_data.graphql';
 
 type SegmentsType = $PropertyType<TransportersType, 'segments'>;
 
@@ -42,10 +42,9 @@ function Transporters({ data }: Props) {
   );
 }
 
-export default createFragmentContainer(
-  Transporters,
-  graphql`
-    fragment Transporters on Sector {
+export default createFragmentContainer(Transporters, {
+  data: graphql`
+    fragment Transporters_data on Sector {
       segments {
         transporter {
           name
@@ -53,4 +52,4 @@ export default createFragmentContainer(
       }
     }
   `,
-);
+});

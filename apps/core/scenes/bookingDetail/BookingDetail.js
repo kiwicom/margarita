@@ -25,7 +25,7 @@ export default class BookingDetail extends React.Component<Props> {
         query={graphql`
           query BookingDetailQuery($id: ID!) {
             bookingDetail(id: $id) {
-              ...BookingDetailWrapper
+              ...BookingDetailWrapper_data
             }
           }
         `}

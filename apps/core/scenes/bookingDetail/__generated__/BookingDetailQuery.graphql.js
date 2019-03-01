@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 2eff900ff9c97c6bf03254e395bcc738
+ * @relayHash f0c5f5a5b83e2be68d71d6727b325523
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type BookingDetailWrapper$ref = any;
+type BookingDetailWrapper_data$ref = any;
 export type BookingDetailQueryVariables = {|
   id: string
 |};
 export type BookingDetailQueryResponse = {|
   +bookingDetail: ?{|
-    +$fragmentRefs: BookingDetailWrapper$ref
+    +$fragmentRefs: BookingDetailWrapper_data$ref
   |}
 |};
 export type BookingDetailQuery = {|
@@ -31,118 +31,118 @@ query BookingDetailQuery(
 ) {
   bookingDetail(id: $id) {
     __typename
-    ...BookingDetailWrapper
+    ...BookingDetailWrapper_data
     id
   }
 }
 
-fragment BookingDetailWrapper on BookingInterface {
-  ...SectorDetails
-  ...Passengers
+fragment BookingDetailWrapper_data on BookingInterface {
+  ...SectorDetails_data
+  ...Passengers_data
 }
 
-fragment SectorDetails on BookingInterface {
+fragment SectorDetails_data on BookingInterface {
   __typename
-  ...SectorInfoOneWay
-  ...SectorInfoReturn
-  ...SectorInfoMulticity
-  ...Header
-  ...SegmentContainer
+  ...SectorInfoOneWay_data
+  ...SectorInfoReturn_data
+  ...SectorInfoMulticity_data
+  ...Header_data
+  ...SegmentContainer_data
 }
 
-fragment Passengers on BookingInterface {
-  ...PassengersList
-  ...VisaDetail
+fragment Passengers_data on BookingInterface {
+  ...PassengersList_data
+  ...VisaDetail_data
 }
 
-fragment PassengersList on BookingInterface {
+fragment PassengersList_data on BookingInterface {
   passengers {
     id
-    ...Passenger
+    ...Passenger_data
   }
   bagInfo {
     type
-    ...Bag
+    ...Bag_data
   }
 }
 
-fragment VisaDetail on BookingInterface {
+fragment VisaDetail_data on BookingInterface {
   passengers {
     visaRequired
     id
   }
 }
 
-fragment Passenger on Passenger {
+fragment Passenger_data on Passenger {
   title
   firstname
   lastname
   birthday
 }
 
-fragment Bag on Bag {
+fragment Bag_data on Bag {
   type
   quantity
 }
 
-fragment SectorInfoOneWay on BookingOneWay {
+fragment SectorInfoOneWay_data on BookingOneWay {
   sector {
-    ...SectorInfo
+    ...SectorInfo_data
   }
 }
 
-fragment SectorInfoReturn on BookingReturn {
-  ...FromTo
+fragment SectorInfoReturn_data on BookingReturn {
+  ...FromTo_data
   inbound {
-    ...SectorDates
+    ...SectorDates_data
   }
   outbound {
-    ...SectorDates
+    ...SectorDates_data
   }
 }
 
-fragment SectorInfoMulticity on BookingMulticity {
+fragment SectorInfoMulticity_data on BookingMulticity {
   sectors {
-    ...SectorInfo
+    ...SectorInfo_data
   }
 }
 
-fragment Header on BookingInterface {
+fragment Header_data on BookingInterface {
   bookingId: id(opaque: false)
   status
 }
 
-fragment SegmentContainer on BookingInterface {
+fragment SegmentContainer_data on BookingInterface {
   __typename
-  ...SectorsListOneWay
-  ...SectorsListReturn
-  ...SectorsListMulticity
-  ...SegmentMap
+  ...SectorsListOneWay_data
+  ...SectorsListReturn_data
+  ...SectorsListMulticity_data
+  ...SegmentMap_data
 }
 
-fragment SectorsListOneWay on BookingOneWay {
+fragment SectorsListOneWay_data on BookingOneWay {
   sector {
-    ...SectorDetail
+    ...SectorDetail_data
   }
 }
 
-fragment SectorsListReturn on BookingReturn {
+fragment SectorsListReturn_data on BookingReturn {
   inbound {
-    ...SectorDetail
+    ...SectorDetail_data
   }
   outbound {
-    ...SectorDetail
+    ...SectorDetail_data
   }
 }
 
-fragment SectorsListMulticity on BookingMulticity {
+fragment SectorsListMulticity_data on BookingMulticity {
   sectors {
-    ...SectorDetail
+    ...SectorDetail_data
   }
 }
 
-fragment SegmentMap on BookingInterface {
-  ...MapLines
+fragment SegmentMap_data on BookingInterface {
+  ...MapLines_data
   type
   ... on BookingOneWay {
     sector {
@@ -284,35 +284,35 @@ fragment SegmentMap on BookingInterface {
   }
 }
 
-fragment MapLines on BookingInterface {
+fragment MapLines_data on BookingInterface {
   __typename
-  ...OneWaySegmentLines
-  ...ReturnSegmentLines
-  ...MulticitySegmentLines
+  ...OneWaySegmentLines_data
+  ...ReturnSegmentLines_data
+  ...MulticitySegmentLines_data
 }
 
-fragment OneWaySegmentLines on BookingOneWay {
+fragment OneWaySegmentLines_data on BookingOneWay {
   sector {
-    ...DrawSegmentLine
+    ...DrawSegmentLine_data
   }
 }
 
-fragment ReturnSegmentLines on BookingReturn {
+fragment ReturnSegmentLines_data on BookingReturn {
   inbound {
-    ...DrawSegmentLine
+    ...DrawSegmentLine_data
   }
   outbound {
-    ...DrawSegmentLine
+    ...DrawSegmentLine_data
   }
 }
 
-fragment MulticitySegmentLines on BookingMulticity {
+fragment MulticitySegmentLines_data on BookingMulticity {
   sectors {
-    ...DrawSegmentLine
+    ...DrawSegmentLine_data
   }
 }
 
-fragment DrawSegmentLine on Sector {
+fragment DrawSegmentLine_data on Sector {
   segments {
     departure {
       stop {
@@ -336,9 +336,9 @@ fragment DrawSegmentLine on Sector {
   }
 }
 
-fragment SectorDetail on Sector {
-  ...SectorStopoverDuration
-  ...SectorHeader
+fragment SectorDetail_data on Sector {
+  ...SectorStopoverDuration_data
+  ...SectorHeader_data
   segments {
     id
     departure {
@@ -351,11 +351,11 @@ fragment SectorDetail on Sector {
         local
       }
     }
-    ...Segment
+    ...Segment_data
   }
 }
 
-fragment SectorStopoverDuration on Sector {
+fragment SectorStopoverDuration_data on Sector {
   stopoverDuration
   departure {
     stop {
@@ -368,7 +368,7 @@ fragment SectorStopoverDuration on Sector {
   }
 }
 
-fragment SectorHeader on Sector {
+fragment SectorHeader_data on Sector {
   duration
   arrival {
     stop {
@@ -381,23 +381,23 @@ fragment SectorHeader on Sector {
   }
 }
 
-fragment Segment on Segment {
+fragment Segment_data on Segment {
   duration
   arrival {
-    ...SegmentStopInfo
+    ...SegmentStopInfo_data
   }
   departure {
     time {
       local
     }
-    ...SegmentStopInfo
+    ...SegmentStopInfo_data
   }
   transporter {
     name
   }
 }
 
-fragment SegmentStopInfo on RouteStop {
+fragment SegmentStopInfo_data on RouteStop {
   time {
     local
   }
@@ -408,38 +408,38 @@ fragment SegmentStopInfo on RouteStop {
   }
 }
 
-fragment SectorInfo on Sector {
-  ...FromTo
-  ...SectorDates
+fragment SectorInfo_data on Sector {
+  ...FromTo_data
+  ...SectorDates_data
 }
 
-fragment FromTo on FromToInterface {
+fragment FromTo_data on FromToInterface {
   departure {
-    ...CityName
+    ...CityName_data
   }
   arrival {
-    ...CityName
+    ...CityName_data
   }
-  ...FromToIcon
+  ...FromToIcon_data
 }
 
-fragment SectorDates on Sector {
+fragment SectorDates_data on Sector {
   departure {
-    ...SectorDate
+    ...SectorDate_data
   }
   arrival {
-    ...SectorDate
+    ...SectorDate_data
   }
   duration
 }
 
-fragment SectorDate on RouteStop {
+fragment SectorDate_data on RouteStop {
   time {
     local
   }
 }
 
-fragment CityName on RouteStop {
+fragment CityName_data on RouteStop {
   stop {
     countryFlagURL
     city {
@@ -450,7 +450,7 @@ fragment CityName on RouteStop {
   }
 }
 
-fragment FromToIcon on FromToInterface {
+fragment FromToIcon_data on FromToInterface {
   type
 }
 */
@@ -746,7 +746,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "BookingDetailWrapper",
+            "name": "BookingDetailWrapper_data",
             "args": null
           }
         ]
@@ -865,16 +865,16 @@ return {
           (v3/*: any*/),
           {
             "kind": "InlineFragment",
-            "type": "BookingMulticity",
+            "type": "BookingOneWay",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "sectors",
+                "name": "sector",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Sector",
-                "plural": true,
+                "plural": false,
                 "selections": (v13/*: any*/)
               }
             ]
@@ -927,16 +927,16 @@ return {
           },
           {
             "kind": "InlineFragment",
-            "type": "BookingOneWay",
+            "type": "BookingMulticity",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "sector",
+                "name": "sectors",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Sector",
-                "plural": false,
+                "plural": true,
                 "selections": (v13/*: any*/)
               }
             ]
@@ -949,11 +949,11 @@ return {
     "operationKind": "query",
     "name": "BookingDetailQuery",
     "id": null,
-    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper\n    id\n  }\n}\n\nfragment BookingDetailWrapper on BookingInterface {\n  ...SectorDetails\n  ...Passengers\n}\n\nfragment SectorDetails on BookingInterface {\n  __typename\n  ...SectorInfoOneWay\n  ...SectorInfoReturn\n  ...SectorInfoMulticity\n  ...Header\n  ...SegmentContainer\n}\n\nfragment Passengers on BookingInterface {\n  ...PassengersList\n  ...VisaDetail\n}\n\nfragment PassengersList on BookingInterface {\n  passengers {\n    id\n    ...Passenger\n  }\n  bagInfo {\n    type\n    ...Bag\n  }\n}\n\nfragment VisaDetail on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag on Bag {\n  type\n  quantity\n}\n\nfragment SectorInfoOneWay on BookingOneWay {\n  sector {\n    ...SectorInfo\n  }\n}\n\nfragment SectorInfoReturn on BookingReturn {\n  ...FromTo\n  inbound {\n    ...SectorDates\n  }\n  outbound {\n    ...SectorDates\n  }\n}\n\nfragment SectorInfoMulticity on BookingMulticity {\n  sectors {\n    ...SectorInfo\n  }\n}\n\nfragment Header on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SegmentContainer on BookingInterface {\n  __typename\n  ...SectorsListOneWay\n  ...SectorsListReturn\n  ...SectorsListMulticity\n  ...SegmentMap\n}\n\nfragment SectorsListOneWay on BookingOneWay {\n  sector {\n    ...SectorDetail\n  }\n}\n\nfragment SectorsListReturn on BookingReturn {\n  inbound {\n    ...SectorDetail\n  }\n  outbound {\n    ...SectorDetail\n  }\n}\n\nfragment SectorsListMulticity on BookingMulticity {\n  sectors {\n    ...SectorDetail\n  }\n}\n\nfragment SegmentMap on BookingInterface {\n  ...MapLines\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines on BookingInterface {\n  __typename\n  ...OneWaySegmentLines\n  ...ReturnSegmentLines\n  ...MulticitySegmentLines\n}\n\nfragment OneWaySegmentLines on BookingOneWay {\n  sector {\n    ...DrawSegmentLine\n  }\n}\n\nfragment ReturnSegmentLines on BookingReturn {\n  inbound {\n    ...DrawSegmentLine\n  }\n  outbound {\n    ...DrawSegmentLine\n  }\n}\n\nfragment MulticitySegmentLines on BookingMulticity {\n  sectors {\n    ...DrawSegmentLine\n  }\n}\n\nfragment DrawSegmentLine on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail on Sector {\n  ...SectorStopoverDuration\n  ...SectorHeader\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment\n  }\n}\n\nfragment SectorStopoverDuration on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo\n  }\n  transporter {\n    name\n  }\n}\n\nfragment SegmentStopInfo on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment SectorInfo on Sector {\n  ...FromTo\n  ...SectorDates\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment SectorDates on Sector {\n  departure {\n    ...SectorDate\n  }\n  arrival {\n    ...SectorDate\n  }\n  duration\n}\n\nfragment SectorDate on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
+    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper_data\n    id\n  }\n}\n\nfragment BookingDetailWrapper_data on BookingInterface {\n  ...SectorDetails_data\n  ...Passengers_data\n}\n\nfragment SectorDetails_data on BookingInterface {\n  __typename\n  ...SectorInfoOneWay_data\n  ...SectorInfoReturn_data\n  ...SectorInfoMulticity_data\n  ...Header_data\n  ...SegmentContainer_data\n}\n\nfragment Passengers_data on BookingInterface {\n  ...PassengersList_data\n  ...VisaDetail_data\n}\n\nfragment PassengersList_data on BookingInterface {\n  passengers {\n    id\n    ...Passenger_data\n  }\n  bagInfo {\n    type\n    ...Bag_data\n  }\n}\n\nfragment VisaDetail_data on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger_data on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag_data on Bag {\n  type\n  quantity\n}\n\nfragment SectorInfoOneWay_data on BookingOneWay {\n  sector {\n    ...SectorInfo_data\n  }\n}\n\nfragment SectorInfoReturn_data on BookingReturn {\n  ...FromTo_data\n  inbound {\n    ...SectorDates_data\n  }\n  outbound {\n    ...SectorDates_data\n  }\n}\n\nfragment SectorInfoMulticity_data on BookingMulticity {\n  sectors {\n    ...SectorInfo_data\n  }\n}\n\nfragment Header_data on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SegmentContainer_data on BookingInterface {\n  __typename\n  ...SectorsListOneWay_data\n  ...SectorsListReturn_data\n  ...SectorsListMulticity_data\n  ...SegmentMap_data\n}\n\nfragment SectorsListOneWay_data on BookingOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListReturn_data on BookingReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListMulticity_data on BookingMulticity {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SegmentMap_data on BookingInterface {\n  ...MapLines_data\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines_data on BookingInterface {\n  __typename\n  ...OneWaySegmentLines_data\n  ...ReturnSegmentLines_data\n  ...MulticitySegmentLines_data\n}\n\nfragment OneWaySegmentLines_data on BookingOneWay {\n  sector {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment ReturnSegmentLines_data on BookingReturn {\n  inbound {\n    ...DrawSegmentLine_data\n  }\n  outbound {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment MulticitySegmentLines_data on BookingMulticity {\n  sectors {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment DrawSegmentLine_data on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  transporter {\n    name\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment SectorInfo_data on Sector {\n  ...FromTo_data\n  ...SectorDates_data\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment SectorDates_data on Sector {\n  departure {\n    ...SectorDate_data\n  }\n  arrival {\n    ...SectorDate_data\n  }\n  duration\n}\n\nfragment SectorDate_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  type\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '2bab57d93afd1e0305918568883c4fc6';
+(node/*: any*/).hash = '81aab9d14deeef5ce6527664cd54305b';
 module.exports = node;

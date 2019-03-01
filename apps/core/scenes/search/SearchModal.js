@@ -12,7 +12,7 @@ import {
   type PassengersData,
   type Location,
 } from './SearchContext';
-import PlacePicker from './PlacePicker/PlacePickerRenderer';
+import PlacePicker from '../../components/PlacePicker/PlacePickerRenderer';
 
 type Props = {|
   +onClose: () => void,

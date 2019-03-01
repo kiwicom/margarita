@@ -7,7 +7,7 @@ import Segment from './segment/Segment';
 import SectorHeader from './SectorHeader';
 import LayoverInfo from './LayoverInfo';
 import SectorStopoverDuration from './SectorStopoverDuration';
-import type { SectorDetail as SectorType } from './__generated__/SectorDetail.graphql';
+import type { SectorDetail_data as SectorType } from './__generated__/SectorDetail_data.graphql';
 
 type Props = {|
   +data: ?SectorType,
@@ -42,12 +42,11 @@ const SectorDetail = (props: Props) => {
   );
 };
 
-export default createFragmentContainer(
-  SectorDetail,
-  graphql`
-    fragment SectorDetail on Sector {
-      ...SectorStopoverDuration
-      ...SectorHeader
+export default createFragmentContainer(SectorDetail, {
+  data: graphql`
+    fragment SectorDetail_data on Sector {
+      ...SectorStopoverDuration_data
+      ...SectorHeader_data
       segments {
         id
         departure {
@@ -60,8 +59,8 @@ export default createFragmentContainer(
             local
           }
         }
-        ...Segment
+        ...Segment_data
       }
     }
   `,
-);
+});

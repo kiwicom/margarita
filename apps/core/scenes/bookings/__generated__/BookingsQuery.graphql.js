@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 4874015913c52f9817550530296630c0
+ * @relayHash ca7311da5ec26bb4178fde197f9540c8
  */
 
 /* eslint-disable */
@@ -9,11 +9,11 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type BookingList$ref = any;
+type BookingList_data$ref = any;
 export type BookingsQueryVariables = {||};
 export type BookingsQueryResponse = {|
   +customerBookings: ?{|
-    +$fragmentRefs: BookingList$ref
+    +$fragmentRefs: BookingList_data$ref
   |}
 |};
 export type BookingsQuery = {|
@@ -26,44 +26,44 @@ export type BookingsQuery = {|
 /*
 query BookingsQuery {
   customerBookings {
-    ...BookingList
+    ...BookingList_data
   }
 }
 
-fragment BookingList on BookingInterfaceConnection {
+fragment BookingList_data on BookingInterfaceConnection {
   edges {
     node {
       __typename
       id(opaque: false)
-      ...Booking
+      ...Booking_data
     }
   }
 }
 
-fragment Booking on BookingInterface {
+fragment Booking_data on BookingInterface {
   destinationImageUrl(dimensions: _1200x628)
   relayId: id
-  ...BookingBadges
-  ...FromTo
-  ...DateAndPassengerCount
+  ...BookingBadges_data
+  ...FromTo_data
+  ...DateAndPassengerCount_data
 }
 
-fragment BookingBadges on BookingInterface {
+fragment BookingBadges_data on BookingInterface {
   id(opaque: false)
   status
 }
 
-fragment FromTo on FromToInterface {
+fragment FromTo_data on FromToInterface {
   departure {
-    ...CityName
+    ...CityName_data
   }
   arrival {
-    ...CityName
+    ...CityName_data
   }
-  ...FromToIcon
+  ...FromToIcon_data
 }
 
-fragment DateAndPassengerCount on BookingInterface {
+fragment DateAndPassengerCount_data on BookingInterface {
   passengerCount
   departure {
     time {
@@ -72,7 +72,7 @@ fragment DateAndPassengerCount on BookingInterface {
   }
 }
 
-fragment CityName on RouteStop {
+fragment CityName_data on RouteStop {
   stop {
     countryFlagURL
     city {
@@ -83,7 +83,7 @@ fragment CityName on RouteStop {
   }
 }
 
-fragment FromToIcon on FromToInterface {
+fragment FromToIcon_data on FromToInterface {
   type
 }
 */
@@ -154,7 +154,7 @@ return {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "BookingList",
+            "name": "BookingList_data",
             "args": null
           }
         ]
@@ -310,11 +310,11 @@ return {
     "operationKind": "query",
     "name": "BookingsQuery",
     "id": null,
-    "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList\n  }\n}\n\nfragment BookingList on BookingInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id(opaque: false)\n      ...Booking\n    }\n  }\n}\n\nfragment Booking on BookingInterface {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges\n  ...FromTo\n  ...DateAndPassengerCount\n}\n\nfragment BookingBadges on BookingInterface {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo on FromToInterface {\n  departure {\n    ...CityName\n  }\n  arrival {\n    ...CityName\n  }\n  ...FromToIcon\n}\n\nfragment DateAndPassengerCount on BookingInterface {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon on FromToInterface {\n  type\n}\n",
+    "text": "query BookingsQuery {\n  customerBookings {\n    ...BookingList_data\n  }\n}\n\nfragment BookingList_data on BookingInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id(opaque: false)\n      ...Booking_data\n    }\n  }\n}\n\nfragment Booking_data on BookingInterface {\n  destinationImageUrl(dimensions: _1200x628)\n  relayId: id\n  ...BookingBadges_data\n  ...FromTo_data\n  ...DateAndPassengerCount_data\n}\n\nfragment BookingBadges_data on BookingInterface {\n  id(opaque: false)\n  status\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment DateAndPassengerCount_data on BookingInterface {\n  passengerCount\n  departure {\n    time {\n      local\n    }\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  type\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'a01be717e5420f7b78b6f5bc5aa5944b';
+(node/*: any*/).hash = 'dad96aa516319b8cc7f9be86917376d8';
 module.exports = node;
