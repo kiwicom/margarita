@@ -2,6 +2,7 @@
 
 import fetchWithRetries from '@kiwicom/fetch';
 
+import ProxiedError from './ProxiedError';
 import Logger from '../logger/Logger';
 import type { HttpMethod } from './httpMethods';
 
@@ -66,10 +67,25 @@ export default async function fetch(
 
     return response.json();
   } catch (err) {
-    Logger.error(`status: ${err.response.status} - ${err.response.statusText}`);
+    const { response } = err;
+    if (response) {
+      const apiError = await err.response.json();
 
-    const response = await err.response.json();
-    Logger.error(response.message);
-    throw err;
+      Logger.error(
+        `status: ${err.response.status} - ${err.response.statusText}`,
+      );
+
+      Logger.error(apiError.message);
+
+      throw new ProxiedError(
+        err.response.statusText,
+        err.response.status,
+        url,
+        apiError,
+      );
+    } else {
+      Logger.error(err);
+      throw err;
+    }
   }
 }
