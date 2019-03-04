@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import { Heading } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
 import { GITHUB_LINK, CODE_KIWI_LINK } from '@kiwicom/margarita-config';
@@ -16,27 +16,55 @@ const linksHeader = [
   },
 ];
 
+type Link = {|
+  +title: string,
+  +link: string,
+|};
+
+function renderLinks(links: Array<Link>): Array<React.Node> {
+  return links.map<React.Node>(el => (
+    <LinkWithoutStyle key={el.title} href={el.link}>
+      <Heading type="title4">{el.title}</Heading>
+    </LinkWithoutStyle>
+  ));
+}
+
 export default function Header() {
   return (
-    <HeaderContainer>
+    <Container>
       <a href={CODE_KIWI_LINK}>
         <Logo src="/static/logo.png" alt="Logo" />
       </a>
-      <HeaderRight>
-        {linksHeader.map(el => (
-          <LinkWithoutStyle key={el.title} href={el.link}>
-            <Heading type="title4">{el.title}</Heading>
-          </LinkWithoutStyle>
-        ))}
-      </HeaderRight>
-    </HeaderContainer>
+      <HeaderRight>{renderLinks(linksHeader)}</HeaderRight>
+      <GithubLink>
+        <LinkWithoutStyle href={GITHUB_LINK}>
+          <Heading type="title3">GitHub</Heading>
+        </LinkWithoutStyle>
+      </GithubLink>
+    </Container>
   );
 }
-const HeaderContainer = styled.div`
+
+const Container = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: 2vw;
   align-items: center;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+  border-bottom: solid 2px rgb(188, 201, 214);
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    box-shadow: none;
+    border: none;
+    padding-top: 2vw;
+  }
+`;
+
+const GithubLink = styled.div`
+  padding-right: 10px;
+  cursor: pointer;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    display: none;
+  }
 `;
 
 const Logo = styled.img`
@@ -47,17 +75,12 @@ const Logo = styled.img`
 const HeaderRight = styled.div`
   display: flex;
   padding-right: 3vw;
-  width: 80vw;
   align-items: center;
   justify-content: space-evenly;
-  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
-    width: 70vw;
-  }
-  @media (min-width: ${BREAKPOINTS.TABLET}px) and (max-width: ${BREAKPOINTS.DESKTOP}px) {
-    width: 30vw;
-  }
-  @media (min-width: ${BREAKPOINTS.DESKTOP}px) {
-    width: 20vw;
+  display: none;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    display: flex;
+    width: 300px;
   }
 `;
 
