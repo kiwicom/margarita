@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "storybook": "start-storybook -p 9009 -c storybook -s ../universal-components/fonts",
+    "storybook:build": "rimraf storybook-static; build-storybook -c storybook -s ../universal-components/fonts",
     "storybook:mobile": "yarn workspace @kiwicom/margarita-mobile-storybook start:margarita-components"
   },
   "dependencies": {
@@ -23,13 +24,13 @@
     "react-native-web-image-loader": "^0.0.7"
   },
   "peerDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "@kiwicom/orbit-design-tokens": "^",
     "@storybook/addon-actions": "^",
     "@storybook/addon-knobs": "^",
     "@storybook/addon-links": "^",
     "@storybook/addon-ondevice-knobs": "^",
     "@storybook/react": "^",
+    "babel-preset-expo": "^",
     "react": "^",
     "react-native": "^",
     "react-native-testing-library": "^",

@@ -12,7 +12,7 @@ import {
 } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import TagsInput from './TagsInput';
+import { TagsInput } from '.';
 
 const selectedMock = ['Prague', 'Bratislava', 'London'];
 

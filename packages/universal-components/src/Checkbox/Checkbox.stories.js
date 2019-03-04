@@ -6,7 +6,7 @@ import { storiesOf } from '@storybook/react-native';
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import { Checkbox } from './index';
+import { Checkbox } from '.';
 
 const changeAction = action('checkbox-onChange');
 

@@ -5,8 +5,9 @@ import { storiesOf } from '@storybook/react-native';
 import { withKnobs, text, select, object } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import OptionPicker from './OptionPicker';
 import mockedPlaces, { Prague } from './mocks/places';
+
+import { OptionPicker } from '.';
 
 storiesOf('OptionPicker', module)
   .addDecorator(getStory => getStory())

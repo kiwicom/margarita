@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 
-import { Loader, PageLoader } from './index';
+import { Loader, PageLoader } from '.';
 
 storiesOf('Loader', module)
   .addDecorator(getStory => getStory())

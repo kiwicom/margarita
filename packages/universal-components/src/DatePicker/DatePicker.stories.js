@@ -7,7 +7,8 @@ import { withKnobs, select, date as dateAddon } from '@storybook/addon-knobs';
 
 import { Button } from '../Button';
 import { Text } from '../Text';
-import DatePicker from './DatePicker';
+
+import { DatePicker } from '.';
 
 type Props = {|
   +isOpen?: boolean,

@@ -11,7 +11,9 @@ import {
   withKnobs,
 } from '@storybook/addon-knobs';
 
-import { Tooltip, TooltipBubble, Text } from '..';
+import { Text } from '../Text';
+
+import { Tooltip, TooltipBubble } from '.';
 
 const arrowVerticalPositionOptions = {
   'flex-start': 'flex-start',

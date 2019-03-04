@@ -7,7 +7,7 @@ import { View } from 'react-native';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 
-import { MenuGroup, MenuItem } from './index';
+import { MenuGroup, MenuItem } from '.';
 
 storiesOf('Menu Group', module)
   .addDecorator(getStory => getStory())

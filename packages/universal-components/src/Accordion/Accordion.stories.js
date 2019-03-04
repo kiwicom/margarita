@@ -5,9 +5,9 @@ import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
 
-import { Accordion } from '.';
+import { Text } from '../Text';
 
-import { Text } from '..';
+import { Accordion } from '.';
 
 const Header = (expanded: boolean) => (
   <View
