@@ -15,7 +15,7 @@
     "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^4.0.7",
+    "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-knobs": "^4.1.13",
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-ondevice-knobs": "^4.1.13",
