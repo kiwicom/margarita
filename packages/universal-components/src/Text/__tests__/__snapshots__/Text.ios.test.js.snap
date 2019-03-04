@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Text -- iOS should have the correct font family -- EXPO 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontFamily": "Roboto",
+      },
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- iOS should have the correct font family -- EXPO 2`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "RobotoBold",
+      },
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- iOS should have the correct font family -- EXPO 3`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontStyle": "italic",
+      },
+      Object {
+        "fontFamily": "RobotoItalic",
+      },
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- iOS should have the correct font family -- EXPO 4`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontStyle": "italic",
+      },
+      Object {
+        "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "RobotoBoldItalic",
+      },
+    ]
+  }
+>
+  Lorem
+</Text>
+`;
+
+exports[`Text -- iOS should have the default font family 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "fontFamily": "Roboto",
+        "margin": 0,
+      },
+      Object {
+        "fontStyle": "italic",
+      },
+      Object {
+        "fontWeight": "700",
+      },
+    ]
+  }
+>
+  Lorem
+</Text>
+`;

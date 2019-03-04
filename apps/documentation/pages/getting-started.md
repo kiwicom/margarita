@@ -65,4 +65,6 @@ The other available scripts are:
 - `yarn docs` to run the documentation website, available at http://localhost:1337;
 - `yarn voyager` to run the Voyager (represents the GraphQL types as an interactive graph), available at http://localhost:3002;
 - `storybook:web:margarita-components` to run the web version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:9009;
-- `storybook:mobile:margarita-components` to run the mobile version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:7007 for the web UI controlling the Storybook Expo application.
+- `storybook:mobile:margarita-components` to run the mobile version of the Storybook for `@kiwicom/margarita-components`, available at http://localhost:7007 for the web UI controlling the Storybook Expo application;
+- `storybook:web:universal-components` to run the web version of the Storybook for `@kiwicom/universal-components`, available at http://localhost:9009;
+- `storybook:mobile:universal-components` to run the mobile version of the Storybook for `@kiwicom/universal-components`, available at http://localhost:7007 for the web UI controlling the Storybook Expo application.

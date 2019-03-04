@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OptionPicker: getOptionsIds helper function extract the places Ids to the array 1`] = `
+Array [
+  "prague",
+  "train-station",
+  "airport",
+  "berlin",
+  "QPP",
+  "QWC",
+  "presov",
+]
+`;

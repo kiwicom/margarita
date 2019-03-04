@@ -3,7 +3,7 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import * as React from 'react';
 import { AppRegistry } from 'react-native-web';
-import OrbitIconFont from '@kiwicom/universal-components/lib/fonts/orbit-icons.ttf';
+import { Fonts } from '@kiwicom/universal-components';
 
 // Force Next-generated DOM elements to fill their parent's height
 const normalizeNextElements = `
@@ -20,7 +20,7 @@ const globalStyle = {
   __html: `
   @font-face {
     font-family: 'orbit-icons';
-    src: url(${OrbitIconFont});
+    src: url(${Fonts.OrbitIcons});
   }
 
   body {
@@ -55,11 +55,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700"
             rel="stylesheet"
           />
-          <link
-            rel="icon"
-            type="image/x-icon"
-            href="../static/img/favicon.ico"
-          />
+          <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
           <style dangerouslySetInnerHTML={globalStyle} />
         </Head>
         <body>

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentedButton renders 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "backgroundColor": "#e8edf1",
+        "borderRadius": 3,
+        "flexDirection": "row",
+        "padding": 2,
+      }
+    }
+  >
+    <Segment
+      active={true}
+      first={true}
+      label="A"
+      last={false}
+      onPress={[MockFunction]}
+      value="a"
+    />
+    <Segment
+      active={false}
+      first={false}
+      label="B"
+      last={true}
+      onPress={[MockFunction]}
+      value="b"
+    />
+  </Component>,
+}
+`;

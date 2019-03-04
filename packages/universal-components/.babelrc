@@ -1,0 +1,5 @@
+{
+  "presets": ["babel-preset-expo"],
+  "plugins": ["@babel/plugin-proposal-optional-chaining"],
+  "exclude": ["**/*.png", "**/*.gif", "**/*.jpg"]
+}

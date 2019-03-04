@@ -50,7 +50,7 @@ module.exports = withImages(
           {
             loader: 'file-loader',
             options: {
-              outputPath: '../../static/fonts/',
+              outputPath: '../static/fonts/',
               name: '[name].[ext]',
             },
           },

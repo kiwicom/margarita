@@ -1,0 +1,210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CheckBox - native should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -11,11 +11,11 @@
+      Array [
+        Object {
+          \\"display\\": \\"flex\\",
+          \\"flexDirection\\": \\"row\\",
+        },
+-       undefined,
++       false,
+      ]
+    }
+  >
+    <View
+      style={
+@@ -29,17 +29,39 @@
+            \\"borderWidth\\": 1,
+            \\"height\\": 20,
+            \\"justifyContent\\": \\"center\\",
+            \\"width\\": 20,
+          },
+-         undefined,
+          false,
+          false,
+          false,
++         false,
+        ]
+      }
+-   />
++   >
++     <Text
++       style={
++         Array [
++           Object {
++             \\"fontFamily\\": \\"orbit-icons\\",
++           },
++           Object {
++             \\"fontSize\\": 16,
++             \\"height\\": 16,
++             \\"lineHeight\\": 16,
++             \\"width\\": 16,
++           },
++           Object {
++             \\"color\\": \\"#00a991\\",
++           },
++           undefined,
++         ]
++       }
++     >
++       V
++     </Text>
++   </View>
+    <View
+      style={
+        Object {
+          \\"display\\": \\"flex\\",
+          \\"flex\\": 1,
+@@ -56,21 +78,27 @@
+              \\"fontFamily\\": \\"Roboto\\",
+              \\"fontSize\\": 14,
+              \\"fontWeight\\": \\"400\\",
+              \\"lineHeight\\": 20,
+            },
+-           undefined,
++           Object {
++             \\"fontWeight\\": \\"500\\",
++           },
+          ]
+        }
+-     />
++     >
++       Label
++     </Text>
+      <Text
+        style={
+          Object {
+            \\"color\\": \\"#7f91a8\\",
+            \\"fontFamily\\": \\"Roboto\\",
+            \\"fontSize\\": 12,
+            \\"lineHeight\\": 16,
+          }
+        }
+-     />
++     >
++       info
++     </Text>
+    </View>
+  </View>"
+`;
+
+exports[`CheckBox - web should match snapshot diff 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -6,17 +6,21 @@
+        \\"flexDirection\\": \\"row\\",
+      }
+    }
+  >
+    <input
++     checked={true}
++     disabled={false}
++     name=\\"name\\"
+      style={
+        Object {
+          \\"display\\": \\"none\\",
+          \\"visibility\\": \\"hidden\\",
+        }
+      }
+      type=\\"checkbox\\"
++     value=\\"value\\"
+    />
+    <View
+      accessibilityRole=\\"button\\"
+      accessible={true}
+      onResponderGrant={[Function bound touchableHandleResponderGrant]}
+@@ -29,11 +33,11 @@
+        Array [
+          Object {
+            \\"display\\": \\"flex\\",
+            \\"flexDirection\\": \\"row\\",
+          },
+-         undefined,
++         false,
+        ]
+      }
+    >
+      <View
+        style={
+@@ -47,17 +51,39 @@
+              \\"borderWidth\\": 1,
+              \\"height\\": 20,
+              \\"justifyContent\\": \\"center\\",
+              \\"width\\": 20,
+            },
+-           undefined,
++           false,
+            false,
+            false,
+            false,
+          ]
+        }
+-     />
++     >
++       <Text
++         style={
++           Array [
++             Object {
++               \\"fontFamily\\": \\"orbit-icons\\",
++             },
++             Object {
++               \\"fontSize\\": 16,
++               \\"height\\": 16,
++               \\"lineHeight\\": 16,
++               \\"width\\": 16,
++             },
++             Object {
++               \\"color\\": \\"#00a991\\",
++             },
++             undefined,
++           ]
++         }
++       >
++         V
++       </Text>
++     </View>
+      <View
+        style={
+          Object {
+            \\"display\\": \\"flex\\",
+            \\"flex\\": 1,
+@@ -74,22 +100,28 @@
+                \\"fontFamily\\": \\"Roboto\\",
+                \\"fontSize\\": 14,
+                \\"fontWeight\\": \\"400\\",
+                \\"lineHeight\\": 20,
+              },
+-             undefined,
++             Object {
++               \\"fontWeight\\": \\"500\\",
++             },
+            ]
+          }
+-       />
++       >
++         Label
++       </Text>
+        <Text
+          style={
+            Object {
+              \\"color\\": \\"#7f91a8\\",
+              \\"fontFamily\\": \\"Roboto\\",
+              \\"fontSize\\": 12,
+              \\"lineHeight\\": 16,
+            }
+          }
+-       />
++       >
++         info
++       </Text>
+      </View>
+    </View>
+  </label>"
+`;
