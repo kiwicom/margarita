@@ -29,15 +29,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-  build-universal-components:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/margarita
-      - run: yarn workspace @kiwicom/universal-components build
-      - persist_to_workspace:
-          root: .
-          paths: .
   flow:
     <<: *defaults
     steps:
@@ -125,21 +116,15 @@ workflows:
   test-and-release:
     jobs:
       - install-dependencies
-      - build-universal-components:
-          requires:
-            - install-dependencies
       - lint:
           requires:
             - install-dependencies
-            - build-universal-components
       - flow:
           requires:
             - install-dependencies
-            - build-universal-components
       - unit-tests:
           requires:
             - install-dependencies
-            - build-universal-components
       - build-and-deploy-graphql:
           requires:
             - lint
