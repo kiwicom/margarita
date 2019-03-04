@@ -1,56 +1,44 @@
 // @flow
 
 import React from 'react';
-import { Heading, Text, Button } from '@kiwicom/orbit-components/lib/';
+import { Heading, Text } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 import { GITHUB_LINK, MARGARITA_LINK } from '@kiwicom/margarita-config';
 
 import { BREAKPOINTS } from '../../mediaQueriesConfig';
-import { withWindowSize } from '../withWindowSize';
+import ButtonInfo from './ButtonInfo';
 
-type Props = {|
-  +width: number,
-|};
-
-class GetStartedInfo extends React.Component<Props> {
-  render() {
-    const isTablet = this.props.width <= BREAKPOINTS.TABLET;
-    const buttonSize = isTablet ? 'large' : 'normal';
-    return (
-      <ContainerLeftText>
-        <Heading>Get started</Heading>
-        <WrapperText>
-          <Text size="large">
-            PLACEHOLDER!!!!!You've had a look at Tequila, but you've preffered
-            yourTequila Tequila mixed with something else. Just grab
-            Margarita.You've had a look at Tequila, but you've always preffered
-            your Tequila mixed with something else.
-          </Text>
-        </WrapperText>
-        <WrapperButtons>
-          <Button block={isTablet || false} size={buttonSize}>
-            <LinkWithoutStyle
-              href={MARGARITA_LINK}
-              color={defaultTokens.paletteWhite}
-            >
-              Get started
-            </LinkWithoutStyle>
-          </Button>
-          <WrapperRightButton>
-            <Button type="white" block={isTablet || false} size={buttonSize}>
-              <LinkWithoutStyle
-                href={GITHUB_LINK}
-                color={defaultTokens.colorTextButtonSecondary}
-              >
-                Link to Github
-              </LinkWithoutStyle>
-            </Button>
-          </WrapperRightButton>
-        </WrapperButtons>
-      </ContainerLeftText>
-    );
-  }
+export default function GetStartedInfo() {
+  return (
+    <ContainerLeftText>
+      <Heading>Get started</Heading>
+      <WrapperText>
+        <Text size="large">
+          PLACEHOLDER!!!!!You've had a look at Tequila, but you've preffered
+          yourTequila Tequila mixed with something else. Just grab
+          Margarita.You've had a look at Tequila, but you've always preffered
+          your Tequila mixed with something else.
+        </Text>
+      </WrapperText>
+      <WrapperButtons>
+        <ButtonInfo
+          type="primary"
+          link={MARGARITA_LINK}
+          color={defaultTokens.paletteWhite}
+          text="Get started"
+        />
+        <WrapperRightButton>
+          <ButtonInfo
+            type="white"
+            link={GITHUB_LINK}
+            color={defaultTokens.colorTextButtonSecondary}
+            text="Link to Github"
+          />
+        </WrapperRightButton>
+      </WrapperButtons>
+    </ContainerLeftText>
+  );
 }
 
 const ContainerLeftText = styled.div`
@@ -101,10 +89,3 @@ const WrapperRightButton = styled.div`
     margin: 0 0 0 1vw;
   }
 `;
-
-const LinkWithoutStyle = styled.a`
-  text-decoration: none;
-  color: ${props => props.color};
-`;
-
-export default withWindowSize<Props>(GetStartedInfo);

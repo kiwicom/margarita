@@ -11,20 +11,14 @@ import { BREAKPOINTS } from '../../mediaQueriesConfig';
 const bodyText =
   "You've had a look at Tequila, but you've always preffered your Tequila mixed with something else. Just grab a Margarita.";
 
-type Props = {|
-  +align: boolean,
-|};
-
-export default function Subtitle(props: Props) {
+export default function Subtitle() {
   return (
     <Container>
       <HeaderAndDesignWrapper>
         <BackgroundGradientAccent>
           <GreenRectangle />
         </BackgroundGradientAccent>
-        <TextHeadline align={props.align} type="title2">
-          {bodyText}
-        </TextHeadline>
+        <TextHeadline type="title2">{bodyText}</TextHeadline>
       </HeaderAndDesignWrapper>
       <Icons />
     </Container>
