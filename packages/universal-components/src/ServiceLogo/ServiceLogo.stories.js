@@ -4,7 +4,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, select, withKnobs } from '@storybook/addon-knobs';
 
-import ServiceLogo from './component';
+import { ServiceLogo } from '.';
 
 storiesOf('ServiceLogo', module)
   .addDecorator(withKnobs)
