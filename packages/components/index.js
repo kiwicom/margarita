@@ -58,3 +58,6 @@ export type {
   PassengerCardActionType,
 } from './src/passengerCard/PassengerCardTypes';
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
+export {
+  default as ContactDetailsForm,
+} from './src/contactDetailsForm/ContactDetailsForm';
