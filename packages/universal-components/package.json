@@ -68,6 +68,7 @@
     "@storybook/react": "^",
     "babel-preset-expo": "^",
     "react": "^",
+    "react-dom": "^",
     "react-native": "^",
     "react-native-testing-library": "^",
     "react-test-renderer": "^",

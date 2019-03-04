@@ -3,38 +3,64 @@
 import * as React from 'react';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import ReactDOM from 'react-dom';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './ModalTypes';
 
-const Modal = ({
-  children,
-  isVisible,
-  style,
-  backdropColor,
-  backdropOpacity,
-  onBackdropPress,
-}: Props) => {
-  if (!isVisible) {
-    return null;
+export default class Modal extends React.Component<Props> {
+  componentDidMount() {
+    if (!this.modalElement) {
+      this.modalElement = document.createElement('div');
+    }
+    if (document.body) {
+      document.body.appendChild(this.modalElement);
+      this.forceUpdate();
+    }
   }
 
-  const dynamicStyle = StyleSheet.create({
-    backdrop: {
-      opacity: backdropOpacity ?? 0.5,
-      backgroundColor: backdropColor ?? defaultTokens.paletteInkDark,
-    },
-  });
+  componentWillUnmount() {
+    if (this.modalElement && document.body) {
+      document.body.removeChild(this.modalElement);
+    }
+  }
 
-  return (
-    <View style={[styles.overlay, style]}>
-      <TouchableWithoutFeedback onPress={onBackdropPress} testID="backdrop">
-        <View style={[styles.backdrop, dynamicStyle.backdrop]} />
-      </TouchableWithoutFeedback>
-      {children}
-    </View>
-  );
-};
+  modalElement: ?HTMLDivElement = null;
+
+  render() {
+    const {
+      children,
+      isVisible,
+      style,
+      backdropColor,
+      backdropOpacity,
+      onBackdropPress,
+    } = this.props;
+    if (!isVisible) {
+      return null;
+    }
+
+    const dynamicStyle = StyleSheet.create({
+      backdrop: {
+        opacity: backdropOpacity ?? 0.5,
+        backgroundColor: backdropColor ?? defaultTokens.paletteInkDark,
+      },
+    });
+
+    if (this.modalElement) {
+      return ReactDOM.createPortal(
+        <View style={[styles.overlay, style]}>
+          <TouchableWithoutFeedback onPress={onBackdropPress} testID="backdrop">
+            <View style={[styles.backdrop, dynamicStyle.backdrop]} />
+          </TouchableWithoutFeedback>
+          {children}
+        </View>,
+        this.modalElement,
+      );
+    }
+    return null;
+  }
+}
 
 const styles = StyleSheet.create({
   overlay: {
@@ -51,11 +77,8 @@ const styles = StyleSheet.create({
     zIndex: parseInt(defaultTokens.zIndexModal, 10),
   },
   backdrop: {
-    web: {
-      position: 'fixed',
-    },
+    position: 'absolute',
     height: '100%',
     width: '100%',
   },
 });
-export default Modal;
