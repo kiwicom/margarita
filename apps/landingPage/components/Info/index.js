@@ -3,8 +3,8 @@
 import React from 'react';
 import { Heading, Text } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
+import { DOCUMENTATION_LINK, GITHUB_LINK } from '@kiwicom/margarita-config';
 
-import { documentation, github } from '../../../../../linksConfig';
 import { BREAKPOINTS } from '../../mediaQueriesConfig';
 import { withWindowSize } from '../withWindowSize';
 import Screenshots from './Screenshots';
@@ -37,7 +37,7 @@ class Info extends React.Component<Props> {
           </WrapperText>
           <ButtonLink
             alignment={buttonAlignment}
-            link={documentation}
+            link={DOCUMENTATION_LINK}
             text="Link to Docs"
           />
         </Header>
@@ -48,7 +48,7 @@ class Info extends React.Component<Props> {
             <Heading> Learn more, visit Github</Heading>
             <ButtonLink
               alignment={buttonAlignment}
-              link={github}
+              link={GITHUB_LINK}
               text="Link to Github"
             />
           </GithubButtonWrapper>

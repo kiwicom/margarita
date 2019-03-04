@@ -3,7 +3,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import airport from '../../images/airport.jpg';
 import { BREAKPOINTS } from '../../mediaQueriesConfig';
 import GetStartedInfo from './GetStartedInfo';
 import TextHeadline from './TextHeadline';
@@ -84,7 +83,7 @@ const ContainerBottom = styled.div`
 const PlaneImageMobile = styled.div`
   width: 94vw;
   height: 280px;
-  background-image: url(${airport});
+  background-image: url('/static/airport.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 90%;

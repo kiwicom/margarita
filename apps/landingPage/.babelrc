@@ -1,0 +1,15 @@
+{
+  "presets": [
+      "next/babel"
+  ],
+  "plugins": [
+    [
+      "styled-components",
+      {
+        "displayName": true,
+        "ssr": true,
+      }
+    ],
+      "transform-flow-strip-types",
+  ]
+}

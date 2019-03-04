@@ -7,6 +7,8 @@
 .next/
 apps/web/static/fonts/*
 apps/web/out/
+apps/landingPage/out/
+
 
 # node.js
 #
