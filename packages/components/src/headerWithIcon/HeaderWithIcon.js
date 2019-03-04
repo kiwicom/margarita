@@ -3,12 +3,13 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import {
-  Text,
   StyleSheet,
   Icon,
   type IconNameType,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
+import Text from '../text/Text';
 
 type Props = {|
   label: string,

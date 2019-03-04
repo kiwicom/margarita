@@ -2,13 +2,11 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
 import {
-  StyleSheet,
-  Card,
-  TextInput,
-  Picker,
-} from '@kiwicom/universal-components';
-import { HeaderWithIcon, PassengerCards } from '@kiwicom/margarita-components';
+  PassengerCards,
+  ContactDetailsForm,
+} from '@kiwicom/margarita-components';
 import {
   withNavigation,
   Routes,
@@ -81,17 +79,6 @@ class ResultDetail extends React.Component<Props, State> {
       },
     ];
 
-    const phoneCountryCodeData = [
-      {
-        label: '+420',
-        value: '+420',
-      },
-      {
-        label: '+421',
-        value: '+421',
-      },
-    ];
-
     return (
       <View style={styles.container}>
         <ScrollView>
@@ -100,39 +87,11 @@ class ResultDetail extends React.Component<Props, State> {
             onActionPress={this.handlePassengerEditPress}
             actionIconName="edit"
           />
-          <Card>
-            <HeaderWithIcon label="Contact details" iconName="contact-email" />
-            <View style={styles.line}>
-              <TextInput
-                onChangeText={this.handleChangeEmail}
-                label="E-mail"
-                type="email"
-                autoCorrect={false}
-              />
-            </View>
-            <View style={[styles.line, styles.row]}>
-              <View style={styles.countryCode}>
-                <Picker
-                  selectedValue={this.state.phoneCountryCode}
-                  optionsData={phoneCountryCodeData}
-                  onValueChange={this.handleChangePhoneCountryCode}
-                  placeholder="Select"
-                  confirmLabel="OK"
-                  label="Country code"
-                  iconName="show-more"
-                />
-              </View>
-
-              <View style={styles.phoneNumber}>
-                <TextInput
-                  onChangeText={this.handleChangeEmail}
-                  label="Phone number"
-                  autoCorrect={false}
-                  type="number"
-                />
-              </View>
-            </View>
-          </Card>
+          <ContactDetailsForm
+            onChangeEmail={this.handleChangeEmail}
+            onChangePhoneNumber={this.handleChangePhoneNumber}
+            onChangeCountryCode={this.handleChangePhoneCountryCode}
+          />
         </ScrollView>
       </View>
     );
@@ -143,19 +102,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: defaultTokens.backgroundBody,
-  },
-  line: {
-    marginTop: parseFloat(defaultTokens.spaceMedium),
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  countryCode: {
-    minWidth: 112,
-  },
-  phoneNumber: {
-    flex: 1,
-    marginLeft: parseFloat(defaultTokens.spaceSmall),
   },
 });
 
