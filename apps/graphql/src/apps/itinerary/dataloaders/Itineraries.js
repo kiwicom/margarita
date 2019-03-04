@@ -27,11 +27,14 @@ const parseDate = (date: Date) =>
   DateFNS.format(DateFNS.parse(stripTimeZoneOffset(date)), dateFormat);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
+  const flyFrom = input.travelFrom.join();
+  const flyTo = input.travelTo ? input.travelTo.join() : null;
+
   const params = {
-    flyFrom: input.travelFrom,
+    flyFrom,
     dateFrom: parseDate(input.dateFrom),
     dateTo: parseDate(input.dateFrom),
-    to: input.travelTo ?? 'BCN', // Currently crashes without this fallback, fix hardcoding later, see https://skypicker.slack.com/archives/C7J2QM28G/p1544189402006200?thread_ts=1544188700.004300&cid=C7J2QM28G
+    to: flyTo,
     ...(input.returnDateFrom && {
       returnFrom: parseDate(input.returnDateFrom),
     }),

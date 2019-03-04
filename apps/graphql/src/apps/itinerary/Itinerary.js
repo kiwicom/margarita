@@ -4,10 +4,10 @@ import type { Location } from '../location/Location';
 import type { RouteStop } from '../booking/Booking';
 
 export type ItinerariesSearchParameters = {|
-  +travelFrom: string,
+  +travelFrom: string[],
   +dateFrom: Date,
   +dateTo?: Date,
-  +travelTo?: string,
+  +travelTo?: string[],
   +returnDateFrom?: Date,
   +returnDateTo?: Date,
   +passengers?: {|

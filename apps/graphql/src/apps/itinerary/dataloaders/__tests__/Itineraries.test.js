@@ -3,8 +3,8 @@
 import { parseParameters } from '../Itineraries';
 
 const searchParams = {
-  travelFrom: 'OSL',
-  travelTo: 'PRG',
+  travelFrom: ['OSL'],
+  travelTo: ['PRG'],
   dateFrom: new Date('2018-01-01'),
 };
 

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b328631032734f4ee179254ac2ac9402
+ * @relayHash a033142d325703616774bcec47bd49f0
  */
 
 /* eslint-disable */
@@ -11,8 +11,8 @@
 import type { ConcreteRequest } from 'relay-runtime';
 type ResultsList_data$ref = any;
 export type ItinerariesSearchInput = {|
-  travelFrom: string,
-  travelTo?: ?string,
+  travelFrom: $ReadOnlyArray<?string>,
+  travelTo?: ?$ReadOnlyArray<?string>,
   dateFrom: any,
   dateTo?: ?any,
   returnDateFrom?: ?any,
