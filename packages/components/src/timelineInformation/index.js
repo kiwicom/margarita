@@ -1,4 +1,4 @@
-// @flow srict
+// @flow strict
 
 export { default as TimelineInformation } from './TimelineInformation';
 export { default as TimelineDate } from './TimelineDate';

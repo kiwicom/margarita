@@ -1608,7 +1608,7 @@
     react-inspector "^2.3.0"
     uuid "^3.3.2"
 
-"@storybook/addon-actions@^4.1.13":
+"@storybook/addon-actions@^4.0.7", "@storybook/addon-actions@^4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-4.1.13.tgz#b7d5ad772e0499f9989db6d11987426fe8ea90f6"
   integrity sha512-X3S0V2jhHptltb/rmAJ+rABzoPT/vOoC0dUE/7E37objh+s6apg4mqxkmN6IbrS/J7nUPrEF24OGLNHGZXGNpQ==

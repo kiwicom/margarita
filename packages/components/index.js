@@ -10,6 +10,7 @@ export { default as Select } from './src/select/Select';
 export { default as Modal } from './src/modal/Modal';
 export { default as TripTypeButton } from './src/tripTypeButton/TripTypeButton';
 export { default as TripTypeSwitch } from './src/tripTypeSwitch/TripTypeSwitch';
+export { default as ExtendedTouchable } from './src/ExtendedTouchable';
 export {
   default as PassengersButton,
 } from './src/passengersButton/PassengersButton';
@@ -47,6 +48,8 @@ export {
   withAlertContext,
 } from './src/alert/AlertContext';
 export { default as VisaInfo } from './src/visaInfo/VisaInfo';
+export { default as TableRow } from './src/table/TableRow';
+export { default as TableRowDivider } from './src/table/TableRowDivider';
 
 // types
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
