@@ -3,9 +3,8 @@
 import React from 'react';
 import { Heading } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
+import { GITHUB_LINK, CODE_KIWI_LINK } from '@kiwicom/margarita-config';
 
-import logo from '../images/logo.png';
-import { github, codeKiwi } from '../../../../linksConfig';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
 const linksHeader = [
@@ -13,15 +12,15 @@ const linksHeader = [
   { title: 'Playground', link: '#playground' },
   {
     title: 'GitHub',
-    link: github,
+    link: GITHUB_LINK,
   },
 ];
 
 export default function Header() {
   return (
     <HeaderContainer>
-      <a href={codeKiwi}>
-        <Logo src={logo} alt="Logo" />
+      <a href={CODE_KIWI_LINK}>
+        <Logo src="/static/logo.png" alt="Logo" />
       </a>
       <HeaderRight>
         {linksHeader.map(el => (

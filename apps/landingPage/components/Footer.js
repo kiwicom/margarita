@@ -10,32 +10,31 @@ import {
 } from '@kiwicom/orbit-components/lib/icons/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
+import {
+  CODE_KIWI_INSTAGRAM_LINK,
+  CODE_KIWI_TWITTER_LINK,
+  KIWI_LINKEDIN_LINK,
+  CODE_KIWI_FACEBOOK_LINK,
+  CODE_KIWI_LINK,
+} from '@kiwicom/margarita-config';
 
 import { BREAKPOINTS } from '../mediaQueriesConfig';
-import logo from '../images/logo.png';
-import {
-  codeKiwiInstagram,
-  codeKiwiTwitter,
-  kiwiLinkedIn,
-  codeKiwiFacebook,
-  codeKiwi,
-} from '../../../../linksConfig';
 
 const icons = [
   {
-    url: codeKiwiInstagram,
+    url: CODE_KIWI_INSTAGRAM_LINK,
     icon: <Instagram customColor={defaultTokens.colorIconTertiary} />,
   },
   {
-    url: codeKiwiTwitter,
+    url: CODE_KIWI_TWITTER_LINK,
     icon: <Twitter customColor={defaultTokens.colorIconTertiary} />,
   },
   {
-    url: kiwiLinkedIn,
+    url: KIWI_LINKEDIN_LINK,
     icon: <Linkedin customColor={defaultTokens.colorIconTertiary} />,
   },
   {
-    url: codeKiwiFacebook,
+    url: CODE_KIWI_FACEBOOK_LINK,
     icon: <Facebook customColor={defaultTokens.colorIconTertiary} />,
   },
 ];
@@ -46,8 +45,8 @@ export default function Footer() {
       <Separator />
       <FooterContainer>
         <FooterLeftContainer>
-          <a href={codeKiwi}>
-            <Logo src={logo} alt="Logo" />
+          <a href={CODE_KIWI_LINK}>
+            <Logo src="/static/logo.png" alt="Logo" />
           </a>
         </FooterLeftContainer>
         <FooterRightContainer>

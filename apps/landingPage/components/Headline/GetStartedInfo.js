@@ -4,8 +4,8 @@ import React from 'react';
 import { Heading, Text, Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
+import { GITHUB_LINK, MARGARITA_LINK } from '@kiwicom/margarita-config';
 
-import { github, margarita } from '../../../../../linksConfig';
 import { BREAKPOINTS } from '../../mediaQueriesConfig';
 import { withWindowSize } from '../withWindowSize';
 
@@ -31,7 +31,7 @@ class GetStartedInfo extends React.Component<Props> {
         <WrapperButtons>
           <Button block={isTablet || false} size={buttonSize}>
             <LinkWithoutStyle
-              href={margarita}
+              href={MARGARITA_LINK}
               color={defaultTokens.paletteWhite}
             >
               Get started
@@ -40,7 +40,7 @@ class GetStartedInfo extends React.Component<Props> {
           <WrapperRightButton>
             <Button type="white" block={isTablet || false} size={buttonSize}>
               <LinkWithoutStyle
-                href={github}
+                href={GITHUB_LINK}
                 color={defaultTokens.colorTextButtonSecondary}
               >
                 Link to Github

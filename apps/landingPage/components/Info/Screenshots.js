@@ -4,9 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import booking from '../../images/bookings.png';
-import results from '../../images/results.png';
-import search from '../../images/search.png';
 import { BREAKPOINTS } from '../../mediaQueriesConfig';
 
 const phoneImageHeight = {
@@ -19,9 +16,9 @@ export default function Screenshots() {
     <ImagesAndGradientWrapper>
       <BackgroundGradientAccent />
       <Phones>
-        <PhoneImage src={search} alt="Search" />
-        <PhoneImage src={results} alt="Results" />
-        <PhoneImage src={booking} alt="Booking" />
+        <PhoneImage src="/static/bookings.png" alt="Search" />
+        <PhoneImage src="/static/results.png" alt="Results" />
+        <PhoneImage src="/static/search.png" alt="Booking" />
       </Phones>
     </ImagesAndGradientWrapper>
   );

@@ -4,20 +4,20 @@ import React from 'react';
 import { Heading, Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
-
 import {
-  github,
-  tequila,
-  documentation,
-  codeKiwi,
-} from '../../../../linksConfig';
+  GITHUB_LINK,
+  TEQUILA_LINK,
+  DOCUMENTATION_LINK,
+  CODE_KIWI_LINK,
+} from '@kiwicom/margarita-config';
+
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
 const links = [
-  { title: 'GitHub', link: github },
-  { title: 'Tequila', link: tequila },
-  { title: 'Documentation', link: documentation },
-  { title: 'Code.kiwi.com', link: codeKiwi },
+  { title: 'GitHub', link: GITHUB_LINK },
+  { title: 'Tequila', link: TEQUILA_LINK },
+  { title: 'Documentation', link: DOCUMENTATION_LINK },
+  { title: 'Code.kiwi.com', link: CODE_KIWI_LINK },
 ];
 
 export default function Demo() {
