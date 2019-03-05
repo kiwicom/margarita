@@ -1,81 +1,77 @@
-# Contributing Guidelines
+---
+title: Contributing guidelines - universal-components
+sidebar_label: Contributing
+---
 
 _Note: These guidelines assume you have an existing React Native setup on your machine and that your simulator/emulator is properly functionning. If not, have a look at [Getting Started • React Native](https://facebook.github.io/react-native/docs/getting-started.html), and go to "Building Projects with Native Code"._
+
+## Storybook
 
 To run the storybook and start developing, clone the repository
 
 ```bash
-git clone https://github.com/kiwicom/universal-components.git
+git clone https://github.com/kiwicom/margarita.git
 ```
 
 and enter the directory to install the node modules:
 
 ```bash
-cd universal-components
+cd margarita
 yarn
 ```
 
-## Desktop
+### Desktop
 
 If you want to see the web version, run
 
 ```bash
-yarn storybook
+yarn storybook:web:universal-components
 ```
 
 and you should go to <http://localhost:9009> to see
 
-![](../../docs/assets/storybook-web.png)
+![](../../assets/storybook-web.png)
 
-## Mobile
+### Mobile
 
-After running `yarn`, you also need to link assets using:
-
-```bash
-react-native link
-```
-
-### iOS
-
-To run the storybook on iOS, execute
+If you want to see the mobile version, run
 
 ```bash
-yarn ios
+yarn storybook:mobile:universal-components
 ```
 
-to see ![](../../docs/assets/storybook-ios.png)
+Open Expo on your device/simulator and use the QR code or URL provided to access the Storybook.
 
-### Android
+#### Easier navigation
 
-To run the storybook on Android, execute
+Although it is possible to navigate using the menu inside the mobile Storybook, there is a navigator inside the browser available at <http://localhost:7007> after you run
 
 ```bash
-yarn android
+yarn storybook:mobile:universal-components
 ```
 
-### Easier navigation
-
-Although it is possible to navigate using the menu inside the mobile storybook, there is a navigator inside the browser available at <http://localhost:7007> after you run
-
-```bash
-yarn storybook-native
-```
-
-You should see something similar to ![](../../docs/assets/storybook-native.png)
+You should see something similar to ![](../../assets/storybook-native.png)
 
 and it is then easier to test the interactions with the action logger, and play with the knobs inside the Playground.
 
 ## Troubleshooting
 
 - **I added `MyComponent.stories.js` and it is not available on iOS or Android in the storybook, but I can see it on the web version.**<br>
-  This is sometimes due to the fact that `react-native-story-loader` did not run. To fix it, execute
+  This is sometimes due to the fact that `react-native-story-loader` did not run. Kill the running process by pressing <kbd>CTRL</kbd>+<kbd>C</kbd> and run the Storybook again:
 
   ```bash
-  yarn rnstl
+  yarn storybook:mobile:universal-components
   ```
 
 - **I started the web UI for the mobile storybook but no stories are displayed.**<br>
-  Make sure that the packager is running (`yarn ios` or `yarn android`), and refresh the application by pressing `CMD+R` on iOS or by pressing `R` twice on `Android`.
+  Make sure that the packager is running (`yarn storybook:mobile:universal-components`), and refresh the application by pressing <kbd>CMD</kbd>+<kbd>R</kbd> on iOS or by pressing <kbd>R</kbd> twice on `Android`.
+
+- **I modified some components in `packages/universal-components` but they are not updated in Margarita.**<br>
+  This is because the files which are resolved when importing anything from `@kiwicom/universal-components` come from `packages/universal-components/lib`. Run
+  ```bash
+  yarn workspace @kiwicom/universal-components build
+  ```
+  to create a new `lib` folder with your latest changes.
 
 ## Before submitting a PR: a checklist
 
@@ -86,7 +82,7 @@ and it is then easier to test the interactions with the action logger, and play 
 - I chose a descriptive message for all my commit messages ([check commit message convention](#commit-message-convention));
 - I created my PR and added reviewers.
 
-### Commit message convention
+## Commit message convention
 
 - Commit message should contain also proper description, once you open a PR it will be added automatically to PR description.
 
@@ -100,13 +96,13 @@ and it is then easier to test the interactions with the action logger, and play 
   - `Chore`: tooling changes, e.g. change circle ci config.
   - `BREAKING`: for changes that break existing usage, e.g. change API of a component.
 
-**To make this easier**, please run the following command:
+**To make this easier**, assuming you are at the root of `margarita` monorepo, please run the following command:
 
 ```bash
-git config --local commit.template docs/commit-template.txt
+git config --local commit.template commit-template.txt
 ```
 
-This will pre-fill your commit message with a [template](docs/commit-template.txt) whenever you run `git commit`, reminding you to follow the convention and to add a summary.
+This will pre-fill your commit message with a [template](../../../commit-template.txt) whenever you run `git commit`, reminding you to follow the convention and to add a summary.
 
 ## Updating Icons
 

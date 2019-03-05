@@ -3,27 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "start": "next -p 1337",
-    "build": "next build",
-    "export": "next export",
-    "deploy": "next build && next export"
-  },
-  "dependencies": {
-    "@mdx-js/mdx": "^0.18.2",
-    "mdx-docs": "^2.0.0-alpha.0",
-    "remark-autolink-headings": "^5.1.0",
-    "remark-emoji": "^2.0.2",
-    "remark-images": "^0.18.0",
-    "remark-slug": "^5.1.1",
-    "remark-unwrap-images": "^0.1.0"
+    "start": "docusaurus-start --port 1337",
+    "build": "docusaurus-build",
+    "publish-gh-pages": "docusaurus-publish",
+    "deploy": "yarn build; yarn publish-gh-pages",
+    "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^0.17.5"
+    "docusaurus": "^1.7.2"
   },
-  "peerDependencies": {
-    "next": ">= 7",
-    "next-images": ">=1",
-    "react": ">=16",
-    "react-dom": ">=16"
+  "dependencies": {
+    "react": "^16.8.3"
   }
 }
