@@ -24,8 +24,8 @@ import { MODAL_TYPE } from './SearchConstants';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|
-  +travelFrom: ?Location,
-  +travelTo: ?Location,
+  +travelFrom: ?Array<Location>,
+  +travelTo: ?Array<Location>,
   +handlePlaceSwitchPress: () => void,
   +setModalType: ModalTypes => void,
   +layout: number,
@@ -40,9 +40,23 @@ class Placepickers extends React.Component<Props> {
     this.props.setModalType(MODAL_TYPE.DESTINATION);
   };
 
+  getLocationsNames = (locations: ?Array<Location>) => {
+    if (Array.isArray(locations)) {
+      return locations.reduce((acc, location, index) => {
+        if (location.name) {
+          const prefix = index > 0 ? ',' : '';
+          return `${acc}${prefix} ${location.name}`;
+        }
+        return acc;
+      }, '');
+    }
+    return '';
+  };
+
   render() {
     const { layout, travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
+
     return (
       <PickersWrapper layout={layout}>
         <TripInput
@@ -50,7 +64,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleFromPress}
           label="From"
           icon={<Icon name="airplane-takeoff" />}
-          value={travelFrom?.name ?? ''}
+          value={this.getLocationsNames(travelFrom)}
         />
         <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
           <View
@@ -63,7 +77,7 @@ class Placepickers extends React.Component<Props> {
           onPress={this.handleToPress}
           label="To"
           icon={<Icon name="airplane-landing" />}
-          value={travelTo?.name ?? ''}
+          value={this.getLocationsNames(travelTo)}
         />
       </PickersWrapper>
     );

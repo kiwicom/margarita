@@ -25,10 +25,12 @@ export type Location = {|
   +type: ?string,
 |};
 
+export type LocationSearchType = 'travelTo' | 'travelFrom';
+
 type State = {|
   tripType: TripTypes,
-  travelFrom: ?Location,
-  travelTo: ?Location,
+  travelFrom: Array<Location>,
+  travelTo: Array<Location>,
   dateFrom: Date,
   dateTo: Date,
   returnDateFrom: Date,
@@ -42,8 +44,9 @@ type State = {|
     +setTripType: TripTypes => void,
     +setModalType: ModalTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
-    +setTravelFrom: Location => void,
-    +setTravelTo: Location => void,
+    +clearLocation: LocationSearchType => void,
+    +addLocation: (type: LocationSearchType, location: Location) => void,
+    +setLocation: (type: LocationSearchType, location: Location) => void,
   },
 |};
 
@@ -52,18 +55,22 @@ const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
 
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
 const defaultPlaces = {
-  origin: {
-    id: 'TG9jYXRpb246cHJhZ3VlX2N6',
-    locationId: 'prague_cz',
-    name: 'Prague',
-    type: 'destination',
-  },
-  departure: {
-    id: 'TG9jYXRpb246b3Nsb19ubw==',
-    locationId: 'oslo_no',
-    name: 'Oslo',
-    type: 'destination',
-  },
+  origin: [
+    {
+      id: 'TG9jYXRpb246cHJhZ3VlX2N6',
+      locationId: 'prague_cz',
+      name: 'Prague',
+      type: 'destination',
+    },
+  ],
+  departure: [
+    {
+      id: 'TG9jYXRpb246b3Nsb19ubw==',
+      locationId: 'oslo_no',
+      name: 'Oslo',
+      type: 'destination',
+    },
+  ],
 };
 
 const defaultState = {
@@ -85,8 +92,9 @@ const defaultState = {
     setTripType: noop,
     setModalType: noop,
     setPassengerData: noop,
-    setTravelFrom: noop,
-    setTravelTo: noop,
+    setLocation: noop,
+    clearLocation: noop,
+    addLocation: noop,
   },
 };
 
@@ -96,8 +104,8 @@ export default class SearchContextProvider extends React.Component<
   Props,
   State,
 > {
-  constructor() {
-    super();
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
       ...defaultState,
@@ -108,8 +116,9 @@ export default class SearchContextProvider extends React.Component<
         setTripType: this.setTripType,
         setModalType: this.setModalType,
         setPassengerData: this.setPassengerData,
-        setTravelFrom: this.setTravelFrom,
-        setTravelTo: this.setTravelTo,
+        clearLocation: this.clearLocation,
+        addLocation: this.addLocation,
+        setLocation: this.setLocation,
       },
     };
   }
@@ -137,12 +146,18 @@ export default class SearchContextProvider extends React.Component<
     });
   };
 
-  setTravelFrom = (location: Location) => {
-    this.setState({ travelFrom: location });
+  clearLocation = (locationType: LocationSearchType) => {
+    this.setState({ [locationType]: [] });
   };
 
-  setTravelTo = (location: Location) => {
-    this.setState({ travelTo: location });
+  addLocation = (locationType: LocationSearchType, location: Location) => {
+    this.setState(({ [locationType]: selectedLocations }) => ({
+      [locationType]: [...selectedLocations, location],
+    }));
+  };
+
+  setLocation = (locationType: LocationSearchType, location: Location) => {
+    this.setState({ [locationType]: [location] });
   };
 
   setReturnDate = (date: Date) => {

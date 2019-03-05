@@ -54,6 +54,16 @@ class Search extends React.Component<Props> {
     header: null,
   };
 
+  convertLocationsToParams = (locations, field) => {
+    if (Array.isArray(locations)) {
+      return locations.reduce((acc, location, index) => {
+        const prefix = index > 0 ? ',' : '';
+        return `${acc}${prefix}${location[field]}`;
+      }, '');
+    }
+    return '';
+  };
+
   handleSubmitPress = () => {
     const {
       travelFrom,
@@ -70,10 +80,10 @@ class Search extends React.Component<Props> {
       });
     } else {
       this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: travelFrom.locationId,
-        travelTo: travelTo?.locationId,
-        travelFromName: travelFrom.name,
-        travelToName: travelTo?.name,
+        travelFrom: this.convertLocationsToParams(travelFrom, 'locationId'),
+        travelTo: this.convertLocationsToParams(travelTo, 'locationId'),
+        travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
+        travelToName: this.convertLocationsToParams(travelTo, 'name'),
         dateFrom: format(dateFrom, DATE_FORMAT),
         dateTo: format(dateTo, DATE_FORMAT),
         ...(tripType === 'return'
