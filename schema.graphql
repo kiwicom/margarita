@@ -189,8 +189,8 @@ interface FromToInterface {
 }
 
 input ItinerariesSearchInput {
-  travelFrom: String!
-  travelTo: String
+  travelFrom: [String]!
+  travelTo: [String]
 
   """Search itineraries from this date"""
   dateFrom: Date!

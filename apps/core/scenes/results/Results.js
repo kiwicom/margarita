@@ -66,8 +66,8 @@ export default class Results extends React.Component<Props> {
           `}
           variables={{
             input: {
-              travelFrom,
-              travelTo,
+              travelFrom: [travelFrom],
+              travelTo: [travelTo],
               dateFrom,
               dateTo,
               returnDateFrom,

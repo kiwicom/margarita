@@ -1,6 +1,11 @@
 // @flow
 
-import { GraphQLInputObjectType, GraphQLNonNull, GraphQLString } from 'graphql';
+import {
+  GraphQLInputObjectType,
+  GraphQLNonNull,
+  GraphQLString,
+  GraphQLList,
+} from 'graphql';
 import { GraphQLDate } from 'graphql-iso-date';
 
 import PassengersInput from './PassengersInput';
@@ -9,10 +14,12 @@ export default new GraphQLInputObjectType({
   name: 'ItinerariesSearchInput',
   fields: {
     travelFrom: {
-      type: GraphQLNonNull(GraphQLString),
+      description: 'Locations IDs for travel from (origin)',
+      type: GraphQLNonNull(GraphQLList(GraphQLString)),
     },
     travelTo: {
-      type: GraphQLString,
+      description: 'Locations IDs for travel to (destination)',
+      type: GraphQLList(GraphQLString),
     },
     dateFrom: {
       type: GraphQLNonNull(GraphQLDate),
