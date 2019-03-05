@@ -1403,31 +1403,14 @@
   dependencies:
     "@kiwicom/js" "^0.3.0"
 
-"@mdx-js/loader@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.17.5.tgz#26ce463142acaf66c9a286f2e794b04a510a4488"
-  integrity sha512-y74/IVGpB2alXd3kkF/GgNqJAZjBnY/kgFTSqA3rTQlzjpsSb5VJxWp4wvHpJupYvbCr/0TnxXgkY2gYGsBWGA==
+"@mdx-js/loader@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@mdx-js/loader/-/loader-0.20.1.tgz#b12ca9ce999ce3da9bdaaf0323597dadfba1cdf3"
+  integrity sha512-6Zah6r8duqFQUHMHbd5CKZgH0PvTCoGj9YFKHWbaoB3/Ky8gwxdu1Pd3BEne0IW10WkF7zv+yVSsr1PwjHKFGw==
   dependencies:
-    "@mdx-js/mdx" "^0.17.5"
-    "@mdx-js/tag" "^0.17.5"
+    "@mdx-js/mdx" "^0.20.1"
+    "@mdx-js/tag" "^0.18.0"
     loader-utils "^1.1.0"
-
-"@mdx-js/mdx@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.17.5.tgz#0c760562e9ad66458c40c78c09cdeea768d5e073"
-  integrity sha512-GVJCWbgVonPelL74Ec/uNyUzH0DGce6ob50L8gySCKQmgIvPvYYd0PflalhxVwMfmaQdcalDAzUVsUR7P2l/3w==
-  dependencies:
-    "@babel/plugin-proposal-object-rest-spread" "^7.3.2"
-    "@babel/plugin-syntax-jsx" "^7.2.0"
-    change-case "^3.0.2"
-    detab "^2.0.0"
-    mdast-util-to-hast "^4.0.0"
-    remark-parse "^6.0.0"
-    remark-squeeze-paragraphs "^3.0.1"
-    to-style "^1.3.3"
-    unified "^7.0.0"
-    unist-builder "^1.0.1"
-    unist-util-visit "^1.3.0"
 
 "@mdx-js/mdx@^0.18.2":
   version "0.18.2"
@@ -1446,6 +1429,24 @@
     unist-builder "^1.0.1"
     unist-util-visit "^1.3.0"
 
+"@mdx-js/mdx@^0.20.1":
+  version "0.20.1"
+  resolved "https://registry.yarnpkg.com/@mdx-js/mdx/-/mdx-0.20.1.tgz#f6a7378769766fa8b5ba561b93203ceb666932f8"
+  integrity sha512-CFyxXPck4ewrOTRBmZoh4mpKILC1H1GOCH2Vx/lpQzbC2Y4nm3PVD0RCpKscUkwzIULAqnu+6BnlgfKX8aZ2RA==
+  dependencies:
+    "@babel/plugin-proposal-object-rest-spread" "^7.3.2"
+    "@babel/plugin-syntax-jsx" "^7.2.0"
+    change-case "^3.0.2"
+    detab "^2.0.0"
+    hast-util-raw "^5.0.0"
+    mdast-util-to-hast "^4.0.0"
+    remark-parse "^6.0.0"
+    remark-squeeze-paragraphs "^3.0.1"
+    to-style "^1.3.3"
+    unified "^7.0.0"
+    unist-builder "^1.0.1"
+    unist-util-visit "^1.3.0"
+
 "@mdx-js/tag@^0.15.0":
   version "0.15.6"
   resolved "https://registry.yarnpkg.com/@mdx-js/tag/-/tag-0.15.6.tgz#1a0aa575d5c9ac2b082631ca3e733034272114c1"
@@ -1455,10 +1456,10 @@
     hoist-non-react-statics "^2.5.5"
     prop-types "^15.6.1"
 
-"@mdx-js/tag@^0.17.5":
-  version "0.17.5"
-  resolved "https://registry.yarnpkg.com/@mdx-js/tag/-/tag-0.17.5.tgz#7eef984a9433776f2fc5ca0352fac523d28e43f0"
-  integrity sha512-Qjfo9nkFY7qAN1DkAx7oKPZ3xLWSNtVJ22+m58FxYLfVzCXlElj0OXka4lC6ERPnW40q8v5rmJKJfqnI8mKr8g==
+"@mdx-js/tag@^0.18.0":
+  version "0.18.0"
+  resolved "https://registry.yarnpkg.com/@mdx-js/tag/-/tag-0.18.0.tgz#386d687deaed7133699a420d74612acdd1ed1c26"
+  integrity sha512-3g1NOnbw+sJZohNOEN9NlaYYDdzq1y34S7PDimSn3zLV8etCu7pTCMFbnFHMSe6mMmm4yJ1gfbS3QiE7t+WMGA==
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1588,26 +1589,6 @@
   resolved "https://registry.yarnpkg.com/@sindresorhus/is/-/is-0.14.0.tgz#9fb3a3cf3132328151f353de4632e01e52102bea"
   integrity sha512-9NET910DNaIPngYnLLPeg+Ogzqsi9uM4mSboU5y6p8S5DzMTVEsJZrawi+BoDNUVBa2DhJqQYUFvMDfgU062LQ==
 
-"@storybook/addon-actions@^4.0.7":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-4.1.12.tgz#12dcbbe92b7c77763940df4d5413d716af1e5109"
-  integrity sha512-qsv4WLzdRth0JnDfGJkhvtrTMjpmhDJyuTYz+6l1jlHRcsjwR6fiy1QeFdArX2rgzdxA5bu6fu68gOBi8GmJxg==
-  dependencies:
-    "@emotion/core" "^0.13.1"
-    "@emotion/provider" "^0.11.2"
-    "@emotion/styled" "^0.10.6"
-    "@storybook/addons" "4.1.12"
-    "@storybook/components" "4.1.12"
-    "@storybook/core-events" "4.1.12"
-    core-js "^2.5.7"
-    deep-equal "^1.0.1"
-    global "^4.3.2"
-    lodash "^4.17.11"
-    make-error "^1.3.5"
-    prop-types "^15.6.2"
-    react-inspector "^2.3.0"
-    uuid "^3.3.2"
-
 "@storybook/addon-actions@^4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-4.1.13.tgz#b7d5ad772e0499f9989db6d11987426fe8ea90f6"
@@ -1674,16 +1655,6 @@
     react-native-modal-selector "^1.0.2"
     react-native-switch "^1.5.0"
 
-"@storybook/addons@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.12.tgz#ab38bfd0be97ed02a7d43d97cc631fa4c3a6f3a2"
-  integrity sha512-W2+bM65LiPWTy22X+B5nVuUs3Eiy0wWY/97AA9mTkDY7lq2/NAeOUQNEoqaRPU9hUE7XFn/ngd+p39+CUSP1zw==
-  dependencies:
-    "@storybook/channels" "4.1.12"
-    "@storybook/components" "4.1.12"
-    global "^4.3.2"
-    util-deprecate "^1.0.2"
-
 "@storybook/addons@4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/addons/-/addons-4.1.13.tgz#801cbb6bf7f7b4d494ae20df43b4b8c406b32e19"
@@ -1711,11 +1682,6 @@
     "@storybook/channels" "4.1.13"
     global "^4.3.2"
 
-"@storybook/channels@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-4.1.12.tgz#656161e48467c0fef0dedce1ab21972d2eb7fa27"
-  integrity sha512-vep5vOmZ3K9/usIGc82tld5af6lQdIpzXGp1VlQ4lG69j09UxO+1H3gQn6dSFEm+9D4hqjp8wj0ZO10N4/xb/w==
-
 "@storybook/channels@4.1.13":
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/channels/-/channels-4.1.13.tgz#4b58d1f17916e6ba1ee633f0c014edb5b7b26b17"
@@ -1725,22 +1691,6 @@
   version "4.1.13"
   resolved "https://registry.yarnpkg.com/@storybook/client-logger/-/client-logger-4.1.13.tgz#32cf35913fdadd246d7e8e30f2cf81e466b24027"
   integrity sha512-L2lPvioMKmPfsLoNJ5NlSVhqpAK8Y3ngnzy+haXQItLsKwu7D+N41i5IAFlEzDzMBaWj/0wKrgMK0QTZWXJIjA==
-
-"@storybook/components@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/components/-/components-4.1.12.tgz#c497167562907ce2adb31b275b60109c9f3269da"
-  integrity sha512-3s+zvzaUXjsAIFimKFmCUsKUEtQAAZwsNQc501IOE61A+g7LQypM7UWBhlzwaPh33L1Z34WQrEP991ThF9tXUw==
-  dependencies:
-    "@emotion/core" "^0.13.1"
-    "@emotion/provider" "^0.11.2"
-    "@emotion/styled" "^0.10.6"
-    global "^4.3.2"
-    lodash "^4.17.11"
-    prop-types "^15.6.2"
-    react-inspector "^2.3.0"
-    react-split-pane "^0.1.84"
-    react-textarea-autosize "^7.0.4"
-    render-fragment "^0.1.1"
 
 "@storybook/components@4.1.13":
   version "4.1.13"
@@ -1757,11 +1707,6 @@
     react-split-pane "^0.1.84"
     react-textarea-autosize "^7.0.4"
     render-fragment "^0.1.1"
-
-"@storybook/core-events@4.1.12":
-  version "4.1.12"
-  resolved "https://registry.yarnpkg.com/@storybook/core-events/-/core-events-4.1.12.tgz#1a861c1c450f076c146f6cc3c8a4ccd0d4dc0d35"
-  integrity sha512-NrZ5k2tsS8Cil99E2M4wzOdkTaxkK0NvicwEPoTcz0utyWrF4T7fThE3qoGBoVTZ+6quWazRFvsvO9MhEnMYnw==
 
 "@storybook/core-events@4.1.13":
   version "4.1.13"
@@ -5996,6 +5941,16 @@ css-what@2.1, css-what@^2.1.2:
   resolved "https://registry.yarnpkg.com/css-what/-/css-what-2.1.3.tgz#a6d7604573365fe74686c3f311c56513d88285f2"
   integrity sha512-a+EPoD+uZiNfh+5fxw2nO9QwFa6nJe2Or35fGY6Ipw1R3R4AGz1d1TEZrCegvw2YTmZ0jXirGYlzxxpYSHwpEg==
 
+css@2.2.4:
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/css/-/css-2.2.4.tgz#c646755c73971f2bba6a601e2cf2fd71b1298929"
+  integrity sha512-oUnjmWpy0niI3x/mPL8dVEI1l7MnG3+HHyRPHf+YFSbK+svOhXpmSOcDURUh2aOCgl2grzrOPt1nHLuCVFULLw==
+  dependencies:
+    inherits "^2.0.3"
+    source-map "^0.6.1"
+    source-map-resolve "^0.5.2"
+    urix "^0.1.0"
+
 cssesc@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-0.1.0.tgz#c814903e45623371a0477b40109aaafbeeaddbb4"
@@ -8828,6 +8783,18 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
+hast-to-hyperscript@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/hast-to-hyperscript/-/hast-to-hyperscript-6.0.0.tgz#051ee17d41b30da8c5ceb001189adf70226f12f4"
+  integrity sha512-QnJbXddVGNJ5v3KegK1MY6luTkNDBcJnCQZcekt7AkES2z4tYy85pbFUXx7Mb0iXZBKfwoVdgfxU12GbmlwbbQ==
+  dependencies:
+    comma-separated-tokens "^1.0.0"
+    property-information "^5.0.0"
+    space-separated-tokens "^1.0.0"
+    style-to-object "^0.2.1"
+    unist-util-is "^2.0.0"
+    web-namespaces "^1.1.2"
+
 hast-util-from-parse5@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/hast-util-from-parse5/-/hast-util-from-parse5-5.0.0.tgz#a505a05766e0f96e389bfb0b1dd809eeefcef47b"
@@ -8843,6 +8810,31 @@ hast-util-parse-selector@^2.2.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/hast-util-parse-selector/-/hast-util-parse-selector-2.2.1.tgz#4ddbae1ae12c124e3eb91b581d2556441766f0ab"
   integrity sha512-Xyh0v+nHmQvrOqop2Jqd8gOdyQtE8sIP9IQf7mlVDqp924W4w/8Liuguk2L2qei9hARnQSG2m+wAOCxM7npJVw==
+
+hast-util-raw@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-raw/-/hast-util-raw-5.0.0.tgz#7a7186faba220120349c2f373b839c1fa9090b5f"
+  integrity sha512-X8sogDDaCkqj+Ghia0+TRD2AQDXeNRpYDTm9Z2mJ1Pzy/Nb4p20YJVfbPwIRU0U7XXU0GrhPhEMZvnfV69/igA==
+  dependencies:
+    hast-util-from-parse5 "^5.0.0"
+    hast-util-to-parse5 "^5.0.0"
+    html-void-elements "^1.0.1"
+    parse5 "^5.0.0"
+    unist-util-position "^3.0.0"
+    web-namespaces "^1.0.0"
+    xtend "^4.0.1"
+    zwitch "^1.0.0"
+
+hast-util-to-parse5@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/hast-util-to-parse5/-/hast-util-to-parse5-5.0.0.tgz#1041df0d57e60210bd3e4b97596397500223399a"
+  integrity sha512-1BG07SLp9RHnAy/A2Fugza5YCo45Ter8csOGbxL7a7f9Rvq9aE64/4hlqc083M8yLLp7J5tYxmiFWYbD0zQJnA==
+  dependencies:
+    hast-to-hyperscript "^6.0.0"
+    property-information "^5.0.0"
+    web-namespaces "^1.0.0"
+    xtend "^4.0.1"
+    zwitch "^1.0.0"
 
 hastscript@^5.0.0:
   version "5.0.0"
@@ -8946,6 +8938,11 @@ html-minifier@^3.5.20:
     param-case "2.1.x"
     relateurl "0.2.x"
     uglify-js "3.4.x"
+
+html-void-elements@^1.0.1:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/html-void-elements/-/html-void-elements-1.0.3.tgz#956707dbecd10cf658c92c5d27fee763aa6aa982"
+  integrity sha512-SaGhCDPXJVNrQyKMtKy24q6IMdXg5FCPN3z+xizxw9l+oXQw5fOoaj/ERU5KqWhSYhXtW5bWthlDbTDLBhJQrA==
 
 html-webpack-plugin@^4.0.0-beta.2:
   version "4.0.0-beta.5"
@@ -15419,7 +15416,7 @@ source-list-map@^2.0.0:
   resolved "https://registry.yarnpkg.com/source-list-map/-/source-list-map-2.0.1.tgz#3993bd873bfc48479cca9ea3a547835c7c154b34"
   integrity sha512-qnQ7gVMxGNxsiL4lEuJwe/To8UnK7fAnmbGEEH8RpLouuKbeEm0lhbQVFIrNSuB+G7tVrAlVsZgETT5nljf+Iw==
 
-source-map-resolve@^0.5.0:
+source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/source-map-resolve/-/source-map-resolve-0.5.2.tgz#72e2cc34095543e43b2c62b2c4c10d4a9054f259"
   integrity sha512-MjqsvNwyz1s0k81Goz/9vRBe9SZdB09Bdw+/zYyO+3CuPk6fouTaxscHkgtE8jKvf01kVfl8riHzERQ/kefaSA==
@@ -15817,6 +15814,13 @@ style-loader@^0.23.1:
   dependencies:
     loader-utils "^1.1.0"
     schema-utils "^1.0.0"
+
+style-to-object@^0.2.1:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/style-to-object/-/style-to-object-0.2.2.tgz#3ea3b276bd3fa9da1195fcdcdd03bc52aa2aae01"
+  integrity sha512-GcbtvfsqyKmIPpHeOHZ5Rmwsx2MDJct4W9apmTGcbPTbpA2FcgTFl2Z43Hm4Qb61MWGPNK8Chki7ITiY7lLOow==
+  dependencies:
+    css "2.2.4"
 
 styled-components@^4.1.3:
   version "4.1.3"
@@ -16861,7 +16865,7 @@ wcwidth@^1.0.1:
   dependencies:
     defaults "^1.0.3"
 
-web-namespaces@^1.1.2:
+web-namespaces@^1.0.0, web-namespaces@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/web-namespaces/-/web-namespaces-1.1.2.tgz#c8dc267ab639505276bae19e129dbd6ae72b22b4"
   integrity sha512-II+n2ms4mPxK+RnIxRPOw3zwF2jRscdJIUE9BfkKHm4FYEg9+biIoTMnaZF5MpemE3T+VhMLrhbyD4ilkPCSbg==
@@ -17425,3 +17429,8 @@ zen-observable@^0.8.0:
   version "0.8.13"
   resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.13.tgz#a9f1b9dbdfd2d60a08761ceac6a861427d44ae2e"
   integrity sha512-fa+6aDUVvavYsefZw0zaZ/v3ckEtMgCFi30sn91SEZea4y/6jQp05E3omjkX91zV6RVdn15fqnFZ6RKjRGbp2g==
+
+zwitch@^1.0.0:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/zwitch/-/zwitch-1.0.3.tgz#159fae4b3f737db1e42bf321d3423e4c96688a18"
+  integrity sha512-aynRpmJDw7JIq6X4NDWJoiK1yVSiG57ArWSg4HLC1SFupX5/bo0Cf4jpX0ifwuzBfxpYBuNSyvMlWNNRuy3cVA==

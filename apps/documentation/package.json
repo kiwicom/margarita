@@ -18,7 +18,7 @@
     "remark-unwrap-images": "^0.1.0"
   },
   "devDependencies": {
-    "@mdx-js/loader": "^0.17.5"
+    "@mdx-js/loader": "^0.20.1"
   },
   "peerDependencies": {
     "next": ">= 7",
