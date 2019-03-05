@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e37aed1a615b5691dfcd1ce1eae1144f
+ * @relayHash 6e31aa34236bca390149b9648062a961
  */
 
 /* eslint-disable */
@@ -10,12 +10,7 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type PlacePickerContent_locations$ref = any;
-export type LocationsByTermInput = {|
-  term: string
-|};
-export type PlacePickerRendererQueryVariables = {|
-  input: LocationsByTermInput
-|};
+export type PlacePickerRendererQueryVariables = {||};
 export type PlacePickerRendererQueryResponse = {|
   +$fragmentRefs: PlacePickerContent_locations$ref
 |};
@@ -27,14 +22,12 @@ export type PlacePickerRendererQuery = {|
 
 
 /*
-query PlacePickerRendererQuery(
-  $input: LocationsByTermInput!
-) {
-  ...PlacePickerContent_locations_2VV6jB
+query PlacePickerRendererQuery {
+  ...PlacePickerContent_locations
 }
 
-fragment PlacePickerContent_locations_2VV6jB on RootQuery {
-  locationsByTerm(input: $input) {
+fragment PlacePickerContent_locations on RootQuery {
+  locationsByTerm(input: {term: ""}) {
     edges {
       node {
         id
@@ -47,53 +40,39 @@ fragment PlacePickerContent_locations_2VV6jB on RootQuery {
 }
 */
 
-const node/*: ConcreteRequest*/ = (function(){
-var v0 = [
-  {
-    "kind": "LocalArgument",
-    "name": "input",
-    "type": "LocationsByTermInput!",
-    "defaultValue": null
-  }
-];
-return {
+const node/*: ConcreteRequest*/ = {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
     "name": "PlacePickerRendererQuery",
     "type": "RootQuery",
     "metadata": null,
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "FragmentSpread",
         "name": "PlacePickerContent_locations",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": null
-          }
-        ]
+        "args": null
       }
     ]
   },
   "operation": {
     "kind": "Operation",
     "name": "PlacePickerRendererQuery",
-    "argumentDefinitions": (v0/*: any*/),
+    "argumentDefinitions": [],
     "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "locationsByTerm",
-        "storageKey": null,
+        "storageKey": "locationsByTerm(input:{\"term\":\"\"})",
         "args": [
           {
-            "kind": "Variable",
+            "kind": "Literal",
             "name": "input",
-            "variableName": "input",
+            "value": {
+              "term": ""
+            },
             "type": "LocationsByTermInput!"
           }
         ],
@@ -158,11 +137,10 @@ return {
     "operationKind": "query",
     "name": "PlacePickerRendererQuery",
     "id": null,
-    "text": "query PlacePickerRendererQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n        type\n      }\n    }\n  }\n}\n",
+    "text": "query PlacePickerRendererQuery {\n  ...PlacePickerContent_locations\n}\n\nfragment PlacePickerContent_locations on RootQuery {\n  locationsByTerm(input: {term: \"\"}) {\n    edges {\n      node {\n        id\n        name\n        locationId\n        type\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };
-})();
 // prettier-ignore
-(node/*: any*/).hash = '62b7fdcc1fcf8cb0eaec47f5611fb7ca';
+(node/*: any*/).hash = '6f9a471dd5d76583e7d3fda2269600a8';
 module.exports = node;

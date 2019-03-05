@@ -189,7 +189,10 @@ interface FromToInterface {
 }
 
 input ItinerariesSearchInput {
+  """Locations IDs for travel from (origin)"""
   travelFrom: [String]!
+
+  """Locations IDs for travel to (destination)"""
   travelTo: [String]
 
   """Search itineraries from this date"""

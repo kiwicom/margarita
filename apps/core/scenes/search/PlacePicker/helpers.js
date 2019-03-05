@@ -1,6 +1,6 @@
 // @flow
 
-import { type Location } from '../../scenes/search/SearchContext';
+import { type Location } from '../SearchContext';
 
 export type OptionType = {
   +id: string | number,

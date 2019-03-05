@@ -60,7 +60,7 @@ export default function SearchParamsSummary({
           </Text>
           <Icon name={icon} />
           <Text weight="bold" style={styles.city}>
-            {arrival?.city}
+            {arrival?.city || 'Anywhere'}
           </Text>
         </View>
 

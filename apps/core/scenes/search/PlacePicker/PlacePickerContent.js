@@ -11,29 +11,36 @@ import {
 import { debounce } from '@kiwicom/margarita-utils';
 import { DEBOUNCE_TIME } from '@kiwicom/margarita-config';
 
-import { MODAL_TYPE } from '../../scenes/search/SearchConstants';
+import { MODAL_TYPE } from '../SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
   type Location,
-} from '../../scenes/search/SearchContext';
+  type LocationSearchType,
+} from '../SearchContext';
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 import {
   mapOptionToLocation,
   mapLocationTypeToOptionType,
   filterOptions,
+  type OptionType,
 } from './helpers';
 
 type Props = {|
   +locations: ?PlacePickerContentType,
   +relay: RelayRefetchProp,
   +onChangeText: string => void,
-  +travelFrom: ?Location,
-  +travelTo: ?Location,
+  +travelFrom: ?Array<Location>,
+  +travelTo: ?Array<Location>,
   +modalType: 'DESTINATION' | 'ORIGIN' | 'HIDDEN',
-  +setTravelFrom: (?Location) => void,
-  +setTravelTo: (?Location) => void,
+  +clearLocation: (type: 'travelTo' | 'travelFrom') => void,
+  +setLocation: (type: LocationSearchType, location: Location) => void,
+  +addLocation: (type: LocationSearchType, location: Location) => void,
   +setModalType: ('HIDDEN') => void,
+|};
+
+type State = {|
+  searchText: string,
 |};
 
 export function mapLocationToOption(location: Location) {
@@ -46,20 +53,28 @@ export function mapLocationToOption(location: Location) {
   };
 }
 
-class PlacePickerContent extends React.Component<Props> {
+function mapLocationsToOption(locations: ?Array<Location>) {
+  if (Array.isArray(locations)) {
+    return locations.map(location => mapLocationToOption(location));
+  }
+  return [];
+}
+
+class PlacePickerContent extends React.Component<Props, State> {
+  state = {
+    searchText: '',
+  };
+
   getSelectedOptions = () => {
     const { modalType, travelFrom, travelTo } = this.props;
-    const selected = [];
 
     if (travelFrom && modalType === MODAL_TYPE.ORIGIN) {
-      const option = mapLocationToOption(travelFrom);
-      selected.push(option);
+      return mapLocationsToOption(travelFrom);
     }
     if (travelTo && modalType === MODAL_TYPE.DESTINATION) {
-      const option = mapLocationToOption(travelTo);
-      selected.push(option);
+      return mapLocationsToOption(travelTo);
     }
-    return selected;
+    return [];
   };
 
   getLabel = () => {
@@ -82,43 +97,64 @@ class PlacePickerContent extends React.Component<Props> {
     }, []);
   };
 
-  setChosenLocation = (location: ?Location) => {
-    const { setTravelTo, setTravelFrom, modalType } = this.props;
+  addLocationToSearch = (option: OptionType) => {
+    const { addLocation, modalType } = this.props;
+    const location = mapOptionToLocation(option);
     if (modalType === MODAL_TYPE.DESTINATION) {
-      setTravelTo(location);
+      addLocation('travelTo', location);
     }
     if (modalType === MODAL_TYPE.ORIGIN) {
-      setTravelFrom(location);
+      addLocation('travelFrom', location);
     }
+    this.setState({ searchText: '' });
   };
 
-  handleChangeText = debounce((text: string) => {
+  refetchSuggestions = debounce((text: string) => {
     this.props.relay.refetch({ input: { term: text } });
   }, DEBOUNCE_TIME);
 
-  handlePressOption = option => {
-    const { setModalType } = this.props;
+  handleChangeText = (text: string) => {
+    this.setState({ searchText: text });
+    this.refetchSuggestions(text);
+  };
+
+  handlePressOption = (option: OptionType) => {
+    const { setModalType, modalType, setLocation } = this.props;
     const location = mapOptionToLocation(option);
 
-    this.setChosenLocation(location);
+    if (modalType === MODAL_TYPE.DESTINATION) {
+      setLocation('travelTo', location);
+    }
+    if (modalType === MODAL_TYPE.ORIGIN) {
+      setLocation('travelFrom', location);
+    }
     setModalType(MODAL_TYPE.HIDDEN);
   };
 
-  handleClear = () => {
-    this.setChosenLocation(null);
+  handleClearSearch = () => {
+    const { modalType, clearLocation } = this.props;
+
+    if (modalType === MODAL_TYPE.DESTINATION) {
+      clearLocation('travelTo');
+    }
+    if (modalType === MODAL_TYPE.ORIGIN) {
+      clearLocation('travelFrom');
+    }
   };
 
   render() {
     const options = this.getOptions();
     const selectedOptions = this.getSelectedOptions();
+    const { searchText } = this.state;
 
     return (
       <View style={styles.wrapper}>
         <OptionPicker
-          onClearPress={this.handleClear}
+          text={searchText}
+          onClearPress={this.handleClearSearch}
           label={this.getLabel()}
           onPressItem={this.handlePressOption}
-          onPressAdd={this.handlePressOption}
+          onPressAdd={this.addLocationToSearch}
           onChangeText={this.handleChangeText}
           options={filterOptions(options, selectedOptions)}
           selected={selectedOptions}
@@ -132,14 +168,15 @@ const select = ({
   travelFrom,
   travelTo,
   modalType,
-  actions: { setTravelTo, setTravelFrom, setModalType },
+  actions: { setModalType, clearLocation, addLocation, setLocation },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
   modalType,
-  setTravelTo,
-  setTravelFrom,
   setModalType,
+  clearLocation,
+  addLocation,
+  setLocation,
 });
 
 const styles = StyleSheet.create({
