@@ -12,6 +12,7 @@ export default function App() {
       <Head>
         <title>Margarita</title>
         <link rel="icon" type="image/png" href="/static/logo_margarita.png" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <GlobalStyle />
       <LandingPage />
