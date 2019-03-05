@@ -1,17 +1,18 @@
+---
+title: List of Apps
+sidebar_label: List of Apps
+---
+
 # Folder structure and Navigation
 
 Here is the folder structure:
 
-- `core` folder, aka `@kiwicom/margarita-core` package  
-  shared logic written in React Native (ported to the web through `react-native-web`),
-- `mobile` folder, aka `@kiwicom/margarita-mobile` package  
-  mobile application written in React Native, powered by Expo,
-- `web` folder, aka `@kiwicom/margarita-web` package  
-  web application written in React, powered by Next.js,
-- `graphql` folder, aka `@kiwicom/margarita-graphql` package
-  graphql server, written in GraphQL.js, powered by Node,
-- `landingPage` folder, aka `@kiwicom/margarita-landing-page` package web page, powered by Gatsby.js,
-- `documentation` folder, aka `@kiwicom/margarita-docs` is the Next.js powered documentation;
+- `core` folder, aka `@kiwicom/margarita-core` package shared logic written in React Native (ported to the web through `react-native-web`),
+- `mobile` folder, aka `@kiwicom/margarita-mobile` package mobile application written in React Native, powered by Expo,
+- `web` folder, aka `@kiwicom/margarita-web` package web application written in React, powered by Next.js,
+- `graphql` folder, aka `@kiwicom/margarita-graphql` package graphql server, written in GraphQL.js, powered by Node,
+- `landingPage` folder, aka `@kiwicom/margarita-landing-page` package web page, powered by Next.js,
+- `documentation` folder, aka `@kiwicom/margarita-docs` is the Docusaurus powered documentation;
 
 Next.js and React Native have different navigations: Next.js is filename based by default, when React Native has the _de facto_ standard `react-navigation`. That library relies on injecting a `navigation` prop to the different screens and it is possible to connect any component to that navigation by using a HoC `withNavigation`.
 

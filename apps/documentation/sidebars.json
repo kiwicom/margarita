@@ -1,0 +1,38 @@
+{
+  "docs": {
+    "Home": [
+      "index",
+      "demos",
+      "features-roadmap",
+      "tequila-api",
+      "technical-big-picture"
+    ],
+    "Developing": [
+      "getting-started",
+      "contributing",
+      "need-help",
+      "folder-structure",
+      "technical-overview",
+      "guide-tequila-api-key"
+    ],
+    "Apps": [
+      "apps/index",
+      "apps/graphql/index",
+      "apps/mobile/index",
+      "apps/web/index"
+    ],
+    "Packages": [
+      "packages/index",
+      {
+        "type": "subcategory",
+        "label": "Universal Components",
+        "ids": [
+          "packages/universal-components/index",
+          "packages/universal-components/getting-started",
+          "packages/universal-components/contributing"
+        ]
+      },
+      "packages/margarita-components/index"
+    ]
+  }
+}
