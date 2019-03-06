@@ -2,7 +2,7 @@
 
 import {
   mapOptionToLocation,
-  mapLocationTypeToOptionType,
+  convertLocationTypeToOptionType,
   filterOptions,
 } from '../helpers';
 import { mapLocationToOption } from '../PlacePickerContent';
@@ -29,11 +29,11 @@ test('The mapOptionToLocation, should map option object to location object.', ()
   expect(mapOptionToLocation(option)).toEqual(location);
 });
 
-test('The mapLocationTypeToOptionType, should map the location type  to the option type.', () => {
-  expect(mapLocationTypeToOptionType('BUS_STATION')).toEqual('bus');
-  expect(mapLocationTypeToOptionType('AIRPORT')).toEqual('airplane');
-  expect(mapLocationTypeToOptionType('STATION')).toEqual('train');
-  expect(mapLocationTypeToOptionType('others')).toEqual('destination');
+test('The convertLocationTypeToOptionType, should map the location type  to the option type.', () => {
+  expect(convertLocationTypeToOptionType('BUS_STATION')).toEqual('bus');
+  expect(convertLocationTypeToOptionType('AIRPORT')).toEqual('airplane');
+  expect(convertLocationTypeToOptionType('STATION')).toEqual('train');
+  expect(convertLocationTypeToOptionType('others')).toEqual('destination');
 });
 
 test('The filterOptions function, should filter out selected options.', () => {

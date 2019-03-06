@@ -18,7 +18,7 @@ export function mapOptionToLocation(option: OptionType): Location {
   };
 }
 
-export function mapLocationTypeToOptionType(type: ?string) {
+export function convertLocationTypeToOptionType(type: ?string) {
   switch (type) {
     case 'AIRPORT':
       return 'airplane';
