@@ -1,10 +1,10 @@
-import logo from '../assets/logo.png';
-import search from '../assets/search.png';
-import results from '../assets/results.png';
-import bookings from '../assets/bookings.png';
+---
+title: What is this all about?
+sidebar_label: What is this all about?
+---
 
 <div align="center">
-<img src={logo} alt="Margarita" title="Margarita" width="300"/>
+<img src="./assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
 </div>
 
 # Margarita
@@ -18,9 +18,9 @@ This project is a living example of a client app you could start building with T
 - 🚀 GraphQL Voyager: https://margarita-graphql-voyager.now.sh/
 
 <div align="center">
-<img src={search} alt="Search" title="Search" width="200"/>
-<img src={results} alt="Results" title="Results" width="200"/>
-<img src={bookings} alt="Bookings" title="Bookings" width="200"/>
+<img src="./assets/search.png" alt="Search" title="Search" width="200"/>
+<img src="./assets/results.png" alt="Results" title="Results" width="200"/>
+<img src="./assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
 </div>
 
 ## Developing

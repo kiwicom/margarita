@@ -60,32 +60,34 @@ jobs:
           root: .
           paths: .
 
-  build-and-deploy-landing-page:
+  build-landing-page:
     <<: *defaults
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
+      - attach_workspace:
+          at: ~/margarita
       - run:
-          name: Install dependencies
-          command: yarn install
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - add_ssh_keys:
-          fingerprints:
-            - "56:b8:5a:30:ca:27:22:43:2d:9a:9e:42:4b:e6:a1:9a"
+          name: Build landing page
+          command: yarn workspace @kiwicom/margarita-landing-page build
       - run:
-          name: Configure Git User
-          command: |
-            git config user.email "me@robincussol.com"
-            git config user.name "GH Pages Bot"
+          name: Export landing page
+          command: yarn workspace @kiwicom/margarita-landing-page export
+      - persist_to_workspace:
+          root: .
+          paths: apps/landingPage/out
+
+  deploy-landing-page:
+    working_directory: ~/margarita
+    docker:
+      - image: circleci/python:2.7-jessie
+    steps:
+      - attach_workspace:
+          at: ~/margarita
       - run:
-          name: Deploy landing page
-          command: yarn landing-page:deploy
+          name: Install awscli
+          command: sudo pip install awscli
+      - run:
+          name: Deploy to S3
+          command: AWS_ACCESS_KEY_ID=$ACCESS_KEY AWS_SECRET_ACCESS_KEY=$SECRET_KEY aws s3 sync apps/landingPage/out s3://margarita-landing-page/ --delete
 
   build-and-deploy-graphql:
     <<: *defaults
@@ -128,14 +130,22 @@ workflows:
       - build-and-deploy-graphql:
           requires:
             - lint
+            - flow
             - unit-tests
           filters:
             branches:
               only: master
-      - build-and-deploy-landing-page:
+      - build-landing-page:
           requires:
             - lint
+            - flow
             - unit-tests
+          filters:
+            branches:
+              only: master
+      - deploy-landing-page:
+          requires:
+            - build-landing-page
           filters:
             branches:
               only: master

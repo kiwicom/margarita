@@ -1,6 +1,9 @@
-# GraphQL server
+---
+title: GraphQL Server
+sidebar_label: GraphQL Server
+---
 
-_Check the [instructions](/getting-started) to have the project correctly set up first_.
+_Check the [instructions](../../getting-started) to have the project correctly set up first_.
 
 From the root of `margarita`, run
 
@@ -83,7 +86,7 @@ The `dataloaders` folder is where the logic to connect to external APIs is store
 
 Note: The cache offered by dataloaders is **per request**. On every request, a new context is created as you can see in `apps/graphql/src/server.js`. That context is defined in `apps/graphql/src/services/graphqlContext/GraphQLContext.js` and creates new dataloaders when invoked.
 
-### Connecting to Tequila API
+## Connecting to Tequila API
 
 Looking at the dataloaders for `location`, you see there is a function called `fetchLocations` which uses the `fetch` service.
 
