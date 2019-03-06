@@ -133,6 +133,23 @@ jobs:
           name: Deploy landing page
           command: GIT_USER="${GH_USERNAME}" USE_SSH=true yarn workspace @kiwicom/margarita-docs deploy
 
+  publish-to-expo:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - run:
+          name: Add .env file (react-native-dotenv)
+          command: echo GRAPHQL_URL=$GRAPHQL_URL > .env
+      - run:
+          name: Login into Expo
+          command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
+      - run:
+          name: Publish to Expo
+          command: |
+            cd apps/mobile
+            npx expo publish --non-interactive --max-workers 1
+
 workflows:
   version: 2
   test-and-release:
@@ -170,6 +187,14 @@ workflows:
             branches:
               only: master
       - build-and-deploy-documentation:
+          requires:
+            - lint
+            - flow
+            - unit-tests
+          filters:
+            branches:
+              only: master
+      - publish-to-expo:
           requires:
             - lint
             - flow

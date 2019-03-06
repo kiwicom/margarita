@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
+    "expo-cli": "^2.11.6",
     "metro-bundler-config-yarn-workspaces": "^1.0.3"
   },
   "peerDependencies": {
