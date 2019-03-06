@@ -93,7 +93,7 @@ export default function SearchParamsSummary({
   );
 }
 
-const headerHeight = 72;
+const headerHeight = 64;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
