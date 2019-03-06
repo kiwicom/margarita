@@ -113,6 +113,26 @@ jobs:
           name: Deploy GraphQL lambda
           command: yarn graphql:deploy
 
+  build-and-deploy-documentation:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/margarita
+      - add_ssh_keys:
+          fingerprints:
+            - "56:b8:5a:30:ca:27:22:43:2d:9a:9e:42:4b:e6:a1:9a"
+      - run:
+          name: Adding GitHub to known_hosts
+          command: echo "github.com ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAq2A7hRGmdnm9tUDbO9IDSwBK6TbQa+PXYPCPy6rbTrTtw7PHkccKrpp0yVhp5HdEIcKr6pLlVDBfOLX9QUsyCOV0wzfjIJNlGEYsdlLJizHhbn2mUjvSAHQqZETYP81eFzLQNnPHt4EVVUh7VfDESU84KezmD5QlWpXLmvU31/yMf+Se8xhHTvKSCZIFImWwoG6mbUoWf9nzpIoaSjB+weqqUUmpaaasXVal72J+UX2B+2RPW3RcT0eOzQgqlJL3RKrTJvdsjE3JEAvGq3lGHSZXy28G3skua2SmVi/w4yCE6gbODqnTWlg7+wC604ydGXA8VJiS5ap43JXiUFFAaQ==" >> ~/.ssh/known_hosts
+      - run:
+          name: Configure Git User
+          command: |
+            git config --global user.email "${GH_EMAIL}"
+            git config --global user.name "${GH_NAME}"
+      - run:
+          name: Deploy landing page
+          command: GIT_USER="${GH_USERNAME}" USE_SSH=true yarn workspace @kiwicom/margarita-docs deploy
+
 workflows:
   version: 2
   test-and-release:
@@ -146,6 +166,14 @@ workflows:
       - deploy-landing-page:
           requires:
             - build-landing-page
+          filters:
+            branches:
+              only: master
+      - build-and-deploy-documentation:
+          requires:
+            - lint
+            - flow
+            - unit-tests
           filters:
             branches:
               only: master
