@@ -22,6 +22,9 @@
 ; Ignore metro
 .*/node_modules/metro/.*
 
+; Ignore Expo
+.*/node_modules/@expo/traveling-fastlane-linux/.*
+
 ; My custom ignores
 <PROJECT_ROOT>/\.git/
 <PROJECT_ROOT>/node_modules/reqwest/.+
