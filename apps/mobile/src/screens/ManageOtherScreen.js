@@ -4,7 +4,7 @@ import * as React from 'react';
 import { ManageOther } from '@kiwicom/margarita-core';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { MMB_BACKGROUND_COLOR } from '@kiwicom/margarita-config';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 export default function ManageOtherScreen() {
   return (
@@ -17,6 +17,6 @@ export default function ManageOtherScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: MMB_BACKGROUND_COLOR,
+    backgroundColor: defaultTokens.backgroundBody,
   },
 });

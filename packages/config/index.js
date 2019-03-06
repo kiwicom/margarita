@@ -5,7 +5,6 @@ export const DEBOUNCE_TIME = 250;
 export const DAY_MONTH_DATE_FORMAT = 'ddd MM/DD';
 export const HOURS_MINUTES_FORMAT = 'HH:mm';
 
-export const MMB_BACKGROUND_COLOR = '#e5e5e5'; // Color missing in orbit-tokens
 export const SECTOR_COLOR_CODES = [
   '#00a991',
   '#fbad18',
@@ -21,7 +20,7 @@ export const SECTOR_COLOR_CODES = [
 ];
 
 export const GITHUB_LINK = 'https://github.com/kiwicom/margarita/';
-export const DOCUMENTATION_LINK = 'https://github.com/kiwicom/margarita/';
+export const DOCUMENTATION_LINK = 'https://kiwicom.github.io/margarita/';
 export const CODE_KIWI_LINK = 'https://code.kiwi.com/';
 export const MARGARITA_LINK = 'https://kiwicom-margarita.netlify.com/';
 export const TEQUILA_LINK = 'https://tequila.kiwi.com/';

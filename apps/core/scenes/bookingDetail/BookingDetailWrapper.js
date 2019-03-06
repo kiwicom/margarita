@@ -1,10 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import SectorDetails from './sectorDetails/SectorDetails';
 import ManageMenuGroup from './menuGroups/Manage';
@@ -20,20 +19,20 @@ type Props = {|
 class BookingDetailWrapper extends React.Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
+      <ScrollView containerContentStyle={styles.container}>
         <SectorDetails data={this.props.data} />
         <TripInfoMenuGroup />
         <Passengers data={this.props.data} />
         <ServicesMenuGroup />
         <ManageMenuGroup />
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: defaultTokens.paletteCloudLight,
+    flex: 1,
   },
 });
 
