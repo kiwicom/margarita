@@ -64,6 +64,10 @@ class ResultDetail extends React.Component<Props, State> {
     // @TODO
   };
 
+  handleAddPassenger = () => {
+    // @TODO
+  };
+
   render() {
     const passengerCards = [
       {
@@ -98,6 +102,7 @@ class ResultDetail extends React.Component<Props, State> {
             passengerCards={passengerCards}
             onActionPress={this.handlePassengerEditPress}
             actionIconName="edit"
+            onPassengerAddPress={this.handleAddPassenger}
           />
           <ContactDetailsForm
             onChangeEmail={this.handleChangeEmail}

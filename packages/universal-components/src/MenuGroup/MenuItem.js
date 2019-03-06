@@ -4,16 +4,15 @@ import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import Separator from './Separator';
 import { Icon } from '../Icon';
 import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
+import MenuItemWrapper from './MenuItemWrapper';
 
 type Props = {|
   +title: React.Node,
   +onPress: () => void,
-
   +titleStyle?: StylePropType,
   +icon?: React.Element<typeof Icon>,
   +subTitle?: React.Node,
@@ -34,6 +33,7 @@ export default function MenuItem({
   labelStyle,
   hideActionIcon = false,
 }: Props) {
+  const iconRendered = icon != null;
   const menuIcon =
     icon != null
       ? React.cloneElement(icon, {
@@ -44,41 +44,40 @@ export default function MenuItem({
       : null;
   return (
     <View style={styles.container}>
-      <Touchable onPress={onPress} style={styles.wrapper}>
-        <View style={styles.row}>
-          {menuIcon}
-          <View>
-            {label != null && (
-              <Text type="secondary" size="small" style={labelStyle}>
-                {label}
+      <Touchable onPress={onPress}>
+        <MenuItemWrapper iconRendered={iconRendered}>
+          <View style={styles.row}>
+            {menuIcon}
+            <View>
+              {label != null && (
+                <Text type="secondary" size="small" style={labelStyle}>
+                  {label}
+                </Text>
+              )}
+              <Text type="attention" size="large" style={titleStyle}>
+                {title}
               </Text>
-            )}
-            <Text type="attention" size="large" style={titleStyle}>
-              {title}
-            </Text>
-            {subTitle != null && (
-              <Text type="secondary" size="small" style={subTitleStyle}>
-                {subTitle}
-              </Text>
+              {subTitle != null && (
+                <Text type="secondary" size="small" style={subTitleStyle}>
+                  {subTitle}
+                </Text>
+              )}
+            </View>
+            {Platform.OS === 'ios' && hideActionIcon === false && (
+              <View style={styles.actionIcon}>
+                <Icon
+                  name="chevron-right"
+                  color={defaultTokens.paletteProductNormal}
+                />
+              </View>
             )}
           </View>
-          {Platform.OS === 'ios' && hideActionIcon === false && (
-            <View style={styles.actionIcon}>
-              <Icon
-                name="chevron-right"
-                color={defaultTokens.paletteProductNormal}
-              />
-            </View>
-          )}
-        </View>
+        </MenuItemWrapper>
       </Touchable>
-      <Separator style={icon == null ? styles.noIcon : styles.iconSeparator} />
     </View>
   );
 }
 
-const wrapperPaddingStart = 12;
-const iconWidth = 24;
 const iconMargin = 12;
 
 const styles = StyleSheet.create({
@@ -86,28 +85,6 @@ const styles = StyleSheet.create({
     marginTop: StyleSheet.hairlineWidth,
     ios: {
       marginBottom: -StyleSheet.hairlineWidth,
-    },
-  },
-  wrapper: {
-    backgroundColor: defaultTokens.paletteWhite,
-    ios: {
-      paddingTop: 8.5,
-      paddingBottom: 11.5,
-    },
-    paddingTop: 6,
-    paddingBottom: 8.5,
-
-    paddingStart: wrapperPaddingStart,
-    paddingEnd: 16,
-  },
-  noIcon: {
-    ios: {
-      marginStart: 12,
-    },
-  },
-  iconSeparator: {
-    ios: {
-      marginStart: wrapperPaddingStart + iconWidth + iconMargin,
     },
   },
   row: {

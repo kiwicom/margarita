@@ -12,12 +12,13 @@ import type {
 import PassengerCard from '../passengerCard/PassengerCard';
 
 type Props = {|
+  +onPassengerAddPress?: () => void,
   +passengerCards: ?Array<?PassengerCardType>,
   ...PassengerCardActionType,
 |};
 
 const AddPassengerIos = ({ onPress }) => (
-  <Button onPress={onPress} label="Add another passenger" />
+  <Button onPress={onPress} label="Add another passenger" block />
 );
 
 const AddPassengerAndroid = ({ onPress }) => (
@@ -43,26 +44,24 @@ export default class PassengerCards extends React.Component<Props> {
     );
   };
 
-  handleAddPassenger = () => {
-    // @TODO
-  };
-
   // @TODO tokens: we should use different color than colorTextButtonPrimary (it's not text, but color should be white)
   // @TODO tokens: there is no size 48px for button/icon
   // @TODO button should be rounded
   render() {
+    const { onPassengerAddPress, passengerCards } = this.props;
     return (
       <View style={styles.container}>
-        {this.props.passengerCards &&
-          this.props.passengerCards.map(this.renderPassengerCard)}
+        {passengerCards && passengerCards.map(this.renderPassengerCard)}
 
-        <View style={styles.addButtonContainer}>
-          {Platform.OS === 'ios' ? (
-            <AddPassengerIos onPress={this.handleAddPassenger} />
-          ) : (
-            <AddPassengerAndroid onPress={this.handleAddPassenger} />
-          )}
-        </View>
+        {onPassengerAddPress && (
+          <View style={styles.addButtonContainer}>
+            {Platform.OS === 'ios' ? (
+              <AddPassengerIos onPress={onPassengerAddPress} />
+            ) : (
+              <AddPassengerAndroid onPress={onPassengerAddPress} />
+            )}
+          </View>
+        )}
       </View>
     );
   }

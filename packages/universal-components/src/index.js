@@ -29,7 +29,12 @@ export { SegmentedButton } from './SegmentedButton';
 export { Modal } from './Modal';
 export { TagsInput } from './TagsInput';
 export { OptionPicker } from './OptionPicker';
-export { MenuGroup, MenuItem } from './MenuGroup';
+export {
+  MenuGroup,
+  MenuItem,
+  MenuItemWrapper,
+  MenuDescription,
+} from './MenuGroup';
 export { Picker } from './Picker';
 export { PickerButton } from './PickerButton';
 
