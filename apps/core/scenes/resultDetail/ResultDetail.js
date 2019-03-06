@@ -6,6 +6,8 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import {
   PassengerCards,
   ContactDetailsForm,
+  TableRow,
+  TableRowDivider,
 } from '@kiwicom/margarita-components';
 import {
   withNavigation,
@@ -13,6 +15,8 @@ import {
   type Navigation,
 } from '@kiwicom/margarita-navigation';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
+import { PriceSummary } from '../../components/priceSummary';
 
 type Props = {|
   +detailId: ?string,
@@ -50,6 +54,14 @@ class ResultDetail extends React.Component<Props, State> {
 
   handleChangePhoneCountryCode = phoneCountryCode => {
     this.setState({ phoneCountryCode });
+  };
+
+  handleAddPromoCode = () => {
+    // @TODO
+  };
+
+  handleContinue = () => {
+    // @TODO
   };
 
   render() {
@@ -93,6 +105,34 @@ class ResultDetail extends React.Component<Props, State> {
             onChangeCountryCode={this.handleChangePhoneCountryCode}
           />
         </ScrollView>
+        <PriceSummary
+          onButtonPress={this.handleContinue}
+          renderCollapseContent={
+            <>
+              <TableRow label="1x Passenger" value="123 Kč" />
+              <TableRow label="1x Cabin bag" value="123 Kč" />
+              <TableRow label="1x Personal item" value="123 Kč" />
+              <TableRowDivider />
+              <TableRow label="Price" value="123 Kč" />
+              <TableRow label="Service fee" value="123 Kč" />
+              <TableRow label="Other fees" value="123 Kč" />
+              <TableRow
+                label="Add a promo code"
+                onPress={this.handleAddPromoCode}
+                highlightedLabel
+              />
+              <TableRowDivider />
+            </>
+          }
+          renderVisibleContent={
+            <TableRow
+              label="Subtotal"
+              value="123 Kč"
+              highlightedLabel
+              highlightedValue
+            />
+          }
+        />
       </View>
     );
   }
