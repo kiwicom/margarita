@@ -21,21 +21,27 @@ import {
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 import {
   mapOptionToLocation,
-  mapLocationTypeToOptionType,
+  convertLocationTypeToOptionType,
   filterOptions,
   type OptionType,
 } from './helpers';
 
 type Props = {|
+  +pickerType: 'travelFrom' | 'travelTo',
   +locations: ?PlacePickerContentType,
   +relay: RelayRefetchProp,
   +onChangeText: string => void,
   +travelFrom: ?Array<Location>,
   +travelTo: ?Array<Location>,
-  +modalType: 'DESTINATION' | 'ORIGIN' | 'HIDDEN',
   +clearLocation: (type: 'travelTo' | 'travelFrom') => void,
-  +setLocation: (type: LocationSearchType, location: Location) => void,
-  +addLocation: (type: LocationSearchType, location: Location) => void,
+  +setLocation: (
+    type: LocationSearchType,
+    location: Location | Location[],
+  ) => void,
+  +addLocation: (
+    type: LocationSearchType,
+    location: Location | Location[],
+  ) => void,
   +setModalType: ('HIDDEN') => void,
 |};
 
@@ -48,8 +54,7 @@ export function mapLocationToOption(location: Location) {
     id: location.id ?? '',
     label: location.name ?? '',
     locationId: location.locationId ?? '',
-
-    type: mapLocationTypeToOptionType(location.type),
+    type: convertLocationTypeToOptionType(location.type),
   };
 }
 
@@ -66,22 +71,20 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   getSelectedOptions = () => {
-    const { modalType, travelFrom, travelTo } = this.props;
+    const { pickerType } = this.props;
+    const selectedLocations = this.props[pickerType];
 
-    if (travelFrom && modalType === MODAL_TYPE.ORIGIN) {
-      return mapLocationsToOption(travelFrom);
-    }
-    if (travelTo && modalType === MODAL_TYPE.DESTINATION) {
-      return mapLocationsToOption(travelTo);
+    if (selectedLocations) {
+      return mapLocationsToOption(selectedLocations);
     }
     return [];
   };
 
   getLabel = () => {
-    const { modalType } = this.props;
-    if (modalType === MODAL_TYPE.DESTINATION) {
+    const { pickerType } = this.props;
+    if (pickerType === 'travelTo') {
       return 'To:';
-    } else if (modalType === MODAL_TYPE.ORIGIN) {
+    } else if (pickerType === 'travelFrom') {
       return 'From:';
     }
     return '';
@@ -98,14 +101,11 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   addLocationToSearch = (option: OptionType) => {
-    const { addLocation, modalType } = this.props;
+    const { addLocation, pickerType } = this.props;
     const location = mapOptionToLocation(option);
-    if (modalType === MODAL_TYPE.DESTINATION) {
-      addLocation('travelTo', location);
-    }
-    if (modalType === MODAL_TYPE.ORIGIN) {
-      addLocation('travelFrom', location);
-    }
+
+    addLocation(pickerType, location);
+
     this.setState({ searchText: '' });
   };
 
@@ -119,26 +119,41 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   handlePressOption = (option: OptionType) => {
-    const { setModalType, modalType, setLocation } = this.props;
+    const { setModalType, setLocation, pickerType } = this.props;
     const location = mapOptionToLocation(option);
 
-    if (modalType === MODAL_TYPE.DESTINATION) {
-      setLocation('travelTo', location);
-    }
-    if (modalType === MODAL_TYPE.ORIGIN) {
-      setLocation('travelFrom', location);
-    }
+    setLocation(pickerType, location);
+
     setModalType(MODAL_TYPE.HIDDEN);
   };
 
   handleClearSearch = () => {
-    const { modalType, clearLocation } = this.props;
+    const { clearLocation, pickerType } = this.props;
+    clearLocation(pickerType);
+  };
 
-    if (modalType === MODAL_TYPE.DESTINATION) {
-      clearLocation('travelTo');
+  handlePressKey = event => {
+    const key = event.nativeEvent.key;
+
+    // handle Backspace press
+    if (key === 'Backspace') {
+      this.handleBackspacePress();
     }
-    if (modalType === MODAL_TYPE.ORIGIN) {
-      clearLocation('travelFrom');
+  };
+
+  handleBackspacePress = () => {
+    const { setLocation, pickerType } = this.props;
+
+    // check if searchText exist
+    const searchTextExist = this.state.searchText.length > 0;
+
+    // if the searchText doesn't exist removed last selected location
+    if (!searchTextExist) {
+      const locations = this.props[pickerType];
+
+      if (locations && locations.length !== 0) {
+        setLocation(pickerType, [...locations.slice(0, locations.length - 1)]);
+      }
     }
   };
 
@@ -158,11 +173,23 @@ class PlacePickerContent extends React.Component<Props, State> {
           onChangeText={this.handleChangeText}
           options={filterOptions(options, selectedOptions)}
           selected={selectedOptions}
+          onKeyPress={this.handlePressKey}
         />
       </View>
     );
   }
 }
+
+const getPickerType = modalType => {
+  switch (modalType) {
+    case MODAL_TYPE.DESTINATION:
+      return 'travelTo';
+    case MODAL_TYPE.ORIGIN:
+      return 'travelFrom';
+    default:
+      return null;
+  }
+};
 
 const select = ({
   travelFrom,
@@ -172,11 +199,11 @@ const select = ({
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
-  modalType,
   setModalType,
   clearLocation,
   addLocation,
   setLocation,
+  pickerType: getPickerType(modalType),
 });
 
 const styles = StyleSheet.create({

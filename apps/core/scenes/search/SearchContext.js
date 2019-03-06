@@ -156,8 +156,13 @@ export default class SearchContextProvider extends React.Component<
     }));
   };
 
-  setLocation = (locationType: LocationSearchType, location: Location) => {
-    this.setState({ [locationType]: [location] });
+  setLocation = (
+    locationType: LocationSearchType,
+    location: Location | Location[],
+  ) => {
+    this.setState({
+      [locationType]: Array.isArray(location) ? location : [location],
+    });
   };
 
   setReturnDate = (date: Date) => {
