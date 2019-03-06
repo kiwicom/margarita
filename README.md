@@ -1,5 +1,5 @@
 <div align="center">
-<img src="./apps/documentation/assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
+<img src="./docs/assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
 </div>
 
 # Margarita
@@ -13,9 +13,9 @@ This project is a living example of a client app you could start building with T
 - 🚀 GraphQL Voyager: https://margarita-graphql-voyager.now.sh/
 
 <div align="center">
-<img src="./apps/documentation/assets/search.png" alt="Search" title="Search" width="200"/>
-<img src="./apps/documentation/assets/results.png" alt="Results" title="Results" width="200"/>
-<img src="./apps/documentation/assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
+<img src="./docs/assets/search.png" alt="Search" title="Search" width="200"/>
+<img src="./docs/assets/results.png" alt="Results" title="Results" width="200"/>
+<img src="./docs/assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
 </div>
 
 ## Installing / Getting started
