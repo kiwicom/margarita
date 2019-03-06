@@ -16,6 +16,7 @@ export type PassengerCardType = {|
   +insurance: string,
   +bags: null | Array<Bag>,
   +passengerCount: number,
+  +visaRequired?: ?boolean,
 |};
 
 export type PassengerCardActionType = {|

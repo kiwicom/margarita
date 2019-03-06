@@ -9,6 +9,7 @@ import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
 import ExtendedTouchable from '../ExtendedTouchable';
+import VisaInfo from '../visaInfo/VisaInfo';
 import {
   type PassengerCardType,
   type PassengerCardActionType,
@@ -60,6 +61,7 @@ class PassengerCard extends React.Component<Props> {
       bags,
       actionIconName,
       onActionPress,
+      visaRequired,
     } = this.props;
     const newPassenger = `${passengerCount}. Passenger`;
     const title = getTitle(gender);
@@ -67,59 +69,62 @@ class PassengerCard extends React.Component<Props> {
     const passenger = name ? passengerWithTitle : newPassenger;
 
     return (
-      <Card style={styles.container}>
-        <View style={styles.containerName}>
-          <Icon name="passenger" />
-          <Text style={styles.passengerName} size="large">
-            {passenger}
-          </Text>
-          {onActionPress && actionIconName && (
-            <ExtendedTouchable onPress={this.handleActionPress}>
-              <Icon
-                name={actionIconName}
-                color={defaultTokens.backgroundButtonPrimary}
-              />
-            </ExtendedTouchable>
-          )}
-        </View>
-
-        <View style={styles.containerTop}>
-          <PassengerCardDetail
-            value={nationality}
-            label="Nationality"
-            style="normal"
-          />
-          <PassengerCardDetail
-            value={dateOfBirth}
-            label="Date of birth"
-            style="normal"
-          />
-          <PassengerCardDetail value={id} label="ID" style="id_row_wrapper" />
-        </View>
-        <Separator />
-        <View style={styles.containerBottom}>
-          <PassengerCardDetail
-            value={insurance}
-            label="Travel Insurance"
-            style="normal"
-          />
-          <View style={styles.bagsRowWrapper}>
-            <Text type="secondary" style={styles.textPadding}>
-              Bags
+      <View style={styles.container}>
+        <Card>
+          <View style={styles.containerName}>
+            <Icon name="passenger" />
+            <Text style={styles.passengerName} size="large">
+              {passenger}
             </Text>
-            <View>
-              {bags &&
-                bags.map(bag => (
-                  <BagInformation
-                    key={bag.type}
-                    count={bag.count}
-                    type={bag.type}
-                  />
-                ))}
+            {onActionPress && actionIconName && (
+              <ExtendedTouchable onPress={this.handleActionPress}>
+                <Icon
+                  name={actionIconName}
+                  color={defaultTokens.backgroundButtonPrimary}
+                />
+              </ExtendedTouchable>
+            )}
+          </View>
+
+          <View style={styles.containerTop}>
+            <PassengerCardDetail
+              value={nationality}
+              label="Nationality"
+              style="normal"
+            />
+            <PassengerCardDetail
+              value={dateOfBirth}
+              label="Date of birth"
+              style="normal"
+            />
+            <PassengerCardDetail value={id} label="ID" style="id_row_wrapper" />
+          </View>
+          <Separator />
+          <View style={styles.containerBottom}>
+            <PassengerCardDetail
+              value={insurance}
+              label="Travel Insurance"
+              style="normal"
+            />
+            <View style={styles.bagsRowWrapper}>
+              <Text type="secondary" style={styles.textPadding}>
+                Bags
+              </Text>
+              <View>
+                {bags &&
+                  bags.map(bag => (
+                    <BagInformation
+                      key={bag.type}
+                      count={bag.count}
+                      type={bag.type}
+                    />
+                  ))}
+              </View>
             </View>
           </View>
-        </View>
-      </Card>
+        </Card>
+        {visaRequired != null && <VisaInfo visaRequired={visaRequired} />}
+      </View>
     );
   }
 }
