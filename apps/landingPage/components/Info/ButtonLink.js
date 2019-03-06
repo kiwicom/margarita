@@ -5,15 +5,16 @@ import { Button } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 
+import { BREAKPOINTS } from '../../mediaQueriesConfig';
+
 type Props = {|
-  +alignment: string,
   +link: string,
   +text: string,
 |};
 
 export default function ButtonLink(props: Props) {
   return (
-    <WrapperButton alignment={props.alignment}>
+    <WrapperButton>
       <Button type="secondary" width={125}>
         <LinkWithoutStyle href={props.link}>{props.text}</LinkWithoutStyle>
       </Button>
@@ -22,8 +23,11 @@ export default function ButtonLink(props: Props) {
 }
 
 const WrapperButton = styled.div`
-  align-self: ${props => props.alignment};
   margin-top: 20px;
+  align-self: flex-start;
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
+    align-self: center;
+  }
 `;
 
 const LinkWithoutStyle = styled.a`

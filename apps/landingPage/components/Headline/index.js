@@ -7,38 +7,29 @@ import { BREAKPOINTS } from '../../mediaQueriesConfig';
 import GetStartedInfo from './GetStartedInfo';
 import TextHeadline from './TextHeadline';
 import Subtitle, { MobileGradientAccent } from './Subtitle';
-import { withWindowSize } from '../withWindowSize';
-
-type Props = {|
-  +width: number,
-|};
 
 const headlineText = 'Ever dreamt of building the next Kiwi.com?';
 
-class Headline extends React.Component<Props> {
-  render() {
-    const isTablet = this.props.width <= BREAKPOINTS.TABLET;
-    return (
-      <Container>
-        <HeadlineTextWrapper>
-          <TextHeadline align={isTablet} type="display">
-            {headlineText}
-          </TextHeadline>
-        </HeadlineTextWrapper>
-        <HeadlineBodyWrapper>
-          <Subtitle align={isTablet} />
-          <MobileGradientAccent>
-            <PlaneImageMobile />
-          </MobileGradientAccent>
-          <ContainerBottom>
-            <GetStartedInfo />
-            <PlaneImage displayMobile="none" />
-          </ContainerBottom>
-        </HeadlineBodyWrapper>
-      </Container>
-    );
-  }
+export default function Headline() {
+  return (
+    <Container>
+      <HeadlineTextWrapper>
+        <TextHeadline type="display">{headlineText}</TextHeadline>
+      </HeadlineTextWrapper>
+      <HeadlineBodyWrapper>
+        <Subtitle />
+        <MobileGradientAccent>
+          <PlaneImageMobile />
+        </MobileGradientAccent>
+        <ContainerBottom>
+          <GetStartedInfo />
+          <PlaneImage displayMobile="none" />
+        </ContainerBottom>
+      </HeadlineBodyWrapper>
+    </Container>
+  );
 }
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -104,5 +95,3 @@ const PlaneImage = styled(PlaneImageMobile)`
     height: 50vh;
   }
 `;
-
-export default withWindowSize<Props>(Headline);
