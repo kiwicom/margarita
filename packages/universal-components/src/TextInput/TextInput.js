@@ -304,6 +304,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     padding: 0,
+    fontFamily: 'Roboto',
     web: {
       outline: 'none',
       color: defaultTokens.colorTextInput,
