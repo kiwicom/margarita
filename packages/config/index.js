@@ -20,7 +20,7 @@ export const SECTOR_COLOR_CODES = [
 ];
 
 export const GITHUB_LINK = 'https://github.com/kiwicom/margarita/';
-export const DOCUMENTATION_LINK = 'https://github.com/kiwicom/margarita/';
+export const DOCUMENTATION_LINK = 'https://kiwicom.github.io/margarita/';
 export const CODE_KIWI_LINK = 'https://code.kiwi.com/';
 export const MARGARITA_LINK = 'https://kiwicom-margarita.netlify.com/';
 export const TEQUILA_LINK = 'https://tequila.kiwi.com/';
