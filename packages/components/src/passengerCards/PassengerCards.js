@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { Icon, Button, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
@@ -15,6 +15,20 @@ type Props = {|
   +passengerCards: ?Array<?PassengerCardType>,
   ...PassengerCardActionType,
 |};
+
+const AddPassengerIos = ({ onPress }) => (
+  <Button onPress={onPress} label="Add another passenger" />
+);
+
+const AddPassengerAndroid = ({ onPress }) => (
+  <Button
+    onPress={onPress}
+    width={parseFloat(defaultTokens.heightButtonNormal)}
+    circled
+  >
+    <Icon name="passenger-add" color={defaultTokens.colorTextButtonPrimary} />
+  </Button>
+);
 
 export default class PassengerCards extends React.Component<Props> {
   renderPassengerCard = (passengerCard: ?PassengerCardType) => {
@@ -43,12 +57,11 @@ export default class PassengerCards extends React.Component<Props> {
           this.props.passengerCards.map(this.renderPassengerCard)}
 
         <View style={styles.addButtonContainer}>
-          <Button onPress={this.handleAddPassenger} width={48}>
-            <Icon
-              name="passenger-add"
-              color={defaultTokens.colorTextButtonPrimary}
-            />
-          </Button>
+          {Platform.OS === 'ios' ? (
+            <AddPassengerIos onPress={this.handleAddPassenger} />
+          ) : (
+            <AddPassengerAndroid onPress={this.handleAddPassenger} />
+          )}
         </View>
       </View>
     );
