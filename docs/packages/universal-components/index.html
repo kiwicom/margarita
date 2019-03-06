@@ -1,0 +1,105 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Introduction · Margarita Monorepo</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;&lt;em&gt;This page is a stub.&lt;/em&gt;&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Introduction · Margarita Monorepo"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kiwicom.github.io/margarita/index.html"/><meta property="og:description" content="&lt;p&gt;&lt;em&gt;This page is a stub.&lt;/em&gt;&lt;/p&gt;
+"/><meta property="og:image" content="https://kiwicom.github.io/margarita/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://kiwicom.github.io/margarita/img/docusaurus.png"/><link rel="shortcut icon" href="/margarita/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/margarita/css/main.css"/><script src="/margarita/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/margarita/"><img class="logo" src="/margarita/img/logo.png" alt="Margarita Monorepo"/><h2 class="headerTitleWithLogo">Margarita Monorepo</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/margarita/docs/" target="_self">First time here?</a></li><li class="siteNavGroupActive"><a href="/margarita/docs/getting-started" target="_self">Developers</a></li><li class=""><a href="https://github.com/kiwicom/margarita" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Packages</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Home</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/">What is this all about?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/demos">Web and Mobile demos</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/features-roadmap">Features and Roadmap</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/tequila-api">What is Tequila API?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/technical-big-picture">Technical Big Picture</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developing</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/contributing">Contributing</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/need-help">Need help?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/folder-structure">Folder Structure</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/guide-tequila-api-key">Guide: Get your Tequila API key</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Apps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/">List of Apps</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/graphql/">GraphQL Server</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/mobile/">Mobile</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/web/">Web</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Packages</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/">List of Packages</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Universal Components</h4><ul><li class="navListItem navListItemActive"><a class="navItem" href="/margarita/docs/packages/universal-components/">Introduction</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/universal-components/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/universal-components/contributing">Contributing</a></li></ul></div><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/margarita-components/">Margarita Components</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Introduction</h1></header><article><div><span><p><em>This page is a stub.</em></p>
+<p>Component library compatible with Expo/React Native projects as well as React applications.</p>
+<p>Relies on <a href="https://github.com/necolas/react-native-web">react-native-web</a> to port components, written with a React Native first approach, to the web.</p>
+<p><a href="https://kiwicom-universal-components.netlify.com">📘 Storybook</a> |
+<a href="https://kiwicom.github.io/margarita/docs/universal-components/">📚 Documentation</a></p>
+<h2><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<pre><code class="hljs css language-bash">yarn install @kiwicom/universal-components
+<span class="hljs-comment"># Only for React Native</span>
+react-native link @kiwicom/universal-components
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="in-expo-projects"></a><a href="#in-expo-projects" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>In Expo projects</h3>
+<p>Since <code>react-native link</code> is not available in Expo, we need to load the fonts at the root of the application. Your <code>App.js</code> should look like</p>
+<pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { View } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-native"</span>;
+<span class="hljs-keyword">import</span> { Icon, Text, PageLoader } <span class="hljs-keyword">from</span> <span class="hljs-string">"@kiwicom/universal-components"</span>;
+<span class="hljs-keyword">import</span> { Font } <span class="hljs-keyword">from</span> <span class="hljs-string">"expo"</span>;
+<span class="hljs-keyword">import</span> { Fonts } <span class="hljs-keyword">from</span> <span class="hljs-string">"@kiwicom/universal-components"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">App</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  state = {
+    <span class="hljs-attr">fontLoaded</span>: <span class="hljs-literal">false</span>
+  };
+
+  componentDidMount() {
+    Font.loadAsync({
+      <span class="hljs-string">"orbit-icons"</span>: Fonts.OrbitIcons,
+      <span class="hljs-attr">Roboto</span>: Fonts.Roboto,
+      <span class="hljs-attr">RobotoItalic</span>: Fonts.RobotoItalic,
+      <span class="hljs-attr">RobotoBold</span>: Fonts.RobotoBold,
+      <span class="hljs-attr">RobotoBoldItalic</span>: Fonts.RobotoBoldItalic
+    }).then(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">fontLoaded</span>: <span class="hljs-literal">true</span> });
+    });
+  }
+
+  render() {
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">this</span>.state.fontLoaded ? (
+      <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">View</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Text</span>&gt;</span>Open up App.js to start working on your app!<span class="hljs-tag">&lt;/<span class="hljs-name">Text</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Icon</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"calendar"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">View</span>&gt;</span>
+    ) : (
+      <span class="hljs-tag">&lt;<span class="hljs-name">PageLoader</span> /&gt;</span>
+    );
+  }
+}
+</span></code></pre>
+<p>For more information, consult the documentation on <a href="https://docs.expo.io/versions/latest/guides/using-custom-fonts">expo.io</a>.</p>
+<p>Note: For web projects, you need to ensure you support the <code>.web.js</code> extension. <a href="https://github.com/facebook/create-react-app/blob/6364bbf6dc8244508398f934d0882f05e0cb5dcc/packages/react-scripts/config/paths.js#L52">create-react-app</a> already supports it by default.</p>
+<h1><a class="anchor" aria-hidden="true" id="contributing"></a><a href="#contributing" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Contributing</h1>
+<p>See the <a href="/margarita/docs/packages/universal-components/contributing">contributing</a> section.</p>
+<p>Forward your suggestions, issues and bugs <a href="https://github.com/kiwicom/margarita/issues">here</a> (use the <code>universal-components</code> label).</p>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 2/26/2019 by Robin Cussol</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/margarita/docs/packages/index"><span class="arrow-prev">← </span><span>List of Packages</span></a><a class="docs-next button" href="/margarita/docs/packages/universal-components/getting-started"><span>Getting Started</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#usage">Usage</a><ul class="toc-headings"><li><a href="#in-expo-projects">In Expo projects</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Kiwi.com</section></footer></div></body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Getting Started · Margarita Monorepo</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="&lt;p&gt;To get started, clone the repository, change directory and install the dependencies:&lt;/p&gt;
+"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Getting Started · Margarita Monorepo"/><meta property="og:type" content="website"/><meta property="og:url" content="https://kiwicom.github.io/margarita/index.html"/><meta property="og:description" content="&lt;p&gt;To get started, clone the repository, change directory and install the dependencies:&lt;/p&gt;
+"/><meta property="og:image" content="https://kiwicom.github.io/margarita/img/docusaurus.png"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://kiwicom.github.io/margarita/img/docusaurus.png"/><link rel="shortcut icon" href="/margarita/img/favicon.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><link rel="stylesheet" href="/margarita/css/main.css"/><script src="/margarita/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/margarita/"><img class="logo" src="/margarita/img/logo.png" alt="Margarita Monorepo"/><h2 class="headerTitleWithLogo">Margarita Monorepo</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/margarita/docs/" target="_self">First time here?</a></li><li class="siteNavGroupActive siteNavItemActive"><a href="/margarita/docs/getting-started" target="_self">Developers</a></li><li class=""><a href="https://github.com/kiwicom/margarita" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><i></i></div><h2><i>›</i><span>Developing</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Home</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/">What is this all about?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/demos">Web and Mobile demos</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/features-roadmap">Features and Roadmap</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/tequila-api">What is Tequila API?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/technical-big-picture">Technical Big Picture</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developing</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/margarita/docs/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/contributing">Contributing</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/need-help">Need help?</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/folder-structure">Folder Structure</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/technical-overview">Technical Overview</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/guide-tequila-api-key">Guide: Get your Tequila API key</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Apps</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/">List of Apps</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/graphql/">GraphQL Server</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/mobile/">Mobile</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/apps/web/">Web</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Packages</h3><ul class=""><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/">List of Packages</a></li><div class="navGroup subNavGroup"><h4 class="navGroupSubcategoryTitle">Universal Components</h4><ul><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/universal-components/">Introduction</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/universal-components/getting-started">Getting Started</a></li><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/universal-components/contributing">Contributing</a></li></ul></div><li class="navListItem"><a class="navItem" href="/margarita/docs/packages/margarita-components/">Margarita Components</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              const headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                if (event.target.tagName === 'A') {
+                  document.body.classList.remove('tocActive');
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Getting Started</h1></header><article><div><span><p>To get started, clone the repository, change directory and install the dependencies:</p>
+<pre><code class="hljs css language-shell">git clone https://github.com/kiwicom/margarita
+cd margarita/
+yarn
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="initial-configuration-setting-environment-variables"></a><a href="#initial-configuration-setting-environment-variables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Initial Configuration: setting environment variables</h2>
+<ol>
+<li><p>Copy and rename following sample files:</p>
+<ul>
+<li>.env-sample → <strong>.env</strong></li>
+<li>apps/graphql/.env-sample → <strong>apps/graphql/.env</strong></li>
+</ul></li>
+<li><p>Set environment variables in files:</p>
+<p><strong>.env</strong>:</p>
+<ul>
+<li><code>GRAPHQL_URL</code>
+<ul>
+<li>URL of GraphQL server</li>
+<li>E. g.: <code>'http://127.0.0.1:4000'</code></li>
+</ul></li>
+</ul>
+<p><strong>apps/graphql/.env</strong>:</p>
+<ul>
+<li><code>API_KEY</code>
+<ul>
+<li>Get your API key here: <a href="https://tequila.kiwi.com">https://tequila.kiwi.com</a></li>
+</ul></li>
+<li><code>BASE_URL</code>
+<ul>
+<li>URL of REST server</li>
+<li>E. g.: <code>'https://kiwicom-test.apigee.net/'</code></li>
+</ul></li>
+<li><code>NODE_ENV</code>
+<ul>
+<li>Type of NodeJS environment.</li>
+<li>E. g.: <code>'development'</code></li>
+</ul></li>
+</ul></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="available-scripts"></a><a href="#available-scripts" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Available scripts</h2>
+<p>To launch the GraphQL server:</p>
+<ul>
+<li><code>yarn server</code></li>
+</ul>
+<p>To launch the client app, you have different options:</p>
+<ul>
+<li><code>yarn web</code> to launch the <em>development</em> web version;</li>
+<li><code>yarn export; yarn build; yarn start</code> to launch the <em>production</em> web version;</li>
+<li><code>yarn mobile</code> to start the mobile version.</li>
+</ul>
+<p><strong>Note</strong>: If <code>yarn server</code> is running and you get Network errors on Android, you might need to forward your localhost:4000 to the emulator; this is achieved by running <code>adb reverse tcp:4000 tcp:4000</code>.</p>
+<p>The other available scripts are:</p>
+<ul>
+<li><code>yarn web:analyze</code> to get an analysis of the bundle size to get the following
+<img src="./assets/yarn-analyze.png" alt=""></li>
+<li><code>yarn dev</code> to run concurrently <code>yarn server</code> and <code>yarn web</code>;</li>
+<li><code>yarn lint</code> to ensure your code is properly formatted;</li>
+<li><code>yarn flow</code> to ensure your code is respecting the types given to your vaiables;</li>
+<li><code>yarn test</code> to run the test suites;</li>
+<li><code>yarn test-ci</code> to ensure your code should pass the Continuous Integration (CI) tests;</li>
+<li><code>yarn relay</code> to get the latest schema of the <a href="https://github.com/kiwicom/margarita/tree/master/apps/graphql">graphql server</a>
+and compile your queries and fragments to generate Flow types, among other things;</li>
+<li><code>yarn landing-page</code> to run the landing page of the app;</li>
+<li><code>yarn docs</code> to run the documentation website, available at <a href="http://localhost:1337/margarita/">http://localhost:1337/margarita/</a>;</li>
+<li><code>yarn voyager</code> to run the Voyager (represents the GraphQL types as an interactive graph), available at <a href="http://localhost:3002">http://localhost:3002</a>;</li>
+<li><code>storybook:web:margarita-components</code> to run the web version of the Storybook for <code>@kiwicom/margarita-components</code>, available at <a href="http://localhost:9009">http://localhost:9009</a>;</li>
+<li><code>storybook:mobile:margarita-components</code> to run the mobile version of the Storybook for <code>@kiwicom/margarita-components</code>, available at <a href="http://localhost:7007">http://localhost:7007</a> for the web UI controlling the Storybook Expo application;</li>
+<li><code>storybook:web:universal-components</code> to run the web version of the Storybook for <code>@kiwicom/universal-components</code>, available at <a href="http://localhost:9009">http://localhost:9009</a>;</li>
+<li><code>storybook:mobile:universal-components</code> to run the mobile version of the Storybook for <code>@kiwicom/universal-components</code>, available at <a href="http://localhost:7007">http://localhost:7007</a> for the web UI controlling the Storybook Expo application.</li>
+</ul>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 3/4/2019 by Robin Cussol</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/margarita/docs/technical-big-picture"><span class="arrow-prev">← </span><span>Technical Big Picture</span></a><a class="docs-next button" href="/margarita/docs/contributing"><span>Contributing</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#initial-configuration-setting-environment-variables">Initial Configuration: setting environment variables</a></li><li><a href="#available-scripts">Available scripts</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="copyright">Copyright © 2019 Kiwi.com</section></footer></div></body></html>
