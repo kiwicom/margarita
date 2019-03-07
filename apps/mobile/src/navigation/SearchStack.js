@@ -14,6 +14,7 @@ import {
   ResultsScreen,
   ResultDetailScreen,
   PassengerFormScreen,
+  PaymentScreen,
 } from '../screens';
 
 type NavigationOptions = {};
@@ -43,6 +44,12 @@ const StackNavigator: NavigationNavigator<
       screen: ResultDetailScreen,
       navigationOptions: {
         title: 'My Booking',
+      },
+    },
+    [Routes.PAYMENT]: {
+      screen: PaymentScreen,
+      navigationOptions: {
+        title: 'Payment',
       },
     },
     [Routes.PASSENGER_FORM]: {
