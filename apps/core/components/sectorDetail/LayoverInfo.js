@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     paddingVertical: parseInt(defaultTokens.spaceMedium, 10),
     flexDirection: 'row',
     borderColor: defaultTokens.paletteInkLighter,
-    borderLeftWidth: 2,
+    borderStartWidth: 2,
     alignItems: 'center',
     web: {
       borderStyle: 'dotted',

@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAttention,
     padding: 5,
     web: {
-      fontWeight: defaultTokens.fontWeightMedium,
+      fontWeight: '500',
       color: '#2e353b', // @TODO repeating value - should be added to design-tokens
       padding: 0,
       lineHeight: 17,

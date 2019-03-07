@@ -58,14 +58,14 @@ const styles = StyleSheet.create({
   label: {
     flex: 1,
     color: defaultTokens.colorTextAttention,
-    paddingLeft: parseInt(defaultTokens.spaceSmall, 10),
+    paddingStart: parseInt(defaultTokens.spaceSmall, 10),
   },
   icon: {
-    marginRight: 10,
+    marginEnd: 10,
   },
   picker: {
     position: 'absolute',
-    left: 0,
+    start: 0,
     width: '100%',
     opacity: 0, // NOTE: This workaround is required because picker label cannot be currently styled on Android
     height: parseInt(defaultTokens.heightInputNormal, 10),

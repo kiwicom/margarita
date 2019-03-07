@@ -77,7 +77,6 @@ class CheckboxShared extends React.Component<Props, State> {
         onMouseEnter={this.handleOnMouseEnter}
         onMouseLeave={this.handleOnMouseLeave}
       >
-        {/* $FlowFixMe - missing declaration for onFocus + onBlußr - react-native issue ( https://github.com/facebook/react-native/pull/21462 ) */}
         <TouchableWithoutFeedback
           accessibilityRole="button"
           onPress={onPress}

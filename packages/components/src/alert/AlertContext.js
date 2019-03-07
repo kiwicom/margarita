@@ -1,11 +1,6 @@
 // @flow
 
 import * as React from 'react';
-/**
- *  $FlowFixMe:
- *  >Cannot import Alert because there is no Alert export in react-native.
- *  Likely related to the fact that `react-native-web` does not export Alert.
- */
 import { Alert, Platform } from 'react-native';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 

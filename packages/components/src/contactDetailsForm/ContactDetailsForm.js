@@ -82,6 +82,6 @@ const styles = StyleSheet.create({
   },
   phoneNumber: {
     flex: 1,
-    marginLeft: parseFloat(defaultTokens.spaceSmall),
+    marginStart: parseFloat(defaultTokens.spaceSmall),
   },
 });

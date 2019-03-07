@@ -10,7 +10,7 @@ type ArrowProps = {
   containerStyle?: StylePropType,
 };
 
-const Arrow = ({ arrowStyle = null, containerStyle = null }: ArrowProps) => (
+const Arrow = ({ arrowStyle, containerStyle }: ArrowProps) => (
   <View style={[styles.arrowContainer, containerStyle]}>
     <View style={[styles.arrow]}>
       <View style={[styles.arrowHalf, styles.arrowLeft, arrowStyle]} />
@@ -84,8 +84,8 @@ const styles = StyleSheet.create({
     width: 7,
     height: 2,
     backgroundColor: defaultTokens.paletteInkLighter,
-    borderBottomLeftRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    borderTopLeftRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    borderBottomStartRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    borderTopStartRadius: parseFloat(defaultTokens.borderRadiusNormal),
     position: 'absolute',
     bottom: 0,
   },
@@ -93,9 +93,9 @@ const styles = StyleSheet.create({
     height: 7,
     width: 2,
     backgroundColor: defaultTokens.paletteInkLighter,
-    borderTopLeftRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    borderTopRightRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    right: 0,
+    borderTopStartRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    borderTopEndRadius: parseFloat(defaultTokens.borderRadiusNormal),
+    end: 0,
     position: 'absolute',
   },
   upperArrowContainer: { marginTop: -4 },

@@ -24,6 +24,7 @@
 
 ; Ignore Expo
 .*/node_modules/@expo/traveling-fastlane-linux/.*
+.*/node_modules/@expo/traveling-fastlane-darwin/.*
 
 ; My custom ignores
 <PROJECT_ROOT>/\.git/
@@ -50,23 +51,16 @@
 
 [untyped]
 ; Be careful - do not add 'StyleSheet' here
-<PROJECT_ROOT>/node_modules/expo/.+
-<PROJECT_ROOT>/node_modules/express-graphql/.+
-<PROJECT_ROOT>/node_modules/graphql/.+
-<PROJECT_ROOT>/node_modules/iterall/.+
-<PROJECT_ROOT>/node_modules/react-native-share/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Animated/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Components/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Experimental/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Image/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Lists/.+
-<PROJECT_ROOT>/node_modules/react-native/Libraries/ReactNative/.+
+<PROJECT_ROOT>/node_modules/graphql/.*
 <PROJECT_ROOT>/node_modules/react-native/Libraries/StyleSheet/StyleSheetValidation.js
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Text/TextAncestor.js
-<PROJECT_ROOT>/node_modules/react-native/Libraries/Utilities/.+
-<PROJECT_ROOT>/node_modules/react-native-testing-library/src/helpers/getByAPI.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/StyleSheet/processTransform.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Text/.*
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Lists/.*
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Components/.*
+<PROJECT_ROOT>/node_modules/react-native/Libraries/LayoutAnimation/LayoutAnimation.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/YellowBox/UI/YellowBoxList.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Image/Image.ios.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Lists/VirtualizedSectionList.js
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js

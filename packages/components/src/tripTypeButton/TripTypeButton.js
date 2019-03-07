@@ -47,6 +47,6 @@ const styles = StyleSheet.create({
     flex: 1,
     color: defaultTokens.paletteInkDark,
     fontSize: parseInt(defaultTokens.fontSizeButtonNormal, 10),
-    marginLeft: 10,
+    marginStart: 10,
   },
 });

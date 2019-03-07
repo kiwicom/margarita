@@ -4,12 +4,12 @@ import * as React from 'react';
 import { Platform } from 'react-native';
 
 import { Text } from '../Text';
-import { StyleSheet, type StyleObjectType } from '../PlatformStyleSheet';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import Separator from './Separator';
 
 type Props = {|
   +title?: React.Node,
-  +style?: StyleObjectType,
+  +style?: StylePropType,
 |};
 
 export default function MenuGroupTitle({ title, style }: Props) {

@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
   content: {
     width: '100%',
     backgroundColor: defaultTokens.backgroundModal,
-    borderTopLeftRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
-    borderTopRightRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    borderTopStartRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
+    borderTopEndRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
     paddingTop: parseInt(defaultTokens.spaceXXSmall, 10),
     paddingBottom: parseInt(defaultTokens.spaceXXLarge, 10),
   },

@@ -36,10 +36,10 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginLeft: parseFloat(defaultTokens.spaceSmall),
+    marginStart: parseFloat(defaultTokens.spaceSmall),
   },
   icon: {
-    marginRight: parseFloat(defaultTokens.spaceSmall),
+    marginEnd: parseFloat(defaultTokens.spaceSmall),
   },
   label: {
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
