@@ -6,7 +6,7 @@
     "start": "docusaurus-start --port 1337",
     "build": "docusaurus-build",
     "publish-gh-pages": "docusaurus-publish",
-    "deploy": "yarn build; yarn publish-gh-pages",
+    "deploy": "yarn build; CUSTOM_COMMIT_MESSAGE='[skip ci] Update docs' yarn publish-gh-pages",
     "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
