@@ -31,6 +31,10 @@ const siteConfig = {
   headerLinks: [
     { doc: 'index', label: 'First time here?' },
     { doc: 'getting-started', label: 'Developers' },
+    {
+      doc: 'questions-bugs-feature-requests',
+      label: 'Got a question?',
+    },
     { href: 'https://github.com/kiwicom/margarita', label: 'GitHub' },
   ],
 
