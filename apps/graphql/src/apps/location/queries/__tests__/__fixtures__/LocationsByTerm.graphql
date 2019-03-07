@@ -20,11 +20,7 @@
         }
       }
     }
-    ... on HttpResponseError {
-      message
-      code
-    }
-    ... on HttpTimeoutError {
+    ... on HttpError {
       message
       code
     }

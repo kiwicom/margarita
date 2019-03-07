@@ -2,26 +2,20 @@
 
 import { TimeoutError, ResponseError } from '@kiwicom/fetch';
 
-import { TimeoutErrorObject, ResponseErrorObject } from './ErrorsObjects';
+import { HttpErrorObject } from './HttpErrorObject';
 
 export default async function catchDataloaderError<T>(cb: () => Promise<T>) {
   try {
     return await cb();
   } catch (err) {
     if (err instanceof TimeoutError) {
-      return new TimeoutErrorObject(
-        err.response.status,
-        err.response.statusText,
-      );
+      return new HttpErrorObject(504, `Service Timeout`);
     }
 
     if (err instanceof ResponseError) {
-      return new ResponseErrorObject(
-        err.response.status,
-        err.response.statusText,
-      );
+      return new HttpErrorObject(err.response.status, err.response.statusText);
     }
-    // something else
-    throw err;
+    // @TODO log error to sentry with the hash value
+    throw new Error('Unhandled exception');
   }
 }

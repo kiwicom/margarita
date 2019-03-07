@@ -188,14 +188,9 @@ interface FromToInterface {
   type: BookingType
 }
 
-type HttpResponseError {
-  code: Int
-  message: String
-}
-
-type HttpTimeoutError {
-  code: Int
-  message: String
+type HttpError {
+  code: Int!
+  message: String!
 }
 
 input ItinerariesSearchInput {
@@ -314,7 +309,7 @@ input LocationsByTermInput {
   types: [LocationType]
 }
 
-union LocationsResult = LocationConnection | HttpResponseError | HttpTimeoutError
+union LocationsResult = LocationConnection | HttpError
 
 enum LocationType {
   STATION

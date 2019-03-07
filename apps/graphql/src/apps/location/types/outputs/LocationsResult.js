@@ -2,27 +2,16 @@
 
 import { GraphQLUnionType } from 'graphql';
 
-import {
-  TimeoutErrorObject,
-  ResponseErrorObject,
-} from '../../../../services/helpers/ErrorsObjects';
+import { HttpErrorObject } from '../../../../services/helpers/HttpErrorObject';
 import GraphQLocationsConnection from './LocationsConnection';
-import GrapQLHttpResponseError from '../../../common/types/outputs/errors/HttpResponseError';
-import GrapQLHttpTimeoutError from '../../../common/types/outputs/errors/HttpTimeoutError';
+import GrapQLHttpError from '../../../common/types/outputs/errors/HttpError';
 
 const LocationsResult = new GraphQLUnionType({
   name: 'LocationsResult',
-  types: [
-    GraphQLocationsConnection,
-    GrapQLHttpResponseError,
-    GrapQLHttpTimeoutError,
-  ],
+  types: [GraphQLocationsConnection, GrapQLHttpError],
   resolveType(root) {
-    if (root instanceof ResponseErrorObject) {
-      return GrapQLHttpResponseError;
-    }
-    if (root instanceof TimeoutErrorObject) {
-      return GrapQLHttpTimeoutError;
+    if (root instanceof HttpErrorObject) {
+      return GrapQLHttpError;
     }
     return GraphQLocationsConnection;
   },
