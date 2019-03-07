@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   placeSwitch: {
     position: 'absolute',
     zIndex: 1,
-    right: 18,
+    end: 18,
     top: '50%',
     marginTop: -20,
     alignItems: 'center',
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   rowPlaceSwitch: {
     web: {
       alignSelf: 'center',
-      right: '50%',
+      end: '50%',
       marginEnd: -parseInt(defaultTokens.widthIconLarge, 10) * 0.5,
     },
   },

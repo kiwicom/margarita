@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAttention,
     web: {
       color: defaultTokens.paletteInkNormal,
-      fontWeight: defaultTokens.fontWeightMedium,
+      fontWeight: '500',
     },
   },
 });

@@ -13,7 +13,6 @@ const keyExtractor = item => item;
 const renderItem = ({ item }) => (
   <View key={item} style={styles.item}>
     <Text>{item}</Text>
-    {/* $FlowFixMe item is of type string, when enum is expected */}
     <Icon name={item} size="large" />
   </View>
 );

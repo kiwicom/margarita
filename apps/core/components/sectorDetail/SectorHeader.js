@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: parseInt(defaultTokens.fontSizeHeadingTitle3, 10),
     color: defaultTokens.colorTextSecondary,
     web: {
-      fontWeight: defaultTokens.fontWeightMedium,
+      fontWeight: '500',
     },
   },
 });

@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: parseInt(defaultTokens.spaceSmall, 10),
+    paddingEnd: parseInt(defaultTokens.spaceSmall, 10),
     paddingVertical: parseInt(defaultTokens.spaceXXSmall, 10),
   },
 });

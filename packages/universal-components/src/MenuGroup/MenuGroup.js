@@ -5,7 +5,7 @@ import { Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Card } from '../Card';
-import { StyleSheet, type StyleObjectType } from '../PlatformStyleSheet';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import MenuGroupTitle from './MenuGroupTitle';
 import MenuItem from './MenuItem';
 
@@ -14,7 +14,7 @@ type Props = {|
     | React.Element<typeof MenuItem>
     | React.ChildrenArray<React.Element<typeof MenuItem>>,
   +title?: React.Node,
-  +titleStyle?: StyleObjectType,
+  +titleStyle?: StylePropType,
   +footer?: React.Node,
 |};
 

@@ -34,11 +34,11 @@ const styles = StyleSheet.create({
   wrapperVisa: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingLeft: parseInt(defaultTokens.spaceSmall, 10),
+    paddingStart: parseInt(defaultTokens.spaceSmall, 10),
     paddingVertical: parseInt(defaultTokens.spaceXXSmall, 10),
   },
   paddingTextLeft: {
-    paddingLeft: parseInt(defaultTokens.spaceXXSmall, 10),
+    paddingStart: parseInt(defaultTokens.spaceXXSmall, 10),
   },
   success: {
     backgroundColor: defaultTokens.backgroundBadgeSuccess,

@@ -93,14 +93,14 @@ export default function SearchParamsSummary({
   );
 }
 
-const headerHeight = 64;
+const headerHeight = 72;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     height: headerHeight,
     borderBottomWidth: 1,
     borderBottomColor: defaultTokens.paletteInkLighter,
-    paddingLeft: 16,
+    paddingStart: 16,
   },
   connector: {
     color: defaultTokens.paletteInkDark,
@@ -114,13 +114,10 @@ const styles = StyleSheet.create({
   headerLeftContainer: {
     flexDirection: 'column',
     paddingStart: 16,
-    ios: {
-      paddingLeft: 16,
-    },
     android: {
-      paddingLeft: 40,
+      paddingStart: 40,
     },
-    alignItems: Platform.OS === 'web' ? 'center' : null,
+    alignItems: Platform.OS === 'web' ? 'center' : 'stretch',
     flex: 1,
   },
   city: {
@@ -144,7 +141,7 @@ const styles = StyleSheet.create({
   gradientOverlap: {
     position: 'absolute',
     top: 0,
-    right: 0,
+    end: 0,
     height: headerHeight - 1,
     zIndex: parseFloat(defaultTokens.zIndexDefault),
   },

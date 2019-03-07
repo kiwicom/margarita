@@ -44,7 +44,7 @@ Object {
             "color": "#171b1e",
             "flex": 1,
             "fontSize": 14,
-            "marginLeft": 10,
+            "marginStart": 10,
           }
         }
       >

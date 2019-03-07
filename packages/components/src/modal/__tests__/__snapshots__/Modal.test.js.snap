@@ -22,8 +22,8 @@ Object {
         Array [
           Object {
             "backgroundColor": "#fff",
-            "borderTopLeftRadius": 6,
-            "borderTopRightRadius": 6,
+            "borderTopEndRadius": 6,
+            "borderTopStartRadius": 6,
             "paddingBottom": 40,
             "paddingTop": 4,
             "width": "100%",

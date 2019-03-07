@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   infoTextThick: {
     web: {
-      fontWeight: defaultTokens.fontWeightMedium,
+      fontWeight: '500',
     },
   },
   infoLabel: {

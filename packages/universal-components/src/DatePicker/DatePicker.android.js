@@ -58,7 +58,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
     }
 
     const { action, year, month, day } = picker;
-    // $FlowFixMe - it has a reference to DatePickerAndroid.ios.js
     if (action !== DatePickerAndroid.dismissedAction) {
       let customDate;
       if (date && !isNaN(date.getTime())) {
@@ -84,7 +83,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
         }
 
         const { action: timeAction, hour, minute } = pickerTime;
-        // $FlowFixMe - it has a reference to DatePickerAndroid.ios.js
         if (timeAction !== TimePickerAndroid.dismissedAction) {
           const selectedDate = new Date(year, month, day, hour, minute);
           onConfirm(selectedDate);
@@ -118,7 +116,6 @@ export default class AndroidDatePicker extends React.Component<Props> {
     }
 
     const { action, hour, minute } = picker;
-    // $FlowFixMe - it has a reference to DatePickerAndroid.ios.js
     if (action !== TimePickerAndroid.dismissedAction) {
       let customDate;
       if (date) {

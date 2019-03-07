@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  Animated,
-  View,
-  AnimatedValue,
-  AnimationEventListener,
-} from 'react-native';
+import { Animated, View } from 'react-native';
 import { StyleSheet, Button } from '@kiwicom/universal-components';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
@@ -22,7 +17,7 @@ type Props = {|
 |};
 type State = {|
   +expanded: boolean,
-  +opacity: AnimatedValue,
+  +opacity: any, // @TODO - set more exact type
   +overlayRendered: boolean,
 |};
 
@@ -30,7 +25,7 @@ const overlayMaxOpacity = 1 - parseFloat(defaultTokens.opacityOverlay);
 const overlayAnimationDuration = parseFloat(defaultTokens.durationFast) * 1000;
 
 class PriceSummary extends React.Component<Props, State> {
-  static opacityChangeListener: AnimationEventListener;
+  static opacityChangeListener: any; // @TODO - set more exact type
 
   static defaultProps = {
     buttonLabel: 'Continue',
@@ -52,7 +47,8 @@ class PriceSummary extends React.Component<Props, State> {
     this.state.opacity.removeListener(PriceSummary.opacityChangeListener);
   }
 
-  handleAnimation = (animation: AnimatedValue) => {
+  // @TODO - set more exact type
+  handleAnimation = (animation: any) => {
     if (animation.value === 0 && this.state.overlayRendered !== false) {
       this.setState({ overlayRendered: false });
     }
@@ -130,18 +126,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 0,
     bottom: 0,
-    left: 0,
-    right: 0,
+    start: 0,
+    end: 0,
     backgroundColor: defaultTokens.colorTextAttention, // @TODO tokens: this color should be named like background
   },
   container: {
     backgroundColor: defaultTokens.backgroundCard,
     borderColor: defaultTokens.borderColorTableCell,
     borderTopWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderLeftWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderRightWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderTopLeftRadius: parseFloat(defaultTokens.borderRadiusBadge),
-    borderTopRightRadius: parseFloat(defaultTokens.borderRadiusBadge),
+    borderStartWidth: parseFloat(defaultTokens.borderWidthCard),
+    borderEndWidth: parseFloat(defaultTokens.borderWidthCard),
+    borderTopStartRadius: parseFloat(defaultTokens.borderRadiusBadge),
+    borderTopEndRadius: parseFloat(defaultTokens.borderRadiusBadge),
     padding: parseFloat(defaultTokens.spaceMedium),
     paddingTop: parseFloat(defaultTokens.spaceXXSmall),
     web: {
@@ -152,7 +148,7 @@ const styles = StyleSheet.create({
     marginBottom: parseFloat(defaultTokens.spaceMedium),
   },
   table: {
-    marginLeft: parseFloat(defaultTokens.spaceXSmall),
+    marginStart: parseFloat(defaultTokens.spaceXSmall),
   },
   contentContainer: {
     web: {

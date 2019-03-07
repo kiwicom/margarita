@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginStart: parseInt(defaultTokens.spaceXSmall, 10),
     web: {
-      flex: null,
+      flex: -1,
       marginStart: 0,
     },
   },
