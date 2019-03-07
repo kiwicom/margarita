@@ -5,7 +5,8 @@
       "demos",
       "features-roadmap",
       "tequila-api",
-      "technical-big-picture"
+      "technical-big-picture",
+      "questions-bugs-feature-requests"
     ],
     "Developing": [
       "getting-started",

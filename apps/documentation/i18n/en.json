@@ -73,6 +73,10 @@
         "title": "Introduction",
         "sidebar_label": "Introduction"
       },
+      "questions-bugs-feature-requests": {
+        "title": "Submitting Questions, Bugs or Feature Requests",
+        "sidebar_label": "Questions/Bugs/Feature Requests"
+      },
       "technical-big-picture": {
         "title": "Technical Big Picture",
         "sidebar_label": "Technical Big Picture"
@@ -89,6 +93,7 @@
     "links": {
       "First time here?": "First time here?",
       "Developers": "Developers",
+      "Got a question?": "Got a question?",
       "GitHub": "GitHub"
     },
     "categories": {
