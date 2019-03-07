@@ -32,6 +32,7 @@ import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
 import { DATE_FORMAT } from './SearchConstants';
 import SearchFormModes from './SearchFormModes';
+import Payment from '../payment/Payment';
 
 type Props = {
   +navigation: Navigation,
@@ -99,7 +100,9 @@ class Search extends React.Component<Props> {
   render() {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
 
-    return (
+    return true ? (
+      <Payment />
+    ) : (
       <View style={styles.container}>
         <View style={[styles.form, desktopLayout && styles.formDesktop]}>
           <Illustration name="Boarding" style={styles.boardingIllustration} />
