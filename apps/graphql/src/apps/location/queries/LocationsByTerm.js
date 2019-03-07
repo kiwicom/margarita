@@ -2,30 +2,23 @@
 
 import { GraphQLNonNull } from 'graphql';
 import { type ConnectionArguments } from 'graphql-relay';
-import {
-  connectionFromArray,
-  connectionArgs,
-  connectionDefinitions,
-} from '@kiwicom/graphql-utils';
+import { connectionFromArray, connectionArgs } from '@kiwicom/graphql-utils';
 
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import type { LocationTypeInput } from '../dataloaders/Locations';
 import type { Location } from '../Location';
-import GraphQLocation from '../types/outputs/Location';
+import GraphQLocationsResult from '../types/outputs/LocationsResult';
 import LocationsByTermInput from '../types/inputs/LocationsByTermInput';
-
-const { connectionType: LocationsConnection } = connectionDefinitions({
-  nodeType: GraphQLocation,
-});
+import catchDataloaderError from '../../../services/helpers/catchDataloaderError';
 
 type Args = {|
   +input: { term: string, types?: LocationTypeInput[] },
   ...$Exact<ConnectionArguments>,
 |};
 
-const Locations = {
-  name: 'Locations',
-  type: LocationsConnection,
+export default {
+  name: 'LocationsByTermInput_RootQuery',
+  type: GraphQLocationsResult,
   description: 'Query for suggested locations based on incomplete names',
   args: {
     input: {
@@ -34,15 +27,13 @@ const Locations = {
     ...connectionArgs,
   },
   resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
-    const { term, types } = args.input;
-
-    const locations = await dataLoader.locations.load({
-      term,
-      types,
+    return catchDataloaderError(async () => {
+      const { term, types } = args.input;
+      const locations = await dataLoader.locations.load({
+        term,
+        types,
+      });
+      return connectionFromArray<Location>([...locations], args);
     });
-
-    return connectionFromArray<Location>([...locations], args);
   },
 };
-
-export default Locations;

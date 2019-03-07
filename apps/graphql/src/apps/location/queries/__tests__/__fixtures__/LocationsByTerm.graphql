@@ -1,21 +1,32 @@
 {
   locationsByTerm(input: { term: "Prague" }) {
-    edges {
-      node {
-        id
-        slug
-        name
-        countryFlagURL
-        type
-        city {
+    __typename
+    ... on LocationConnection {
+      edges {
+        node {
           id
+          slug
           name
-        }
-        coordinates {
-          lat
-          lng
+          countryFlagURL
+          type
+          city {
+            id
+            name
+          }
+          coordinates {
+            lat
+            lng
+          }
         }
       }
+    }
+    ... on HttpResponseError {
+      message
+      code
+    }
+    ... on HttpTimeoutError {
+      message
+      code
     }
   }
 }

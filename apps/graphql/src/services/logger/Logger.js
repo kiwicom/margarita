@@ -1,5 +1,7 @@
 // @flow
 
+// TODO log error with the sentry
+
 import chalkNode from 'chalk';
 
 let chalk = chalkNode;
