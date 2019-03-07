@@ -38,10 +38,13 @@ const Container = styled.div`
 `;
 
 const HeadlineTextWrapper = styled.div`
-  padding: 30px 0;
+  padding: 50px 0 20px 0;
   align-self: center;
   width: 85vw;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.TABLET}) {
+    padding-top: 50px;
+  }
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     align-self: flex-start;
     padding: 11vh 0 8vh 10vw;
   }
@@ -52,7 +55,7 @@ const HeadlineBodyWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     display: block;
     padding-top: 6vh;
   }
@@ -63,7 +66,7 @@ const ContainerBottom = styled.div`
   flex-direction: column;
   padding: 0;
   align-items: center;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     flex-direction: row;
     justify-content: space-between;
     padding: 9.5vh 0 0 2vw;
@@ -73,11 +76,15 @@ const ContainerBottom = styled.div`
 
 const PlaneImageMobile = styled.div`
   width: 94vw;
-  height: 280px;
+  height: 260px;
+  margin-top: 10px;
   background-image: url('/static/airport.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 90%;
+  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    height: 320px;
+  }
 `;
 
 const PlaneImage = styled(PlaneImageMobile)`
@@ -86,7 +93,7 @@ const PlaneImage = styled(PlaneImageMobile)`
   background-size: cover;
   margin-right: 3vw;
   display: none;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     display: block;
     height: 40vh;
   }

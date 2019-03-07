@@ -21,7 +21,7 @@ export default function TextHeadline(props: Props) {
 
 const Alignment = styled.div`
   text-align: center;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     text-align: left;
   }
 `;

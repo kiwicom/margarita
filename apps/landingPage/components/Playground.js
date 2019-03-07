@@ -28,6 +28,9 @@ const PlaygroundContainer = styled.div`
   align-items: center;
   padding-top: 20px;
   @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    padding-top: 40px;
+  }
+  @media (min-width: 1250px) {
     padding-top: 80px;
   }
 `;

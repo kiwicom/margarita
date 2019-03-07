@@ -10,6 +10,7 @@ import { BREAKPOINTS } from '../../mediaQueriesConfig';
 type Props = {|
   +link: string,
   +text: string,
+  +mobileAlign: string,
 |};
 
 export default function ButtonLink(props: Props) {
@@ -24,7 +25,7 @@ export default function ButtonLink(props: Props) {
 
 const WrapperButton = styled.div`
   margin-top: 20px;
-  align-self: flex-start;
+  align-self: ${props => props.mobileAlign};
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     align-self: center;
   }

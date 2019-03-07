@@ -28,7 +28,7 @@ const Phones = styled.div`
   display: flex;
   overflow-x: auto;
   width: 100vw;
-  @media (min-width: 1025px) {
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     flex-wrap: nowrap;
     width: unset;
   }
