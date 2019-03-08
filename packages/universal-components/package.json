@@ -49,7 +49,7 @@
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-ondevice-knobs": "^4.1.13",
     "@storybook/react": "^4.1.13",
-    "babel-plugin-react-native-web": "^0.9.9",
+    "babel-plugin-react-native-web": "^0.10.1",
     "copyfiles": "^2.1.0",
     "flow-copy-source": "^2.0.2",
     "metro-react-native-babel-preset": "^0.50.0",
