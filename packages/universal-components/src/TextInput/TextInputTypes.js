@@ -9,7 +9,7 @@ export type Props = {|
   +autoFocus?: boolean,
   +size?: 'small' | 'normal',
   +placeholder?: string,
-  +value?: string,
+  +value?: ?string,
   +disabled?: boolean,
   +required?: boolean,
   +inlineLabel?: boolean,

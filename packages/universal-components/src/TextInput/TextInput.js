@@ -252,9 +252,7 @@ class TextInput extends React.Component<Props, State> {
                 value={value}
               />
             )}
-            {suffix != null && Platform.OS === 'web' && (
-              <Suffix>{suffix}</Suffix>
-            )}
+            {suffix != null && <Suffix>{suffix}</Suffix>}
           </View>
           {help != null && !error && (
             <FormFeedback type="help">{help}</FormFeedback>
