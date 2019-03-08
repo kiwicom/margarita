@@ -26,6 +26,7 @@ export default function FormFeedback({ children, type }: Props) {
 const styles = StyleSheet.create({
   container: {
     marginTop: parseFloat(defaultTokens.marginTopFormFeedback),
+    marginStart: parseFloat(defaultTokens.spaceSmall),
   },
   message: {
     fontSize: parseFloat(defaultTokens.fontSizeFormFeedback),

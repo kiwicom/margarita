@@ -79,6 +79,6 @@ const styles = StyleSheet.create({
   formLabel: {
     flexDirection: 'row',
     marginBottom: 4,
-    marginStart: 10,
+    marginStart: parseFloat(defaultTokens.spaceSmall),
   },
 });
