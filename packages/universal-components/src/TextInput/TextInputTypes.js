@@ -9,7 +9,7 @@ export type Props = {|
   +autoFocus?: boolean,
   +size?: 'small' | 'normal',
   +placeholder?: string,
-  +value?: string,
+  +value?: ?string,
   +disabled?: boolean,
   +required?: boolean,
   +inlineLabel?: boolean,
@@ -21,9 +21,10 @@ export type Props = {|
   +minLength?: number, // this prop is supported only on web
   +onFocus?: () => void | Promise<any>,
   +onBlur?: () => void | Promise<any>,
+  +onHelpPress?: () => void,
   +onChangeText?: string => void | Promise<any>,
-  +error?: React.Node,
-  +help?: React.Node,
+  +error?: React.Node, // @TODO rename to renderError etc.?
+  +description?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
   +labelContainerStyle?: StylePropType,
 |};

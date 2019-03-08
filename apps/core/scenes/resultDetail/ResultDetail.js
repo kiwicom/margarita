@@ -61,7 +61,7 @@ class ResultDetail extends React.Component<Props, State> {
   };
 
   handleContinue = () => {
-    // @TODO
+    this.props.navigation.navigate(Routes.PAYMENT);
   };
 
   render() {

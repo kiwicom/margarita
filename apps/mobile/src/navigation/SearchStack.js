@@ -1,5 +1,6 @@
 // @flow
 
+import * as React from 'react';
 import {
   createStackNavigator,
   type NavigationState,
@@ -8,6 +9,8 @@ import {
 } from 'react-navigation';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Routes } from '@kiwicom/margarita-navigation';
+import { ExtendedTouchable } from '@kiwicom/margarita-components';
+import { Icon } from '@kiwicom/universal-components';
 
 import {
   SearchScreen,
@@ -50,6 +53,14 @@ const StackNavigator: NavigationNavigator<
       screen: PaymentScreen,
       navigationOptions: {
         title: 'Payment',
+        headerRight: (
+          <ExtendedTouchable onPress={() => {}}>
+            <Icon
+              name="question-circle"
+              color={defaultTokens.colorTextButtonLinkPrimary}
+            />
+          </ExtendedTouchable>
+        ),
       },
     },
     [Routes.PASSENGER_FORM]: {

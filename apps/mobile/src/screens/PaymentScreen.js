@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Payment } from '@kiwicom/margarita-core';
+import { ContactDetailsForm } from '@kiwicom/margarita-components';
 import { type NavigationScreenProp } from 'react-navigation';
 
 type NavigationParams = {|

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-type Type = 'help' | 'error';
+type Type = 'description' | 'error';
 
 export type Props = {|
   +children: React.Node,

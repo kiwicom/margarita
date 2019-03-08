@@ -50,6 +50,12 @@ export {
 export { default as VisaInfo } from './src/visaInfo/VisaInfo';
 export { default as TableRow } from './src/table/TableRow';
 export { default as TableRowDivider } from './src/table/TableRowDivider';
+export {
+  default as ContactDetailsForm,
+} from './src/contactDetailsForm/ContactDetailsForm';
+export {
+  default as CreditCardPaymentForm,
+} from './src/creditCardPaymentForm/CreditCardPaymentForm';
 
 // types
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
@@ -61,6 +67,3 @@ export type {
   PassengerCardActionType,
 } from './src/passengerCard/PassengerCardTypes';
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
-export {
-  default as ContactDetailsForm,
-} from './src/contactDetailsForm/ContactDetailsForm';

@@ -32,6 +32,7 @@ export { OptionPicker } from './OptionPicker';
 export { MenuGroup, MenuItem } from './MenuGroup';
 export { Picker } from './Picker';
 export { PickerButton } from './PickerButton';
+export { Switch } from './Switch';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

@@ -66,7 +66,7 @@ const stories = storiesOf('TextInput', module)
       'search',
     );
     const error = text('Error', '');
-    const help = text('Help', '');
+    const description = text('Description', '');
     const status = select(
       'Status',
       ['default', 'success', 'warning'],
@@ -91,7 +91,7 @@ const stories = storiesOf('TextInput', module)
         onFocus={action('focus')}
         onBlur={action('blur')}
         error={error}
-        help={help}
+        description={description}
         maxLength={maxLength}
         minLength={minLength}
         status={status}
@@ -150,7 +150,7 @@ const stories = storiesOf('TextInput', module)
       label="Label"
       placeholder="Type something"
       onChangeText={action('change')}
-      help="I'm Helper"
+      description="Some description"
     />
   ))
   .add('Input with max length', () => (

@@ -158,12 +158,13 @@ class TextInput extends React.Component<Props, State> {
       suffix,
       type = 'text',
       error,
-      help,
+      description,
       maxLength,
       minLength,
       status = 'default',
       autoFocus,
       autoCorrect = true,
+      onHelpPress,
     } = this.props;
     const { focused, value } = this.state;
 
@@ -245,6 +246,15 @@ class TextInput extends React.Component<Props, State> {
                 styles[size],
               ]}
             />
+            {onHelpPress && (
+              <TouchableOpacity onPress={onHelpPress}>
+                <Icon
+                  name="question-circle"
+                  color={defaultTokens.colorTextButtonLinkPrimary}
+                />
+              </TouchableOpacity>
+            )}
+
             {Platform.OS !== 'web' && (
               <ClearButton
                 onPress={this.clearValue}
@@ -256,8 +266,8 @@ class TextInput extends React.Component<Props, State> {
               <Suffix>{suffix}</Suffix>
             )}
           </View>
-          {help != null && !error && (
-            <FormFeedback type="help">{help}</FormFeedback>
+          {description != null && !error && (
+            <FormFeedback type="description">{description}</FormFeedback>
           )}
           {error != null && <FormFeedback type="error">{error}</FormFeedback>}
         </View>
