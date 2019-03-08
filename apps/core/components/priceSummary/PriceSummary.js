@@ -17,7 +17,7 @@ type Props = {|
 |};
 type State = {|
   +expanded: boolean,
-  +opacity: any, // @TODO - set more exact type
+  +opacity: Animated.Value,
   +overlayRendered: boolean,
 |};
 
@@ -25,7 +25,7 @@ const overlayMaxOpacity = 1 - parseFloat(defaultTokens.opacityOverlay);
 const overlayAnimationDuration = parseFloat(defaultTokens.durationFast) * 1000;
 
 class PriceSummary extends React.Component<Props, State> {
-  static opacityChangeListener: any; // @TODO - set more exact type
+  static opacityChangeListenerId: string;
 
   static defaultProps = {
     buttonLabel: 'Continue',
@@ -38,17 +38,16 @@ class PriceSummary extends React.Component<Props, State> {
   };
 
   componentDidMount() {
-    PriceSummary.opacityChangeListener = this.state.opacity.addListener(
+    PriceSummary.opacityChangeListenerId = this.state.opacity.addListener(
       this.handleAnimation,
     );
   }
 
   componentWillUnmount() {
-    this.state.opacity.removeListener(PriceSummary.opacityChangeListener);
+    this.state.opacity.removeListener(PriceSummary.opacityChangeListenerId);
   }
 
-  // @TODO - set more exact type
-  handleAnimation = (animation: any) => {
+  handleAnimation = (animation: { value: number }) => {
     if (animation.value === 0 && this.state.overlayRendered !== false) {
       this.setState({ overlayRendered: false });
     }
