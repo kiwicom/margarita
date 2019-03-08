@@ -102,7 +102,7 @@ class ResultDetail extends React.Component<Props, State> {
             passengerCards={passengerCards}
             onActionPress={this.handlePassengerEditPress}
             actionIconName="edit"
-            onPassengerAddPress={this.handleAddPassenger}
+            onAddPassengerPress={this.handleAddPassenger}
           />
           <ContactDetailsForm
             onChangeEmail={this.handleChangeEmail}

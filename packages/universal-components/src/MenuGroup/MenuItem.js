@@ -33,19 +33,17 @@ export default function MenuItem({
   labelStyle,
   hideActionIcon = false,
 }: Props) {
-  const iconRendered = icon != null;
-  const menuIcon =
-    icon != null
-      ? React.cloneElement(icon, {
-          color: icon.props.color ?? defaultTokens.paletteInkLight,
-          size: icon.props.size ?? 'medium',
-          style: [styles.icon, icon.props.style],
-        })
-      : null;
+  const menuIcon = icon
+    ? React.cloneElement(icon, {
+        color: icon.props.color ?? defaultTokens.paletteInkLight,
+        size: icon.props.size ?? 'medium',
+        style: [styles.icon, icon.props.style],
+      })
+    : null;
   return (
     <View style={styles.container}>
       <Touchable onPress={onPress}>
-        <MenuItemWrapper iconRendered={iconRendered}>
+        <MenuItemWrapper iconRendered={icon != null}>
           <View style={styles.row}>
             {menuIcon}
             <View>
@@ -78,7 +76,7 @@ export default function MenuItem({
   );
 }
 
-const iconMargin = 12;
+const iconMargin = parseFloat(defaultTokens.spaceSmall);
 
 const styles = StyleSheet.create({
   container: {

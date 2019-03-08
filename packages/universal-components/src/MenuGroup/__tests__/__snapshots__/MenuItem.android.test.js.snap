@@ -15,37 +15,29 @@ exports[`MenuGroup renders correctly 1`] = `
     disabled={false}
     onPress={[MockFunction]}
     rippleColor="rgba(0, 0, 0, 0.32)"
-    style={
-      Object {
-        "backgroundColor": "#fff",
-        "paddingBottom": 8.5,
-        "paddingEnd": 16,
-        "paddingStart": 12,
-        "paddingTop": 6,
-      }
-    }
   >
-    <Component
-      style={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "row",
-        }
-      }
+    <MenuItemWrapper
+      iconRendered={false}
     >
-      <Component>
-        <Text
-          expo={false}
-          size="large"
-          type="attention"
-        >
-          test
-        </Text>
+      <Component
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          }
+        }
+      >
+        <Component>
+          <Text
+            expo={false}
+            size="large"
+            type="attention"
+          >
+            test
+          </Text>
+        </Component>
       </Component>
-    </Component>
+    </MenuItemWrapper>
   </Touchable>
-  <Separator
-    style={Object {}}
-  />
 </Component>
 `;

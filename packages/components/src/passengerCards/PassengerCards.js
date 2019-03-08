@@ -1,8 +1,8 @@
 // @flow strict
 
 import * as React from 'react';
-import { View, Platform } from 'react-native';
-import { Icon, Button, StyleSheet } from '@kiwicom/universal-components';
+import { View } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type {
@@ -10,26 +10,13 @@ import type {
   PassengerCardActionType,
 } from '../passengerCard/PassengerCardTypes';
 import PassengerCard from '../passengerCard/PassengerCard';
+import AddPassengerButton from './AddPassengerButton';
 
 type Props = {|
-  +onPassengerAddPress?: () => void,
+  +onAddPassengerPress?: () => void,
   +passengerCards: ?Array<?PassengerCardType>,
   ...PassengerCardActionType,
 |};
-
-const AddPassengerIos = ({ onPress }) => (
-  <Button onPress={onPress} label="Add another passenger" block />
-);
-
-const AddPassengerAndroid = ({ onPress }) => (
-  <Button
-    onPress={onPress}
-    width={parseFloat(defaultTokens.heightButtonNormal)}
-    circled
-  >
-    <Icon name="passenger-add" color={defaultTokens.colorTextButtonPrimary} />
-  </Button>
-);
 
 export default class PassengerCards extends React.Component<Props> {
   renderPassengerCard = (passengerCard: ?PassengerCardType) => {
@@ -48,18 +35,14 @@ export default class PassengerCards extends React.Component<Props> {
   // @TODO tokens: there is no size 48px for button/icon
   // @TODO button should be rounded
   render() {
-    const { onPassengerAddPress, passengerCards } = this.props;
+    const { onAddPassengerPress, passengerCards } = this.props;
     return (
       <View style={styles.container}>
         {passengerCards && passengerCards.map(this.renderPassengerCard)}
 
-        {onPassengerAddPress && (
+        {onAddPassengerPress && (
           <View style={styles.addButtonContainer}>
-            {Platform.OS === 'ios' ? (
-              <AddPassengerIos onPress={onPassengerAddPress} />
-            ) : (
-              <AddPassengerAndroid onPress={onPassengerAddPress} />
-            )}
+            <AddPassengerButton onPress={onAddPassengerPress} />
           </View>
         )}
       </View>

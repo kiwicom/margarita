@@ -16,14 +16,13 @@ export default function MenuItemWrapper({ children, iconRendered }: Props) {
   return (
     <View>
       <View style={styles.wrapper}>{children}</View>
-      <Separator style={iconRendered ? styles.noIcon : styles.iconSeparator} />
+      <Separator style={iconRendered ? styles.iconSeparator : styles.noIcon} />
     </View>
   );
 }
 
-const wrapperPaddingStart = 12;
-const iconWidth = 24;
-const iconMargin = 12;
+const wrapperPaddingStart = parseFloat(defaultTokens.spaceSmall);
+const iconMargin = parseFloat(defaultTokens.spaceSmall);
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -45,7 +44,10 @@ const styles = StyleSheet.create({
   },
   iconSeparator: {
     ios: {
-      marginStart: wrapperPaddingStart + iconWidth + iconMargin,
+      marginStart:
+        wrapperPaddingStart +
+        parseFloat(defaultTokens.widthIconMedium) +
+        iconMargin,
     },
   },
 });
