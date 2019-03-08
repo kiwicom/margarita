@@ -13,49 +13,54 @@ import {
   PassengerCardDetail,
   ShareIcon,
 } from '@kiwicom/margarita-components';
-// import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
+const passengerCards = [
+  {
+    name: 'John Doe',
+    gender: 'male',
+    nationality: 'Russian',
+    dateOfBirth: '22/04/1980',
+    id: 'DF45SV8',
+    insurance: 'Travel Insurance Name',
+    passengerCount: 1,
+    bags: [
+      { count: 2, type: '40x15x30cm, 3kg' },
+      { count: 1, type: '55x20x40cm, 8kg' },
+    ],
+    visaRequired: true,
+  },
+  {
+    name: 'Jana Nováková',
+    gender: 'female',
+    nationality: 'Czech',
+    dateOfBirth: '22/04/1984',
+    id: 'DF45SV9',
+    insurance: 'Travel Insurance Name',
+    passengerCount: 1,
+    bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
+    visaRequired: false,
+  },
+  {
+    name: 'Jana Nováková',
+    gender: 'female',
+    nationality: 'Czech',
+    dateOfBirth: '22/04/1984',
+    id: 'DF45SV3',
+    insurance: 'Travel Insurance Name',
+    passengerCount: 1,
+    bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
+  },
+];
 
 const handleEditPassenger = () => {
   // @TODO
 };
+
+const onPressInvite = () => {
+  // @TODO
+};
+
 export default function PassengerDetail() {
-  const passengerCards = [
-    {
-      name: 'John Doe',
-      gender: 'male',
-      nationality: 'Russian',
-      dateOfBirth: '22/04/1980',
-      id: 'DF45SV8',
-      insurance: 'Travel Insurance Name',
-      passengerCount: 1,
-      bags: [
-        { count: 2, type: '40x15x30cm, 3kg' },
-        { count: 1, type: '55x20x40cm, 8kg' },
-      ],
-      visaRequired: true,
-    },
-    {
-      name: 'Jana Nováková',
-      gender: 'female',
-      nationality: 'Czech',
-      dateOfBirth: '22/04/1984',
-      id: 'DF45SV9',
-      insurance: 'Travel Insurance Name',
-      passengerCount: 1,
-      bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
-      visaRequired: false,
-    },
-    {
-      name: 'Jana Nováková',
-      gender: 'female',
-      nationality: 'Czech',
-      dateOfBirth: '22/04/1984',
-      id: 'DF45SV3',
-      insurance: 'Travel Insurance Name',
-      passengerCount: 1,
-      bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
-    },
-  ];
   return (
     <ScrollView>
       <PassengerCards
@@ -88,7 +93,7 @@ export default function PassengerDetail() {
             <ShareIcon />
           }
           title="Invite co-traveller"
-          onPress={this.onPressInvite}
+          onPress={onPressInvite}
         />
       </MenuGroup>
       <MenuDescription
