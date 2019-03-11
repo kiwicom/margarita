@@ -24,7 +24,7 @@
     "lint": "eslint . --report-unused-disable-directives",
     "flow": "flow --include-warnings",
     "test": "node node_modules/jest/bin/jest.js --config=.jest.json",
-    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall; yarn workspace @kiwicom/universal-components build"
+    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall"
   },
   "private": true,
   "workspaces": [
