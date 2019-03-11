@@ -299,6 +299,9 @@ type LocationEdge {
 
 input LocationsByTermInput {
   term: String!
+
+  """desired location type output"""
+  types: [LocationType]
 }
 
 enum LocationType {

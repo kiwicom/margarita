@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 237d73e37d835b4d5452555bfc96ba40
+ * @relayHash fb6a28a1b86964c03a010e95b35f7c64
  */
 
 /* eslint-disable */
@@ -10,8 +10,10 @@
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
 type PlacePickerContent_locations$ref = any;
+export type LocationType = "AIRPORT" | "AUTONOMOUS_TERRITORY" | "BUS_STATION" | "CITY" | "CONTINENT" | "COUNTRY" | "REGION" | "SPECIAL" | "STATION" | "SUBDIVISION" | "%future added value";
 export type LocationsByTermInput = {|
-  term: string
+  term: string,
+  types?: ?$ReadOnlyArray<?LocationType>,
 |};
 export type PlacePickerContentRefetchQueryVariables = {|
   input: LocationsByTermInput
