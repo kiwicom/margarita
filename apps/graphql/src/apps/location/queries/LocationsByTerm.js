@@ -9,6 +9,7 @@ import {
 } from '@kiwicom/graphql-utils';
 
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
+import type { LocationTypeInput } from '../dataloaders/Locations';
 import type { Location } from '../Location';
 import GraphQLocation from '../types/outputs/Location';
 import LocationsByTermInput from '../types/inputs/LocationsByTermInput';
@@ -18,7 +19,7 @@ const { connectionType: LocationsConnection } = connectionDefinitions({
 });
 
 type Args = {|
-  +input: { term: string },
+  +input: { term: string, types?: LocationTypeInput[] },
   ...$Exact<ConnectionArguments>,
 |};
 
@@ -33,9 +34,11 @@ const Locations = {
     ...connectionArgs,
   },
   resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
-    const { term } = args.input;
+    const { term, types } = args.input;
+
     const locations = await dataLoader.locations.load({
       term,
+      types,
     });
 
     return connectionFromArray<Location>([...locations], args);

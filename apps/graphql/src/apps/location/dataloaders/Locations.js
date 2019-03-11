@@ -9,9 +9,22 @@ import { type Location, type ApiLocation } from '../Location';
 
 export type Locations = $ReadOnlyArray<Location>;
 
+export type LocationTypeInput =
+  | 'STATION'
+  | 'AIRPORT'
+  | 'BUS_STATION'
+  | 'CITY'
+  | 'AUTONOMOUS_TERRITORY'
+  | 'SUBDIVISION'
+  | 'COUNTRY'
+  | 'REGION'
+  | 'CONTINENT'
+  | 'SPECIAL';
+
 export type LocationInput =
   | {|
       +term: string,
+      +types?: LocationTypeInput[],
     |}
   | {|
       +code: string,
@@ -58,8 +71,19 @@ function sanitizeLocations(locations: $ReadOnlyArray<ApiLocation>) {
 const fetchLocations = async (params: $ReadOnlyArray<LocationInput>) => {
   const data = await Promise.all(
     params.map(param => {
+      const locationsTypes = param.types ? param.types : [];
+
+      // convert locations types into locations params
+      const locationsParamTypes = locationsTypes.reduce((acc, type) => {
+        return `${acc}&location_types=${type}`;
+      }, '');
+
       if (param.term !== undefined) {
-        return fetch(`/locations/query?${qs.stringify({ term: param.term })}`);
+        return fetch(
+          `/locations/query?${qs.stringify({
+            term: param.term,
+          })}${locationsParamTypes}`,
+        );
       }
 
       return fetch(`/locations/id?id=${param.code}`);
