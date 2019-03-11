@@ -5,13 +5,13 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Button } from '../Button';
-import { Icon } from '../Icon';
 import { Modal } from '../Modal';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
 import { getSelectedLabel } from './PickerHelpers';
 import NativePicker from './NativePicker';
 import { FormLabel } from '../FormLabel';
+import { PickerButton } from '../PickerButton';
 
 export type State = {|
   open: boolean,
@@ -84,11 +84,7 @@ export default class Picker extends React.Component<Props, State> {
       label,
       labelContainerStyle,
     } = this.props;
-    const selectedLabel = getSelectedLabel(
-      optionsData,
-      selectedValue,
-      placeholder,
-    );
+    const selectedLabel = getSelectedLabel(optionsData, selectedValue);
 
     return (
       <View>
@@ -96,11 +92,11 @@ export default class Picker extends React.Component<Props, State> {
           <FormLabel style={labelContainerStyle}>{label}</FormLabel>
         )}
         <View>
-          <Button
+          <PickerButton
+            placeholder={placeholder}
+            value={selectedLabel}
             onPress={this.handleOpenPress}
-            type="secondary"
-            label={selectedLabel}
-            rightIcon={<Icon name={iconName ?? 'chevron-right'} />}
+            iconName={iconName}
           />
           <Modal
             isVisible={open}
