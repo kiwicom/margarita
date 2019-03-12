@@ -102,7 +102,9 @@ class Search extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <View style={[styles.form, desktopLayout && styles.formDesktop]}>
-          <Illustration name="Boarding" style={styles.boardingIllustration} />
+          <View style={styles.illustrationWrapper}>
+            <Illustration name="Boarding" style={styles.boardingIllustration} />
+          </View>
           <SearchFormModes />
 
           <View style={desktopLayout && styles.inputsDesktop}>
@@ -121,6 +123,7 @@ class Search extends React.Component<Props> {
               />
             </View>
           </View>
+          <View style={styles.bottomSpacer} />
         </View>
         <SearchModal />
       </View>
@@ -139,9 +142,9 @@ const styles = StyleSheet.create({
     },
   },
   form: {
+    flex: 1,
     width: '100%',
     maxWidth: 500,
-    marginBottom: 100,
     padding: parseInt(defaultTokens.spaceXSmall, 10),
     web: {
       maxWidth: 730,
@@ -169,11 +172,26 @@ const styles = StyleSheet.create({
       width: 130,
     },
   },
+  illustrationWrapper: {
+    flex: 5,
+    justifyContent: 'flex-end',
+    web: {
+      flex: 0,
+      flexBasis: 240,
+    },
+  },
   boardingIllustration: {
     marginBottom: 20,
+    height: '70%',
     web: {
-      marginTop: 20,
       height: 200,
+    },
+  },
+  bottomSpacer: {
+    flex: 1,
+    web: {
+      flex: 0,
+      flexBasis: 100,
     },
   },
 });
