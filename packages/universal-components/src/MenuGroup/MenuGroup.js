@@ -40,6 +40,9 @@ export default function MenuGroup({
 
 const styles = StyleSheet.create({
   card: {
+    android: {
+      marginTop: parseFloat(defaultTokens.spaceSmall),
+    },
     padding: 0,
     ios: {
       borderTopWidth: 0.5,

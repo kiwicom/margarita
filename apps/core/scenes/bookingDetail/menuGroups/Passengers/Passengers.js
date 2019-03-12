@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  MenuGroup,
-  MenuItem,
-  Icon,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { MenuGroup, MenuItem, Icon } from '@kiwicom/universal-components';
 import {
   withNavigation,
   type Navigation,
@@ -33,7 +28,6 @@ class Passengers extends React.Component<Props> {
       <>
         <MenuGroup
           title="Passengers"
-          titleStyle={styles.menuGroupTitle}
           footer={<PassengersList data={this.props.data} />}
         >
           <MenuItem
@@ -48,13 +42,6 @@ class Passengers extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  menuGroupTitle: {
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-});
 
 const passengersFragment = createFragmentContainer(Passengers, {
   data: graphql`

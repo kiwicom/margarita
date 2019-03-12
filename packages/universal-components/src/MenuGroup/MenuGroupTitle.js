@@ -36,13 +36,14 @@ const styles = StyleSheet.create({
     ios: {
       marginStart: 16,
       marginBottom: 8,
-      textTransform: 'uppercase',
       lineHeight: 17,
     },
     lineHeight: 19,
     marginStart: 13,
     marginTop: 8,
     marginBottom: 5,
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
   separator: {
     marginHorizontal: -10,
