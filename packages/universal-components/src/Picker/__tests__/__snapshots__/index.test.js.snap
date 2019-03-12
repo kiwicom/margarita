@@ -4,15 +4,10 @@ exports[`Picker renders 1`] = `
 Object {
   "output": <Component>
     <Component>
-      <Button
-        label="A"
+      <PickerButton
         onPress={[Function]}
-        rightIcon={
-          <Icon
-            name="chevron-right"
-          />
-        }
-        type="secondary"
+        placeholder=""
+        value="A"
       />
       <Modal
         backdropOpacity={0.5}

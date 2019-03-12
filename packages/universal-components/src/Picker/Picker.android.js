@@ -4,13 +4,12 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Text } from '../Text';
-import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
 import { getSelectedLabel } from './PickerHelpers';
 import NativePicker from './NativePicker';
 import { FormLabel } from '../FormLabel';
+import { PickerButton } from '../PickerButton';
 
 const Picker = ({
   optionsData,
@@ -21,20 +20,19 @@ const Picker = ({
   label,
   labelContainerStyle,
 }: Props) => {
-  const selectedLabel = getSelectedLabel(
-    optionsData,
-    selectedValue,
-    placeholder,
-  );
+  const selectedLabel = getSelectedLabel(optionsData, selectedValue);
 
   return (
     <View>
       {label != null && (
         <FormLabel style={labelContainerStyle}>{label}</FormLabel>
       )}
-      <View style={styles.container}>
-        <Text style={styles.label}>{selectedLabel}</Text>
-        <Icon name={iconName ?? 'chevron-right'} style={styles.icon} />
+      <View>
+        <PickerButton
+          placeholder={placeholder}
+          value={selectedLabel}
+          iconName={iconName}
+        />
         <NativePicker
           optionsData={optionsData}
           selectedValue={selectedValue}
@@ -47,22 +45,6 @@ const Picker = ({
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
-    height: parseInt(defaultTokens.heightInputNormal, 10),
-    borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
-  },
-  label: {
-    flex: 1,
-    color: defaultTokens.colorTextAttention,
-    paddingStart: parseInt(defaultTokens.spaceSmall, 10),
-  },
-  icon: {
-    marginEnd: 10,
-  },
   picker: {
     position: 'absolute',
     start: 0,

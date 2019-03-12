@@ -4,10 +4,9 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Icon } from '../Icon';
-import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './PickerTypes';
 import { FormLabel } from '../FormLabel';
+import { PickerButton } from '../PickerButton';
 
 /**
  * NOTE: `DEFAULT_OPTION` is used to show placeholder text
@@ -60,10 +59,8 @@ export default class Picker extends React.Component<Props> {
         {label != null && (
           <FormLabel style={labelContainerStyle}>{label}</FormLabel>
         )}
-        <View style={styles.container}>
-          <View pointerEvents="none" style={styles.icon}>
-            <Icon name={iconName ?? 'chevron-down'} />
-          </View>
+        <View>
+          <PickerButton iconName={iconName} />
           <select
             value={showValue ? selectedValue : DEFAULT_OPTION}
             onChange={this.handleChange}
@@ -82,29 +79,19 @@ export default class Picker extends React.Component<Props> {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative',
-    height: parseInt(defaultTokens.heightInputNormal, 10),
-  },
-  icon: {
-    position: 'absolute',
-    top: 10,
-    end: 10,
-  },
-});
-
 const webStyles = {
   picker: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
     width: '100%',
     height: parseInt(defaultTokens.heightInputNormal, 10),
     paddingLeft: parseInt(defaultTokens.spaceSmall, 10),
     paddingRight: 44,
+    fontFamily: 'Roboto',
     fontSize: parseInt(defaultTokens.fontSizeInputNormal, 10),
-    borderWidth: parseFloat(defaultTokens.borderWidthInput),
-    borderColor: defaultTokens.borderColorInput,
-    backgroundColor: defaultTokens.backgroundInput,
-    borderRadius: 3,
+    background: 'transparent',
+    border: 'none',
     WebkitAppearance: 'none',
     MozAppearance: 'none',
     appearance: 'none',
