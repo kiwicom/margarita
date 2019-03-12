@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  MenuGroup,
-  MenuItem,
-  Icon,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { MenuGroup, MenuItem, Icon } from '@kiwicom/universal-components';
 import {
   withNavigation,
   type Navigation,
@@ -33,7 +28,7 @@ class ManageMenuGroup extends React.Component<Props> {
 
   render() {
     return (
-      <MenuGroup title="manage" titleStyle={styles.menuGroupTitle}>
+      <MenuGroup title="Manage">
         <MenuItem
           icon={
             // $FlowExpectedError clashing with class RNW$Text extends React$Component<RNW$Text$Props> from react-native-web flow-typed definitions
@@ -58,12 +53,5 @@ class ManageMenuGroup extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  menuGroupTitle: {
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-});
 
 export default withNavigation(ManageMenuGroup);

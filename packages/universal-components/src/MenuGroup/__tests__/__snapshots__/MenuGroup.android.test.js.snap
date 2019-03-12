@@ -5,6 +5,7 @@ exports[`MenuGroup renders correctly 1`] = `
   <Card
     style={
       Object {
+        "marginTop": 12,
         "padding": 0,
       }
     }

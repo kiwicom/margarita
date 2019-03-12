@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  MenuGroup,
-  MenuItem,
-  Icon,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { MenuGroup, MenuItem, Icon } from '@kiwicom/universal-components';
 import {
   withNavigation,
   type Navigation,
@@ -30,11 +25,7 @@ class ServicesMenuGroup extends React.Component<Props> {
 
   render() {
     return (
-      <MenuGroup
-        title="services"
-        titleStyle={styles.menuGroupTitle}
-        footer={<Footer />}
-      >
+      <MenuGroup title="Services" footer={<Footer />}>
         <MenuItem
           icon={<Icon name="flight-services" />}
           title="Flight Services"
@@ -51,12 +42,5 @@ class ServicesMenuGroup extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  menuGroupTitle: {
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-});
 
 export default withNavigation(ServicesMenuGroup);

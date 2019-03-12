@@ -1,12 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import {
-  MenuGroup,
-  MenuItem,
-  Icon,
-  StyleSheet,
-} from '@kiwicom/universal-components';
+import { MenuGroup, MenuItem, Icon } from '@kiwicom/universal-components';
 import {
   withNavigation,
   type Navigation,
@@ -28,7 +23,7 @@ class TripInfoMenuGroup extends React.Component<Props> {
 
   render() {
     return (
-      <MenuGroup title="trip info" titleStyle={styles.menuGroupTitle}>
+      <MenuGroup title="Trip info">
         <MenuItem
           icon={<Icon name="ticket" />}
           title="Tickets"
@@ -45,12 +40,5 @@ class TripInfoMenuGroup extends React.Component<Props> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  menuGroupTitle: {
-    textTransform: 'uppercase',
-    fontWeight: 'bold',
-  },
-});
 
 export default withNavigation(TripInfoMenuGroup);
