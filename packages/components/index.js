@@ -67,3 +67,4 @@ export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
 export {
   default as ContactDetailsForm,
 } from './src/contactDetailsForm/ContactDetailsForm';
+export { default as DateInput } from './src/dateInput/DateInput';
