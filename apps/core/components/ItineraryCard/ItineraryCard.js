@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
     web: {
       alignSelf: 'center',
       width: '100%',
-      maxWidth: 720,
+      maxWidth: 720, // @TODO repeating value, should be added to design-tokens
       marginBottom: parseInt(defaultTokens.spaceMedium, 10),
       borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
       boxShadow: '0 2px 4px 0 rgba(23,27,30,.1)',

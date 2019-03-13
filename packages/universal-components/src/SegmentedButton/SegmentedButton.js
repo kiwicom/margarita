@@ -18,11 +18,11 @@ export type Props = {|
   /**
    * Selected segment value
    */
-  +selectedValue: string,
+  +selectedValue: ?string,
   /**
    * Dispatched on segment press
    */
-  +onValueChange: (value: string) => void,
+  +onValueChange: (?string) => void,
 |};
 
 const SegmentedButton = ({
