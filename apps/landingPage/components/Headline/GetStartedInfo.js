@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Heading, Text } from '@kiwicom/orbit-components/lib/';
+import { Heading, Text, Stack } from '@kiwicom/orbit-components/lib/';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
 import { GITHUB_LINK, MARGARITA_LINK } from '@kiwicom/margarita-config';
@@ -21,22 +21,35 @@ export default function GetStartedInfo() {
           your Tequila mixed with something else.
         </Text>
       </WrapperText>
-      <WrapperButtons>
+      <Stack
+        direction="column"
+        grow={false}
+        justify="center"
+        largeMobile={{
+          direction: 'row',
+          justify: 'center',
+        }}
+        tablet={{
+          direction: 'row',
+          justify: 'center',
+        }}
+        desktop={{
+          justify: 'start',
+        }}
+      >
         <ButtonInfo
           type="primary"
           link={MARGARITA_LINK}
           color={defaultTokens.paletteWhite}
           text="Get started"
         />
-        <WrapperRightButton>
-          <ButtonInfo
-            type="white"
-            link={GITHUB_LINK}
-            color={defaultTokens.colorTextButtonSecondary}
-            text="Link to Github"
-          />
-        </WrapperRightButton>
-      </WrapperButtons>
+        <ButtonInfo
+          type="white"
+          link={GITHUB_LINK}
+          color={defaultTokens.colorTextButtonSecondary}
+          text="Link to Github"
+        />
+      </Stack>
     </ContainerLeftText>
   );
 }
@@ -45,17 +58,23 @@ const ContainerLeftText = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 320px;
-  width: 80vw;
+  width: 85vw;
   padding-left: 0;
   padding-top: 4vh;
   align-items: flex-start;
-
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.TABLET}px) {
     align-items: center;
   }
+  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (max-width: ${BREAKPOINTS.BIG_TABLET}px) {
+    align-items: center;
+  }
   @media (min-width: ${BREAKPOINTS.TABLET}px) {
-    flex-direction: 'row';
+    flex-direction: column;
+    width: 60vw;
+    height: 230px;
+  }
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
+    align-items: flex-start;
     width: 26vw;
     padding: 0 0 0 8vw;
     height: 280px;
@@ -64,28 +83,11 @@ const ContainerLeftText = styled.div`
 
 const WrapperText = styled.div`
   width: 85vw;
+  padding: ${defaultTokens.spaceMedium} 0 ${defaultTokens.spaceMedium} 0;
   @media (min-width: ${BREAKPOINTS.TABLET}px) {
+    width: 75vw;
+  }
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
     width: 25vw;
-  }
-`;
-
-const WrapperButtons = styled.div`
-  display: flex;
-  width: 80vw;
-  flex-direction: column;
-  margin-top: 20px;
-  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}) and (max-width: ${BREAKPOINTS.TABLET}px) {
-    width: 60vw;
-  }
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
-    width: unset;
-    flex-direction: row;
-  }
-`;
-
-const WrapperRightButton = styled.div`
-  margin-top: 10px;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
-    margin: 0 0 0 1vw;
   }
 `;

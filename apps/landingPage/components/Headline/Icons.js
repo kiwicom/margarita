@@ -21,13 +21,16 @@ const Container = styled.div`
   justify-content: space-around;
   width: 100%;
   margin-right: 3vw;
+  padding: 50px 0;
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) and (
     max-width: ${BREAKPOINTS.TABLET}px) {
     width: 60%;
-    margin: 40px 0 40px 0;
     justify-content: space-evenly:
   }
   @media  (min-width: ${BREAKPOINTS.TABLET}px) {
-    width: 28vw;
+    width: 50vw;
+  }
+  @media (min-width: ${BREAKPOINTS.BIG_TABLET}px) {
+    margin-top: -30px;
   }
 `;

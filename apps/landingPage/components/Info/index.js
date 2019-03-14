@@ -19,13 +19,21 @@ export default function Info() {
           <Heading>It's cross-platform</Heading>
         </Title>
         <ResponsiveText />
-        <ButtonLink link={DOCUMENTATION_LINK} text="Link to Docs" />
+        <ButtonLink
+          link={DOCUMENTATION_LINK}
+          text="Link to Docs"
+          mobileAlign="flex-start"
+        />
       </Header>
       <Screenshots />
       <Features />
       <GithubButtonWrapper>
         <Heading> Learn more, visit Github</Heading>
-        <ButtonLink link={GITHUB_LINK} text="Link to Github" />
+        <ButtonLink
+          link={GITHUB_LINK}
+          text="Link to Github"
+          mobileAlign="center"
+        />
       </GithubButtonWrapper>
     </Container>
   );

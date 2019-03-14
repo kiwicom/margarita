@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Heading } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
 import { GITHUB_LINK, CODE_KIWI_LINK } from '@kiwicom/margarita-config';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
@@ -32,9 +33,9 @@ function renderLinks(links: Array<Link>): Array<React.Node> {
 export default function Header() {
   return (
     <Container>
-      <a href={CODE_KIWI_LINK}>
+      <LinkWithHeight href={CODE_KIWI_LINK}>
         <Logo src="/static/logo.png" alt="Logo" />
-      </a>
+      </LinkWithHeight>
       <HeaderRight>{renderLinks(linksHeader)}</HeaderRight>
       <GithubLink>
         <LinkWithoutStyle href={GITHUB_LINK}>
@@ -48,14 +49,13 @@ export default function Header() {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
-  padding-top: 2vw;
   align-items: center;
   box-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
   border-bottom: solid 2px rgb(188, 201, 214);
+  padding: ${defaultTokens.spaceSmall} 0;
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     box-shadow: none;
     border: none;
-    padding-top: 2vw;
   }
 `;
 
@@ -65,6 +65,10 @@ const GithubLink = styled.div`
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     display: none;
   }
+`;
+
+const LinkWithHeight = styled.a`
+  height: 42px;
 `;
 
 const Logo = styled.img`

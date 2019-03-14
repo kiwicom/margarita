@@ -25,7 +25,7 @@ export default function ButtonInfo({ type, color, link, text }: Props) {
         </Button>
       </Tablet>
       <Desktop>
-        <Button type={type} size="normal" block={false}>
+        <Button type={type} size="normal" block>
           <LinkWithoutStyle href={link} color={color}>
             {text}
           </LinkWithoutStyle>
@@ -41,14 +41,15 @@ const LinkWithoutStyle = styled.a`
 `;
 
 const Tablet = styled.div`
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  width: 100%;
+  @media (min-width: ${BREAKPOINTS.DESKTOP}) {
     display: none;
   }
 `;
 
 const Desktop = styled.div`
   display: none;
-  @media (min-width: ${BREAKPOINTS.TABLET}px) {
+  @media (min-width: ${BREAKPOINTS.DESKTOP}) {
     display: flex;
   }
 `;
