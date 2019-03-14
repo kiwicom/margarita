@@ -4,7 +4,6 @@
   "license": "MIT",
   "scripts": {
     "start": "EXPO_DEBUG=true expo start --clear",
-    "relay": "yarn babel-node --config=babel.config.js scripts/relay-compiler.js",
     "prestart": "node scripts/linkWorkspaces.js",
     "postinstall": "node scripts/configureApplication.js"
   },
