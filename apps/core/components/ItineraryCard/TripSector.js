@@ -5,6 +5,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { View, Platform } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import {
   withLayoutContext,
   LAYOUT,
@@ -137,7 +138,7 @@ const styles = StyleSheet.create({
   dateText: {
     web: {
       fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-      color: '#2e353b', // @TODO repeating value - should be added to design-tokens
+      color: margaritaTokens.paletteBlueDark,
     },
   },
   durationText: {

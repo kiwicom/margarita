@@ -9,6 +9,7 @@ import {
   TextInput,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { DateInput } from '@kiwicom/margarita-components';
 
 type Props = {||};
@@ -132,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: defaultTokens.paletteWhite,
     width: '100%',
     web: {
-      maxWidth: 720, // @TODO repeating value, should be added to design-tokens
+      maxWidth: margaritaTokens.widthScreenNormal,
     },
   },
   inputLabel: {
