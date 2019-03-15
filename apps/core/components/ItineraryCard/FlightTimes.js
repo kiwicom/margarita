@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     padding: 5,
     web: {
       fontWeight: '500',
-      color: '#2e353b', // @TODO repeating value - should be added to design-tokens
+      color: margaritaTokens.paletteBlueDark,
       padding: 0,
       lineHeight: 17,
     },

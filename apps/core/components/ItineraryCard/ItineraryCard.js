@@ -6,6 +6,7 @@ import { formatPrice } from '@kiwicom/margarita-utils';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { StyleSheet, Hoverable, Card } from '@kiwicom/universal-components';
 
 import RenderTripSectorItem from './RenderTripSectorItem';
@@ -140,7 +141,7 @@ const styles = StyleSheet.create({
     web: {
       alignSelf: 'center',
       width: '100%',
-      maxWidth: 720, // @TODO repeating value, should be added to design-tokens
+      maxWidth: margaritaTokens.widthScreenNormal,
       marginBottom: parseInt(defaultTokens.spaceMedium, 10),
       borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
       boxShadow: '0 2px 4px 0 rgba(23,27,30,.1)',

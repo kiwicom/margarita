@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -48,7 +49,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
-    lineHeight: 18, // @TODO parseFloat(defaultTokens.heightBadge) - after design tokens update
+    lineHeight: margaritaTokens.heightBadge,
     fontWeight: '500',
     letterSpacing: 0.3,
     color: defaultTokens.colorTextBadgeDark,
