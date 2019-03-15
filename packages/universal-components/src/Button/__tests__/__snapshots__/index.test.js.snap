@@ -5,20 +5,20 @@ exports[`Button - native should match snapshot diff 1`] = `
 - First value
 + Second value
 
-@@ -8,11 +8,11 @@
-    onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
-    onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
-    style={
-      Object {
-        \\"opacity\\": 1,
--       \\"width\\": undefined,
-+       \\"width\\": 200,
+@@ -16,11 +16,11 @@
+    <View
+      style={
+        Array [
+          undefined,
+          Object {
+-           \\"width\\": undefined,
++           \\"width\\": 200,
+          },
+        ]
       }
-    }
-  >
-    <View>
+    >
       <View
-@@ -27,35 +27,127 @@
+@@ -35,35 +35,127 @@
               \\"paddingHorizontal\\": 8,
               \\"paddingVertical\\": 11,
             },
