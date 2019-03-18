@@ -13,7 +13,7 @@ import type { FragmentReference } from "relay-runtime";
 declare export opaque type PlacePickerContent_locations$ref: FragmentReference;
 export type PlacePickerContent_locations = {|
   +locationsByTerm: ?{|
-    +edges: ?$ReadOnlyArray<?{|
+    +edges?: ?$ReadOnlyArray<?{|
       +node: ?{|
         +id: string,
         +name: ?string,
@@ -56,54 +56,60 @@ const node/*: ReaderFragment*/ = {
           "type": "LocationsByTermInput!"
         }
       ],
-      "concreteType": "LocationConnection",
+      "concreteType": null,
       "plural": false,
       "selections": [
         {
-          "kind": "LinkedField",
-          "alias": null,
-          "name": "edges",
-          "storageKey": null,
-          "args": null,
-          "concreteType": "LocationEdge",
-          "plural": true,
+          "kind": "InlineFragment",
+          "type": "LocationConnection",
           "selections": [
             {
               "kind": "LinkedField",
               "alias": null,
-              "name": "node",
+              "name": "edges",
               "storageKey": null,
               "args": null,
-              "concreteType": "Location",
-              "plural": false,
+              "concreteType": "LocationEdge",
+              "plural": true,
               "selections": [
                 {
-                  "kind": "ScalarField",
+                  "kind": "LinkedField",
                   "alias": null,
-                  "name": "id",
+                  "name": "node",
+                  "storageKey": null,
                   "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "name",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "locationId",
-                  "args": null,
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "name": "type",
-                  "args": null,
-                  "storageKey": null
+                  "concreteType": "Location",
+                  "plural": false,
+                  "selections": [
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "id",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "name",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "locationId",
+                      "args": null,
+                      "storageKey": null
+                    },
+                    {
+                      "kind": "ScalarField",
+                      "alias": null,
+                      "name": "type",
+                      "args": null,
+                      "storageKey": null
+                    }
+                  ]
                 }
               ]
             }
@@ -114,5 +120,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'ab35d4bd6d76a72adbbc19680973ccfd';
+(node/*: any*/).hash = '32adf9115d0fbe3e0cb46010a450ab89';
 module.exports = node;

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash fb6a28a1b86964c03a010e95b35f7c64
+ * @relayHash 9946aa85641d91be849fe110645b6474
  */
 
 /* eslint-disable */
@@ -37,12 +37,15 @@ query PlacePickerContentRefetchQuery(
 
 fragment PlacePickerContent_locations_2VV6jB on RootQuery {
   locationsByTerm(input: $input) {
-    edges {
-      node {
-        id
-        name
-        locationId
-        type
+    __typename
+    ... on LocationConnection {
+      edges {
+        node {
+          id
+          name
+          locationId
+          type
+        }
       }
     }
   }
@@ -99,54 +102,67 @@ return {
             "type": "LocationsByTermInput!"
           }
         ],
-        "concreteType": "LocationConnection",
+        "concreteType": null,
         "plural": false,
         "selections": [
           {
-            "kind": "LinkedField",
+            "kind": "ScalarField",
             "alias": null,
-            "name": "edges",
-            "storageKey": null,
+            "name": "__typename",
             "args": null,
-            "concreteType": "LocationEdge",
-            "plural": true,
+            "storageKey": null
+          },
+          {
+            "kind": "InlineFragment",
+            "type": "LocationConnection",
             "selections": [
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "node",
+                "name": "edges",
                 "storageKey": null,
                 "args": null,
-                "concreteType": "Location",
-                "plural": false,
+                "concreteType": "LocationEdge",
+                "plural": true,
                 "selections": [
                   {
-                    "kind": "ScalarField",
+                    "kind": "LinkedField",
                     "alias": null,
-                    "name": "id",
+                    "name": "node",
+                    "storageKey": null,
                     "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "name",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "locationId",
-                    "args": null,
-                    "storageKey": null
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "type",
-                    "args": null,
-                    "storageKey": null
+                    "concreteType": "Location",
+                    "plural": false,
+                    "selections": [
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "id",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "name",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "locationId",
+                        "args": null,
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "name": "type",
+                        "args": null,
+                        "storageKey": null
+                      }
+                    ]
                   }
                 ]
               }
@@ -160,7 +176,7 @@ return {
     "operationKind": "query",
     "name": "PlacePickerContentRefetchQuery",
     "id": null,
-    "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    edges {\n      node {\n        id\n        name\n        locationId\n        type\n      }\n    }\n  }\n}\n",
+    "text": "query PlacePickerContentRefetchQuery(\n  $input: LocationsByTermInput!\n) {\n  ...PlacePickerContent_locations_2VV6jB\n}\n\nfragment PlacePickerContent_locations_2VV6jB on RootQuery {\n  locationsByTerm(input: $input) {\n    __typename\n    ... on LocationConnection {\n      edges {\n        node {\n          id\n          name\n          locationId\n          type\n        }\n      }\n    }\n  }\n}\n",
     "metadata": {}
   }
 };

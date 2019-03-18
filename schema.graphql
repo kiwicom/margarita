@@ -188,6 +188,11 @@ interface FromToInterface {
   type: BookingType
 }
 
+type HttpError {
+  code: Int!
+  message: String!
+}
+
 input ItinerariesSearchInput {
   """Locations IDs for travel from (origin)"""
   travelFrom: [String]!
@@ -300,9 +305,11 @@ type LocationEdge {
 input LocationsByTermInput {
   term: String!
 
-  """desired location type output"""
+  """Desired location type output"""
   types: [LocationType]
 }
+
+union LocationsResult = LocationConnection | HttpError
 
 enum LocationType {
   STATION
@@ -370,7 +377,7 @@ type RootQuery {
   customerBookings(after: String, first: Int, before: String, last: Int): BookingInterfaceConnection
 
   """Query for suggested locations based on incomplete names"""
-  locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationConnection
+  locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationsResult
 
   """Query to fetch all itineraries(flights, busses, trains)"""
   searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection

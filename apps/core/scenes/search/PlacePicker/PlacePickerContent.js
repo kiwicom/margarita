@@ -222,12 +222,14 @@ export default createRefetchContainer(
           input: { type: "LocationsByTermInput!", defaultValue: { term: "" } }
         ) {
         locationsByTerm(input: $input) {
-          edges {
-            node {
-              id
-              name
-              locationId
-              type
+          ... on LocationConnection {
+            edges {
+              node {
+                id
+                name
+                locationId
+                type
+              }
             }
           }
         }

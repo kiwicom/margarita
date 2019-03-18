@@ -4,22 +4,29 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
 ~~~~~~~~~~ INPUT ~~~~~~~~~~
 {
   locationsByTerm(input: { term: "Prague" }) {
-    edges {
-      node {
-        id
-        slug
-        name
-        countryFlagURL
-        type
-        city {
+    __typename
+    ... on LocationConnection {
+      edges {
+        node {
           id
+          slug
           name
-        }
-        coordinates {
-          lat
-          lng
+          countryFlagURL
+          type
+          city {
+            id
+            name
+          }
+          coordinates {
+            lat
+            lng
+          }
         }
       }
+    }
+    ... on HttpError {
+      message
+      code
     }
   }
 }
@@ -28,6 +35,7 @@ exports[`matches expected output: LocationsByTerm.graphql 1`] = `
 {
   "data": {
     "locationsByTerm": {
+      "__typename": "LocationConnection",
       "edges": [
         {
           "node": {
