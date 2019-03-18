@@ -2,8 +2,8 @@
 
 export const DEBOUNCE_TIME = 250;
 
-export const DAY_MONTH_DATE_FORMAT = 'ddd MM/DD';
-export const HOURS_MINUTES_FORMAT = 'HH:mm';
+export const DAY_MONTH_DATE_FORMAT = 'ddd MM/dd';
+export const HOURS_MINUTES_FORMAT = 'H:m';
 
 export const SECTOR_COLOR_CODES = [
   '#00a991',

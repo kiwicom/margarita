@@ -18,13 +18,13 @@ import type {
   ItinerariesType,
 } from '../Itinerary';
 
-const dateFormat = 'DD/MM/YYYY';
+const dateFormat = 'dd/MM/yyyy';
 
 const stripTimeZoneOffset = (date: Date) =>
   DateFNS.addMinutes(date, date.getTimezoneOffset());
 
 const parseDate = (date: Date) =>
-  DateFNS.format(DateFNS.parse(stripTimeZoneOffset(date)), dateFormat);
+  DateFNS.format(stripTimeZoneOffset(date), dateFormat);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
   const flyFrom = input.travelFrom.join();

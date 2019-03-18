@@ -1,7 +1,5 @@
 // @flow
 
-import * as DateFNS from 'date-fns';
-
 export const oneWayRoutesList = [
   {
     airline: 'FR',
@@ -11,7 +9,7 @@ export const oneWayRoutesList = [
     flyFrom: 'TRF',
     flyTo: 'STN',
     id: '3973635726331617_0',
-    local_arrival: DateFNS.parse('2019-03-10T12:55:00.000Z'),
+    local_arrival: '2019-03-10T12:55:00.000Z',
     local_departure: '2019-03-10T11:55:00.000Z',
     utc_arrival: '2019-03-10T12:55:00.000Z',
     utc_departure: '2019-03-10T10:55:00.000Z',

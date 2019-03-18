@@ -21,7 +21,7 @@ storiesOf('DateInput', module)
         onDateChange={noop}
         date={null}
         defaultDate={new Date()}
-        dateFormat={'MM/DD/YYYY'}
+        dateFormat={'MM/dd/yyyy'}
         confirmLabel={'OK'}
         cancelLabel={'CANCEL'}
         placeholder={placeholder}
