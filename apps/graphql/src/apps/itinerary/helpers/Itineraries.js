@@ -7,13 +7,24 @@ import type { ApiRouteItem, Sector, Segment } from '../Itinerary';
 import type { RouteStop } from '../../booking/Booking';
 
 export const differenceInMinutes = (
-  from: ?string | ?number,
-  to: ?string | ?number,
+  from: ?(string | number),
+  to: ?(string | number),
 ) => {
   if (from == null || to == null) {
     return null;
   }
-  return DateFNS.differenceInMinutes(to, from);
+  const parseNonSpecificDate = date =>
+    typeof date === 'string'
+      ? DateFNS.parseISO(date)
+      : DateFNS.fromUnixTime(date);
+
+  return parseInt(
+    DateFNS.differenceInMinutes(
+      parseNonSpecificDate(to),
+      parseNonSpecificDate(from),
+    ),
+    10,
+  );
 };
 
 export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
@@ -176,8 +187,8 @@ const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
 };
 
 export const mapDate = (local: ?string, utc: ?string) => {
-  const localDate = local && DateFNS.parse(local).toISOString();
-  const utcDate = utc && DateFNS.parse(utc).toISOString();
+  const localDate = local && DateFNS.parseISO(local).toISOString();
+  const utcDate = utc && DateFNS.parseISO(utc).toISOString();
   return {
     local: localDate ?? null,
     utc: utcDate ?? null,

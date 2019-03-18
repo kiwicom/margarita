@@ -19,4 +19,4 @@ export const MODAL_TYPE = {
   DESTINATION: 'DESTINATION',
 };
 
-export const DATE_FORMAT = 'YYYY-MM-DD';
+export const DATE_FORMAT = 'yyyy-MM-dd';

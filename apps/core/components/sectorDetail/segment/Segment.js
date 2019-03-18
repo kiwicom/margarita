@@ -23,15 +23,18 @@ type Props = {|
 |};
 
 const Segment = (props: Props) => {
+  const formattedDate = getFormattedDate(
+    props.data?.departure?.time?.local,
+    dateFormat,
+  );
   return (
     <View>
-      <TimelineDate
-        formattedDate={getFormattedDate(
-          props.data?.departure?.time?.local,
-          dateFormat,
-        )}
-        containerStyle={styles.timelineDate}
-      />
+      {formattedDate && (
+        <TimelineDate
+          formattedDate={formattedDate}
+          containerStyle={styles.timelineDate}
+        />
+      )}
       <SegmentStopInfo data={props.data?.departure} typeLabel="Departure" />
       <TimelineTransportDetail
         carrier={{

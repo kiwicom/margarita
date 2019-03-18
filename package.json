@@ -36,7 +36,7 @@
     "@kiwicom/margarita-mobile": "^0",
     "@kiwicom/margarita-relay": "^0",
     "better-npm-run": "^0.1.1",
-    "date-fns": "^1.30.1",
+    "date-fns": "^2.0.0-alpha.27",
     "graphql-iso-date": "^3.6.1",
     "next": "^8.0.3",
     "next-plugin-transpile-modules": "^2.0.0",

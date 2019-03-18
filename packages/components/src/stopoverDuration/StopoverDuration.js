@@ -11,7 +11,7 @@ type Props = {|
 const getDuration = stopoverDuration => {
   const durationDateFrom = new Date(0, 0, 0, 0, 0);
   const durationDateTo = new Date(0, 0, 0, 0, stopoverDuration);
-  return DateFNS.distanceInWords(durationDateFrom, durationDateTo);
+  return DateFNS.formatDistance(durationDateTo, durationDateFrom);
 };
 
 export default function StopoverDuration({

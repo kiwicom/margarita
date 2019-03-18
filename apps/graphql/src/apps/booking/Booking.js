@@ -28,6 +28,11 @@ export type BookingApiResult = {|
   +contact: ContactDetails,
 |};
 
+export type RouteStopTimeApi = {|
+  +utc: ?number,
+  +local: ?number,
+|};
+
 type RouteStopTime = {|
   +utc: ?(number | string),
   +local: ?(number | string),

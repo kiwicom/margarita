@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, Text, Icon } from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
-import format from 'date-fns/format';
+import { format, parseISO } from 'date-fns';
 import { DAY_MONTH_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import type { DateAndPassengerCount_data as BookingType } from './__generated__/DateAndPassengerCount_data.graphql';
@@ -16,7 +16,7 @@ type Props = {|
 const DateAndPassengerCount = (props: Props) => {
   const date = props.data.departure?.time?.local ?? null;
   const formattedDate =
-    date === null ? '' : format(date, DAY_MONTH_DATE_FORMAT);
+    date === null ? '' : format(parseISO(date), DAY_MONTH_DATE_FORMAT);
   return (
     <View style={[styles.row, styles.container]}>
       <Text type="white" size="small">

@@ -98,7 +98,7 @@ export default class PassengerForm extends React.Component<Props, State> {
           <DateInput
             date={this.state.birthDate}
             defaultDate={new Date('1990-01-01')}
-            dateFormat={'MM/DD/YYYY'}
+            dateFormat={'MM/dd/yyyy'}
             onDateChange={this.handleBirthDateChange}
             placeholder="Select"
             label="Date of birth"

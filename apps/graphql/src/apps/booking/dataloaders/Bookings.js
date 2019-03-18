@@ -1,7 +1,7 @@
 // @flow
 
 import { head, last } from 'ramda';
-import differenceInMinutes from 'date-fns/difference_in_minutes';
+import differenceInMinutes from 'date-fns/differenceInMinutes';
 
 import bookings from '../__datasets__/AllBookings.json';
 import type {

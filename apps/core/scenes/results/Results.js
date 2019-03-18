@@ -41,12 +41,13 @@ export default class Results extends React.Component<Props> {
     } = this.props;
 
     // @TODO get from config
-    const dateFormat = 'Do MMMM';
+    const dateFormat = 'do MMMM';
 
-    const from = DateFNS.format(DateFNS.parse(dateFrom), dateFormat);
+    const from = DateFNS.format(DateFNS.parseISO(dateFrom), dateFormat);
+
     const tripType = returnDateFrom ? 'Return' : 'OneWay';
     const to = returnDateFrom
-      ? DateFNS.format(DateFNS.parse(returnDateFrom), dateFormat)
+      ? DateFNS.format(DateFNS.parseISO(returnDateFrom), dateFormat)
       : '';
     return (
       <SafeAreaView style={styles.container}>
