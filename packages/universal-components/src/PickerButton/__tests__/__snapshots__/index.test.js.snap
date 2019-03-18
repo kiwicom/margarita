@@ -5,7 +5,7 @@ exports[`PickerButton should match snapshot diff 1`] = `
 - <PickerButton />
 + <PickerButton iconName=\\"chevron-down\\" onPress={[Function mockConstructor]} placeholder=\\"Select\\" value=\\"Value\\" />
 
-@@ -1,8 +1,25 @@
+@@ -1,8 +1,33 @@
   <View
 +   accessible={true}
 +   isTVSelectable={true}
@@ -15,14 +15,22 @@ exports[`PickerButton should match snapshot diff 1`] = `
 +   onResponderTerminate={[Function bound touchableHandleResponderTerminate]}
 +   onResponderTerminationRequest={[Function bound touchableHandleResponderTerminationRequest]}
 +   onStartShouldSetResponder={[Function bound touchableHandleStartShouldSetResponder]}
-    style={
-      Object {
++   style={
++     Object {
 +       \\"opacity\\": 1,
-+       \\"width\\": undefined,
 +     }
 +   }
 + >
-+   <View>
++   <View
+      style={
++       Array [
++         undefined,
+          Object {
++           \\"width\\": undefined,
++         },
++       ]
++     }
++   >
 +     <View
 +       style={
 +         Object {
@@ -31,15 +39,16 @@ exports[`PickerButton should match snapshot diff 1`] = `
             \\"borderRadius\\": 6,
             \\"flex\\": 1,
             \\"flexBasis\\": 44,
-@@ -23,17 +40,17 @@
+@@ -22,18 +47,18 @@
+              },
               Array [
                 Object {
                   \\"color\\": \\"#171b1e\\",
                   \\"paddingEnd\\": 12,
-                },
+-           },
 -           Object {
 -             \\"color\\": \\"#bac7d5\\",
--           },
+                },
 +               false,
               ],
             ]
@@ -53,7 +62,7 @@ exports[`PickerButton should match snapshot diff 1`] = `
             Array [
               Object {
                 \\"fontFamily\\": \\"orbit-icons\\",
-@@ -49,8 +66,10 @@
+@@ -49,8 +74,10 @@
               },
               undefined,
             ]

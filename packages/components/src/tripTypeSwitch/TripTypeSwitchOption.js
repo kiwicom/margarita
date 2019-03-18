@@ -28,7 +28,7 @@ export default class TripTypeSwitchOption extends React.Component<Props> {
         <View>
           <Text
             weight="bold"
-            style={[styles.switch, selected && styles.slectedSwitch]}
+            style={[styles.switch, selected && styles.selectedSwitch]}
           >
             {label.toUpperCase()}
           </Text>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.paletteInkLightHover,
     marginEnd: parseInt(defaultTokens.spaceSmall, 10),
   },
-  slectedSwitch: {
+  selectedSwitch: {
     color: defaultTokens.paletteInkNormal,
   },
 });

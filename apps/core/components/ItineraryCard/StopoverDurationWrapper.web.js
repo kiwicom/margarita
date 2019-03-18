@@ -4,6 +4,7 @@ import * as React from 'react';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 type Props = {|
   +children: React.Node,
@@ -27,13 +28,13 @@ const styles = StyleSheet.create({
   },
   dottedLine: {
     borderStyle: 'dotted',
-    borderColor: '#d2d9e0', // @TODO should be added to design-tokens
+    borderColor: margaritaTokens.borderColorInkLight,
     borderBottomWidth: 1,
     width: parseInt(defaultTokens.widthIconLarge, 10),
     marginEnd: 30,
   },
   stopoverText: {
-    color: '#57626c', // @TODO should be added to design-tokens
+    color: margaritaTokens.borderColorInkNormal,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
 });

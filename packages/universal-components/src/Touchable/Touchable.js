@@ -69,7 +69,7 @@ export default class Touchable extends React.Component<Props> {
       testID,
       width,
       disabled,
-      ...accessiblityProps
+      ...accessibilityProps
     } = this.props;
 
     const touchableNativeFeedbackProps = {
@@ -78,7 +78,7 @@ export default class Touchable extends React.Component<Props> {
       delayPressIn,
       noRipple,
       testID,
-      ...accessiblityProps,
+      ...accessibilityProps,
     };
 
     const touchableOpacityProps = {
@@ -105,25 +105,20 @@ export default class Touchable extends React.Component<Props> {
       return (
         <TouchableNativeFeedback
           {...touchableNativeFeedbackProps}
-          style={{ width }}
           useForeground={useForeground}
           background={TouchableNativeFeedback.Ripple(
             rippleColor,
             borderlessRipple,
           )}
         >
-          <View style={style}>{children}</View>
+          <View style={[style, { width: width }]}>{children}</View>
         </TouchableNativeFeedback>
       );
     }
 
     return (
-      <TouchableOpacity
-        activeOpacity={0.5}
-        style={{ width }}
-        {...touchableOpacityProps}
-      >
-        <View style={style}>{children}</View>
+      <TouchableOpacity activeOpacity={0.5} {...touchableOpacityProps}>
+        <View style={[style, { width: width }]}>{children}</View>
       </TouchableOpacity>
     );
   }

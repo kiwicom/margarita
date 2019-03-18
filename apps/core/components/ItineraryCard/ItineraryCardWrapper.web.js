@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import {
   StyleSheet,
   Icon,
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderStyle: 'dotted',
-    borderColor: '#d2d9e0', // @TODO should be added to design-tokens
+    borderColor: margaritaTokens.borderColorInkLight,
     borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
   },
 });

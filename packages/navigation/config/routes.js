@@ -7,6 +7,7 @@ const Routes = {
   PLACE_PICKER: 'place-picker',
   RESULTS: 'results',
   RESULT_DETAIL: 'result-detail',
+  PAYMENT: 'payment',
   PASSENGER_FORM: 'passenger-form',
   BOOKING_LIST: 'booking-list',
   BOOKING_DETAIL: 'mmb/booking-detail',

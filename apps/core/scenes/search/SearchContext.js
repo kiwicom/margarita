@@ -50,7 +50,7 @@ type State = {|
   },
 |};
 
-const defaultDepartureDate = new Date();
+const defaultDepartureDate = DateFNS.addDays(new Date(), 1);
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
 
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.

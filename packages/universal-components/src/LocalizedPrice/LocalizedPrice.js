@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextLinkPrimary,
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
     web: {
-      color: '#2e353b', // // @TODO repeating value - should be added to design-tokens
+      color: margaritaTokens.paletteBlueDark,
       fontSize: 18,
     },
   },
