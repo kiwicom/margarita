@@ -12,8 +12,7 @@ export type ButtonType =
   | 'warning'
   | 'critical'
   | 'facebook'
-  | 'google'
-  | 'disabled';
+  | 'google';
 
 export type Props = {|
   +onPress: () => void,
