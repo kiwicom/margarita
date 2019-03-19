@@ -25,9 +25,14 @@ export type Props = {|
   +error?: React.Node,
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
+<<<<<<< HEAD
   +labelContainerStyle?: StylePropType,
   +style?: StylePropType,
   +labelTextStyle?: StylePropType,
+=======
+  +containerStyle?: StylePropType,
+  +labelStyle?: StylePropType,
+>>>>>>> Change names from labelContainer and labelText to container and text
 |};
 
 export type State = {|

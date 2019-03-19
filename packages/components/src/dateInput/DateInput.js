@@ -13,7 +13,7 @@ import {
 
 export type Props = {|
   +label?: React.Node,
-  +labelContainerStyle?: StylePropType,
+  +containerStyle?: StylePropType,
   +onDateChange: (value: ?Date) => void,
   +date: ?Date,
   +defaultDate: Date,
@@ -46,7 +46,7 @@ export default class DateInput extends React.Component<Props, State> {
     const { isPickerVisible } = this.state;
     const {
       label,
-      labelContainerStyle,
+      containerStyle,
       date,
       defaultDate,
       dateFormat,
@@ -59,7 +59,7 @@ export default class DateInput extends React.Component<Props, State> {
     return (
       <View>
         {label != null && (
-          <FormLabel labelContainerStyle={labelContainerStyle}>
+          <FormLabel containerStyle={containerStyle}>
             {label}
           </FormLabel>
         )}

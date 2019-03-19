@@ -219,9 +219,14 @@ if (Platform.OS === 'web') {
         label="Label"
         placeholder="Type something"
         onChangeText={action('change')}
+<<<<<<< HEAD
         style={{ backgroundColor: '#DCDCDC' }}
         labelContainerStyle={{ backgroundColor: '#DCDCDC' }}
         labelTextStyle={{ color: '#383838', fontWeight: 'bold' }}
+=======
+        containerStyle={{ backgroundColor: '#DCDCDC' }}
+        labelStyle={{ color: '#383838', fontWeight: 'bold' }}
+>>>>>>> Change names from labelContainer and labelText to container and text
       />
     ));
 }
