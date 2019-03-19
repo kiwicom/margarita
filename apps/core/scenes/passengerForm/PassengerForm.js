@@ -84,14 +84,14 @@ export default class PassengerForm extends React.Component<Props, State> {
             label="Given names"
             autoCorrect={false}
             type="text"
-            labelContainerStyle={styles.inputLabel}
+            containerStyle={styles.inputLabel}
           />
           <TextInput
             onChangeText={this.handleLastNameChange}
             label="Last name"
             autoCorrect={false}
             type="text"
-            labelContainerStyle={styles.inputLabel}
+            containerStyle={styles.inputLabel}
           />
           <DateInput
             date={this.state.birthDate}
@@ -100,7 +100,7 @@ export default class PassengerForm extends React.Component<Props, State> {
             onDateChange={this.handleBirthDateChange}
             placeholder="Select"
             label="Date of birth"
-            labelContainerStyle={styles.inputLabel}
+            containerStyle={styles.inputLabel}
             confirmLabel="OK"
             cancelLabel="CANCEL"
           />
@@ -111,7 +111,7 @@ export default class PassengerForm extends React.Component<Props, State> {
             placeholder="Select"
             confirmLabel="OK"
             label="Nationality"
-            labelContainerStyle={styles.inputLabel}
+            containerStyle={styles.inputLabel}
           />
         </View>
       </ScrollView>
