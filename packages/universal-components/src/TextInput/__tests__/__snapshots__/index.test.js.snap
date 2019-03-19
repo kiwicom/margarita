@@ -59,19 +59,20 @@ exports[`TextInput should render a custom label and match diff snapshot with uns
     >
       <Text
         style={
-@@ -28,13 +26,11 @@
-            Object {
-              \\"fontFamily\\": \\"Roboto\\",
+@@ -30,14 +28,12 @@
               \\"margin\\": 0,
             },
             Array [
--             Object {
--               \\"color\\": \\"blue\\",
--             },
-+             undefined,
               Object {
                 \\"fontSize\\": 14,
+-             },
+-             Object {
+-               \\"color\\": \\"blue\\",
               },
++             undefined,
             ],
-          ]"
+          ]
+        }
+      >
+        Label"
 `;

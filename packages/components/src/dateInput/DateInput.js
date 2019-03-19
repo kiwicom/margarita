@@ -59,9 +59,7 @@ export default class DateInput extends React.Component<Props, State> {
     return (
       <View>
         {label != null && (
-          <FormLabel containerStyle={containerStyle}>
-            {label}
-          </FormLabel>
+          <FormLabel containerStyle={containerStyle}>{label}</FormLabel>
         )}
         <PickerButton
           value={date ? format(date, dateFormat) : null}
