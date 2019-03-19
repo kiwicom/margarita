@@ -34,7 +34,6 @@ storiesOf('Button', module)
         'critical',
         'facebook',
         'google',
-        'disabled',
       ],
       'primary',
     );
@@ -127,7 +126,12 @@ storiesOf('Button', module)
         <Separator />
         <Button onPress={noop} type="google" label={googleLabel} />
         <Separator />
-        <Button onPress={noop} type="disabled" label={disabledLabel} />
+        <Button
+          onPress={noop}
+          type="primary"
+          label={disabledLabel}
+          disabled={true}
+        />
         <Separator />
         <Button
           onPress={noop}
@@ -172,7 +176,9 @@ storiesOf('Button', module)
   })
   .add('disabled', () => {
     const label = text('label', 'Some random text');
-    return <Button onPress={noop} type="disabled" label={label} />;
+    return (
+      <Button onPress={noop} type="primary" label={label} disabled={true} />
+    );
   })
   .add('with children', () => (
     <Button onPress={noop} type="info">
