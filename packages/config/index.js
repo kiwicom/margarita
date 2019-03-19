@@ -3,7 +3,13 @@
 export const DEBOUNCE_TIME = 250;
 
 export const DAY_MONTH_DATE_FORMAT = 'ddd MM/dd';
-export const HOURS_MINUTES_FORMAT = 'H:m';
+export const HOURS_MINUTES_FORMAT = 'H:mm';
+export const LONG_DAY_MONTH_FORMAT = 'EEE d MMM';
+export const US_DATE_FORMAT = 'MM/dd/yyyy';
+export const ORDINAL_DAY_MONTH_FORMAT = 'do MMMM';
+export const BASIC_ISO_DATE_FORMAT = 'yyyy-MM-dd';
+export const UK_DATE_FORMAT = 'dd/MM/yyyy';
+export const DATE_TIME_FORMAT = 'MM/dd H:mm';
 
 export const SECTOR_COLOR_CODES = [
   '#00a991',

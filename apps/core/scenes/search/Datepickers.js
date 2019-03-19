@@ -11,13 +11,13 @@ import {
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
+import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,
   type TripTypes,
   type SearchContextState,
 } from './SearchContext';
-import { DATE_FORMAT } from './SearchConstants';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|
@@ -109,7 +109,7 @@ class Datepickers extends React.Component<Props, State> {
             onPress={this.handleDepartureDatePress}
             label="Departure"
             icon={<Icon name="calendar" />}
-            value={format(dateFrom, DATE_FORMAT)}
+            value={format(dateFrom, BASIC_ISO_DATE_FORMAT)}
           />
           {showReturnInput && (
             <TripInput
@@ -117,7 +117,9 @@ class Datepickers extends React.Component<Props, State> {
               label={returnType ? 'Return' : ''}
               icon={<Icon name="calendar" />}
               value={
-                returnType ? format(returnDateFrom, DATE_FORMAT) : 'No return'
+                returnType
+                  ? format(returnDateFrom, BASIC_ISO_DATE_FORMAT)
+                  : 'No return'
               }
             />
           )}

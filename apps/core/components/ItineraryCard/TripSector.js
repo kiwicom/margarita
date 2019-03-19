@@ -12,6 +12,7 @@ import {
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
 import { Duration } from '@kiwicom/margarita-components';
+import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
 import type { TripSector_data as TripSectorType } from './__generated__/TripSector_data.graphql';
 import TimelineArrow from './TimelineArrow';
@@ -19,7 +20,6 @@ import Transporters from './Transporters';
 import FlightTimes from './FlightTimes';
 import LocalTime from './LocalTime';
 import TripCities from './TripCities';
-import { dateFormat } from './TripSectorHelpers';
 
 type Props = {|
   +data: ?TripSectorType,
@@ -46,7 +46,7 @@ function TripSector({ data, layout }: Props) {
         >
           <LocalTime
             data={data?.departure}
-            dateFormat={dateFormat}
+            dateFormat={LONG_DAY_MONTH_FORMAT}
             style={[styles.infoText, styles.dateText]}
           />
           <Duration

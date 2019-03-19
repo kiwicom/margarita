@@ -21,6 +21,7 @@ import {
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
+import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,
@@ -30,7 +31,6 @@ import {
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
-import { DATE_FORMAT } from './SearchConstants';
 import SearchFormModes from './SearchFormModes';
 
 type Props = {
@@ -84,12 +84,12 @@ class Search extends React.Component<Props> {
         travelTo: this.convertLocationsToParams(travelTo, 'locationId'),
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
-        dateFrom: format(dateFrom, DATE_FORMAT),
-        dateTo: format(dateTo, DATE_FORMAT),
+        dateFrom: format(dateFrom, BASIC_ISO_DATE_FORMAT),
+        dateTo: format(dateTo, BASIC_ISO_DATE_FORMAT),
         ...(tripType === 'return'
           ? {
-              returnDateFrom: format(returnDateFrom, DATE_FORMAT),
-              returnDateTo: format(returnDateTo, DATE_FORMAT),
+              returnDateFrom: format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
+              returnDateTo: format(returnDateTo, BASIC_ISO_DATE_FORMAT),
             }
           : {}),
       });
