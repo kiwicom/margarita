@@ -38,3 +38,40 @@ exports[`TextInput should render a custom input and match diff snapshot with uns
       <TextInput
         allowFontScaling={true}"
 `;
+
+exports[`TextInput should render a custom label and match diff snapshot with unstyled one 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -14,13 +14,11 @@
+          Object {
+            \\"flexDirection\\": \\"row\\",
+            \\"marginBottom\\": 4,
+            \\"marginStart\\": 12,
+          },
+-         Object {
+-           \\"backgroundColor\\": \\"red\\",
+-         },
++         undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+@@ -28,13 +26,11 @@
+            Object {
+              \\"fontFamily\\": \\"Roboto\\",
+              \\"margin\\": 0,
+            },
+            Array [
+-             Object {
+-               \\"color\\": \\"blue\\",
+-             },
++             undefined,
+              Object {
+                \\"fontSize\\": 14,
+              },
+            ],
+          ]"
+`;
