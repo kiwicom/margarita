@@ -89,7 +89,9 @@ export default class Picker extends React.Component<Props, State> {
     return (
       <View>
         {label != null && (
-          <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+          <FormLabel labelContainerStyle={labelContainerStyle}>
+            {label}
+          </FormLabel>
         )}
         <View>
           <PickerButton
