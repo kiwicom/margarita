@@ -1,20 +1,18 @@
 // @flow
 
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
 import {
   PassengerCards,
   ContactDetailsForm,
   TableRow,
   TableRowDivider,
+  ContentContainer,
 } from '@kiwicom/margarita-components';
 import {
   withNavigation,
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { PriceSummary } from '../../components/priceSummary';
 
@@ -96,8 +94,8 @@ class ResultDetail extends React.Component<Props, State> {
     ];
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <>
+        <ContentContainer>
           <PassengerCards
             passengerCards={passengerCards}
             onActionPress={this.handlePassengerEditPress}
@@ -109,7 +107,7 @@ class ResultDetail extends React.Component<Props, State> {
             onChangePhoneNumber={this.handleChangePhoneNumber}
             onChangeCountryCode={this.handleChangePhoneCountryCode}
           />
-        </ScrollView>
+        </ContentContainer>
         <PriceSummary
           onButtonPress={this.handleContinue}
           renderCollapseContent={
@@ -138,16 +136,9 @@ class ResultDetail extends React.Component<Props, State> {
             />
           }
         />
-      </View>
+      </>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: defaultTokens.backgroundBody,
-  },
-});
 
 export default withNavigation(ResultDetail);
