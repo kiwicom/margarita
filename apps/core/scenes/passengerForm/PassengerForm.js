@@ -11,6 +11,7 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { DateInput } from '@kiwicom/margarita-components';
+import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import BaggageBundles from './BaggageBundles';
 
@@ -98,7 +99,7 @@ export default class PassengerForm extends React.Component<Props, State> {
           <DateInput
             date={this.state.birthDate}
             defaultDate={new Date('1990-01-01')}
-            dateFormat={'MM/dd/yyyy'}
+            dateFormat={US_DATE_FORMAT}
             onDateChange={this.handleBirthDateChange}
             placeholder="Select"
             label="Date of birth"

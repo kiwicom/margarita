@@ -4,6 +4,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import DateInput from './DateInput';
 
@@ -21,7 +22,7 @@ storiesOf('DateInput', module)
         onDateChange={noop}
         date={null}
         defaultDate={new Date()}
-        dateFormat={'MM/dd/yyyy'}
+        dateFormat={US_DATE_FORMAT}
         confirmLabel={'OK'}
         cancelLabel={'CANCEL'}
         placeholder={placeholder}

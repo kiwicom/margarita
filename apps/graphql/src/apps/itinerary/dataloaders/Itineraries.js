@@ -4,6 +4,7 @@ import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
+import { UK_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import fetch from '../../../services/fetch/Fetch';
 import {
@@ -18,13 +19,11 @@ import type {
   ItinerariesType,
 } from '../Itinerary';
 
-const dateFormat = 'dd/MM/yyyy';
-
 const stripTimeZoneOffset = (date: Date) =>
   DateFNS.addMinutes(date, date.getTimezoneOffset());
 
 const parseDate = (date: Date) =>
-  DateFNS.format(stripTimeZoneOffset(date), dateFormat);
+  DateFNS.format(stripTimeZoneOffset(date), UK_DATE_FORMAT);
 
 export const parseParameters = (input: ItinerariesSearchParameters) => {
   const flyFrom = input.travelFrom.join();

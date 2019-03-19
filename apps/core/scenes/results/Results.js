@@ -7,6 +7,7 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
+import { ORDINAL_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
 import type { ResultsQueryResponse } from './__generated__/ResultsQuery.graphql';
 import ResultsList from './ResultsList';
@@ -40,14 +41,17 @@ export default class Results extends React.Component<Props> {
       returnDateTo,
     } = this.props;
 
-    // @TODO get from config
-    const dateFormat = 'do MMMM';
-
-    const from = DateFNS.format(DateFNS.parseISO(dateFrom), dateFormat);
+    const from = DateFNS.format(
+      DateFNS.parseISO(dateFrom),
+      ORDINAL_DAY_MONTH_FORMAT,
+    );
 
     const tripType = returnDateFrom ? 'Return' : 'OneWay';
     const to = returnDateFrom
-      ? DateFNS.format(DateFNS.parseISO(returnDateFrom), dateFormat)
+      ? DateFNS.format(
+          DateFNS.parseISO(returnDateFrom),
+          ORDINAL_DAY_MONTH_FORMAT,
+        )
       : '';
     return (
       <SafeAreaView style={styles.container}>

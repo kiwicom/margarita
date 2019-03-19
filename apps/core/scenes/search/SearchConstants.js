@@ -18,5 +18,3 @@ export const MODAL_TYPE = {
   ORIGIN: 'ORIGIN',
   DESTINATION: 'DESTINATION',
 };
-
-export const DATE_FORMAT = 'yyyy-MM-dd';
