@@ -214,12 +214,14 @@ if (Platform.OS === 'web') {
         onChangeText={action('change')}
       />
     ))
-    .add('With custom Input Background', () => (
+    .add('With custom label and custom input background', () => (
       <TextInput
         label="Label"
         placeholder="Type something"
         onChangeText={action('change')}
         style={{ backgroundColor: '#DCDCDC' }}
+        labelContainerStyle={{ backgroundColor: '#DCDCDC' }}
+        labelTextStyle={{ color: '#383838', fontWeight: 'bold' }}
       />
     ));
 }
