@@ -41,24 +41,24 @@ export default class Results extends React.Component<Props> {
       returnDateTo,
     } = this.props;
 
-    const from = DateFNS.format(
-      DateFNS.parseISO(dateFrom),
-      ORDINAL_DAY_MONTH_FORMAT,
-    );
+    const getFormattedDate = date =>
+      DateFNS.format(DateFNS.parseISO(date), ORDINAL_DAY_MONTH_FORMAT);
 
     const tripType = returnDateFrom ? 'Return' : 'OneWay';
-    const to = returnDateFrom
-      ? DateFNS.format(
-          DateFNS.parseISO(returnDateFrom),
-          ORDINAL_DAY_MONTH_FORMAT,
-        )
-      : '';
     return (
       <SafeAreaView style={styles.container}>
         <SearchParamsSummary
           tripType={tripType}
-          departure={{ city: travelFromName, localizedDate: from }}
-          arrival={{ city: travelToName, localizedDate: to }}
+          departure={{
+            city: travelFromName,
+            localizedDate: getFormattedDate(dateFrom),
+          }}
+          arrival={{
+            city: travelToName,
+            localizedDate: returnDateFrom
+              ? getFormattedDate(returnDateFrom)
+              : '',
+          }}
         />
         <QueryRenderer
           query={graphql`

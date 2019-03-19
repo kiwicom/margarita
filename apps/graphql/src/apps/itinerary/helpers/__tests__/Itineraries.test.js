@@ -150,14 +150,24 @@ describe('mapVehicle', () => {
 });
 
 describe('differenceInMinutes', () => {
-  const from = '2019-03-11T10:50:00.000Z';
-  const to = '2019-03-11T11:55:00.000Z';
-  it('returns proper structure of the Vehicle object', () => {
-    expect(differenceInMinutes(from, to)).toBe(65);
+  const fromISO = '2019-03-11T10:50:00.000Z';
+  const toISO = '2019-03-11T11:55:00.000Z';
+
+  const fromTimestamp = +new Date(fromISO) / 1000;
+  const toTimestamp = +new Date(toISO) / 1000;
+
+  it('returns number of minutes between two timestamps', () => {
+    expect(differenceInMinutes(fromTimestamp, toTimestamp)).toBe(65);
+  });
+  it('returns number of minutes between ISO date and timestamp', () => {
+    expect(differenceInMinutes(fromISO, toTimestamp)).toBe(65);
+  });
+  it('returns number of minutes between two ISO dates', () => {
+    expect(differenceInMinutes(fromISO, toISO)).toBe(65);
   });
   it('returns null if there are not enough of data for getting difference', () => {
     expect(differenceInMinutes()).toBeNull();
-    expect(differenceInMinutes(from)).toBeNull();
-    expect(differenceInMinutes(null, to)).toBeNull();
+    expect(differenceInMinutes(fromISO)).toBeNull();
+    expect(differenceInMinutes(null, toISO)).toBeNull();
   });
 });
