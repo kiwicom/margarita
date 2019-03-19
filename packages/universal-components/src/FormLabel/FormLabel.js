@@ -52,7 +52,7 @@ export default function FormLabel({
           *{' '}
         </Asteriks>
       )}
-      <Text style={[labelStyle, styles.labelText]}>{children}</Text>
+      <Text style={[styles.labelText, labelStyle]}>{children}</Text>
     </View>
   );
 }
