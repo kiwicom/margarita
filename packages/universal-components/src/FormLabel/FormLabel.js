@@ -13,7 +13,8 @@ type Props = {|
   +disabled?: boolean,
   +required?: boolean,
   +inlineLabel?: boolean,
-  +style?: StylePropType,
+  +labelContainerStyle?: StylePropType,
+  +labelTextStyle?: StylePropType,
 |};
 
 const getAsteriksStyle = (filled, disabled) => {
@@ -36,18 +37,22 @@ export default function FormLabel({
   filled,
   disabled,
   inlineLabel,
-  style,
+  labelContainerStyle,
+  labelTextStyle,
 }: Props) {
   return (
     <View
-      style={[inlineLabel ? styles.inlineFormLabel : styles.formLabel, style]}
+      style={[
+        inlineLabel ? styles.inlineFormLabel : styles.formLabel,
+        labelContainerStyle,
+      ]}
     >
       {required && (
         <Asteriks filled={filled} disabled={disabled}>
           *{' '}
         </Asteriks>
       )}
-      <Text style={styles.labelText}>{children}</Text>
+      <Text style={[labelTextStyle, styles.labelText]}>{children}</Text>
     </View>
   );
 }

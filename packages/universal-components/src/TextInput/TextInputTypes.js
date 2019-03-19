@@ -27,6 +27,7 @@ export type Props = {|
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
   +labelContainerStyle?: StylePropType,
   +style?: StylePropType,
+  +labelTextStyle?: StylePropType,
 |};
 
 export type State = {|
