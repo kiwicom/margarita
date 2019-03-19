@@ -9,7 +9,6 @@ export const textColor = {
   critical: defaultTokens.colorTextButtonCritical,
   facebook: defaultTokens.colorTextButtonFacebook,
   google: defaultTokens.colorTextButtonGoogle,
-  disabled: defaultTokens.paletteInkLighter,
 };
 
 export const wrapperColor = {
@@ -19,5 +18,4 @@ export const wrapperColor = {
   critical: defaultTokens.backgroundButtonCritical,
   facebook: defaultTokens.backgroundButtonFacebook,
   google: defaultTokens.backgroundButtonGoogle,
-  disabled: defaultTokens.paletteCloudLight,
 };
