@@ -12,7 +12,11 @@ export type PickerOption = {|
 
 export type Props = {|
   +label?: React.Node,
+  /**
+   * Styles for the container and the text of the label
+   */
   +containerStyle?: StylePropType,
+  +labelStyle?: StylePropType,
   /**
    * Array with options data
    */

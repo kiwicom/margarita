@@ -83,13 +83,16 @@ export default class Picker extends React.Component<Props, State> {
       iconName,
       label,
       containerStyle,
+      labelStyle,
     } = this.props;
     const selectedLabel = getSelectedLabel(optionsData, selectedValue);
 
     return (
       <View>
         {label != null && (
-          <FormLabel containerStyle={containerStyle}>{label}</FormLabel>
+          <FormLabel containerStyle={containerStyle} labelStyle={labelStyle}>
+            {label}
+          </FormLabel>
         )}
         <View>
           <PickerButton
