@@ -64,8 +64,7 @@ exports[`TooltipBubble should match the snapshot 1`] = `
       ]
     }
   >
-    <Text
-      expo={false}
+    <WithTheme
       style={
         Object {
           "color": "#fff",
@@ -75,7 +74,7 @@ exports[`TooltipBubble should match the snapshot 1`] = `
       }
     >
       Hello Kiwi.com
-    </Text>
+    </WithTheme>
   </Component>
 </Component>
 `;

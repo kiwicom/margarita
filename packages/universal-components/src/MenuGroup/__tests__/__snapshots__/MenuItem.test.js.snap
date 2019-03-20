@@ -42,13 +42,12 @@ exports[`MenuGroup renders with icon 1`] = `
           }
         />
         <Component>
-          <Text
-            expo={false}
+          <WithTheme
             size="large"
             type="attention"
           >
             test
-          </Text>
+          </WithTheme>
         </Component>
         <Component
           style={
@@ -98,20 +97,18 @@ exports[`MenuGroup renders with label 1`] = `
         }
       >
         <Component>
-          <Text
-            expo={false}
+          <WithTheme
             size="small"
             type="secondary"
           >
             label
-          </Text>
-          <Text
-            expo={false}
+          </WithTheme>
+          <WithTheme
             size="large"
             type="attention"
           >
             test
-          </Text>
+          </WithTheme>
         </Component>
         <Component
           style={
@@ -161,20 +158,18 @@ exports[`MenuGroup renders with subTitle 1`] = `
         }
       >
         <Component>
-          <Text
-            expo={false}
+          <WithTheme
             size="large"
             type="attention"
           >
             test
-          </Text>
-          <Text
-            expo={false}
+          </WithTheme>
+          <WithTheme
             size="small"
             type="secondary"
           >
             sub
-          </Text>
+          </WithTheme>
         </Component>
         <Component
           style={
