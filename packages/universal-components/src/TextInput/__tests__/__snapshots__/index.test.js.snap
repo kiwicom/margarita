@@ -17,7 +17,7 @@ exports[`TextInput should match snapshot diff between small and normal input 1`]
             },"
 `;
 
-exports[`TextInput should render a custom input and match diff snapshot with unstyled one 1`] = `
+exports[`TextInput should render a custom TextInput and match diff snapshot with unstyled one 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
@@ -39,7 +39,7 @@ exports[`TextInput should render a custom input and match diff snapshot with uns
         allowFontScaling={true}"
 `;
 
-exports[`TextInput should render a custom label and match diff snapshot with unstyled one 1`] = `
+exports[`TextInput should render a custom label on the TextInput and match diff snapshot with unstyled one 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
