@@ -4,26 +4,27 @@ import { GraphQLNonNull } from 'graphql';
 import { connectionFromArray, connectionArgs } from '@kiwicom/graphql-utils';
 
 import { type Args, ItinerariesConnection } from '../helpers/queryVariables';
-import ItinerariesSearchInput from '../types/inputs/ItinerariesSearchInput';
+import ItinerariesOneWaySearchInput from '../types/inputs/ItinerariesOneWaySearchInput';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import type {
   ItinerariesType,
-  ItinerariesSearchParameters,
+  ItinerariesOneWaySearchParameters,
 } from '../Itinerary';
 
-const Itineraries = {
-  name: 'SearchItineraries',
-  description: 'Query to fetch all itineraries(flights, busses, trains)',
+const ItinerariesOneWay = {
+  name: 'SearchOneWayItineraries',
+  description:
+    'Query to fetch all one way itineraries(flights, busses, trains)',
   args: {
     input: {
-      type: GraphQLNonNull(ItinerariesSearchInput),
+      type: GraphQLNonNull(ItinerariesOneWaySearchInput),
     },
     ...connectionArgs,
   },
   type: ItinerariesConnection,
   resolve: async (
     _: mixed,
-    args: Args<ItinerariesSearchParameters>,
+    args: Args<ItinerariesOneWaySearchParameters>,
     { dataLoader }: GraphqlContextType,
   ) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
@@ -32,4 +33,4 @@ const Itineraries = {
   },
 };
 
-export default Itineraries;
+export default ItinerariesOneWay;

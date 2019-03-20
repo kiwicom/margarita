@@ -193,6 +193,23 @@ type HttpError {
   message: String!
 }
 
+input ItinerariesOneWaySearchInput {
+  """Locations IDs for travel from (origin)"""
+  travelFrom: [String]!
+
+  """Locations IDs for travel to (destination)"""
+  travelTo: [String]
+
+  """Search itineraries from this date"""
+  dateFrom: Date!
+
+  """Search itineraries up to this date"""
+  dateTo: Date
+
+  """Number of children, adults and infants travelling"""
+  passengers: PassengersInput
+}
+
 input ItinerariesSearchInput {
   """Locations IDs for travel from (origin)"""
   travelFrom: [String]!
@@ -206,14 +223,14 @@ input ItinerariesSearchInput {
   """Search itineraries up to this date"""
   dateTo: Date
 
+  """Number of children, adults and infants travelling"""
+  passengers: PassengersInput
+
   """Search itineraries return from this date"""
   returnDateFrom: Date
 
   """Search itineraries return up to this date"""
   returnDateTo: Date
-
-  """Number of children, adults and infants travelling"""
-  passengers: PassengersInput
 }
 
 type Itinerary {
@@ -381,6 +398,9 @@ type RootQuery {
 
   """Query to fetch all itineraries(flights, busses, trains)"""
   searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
+  """Query to fetch all one way itineraries(flights, busses, trains)"""
+  searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
 }
 
 """Departure or arrival for a segment or sector"""
