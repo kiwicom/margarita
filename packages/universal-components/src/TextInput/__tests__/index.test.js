@@ -17,8 +17,8 @@ describe('TextInput', () => {
   const onFocus = jest.fn();
   const onChangeText = jest.fn();
   const inputStyle = { backgroundColor: 'green' };
-  const labelContainerStyle = { backgroundColor: 'red' };
-  const labelTextStyle = { color: 'blue' };
+  const containerStyle = { backgroundColor: 'red' };
+  const labelStyle = { color: 'blue' };
 
   const { getByType, getByText, getAllByProps } = render(
     <TextInput
@@ -77,8 +77,8 @@ describe('TextInput', () => {
     const customLabel = render(
       <TextInput
         label="Label"
-        labelContainerStyle={labelContainerStyle}
-        labelTextStyle={labelTextStyle}
+        formLabelContainerStyle={containerStyle}
+        formLabelTextStyle={labelStyle}
       />,
     );
     const base = render(<TextInput label="Label" />);

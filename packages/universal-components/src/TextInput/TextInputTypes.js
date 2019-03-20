@@ -26,6 +26,7 @@ export type Props = {|
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
 <<<<<<< HEAD
+<<<<<<< HEAD
   +labelContainerStyle?: StylePropType,
   +style?: StylePropType,
   +labelTextStyle?: StylePropType,
@@ -33,6 +34,10 @@ export type Props = {|
   +containerStyle?: StylePropType,
   +labelStyle?: StylePropType,
 >>>>>>> Change names from labelContainer and labelText to container and text
+=======
+  +formLabelContainerStyle?: StylePropType,
+  +formLabelTextStyle?: StylePropType,
+>>>>>>> rename containerStyle / labelStyle to more descriptive names to put style prop related to the input
 |};
 
 export type State = {|

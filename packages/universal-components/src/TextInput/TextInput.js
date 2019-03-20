@@ -154,9 +154,9 @@ class TextInput extends React.Component<Props, State> {
       required,
       prefix,
       inlineLabel,
-      labelContainerStyle,
+      formLabelContainerStyle,
+      formLabelTextStyle,
       style,
-      labelTextStyle,
       suffix,
       type = 'text',
       error,
@@ -187,8 +187,8 @@ class TextInput extends React.Component<Props, State> {
         <View style={styles.inputWrapper}>
           {label != null && !inlineLabel && (
             <FormLabel
-              containerStyle={labelContainerStyle}
-              labelStyle={labelTextStyle}
+              containerStyle={formLabelContainerStyle}
+              labelStyle={formLabelTextStyle}
               filled={!!value}
               required={required}
               disabled={disabled}
@@ -216,8 +216,8 @@ class TextInput extends React.Component<Props, State> {
             {label != null && inlineLabel && (
               <InlineLabel>
                 <FormLabel
-                  containerStyle={labelContainerStyle}
-                  labelStyle={labelTextStyle}
+                  containerStyle={formLabelContainerStyle}
+                  labelStyle={formLabelTextStyle}
                   filled={!!value}
                   inlineLabel
                   required={required}
