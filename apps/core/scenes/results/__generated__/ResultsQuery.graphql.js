@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash a033142d325703616774bcec47bd49f0
+ * @relayHash 07cfc2d9be29e613fef4d3b45f0b6292
  */
 
 /* eslint-disable */
@@ -15,9 +15,9 @@ export type ItinerariesSearchInput = {|
   travelTo?: ?$ReadOnlyArray<?string>,
   dateFrom: any,
   dateTo?: ?any,
+  passengers?: ?PassengersInput,
   returnDateFrom?: ?any,
   returnDateTo?: ?any,
-  passengers?: ?PassengersInput,
 |};
 export type PassengersInput = {|
   adults?: ?number,

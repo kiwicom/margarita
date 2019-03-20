@@ -5,7 +5,6 @@ exports[`Text -- iOS should have the correct font family 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -23,7 +22,6 @@ exports[`Text -- iOS should have the correct font family 2`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -44,7 +42,6 @@ exports[`Text -- iOS should have the correct font family 3`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -65,7 +62,6 @@ exports[`Text -- iOS should have the correct font family 4`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {

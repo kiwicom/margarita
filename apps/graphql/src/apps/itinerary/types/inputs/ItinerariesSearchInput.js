@@ -1,34 +1,14 @@
 // @flow
 
-import {
-  GraphQLInputObjectType,
-  GraphQLNonNull,
-  GraphQLString,
-  GraphQLList,
-} from 'graphql';
+import { GraphQLInputObjectType } from 'graphql';
 import { GraphQLDate } from 'graphql-iso-date';
 
-import PassengersInput from './PassengersInput';
+import ItinerariesSharedSearchInput from './ItinerariesSharedSearchInput';
 
 export default new GraphQLInputObjectType({
   name: 'ItinerariesSearchInput',
   fields: {
-    travelFrom: {
-      description: 'Locations IDs for travel from (origin)',
-      type: GraphQLNonNull(GraphQLList(GraphQLString)),
-    },
-    travelTo: {
-      description: 'Locations IDs for travel to (destination)',
-      type: GraphQLList(GraphQLString),
-    },
-    dateFrom: {
-      type: GraphQLNonNull(GraphQLDate),
-      description: 'Search itineraries from this date',
-    },
-    dateTo: {
-      type: GraphQLDate,
-      description: 'Search itineraries up to this date',
-    },
+    ...ItinerariesSharedSearchInput.fields,
     returnDateFrom: {
       type: GraphQLDate,
       description: 'Search itineraries return from this date',
@@ -36,10 +16,6 @@ export default new GraphQLInputObjectType({
     returnDateTo: {
       type: GraphQLDate,
       description: 'Search itineraries return up to this date',
-    },
-    passengers: {
-      type: PassengersInput,
-      description: 'Number of children, adults and infants travelling',
     },
   },
 });

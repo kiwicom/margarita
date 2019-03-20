@@ -55,7 +55,6 @@ exports[`TimelineInformation should match snapshot diff 1`] = `
       style={
         Array [
           Object {
-            "fontFamily": "Roboto",
             "margin": 0,
           },
           Object {

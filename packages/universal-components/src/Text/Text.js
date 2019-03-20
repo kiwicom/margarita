@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { Text as RNText, Platform } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import { createStylesGenerator } from '../utils';
@@ -13,6 +12,7 @@ import {
   textColor,
 } from './styles';
 import type { TextType } from './TextTypes';
+import { withTheme } from '../ThemeProvider';
 
 const colorGen = createStylesGenerator('color', textColor);
 const fontWeightGen = createStylesGenerator('fontWeight', fontWeightTypes);
@@ -31,6 +31,7 @@ const Text = ({
   uppercase,
   weight,
   expo,
+  theme,
 }: TextType) => {
   const textStyle = [styles.text];
   if (italic) {
@@ -55,17 +56,17 @@ const Text = ({
     textStyle.push(style);
   }
 
+  let fontFamily = theme.styles.normalFontFamily;
   if (expo && (Platform.OS === 'ios' || Platform.OS === 'android')) {
-    let fontFamily = styles.normalFontFamily;
     if (italic && weight === 'bold') {
-      fontFamily = styles.boldItalicFontFamily;
+      fontFamily = theme.styles.boldItalicFontFamily;
     } else if (italic) {
-      fontFamily = styles.italicFontFamily;
+      fontFamily = theme.styles.italicFontFamily;
     } else if (weight === 'bold') {
-      fontFamily = styles.boldFontFamily;
+      fontFamily = theme.styles.boldFontFamily;
     }
-    textStyle.push(fontFamily);
   }
+  textStyle.push(fontFamily);
 
   return (
     <RNText
@@ -85,7 +86,6 @@ Text.defaultProps = {
 const styles = StyleSheet.create({
   text: {
     margin: 0,
-    fontFamily: Platform.OS === 'web' ? defaultTokens.fontFamily : 'Roboto',
   },
   italic: {
     fontStyle: 'italic',
@@ -97,18 +97,6 @@ const styles = StyleSheet.create({
   ...alignGen(),
   ...colorGen(),
   ...fontSizeGen(),
-  normalFontFamily: {
-    fontFamily: 'Roboto',
-  },
-  boldFontFamily: {
-    fontFamily: 'RobotoBold',
-  },
-  italicFontFamily: {
-    fontFamily: 'RobotoItalic',
-  },
-  boldItalicFontFamily: {
-    fontFamily: 'RobotoBoldItalic',
-  },
 });
 
-export default Text;
+export default withTheme(Text);

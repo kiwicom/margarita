@@ -14,30 +14,32 @@ export type Itinerary = {|
   +id: string,
 |};
 
-export default new GraphQLObjectType({
-  name: 'Itinerary',
-  fields: {
-    destination: { type: GraphQLLocation },
-    endTime: { type: GraphQLDateType },
-    id: GlobalID(({ id }) => id),
-    origin: { type: GraphQLLocation },
-    price: { type: GraphQLPrice },
-    sectors: {
-      type: new GraphQLList(GraphQLSector),
-      resolve: ({ sectors }: ItinerariesType): Sector[] => {
-        if (sectors == null) {
-          return [];
-        }
-        return sectors.map((sector, index) => ({
-          ...sector,
-          stopoverDuration: getStopoverDuration(sector, sectors[index - 1]),
-        }));
-      },
+const itineraryResponseTypes = {
+  destination: { type: GraphQLLocation },
+  endTime: { type: GraphQLDateType },
+  id: GlobalID(({ id }) => id),
+  origin: { type: GraphQLLocation },
+  price: { type: GraphQLPrice },
+  sectors: {
+    type: new GraphQLList(GraphQLSector),
+    resolve: ({ sectors }: ItinerariesType): Sector[] => {
+      if (sectors == null) {
+        return [];
+      }
+      return sectors.map((sector, index) => ({
+        ...sector,
+        stopoverDuration: getStopoverDuration(sector, sectors[index - 1]),
+      }));
     },
-    startTime: { type: GraphQLDateType },
-    type: { type: GraphQLString },
-    bookingToken: { type: GraphQLString },
   },
+  startTime: { type: GraphQLDateType },
+  type: { type: GraphQLString },
+  bookingToken: { type: GraphQLString },
+};
+
+export const GraphQLItinerary = new GraphQLObjectType({
+  name: 'Itinerary',
+  fields: itineraryResponseTypes,
 });
 
 const getStopoverDuration = (

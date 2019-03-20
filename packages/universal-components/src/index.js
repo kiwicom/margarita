@@ -40,9 +40,11 @@ export { PickerButton } from './PickerButton';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';
+export { ThemeProvider, withTheme } from './ThemeProvider';
 
 /* Types */
 export type { IconNameType } from './types/_generated-types';
+export type { Theme } from './ThemeProvider';
 
 export type {
   StylePropType,
