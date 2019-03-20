@@ -10,6 +10,7 @@ module.exports = {
   BASIC_ISO_DATE_FORMAT: 'yyyy-MM-dd',
   UK_DATE_FORMAT: 'dd/MM/yyyy',
   DATE_TIME_FORMAT: 'MM/dd H:mm',
+  MONTH_NAME_FORMAT: 'MMMM',
   SECTOR_COLOR_CODES: [
     '#00a991',
     '#fbad18',

@@ -1,5 +1,6 @@
 // @flow
 
+// @TODO delete this file when it's replace by RangeDatePickers.js
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';

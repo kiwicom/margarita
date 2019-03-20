@@ -13,7 +13,7 @@ import {
 } from '@kiwicom/margarita-utils';
 import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
 
-import { RangeDatePicker } from '../../components/datePicker';
+import { RangeDatePicker } from '../../components/rangeDatePicker';
 import {
   withSearchContext,
   type TripTypes,
@@ -134,15 +134,6 @@ class RangeDatePickers extends React.Component<Props, State> {
           onDismiss={this.handleDatePickerDismiss}
           labels={{ cancel: 'Cancel', confirm: 'OK' }}
         />
-        {/* <DatePicker
-          isVisible={this.state.isDatePickerVisible}
-          mode={'date'}
-          date={datePickerDate}
-          minDate={startOfDay(new Date())}
-          onConfirm={this.handleDateChange}
-          onDismiss={this.handleDatePickerDismiss}
-          labels={{ cancel: 'Cancel', confirm: 'OK' }}
-        /> */}
       </>
     );
   }

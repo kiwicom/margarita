@@ -1,7 +1,7 @@
 /* @flow */
 
 import * as React from 'react';
-import { View, DatePickerIOS } from 'react-native';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Text,
@@ -25,6 +25,8 @@ const parsePropsToState = ({ date }: Props) => {
 };
 
 export default class RangeDatePicker extends React.Component<Props, State> {
+  // @TODO load price for days
+
   static defaultProps = {
     mode: 'date',
   };
@@ -63,9 +65,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, labels, mode, maxDate, minDate } = this.props;
-
-    const { date } = this.state;
+    const { isVisible, labels } = this.props;
 
     return (
       <Modal
@@ -74,7 +74,10 @@ export default class RangeDatePicker extends React.Component<Props, State> {
         onBackdropPress={this.handleDismiss}
       >
         <View style={styles.content}>
-          <RangeDatePickerContent />
+          <RangeDatePickerContent
+            selectedDate={this.state.date}
+            onDayPress={this.handleChangeDate}
+          />
           <View style={styles.buttonsContainer}>
             <Touchable
               onPress={this.handleDismiss}
@@ -100,6 +103,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
+    overflow: 'hidden',
   },
   confirmButton: {
     borderColor: defaultTokens.paletteWhite,
