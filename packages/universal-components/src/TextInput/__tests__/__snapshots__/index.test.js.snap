@@ -10,9 +10,31 @@ exports[`TextInput should match snapshot diff between small and normal input 1`]
 -           \\"height\\": 44,
 +           \\"height\\": 32,
           },
-@@ -85,3 +85,3 @@
+@@ -86,3 +86,3 @@
             Object {
 -             \\"height\\": 44,
 +             \\"height\\": 32,
             },"
+`;
+
+exports[`TextInput should render a custom input and match diff snapshot with unstyled one 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -54,13 +54,11 @@
+          undefined,
+          false,
+          undefined,
+          false,
+          false,
+-         Object {
+-           \\"backgroundColor\\": \\"green\\",
+-         },
++         undefined,
+        ]
+      }
+    >
+      <TextInput
+        allowFontScaling={true}"
 `;

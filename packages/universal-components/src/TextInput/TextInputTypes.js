@@ -26,6 +26,7 @@ export type Props = {|
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
   +labelContainerStyle?: StylePropType,
+  +style?: StylePropType,
 |};
 
 export type State = {|

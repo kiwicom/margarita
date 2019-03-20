@@ -155,6 +155,7 @@ class TextInput extends React.Component<Props, State> {
       prefix,
       inlineLabel,
       labelContainerStyle,
+      style,
       suffix,
       type = 'text',
       error,
@@ -202,6 +203,7 @@ class TextInput extends React.Component<Props, State> {
               error && !focused && styles.inputContainerBorderError,
               ifSuccess && styles.inputContainerSuccess,
               ifWarning && styles.inputContainerWarning,
+              style,
             ]}
           >
             {prefix != null && (

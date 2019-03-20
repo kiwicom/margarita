@@ -213,5 +213,13 @@ if (Platform.OS === 'web') {
         suffix={<ServiceLogo name="VisaHQ" />}
         onChangeText={action('change')}
       />
+    ))
+    .add('With custom Input Background', () => (
+      <TextInput
+        label="Label"
+        placeholder="Type something"
+        onChangeText={action('change')}
+        style={{ backgroundColor: '#DCDCDC' }}
+      />
     ));
 }
