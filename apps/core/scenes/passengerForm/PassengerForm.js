@@ -84,14 +84,14 @@ export default class PassengerForm extends React.Component<Props, State> {
             label="Given names"
             autoCorrect={false}
             type="text"
-            containerStyle={styles.inputLabel}
+            formLabelContainerStyle={styles.inputLabel}
           />
           <TextInput
             onChangeText={this.handleLastNameChange}
             label="Last name"
             autoCorrect={false}
             type="text"
-            containerStyle={styles.inputLabel}
+            formLabelContainerStyle={styles.inputLabel}
           />
           <DateInput
             date={this.state.birthDate}
