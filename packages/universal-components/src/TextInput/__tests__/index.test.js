@@ -64,9 +64,7 @@ describe('TextInput', () => {
     expect(snapshotDiff(normal, small, { contextLines: 1 })).toMatchSnapshot();
   });
   it('should render a custom input and match diff snapshot with unstyled one', () => {
-    const customInput = render(
-      <TextInput label="Label" inputStyle={inputStyle} />,
-    );
+    const customInput = render(<TextInput label="Label" style={inputStyle} />);
     const base = render(<TextInput label="Label" />);
     expect(snapshotDiff(customInput, base)).toMatchSnapshot();
   });

@@ -219,7 +219,7 @@ if (Platform.OS === 'web') {
         label="Label"
         placeholder="Type something"
         onChangeText={action('change')}
-        inputStyle={{ backgroundColor: '#DCDCDC' }}
+        style={{ backgroundColor: '#DCDCDC' }}
       />
     ));
 }
