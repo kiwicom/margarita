@@ -47,6 +47,11 @@ const styles = StyleSheet.create({
       borderRadius: 3,
       overflow: 'hidden',
     },
+    web: {
+      marginHorizontal: 8,
+      borderRadius: 8,
+      overflow: 'hidden',
+    },
     ios: {
       borderTopWidth: StyleSheet.hairlineWidth,
       borderBottomWidth: StyleSheet.hairlineWidth,
