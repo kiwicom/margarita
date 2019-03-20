@@ -220,6 +220,7 @@ if (Platform.OS === 'web') {
         placeholder="Type something"
         onChangeText={action('change')}
 <<<<<<< HEAD
+<<<<<<< HEAD
         style={{ backgroundColor: '#DCDCDC' }}
         labelContainerStyle={{ backgroundColor: '#DCDCDC' }}
         labelTextStyle={{ color: '#383838', fontWeight: 'bold' }}
@@ -227,6 +228,10 @@ if (Platform.OS === 'web') {
         containerStyle={{ backgroundColor: '#DCDCDC' }}
         labelStyle={{ color: '#383838', fontWeight: 'bold' }}
 >>>>>>> Change names from labelContainer and labelText to container and text
+=======
+        formLabelContainerStyle={{ backgroundColor: '#DCDCDC' }}
+        formLabelTextStyle={{ color: '#383838', fontWeight: 'bold' }}
+>>>>>>> rename containerStyle / labelStyle to more descriptive names to put style prop related to the input
       />
     ));
 }
