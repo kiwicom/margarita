@@ -28,13 +28,12 @@ exports[`MenuGroup renders correctly 1`] = `
         }
       >
         <Component>
-          <Text
-            expo={false}
+          <WithTheme
             size="large"
             type="attention"
           >
             test
-          </Text>
+          </WithTheme>
         </Component>
       </Component>
     </MenuItemWrapper>

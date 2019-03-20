@@ -22,13 +22,12 @@ Object {
         name="baggage-checked"
         size="small"
       />
-      <Text
-        expo={false}
+      <WithTheme
         size="small"
         type="primary"
       >
         3 Cabin bags
-      </Text>
+      </WithTheme>
     </Component>
   </React.Fragment>,
 }
@@ -50,13 +49,12 @@ Object {
         name="baggage-checked"
         size="small"
       />
-      <Text
-        expo={false}
+      <WithTheme
         size="small"
         type="primary"
       >
         3 Checked baggage
-      </Text>
+      </WithTheme>
     </Component>
   </React.Fragment>,
 }
@@ -78,13 +76,12 @@ Object {
         name="baggage-checked"
         size="small"
       />
-      <Text
-        expo={false}
+      <WithTheme
         size="small"
         type="primary"
       >
         3 Personal items
-      </Text>
+      </WithTheme>
     </Component>
   </React.Fragment>,
 }

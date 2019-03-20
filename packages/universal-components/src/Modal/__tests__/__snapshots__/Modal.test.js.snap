@@ -73,8 +73,10 @@ exports[`Modal - native should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "fontFamily": "Roboto",
             "margin": 0,
+          },
+          Object {
+            "fontFamily": "Roboto",
           },
         ]
       }

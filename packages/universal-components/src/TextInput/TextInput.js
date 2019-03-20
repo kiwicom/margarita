@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import { withTheme } from '../ThemeProvider';
 import { Text } from '../Text';
 import { FormLabel } from '../FormLabel';
 import { Icon } from '../Icon';
@@ -165,6 +166,7 @@ class TextInput extends React.Component<Props, State> {
       status = 'default',
       autoFocus,
       autoCorrect = true,
+      theme,
     } = this.props;
     const { focused, value } = this.state;
 
@@ -240,6 +242,7 @@ class TextInput extends React.Component<Props, State> {
               maxLength={maxLength}
               minLength={minLength}
               style={[
+                theme.styles.normalFontFamily,
                 styles.inputField,
                 disabled && styles.inputFieldDisabled,
                 ifSuccess && styles.inputFieldSuccess,
@@ -304,7 +307,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     padding: 0,
-    fontFamily: 'Roboto',
     web: {
       outline: 'none',
       color: defaultTokens.colorTextInput,
@@ -352,4 +354,4 @@ const styles = StyleSheet.create({
   ...heightGen(),
 });
 
-export default TextInput;
+export default withTheme(TextInput);

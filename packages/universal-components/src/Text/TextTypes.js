@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
+import { type Theme } from '../ThemeProvider';
 
 export type TextType = {|
   align?: 'left' | 'right' | 'center' | 'justify',
@@ -24,4 +25,5 @@ export type TextType = {|
     | 'white',
   +weight?: 'normal' | 'bold',
   +expo?: boolean,
+  +theme: Theme,
 |};
