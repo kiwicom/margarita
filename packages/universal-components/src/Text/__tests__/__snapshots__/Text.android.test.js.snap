@@ -5,7 +5,6 @@ exports[`Text -- Android should have the correct font family -- EXPO 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -23,7 +22,6 @@ exports[`Text -- Android should have the correct font family -- EXPO 2`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -44,7 +42,6 @@ exports[`Text -- Android should have the correct font family -- EXPO 3`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -65,7 +62,6 @@ exports[`Text -- Android should have the correct font family -- EXPO 4`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -89,7 +85,6 @@ exports[`Text -- Android should have the default font family 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -97,6 +92,9 @@ exports[`Text -- Android should have the default font family 1`] = `
       },
       Object {
         "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }

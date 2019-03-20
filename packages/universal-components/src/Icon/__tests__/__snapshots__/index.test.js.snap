@@ -5,7 +5,6 @@ exports[`Icon renders a question mark if the icon name is invalid 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Array [
@@ -20,6 +19,9 @@ exports[`Icon renders a question mark if the icon name is invalid 1`] = `
         },
         undefined,
       ],
+      Object {
+        "fontFamily": "Roboto",
+      },
     ]
   }
 >
