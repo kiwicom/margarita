@@ -15,8 +15,8 @@ export type Props = {|
   /**
    * Styles for the container and the text of the label
    */
-  +containerStyle?: StylePropType,
-  +labelStyle?: StylePropType,
+  +formLabelContainerStyle?: StylePropType,
+  +formLabelTextStyle?: StylePropType,
   /**
    * Array with options data
    */
