@@ -113,7 +113,7 @@ export default class PassengerForm extends React.Component<Props, State> {
             placeholder="Select"
             confirmLabel="OK"
             label="Nationality"
-            containerStyle={styles.inputLabel}
+            formLabelContainerStyle={styles.inputLabel}
           />
           <BaggageBundles />
         </View>
