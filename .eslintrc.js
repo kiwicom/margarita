@@ -10,11 +10,11 @@ module.exports = {
     es6: true,
     jest: true,
     node: true,
-    browser: true
+    browser: true,
   },
   rules: {
     'react/sort-comp': ERROR,
-    'no-unused-vars': [ERROR, { args: "after-used"}],
+    'no-unused-vars': [ERROR, { args: 'after-used' }],
     'no-restricted-imports': [
       ERROR,
       {
@@ -48,7 +48,7 @@ module.exports = {
               'Button',
             ],
             message:
-              'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback',
+              'Please use @kiwicom/universal-components instead, and @kiwicom/margarita-components for TouchableWithoutFeedback and Text',
           },
           {
             name: 'react-navigation',
