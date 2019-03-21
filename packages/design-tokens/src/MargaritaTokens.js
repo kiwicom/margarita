@@ -7,6 +7,7 @@ export const margaritaTokens = {
   borderColorInkLight: '#d2d9e0',
   borderColorInkNormal: '#57626c',
   backdropColor: '#171b1e',
+  fontWeightMedium: '500',
 
   heightBadge: 18,
   backgroundBadgeWarning: '#F9971E',

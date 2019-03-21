@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     lineHeight: margaritaTokens.heightBadge,
-    fontWeight: '500',
+    fontWeight: margaritaTokens.fontWeightMedium,
     letterSpacing: 0.3,
     color: defaultTokens.colorTextBadgeDark,
   },

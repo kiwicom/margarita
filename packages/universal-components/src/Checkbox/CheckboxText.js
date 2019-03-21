@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { Text, View, Platform } from 'react-native';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import theme, { parsePxValue } from './styles';
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
     lineHeight: parsePxValue(theme.orbit.heightCheckbox),
   },
   labelChecked: {
-    fontWeight: '500',
+    fontWeight: margaritaTokens.fontWeightMedium,
   },
   info: {
     fontFamily: Platform.OS === 'web' ? theme.orbit.fontFamily : 'Roboto',
