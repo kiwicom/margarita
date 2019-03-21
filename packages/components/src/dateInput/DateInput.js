@@ -13,7 +13,8 @@ import {
 
 export type Props = {|
   +label?: React.Node,
-  +labelContainerStyle?: StylePropType,
+  +formLabelContainerStyle?: StylePropType,
+  +formLabelTextStyle?: StylePropType,
   +onDateChange: (value: ?Date) => void,
   +date: ?Date,
   +defaultDate: Date,
@@ -46,7 +47,8 @@ export default class DateInput extends React.Component<Props, State> {
     const { isPickerVisible } = this.state;
     const {
       label,
-      labelContainerStyle,
+      formLabelContainerStyle,
+      formLabelTextStyle,
       date,
       defaultDate,
       dateFormat,
@@ -59,7 +61,12 @@ export default class DateInput extends React.Component<Props, State> {
     return (
       <View>
         {label != null && (
-          <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+          <FormLabel
+            containerStyle={formLabelContainerStyle}
+            labelStyle={formLabelTextStyle}
+          >
+            {label}
+          </FormLabel>
         )}
         <PickerButton
           value={date ? format(date, dateFormat) : null}

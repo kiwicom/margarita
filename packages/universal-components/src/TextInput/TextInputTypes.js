@@ -26,8 +26,9 @@ export type Props = {|
   +error?: React.Node,
   +help?: React.Node,
   +status?: 'default' | 'success' | 'warning', // this prop is supported only on mobile
-  +labelContainerStyle?: StylePropType,
   +style?: StylePropType,
+  +formLabelContainerStyle?: StylePropType,
+  +formLabelTextStyle?: StylePropType,
   +theme: Theme,
 |};
 

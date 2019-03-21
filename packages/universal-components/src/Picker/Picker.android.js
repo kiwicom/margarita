@@ -18,14 +18,20 @@ const Picker = ({
   placeholder = '',
   iconName,
   label,
-  labelContainerStyle,
+  formLabelContainerStyle,
+  formLabelTextStyle,
 }: Props) => {
   const selectedLabel = getSelectedLabel(optionsData, selectedValue);
 
   return (
     <View>
       {label != null && (
-        <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+        <FormLabel
+          containerStyle={formLabelContainerStyle}
+          labelStyle={formLabelTextStyle}
+        >
+          {label}
+        </FormLabel>
       )}
       <View>
         <PickerButton

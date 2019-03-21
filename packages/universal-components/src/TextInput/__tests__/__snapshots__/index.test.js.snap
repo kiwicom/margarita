@@ -5,24 +5,24 @@ exports[`TextInput should match snapshot diff between small and normal input 1`]
 - <WithTheme label=\\"Label\\" />
 + <WithTheme label=\\"Label\\" size=\\"small\\" />
 
-@@ -53,3 +53,3 @@
+@@ -56,3 +56,3 @@
           Object {
 -           \\"height\\": 44,
 +           \\"height\\": 32,
           },
-@@ -90,3 +90,3 @@
+@@ -93,3 +93,3 @@
             Object {
 -             \\"height\\": 44,
 +             \\"height\\": 32,
             },"
 `;
 
-exports[`TextInput should render a custom input and match diff snapshot with unstyled one 1`] = `
+exports[`TextInput should render a custom TextInput and match diff snapshot with unstyled one 1`] = `
 "Snapshot Diff:
 - First value
 + Second value
 
-@@ -56,13 +56,11 @@
+@@ -59,13 +59,11 @@
           undefined,
           false,
           undefined,
@@ -37,4 +37,42 @@ exports[`TextInput should render a custom input and match diff snapshot with uns
     >
       <TextInput
         allowFontScaling={true}"
+`;
+
+exports[`TextInput should render a custom label on the TextInput and match diff snapshot with unstyled one 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -14,13 +14,11 @@
+          Object {
+            \\"flexDirection\\": \\"row\\",
+            \\"marginBottom\\": 4,
+            \\"marginStart\\": 12,
+          },
+-         Object {
+-           \\"backgroundColor\\": \\"red\\",
+-         },
++         undefined,
+        ]
+      }
+    >
+      <Text
+        style={
+@@ -29,14 +27,12 @@
+              \\"margin\\": 0,
+            },
+            Array [
+              Object {
+                \\"fontSize\\": 14,
+-             },
+-             Object {
+-               \\"color\\": \\"blue\\",
+              },
++             undefined,
+            ],
+            Object {
+              \\"fontFamily\\": \\"Roboto\\",
+            },
+          ]"
 `;

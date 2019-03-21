@@ -32,7 +32,8 @@ export default class Picker extends React.Component<Props> {
       placeholder,
       iconName,
       label,
-      labelContainerStyle,
+      formLabelContainerStyle,
+      formLabelTextStyle,
     } = this.props;
     const showValue =
       selectedValue &&
@@ -57,7 +58,12 @@ export default class Picker extends React.Component<Props> {
     return (
       <View>
         {label != null && (
-          <FormLabel style={labelContainerStyle}>{label}</FormLabel>
+          <FormLabel
+            containerStyle={formLabelContainerStyle}
+            labelStyle={formLabelTextStyle}
+          >
+            {label}
+          </FormLabel>
         )}
         <View>
           <PickerButton iconName={iconName} />
