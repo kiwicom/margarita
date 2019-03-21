@@ -5,7 +5,6 @@ exports[`Text -- Web should have the correct font family 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -13,6 +12,9 @@ exports[`Text -- Web should have the correct font family 1`] = `
       },
       Object {
         "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }
@@ -26,8 +28,10 @@ exports[`Text -- Web should have the default font family -- EXPO 1`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }
@@ -41,11 +45,13 @@ exports[`Text -- Web should have the default font family -- EXPO 2`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
         "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }
@@ -59,11 +65,13 @@ exports[`Text -- Web should have the default font family -- EXPO 3`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
         "fontStyle": "italic",
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }
@@ -77,7 +85,6 @@ exports[`Text -- Web should have the default font family -- EXPO 4`] = `
   style={
     Array [
       Object {
-        "fontFamily": "Roboto",
         "margin": 0,
       },
       Object {
@@ -85,6 +92,9 @@ exports[`Text -- Web should have the default font family -- EXPO 4`] = `
       },
       Object {
         "fontWeight": "700",
+      },
+      Object {
+        "fontFamily": "Roboto",
       },
     ]
   }

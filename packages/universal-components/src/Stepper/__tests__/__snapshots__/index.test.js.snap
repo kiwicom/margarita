@@ -5,14 +5,16 @@ exports[`Stepper should match snapshot diff between small and normal input 1`] =
 - <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} />
 + <Stepper number={0} onDecrement={[Function mockConstructor]} onIncrement={[Function mockConstructor]} showNumber={false} />
 
-@@ -73,14 +73,2 @@
+@@ -73,16 +73,2 @@
     </View>
 -   <Text
 -     style={
 -       Array [
 -         Object {
--           \\"fontFamily\\": \\"Roboto\\",
 -           \\"margin\\": 0,
+-         },
+-         Object {
+-           \\"fontFamily\\": \\"Roboto\\",
 -         },
 -       ]
 -     }
@@ -42,8 +44,7 @@ exports[`Stepper should match the snapshot 1`] = `
     onPress={[MockFunction]}
     touchable={true}
   />
-  <Text
-    expo={false}
+  <WithTheme
     style={
       Object {
         "fontSize": 16,
@@ -52,7 +53,7 @@ exports[`Stepper should match the snapshot 1`] = `
     }
   >
     0
-  </Text>
+  </WithTheme>
   <StepperButton
     icon={
       <Icon

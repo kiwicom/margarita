@@ -18,7 +18,7 @@ exports[`Button - native should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -35,35 +35,127 @@
+@@ -35,14 +35,14 @@
               \\"paddingHorizontal\\": 8,
               \\"paddingVertical\\": 11,
             },
@@ -35,14 +35,12 @@ exports[`Button - native should match snapshot diff 1`] = `
           ]
         }
       >
-        <View
-          style={
-            Object {
+@@ -52,18 +52,112 @@
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
-+           }
+            }
           }
-+       >
+        >
 +         <View
 +           style={
 +             Object {
@@ -67,8 +65,8 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 },
 +                 undefined,
 +               ]
-              }
-            >
++             }
++           >
 +             f
 +           </Text>
 +         </View>
@@ -95,7 +93,6 @@ exports[`Button - native should match snapshot diff 1`] = `
 +             style={
 +               Array [
 +                 Object {
-+                   \\"fontFamily\\": \\"Roboto\\",
 +                   \\"margin\\": 0,
 +                 },
 +                 Array [
@@ -110,6 +107,9 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                   },
 +                   undefined,
 +                 ],
++                 Object {
++                   \\"fontFamily\\": \\"Roboto\\",
++                 },
 +               ]
 +             }
 +           >
