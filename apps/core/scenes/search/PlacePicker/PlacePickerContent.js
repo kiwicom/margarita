@@ -11,6 +11,7 @@ import {
 import { debounce } from '@kiwicom/margarita-utils';
 import { DEBOUNCE_TIME } from '@kiwicom/margarita-config';
 
+import NotFound from './NotFound';
 import { MODAL_TYPE } from '../SearchConstants';
 import {
   withSearchContext,
@@ -47,6 +48,7 @@ type Props = {|
 
 type State = {|
   searchText: string,
+  isLoading: boolean,
 |};
 
 export function mapLocationToOption(location: Location) {
@@ -68,6 +70,7 @@ function mapLocationsToOption(locations: ?Array<Location>) {
 class PlacePickerContent extends React.Component<Props, State> {
   state = {
     searchText: '',
+    isLoading: false,
   };
 
   getSelectedOptions = () => {
@@ -110,11 +113,13 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   refetchSuggestions = debounce((text: string) => {
-    this.props.relay.refetch({ input: { term: text } });
+    this.props.relay.refetch({ input: { term: text } }, null, () => {
+      this.setState({ isLoading: false });
+    });
   }, DEBOUNCE_TIME);
 
   handleChangeText = (text: string) => {
-    this.setState({ searchText: text });
+    this.setState({ searchText: text, isLoading: true });
     this.refetchSuggestions(text);
   };
 
@@ -129,6 +134,7 @@ class PlacePickerContent extends React.Component<Props, State> {
 
   handleClearSearch = () => {
     const { clearLocation, pickerType } = this.props;
+    this.setState({ searchText: '' });
     clearLocation(pickerType);
   };
 
@@ -158,9 +164,11 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   render() {
+    const { searchText, isLoading } = this.state;
     const options = this.getOptions();
     const selectedOptions = this.getSelectedOptions();
-    const { searchText } = this.state;
+    const isNotFound =
+      !isLoading && searchText.length > 0 && options.length < 1;
 
     return (
       <View style={styles.wrapper}>
@@ -175,6 +183,7 @@ class PlacePickerContent extends React.Component<Props, State> {
           selected={selectedOptions}
           onKeyPress={this.handlePressKey}
         />
+        {isNotFound && <NotFound />}
       </View>
     );
   }
