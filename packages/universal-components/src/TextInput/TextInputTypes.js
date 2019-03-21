@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { type StylePropType } from '../PlatformStyleSheet';
+import { type Theme } from '../ThemeProvider';
 
 export type Props = {|
   +autoCorrect?: boolean,
@@ -28,6 +29,7 @@ export type Props = {|
   +style?: StylePropType,
   +formLabelContainerStyle?: StylePropType,
   +formLabelTextStyle?: StylePropType,
+  +theme: Theme,
 |};
 
 export type State = {|

@@ -23,8 +23,7 @@ Object {
         <Icon
           name="passenger"
         />
-        <Text
-          expo={false}
+        <WithTheme
           size="large"
           style={
             Object {
@@ -33,7 +32,7 @@ Object {
           }
         >
           0. Passenger
-        </Text>
+        </WithTheme>
       </Component>
       <Component
         style={
@@ -83,8 +82,7 @@ Object {
             }
           }
         >
-          <Text
-            expo={false}
+          <WithTheme
             style={
               Object {
                 "paddingBottom": 8,
@@ -93,7 +91,7 @@ Object {
             type="secondary"
           >
             Bags
-          </Text>
+          </WithTheme>
           <Component />
         </Component>
       </Component>
@@ -125,8 +123,7 @@ Object {
         <Icon
           name="passenger"
         />
-        <Text
-          expo={false}
+        <WithTheme
           size="large"
           style={
             Object {
@@ -135,7 +132,7 @@ Object {
           }
         >
           Mr. John Doe
-        </Text>
+        </WithTheme>
       </Component>
       <Component
         style={
@@ -185,8 +182,7 @@ Object {
             }
           }
         >
-          <Text
-            expo={false}
+          <WithTheme
             style={
               Object {
                 "paddingBottom": 8,
@@ -195,7 +191,7 @@ Object {
             type="secondary"
           >
             Bags
-          </Text>
+          </WithTheme>
           <Component>
             <BagInformation
               count={2}
