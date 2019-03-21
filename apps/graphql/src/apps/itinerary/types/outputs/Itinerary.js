@@ -14,7 +14,7 @@ export type Itinerary = {|
   +id: string,
 |};
 
-const itineraryResponseTypes = {
+const itineraryResponseFields = {
   destination: { type: GraphQLLocation },
   endTime: { type: GraphQLDateType },
   id: GlobalID(({ id }) => id),
@@ -39,7 +39,7 @@ const itineraryResponseTypes = {
 
 export const GraphQLItinerary = new GraphQLObjectType({
   name: 'Itinerary',
-  fields: itineraryResponseTypes,
+  fields: itineraryResponseFields,
 });
 
 const getStopoverDuration = (
