@@ -1,10 +1,12 @@
 // @flow
 
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { storiesOf } from '@storybook/react-native';
 import { boolean, text, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
+
+import { Text } from '../Text';
 
 import { Checkbox } from '.';
 

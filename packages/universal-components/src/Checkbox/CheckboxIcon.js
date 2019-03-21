@@ -2,10 +2,10 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
-import theme, { parsePxValue } from './styles';
 
 type Props = {|
   +checked?: boolean,
@@ -26,8 +26,8 @@ export default function CheckboxIcon({
 }: Props) {
   const errorState = hasError && !disabled && !checked;
   const iconColor = disabled
-    ? theme.orbit.colorIconCheckboxRadioDisabled
-    : theme.orbit.colorIconCheckboxRadio;
+    ? defaultTokens.colorIconCheckboxRadioDisabled
+    : defaultTokens.colorIconCheckboxRadio;
   return (
     <View
       style={[
@@ -48,35 +48,35 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderStyle: 'solid',
-    backgroundColor: theme.orbit.backgroundInput,
-    borderRadius: parsePxValue(theme.orbit.borderRadiusNormal),
-    width: parsePxValue(theme.orbit.widthCheckbox),
-    height: parsePxValue(theme.orbit.heightCheckbox),
+    backgroundColor: defaultTokens.backgroundInput,
+    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
+    width: parseInt(defaultTokens.widthCheckbox, 10),
+    height: parseInt(defaultTokens.heightCheckbox, 10),
     borderWidth: 1,
-    borderColor: theme.orbit.borderColorCheckboxRadio,
+    borderColor: defaultTokens.borderColorCheckboxRadio,
     web: {
-      transitionDuration: theme.orbit.durationFast,
+      transitionDuration: defaultTokens.durationFast,
       transitionProperty: 'all',
       transitionTimingFunction: 'ease-in-out',
     },
   },
   boxHover: {
     borderWidth: 1,
-    borderColor: theme.orbit.borderColorCheckboxRadioHover,
+    borderColor: defaultTokens.borderColorCheckboxRadioHover,
   },
   boxFocused: {
     borderWidth: 2,
-    borderColor: theme.orbit.borderColorCheckboxRadioFocus,
+    borderColor: defaultTokens.borderColorCheckboxRadioFocus,
   },
   boxPressed: {
     transform: [
-      { scaleX: theme.orbit.modifierScaleCheckboxRadioActive },
-      { scaleY: theme.orbit.modifierScaleCheckboxRadioActive },
+      { scaleX: defaultTokens.modifierScaleCheckboxRadioActive },
+      { scaleY: defaultTokens.modifierScaleCheckboxRadioActive },
     ],
     borderWidth: 1,
-    borderColor: theme.orbit.borderColorCheckboxRadioActive,
+    borderColor: defaultTokens.borderColorCheckboxRadioActive,
   },
   boxError: {
-    borderColor: theme.orbit.borderColorCheckboxRadioError,
+    borderColor: defaultTokens.borderColorCheckboxRadioError,
   },
 });
