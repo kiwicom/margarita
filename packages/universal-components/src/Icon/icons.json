@@ -1187,5 +1187,55 @@
     "description": "",
     "character": "E171",
     "added": "0.28"
+  },
+  "upload" : {
+    "description": "Use every time when user should upload something to our services.",
+    "character": "E172",
+    "added": "0.31"
+  },
+  "passenger-remove" : {
+    "description": "",
+    "character": "E173",
+    "added": "0.31"
+  },
+  "baggage-cabin-none" : {
+    "description": "",
+    "character": "E174",
+    "added": "0.33"
+  },
+  "baggage-personal-item-none" : {
+    "description": "",
+    "character": "E175",
+    "added": "0.33"
+  },
+  "chart" : {
+    "description": "",
+    "character": "E176",
+    "added": "0.33"
+  },
+  "timer" : {
+    "description": "",
+    "character": "E177",
+    "added": "0.33"
+  },
+  "leisure" : {
+    "description": "",
+    "character": "E178",
+    "added": "0.33"
+  },
+  "circle-empty" : {
+    "description": "",
+    "character": "E179",
+    "added": "0.33.2"
+  },
+  "circle-filled" : {
+    "description": "",
+    "character": "E180",
+    "added": "0.33.2"
+  },
+  "outlook" : {
+    "description": "",
+    "character": "E181",
+    "added": "0.33.2"
   }
 }
