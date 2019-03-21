@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAttention,
     padding: 5,
     web: {
-      fontWeight: '500',
+      fontWeight: margaritaTokens.fontWeightMedium,
       color: margaritaTokens.paletteBlueDark,
       padding: 0,
       lineHeight: 17,

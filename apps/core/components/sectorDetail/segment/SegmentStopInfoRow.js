@@ -9,6 +9,7 @@ import {
 } from '@kiwicom/universal-components';
 import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 type Props = {|
   +iconName: IconNameType,
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
   },
   infoTextThick: {
     web: {
-      fontWeight: '500',
+      fontWeight: margaritaTokens.fontWeightMedium,
     },
   },
   infoLabel: {

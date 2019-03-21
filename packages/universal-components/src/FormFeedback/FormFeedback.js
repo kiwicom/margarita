@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextSecondary,
   },
   error: {
-    fontWeight: '500',
+    fontWeight: margaritaTokens.fontWeightMedium,
     color: defaultTokens.colorTextError,
   },
 });
