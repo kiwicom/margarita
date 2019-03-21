@@ -38,6 +38,7 @@ export default function Checkbox({
         name={name}
         checked={checked}
         style={styleInput}
+        readOnly
       />
       <CheckboxShared
         label={label}
