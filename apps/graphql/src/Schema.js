@@ -3,6 +3,7 @@
 import { GraphQLSchema, GraphQLObjectType } from 'graphql';
 
 import SearchItineraries from './apps/itinerary/queries/SearchItineraries';
+import SearchOneWayItineraries from './apps/itinerary/queries/SearchOneWayItineraries';
 import LocationsByTerm from './apps/location/queries/LocationsByTerm';
 import CustomerBookings from './apps/booking/queries/CustomerBookings';
 import BookingDetail from './apps/booking/queries/BookingDetail';
@@ -18,6 +19,7 @@ const schema = new GraphQLSchema({
       customerBookings: CustomerBookings,
       locationsByTerm: LocationsByTerm,
       searchItineraries: SearchItineraries,
+      searchOneWayItineraries: SearchOneWayItineraries,
     },
   }),
   types: [BookingOneWay, BookingReturn, BookingMulticity],

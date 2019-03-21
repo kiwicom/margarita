@@ -3,19 +3,24 @@
 import type { Location } from '../location/Location';
 import type { RouteStop } from '../booking/Booking';
 
-export type ItinerariesSearchParameters = {|
+export type ItinerariesCommonSearchParameters = {|
   +travelFrom: string[],
   +dateFrom: Date,
   +dateTo?: Date,
   +travelTo?: string[],
-  +returnDateFrom?: Date,
-  +returnDateTo?: Date,
   +passengers?: {|
     +adults?: number,
     +children?: number,
     +infants?: number,
   |},
 |};
+
+export type ItinerariesOneWaySearchParameters = ItinerariesCommonSearchParameters;
+export type ItinerariesSearchParameters = {
+  ...ItinerariesCommonSearchParameters,
+  returnDateFrom?: Date,
+  returnDateTo?: Date,
+};
 
 export type Price = {|
   +amount: ?number,
