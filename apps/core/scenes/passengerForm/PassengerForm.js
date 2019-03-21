@@ -103,7 +103,7 @@ export default class PassengerForm extends React.Component<Props, State> {
             onDateChange={this.handleBirthDateChange}
             placeholder="Select"
             label="Date of birth"
-            containerStyle={styles.inputLabel}
+            formLabelContainerStyle={styles.inputLabel}
             confirmLabel="OK"
             cancelLabel="CANCEL"
           />
