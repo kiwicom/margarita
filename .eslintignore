@@ -5,7 +5,7 @@
 apps/graphql/lambda/dist
 apps/web/out
 apps/web/.next
-apps/landingPage/.cache
-apps/landingPage/public
+apps/landingPage/out
+apps/landingPage/.next
 apps/storybook/config/storyLoader.js
 packages/universal-components/lib

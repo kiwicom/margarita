@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import {
   TableRow,
@@ -9,9 +9,11 @@ import {
   CreditCardPaymentForm,
   ExtendedTouchable,
   Text,
+  ContentContainer,
 } from '@kiwicom/margarita-components';
 import { withNavigation, type Navigation } from '@kiwicom/margarita-navigation';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { PriceSummary } from '../../components/priceSummary';
 
@@ -94,8 +96,8 @@ class Payment extends React.Component<Props, State> {
       securityCode,
     } = this.state;
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <>
+        <ContentContainer>
           <CreditCardPaymentForm
             cardholdersName={cardholdersName}
             creditCardNumber={creditCardNumber}
@@ -118,7 +120,8 @@ class Payment extends React.Component<Props, State> {
               </Text>
             </ExtendedTouchable>
           </View>
-        </ScrollView>
+        </ContentContainer>
+
         <PriceSummary
           buttonLabel="Review & Pay"
           onButtonPress={this.handleReview}
@@ -143,20 +146,16 @@ class Payment extends React.Component<Props, State> {
             />
           }
         />
-      </View>
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: defaultTokens.backgroundBody,
-  },
   centeredContainer: {
     web: {
       alignSelf: 'center',
-      maxWidth: 720, // @TODO repeating value, should be added to design-tokens
+      maxWidth: margaritaTokens.widthScreenNormal,
       alignItems: 'flex-start',
     },
   },

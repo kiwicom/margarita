@@ -12,6 +12,8 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { DateInput } from '@kiwicom/margarita-components';
 
+import BaggageBundles from './BaggageBundles';
+
 type Props = {||};
 
 type State = {|
@@ -113,6 +115,7 @@ export default class PassengerForm extends React.Component<Props, State> {
             label="Nationality"
             containerStyle={styles.inputLabel}
           />
+          <BaggageBundles />
         </View>
       </ScrollView>
     );

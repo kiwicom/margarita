@@ -123,17 +123,8 @@ export default function CreditCardPaymentForm({
 }
 
 const styles = StyleSheet.create({
-  card: {
-    web: {
-      alignItems: 'center',
-    },
-    flex: 1,
-  },
   form: {
     width: '100%',
-    web: {
-      maxWidth: 720, // @TODO repeating value, should be added to design-tokens
-    },
   },
   line: {
     marginTop: parseFloat(defaultTokens.spaceMedium),
