@@ -166,6 +166,14 @@ representation of dates and times using the Gregorian calendar.
 """
 scalar Date
 
+input DateRange {
+  """Start of the date range"""
+  start: Date!
+
+  """End of the date range"""
+  end: Date
+}
+
 """
 A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
 `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
@@ -194,20 +202,17 @@ type HttpError {
 }
 
 input ItinerariesOneWaySearchInput {
-  """Locations IDs for travel from (origin)"""
-  travelFrom: [String]!
+  """Order of the search"""
+  order: OrderSearchInput
 
-  """Locations IDs for travel to (destination)"""
-  travelTo: [String]
+  """Sorting of the search"""
+  sort: SortSearchInput
 
-  """Search itineraries from this date"""
-  dateFrom: Date!
-
-  """Search itineraries up to this date"""
-  dateTo: Date
-
-  """Number of children, adults and infants travelling"""
+  """How many passengers are travelling"""
   passengers: PassengersInput
+
+  """Itinerary for the One Way search"""
+  itinerary: ItineraryOneWayInput!
 }
 
 input ItinerariesSearchInput {
@@ -286,6 +291,17 @@ type ItineraryEdge {
   cursor: String!
 }
 
+input ItineraryOneWayInput {
+  """Origin of the flight"""
+  origin: LocationItineraryInput!
+
+  """Destination of the flight"""
+  destination: LocationItineraryInput
+
+  """Date Range of departure"""
+  outboundDate: DateRange!
+}
+
 type Location {
   """
   The globally unique ID of an object. You can unmask this ID to get original
@@ -336,6 +352,11 @@ type LocationEdge {
   cursor: String!
 }
 
+input LocationItineraryInput {
+  """Locations IDs for travel"""
+  ids: [String]
+}
+
 input LocationsByTermInput {
   term: String!
 
@@ -356,6 +377,11 @@ enum LocationType {
   CONTINENT
   AUTONOMOUS_TERRITORY
   SPECIAL
+}
+
+enum OrderSearchInput {
+  ASC
+  DESC
 }
 
 """Information about pagination in a connection."""
@@ -455,6 +481,14 @@ type Segment {
   vehicle: Vehicle
   departure: RouteStop
   arrival: RouteStop
+}
+
+enum SortSearchInput {
+  PRICE
+  DURATION
+  QUALITY
+  DATE
+  POPULARITY
 }
 
 type Transporter {

@@ -139,7 +139,27 @@ fragment RouteStopFragment on RouteStop {
 }
 
 {
-  searchOneWayItineraries(input: {travelFrom: "OSL", travelTo: "LIM", dateFrom: "2019-03-01", dateTo: "2019-03-01"}, first: 1) {
+  searchOneWayItineraries(input: {
+  order: ASC,
+  sort: QUALITY,
+  passengers: {
+    adults: 1,
+    children: 0,
+    infants: 0,
+  },
+  itinerary: {
+    origin: {
+      ids: ["prague_cz"],
+    },
+    destination: {
+      ids: ["STN"],
+    },
+    outboundDate: {
+      start: "2019-05-01",
+      end: "2019-05-03",
+    },
+  },
+}, first: 1) {
     edges {
       node {
         id

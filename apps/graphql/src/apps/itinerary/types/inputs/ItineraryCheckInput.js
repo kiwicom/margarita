@@ -7,7 +7,7 @@ import {
   GraphQLInt,
 } from 'graphql';
 
-import PassengersInput from './PassengersInput';
+import PassengersInput from './common/PassengersInput';
 
 export default new GraphQLInputObjectType({
   name: 'ItineraryCheckInput',

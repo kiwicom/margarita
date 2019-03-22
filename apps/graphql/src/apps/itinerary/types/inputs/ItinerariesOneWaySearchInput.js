@@ -1,10 +1,22 @@
 // @flow
 
-import { GraphQLInputObjectType } from 'graphql';
+import { GraphQLInputObjectType, GraphQLNonNull } from 'graphql';
 
-import ItinerariesSharedSearchInput from './ItinerariesSharedSearchInput';
+import ItineraryCommonInputFields from './common/ItineraryCommonInputFields';
+import ItineraryCommonSearchInputFields from './common/ItineraryCommonSearchInputFields';
+
+const ItineraryOneWayInput = new GraphQLInputObjectType({
+  name: 'ItineraryOneWayInput',
+  fields: ItineraryCommonInputFields,
+});
 
 export default new GraphQLInputObjectType({
   name: 'ItinerariesOneWaySearchInput',
-  fields: ItinerariesSharedSearchInput.fields,
+  fields: {
+    ...ItineraryCommonSearchInputFields,
+    itinerary: {
+      description: 'Itinerary for the One Way search',
+      type: GraphQLNonNull(ItineraryOneWayInput),
+    },
+  },
 });

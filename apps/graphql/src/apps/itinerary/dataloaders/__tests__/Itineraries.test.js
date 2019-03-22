@@ -1,7 +1,7 @@
 // @flow
 
-import { parseParameters } from '../Itineraries';
 import { parseParameters as parseItineraryParameters } from '../Itinerary';
+import { parseParameters, parseParametersNew } from '../Itineraries';
 
 const searchParams = {
   travelFrom: ['OSL'],
@@ -9,14 +9,36 @@ const searchParams = {
   dateFrom: new Date('2018-01-01'),
 };
 
-it('parses parameters corectly', () => {
+const searchParamsNew = {
+  order: 'DESC',
+  sort: 'quality',
+  passengers: {
+    adults: 1,
+    children: 0,
+    infants: 0,
+  },
+  itinerary: {
+    origin: {
+      ids: ['prague_cz'],
+    },
+    destination: {
+      ids: ['STN'],
+    },
+    outboundDate: {
+      start: new Date('2019-05-01'),
+      end: new Date('2019-05-03'),
+    },
+  },
+};
+
+it('parses parameters correctly', () => {
   expect(parseParameters(searchParams)).toMatchInlineSnapshot(`
 Object {
   "curr": "EUR",
-  "dateFrom": "01/01/2018",
-  "dateTo": "01/01/2018",
-  "flyFrom": "OSL",
-  "to": "PRG",
+  "date_from": "01/01/2018",
+  "date_to": "01/01/2018",
+  "fly_from": "OSL",
+  "fly_to": "PRG",
 }
 `);
   expect(
@@ -33,13 +55,13 @@ Object {
   "adults": 2,
   "children": 0,
   "curr": "EUR",
-  "dateFrom": "01/01/2018",
-  "dateTo": "01/01/2018",
-  "flyFrom": "OSL",
+  "date_from": "01/01/2018",
+  "date_to": "01/01/2018",
+  "fly_from": "OSL",
+  "fly_to": "PRG",
   "infants": 0,
-  "returnFrom": "02/01/2018",
-  "returnTo": "02/01/2018",
-  "to": "PRG",
+  "return_from": "02/01/2018",
+  "return_to": "02/01/2018",
 }
 `);
 });
@@ -74,4 +96,21 @@ it('parses validity parameters corectly', () => {
     bnum: 1,
     pnum: 1,
   });
+});
+
+it('parses new parameters correctly', () => {
+  expect(parseParametersNew(searchParamsNew)).toMatchInlineSnapshot(`
+Object {
+  "adults": 1,
+  "asc": 0,
+  "children": 0,
+  "curr": "EUR",
+  "date_from": "01/05/2019",
+  "date_to": "03/05/2019",
+  "fly_from": "prague_cz",
+  "fly_to": "STN",
+  "infants": 0,
+  "sort": "quality",
+}
+`);
 });
