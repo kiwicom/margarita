@@ -1,17 +1,8 @@
 {
-  "increment": "conventional:angular",
   "scripts": {
     "beforeStage": "yarn build"
   },
-  "git": {
-    "commitMessage": "chore: release %s",
-    "tag": false
-  },
   "npm": {
     "publish": true
-  },
-  "github": {
-    "release": false
-  },
-  "access": "public"
+  }
 }
