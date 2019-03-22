@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
-import { TouchableWithoutFeedback, Text } from '@kiwicom/margarita-components';
+import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format, isSameDay, isBefore } from 'date-fns';
 import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
@@ -11,10 +11,10 @@ import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import RangeDateConfig from './RangeDateConfig';
 
 type Props = {|
-  day: Date,
-  onPress: Date => void,
-  price?: ?string,
-  selectedDate: Date,
+  +day: Date,
+  +onPress: Date => void,
+  +price?: ?string,
+  +selectedDate: Date,
 |};
 
 const DayPrice = ({ price }) => (
@@ -68,11 +68,14 @@ export default function RenderDay({
 
 const styles = StyleSheet.create({
   dayContainer: {
-    width: RangeDateConfig.dayItemWidth,
+    flex: 1,
     minHeight: RangeDateConfig.dayItemHeight,
     alignItems: 'center',
     justifyContent: 'center',
     padding: RangeDateConfig.dayItemSpace / 2,
+    borderWidth: parseFloat(defaultTokens.borderWidthCard),
+    borderColor: defaultTokens.backgroundCard,
+    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
   },
   day: {
     fontSize: margaritaTokens.fontSizeCalendarItem,
@@ -82,8 +85,6 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextSecondary,
   },
   selectedDateContainer: {
-    borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    borderWidth: parseFloat(defaultTokens.borderWidthCard),
     borderColor: margaritaTokens.borderColorCalendarItem,
     backgroundColor: defaultTokens.backgroundButtonInfo,
   },

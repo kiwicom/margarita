@@ -12,9 +12,9 @@ import RenderWeek from './RenderWeek';
 import { type MonthsData } from './libs';
 
 type Props = {|
-  data: MonthsData,
-  onDayPress: Date => void,
-  selectedDate: Date,
+  +data: MonthsData,
+  +onDayPress: Date => void,
+  +selectedDate: Date,
 |};
 
 export default function RenderMonth({ data, onDayPress, selectedDate }: Props) {

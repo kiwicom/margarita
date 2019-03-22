@@ -1,10 +1,9 @@
 // @flow
 
-// @TODO delete this file when it's replace by RangeDatePickers.js
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';
-import { Icon, DatePicker, StyleSheet } from '@kiwicom/universal-components';
+import { Icon, StyleSheet } from '@kiwicom/universal-components';
 import { format, startOfDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
@@ -14,6 +13,7 @@ import {
 } from '@kiwicom/margarita-utils';
 import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
 
+import { RangeDatePicker } from '../../components/rangeDatePicker';
 import {
   withSearchContext,
   type TripTypes,
@@ -125,14 +125,11 @@ class Datepickers extends React.Component<Props, State> {
             />
           )}
         </PickersWrapper>
-        <DatePicker
+        <RangeDatePicker
           isVisible={this.state.isDatePickerVisible}
-          mode={'date'}
           date={datePickerDate}
-          minDate={startOfDay(new Date())}
           onConfirm={this.handleDateChange}
           onDismiss={this.handleDatePickerDismiss}
-          labels={{ cancel: 'Cancel', confirm: 'OK' }}
         />
       </>
     );

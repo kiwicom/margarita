@@ -27,10 +27,6 @@ const parsePropsToState = ({ date }: Props) => {
 export default class RangeDatePicker extends React.Component<Props, State> {
   // @TODO load price for days
 
-  static defaultProps = {
-    mode: 'date',
-  };
-
   constructor(props: Props) {
     super(props);
 
@@ -65,7 +61,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, labels } = this.props;
+    const { isVisible } = this.props;
 
     return (
       <Modal
@@ -83,13 +79,13 @@ export default class RangeDatePicker extends React.Component<Props, State> {
               onPress={this.handleDismiss}
               style={styles.confirmButton}
             >
-              <Text style={styles.buttonText}>{labels.cancel}</Text>
+              <Text style={styles.buttonText}>Cancel</Text>
             </Touchable>
             <Touchable
               style={styles.confirmButton}
               onPress={this.handleConfirm}
             >
-              <Text style={styles.buttonText}>{labels.confirm}</Text>
+              <Text style={styles.buttonText}>OK</Text>
             </Touchable>
           </View>
         </View>

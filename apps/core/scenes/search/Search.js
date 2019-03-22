@@ -29,8 +29,7 @@ import {
   type Location,
 } from './SearchContext';
 import Placepickers from './Placepickers';
-// import Datepickers from './Datepickers';
-import RangeDatePickers from './RangeDatePickers';
+import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
 import SearchFormModes from './SearchFormModes';
 
@@ -110,8 +109,7 @@ class Search extends React.Component<Props> {
 
           <View style={desktopLayout && styles.inputsDesktop}>
             <Placepickers />
-            {/* <Datepickers /> */}
-            <RangeDatePickers />
+            <Datepickers />
 
             <View
               style={[styles.bottom, desktopLayout && styles.bottomDesktop]}

@@ -7,10 +7,10 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import RenderDay from './RenderDay';
 
 type Props = {|
-  data: Array<Date>,
-  onDayPress: Date => void,
-  keyPrefix: string,
-  selectedDate: Date,
+  +data: Array<Date>,
+  +onDayPress: Date => void,
+  +keyPrefix: string,
+  +selectedDate: Date,
 |};
 
 export default function RenderWeek({

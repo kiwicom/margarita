@@ -53,8 +53,8 @@ export default class DatePicker extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    maxHeight: 500,
-    width: 382,
+    height: 428,
+    minWidth: 382,
   },
   monthsContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
