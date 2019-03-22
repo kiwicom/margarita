@@ -221,14 +221,4 @@ export type IconNameType =
   | 'money-transfer-out'
   | 'lock'
   | 'lock-open'
-  | 'sort'
-  | 'upload'
-  | 'passenger-remove'
-  | 'baggage-cabin-none'
-  | 'baggage-personal-item-none'
-  | 'chart'
-  | 'timer'
-  | 'leisure'
-  | 'circle-empty'
-  | 'circle-filled'
-  | 'outlook';
+  | 'sort';

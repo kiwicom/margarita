@@ -5,13 +5,13 @@
   },
   "git": {
     "commitMessage": "chore: release %s",
-    "tag": false
+    "tagName": "v%s"
   },
   "npm": {
     "publish": true
   },
   "github": {
-    "release": false
+    "release": true
   },
   "access": "public"
 }
