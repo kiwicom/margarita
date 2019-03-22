@@ -49,8 +49,12 @@ export default class NavbarLink extends React.Component<Props, State> {
         onMouseLeave={this.onMouseLeave}
       >
         <TouchableWithoutFeedback onPress={this.onPress}>
-          <View>
-            <Text style={this.state.isActive && styles.active}>
+          <View style={styles.container}>
+            <Text
+              size="small"
+              type="primary"
+              style={[styles.label, this.state.isActive && styles.activeLabel]}
+            >
               {this.props.label}
             </Text>
           </View>
@@ -61,7 +65,15 @@ export default class NavbarLink extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-  active: {
+  container: {
+    marginHorizontal: parseInt(defaultTokens.spaceSmall, 10),
+  },
+  label: {
+    web: {
+      fontWeight: '500',
+    },
+  },
+  activeLabel: {
     color: defaultTokens.colorTextLinkPrimaryHover,
   },
 });

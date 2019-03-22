@@ -8,6 +8,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import SearchStack from './SearchStack';
 import MMBStack from './MMBStack';
+import ProfileStack from './ProfileStack';
 
 export default createBottomTabNavigator(
   {
@@ -25,6 +26,15 @@ export default createBottomTabNavigator(
           <Icon name="ticket-outline" color={tintColor} />
         ),
         title: 'Booking',
+      },
+    },
+    [Routes.PROFILE]: {
+      screen: ProfileStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Icon name="passenger" color={tintColor} />
+        ),
+        title: 'Profile',
       },
     },
   },

@@ -15,3 +15,4 @@ export { default as TicketsScreen } from './TicketsScreen';
 export { default as TimelineScreen } from './TimelineScreen';
 export { default as PassengerDetailScreen } from './PassengerDetailScreen';
 export { default as PassengerFormScreen } from './PassengerFormScreen';
+export { default as ProfileScreen } from './ProfileScreen';

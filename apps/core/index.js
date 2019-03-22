@@ -19,6 +19,7 @@ export { default as Timeline } from './scenes/timeline/Timeline';
 export {
   default as PassengerDetail,
 } from './scenes/passengerDetail/PassengerDetail';
+export { default as Profile } from './scenes/profile/Profile';
 
 // Context
 export {

@@ -72,6 +72,10 @@ it('renders', () => {
       label="Manage My Booking"
       route="/mmb"
     />
+    <NavbarLink
+      label="Profile"
+      route="/profile"
+    />
   </Component>
 </Component>
 `);

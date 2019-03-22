@@ -28,6 +28,7 @@ export default function Navbar() {
       </View>
       <View style={styles.actionsRight}>
         <NavbarLink label="Manage My Booking" route="/mmb" />
+        <NavbarLink label="Profile" route="/profile" />
       </View>
     </View>
   );
