@@ -1,11 +1,12 @@
 // @flow
 
 import * as React from 'react';
-import { Text, View, Platform } from 'react-native';
+import { View } from 'react-native';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
+import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
-import theme, { parsePxValue } from './styles';
 
 type Props = {|
   +label?: React.Node,
@@ -29,22 +30,21 @@ const styles = StyleSheet.create({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    marginStart: parsePxValue(theme.orbit.spaceXSmall),
+    marginStart: parseInt(defaultTokens.spaceXSmall, 10),
   },
   label: {
-    fontFamily: Platform.OS === 'web' ? theme.orbit.fontFamily : 'Roboto',
-    fontSize: parsePxValue(theme.orbit.fontSizeFormLabel),
-    fontWeight: '400',
-    color: theme.orbit.colorFormLabel,
-    lineHeight: parsePxValue(theme.orbit.heightCheckbox),
+    fontSize: parseInt(defaultTokens.fontSizeFormLabel, 10),
+    color: defaultTokens.colorFormLabel,
+    lineHeight: parseInt(defaultTokens.heightCheckbox, 10),
   },
   labelChecked: {
-    fontWeight: margaritaTokens.fontWeightMedium,
+    web: {
+      fontWeight: margaritaTokens.fontWeightMedium,
+    },
   },
   info: {
-    fontFamily: Platform.OS === 'web' ? theme.orbit.fontFamily : 'Roboto',
-    fontSize: parsePxValue(theme.orbit.fontSizeFormFeedback),
-    color: theme.orbit.colorInfoCheckBoxRadio,
+    fontSize: parseInt(defaultTokens.fontSizeFormFeedback, 10),
+    color: defaultTokens.colorInfoCheckBoxRadio,
     lineHeight: 16,
   },
 });
