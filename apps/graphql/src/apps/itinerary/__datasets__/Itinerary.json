@@ -1,0 +1,791 @@
+{
+    "server_time": 1551975736,
+    "additional_order_baggage_fee": 10,
+    "extra_fee": 0,
+    "bags_price_split": {
+        "1": {
+            "currency": "EUR",
+            "amount": 117.6,
+            "base": 98,
+            "service_flat": 0,
+            "service": 19.6
+        },
+        "_abp": 0.2
+    },
+    "currency": "EUR",
+    "eur_payment_price": 692.88,
+    "book_fee": 0,
+    "total": 692.88,
+    "max_passengers": 9,
+    "bags": {
+        "definitions": {
+            "cabin_bag": [
+                {
+                    "category": "cabin_bag",
+                    "restrictions": {
+                        "width": 20,
+                        "length": 55,
+                        "dimensions_sum": null,
+                        "weight": 8,
+                        "height": 35
+                    },
+                    "_warning": "DEPRECATED DO NOT USE!",
+                    "price": 0,
+                    "note": null,
+                    "currency": "EUR",
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child"
+                        ]
+                    }
+                }
+            ]
+        },
+        "_is_deprecated": true
+    },
+    "conversion": {
+        "children_price": 0,
+        "additional_order_baggage_fee": 11.23,
+        "adults_price": 369.1,
+        "infants_price": 145.02,
+        "currency": "USD",
+        "amount": 778.31,
+        "bags_price": {
+            "1": 132.1
+        }
+    },
+    "flights_invalid": false,
+    "bags_fee_split": {
+        "currency": "EUR",
+        "amount": 235.2,
+        "base": 196,
+        "service": 39.2
+    },
+    "segments": [],
+    "flights_checked": false,
+    "adults_price": 328.58,
+    "one_passenger": 350,
+    "flights": [
+        {
+            "bags_recheck_required": false,
+            "source_name": "",
+            "price": 134.99000549316406,
+            "src_country": "CZ",
+            "return": 0,
+            "id": "3990128433380956_0",
+            "guarantee": false,
+            "combination_trip_id": 3990128433380956,
+            "scraping_start": 0,
+            "dst_country": "ES",
+            "dst": "BCN",
+            "invalid": 0,
+            "source": "",
+            "checkin": "2019-02-28T21:30:00.000Z",
+            "flight_no": "8657",
+            "refresh_period": 5,
+            "operating_airline": {
+                "iata": "VY",
+                "name": "Vueling"
+            },
+            "max_passengers_for_price": 1,
+            "eur": 134.99,
+            "src_station": "Václav Havel Airport Prague",
+            "dst_station": "Barcelona–El Prat",
+            "timestamp": "2019-03-07T16:21:39.000Z",
+            "original_trip_id": 3990128433380956,
+            "source_url": "",
+            "refresh_ttl": 120,
+            "fare_basis": "VOWVYHB",
+            "src_name": "Prague",
+            "passengers_flight_check": {
+                "1": {
+                    "last_checked": 1551975699,
+                    "invalid": false,
+                    "eur": 134.99
+                },
+                "2": {
+                    "last_checked": 1551975699,
+                    "invalid": false,
+                    "eur": 134.99
+                }
+            },
+            "guarantee_disclaimer": "",
+            "refreshed": "1970-01-01T00:00:00.000Z",
+            "dst_name": "Barcelona",
+            "src": "PRG",
+            "is_cabin_bags_with_priority_boarding": false,
+            "found_on": "",
+            "infants_conditions": {
+                "trolley": true,
+                "hand_weight": 0
+            },
+            "extras": "VY",
+            "airline": {
+                "airport_checkin": 0,
+                "code": "VY",
+                "is_passenger_cardholder": null,
+                "grade": "A",
+                "booking_doc_needed": 1,
+                "threshold_adult": null,
+                "skip_subairline_merge": null,
+                "temporary_disabled": null,
+                "hold_weight": 23,
+                "hand2_weight": 3,
+                "book_fee": 0,
+                "parent_carrier": null,
+                "id": 9,
+                "Name": "Vueling",
+                "hand2_note": "",
+                "hold_height": 38,
+                "shorter_stopovers_allowed": 1,
+                "payment_card_copy_eticket_requirement": false,
+                "threshold_child": null,
+                "iatacode": "VY",
+                "flight_change_fee": 50,
+                "fee_instead": 0,
+                "hold_note": "max 180cm (length + width + height)",
+                "search_priority": 1,
+                "maximum_passengers": 9,
+                "close_booking_hours": 4,
+                "affil_url": null,
+                "checkin": 7,
+                "iata": "VY",
+                "hold_length": 70,
+                "passengers_in_search": 1,
+                "fee_percent": 0,
+                "hand_width": 40,
+                "threshold_teen": null,
+                "active": 1,
+                "hand_note": "",
+                "luggage_only_during_checkin_airlines": null,
+                "hold_width": 50,
+                "doing_online_checkin": 1,
+                "luggage_only_on_web": null,
+                "checkin_closure": 4,
+                "hand_length": 55,
+                "is_private_fares_allowed": null,
+                "fee_airline": 0,
+                "name": "Vueling",
+                "hand2_width": 20,
+                "carrier_type": "airline",
+                "url": "",
+                "hand2_height": 20,
+                "hand2_length": 35,
+                "mmb_link": "https://tickets.vueling.com/LinksHub.ashx?event=bags&flow=C3&EPV=EPV1001&email={email}&pnr={reservation_number}&culture=en-GB",
+                "non_active_reason": null,
+                "hand_height": 20,
+                "hand_weight": 10,
+                "lcc": null
+            },
+            "eur_children": 134.99,
+            "bags_recheck_disclaimer": "",
+            "eur_infants": 35,
+            "local_arrival": "2019-03-07T23:55:00.000Z",
+            "utc_arrival": "2019-03-07T22:55:00.000Z",
+            "local_departure": "2019-03-07T21:30:00.000Z",
+            "utc_departure": "2019-03-07T20:30:00.000Z"
+        },
+        {
+            "bags_recheck_required": true,
+            "source_name": "",
+            "price": 57.99,
+            "src_country": "ES",
+            "return": 0,
+            "id": "4083586353131241_0",
+            "guarantee": true,
+            "combination_trip_id": 4083586353131241,
+            "scraping_start": 0,
+            "dst_country": "NO",
+            "dst": "OSL",
+            "invalid": 0,
+            "source": "",
+            "checkin": "2019-03-01T08:10:00.000Z",
+            "flight_no": "8538",
+            "refresh_period": 5,
+            "operating_airline": {
+                "iata": "VY",
+                "name": "Vueling"
+            },
+            "max_passengers_for_price": 1,
+            "eur": 57.99,
+            "src_station": "Barcelona–El Prat",
+            "dst_station": "Oslo Airport, Gardermoen",
+            "timestamp": "2019-03-07T16:21:38.000Z",
+            "original_trip_id": 4083586353131241,
+            "source_url": "",
+            "refresh_ttl": 120,
+            "fare_basis": "TOWVYLB",
+            "src_name": "Barcelona",
+            "passengers_flight_check": {
+                "1": {
+                    "last_checked": 1551975698,
+                    "invalid": false,
+                    "eur": 54.99
+                },
+                "2": {
+                    "last_checked": 1551975698,
+                    "invalid": false,
+                    "eur": 60.99
+                }
+            },
+            "guarantee_disclaimer": "",
+            "refreshed": "1970-01-01T00:00:00.000Z",
+            "dst_name": "Oslo",
+            "src": "BCN",
+            "is_cabin_bags_with_priority_boarding": false,
+            "found_on": "",
+            "infants_conditions": {
+                "trolley": true,
+                "hand_weight": 0
+            },
+            "extras": "VY",
+            "airline": {
+                "airport_checkin": 0,
+                "code": "VY",
+                "is_passenger_cardholder": null,
+                "grade": "A",
+                "booking_doc_needed": 1,
+                "threshold_adult": null,
+                "skip_subairline_merge": null,
+                "temporary_disabled": null,
+                "hold_weight": 23,
+                "hand2_weight": 3,
+                "book_fee": 0,
+                "parent_carrier": null,
+                "id": 9,
+                "Name": "Vueling",
+                "hand2_note": "",
+                "hold_height": 38,
+                "shorter_stopovers_allowed": 1,
+                "payment_card_copy_eticket_requirement": false,
+                "threshold_child": null,
+                "iatacode": "VY",
+                "flight_change_fee": 50,
+                "fee_instead": 0,
+                "hold_note": "max 180cm (length + width + height)",
+                "search_priority": 1,
+                "maximum_passengers": 9,
+                "close_booking_hours": 4,
+                "affil_url": null,
+                "checkin": 7,
+                "iata": "VY",
+                "hold_length": 70,
+                "passengers_in_search": 1,
+                "fee_percent": 0,
+                "hand_width": 40,
+                "threshold_teen": null,
+                "active": 1,
+                "hand_note": "",
+                "luggage_only_during_checkin_airlines": null,
+                "hold_width": 50,
+                "doing_online_checkin": 1,
+                "luggage_only_on_web": null,
+                "checkin_closure": 4,
+                "hand_length": 55,
+                "is_private_fares_allowed": null,
+                "fee_airline": 0,
+                "name": "Vueling",
+                "hand2_width": 20,
+                "carrier_type": "airline",
+                "url": "",
+                "hand2_height": 20,
+                "hand2_length": 35,
+                "mmb_link": "https://tickets.vueling.com/LinksHub.ashx?event=bags&flow=C3&EPV=EPV1001&email={email}&pnr={reservation_number}&culture=en-GB",
+                "non_active_reason": null,
+                "hand_height": 20,
+                "hand_weight": 10,
+                "lcc": null
+            },
+            "eur_children": 57.99,
+            "bags_recheck_disclaimer": "",
+            "eur_infants": 35,
+            "local_arrival": "2019-03-08T11:40:00.000Z",
+            "utc_arrival": "2019-03-08T10:40:00.000Z",
+            "local_departure": "2019-03-08T08:10:00.000Z",
+            "utc_departure": "2019-03-08T07:10:00.000Z"
+        },
+        {
+            "bags_recheck_required": false,
+            "source_name": "",
+            "price": 57.09000015258789,
+            "src_country": "NO",
+            "return": 1,
+            "id": "8936831359417793_0",
+            "guarantee": false,
+            "combination_trip_id": 8936831359417793,
+            "scraping_start": 0,
+            "dst_country": "FR",
+            "dst": "CDG",
+            "invalid": 0,
+            "source": "",
+            "checkin": "2019-03-09T06:05:00.000Z",
+            "flight_no": "1275",
+            "refresh_period": 5,
+            "operating_airline": {
+                "iata": "JN",
+                "name": "JOON"
+            },
+            "max_passengers_for_price": 1,
+            "eur": 57.09,
+            "src_station": "Oslo Airport, Gardermoen",
+            "dst_station": "Charles de Gaulle Airport",
+            "timestamp": "1970-01-01T00:00:00.000Z",
+            "original_trip_id": 8936831359417793,
+            "source_url": "",
+            "refresh_ttl": 120,
+            "fare_basis": "XRDNO9",
+            "src_name": "Oslo",
+            "passengers_flight_check": {
+                "1": {
+                    "last_checked": 1551975696,
+                    "invalid": false,
+                    "eur": 57.09
+                },
+                "2": {
+                    "last_checked": 0,
+                    "invalid": false,
+                    "eur": 57.09
+                }
+            },
+            "guarantee_disclaimer": "",
+            "refreshed": "1970-01-01T00:00:00.000Z",
+            "dst_name": "Paris",
+            "src": "OSL",
+            "is_cabin_bags_with_priority_boarding": false,
+            "found_on": "",
+            "infants_conditions": {
+                "trolley": true,
+                "hand_weight": 12
+            },
+            "extras": "JN",
+            "airline": {
+                "airport_checkin": 0,
+                "code": "AF",
+                "is_passenger_cardholder": true,
+                "grade": "B",
+                "booking_doc_needed": 2,
+                "threshold_adult": null,
+                "skip_subairline_merge": false,
+                "temporary_disabled": null,
+                "hold_weight": 23,
+                "hand2_weight": null,
+                "book_fee": 0,
+                "parent_carrier": null,
+                "id": 70,
+                "Name": "Air France",
+                "hand2_note": "",
+                "hold_height": 37,
+                "shorter_stopovers_allowed": 1,
+                "payment_card_copy_eticket_requirement": true,
+                "threshold_child": null,
+                "iatacode": "AF",
+                "flight_change_fee": 50,
+                "fee_instead": 0,
+                "hold_note": "",
+                "search_priority": null,
+                "maximum_passengers": 9,
+                "close_booking_hours": 4,
+                "affil_url": null,
+                "checkin": 0,
+                "iata": "AF",
+                "hold_length": 70,
+                "passengers_in_search": 1,
+                "fee_percent": 0,
+                "hand_width": 35,
+                "threshold_teen": null,
+                "active": 1,
+                "hand_note": "",
+                "luggage_only_during_checkin_airlines": null,
+                "hold_width": 50,
+                "doing_online_checkin": null,
+                "luggage_only_on_web": null,
+                "checkin_closure": 0,
+                "hand_length": 56,
+                "is_private_fares_allowed": null,
+                "fee_airline": 0,
+                "name": "Air France",
+                "hand2_width": null,
+                "carrier_type": "airline",
+                "url": "",
+                "hand2_height": null,
+                "hand2_length": null,
+                "mmb_link": "https://www.airfrance.co.uk/RU/en/local/process/standard/rebooking/ValidateSearchPnrAction.do?recordLocator={reservation_number}&lastName={surname}",
+                "non_active_reason": null,
+                "hand_height": 23,
+                "hand_weight": 7,
+                "lcc": null
+            },
+            "eur_children": 57.09,
+            "bags_recheck_disclaimer": "",
+            "eur_infants": 18.84,
+            "local_arrival": "2019-03-09T08:45:00.000Z",
+            "utc_arrival": "2019-03-09T07:45:00.000Z",
+            "local_departure": "2019-03-09T06:05:00.000Z",
+            "utc_departure": "2019-03-09T05:05:00.000Z"
+        },
+        {
+            "bags_recheck_required": false,
+            "source_name": "",
+            "price": 57.09000015258789,
+            "src_country": "FR",
+            "return": 1,
+            "id": "8936831359417793_1",
+            "guarantee": false,
+            "combination_trip_id": 8936831359417793,
+            "scraping_start": 0,
+            "dst_country": "CZ",
+            "dst": "PRG",
+            "invalid": 0,
+            "source": "",
+            "checkin": "2019-03-09T15:00:00.000Z",
+            "flight_no": "5034",
+            "refresh_period": 5,
+            "operating_airline": {
+                "iata": "OK",
+                "name": "Czech Airlines"
+            },
+            "max_passengers_for_price": 1,
+            "eur": 57.09,
+            "src_station": "Charles de Gaulle Airport",
+            "dst_station": "Václav Havel Airport Prague",
+            "timestamp": "1970-01-01T00:00:00.000Z",
+            "original_trip_id": 8936831359417793,
+            "source_url": "",
+            "refresh_ttl": 120,
+            "fare_basis": "XRDFR9",
+            "src_name": "Paris",
+            "passengers_flight_check": {
+                "1": {
+                    "last_checked": 1551975696,
+                    "invalid": false,
+                    "eur": 57.09
+                },
+                "2": {
+                    "last_checked": 0,
+                    "invalid": false,
+                    "eur": 57.09
+                }
+            },
+            "guarantee_disclaimer": "",
+            "refreshed": "1970-01-01T00:00:00.000Z",
+            "dst_name": "Prague",
+            "src": "CDG",
+            "is_cabin_bags_with_priority_boarding": false,
+            "found_on": "",
+            "infants_conditions": {
+                "trolley": true,
+                "hand_weight": 12
+            },
+            "extras": "OK",
+            "airline": {
+                "airport_checkin": 0,
+                "code": "AF",
+                "is_passenger_cardholder": true,
+                "grade": "B",
+                "booking_doc_needed": 2,
+                "threshold_adult": null,
+                "skip_subairline_merge": false,
+                "temporary_disabled": null,
+                "hold_weight": 23,
+                "hand2_weight": null,
+                "book_fee": 0,
+                "parent_carrier": null,
+                "id": 70,
+                "Name": "Air France",
+                "hand2_note": "",
+                "hold_height": 40,
+                "shorter_stopovers_allowed": 1,
+                "payment_card_copy_eticket_requirement": true,
+                "threshold_child": null,
+                "iatacode": "AF",
+                "flight_change_fee": 50,
+                "fee_instead": 0,
+                "hold_note": "",
+                "search_priority": null,
+                "maximum_passengers": 9,
+                "close_booking_hours": 4,
+                "affil_url": null,
+                "checkin": 0,
+                "iata": "AF",
+                "hold_length": 100,
+                "passengers_in_search": 1,
+                "fee_percent": 0,
+                "hand_width": 45,
+                "threshold_teen": null,
+                "active": 1,
+                "hand_note": "",
+                "luggage_only_during_checkin_airlines": null,
+                "hold_width": 59,
+                "doing_online_checkin": null,
+                "luggage_only_on_web": null,
+                "checkin_closure": 0,
+                "hand_length": 55,
+                "is_private_fares_allowed": null,
+                "fee_airline": 0,
+                "name": "Air France",
+                "hand2_width": null,
+                "carrier_type": "airline",
+                "url": "",
+                "hand2_height": null,
+                "hand2_length": null,
+                "mmb_link": "https://www.airfrance.co.uk/RU/en/local/process/standard/rebooking/ValidateSearchPnrAction.do?recordLocator={reservation_number}&lastName={surname}",
+                "non_active_reason": null,
+                "hand_height": 25,
+                "hand_weight": 8,
+                "lcc": null
+            },
+            "eur_children": 57.09,
+            "bags_recheck_disclaimer": "",
+            "eur_infants": 18.84,
+            "local_arrival": "2019-03-09T16:45:00.000Z",
+            "utc_arrival": "2019-03-09T15:45:00.000Z",
+            "local_departure": "2019-03-09T15:00:00.000Z",
+            "utc_departure": "2019-03-09T14:00:00.000Z"
+        }
+    ],
+    "service_package_price": 0,
+    "additional_services": {
+        "priority_boarding": {
+            "data": {
+                "4083586353131241_0": {
+                    "price_info": {
+                        "merchant": "0",
+                        "service": "0",
+                        "currency": "EUR",
+                        "amount": "9",
+                        "base": "6",
+                        "service_flat": "3"
+                    },
+                    "currency": "EUR",
+                    "price": 9,
+                    "is_possible": true
+                },
+                "3990128433380956_0": {
+                    "price_info": {
+                        "merchant": "0",
+                        "service": "0",
+                        "currency": "EUR",
+                        "amount": "9",
+                        "base": "6",
+                        "service_flat": "3"
+                    },
+                    "currency": "EUR",
+                    "price": 9,
+                    "is_possible": true
+                }
+            },
+            "type": 0
+        }
+    },
+    "price_change": false,
+    "flights_price": 414.84000000000003,
+    "pnum": 2,
+    "insurance_price": {
+        "travel_plus": 15.72,
+        "skysilver": 10.47,
+        "skygold": 15.72,
+        "travel_basic": 10.47
+    },
+    "bags_restrictions": {},
+    "orig_price_usage": true,
+    "sp_fee": 62.23,
+    "document_options": {
+        "checkin_date": 1551821400,
+        "airport_checkin_price": 0,
+        "document_need": 2
+    },
+    "bags_price": {
+        "1": 117.6
+    },
+    "flight_real_price": 414.84000000000003,
+    "transfers": [],
+    "adult_threshold": 16,
+    "insurance_data": {
+        "travel_plus": {
+            "price": 15.72,
+            "product_num": "04"
+        },
+        "tarif": "TA",
+        "valid_from": null,
+        "skysilver": {
+            "price": 10.47,
+            "product_num": "02"
+        },
+        "skygold": {
+            "price": 15.72,
+            "product_num": "04"
+        },
+        "travel_basic": {
+            "price": 10.47,
+            "product_num": "02"
+        },
+        "valid_to": null
+    },
+    "visas_agreement_requiered": true,
+    "children_price": 0,
+    "fee_airline": 0,
+    "flights_to_check": true,
+    "luggage": [
+        55,
+        20,
+        35,
+        8,
+        23,
+        78,
+        27,
+        52,
+        "",
+        null,
+        null,
+        null,
+        null,
+        "",
+        ""
+    ],
+    "hand_bags_price": {},
+    "credits_price": 692.88,
+    "booking_token": "oKWrjE3p79Fphzv+baF3C2h1PDgCet9WaEXSzPuPgCEAv+on9q2YST/DjPlyl3WZYCdLEXKEOBtJT96uSi5cLvEfHS/r4ptstFPMzb8oeL6HtCKh/nzMgVI1roK8esqf+IKDP7GCDqK7d9BOhrfk2PpY1EPhhBJm4clZwacBAplaUoYCLswkVXlY9CTtRzQy8nRWf4Q05JsEocwEA8nsjDbsG9zm/Ntm5L8bDfkLg0Bik+urC1k5RIDvZl9tvrdD53h6Mw5BnB1Pzwrou3EEUvUC/LsKvR+S+dPbOmhUXtspfhfxwRcB4qRFghgZDW7MXuajxLGebqJz8bljjKa0o5GWKDEsnKkcCbup1vIQNWnSSmvBGqGMwXfIBbB0lSBm3TlyMSUHV+N8yYbCMgVsJeLR4XMrkicprw+QfIM6gbfjksIqcypv7QmtohWfsgtksZfM620LsiDeFyUJjayMGbdGImpwZwuF1iimK6fAd39Xh8C7dr13djr9tOZIRuH8X7kDrdwI4Zn6/TEpn05TxZs4S7LRa7Ijdbxr4GQnqTwMPL6121l3u241zqSlPzoW5XZHNM2h2TUFDMjILY9eu7mt7CqaLy9BdiFJxi1BE6CJJtLhp+3kXAS6ZJnhPts6gV0anT7RV0FtjMxQEifWJU9lpksB4ZoVyO1jrOYovIbOcc9aTP65QybsiwDHihEeZ/DrzRyGhHABoGKnczsDjMeM8HzjUnJinZ/NcpAFDMODLKzPFLP4P8G4ropi1SEplA2PN0fAJ3rQzljyfTKarki2FTHukLP9/rre2pVvpp21vk20N0PLMT+Atm3mGjWUHyhdrSg0GBgciatiWhCgpnZdndFdo8URYRtbEfBS1VdrX9DFv2tk3eO0eDJeYnscVraS4BXwedMw2dK9yvyhU6fgh3IA80M8ywbhnQLyEXi9KVUOkBcIH4e5wPoYdmRY+rx5jqhlCpAhxm9TZ/X5fitPBx2h/0yCWI3Plxj+qvXKXtCDITYV4WaMzqbIzV9GDDtdet0oxJrX/DWUeQpKqA==",
+    "infants_price": 129.1,
+    "baggage": {
+        "combinations": {
+            "hold_bag": [
+                {
+                    "indices": [],
+                    "price": {
+                        "currency": "EUR",
+                        "amount": 0,
+                        "base": 0,
+                        "service_flat": 0,
+                        "service": 0
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child",
+                            "infant"
+                        ]
+                    }
+                },
+                {
+                    "indices": [
+                        0
+                    ],
+                    "price": {
+                        "currency": "EUR",
+                        "amount": 117.6,
+                        "base": 98,
+                        "service_flat": 0,
+                        "service": 19.6
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child"
+                        ]
+                    }
+                }
+            ],
+            "hand_bag": [
+                {
+                    "indices": [
+                        0
+                    ],
+                    "price": {
+                        "currency": "EUR",
+                        "amount": 0,
+                        "base": 0,
+                        "service_flat": 0,
+                        "service": 0
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child"
+                        ]
+                    }
+                },
+                {
+                    "indices": [],
+                    "price": {
+                        "currency": "EUR",
+                        "amount": 0,
+                        "base": 0,
+                        "service_flat": 0,
+                        "service": 0
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "infant"
+                        ]
+                    }
+                }
+            ]
+        },
+        "definitions": {
+            "hold_bag": [
+                {
+                    "category": "hold_bag",
+                    "restrictions": {
+                        "width": 27,
+                        "length": 78,
+                        "dimensions_sum": 157,
+                        "weight": 23,
+                        "height": 52
+                    },
+                    "price": {
+                        "merchant": null,
+                        "service": 19.6,
+                        "currency": "EUR",
+                        "amount": 117.6,
+                        "base": 98,
+                        "service_flat": 0
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child"
+                        ]
+                    }
+                }
+            ],
+            "hand_bag": [
+                {
+                    "category": "cabin_bag",
+                    "restrictions": {
+                        "width": 20,
+                        "length": 55,
+                        "dimensions_sum": null,
+                        "weight": 8,
+                        "height": 35
+                    },
+                    "price": {
+                        "merchant": null,
+                        "service": 0,
+                        "currency": "EUR",
+                        "amount": 0,
+                        "base": 0,
+                        "service_flat": 0
+                    },
+                    "conditions": {
+                        "passenger_groups": [
+                            "adult",
+                            "child"
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "infants_conditions": {
+        "trolley": true,
+        "hand_weight": 0
+    },
+    "orig_price": 457.68,
+    "bags_fee": 235.2,
+    "flights_real_checked": false,
+    "route": [
+        "PRG",
+        "OSL"
+    ]
+}

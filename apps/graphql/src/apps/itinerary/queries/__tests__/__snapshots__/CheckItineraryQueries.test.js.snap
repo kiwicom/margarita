@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: CheckItinerary.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+{
+  checkItinerary(input: { bookingToken: "token", bags: 1, passengers: { adults: 1 }}) {
+    id
+    isValid
+    isChecked
+  }
+}
+
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "checkItinerary": {
+      "id": "SXRpbmVyYXJ5OjM5OTAxMjg0MzMzODA5NTZfMHw0MDgzNTg2MzUzMTMxMjQxXzB8ODkzNjgzMTM1OTQxNzc5M18wfDg5MzY4MzEzNTk0MTc3OTNfMQ==",
+      "isValid": true,
+      "isChecked": false
+    }
+  }
+}
+`;

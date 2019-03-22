@@ -22,6 +22,16 @@ export type ItinerariesSearchParameters = {
   returnDateTo?: Date,
 };
 
+export type ItineraryCheckParameters = {|
+  +bookingToken: string,
+  +bags: number,
+  +passengers: {|
+    +adults?: number,
+    +children?: number,
+    +infants?: number,
+  |},
+|};
+
 export type Price = {|
   +amount: ?number,
   +currency: ?string,
@@ -62,9 +72,11 @@ export type Sector = {|
   +arrival: RouteStop,
 |};
 
-export type ItinerariesType = {|
+export type Itinerary = {|
   +id: string,
   +type: ?string,
+  +isValid: ?boolean,
+  +isChecked: ?boolean,
   +bookingToken: ?string,
   +price: ?Price,
   +origin: ?Location,
@@ -114,5 +126,15 @@ export type ApiResponseType = {|
     +route: Array<ApiRouteItem>,
     +routes: Array<Array<string>>,
     +booking_token: string,
+  |}>,
+|};
+
+export type ItineraryApiResponseType = {|
+  +flights_checked?: boolean,
+  +flights_invalid?: boolean,
+  +booking_token?: string,
+  +total?: number,
+  +flights?: $ReadOnlyArray<{|
+    +id?: string,
   |}>,
 |};

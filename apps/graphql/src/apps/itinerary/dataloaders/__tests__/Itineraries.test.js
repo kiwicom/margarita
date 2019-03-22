@@ -1,6 +1,7 @@
 // @flow
 
 import { parseParameters } from '../Itineraries';
+import { parseParameters as parseItineraryParameters } from '../Itinerary';
 
 const searchParams = {
   travelFrom: ['OSL'],
@@ -41,4 +42,36 @@ Object {
   "to": "PRG",
 }
 `);
+});
+
+it('parses validity parameters corectly', () => {
+  const token = 'token';
+  expect(
+    parseItineraryParameters({
+      bookingToken: token,
+      bags: 1,
+      passengers: {
+        adults: 2,
+        children: 1,
+        infants: 1,
+      },
+    }),
+  ).toMatchObject({
+    booking_token: token,
+    bnum: 1,
+    pnum: 4,
+  });
+  expect(
+    parseItineraryParameters({
+      bookingToken: token,
+      bags: 1,
+      passengers: {
+        adults: 1,
+      },
+    }),
+  ).toMatchObject({
+    booking_token: token,
+    bnum: 1,
+    pnum: 1,
+  });
 });
