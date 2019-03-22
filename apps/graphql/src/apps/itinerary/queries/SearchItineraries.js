@@ -6,10 +6,7 @@ import { connectionFromArray, connectionArgs } from '@kiwicom/graphql-utils';
 import { type Args, ItinerariesConnection } from '../helpers/queryVariables';
 import ItinerariesSearchInput from '../types/inputs/ItinerariesSearchInput';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
-import type {
-  ItinerariesType,
-  ItinerariesSearchParameters,
-} from '../Itinerary';
+import type { Itinerary, ItinerariesSearchParameters } from '../Itinerary';
 
 const Itineraries = {
   name: 'SearchItineraries',
@@ -28,7 +25,7 @@ const Itineraries = {
   ) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
 
-    return connectionFromArray<ItinerariesType>(itineraries, args);
+    return connectionFromArray<Itinerary>(itineraries, args);
   },
 };
 

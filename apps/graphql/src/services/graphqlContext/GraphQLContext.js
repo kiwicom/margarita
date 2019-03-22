@@ -3,10 +3,12 @@
 import DataLoader from 'dataloader';
 
 import createItinerariesLoader from '../../apps/itinerary/dataloaders/Itineraries';
+import createItineraryLoader from '../../apps/itinerary/dataloaders/Itinerary';
 import {
   type ItinerariesSearchParameters,
   type ItinerariesOneWaySearchParameters,
-  type ItinerariesType,
+  type Itinerary,
+  type ItineraryCheckParameters,
 } from '../../apps/itinerary/Itinerary';
 import createLocationLoader, {
   type Locations,
@@ -20,8 +22,9 @@ export type GraphqlContextType = {|
   +dataLoader: {|
     +itineraries: DataLoader<
       ItinerariesSearchParameters | ItinerariesOneWaySearchParameters,
-      ItinerariesType[],
+      Itinerary[],
     >,
+    +itinerary: DataLoader<ItineraryCheckParameters, Itinerary>,
     +locations: DataLoader<LocationInput, Locations>,
     +bookings: {| +load: () => Booking[] |},
     +booking: {| +load: (id: string) => Booking |},
@@ -32,6 +35,7 @@ export default function createContext() {
   return {
     dataLoader: {
       itineraries: createItinerariesLoader(),
+      itinerary: createItineraryLoader(),
       locations: createLocationLoader(),
       bookings: bookingsLoader,
       booking: bookingDetailLoader,

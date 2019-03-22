@@ -1,18 +1,19 @@
 // @flow
 
-import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
+import {
+  GraphQLObjectType,
+  GraphQLString,
+  GraphQLList,
+  GraphQLBoolean,
+} from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 import * as DateFNS from 'date-fns';
 
-import type { ItinerariesType, Sector } from '../../Itinerary';
+import type { Itinerary, Sector } from '../../Itinerary';
 import GraphQLPrice from '../../../common/types/outputs/Price';
 import GraphQLSector from '../../../common/types/outputs/Sector';
 import GraphQLLocation from '../../../location/types/outputs/Location';
 import GraphQLDateType from '../../../common/types/outputs/DateType';
-
-export type Itinerary = {|
-  +id: string,
-|};
 
 const itineraryResponseFields = {
   destination: { type: GraphQLLocation },
@@ -22,7 +23,7 @@ const itineraryResponseFields = {
   price: { type: GraphQLPrice },
   sectors: {
     type: new GraphQLList(GraphQLSector),
-    resolve: ({ sectors }: ItinerariesType): Sector[] => {
+    resolve: ({ sectors }: Itinerary): Sector[] => {
       if (sectors == null) {
         return [];
       }
@@ -35,6 +36,14 @@ const itineraryResponseFields = {
   startTime: { type: GraphQLDateType },
   type: { type: GraphQLString },
   bookingToken: { type: GraphQLString },
+  isChecked: {
+    type: GraphQLBoolean,
+    description: 'All segments successfully checked',
+  },
+  isValid: {
+    type: GraphQLBoolean,
+    description: 'Itinerary is valid (exists and is not sold-out or cancelled)',
+  },
 };
 
 export const GraphQLItinerary = new GraphQLObjectType({

@@ -7,7 +7,7 @@ import { type Args, ItinerariesConnection } from '../helpers/queryVariables';
 import ItinerariesOneWaySearchInput from '../types/inputs/ItinerariesOneWaySearchInput';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import type {
-  ItinerariesType,
+  Itinerary,
   ItinerariesOneWaySearchParameters,
 } from '../Itinerary';
 
@@ -29,7 +29,7 @@ const ItinerariesOneWay = {
   ) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
 
-    return connectionFromArray<ItinerariesType>(itineraries, args);
+    return connectionFromArray<Itinerary>(itineraries, args);
   },
 };
 

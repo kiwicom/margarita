@@ -249,6 +249,23 @@ type Itinerary {
   startTime: DateType
   type: String
   bookingToken: String
+
+  """All segments successfully checked"""
+  isChecked: Boolean
+
+  """Itinerary is valid (exists and is not sold-out or cancelled)"""
+  isValid: Boolean
+}
+
+input ItineraryCheckInput {
+  """Token received in search results"""
+  bookingToken: String!
+
+  """Number of checked bags for the booking"""
+  bags: Int!
+
+  """Number of children, adults and infants travelling"""
+  passengers: PassengersInput!
 }
 
 """A connection to a list of items."""
@@ -401,6 +418,9 @@ type RootQuery {
 
   """Query to fetch all one way itineraries(flights, busses, trains)"""
   searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
+  """Check if itinerary is valid and bookable"""
+  checkItinerary(input: ItineraryCheckInput!): Itinerary
 }
 
 """Departure or arrival for a segment or sector"""

@@ -5,7 +5,7 @@ import { ResultDetail } from '@kiwicom/margarita-core';
 import { type NavigationScreenProp } from 'react-navigation';
 
 type NavigationParams = {|
-  +detailId: string,
+  +bookingToken: string,
 |};
 
 type Props = {|
@@ -14,7 +14,7 @@ type Props = {|
 
 export default class ResultDetailScreen extends React.Component<Props> {
   render() {
-    const detailId = this.props.navigation.getParam('detailId');
-    return <ResultDetail detailId={detailId} />;
+    const bookingToken = this.props.navigation.getParam('bookingToken');
+    return <ResultDetail bookingToken={bookingToken} />;
   }
 }

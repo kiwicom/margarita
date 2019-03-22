@@ -1,0 +1,8 @@
+{
+  checkItinerary(input: { bookingToken: "token", bags: 1, passengers: { adults: 1 }}) {
+    id
+    isValid
+    isChecked
+  }
+}
+

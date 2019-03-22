@@ -15,9 +15,10 @@ import {
 } from '@kiwicom/margarita-navigation';
 
 import { PriceSummary } from '../../components/priceSummary';
+import ResultDetailItineraryRenderer from './ResultDetailItineraryRenderer';
 
 type Props = {|
-  +detailId: ?string,
+  +bookingToken: ?string,
   +navigation: Navigation,
 |};
 
@@ -96,6 +97,9 @@ class ResultDetail extends React.Component<Props, State> {
     return (
       <>
         <ContentContainer>
+          <ResultDetailItineraryRenderer
+            bookingToken={this.props.bookingToken}
+          />
           <PassengerCards
             passengerCards={passengerCards}
             onActionPress={this.handlePassengerEditPress}

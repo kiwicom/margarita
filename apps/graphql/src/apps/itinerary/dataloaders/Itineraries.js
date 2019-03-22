@@ -16,7 +16,7 @@ import {
 import type {
   ItinerariesSearchParameters,
   ApiResponseType,
-  ItinerariesType,
+  Itinerary,
 } from '../Itinerary';
 
 const stripTimeZoneOffset = (date: Date) =>
@@ -64,7 +64,7 @@ const fetchItineraries = async (
   });
 };
 
-const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
+const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
   const itineraries = response.data;
 
   return itineraries.map(itinerary => {
@@ -72,6 +72,8 @@ const sanitizeItineraries = (response: ApiResponseType): ItinerariesType[] => {
       id: itinerary.id,
       type: getItineraryType(itinerary.routes),
       bookingToken: itinerary.booking_token,
+      isValid: false,
+      isChecked: false,
       startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
       endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
       destination: mapLocation(
@@ -99,7 +101,7 @@ export default function itinerariasLoader() {
   return new OptimisticDataloader(
     async (
       keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<ItinerariesType[] | Error>> => fetchItineraries(keys),
+    ): Promise<Array<Itinerary[] | Error>> => fetchItineraries(keys),
     {
       cacheKeyFn: stringify,
     },

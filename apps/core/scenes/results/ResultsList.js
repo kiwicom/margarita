@@ -29,9 +29,9 @@ type ResultItemType = {|
 |};
 
 class ResultsList extends React.Component<Props> {
-  onBookPress = detailId => {
+  onBookPress = bookingToken => {
     this.props.navigation.navigate(Routes.RESULT_DETAIL, {
-      detailId,
+      bookingToken,
     });
   };
 
