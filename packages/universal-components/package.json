@@ -1,9 +1,9 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Component Library for React Native, Expo and React applications",
   "homepage": "https://github.com/kiwicom/universal-components",
-  "main": "src/index.js",
+  "main": "lib/web/index.js",
   "scripts": {
     "storybook": "start-storybook -p 9009 -c storybook -s ./fonts",
     "storybook:build": "rimraf storybook-static; build-storybook -c storybook -s ./fonts",
@@ -39,7 +39,6 @@
     "styled-components": "^4.1.3",
     "memoize-one": "^5.0.0",
     "react-fast-compare": "^2.0.4"
-
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -90,5 +89,6 @@
   },
   "resolutions": {
     "eslint-plugin-jest": "^22.2.1"
-  }
+  },
+  "react-native": "lib/native/index.js"
 }
