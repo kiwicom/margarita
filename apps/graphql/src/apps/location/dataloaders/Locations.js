@@ -4,7 +4,7 @@ import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
-import fetch from '../../../services/fetch/Fetch';
+import fetch from '../../../services/fetch/tequilaFetch';
 import { type Location, type ApiLocation } from '../Location';
 
 export type Locations = $ReadOnlyArray<Location>;

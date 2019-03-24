@@ -6,7 +6,7 @@ import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 import { UK_DATE_FORMAT } from '@kiwicom/margarita-config';
 
-import fetch from '../../../services/fetch/Fetch';
+import fetch from '../../../services/fetch/tequilaFetch';
 import {
   mapLocation,
   mapDate,

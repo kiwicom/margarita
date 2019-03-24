@@ -2,6 +2,7 @@
 
 import { TimeoutError, ResponseError } from '@kiwicom/fetch';
 
+import Logger from '../logger/Logger';
 import { HttpErrorObject } from './HttpErrorObject';
 
 export default async function catchDataloaderError<T>(cb: () => Promise<T>) {
@@ -16,6 +17,7 @@ export default async function catchDataloaderError<T>(cb: () => Promise<T>) {
       return new HttpErrorObject(err.response.status, err.response.statusText);
     }
     // @TODO log error to sentry with the hash value
+    Logger.error(err.message);
     throw new Error('Unhandled exception');
   }
 }
