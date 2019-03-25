@@ -10,6 +10,7 @@ import createItineraryLoader from '../../apps/itinerary/dataloaders/Itinerary';
 import {
   type ItinerariesSearchParameters,
   type ItinerariesOneWaySearchParameters,
+  type ItinerariesReturnSearchParameters,
   type Itinerary,
   type ItineraryCheckParameters,
 } from '../../apps/itinerary/Itinerary';
@@ -25,7 +26,7 @@ export type GraphqlContextType = {|
   +dataLoader: {|
     +itineraries: DataLoader<ItinerariesSearchParameters, Itinerary[]>,
     +itineraries_new: DataLoader<
-      ItinerariesOneWaySearchParameters,
+      ItinerariesOneWaySearchParameters | ItinerariesReturnSearchParameters,
       Itinerary[],
     >,
     +itinerary: DataLoader<ItineraryCheckParameters, Itinerary>,

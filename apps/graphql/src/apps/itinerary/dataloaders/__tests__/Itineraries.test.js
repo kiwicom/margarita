@@ -9,7 +9,7 @@ const searchParams = {
   dateFrom: new Date('2018-01-01'),
 };
 
-const searchParamsNew = {
+const searchParamsOneWayNew = {
   order: 'DESC',
   sort: 'quality',
   passengers: {
@@ -27,6 +27,17 @@ const searchParamsNew = {
     outboundDate: {
       start: new Date('2019-05-01'),
       end: new Date('2019-05-03'),
+    },
+  },
+};
+
+const searchParamsReturnNew = {
+  ...searchParamsOneWayNew,
+  itinerary: {
+    ...searchParamsOneWayNew.itinerary,
+    inboundDate: {
+      start: new Date('2019-05-25'),
+      end: new Date('2019-05-28'),
     },
   },
 };
@@ -99,7 +110,8 @@ it('parses validity parameters corectly', () => {
 });
 
 it('parses new parameters correctly', () => {
-  expect(parseParametersNew(searchParamsNew)).toMatchInlineSnapshot(`
+  expect(parseParametersNew((searchParamsOneWayNew: any)))
+    .toMatchInlineSnapshot(`
 Object {
   "adults": 1,
   "asc": 0,
@@ -110,6 +122,23 @@ Object {
   "fly_from": "prague_cz",
   "fly_to": "STN",
   "infants": 0,
+  "sort": "quality",
+}
+`);
+  expect(parseParametersNew((searchParamsReturnNew: any)))
+    .toMatchInlineSnapshot(`
+Object {
+  "adults": 1,
+  "asc": 0,
+  "children": 0,
+  "curr": "EUR",
+  "date_from": "01/05/2019",
+  "date_to": "03/05/2019",
+  "fly_from": "prague_cz",
+  "fly_to": "STN",
+  "infants": 0,
+  "return_from": "25/05/2019",
+  "return_to": "28/05/2019",
   "sort": "quality",
 }
 `);
