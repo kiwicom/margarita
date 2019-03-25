@@ -24,8 +24,8 @@ type Props = {|
 
 export default class Results extends React.Component<Props> {
   renderInner = (props: ResultsQueryResponse) => {
-    const { searchItineraries } = props;
-    return <ResultsList data={searchItineraries} />;
+    const { searchReturnItineraries } = props;
+    return <ResultsList data={searchReturnItineraries} />;
   };
 
   render() {
@@ -61,20 +61,30 @@ export default class Results extends React.Component<Props> {
         />
         <QueryRenderer
           query={graphql`
-            query ResultsQuery($input: ItinerariesSearchInput!) {
-              searchItineraries(input: $input) {
+            query ResultsQuery($input: ItinerariesReturnSearchInput!) {
+              searchReturnItineraries(input: $input) {
                 ...ResultsList_data
               }
             }
           `}
           variables={{
             input: {
-              travelFrom: [travelFrom],
-              travelTo: [travelTo],
-              dateFrom,
-              dateTo,
-              returnDateFrom,
-              returnDateTo,
+              itinerary: {
+                origin: {
+                  ids: [travelFrom],
+                },
+                destination: {
+                  ids: [travelTo],
+                },
+                outboundDate: {
+                  start: dateFrom,
+                  end: dateTo,
+                },
+                inboundDate: {
+                  start: returnDateFrom,
+                  end: returnDateTo,
+                },
+              },
             },
           }}
           render={this.renderInner}

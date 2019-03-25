@@ -14,7 +14,6 @@ import {
   mapSectors,
 } from '../helpers/Itineraries';
 import type {
-  ItinerariesSearchParameters,
   ItinerariesReturnSearchParameters,
   ItinerariesOneWaySearchParameters,
   ApiResponseType,
@@ -27,33 +26,7 @@ const stripTimeZoneOffset = (date: Date) =>
 const parseDate = (date: Date) =>
   DateFNS.format(stripTimeZoneOffset(date), UK_DATE_FORMAT);
 
-export const parseParameters = (input: ItinerariesSearchParameters) => {
-  const flyFrom = input.travelFrom.join();
-  const flyTo = input.travelTo ? input.travelTo.join() : null;
-
-  const params = {
-    fly_from: flyFrom,
-    date_from: parseDate(input.dateFrom),
-    date_to: parseDate(input.dateFrom),
-    fly_to: flyTo,
-    ...(input.returnDateFrom && {
-      return_from: parseDate(input.returnDateFrom),
-    }),
-    ...(input.returnDateTo && {
-      return_to: parseDate(input.returnDateTo),
-    }),
-    ...(input.passengers && {
-      adults: input.passengers.adults ?? 0,
-      children: input.passengers.children ?? 0,
-      infants: input.passengers.infants ?? 0,
-    }),
-    curr: 'EUR',
-  };
-
-  return params;
-};
-
-export const parseParametersNew = (
+export const parseParameters = (
   input: ItinerariesReturnSearchParameters | ItinerariesOneWaySearchParameters,
 ) => {
   const { origin, destination, outboundDate } = input.itinerary;
@@ -97,24 +70,11 @@ const addReturnSearchQueryParams = inboundDate => {
 };
 
 const fetchItineraries = async (
-  parameters: $ReadOnlyArray<ItinerariesSearchParameters>,
-) => {
-  const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
-    parameters.map(params => {
-      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
-    }),
-  );
-  return results.map(res => {
-    return sanitizeItineraries(res);
-  });
-};
-
-const fetchItinerariesNew = async (
   parameters: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
 ) => {
   const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
     parameters.map(params => {
-      return fetch(`/v2/search?${qs.stringify(parseParametersNew(params))}`);
+      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
     }),
   );
   return results.map(res => {
@@ -158,19 +118,8 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
 export function createItinerariesLoader() {
   return new OptimisticDataloader(
     async (
-      keys: $ReadOnlyArray<ItinerariesSearchParameters>,
-    ): Promise<Array<Itinerary[] | Error>> => fetchItineraries(keys),
-    {
-      cacheKeyFn: stringify,
-    },
-  );
-}
-
-export function createItinerariesNewLoader() {
-  return new OptimisticDataloader(
-    async (
       keys: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
-    ): Promise<Array<Itinerary[] | Error>> => fetchItinerariesNew(keys),
+    ): Promise<Array<Itinerary[] | Error>> => fetchItineraries(keys),
     {
       cacheKeyFn: stringify,
     },

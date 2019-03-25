@@ -1,15 +1,9 @@
 // @flow
 
 import { parseParameters as parseItineraryParameters } from '../Itinerary';
-import { parseParameters, parseParametersNew } from '../Itineraries';
+import { parseParameters } from '../Itineraries';
 
-const searchParams = {
-  travelFrom: ['OSL'],
-  travelTo: ['PRG'],
-  dateFrom: new Date('2018-01-01'),
-};
-
-const searchParamsOneWayNew = {
+const searchParamsOneWay = {
   order: 'DESC',
   sort: 'quality',
   passengers: {
@@ -31,51 +25,16 @@ const searchParamsOneWayNew = {
   },
 };
 
-const searchParamsReturnNew = {
-  ...searchParamsOneWayNew,
+const searchParamsReturn = {
+  ...searchParamsOneWay,
   itinerary: {
-    ...searchParamsOneWayNew.itinerary,
+    ...searchParamsOneWay.itinerary,
     inboundDate: {
       start: new Date('2019-05-25'),
       end: new Date('2019-05-28'),
     },
   },
 };
-
-it('parses parameters correctly', () => {
-  expect(parseParameters(searchParams)).toMatchInlineSnapshot(`
-Object {
-  "curr": "EUR",
-  "date_from": "01/01/2018",
-  "date_to": "01/01/2018",
-  "fly_from": "OSL",
-  "fly_to": "PRG",
-}
-`);
-  expect(
-    parseParameters({
-      ...searchParams,
-      returnDateFrom: new Date('2018-01-02'),
-      returnDateTo: new Date('2018-01-02'),
-      passengers: {
-        adults: 2,
-      },
-    }),
-  ).toMatchInlineSnapshot(`
-Object {
-  "adults": 2,
-  "children": 0,
-  "curr": "EUR",
-  "date_from": "01/01/2018",
-  "date_to": "01/01/2018",
-  "fly_from": "OSL",
-  "fly_to": "PRG",
-  "infants": 0,
-  "return_from": "02/01/2018",
-  "return_to": "02/01/2018",
-}
-`);
-});
 
 it('parses validity parameters corectly', () => {
   const token = 'token';
@@ -109,9 +68,8 @@ it('parses validity parameters corectly', () => {
   });
 });
 
-it('parses new parameters correctly', () => {
-  expect(parseParametersNew((searchParamsOneWayNew: any)))
-    .toMatchInlineSnapshot(`
+it('parses search parameters correctly', () => {
+  expect(parseParameters((searchParamsOneWay: any))).toMatchInlineSnapshot(`
 Object {
   "adults": 1,
   "asc": 0,
@@ -125,8 +83,7 @@ Object {
   "sort": "quality",
 }
 `);
-  expect(parseParametersNew((searchParamsReturnNew: any)))
-    .toMatchInlineSnapshot(`
+  expect(parseParameters((searchParamsReturn: any))).toMatchInlineSnapshot(`
 Object {
   "adults": 1,
   "asc": 0,

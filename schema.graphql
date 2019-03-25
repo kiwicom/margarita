@@ -229,29 +229,6 @@ input ItinerariesReturnSearchInput {
   itinerary: ItineraryReturnInput!
 }
 
-input ItinerariesSearchInput {
-  """Locations IDs for travel from (origin)"""
-  travelFrom: [String]!
-
-  """Locations IDs for travel to (destination)"""
-  travelTo: [String]
-
-  """Search itineraries from this date"""
-  dateFrom: Date!
-
-  """Search itineraries up to this date"""
-  dateTo: Date
-
-  """Number of children, adults and infants travelling"""
-  passengers: PassengersInput
-
-  """Search itineraries return from this date"""
-  returnDateFrom: Date
-
-  """Search itineraries return up to this date"""
-  returnDateTo: Date
-}
-
 type Itinerary {
   destination: Location
   endTime: DateType
@@ -466,9 +443,6 @@ type RootQuery {
 
   """Query for suggested locations based on incomplete names"""
   locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationsResult
-
-  """Query to fetch all itineraries(flights, busses, trains)"""
-  searchItineraries(input: ItinerariesSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
 
   """Query to fetch all one way itineraries(flights, busses, trains)"""
   searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection

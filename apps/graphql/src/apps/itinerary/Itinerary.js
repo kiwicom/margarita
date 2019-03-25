@@ -19,14 +19,6 @@ type SearchLocation = {|
   +ids: string[],
 |};
 
-export type ItinerariesCommonSearchParameters = {|
-  +travelFrom: string[],
-  +dateFrom: Date,
-  +dateTo?: Date,
-  +travelTo?: string[],
-  +passengers?: Passengers,
-|};
-
 export type ItinerariesOneWaySearchParameters = {|
   +order?: Order,
   +sort?: Sort,
@@ -48,15 +40,6 @@ export type ItinerariesReturnSearchParameters = {|
     +inboundDate: DateRange,
   |},
   +passengers?: Passengers,
-|};
-export type ItinerariesSearchParameters = {|
-  +travelFrom: string[],
-  +dateFrom: Date,
-  +dateTo?: Date,
-  +travelTo?: string[],
-  +passengers?: Passengers,
-  returnDateFrom?: Date,
-  returnDateTo?: Date,
 |};
 
 export type ItineraryCheckParameters = {|
