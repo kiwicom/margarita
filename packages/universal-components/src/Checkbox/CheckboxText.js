@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
+import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
 
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
   },
   labelChecked: {
     web: {
-      fontWeight: margaritaTokens.fontWeightMedium,
+      fontWeight: designTokens.fontWeightMedium,
     },
   },
   info: {

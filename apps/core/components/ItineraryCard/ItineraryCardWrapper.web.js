@@ -3,12 +3,12 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import {
   StyleSheet,
   Icon,
   LocalizedPrice,
   Button,
+  designTokens,
 } from '@kiwicom/universal-components';
 import {
   withLayoutContext,
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     borderStyle: 'dotted',
-    borderColor: margaritaTokens.borderColorInkLight,
+    borderColor: designTokens.borderColorInkLight,
     borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
   },
 });

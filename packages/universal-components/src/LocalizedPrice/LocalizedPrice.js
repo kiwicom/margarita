@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
+import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextLinkPrimary,
     fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
     web: {
-      color: margaritaTokens.paletteBlueDark,
+      color: designTokens.paletteBlueDark,
       fontSize: 18,
     },
   },

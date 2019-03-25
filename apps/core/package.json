@@ -10,7 +10,6 @@
     "@kiwicom/margarita-navigation": "^0.0.0",
     "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-utils": "^0",
-    "@kiwicom/margarita-design-tokens": "^0",
     "@kiwicom/orbit-design-tokens": "^0.3.0",
     "@kiwicom/universal-components": "0.0.14",
     "geolib": "^2.0.24",

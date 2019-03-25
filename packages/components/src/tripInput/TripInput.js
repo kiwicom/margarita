@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import {
   StyleSheet,
   Icon,
+  designTokens,
   type StylePropType,
 } from '@kiwicom/universal-components';
 
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAttention,
     web: {
       color: defaultTokens.paletteInkNormal,
-      fontWeight: margaritaTokens.fontWeightMedium,
+      fontWeight: designTokens.fontWeightMedium,
     },
   },
 });

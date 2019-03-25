@@ -1,10 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet, Text, designTokens } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 type Props = {|
   +children: React.Node,
@@ -28,13 +27,13 @@ const styles = StyleSheet.create({
   },
   dottedLine: {
     borderStyle: 'dotted',
-    borderColor: margaritaTokens.borderColorInkLight,
+    borderColor: designTokens.borderColorInkLight,
     borderBottomWidth: 1,
     width: parseInt(defaultTokens.widthIconLarge, 10),
     marginEnd: 30,
   },
   stopoverText: {
-    color: margaritaTokens.borderColorInkNormal,
+    color: designTokens.borderColorInkNormal,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
 });

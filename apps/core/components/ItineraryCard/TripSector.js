@@ -3,9 +3,8 @@
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { View, Platform } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import {
   withLayoutContext,
   LAYOUT,
@@ -138,7 +137,7 @@ const styles = StyleSheet.create({
   dateText: {
     web: {
       fontSize: parseFloat(defaultTokens.fontSizeTextNormal),
-      color: margaritaTokens.paletteBlueDark,
+      color: designTokens.paletteBlueDark,
     },
   },
   durationText: {

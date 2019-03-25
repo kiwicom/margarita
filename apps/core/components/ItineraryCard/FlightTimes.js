@@ -3,8 +3,7 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet, Text, designTokens } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import type { FlightTimes_data as FlightTimesType } from './__generated__/FlightTimes_data.graphql';
@@ -35,8 +34,8 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextAttention,
     padding: 5,
     web: {
-      fontWeight: margaritaTokens.fontWeightMedium,
-      color: margaritaTokens.paletteBlueDark,
+      fontWeight: designTokens.fontWeightMedium,
+      color: designTokens.paletteBlueDark,
       padding: 0,
       lineHeight: 17,
     },

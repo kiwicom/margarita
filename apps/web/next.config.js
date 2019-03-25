@@ -18,7 +18,6 @@ module.exports = withImages(
       '@kiwicom/margarita-navigation',
       '@kiwicom/margarita-config',
       '@kiwicom/margarita-map',
-      '@kiwicom/margarita-design-tokens',
     ],
     webpack: (config, { isServer }) => {
       // Bundle Analyzer

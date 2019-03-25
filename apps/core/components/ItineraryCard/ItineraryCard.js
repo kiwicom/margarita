@@ -6,8 +6,12 @@ import { formatPrice } from '@kiwicom/margarita-utils';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
-import { StyleSheet, Hoverable, Card } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Hoverable,
+  Card,
+  designTokens,
+} from '@kiwicom/universal-components';
 
 import RenderTripSectorItem from './RenderTripSectorItem';
 import ItineraryCardWrapper from './ItineraryCardWrapper';
@@ -141,7 +145,7 @@ const styles = StyleSheet.create({
     web: {
       alignSelf: 'center',
       width: '100%',
-      maxWidth: margaritaTokens.widthScreenNormal,
+      maxWidth: designTokens.widthScreenNormal,
       marginBottom: parseInt(defaultTokens.spaceMedium, 10),
       borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
       boxShadow: '0 2px 4px 0 rgba(23,27,30,.1)',

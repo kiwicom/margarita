@@ -2,9 +2,8 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import type { Props } from './ItineraryDetailWrapperTypes';
 
@@ -14,7 +13,7 @@ export default function ItineraryDetailWrapper({ children }: Props) {
 
 const styles = StyleSheet.create({
   container: {
-    borderColor: margaritaTokens.borderColorInkLight,
+    borderColor: designTokens.borderColorInkLight,
     borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
   },
 });

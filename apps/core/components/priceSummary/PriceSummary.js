@@ -2,10 +2,13 @@
 
 import * as React from 'react';
 import { Animated, View } from 'react-native';
-import { StyleSheet, Button } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Button,
+  designTokens,
+} from '@kiwicom/universal-components';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import Expander from './Expander';
 
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     bottom: 0,
     start: 0,
     end: 0,
-    backgroundColor: margaritaTokens.backdropColor,
+    backgroundColor: designTokens.backdropColor,
   },
   container: {
     backgroundColor: defaultTokens.backgroundCard,
