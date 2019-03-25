@@ -12,6 +12,7 @@ import CheckItinerary from './apps/itinerary/queries/CheckItinerary';
 import BookingOneWay from './apps/booking/types/outputs/BookingOneWay';
 import BookingMulticity from './apps/booking/types/outputs/BookingMulticity';
 import BookingReturn from './apps/booking/types/outputs/BookingReturn';
+import GeoIP from './apps/geoIp/queries/GeoIP';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -24,6 +25,7 @@ const schema = new GraphQLSchema({
       searchOneWayItineraries: SearchOneWayItineraries,
       searchReturnItineraries: SearchReturnItineraries,
       checkItinerary: CheckItinerary,
+      geoIP: GeoIP,
     },
   }),
   types: [BookingOneWay, BookingReturn, BookingMulticity],

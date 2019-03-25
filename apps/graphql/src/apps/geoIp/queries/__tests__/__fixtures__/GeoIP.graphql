@@ -1,0 +1,9 @@
+{
+  geoIP(ip: "62.84.146.130") {
+    isoCountryCode
+    coordinates {
+      lat
+      lng
+    }
+  }
+}
