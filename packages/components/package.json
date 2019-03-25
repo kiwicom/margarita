@@ -11,7 +11,7 @@
   "dependencies": {
     "@kiwicom/margarita-config": "^0",
     "@kiwicom/margarita-utils": "^0",
-    "@kiwicom/universal-components": "0.0.14",
+    "@kiwicom/universal-components": "0.0.16",
     "@storybook/react-native": "^4.1.13",
     "ramda": "^0.26.1",
     "react-native-shimmer-placeholder": "https://github.com/tomzaku/react-native-shimmer-placeholder.git#expo"

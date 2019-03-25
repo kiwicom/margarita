@@ -16,7 +16,7 @@
     "rnstl:universal-components": "rnstl --searchDir='../../packages/universal-components/src'"
   },
   "dependencies": {
-    "@kiwicom/universal-components": "0.0.14",
+    "@kiwicom/universal-components": "0.0.16",
     "@storybook/addon-actions": "^4.1.13",
     "@storybook/addon-knobs": "^4.1.13",
     "@storybook/addon-links": "^4.1.13",

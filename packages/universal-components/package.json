@@ -1,6 +1,6 @@
 {
   "name": "@kiwicom/universal-components",
-  "version": "0.0.14",
+  "version": "0.0.16",
   "description": "Component Library for React Native, Expo and React applications",
   "homepage": "https://github.com/kiwicom/universal-components",
   "main": "src/index.js",
@@ -9,7 +9,7 @@
     "storybook:build": "rimraf storybook-static; build-storybook -c storybook -s ./fonts",
     "storybook:mobile": "yarn workspace @kiwicom/margarita-mobile-storybook start:universal-components",
     "prerelease": "node scripts/preparePackageJson.js",
-    "release": "release-it",
+    "release": "release-it --no-git",
     "postrelease": "node scripts/cleanPackageJson.js",
     "build": "rimraf lib && yarn build:generate-icon-types && yarn build:copy:web && yarn build:copy:native && yarn build:copy:flow && yarn build:copy:fonts && yarn build:lib",
     "build:generate-icon-types": "node ./scripts/generateTypes.js",
@@ -38,7 +38,6 @@
     "styled-components": "^4.1.3",
     "memoize-one": "^5.0.0",
     "react-fast-compare": "^2.0.4"
-
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
