@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import {
   TableRow,
   TableRowDivider,
@@ -13,7 +13,6 @@ import {
 } from '@kiwicom/margarita-components';
 import { withNavigation, type Navigation } from '@kiwicom/margarita-navigation';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { PriceSummary } from '../../components/priceSummary';
 
@@ -155,7 +154,7 @@ const styles = StyleSheet.create({
   centeredContainer: {
     web: {
       alignSelf: 'center',
-      maxWidth: margaritaTokens.widthScreenNormal,
+      maxWidth: designTokens.widthScreenNormal,
       alignItems: 'flex-start',
     },
   },

@@ -5,11 +5,11 @@ import { View } from 'react-native';
 import {
   Icon,
   StyleSheet,
+  designTokens,
   type IconNameType,
 } from '@kiwicom/universal-components';
 import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 type Props = {|
   +iconName: IconNameType,
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   infoTextThick: {
     web: {
-      fontWeight: margaritaTokens.fontWeightMedium,
+      fontWeight: designTokens.fontWeightMedium,
     },
   },
   infoLabel: {

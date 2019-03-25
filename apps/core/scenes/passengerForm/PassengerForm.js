@@ -7,9 +7,9 @@ import {
   SegmentedButton,
   Picker,
   TextInput,
+  designTokens,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { DateInput } from '@kiwicom/margarita-components';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 
@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: defaultTokens.paletteWhite,
     width: '100%',
     web: {
-      maxWidth: margaritaTokens.widthScreenNormal,
+      maxWidth: designTokens.widthScreenNormal,
     },
   },
   inputLabel: {

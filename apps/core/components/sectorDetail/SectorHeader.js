@@ -1,10 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { Text, Duration } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 import { View } from 'react-native';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
@@ -46,7 +45,7 @@ const styles = StyleSheet.create({
     fontSize: parseInt(defaultTokens.fontSizeHeadingTitle3, 10),
     color: defaultTokens.colorTextSecondary,
     web: {
-      fontWeight: margaritaTokens.fontWeightMedium,
+      fontWeight: designTokens.fontWeightMedium,
     },
   },
 });

@@ -2,9 +2,12 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
-import { StyleSheet, type StylePropType } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  designTokens,
+  type StylePropType,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 type Props = {|
   +children: React.Node | React.ChildrenArray<React.Node>,
@@ -45,7 +48,7 @@ const styles = StyleSheet.create({
   innerContainer: {
     width: '100%',
     web: {
-      maxWidth: margaritaTokens.widthScreenNormal,
+      maxWidth: designTokens.widthScreenNormal,
     },
   },
 });

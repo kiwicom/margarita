@@ -3,8 +3,8 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
+import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     paddingVertical: 4,
-    fontWeight: margaritaTokens.fontWeightMedium,
+    fontWeight: designTokens.fontWeightMedium,
     color: defaultTokens.colorTextPrimary,
     fontSize: 12,
     lineHeight: 15,

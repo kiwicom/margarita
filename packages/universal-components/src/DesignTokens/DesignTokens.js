@@ -1,6 +1,6 @@
 // @flow
 
-export const margaritaTokens = {
+const designTokens = {
   widthScreenNormal: 720,
   heightStatusBar: 20,
   paletteBlueDark: '#2e353b',
@@ -15,3 +15,5 @@ export const margaritaTokens = {
   colorTextBadgeWarning: '#FFFFFF',
   colorTextBadgeWhite: '#7F91A8',
 };
+
+export default designTokens;

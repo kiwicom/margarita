@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@kiwicom/margarita-config": "^0",
-    "@kiwicom/margarita-design-tokens": "^0",
     "@kiwicom/margarita-utils": "^0",
     "@kiwicom/universal-components": "0.0.14",
     "@storybook/react-native": "^4.1.13",

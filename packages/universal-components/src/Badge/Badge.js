@@ -3,10 +3,10 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
+import { designTokens } from '../DesignTokens';
 import type { BadgeProps, BadgeType } from './BadgeTypes';
 import { textColor, wrapperColor } from './styles';
 
@@ -49,8 +49,8 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
-    lineHeight: margaritaTokens.heightBadge,
-    fontWeight: margaritaTokens.fontWeightMedium,
+    lineHeight: designTokens.heightBadge,
+    fontWeight: designTokens.fontWeightMedium,
     letterSpacing: 0.3,
     color: defaultTokens.colorTextBadgeDark,
   },

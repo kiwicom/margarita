@@ -1,7 +1,8 @@
 // @flow
 
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
+
+import { designTokens } from '../../DesignTokens';
 
 export const wrapperColor = {
   primary: defaultTokens.paletteProductNormal,
@@ -10,8 +11,8 @@ export const wrapperColor = {
   info: defaultTokens.backgroundBadgeInfo,
   neutral: defaultTokens.backgroundBadgeNeutral,
   success: defaultTokens.backgroundBadgeSuccess,
-  warning: margaritaTokens.backgroundBadgeWarning,
-  white: margaritaTokens.backgroundBadgeWhite,
+  warning: designTokens.backgroundBadgeWarning,
+  white: designTokens.backgroundBadgeWhite,
 };
 
 export const textColor = {
@@ -21,6 +22,6 @@ export const textColor = {
   info: defaultTokens.colorTextBadgeInfo,
   neutral: defaultTokens.colorTextBadgeNeutral,
   success: defaultTokens.colorTextBadgeSuccess,
-  warning: margaritaTokens.colorTextBadgeWarning,
-  white: margaritaTokens.colorTextBadgeWhite,
+  warning: designTokens.colorTextBadgeWarning,
+  white: designTokens.colorTextBadgeWhite,
 };
