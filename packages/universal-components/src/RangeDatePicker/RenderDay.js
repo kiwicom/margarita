@@ -9,6 +9,7 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
+import DayItemArrow from './DayItemArrow';
 
 type Props = {|
   +day: Date,
@@ -42,28 +43,32 @@ export default function RenderDay({
   return (
     <View style={styles.container}>
       <Touchable onPress={handlePress} disabled={isDayInPast || isFieldEmpty}>
-        <View
-          style={[
-            styles.dayContainer,
-            isDaySelected && styles.selectedDateContainer,
-          ]}
-        >
-          {!isFieldEmpty && (
-            <>
-              <Text
-                weight="bold"
-                style={[
-                  styles.day,
-                  isDaySelected && styles.selectedDateText,
-                  isDayInPast && styles.dayInPast,
-                ]}
-              >
-                {format(day, 'd')}
-              </Text>
-              {price ?? <DayPrice price={price} />}
-            </>
-          )}
-        </View>
+        <>
+          {isDaySelected && <DayItemArrow style={styles.leftArrow} />}
+          <View
+            style={[
+              styles.dayContainer,
+              isDaySelected && styles.selectedDateContainer,
+            ]}
+          >
+            {!isFieldEmpty && (
+              <>
+                <Text
+                  weight="bold"
+                  style={[
+                    styles.day,
+                    isDaySelected && styles.selectedDateText,
+                    isDayInPast && styles.dayInPast,
+                  ]}
+                >
+                  {format(day, 'd')}
+                </Text>
+                {price ?? <DayPrice price={price} />}
+              </>
+            )}
+          </View>
+          {isDaySelected && <DayItemArrow style={styles.rightArrow} />}
+        </>
       </Touchable>
     </View>
   );
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: designTokens.paddingCalendarItem / 2,
     borderWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderColor: defaultTokens.backgroundCard,
+    borderColor: 'transparent',
     borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
   },
   day: {
@@ -99,5 +104,13 @@ const styles = StyleSheet.create({
   },
   dayInPast: {
     color: defaultTokens.colorTextSecondary,
+  },
+  leftArrow: {
+    start: 0,
+    top: 12,
+  },
+  rightArrow: {
+    end: 0,
+    top: 12,
   },
 });

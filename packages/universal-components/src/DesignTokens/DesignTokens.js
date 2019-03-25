@@ -15,10 +15,13 @@ const designTokens = {
   colorTextBadgeWarning: '#FFFFFF',
   colorTextBadgeWhite: '#7F91A8',
   borderColorCalendarItem: '#07405C',
+  backgroundDayItemEasingArrow: '#b3d6f2',
 
   fontSizeCalendarItem: 18,
   heightCalendarItem: 52,
   paddingCalendarItem: 8,
+
+  durationArrowScaleAnimation: 800,
 };
 
 export default designTokens;
