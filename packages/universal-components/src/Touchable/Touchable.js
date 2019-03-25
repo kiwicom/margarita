@@ -73,6 +73,7 @@ export default class Touchable extends React.Component<Props> {
     } = this.props;
 
     const touchableNativeFeedbackProps = {
+      disabled,
       onPress,
       onLongPress,
       delayPressIn,
