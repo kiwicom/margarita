@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: GeoIP.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+{
+  geoIP(ip: "62.84.146.130") {
+    isoCountryCode
+    coordinates {
+      lat
+      lng
+    }
+  }
+}
+
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "geoIP": {
+      "isoCountryCode": "CZ",
+      "coordinates": {
+        "lat": 50.0848,
+        "lng": 14.411200000000001
+      }
+    }
+  }
+}
+`;
