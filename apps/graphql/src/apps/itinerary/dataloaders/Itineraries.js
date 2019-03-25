@@ -16,6 +16,7 @@ import {
 import type {
   ItinerariesSearchParameters,
   ItinerariesReturnSearchParameters,
+  ItinerariesOneWaySearchParameters,
   ApiResponseType,
   Itinerary,
 } from '../Itinerary';
@@ -53,23 +54,22 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
 };
 
 export const parseParametersNew = (
-  input: ItinerariesReturnSearchParameters,
+  input: ItinerariesReturnSearchParameters | ItinerariesOneWaySearchParameters,
 ) => {
-  const { origin, destination, outboundDate, inboundDate } = input.itinerary;
+  const { origin, destination, outboundDate } = input.itinerary;
+  const inboundDate = input.itinerary.inboundDate
+    ? input.itinerary.inboundDate
+    : null;
 
   const flyFrom = origin.ids.join();
   const flyTo = destination && destination.ids ? destination.ids.join() : null;
 
-  const params = {
+  const commonSearchParams = {
     fly_from: flyFrom,
     ...(input.order && { asc: input.order === 'ASC' ? 1 : 0 }),
     ...(input.sort && { sort: input.sort }),
     date_from: parseDate(outboundDate.start),
     date_to: outboundDate.end ? parseDate(outboundDate.end) : null,
-    ...(inboundDate && {
-      return_from: parseDate(inboundDate.start),
-      ...(inboundDate.end && { return_to: parseDate(inboundDate.end) }),
-    }),
     fly_to: flyTo,
     ...(input.passengers && {
       adults: input.passengers.adults ?? 0,
@@ -78,7 +78,22 @@ export const parseParametersNew = (
     }),
     curr: 'EUR',
   };
-  return params;
+
+  return {
+    ...commonSearchParams,
+    ...addReturnSearchQueryParams(inboundDate),
+  };
+};
+
+const addReturnSearchQueryParams = inboundDate => {
+  return {
+    ...(inboundDate && {
+      return_from: parseDate(inboundDate.start),
+      ...(inboundDate.end && {
+        return_to: parseDate(inboundDate.end),
+      }),
+    }),
+  };
 };
 
 const fetchItineraries = async (

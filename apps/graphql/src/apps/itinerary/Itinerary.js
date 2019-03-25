@@ -45,7 +45,7 @@ export type ItinerariesReturnSearchParameters = {|
     +origin: SearchLocation,
     +destination?: SearchLocation,
     +outboundDate: DateRange,
-    +inboundDate?: DateRange,
+    +inboundDate: DateRange,
   |},
   +passengers?: Passengers,
 |};

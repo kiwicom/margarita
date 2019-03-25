@@ -110,7 +110,8 @@ it('parses validity parameters corectly', () => {
 });
 
 it('parses new parameters correctly', () => {
-  expect(parseParametersNew(searchParamsOneWayNew)).toMatchInlineSnapshot(`
+  expect(parseParametersNew((searchParamsOneWayNew: any)))
+    .toMatchInlineSnapshot(`
 Object {
   "adults": 1,
   "asc": 0,
@@ -124,7 +125,8 @@ Object {
   "sort": "quality",
 }
 `);
-  expect(parseParametersNew(searchParamsReturnNew)).toMatchInlineSnapshot(`
+  expect(parseParametersNew((searchParamsReturnNew: any)))
+    .toMatchInlineSnapshot(`
 Object {
   "adults": 1,
   "asc": 0,
