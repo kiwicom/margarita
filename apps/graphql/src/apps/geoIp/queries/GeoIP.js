@@ -1,6 +1,6 @@
 // @flow
 
-import { GraphQLString, GraphQLNonNull } from 'graphql';
+import { GraphQLString } from 'graphql';
 
 import GraphQLGeoIPType from '../types/outputs/GeoIP';
 import geoIPFech from '../apis';
@@ -11,13 +11,18 @@ type Args = {|
 
 const geoIPQuery = {
   type: GraphQLGeoIPType,
-  description: 'Geography info by an IP address',
+  description:
+    'Geography info by an IP address, if no input provided, it will use request client IP',
   args: {
     ip: {
-      type: GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
   },
-  resolve: (_: mixed, { ip }: Args) => geoIPFech(ip),
+  resolve: (_: mixed, args: Args, { clientIP }: { clientIP: string }) => {
+    const ip = args.ip ?? clientIP;
+
+    return geoIPFech(ip);
+  },
 };
 
 export default geoIPQuery;

@@ -3,9 +3,9 @@
 import fetch from '../../../services/fetch/globalFetch';
 
 export type GeoIP = {|
-  isoCountryCode: ?string,
-  latitude?: number,
-  longitude?: number,
+  +isoCountryCode: ?string,
+  +latitude?: number,
+  +longitude?: number,
 |};
 
 const getGeoIP = (ip: string): Promise<GeoIP> =>
