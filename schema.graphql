@@ -215,6 +215,20 @@ input ItinerariesOneWaySearchInput {
   itinerary: ItineraryOneWayInput!
 }
 
+input ItinerariesReturnSearchInput {
+  """Order of the search"""
+  order: OrderSearchInput
+
+  """Sorting of the search"""
+  sort: SortSearchInput
+
+  """How many passengers are travelling"""
+  passengers: PassengersInput
+
+  """Itinerary for the return search"""
+  itinerary: ItineraryReturnInput!
+}
+
 input ItinerariesSearchInput {
   """Locations IDs for travel from (origin)"""
   travelFrom: [String]!
@@ -292,14 +306,28 @@ type ItineraryEdge {
 }
 
 input ItineraryOneWayInput {
-  """Origin of the flight"""
+  """Origin location of the travel"""
   origin: LocationItineraryInput!
 
-  """Destination of the flight"""
+  """Destination location of the travel"""
   destination: LocationItineraryInput
 
   """Date Range of departure"""
   outboundDate: DateRange!
+}
+
+input ItineraryReturnInput {
+  """Origin location of the travel"""
+  origin: LocationItineraryInput!
+
+  """Destination location of the travel"""
+  destination: LocationItineraryInput
+
+  """Date Range of departure"""
+  outboundDate: DateRange!
+
+  """Date Range of flight back"""
+  inboundDate: DateRange!
 }
 
 type Location {
@@ -444,6 +472,9 @@ type RootQuery {
 
   """Query to fetch all one way itineraries(flights, busses, trains)"""
   searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+
+  """Query to fetch all return itineraries(flights, busses, trains)"""
+  searchReturnItineraries(input: ItinerariesReturnSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
 
   """Check if itinerary is valid and bookable"""
   checkItinerary(input: ItineraryCheckInput!): Itinerary

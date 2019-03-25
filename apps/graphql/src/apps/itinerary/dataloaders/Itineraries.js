@@ -15,7 +15,7 @@ import {
 } from '../helpers/Itineraries';
 import type {
   ItinerariesSearchParameters,
-  ItinerariesOneWaySearchParameters,
+  ItinerariesReturnSearchParameters,
   ApiResponseType,
   Itinerary,
 } from '../Itinerary';
@@ -53,17 +53,23 @@ export const parseParameters = (input: ItinerariesSearchParameters) => {
 };
 
 export const parseParametersNew = (
-  input: ItinerariesOneWaySearchParameters, // @TODO: Later on will be expanded to be the return one with extra fields
+  input: ItinerariesReturnSearchParameters,
 ) => {
-  const { origin, destination, outboundDate } = input.itinerary;
+  const { origin, destination, outboundDate, inboundDate } = input.itinerary;
+
   const flyFrom = origin.ids.join();
   const flyTo = destination && destination.ids ? destination.ids.join() : null;
+
   const params = {
     fly_from: flyFrom,
     ...(input.order && { asc: input.order === 'ASC' ? 1 : 0 }),
     ...(input.sort && { sort: input.sort }),
     date_from: parseDate(outboundDate.start),
     date_to: outboundDate.end ? parseDate(outboundDate.end) : null,
+    ...(inboundDate && {
+      return_from: parseDate(inboundDate.start),
+      ...(inboundDate.end && { return_to: parseDate(inboundDate.end) }),
+    }),
     fly_to: flyTo,
     ...(input.passengers && {
       adults: input.passengers.adults ?? 0,
@@ -89,7 +95,7 @@ const fetchItineraries = async (
 };
 
 const fetchItinerariesNew = async (
-  parameters: $ReadOnlyArray<ItinerariesOneWaySearchParameters>,
+  parameters: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
 ) => {
   const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
     parameters.map(params => {
@@ -148,7 +154,7 @@ export function createItinerariesLoader() {
 export function createItinerariesNewLoader() {
   return new OptimisticDataloader(
     async (
-      keys: $ReadOnlyArray<ItinerariesOneWaySearchParameters>,
+      keys: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
     ): Promise<Array<Itinerary[] | Error>> => fetchItinerariesNew(keys),
     {
       cacheKeyFn: stringify,

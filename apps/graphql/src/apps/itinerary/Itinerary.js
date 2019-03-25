@@ -3,49 +3,58 @@
 import type { Location } from '../location/Location';
 import type { RouteStop } from '../booking/Booking';
 
+type Order = 'ASC' | 'DESC';
+type Sort = 'price' | 'duration' | 'quality' | 'date' | 'popularity';
+type DateRange = {|
+  start: Date,
+  end?: Date,
+|};
+type Passengers = {|
+  +adults?: number,
+  +children?: number,
+  +infants?: number,
+|};
+
+type SearchLocation = {|
+  +ids: string[],
+|};
+
 export type ItinerariesCommonSearchParameters = {|
   +travelFrom: string[],
   +dateFrom: Date,
   +dateTo?: Date,
   +travelTo?: string[],
-  +passengers?: {|
-    +adults?: number,
-    +children?: number,
-    +infants?: number,
-  |},
+  +passengers?: Passengers,
 |};
 
 export type ItinerariesOneWaySearchParameters = {|
-  +order?: 'ASC' | 'DESC',
-  +sort?: 'price' | 'duration' | 'quality' | 'date' | 'popularity',
+  +order?: Order,
+  +sort?: Sort,
   +itinerary: {|
-    +origin: {|
-      +ids: string[],
-    |},
-    +destination?: {|
-      +ids: ?(string[]),
-    |},
-    +outboundDate: {|
-      start: Date,
-      end?: Date,
-    |},
+    +origin: SearchLocation,
+    +destination?: SearchLocation,
+    +outboundDate: DateRange,
   |},
-  +passengers?: {|
-    +adults?: number,
-    +children?: number,
-    +infants?: number,
+  +passengers?: Passengers,
+|};
+
+export type ItinerariesReturnSearchParameters = {|
+  +order?: Order,
+  +sort?: Sort,
+  +itinerary: {|
+    +origin: SearchLocation,
+    +destination?: SearchLocation,
+    +outboundDate: DateRange,
+    +inboundDate?: DateRange,
   |},
+  +passengers?: Passengers,
 |};
 export type ItinerariesSearchParameters = {|
   +travelFrom: string[],
   +dateFrom: Date,
   +dateTo?: Date,
   +travelTo?: string[],
-  +passengers?: {|
-    +adults?: number,
-    +children?: number,
-    +infants?: number,
-  |},
+  +passengers?: Passengers,
   returnDateFrom?: Date,
   returnDateTo?: Date,
 |};
@@ -53,11 +62,7 @@ export type ItinerariesSearchParameters = {|
 export type ItineraryCheckParameters = {|
   +bookingToken: string,
   +bags: number,
-  +passengers: {|
-    +adults?: number,
-    +children?: number,
-    +infants?: number,
-  |},
+  +passengers: Passengers,
 |};
 
 export type Price = {|

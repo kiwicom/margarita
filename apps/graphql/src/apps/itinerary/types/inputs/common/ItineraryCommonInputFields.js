@@ -7,11 +7,11 @@ import DateRange from '../../../../common/types/inputs/DateRange';
 
 export default {
   origin: {
-    description: 'Origin of the flight',
+    description: 'Origin location of the travel',
     type: GraphQLNonNull(LocationItineraryInput),
   },
   destination: {
-    description: 'Destination of the flight',
+    description: 'Destination location of the travel',
     type: LocationItineraryInput,
   },
   outboundDate: {
