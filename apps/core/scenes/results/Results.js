@@ -8,7 +8,8 @@ import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import { ORDINAL_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
-import type { ResultsQueryResponse } from './__generated__/ResultsQuery.graphql';
+import type { ResultsReturnQueryResponse } from './__generated__/ResultsReturnQuery.graphql';
+import type { ResultsOneWayQueryResponse } from './__generated__/ResultsOneWayQuery.graphql';
 import ResultsList from './ResultsList';
 
 type Props = {|
@@ -22,28 +23,86 @@ type Props = {|
   +returnDateTo: string,
 |};
 
+type TripTypes = 'Return' | 'OneWay';
+
 export default class Results extends React.Component<Props> {
-  renderInner = (props: ResultsQueryResponse) => {
-    const { searchReturnItineraries } = props;
-    return <ResultsList data={searchReturnItineraries} />;
+  renderInner = (
+    props: ResultsReturnQueryResponse | ResultsOneWayQueryResponse,
+  ) => {
+    const { searchData } = props;
+    return <ResultsList data={searchData} />;
   };
 
-  render() {
+  getSearchQueryByType = (type: TripTypes) => {
+    let query;
+    switch (type) {
+      case 'Return':
+        query = graphql`
+          query ResultsReturnQuery($input: ItinerariesReturnSearchInput!) {
+            searchData: searchReturnItineraries(input: $input) {
+              ...ResultsList_data
+            }
+          }
+        `;
+        break;
+      case 'OneWay':
+        query = graphql`
+          query ResultsOneWayQuery($input: ItinerariesOneWaySearchInput!) {
+            searchData: searchOneWayItineraries(input: $input) {
+              ...ResultsList_data
+            }
+          }
+        `;
+        break;
+    }
+    return query;
+  };
+
+  parseSearchParametersByType = (type: TripTypes) => {
     const {
       travelFrom,
       travelTo,
-      travelFromName,
-      travelToName,
       dateFrom,
       dateTo,
       returnDateFrom,
       returnDateTo,
     } = this.props;
+    return {
+      itinerary: {
+        origin: {
+          ids: [travelFrom],
+        },
+        destination: {
+          ids: [travelTo],
+        },
+        outboundDate: {
+          start: dateFrom,
+          end: dateTo,
+        },
+        ...(type === 'Return'
+          ? {
+              inboundDate: {
+                start: returnDateFrom,
+                end: returnDateTo,
+              },
+            }
+          : {}),
+      },
+    };
+  };
+
+  render() {
+    const {
+      travelFromName,
+      travelToName,
+      dateFrom,
+      returnDateFrom,
+    } = this.props;
 
     const getFormattedDate = date =>
       DateFNS.format(DateFNS.parseISO(date), ORDINAL_DAY_MONTH_FORMAT);
 
-    const tripType = returnDateFrom ? 'Return' : 'OneWay';
+    const tripType: TripTypes = returnDateFrom ? 'Return' : 'OneWay';
     return (
       <SafeAreaView style={styles.container}>
         <SearchParamsSummary
@@ -60,32 +119,9 @@ export default class Results extends React.Component<Props> {
           }}
         />
         <QueryRenderer
-          query={graphql`
-            query ResultsQuery($input: ItinerariesReturnSearchInput!) {
-              searchReturnItineraries(input: $input) {
-                ...ResultsList_data
-              }
-            }
-          `}
+          query={this.getSearchQueryByType(tripType)}
           variables={{
-            input: {
-              itinerary: {
-                origin: {
-                  ids: [travelFrom],
-                },
-                destination: {
-                  ids: [travelTo],
-                },
-                outboundDate: {
-                  start: dateFrom,
-                  end: dateTo,
-                },
-                inboundDate: {
-                  start: returnDateFrom,
-                  end: returnDateTo,
-                },
-              },
-            },
+            input: this.parseSearchParametersByType(tripType),
           }}
           render={this.renderInner}
         />
