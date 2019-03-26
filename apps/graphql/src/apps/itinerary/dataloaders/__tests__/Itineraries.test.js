@@ -13,7 +13,7 @@ const searchParamsOneWay = {
   },
   itinerary: {
     origin: {
-      ids: ['prague_cz'],
+      ids: ['MGL'],
     },
     destination: {
       ids: ['STN'],
@@ -77,8 +77,8 @@ Object {
   "curr": "EUR",
   "date_from": "01/05/2019",
   "date_to": "03/05/2019",
-  "fly_from": "prague_cz",
-  "fly_to": "STN",
+  "fly_from": "0b",
+  "fly_to": "I3",
   "infants": 0,
   "sort": "quality",
 }
@@ -91,8 +91,8 @@ Object {
   "curr": "EUR",
   "date_from": "01/05/2019",
   "date_to": "03/05/2019",
-  "fly_from": "prague_cz",
-  "fly_to": "STN",
+  "fly_from": "0b",
+  "fly_to": "I3",
   "infants": 0,
   "return_from": "25/05/2019",
   "return_to": "28/05/2019",

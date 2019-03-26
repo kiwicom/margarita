@@ -28,27 +28,8 @@ export const differenceInMinutes = (
   );
 };
 
-export const mapToOpaqueID = (input: any) => {
-  const parsedOriginIds: string[] = input.itinerary.origin.ids.map(id =>
-    fromGlobalId(id),
-  );
-  const parsedDestinationIds: string[] = input.itinerary.destination.ids.map(
-    id => fromGlobalId(id),
-  );
-
-  return {
-    ...input,
-    itinerary: {
-      ...input.itinerary,
-      origin: {
-        ids: parsedOriginIds,
-      },
-      destination: {
-        ids: parsedDestinationIds,
-      },
-    },
-  };
-};
+export const unmaskID = (ids: string[]): string[] =>
+  ids.map(id => fromGlobalId(id));
 
 export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   type: type ?? null,

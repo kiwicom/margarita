@@ -9,7 +9,6 @@ import {
   mapSectors,
   mapVehicle,
   differenceInMinutes,
-  mapToOpaqueID,
 } from '../Itineraries';
 import {
   oneWayRoutesList,
@@ -170,52 +169,5 @@ describe('differenceInMinutes', () => {
     expect(differenceInMinutes()).toBeNull();
     expect(differenceInMinutes(fromISO)).toBeNull();
     expect(differenceInMinutes(null, toISO)).toBeNull();
-  });
-});
-
-describe('mapToOpaqueID', () => {
-  const searchParams = {
-    order: 'DESC',
-    sort: 'quality',
-    passengers: {
-      adults: 1,
-      children: 0,
-      infants: 0,
-    },
-    itinerary: {
-      origin: {
-        ids: ['MGL'],
-      },
-      destination: {
-        ids: ['STN'],
-      },
-      outboundDate: {
-        start: new Date('2019-05-01'),
-        end: new Date('2019-05-03'),
-      },
-    },
-  };
-  it('returns proper formatted ID', () => {
-    expect(mapToOpaqueID(searchParams)).toMatchObject({
-      order: 'DESC',
-      sort: 'quality',
-      passengers: {
-        adults: 1,
-        children: 0,
-        infants: 0,
-      },
-      itinerary: {
-        origin: {
-          ids: ['0b'],
-        },
-        destination: {
-          ids: ['I3'],
-        },
-        outboundDate: {
-          start: new Date('2019-05-01'),
-          end: new Date('2019-05-03'),
-        },
-      },
-    });
   });
 });

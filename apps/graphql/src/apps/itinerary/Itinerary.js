@@ -24,7 +24,7 @@ export type ItinerariesOneWaySearchParameters = {|
   +sort?: Sort,
   +itinerary: {|
     +origin: SearchLocation,
-    +destination: SearchLocation,
+    +destination?: SearchLocation,
     +outboundDate: DateRange,
   |},
   +passengers?: Passengers,
