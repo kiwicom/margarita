@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';
 import { Icon, StyleSheet } from '@kiwicom/universal-components';
-import { format, startOfDay } from 'date-fns';
+import { format } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withLayoutContext,

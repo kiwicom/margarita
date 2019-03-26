@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import * as React from 'react';
 import { View } from 'react-native';
@@ -35,12 +35,12 @@ export default class RangeDatePicker extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate = (prevProps: Props) => {
+  componentDidUpdate(prevProps: Props) {
     const { date } = this.props;
     if (date != null && date !== prevProps.date) {
       this.setState(parsePropsToState(this.props));
     }
-  };
+  }
 
   handleDismiss = () => {
     const { onDismiss } = this.props;

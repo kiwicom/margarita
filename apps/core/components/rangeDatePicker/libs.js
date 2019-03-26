@@ -14,27 +14,9 @@ import {
 } from 'date-fns';
 
 export type MonthDate = {|
-  year: number,
-  month: number,
+  +year: number,
+  +month: number,
 |};
-
-export type MonthsData = {|
-  weeks: Array<Array<Date>>,
-  ...MonthDate,
-|};
-
-// @TODO add tests
-export const getMonthsData = (
-  numberOfRenderedMonths: number,
-): Array<MonthsData> => {
-  const months = getNextMonths(numberOfRenderedMonths);
-  return months.map(monthObject => ({
-    ...monthObject,
-    weeks: getMonthMatrix(monthObject, (day, { isSameMonth }) =>
-      isSameMonth ? new Date(day) : null,
-    ),
-  }));
-};
 
 export const getMonthMatrix = (
   { year, month }: MonthDate,

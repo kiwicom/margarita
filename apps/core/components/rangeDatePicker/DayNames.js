@@ -33,10 +33,10 @@ const styles = StyleSheet.create({
     padding: parseFloat(defaultTokens.spaceXSmall),
   },
   dayNameContainer: {
-    width: RangeDateConfig.dayItemWidth,
-    padding: RangeDateConfig.dayItemSpace / 2,
+    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: RangeDateConfig.dayItemSpace / 2,
   },
   dayName: {
     color: defaultTokens.colorTextSecondary,

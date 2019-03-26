@@ -2,11 +2,10 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
+import { StyleSheet, Text, designTokens } from '@kiwicom/universal-components';
 import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format, isSameDay, isBefore } from 'date-fns';
-import { margaritaTokens } from '@kiwicom/margarita-design-tokens';
 
 import RangeDateConfig from './RangeDateConfig';
 
@@ -58,7 +57,7 @@ export default function RenderDay({
             >
               {format(day, 'd')}
             </Text>
-            {price && <DayPrice price={price} />}
+            {price ?? <DayPrice price={price} />}
           </>
         )}
       </View>
@@ -78,14 +77,14 @@ const styles = StyleSheet.create({
     borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
   },
   day: {
-    fontSize: margaritaTokens.fontSizeCalendarItem,
+    fontSize: designTokens.fontSizeCalendarItem,
   },
   price: {
     fontSize: parseFloat(defaultTokens.fontSizeTextSmall),
     color: defaultTokens.colorTextSecondary,
   },
   selectedDateContainer: {
-    borderColor: margaritaTokens.borderColorCalendarItem,
+    borderColor: designTokens.borderColorCalendarItem,
     backgroundColor: defaultTokens.backgroundButtonInfo,
   },
   selectedDateText: {

@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import * as React from 'react';
 import { Animated, View } from 'react-native';

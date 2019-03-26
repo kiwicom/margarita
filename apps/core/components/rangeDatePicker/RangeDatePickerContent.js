@@ -5,45 +5,46 @@ import { View, FlatList } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { getMonthsData, type MonthsData } from './libs';
+import { getNextMonths, type MonthDate } from './libs';
 import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
 import RangeDateConfig from './RangeDateConfig';
 
 type Props = {|
-  onDayPress: Date => void,
-  selectedDate: Date,
+  +onDayPress: Date => void,
+  +selectedDate: Date,
 |};
 
-export default class DatePicker extends React.Component<Props> {
-  static monthsData: Array<MonthsData> = getMonthsData(
+export default class RangeDatePickerContent extends React.Component<Props> {
+  static nextMonths: Array<MonthDate> = getNextMonths(
     RangeDateConfig.numberOfRenderedMonths,
   );
 
-  renderMonthItem = ({ item }: {| +item: MonthsData |}) => {
+  renderMonthItem = ({ item }: {| +item: MonthDate |}) => {
     return (
       <RenderMonth
-        data={item}
+        monthDate={item}
         onDayPress={this.props.onDayPress}
         selectedDate={this.props.selectedDate}
       />
     );
   };
 
-  keyExtractor = (item: MonthsData, index: number) =>
+  keyExtractor = (item: MonthDate, index: number) =>
     `month-${item.year}-${item.month}-${index}`;
 
   render() {
     return (
       <View style={styles.container}>
         <DayNames />
-        {DatePicker.monthsData && (
+        {RangeDatePickerContent.nextMonths && (
           <FlatList
             contentContainerStyle={styles.monthsContainer}
-            data={DatePicker.monthsData}
+            data={RangeDatePickerContent.nextMonths}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderMonthItem}
             extraData={this.props.selectedDate}
+            initialNumToRender={2}
           />
         )}
       </View>
@@ -54,7 +55,9 @@ export default class DatePicker extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     height: 428,
-    minWidth: 382,
+    web: {
+      minWidth: 382,
+    },
   },
   monthsContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
