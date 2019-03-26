@@ -2,6 +2,7 @@
 
 import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
+import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
 import type { ApiRouteItem, Sector, Segment } from '../Itinerary';
 import type { RouteStop } from '../../booking/Booking';
@@ -25,6 +26,28 @@ export const differenceInMinutes = (
     ),
     10,
   );
+};
+
+export const mapToOpaqueID = (input: any) => {
+  const parsedOriginIds: string[] = input.itinerary.origin.ids.map(id =>
+    fromGlobalId(id),
+  );
+  const parsedDestinationIds: string[] = input.itinerary.destination.ids.map(
+    id => fromGlobalId(id),
+  );
+
+  return {
+    ...input,
+    itinerary: {
+      ...input.itinerary,
+      origin: {
+        ids: parsedOriginIds,
+      },
+      destination: {
+        ids: parsedDestinationIds,
+      },
+    },
+  };
 };
 
 export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
