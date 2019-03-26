@@ -25,3 +25,6 @@ export { default as Profile } from './scenes/profile/Profile';
 export {
   default as SearchContextProvider,
 } from './scenes/search/SearchContext';
+export {
+  default as UserContextProvider,
+} from './components/userContext/UserContext';

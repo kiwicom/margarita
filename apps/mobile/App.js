@@ -6,7 +6,10 @@ import {
   type NavigationContainer,
   type NavigationState,
 } from 'react-navigation';
-import { SearchContextProvider } from '@kiwicom/margarita-core';
+import {
+  SearchContextProvider,
+  UserContextProvider,
+} from '@kiwicom/margarita-core';
 import { AlertContextProvider } from '@kiwicom/margarita-components';
 import { LayoutContextProvider } from '@kiwicom/margarita-utils';
 
@@ -24,11 +27,13 @@ const AppContainer: NavigationContainer<
 export default function App() {
   return (
     <LayoutContextProvider>
-      <SearchContextProvider>
-        <AlertContextProvider>
-          <AppContainer />
-        </AlertContextProvider>
-      </SearchContextProvider>
+      <UserContextProvider>
+        <SearchContextProvider>
+          <AlertContextProvider>
+            <AppContainer />
+          </AlertContextProvider>
+        </SearchContextProvider>
+      </UserContextProvider>
     </LayoutContextProvider>
   );
 }

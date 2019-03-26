@@ -1,18 +1,27 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet, Button, Card } from '@kiwicom/universal-components';
+import { StyleSheet, Card } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { Illustration, ContentContainer } from '@kiwicom/margarita-components';
+
 import {
-  Illustration,
-  ContentContainer,
-  Text,
-} from '@kiwicom/margarita-components';
+  withUserContext,
+  type UserContextState,
+} from '../../components/userContext/UserContext';
+import SignOut from './SignOut';
+import SignIn from './SignIn';
 
-type Props = {||};
+type Props = {|
+  +isUserSignedIn: boolean,
+|};
 
-export default class Profile extends React.Component<Props> {
+class Profile extends React.Component<Props> {
   handleSignIn = () => {
+    // @TODO
+  };
+
+  handleSignOut = () => {
     // @TODO
   };
 
@@ -21,13 +30,11 @@ export default class Profile extends React.Component<Props> {
       <ContentContainer>
         <Illustration name="Lounge" style={styles.illustration} />
         <Card style={styles.card}>
-          <Text size="large" type="primary" weight="bold">
-            Sign In
-          </Text>
-          <Text size="small" type="secondary" style={styles.description}>
-            Sign in to see your bookings and tickets
-          </Text>
-          <Button onPress={this.handleSignIn} label="Sign In" />
+          {this.props.isUserSignedIn ? (
+            <SignOut onPress={this.handleSignOut} />
+          ) : (
+            <SignIn onPress={this.handleSignIn} />
+          )}
         </Card>
       </ContentContainer>
     );
@@ -39,7 +46,10 @@ const styles = StyleSheet.create({
     paddingTop: parseInt(defaultTokens.spaceMedium, 10),
     paddingBottom: parseInt(defaultTokens.spaceLarge, 10),
   },
-  description: {
-    marginVertical: parseInt(defaultTokens.spaceSmall, 10),
-  },
 });
+
+const selectUserContextState = ({ isUserSignedIn }: UserContextState) => ({
+  isUserSignedIn,
+});
+
+export default withUserContext(selectUserContextState)(Profile);
