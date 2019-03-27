@@ -4,6 +4,15 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /universal-components\/src\/.*\.js$/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['babel-preset-expo'],
+          },
+        },
+      },
+      {
         test: /\.(png|jpe?g|gif)$/,
         use:
           'react-native-web-image-loader?name=[name].[ext]&scalings[@2x]=2&scalings[-3x]=3',
