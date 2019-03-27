@@ -3,19 +3,27 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { format } from 'date-fns';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 import { designTokens } from '../DesignTokens';
+import { getCurrentWeekArray, type WeekStarts } from './libs';
 
-const dayNames = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+type Props = {|
+  weekStartsOn: WeekStarts,
+|};
+
+const getDayNames = weekStartsOn =>
+  getCurrentWeekArray(new Date(), weekStartsOn).map(day => format(day, 'E'));
 
 const DayName = ({ name }) => (
   <View style={styles.dayNameContainer}>
     <Text style={styles.dayName}>{name}</Text>
   </View>
 );
-export default function DayNames() {
+export default function DayNames({ weekStartsOn }: Props) {
+  const dayNames = getDayNames(weekStartsOn);
   return (
     <View style={styles.container}>
       {dayNames.map<React.Node>(dayName => (

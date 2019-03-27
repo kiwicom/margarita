@@ -135,6 +135,7 @@ class Datepickers extends React.Component<Props, State> {
           onDismiss={this.handleDatePickerDismiss}
           labels={{ cancel: 'Cancel', confirm: 'OK' }}
           numberOfRenderedMonths={12}
+          weekStartsOn={1}
         />
       </>
     );

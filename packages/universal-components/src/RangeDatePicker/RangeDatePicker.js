@@ -59,7 +59,12 @@ export default class RangeDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, labels, numberOfRenderedMonths } = this.props;
+    const {
+      isVisible,
+      labels,
+      numberOfRenderedMonths,
+      weekStartsOn,
+    } = this.props;
 
     return (
       <Modal
@@ -72,6 +77,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
             selectedDate={this.state.date}
             onDayPress={this.handleChangeDate}
             numberOfRenderedMonths={numberOfRenderedMonths}
+            weekStartsOn={weekStartsOn}
           />
           <View style={styles.buttonsContainer}>
             <Touchable

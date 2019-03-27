@@ -10,7 +10,7 @@ import isEqual from 'react-fast-compare';
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
 import RenderWeek from './RenderWeek';
-import { type MonthDate, getMonthMatrix } from './libs';
+import { type MonthDate, getMonthMatrix, type WeekStarts } from './libs';
 
 const MONTH_NAME_FORMAT = 'MMMM';
 
@@ -18,6 +18,7 @@ type Props = {|
   +monthDate: MonthDate,
   +onDayPress: Date => void,
   +selectedDate: Date,
+  +weekStartsOn: WeekStarts,
 |};
 
 const checkDate = props =>
@@ -31,8 +32,10 @@ export default class RenderMonth extends React.Component<Props> {
   }
 
   getWeeks = memoize((monthDate: MonthDate) => {
-    return getMonthMatrix(monthDate, (day, { isSameMonth }) =>
-      isSameMonth ? new Date(day) : null,
+    return getMonthMatrix(
+      monthDate,
+      this.props.weekStartsOn,
+      (day, { isSameMonth }) => (isSameMonth ? new Date(day) : null),
     );
   }, isEqual);
 

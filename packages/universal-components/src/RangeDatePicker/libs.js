@@ -5,12 +5,12 @@ import {
   getMonth,
   getYear,
   eachDayOfInterval,
-  endOfISOWeek,
   endOfMonth,
   isSameMonth,
-  startOfISOWeek,
   startOfMonth,
   eachWeekOfInterval,
+  startOfWeek,
+  endOfWeek,
 } from 'date-fns';
 
 export type MonthDate = {|
@@ -18,8 +18,18 @@ export type MonthDate = {|
   +month: number,
 |};
 
+export type WeekStarts = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+export const getCurrentWeekArray = (day: Date, weekStartsOn: WeekStarts) => {
+  return eachDayOfInterval({
+    start: startOfWeek(day, { weekStartsOn }),
+    end: endOfWeek(day, { weekStartsOn }),
+  });
+};
+
 export const getMonthMatrix = (
   { year, month }: MonthDate,
+  weekStartsOn: WeekStarts,
   convertDate: (Date, Object) => ?Date,
 ) => {
   const date = new Date(year, month);
@@ -28,13 +38,10 @@ export const getMonthMatrix = (
       start: startOfMonth(date),
       end: endOfMonth(date),
     },
-    { weekStartsOn: 1 },
+    { weekStartsOn },
   );
   return matrix.map<Array<any>>(weekDay =>
-    eachDayOfInterval({
-      start: startOfISOWeek(weekDay),
-      end: endOfISOWeek(weekDay),
-    }).map(day =>
+    getCurrentWeekArray(weekDay, weekStartsOn).map(day =>
       convertDate(day, {
         isSameMonth: isSameMonth(date, day),
       }),

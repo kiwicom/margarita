@@ -5,7 +5,7 @@ import { View, FlatList } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
-import { getNextMonths, type MonthDate } from './libs';
+import { getNextMonths, type MonthDate, type WeekStarts } from './libs';
 import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
 
@@ -13,6 +13,7 @@ type Props = {|
   +onDayPress: Date => void,
   +selectedDate: Date,
   +numberOfRenderedMonths: number,
+  +weekStartsOn: WeekStarts,
 |};
 
 type State = {|
@@ -36,6 +37,7 @@ export default class RangeDatePickerContent extends React.Component<
         monthDate={item}
         onDayPress={this.props.onDayPress}
         selectedDate={this.props.selectedDate}
+        weekStartsOn={this.props.weekStartsOn}
       />
     );
   };
@@ -46,7 +48,7 @@ export default class RangeDatePickerContent extends React.Component<
   render() {
     return (
       <View style={styles.container}>
-        <DayNames />
+        <DayNames weekStartsOn={this.props.weekStartsOn} />
         {this.state.nextMonths && (
           <FlatList
             contentContainerStyle={styles.monthsContainer}
