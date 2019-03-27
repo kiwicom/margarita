@@ -3,8 +3,12 @@
 import * as React from 'react';
 import { Platform } from 'react-native';
 import { TripInput } from '@kiwicom/margarita-components';
-import { Icon, DatePicker, StyleSheet } from '@kiwicom/universal-components';
-import { format, startOfDay } from 'date-fns';
+import {
+  Icon,
+  StyleSheet,
+  RangeDatePicker,
+} from '@kiwicom/universal-components';
+import { format } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withLayoutContext,
@@ -124,14 +128,14 @@ class Datepickers extends React.Component<Props, State> {
             />
           )}
         </PickersWrapper>
-        <DatePicker
+        <RangeDatePicker
           isVisible={this.state.isDatePickerVisible}
-          mode={'date'}
           date={datePickerDate}
-          minDate={startOfDay(new Date())}
           onConfirm={this.handleDateChange}
           onDismiss={this.handleDatePickerDismiss}
           labels={{ cancel: 'Cancel', confirm: 'OK' }}
+          numberOfRenderedMonths={12}
+          weekStartsOn={1}
         />
       </>
     );

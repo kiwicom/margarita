@@ -6,6 +6,7 @@ import type { StylePropType } from '@kiwicom/universal-components';
 
 type Props = {|
   +onPress: () => void,
+  +disabled?: boolean,
   +children: React.Node,
   +accessibilityTraits: string,
   +accessibilityComponentType: string,

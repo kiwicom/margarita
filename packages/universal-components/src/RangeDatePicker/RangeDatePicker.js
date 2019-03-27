@@ -1,30 +1,29 @@
 // @flow
 
 import * as React from 'react';
-import { View, DatePickerIOS } from 'react-native';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Text } from '../Text';
 import { Modal } from '../Modal';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
-import type { Props } from './DatePickerTypes';
+import type { Props } from './RangeDatePickerTypes';
+import RangeDatePickerContent from './RangeDatePickerContent';
 
 type State = {
   date: Date,
 };
 
-const parsePropsToState = ({ date }: Props) => {
+const parseDatePropsToState = ({ date }: Props) => {
   const tempDate = date ?? new Date();
   return {
     date: tempDate,
   };
 };
 
-export default class iOSDatePicker extends React.Component<Props, State> {
-  static defaultProps = {
-    mode: 'date',
-  };
+export default class RangeDatePicker extends React.Component<Props, State> {
+  // @TODO load price for days
 
   constructor(props: Props) {
     super(props);
@@ -34,17 +33,17 @@ export default class iOSDatePicker extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate = (prevProps: Props) => {
+  componentDidUpdate(prevProps: Props) {
     const { date } = this.props;
     if (date != null && date !== prevProps.date) {
-      this.setState(parsePropsToState(this.props));
+      this.setState(parseDatePropsToState(this.props));
     }
-  };
+  }
 
   handleDismiss = () => {
     const { onDismiss } = this.props;
     onDismiss();
-    this.setState(parsePropsToState(this.props));
+    this.setState(parseDatePropsToState(this.props));
   };
 
   handleConfirm = () => {
@@ -60,9 +59,12 @@ export default class iOSDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible, labels, mode, maxDate, minDate } = this.props;
-
-    const { date } = this.state;
+    const {
+      isVisible,
+      labels,
+      numberOfRenderedMonths,
+      weekStartsOn,
+    } = this.props;
 
     return (
       <Modal
@@ -71,12 +73,11 @@ export default class iOSDatePicker extends React.Component<Props, State> {
         onBackdropPress={this.handleDismiss}
       >
         <View style={styles.content}>
-          <DatePickerIOS
-            date={date}
-            onDateChange={this.handleChangeDate}
-            mode={mode}
-            maximumDate={maxDate}
-            minimumDate={minDate}
+          <RangeDatePickerContent
+            selectedDate={this.state.date}
+            onDayPress={this.handleChangeDate}
+            numberOfRenderedMonths={numberOfRenderedMonths}
+            weekStartsOn={weekStartsOn}
           />
           <View style={styles.buttonsContainer}>
             <Touchable
@@ -103,6 +104,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'white',
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
+    overflow: 'hidden',
   },
   confirmButton: {
     borderColor: defaultTokens.paletteWhite,

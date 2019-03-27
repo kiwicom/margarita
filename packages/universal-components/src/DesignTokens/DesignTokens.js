@@ -14,6 +14,11 @@ const designTokens = {
   backgroundBadgeWhite: '#F5F7F9',
   colorTextBadgeWarning: '#FFFFFF',
   colorTextBadgeWhite: '#7F91A8',
+  borderColorCalendarItem: '#07405C',
+
+  fontSizeCalendarItem: 18,
+  heightCalendarItem: 52,
+  paddingCalendarItem: 8,
 };
 
 export default designTokens;

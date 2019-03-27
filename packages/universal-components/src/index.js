@@ -35,6 +35,7 @@ export {
   MenuItemWrapper,
   MenuDescription,
 } from './MenuGroup';
+export { RangeDatePicker } from './RangeDatePicker';
 export { Picker } from './Picker';
 export { PickerButton } from './PickerButton';
 
