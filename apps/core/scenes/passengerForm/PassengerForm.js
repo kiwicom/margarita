@@ -13,7 +13,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { DateInput } from '@kiwicom/margarita-components';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 
-import BaggageBundles from './BaggageBundles';
+import BaggageBundles from './baggageBundles/BaggageBundles';
 
 type Props = {||};
 

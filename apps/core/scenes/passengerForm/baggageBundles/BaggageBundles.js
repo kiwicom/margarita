@@ -1,8 +1,10 @@
 // @flow
 
 import * as React from 'react';
-import { Card } from '@kiwicom/universal-components';
 import { HeaderWithIcon } from '@kiwicom/margarita-components';
+import { View } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Header from './Header';
 import BaggageBundle from './BaggageBundle';
@@ -137,7 +139,7 @@ export default class BaggageBundles extends React.Component<{||}, State> {
 
   render() {
     return (
-      <Card>
+      <View style={styles.container}>
         <HeaderWithIcon label="Baggage bundles" iconName="baggage-set" />
         <Header text="Cabin baggage" />
         {data[0].bundles.map((bundle, index) => {
@@ -167,7 +169,13 @@ export default class BaggageBundles extends React.Component<{||}, State> {
             />
           );
         })}
-      </Card>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: parseFloat(defaultTokens.spaceSmall),
+  },
+});

@@ -39,16 +39,14 @@ export default function BaggageBundle({
   }
 
   return (
-    <View
+    <RadioButton
+      type="check"
+      checked={shouldBeChecked}
+      onPress={handleToggleCheck}
       style={[styles.container, shouldBeChecked && styles.containerChecked]}
     >
       <View style={styles.row}>
-        <RadioButton
-          type="check"
-          checked={shouldBeChecked}
-          onPress={handleToggleCheck}
-        />
-        <View style={styles.baggageDetails}>
+        <View>
           {bags.map((bag, index) => {
             return (
               <BaggageTypeDetail
@@ -62,9 +60,9 @@ export default function BaggageBundle({
             );
           })}
         </View>
+        <Text>{price}</Text>
       </View>
-      <Text>{price}</Text>
-    </View>
+    </RadioButton>
   );
 }
 
@@ -74,18 +72,14 @@ const borderWidthDiff = checkedBorderWidth - borderWidth;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     padding: parseFloat(defaultTokens.spaceXSmall),
     marginTop: parseFloat(defaultTokens.spaceSmall),
-    marginHorizontal: parseFloat(defaultTokens.spaceSmall),
     marginBottom: parseFloat(defaultTokens.spaceXXXSmall),
+    backgroundColor: defaultTokens.paletteWhite,
     borderWidth,
-    borderStyle: 'solid',
     borderColor: defaultTokens.borderColorTableCell,
     borderRadius: 4,
     shadowColor: defaultTokens.paletteInkDark,
-    backgroundColor: 'white',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -93,14 +87,14 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.3,
     shadowRadius: 4,
   },
-  row: {
-    flexDirection: 'row',
-  },
   containerChecked: {
     borderColor: defaultTokens.borderColorButtonPrimaryBordered,
     borderWidth: checkedBorderWidth,
-    marginTop: parseFloat(defaultTokens.spaceSmall) - borderWidthDiff,
-    marginHorizontal: parseFloat(defaultTokens.spaceSmall) - borderWidthDiff,
-    marginBottom: parseFloat(defaultTokens.spaceXXXSmall) - borderWidthDiff,
+    padding: parseFloat(defaultTokens.spaceXSmall) - borderWidthDiff,
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
 });
