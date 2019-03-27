@@ -2,8 +2,8 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
 
+import { StyleSheet } from '../PlatformStyleSheet';
 import RenderDay from './RenderDay';
 
 type Props = {|

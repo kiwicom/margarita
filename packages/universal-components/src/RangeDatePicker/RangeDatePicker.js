@@ -3,13 +3,11 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import {
-  Text,
-  Modal,
-  Touchable,
-  StyleSheet,
-} from '@kiwicom/universal-components';
 
+import { Text } from '../Text';
+import { Modal } from '../Modal';
+import { Touchable } from '../Touchable';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
 
@@ -17,7 +15,7 @@ type State = {
   date: Date,
 };
 
-const parsePropsToState = ({ date }: Props) => {
+const parseDatePropsToState = ({ date }: Props) => {
   const tempDate = date ?? new Date();
   return {
     date: tempDate,
@@ -38,14 +36,14 @@ export default class RangeDatePicker extends React.Component<Props, State> {
   componentDidUpdate(prevProps: Props) {
     const { date } = this.props;
     if (date != null && date !== prevProps.date) {
-      this.setState(parsePropsToState(this.props));
+      this.setState(parseDatePropsToState(this.props));
     }
   }
 
   handleDismiss = () => {
     const { onDismiss } = this.props;
     onDismiss();
-    this.setState(parsePropsToState(this.props));
+    this.setState(parseDatePropsToState(this.props));
   };
 
   handleConfirm = () => {
@@ -61,7 +59,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
   };
 
   render() {
-    const { isVisible } = this.props;
+    const { isVisible, labels, numberOfRenderedMonths } = this.props;
 
     return (
       <Modal
@@ -73,19 +71,20 @@ export default class RangeDatePicker extends React.Component<Props, State> {
           <RangeDatePickerContent
             selectedDate={this.state.date}
             onDayPress={this.handleChangeDate}
+            numberOfRenderedMonths={numberOfRenderedMonths}
           />
           <View style={styles.buttonsContainer}>
             <Touchable
               onPress={this.handleDismiss}
               style={styles.confirmButton}
             >
-              <Text style={styles.buttonText}>Cancel</Text>
+              <Text style={styles.buttonText}>{labels.cancel}</Text>
             </Touchable>
             <Touchable
               style={styles.confirmButton}
               onPress={this.handleConfirm}
             >
-              <Text style={styles.buttonText}>OK</Text>
+              <Text style={styles.buttonText}>{labels.confirm}</Text>
             </Touchable>
           </View>
         </View>

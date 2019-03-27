@@ -17,6 +17,8 @@ const designTokens = {
   borderColorCalendarItem: '#07405C',
 
   fontSizeCalendarItem: 18,
+  heightCalendarItem: 52,
+  paddingCalendarItem: 8,
 };
 
 export default designTokens;

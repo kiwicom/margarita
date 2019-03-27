@@ -2,16 +2,17 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
-import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format } from 'date-fns';
-import { MONTH_NAME_FORMAT } from '@kiwicom/margarita-config';
 import memoize from 'memoize-one';
-import { equals } from 'ramda';
+import isEqual from 'react-fast-compare';
 
+import { Text } from '../Text';
+import { StyleSheet } from '../PlatformStyleSheet';
 import RenderWeek from './RenderWeek';
 import { type MonthDate, getMonthMatrix } from './libs';
+
+const MONTH_NAME_FORMAT = 'MMMM';
 
 type Props = {|
   +monthDate: MonthDate,
@@ -19,12 +20,13 @@ type Props = {|
   +selectedDate: Date,
 |};
 
+const checkDate = props =>
+  props.selectedDate &&
+  props.selectedDate.getMonth() === props.monthDate.month &&
+  props.selectedDate.getFullYear() === props.monthDate.year;
+
 export default class RenderMonth extends React.Component<Props> {
   shouldComponentUpdate(nextProps: Props) {
-    const checkDate = props =>
-      props.selectedDate &&
-      props.selectedDate.getMonth() === props.monthDate.month &&
-      props.selectedDate.getFullYear() === props.monthDate.year;
     return checkDate(nextProps) || checkDate(this.props);
   }
 
@@ -32,7 +34,7 @@ export default class RenderMonth extends React.Component<Props> {
     return getMonthMatrix(monthDate, (day, { isSameMonth }) =>
       isSameMonth ? new Date(day) : null,
     );
-  }, equals);
+  }, isEqual);
 
   render() {
     const { monthDate, onDayPress, selectedDate } = this.props;

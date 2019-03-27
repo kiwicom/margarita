@@ -2,12 +2,13 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Text, designTokens } from '@kiwicom/universal-components';
-import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format, isSameDay, isBefore } from 'date-fns';
 
-import RangeDateConfig from './RangeDateConfig';
+import { StyleSheet } from '../PlatformStyleSheet';
+import { designTokens } from '../DesignTokens';
+import { Text } from '../Text';
+import { Touchable } from '../Touchable';
 
 type Props = {|
   +day: Date,
@@ -36,42 +37,48 @@ export default function RenderDay({
 
   const isDaySelected = isSameDay(selectedDate, day);
   const isDayInPast = isBefore(day, new Date());
+  const isFieldEmpty = day == null;
 
   return (
-    <TouchableWithoutFeedback onPress={handlePress} disabled={isDayInPast}>
-      <View
-        style={[
-          styles.dayContainer,
-          isDaySelected && styles.selectedDateContainer,
-        ]}
-      >
-        {day != null && (
-          <>
-            <Text
-              weight="bold"
-              style={[
-                styles.day,
-                isDaySelected && styles.selectedDateText,
-                isDayInPast && styles.dayInPast,
-              ]}
-            >
-              {format(day, 'd')}
-            </Text>
-            {price ?? <DayPrice price={price} />}
-          </>
-        )}
-      </View>
-    </TouchableWithoutFeedback>
+    <View style={styles.container}>
+      <Touchable onPress={handlePress} disabled={isDayInPast || isFieldEmpty}>
+        <View
+          style={[
+            styles.dayContainer,
+            isDaySelected && styles.selectedDateContainer,
+          ]}
+        >
+          {!isFieldEmpty && (
+            <>
+              <Text
+                weight="bold"
+                style={[
+                  styles.day,
+                  isDaySelected && styles.selectedDateText,
+                  isDayInPast && styles.dayInPast,
+                ]}
+              >
+                {format(day, 'd')}
+              </Text>
+              {price ?? <DayPrice price={price} />}
+            </>
+          )}
+        </View>
+      </Touchable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   dayContainer: {
     flex: 1,
-    minHeight: RangeDateConfig.dayItemHeight,
+    minHeight: designTokens.heightCalendarItem,
     alignItems: 'center',
     justifyContent: 'center',
-    padding: RangeDateConfig.dayItemSpace / 2,
+    padding: designTokens.paddingCalendarItem / 2,
     borderWidth: parseFloat(defaultTokens.borderWidthCard),
     borderColor: defaultTokens.backgroundCard,
     borderRadius: parseFloat(defaultTokens.borderRadiusNormal),
