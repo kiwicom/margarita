@@ -1,7 +1,6 @@
 // @flow
 
 import { GraphQLID, GraphQLNonNull } from 'graphql';
-import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import BookingInterface from '../types/outputs/BookingInterface';
@@ -24,8 +23,7 @@ const BookingDetail = {
     args: Args,
     { dataLoader }: GraphqlContextType,
   ) => {
-    const bookingId = fromGlobalId(args.id);
-    const booking = dataLoader.booking.load(bookingId);
+    const booking = dataLoader.booking.load(args.id);
 
     return booking;
   },

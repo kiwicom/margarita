@@ -2,6 +2,7 @@
 
 import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
+import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
 import type { ApiRouteItem, Sector, Segment } from '../Itinerary';
 import type { RouteStop } from '../../booking/Booking';
@@ -26,6 +27,9 @@ export const differenceInMinutes = (
     10,
   );
 };
+
+export const unmaskID = (ids: string[]): string[] =>
+  ids.map(id => fromGlobalId(id));
 
 export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   type: type ?? null,

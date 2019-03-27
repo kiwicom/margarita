@@ -20,10 +20,10 @@ fragment RouteStopFragment on RouteStop {
   },
   itinerary: {
     origin: {
-      ids: ["prague_cz"],
+      ids: ["TG9jYXRpb246cHJhZ3VlX2N6"],
     },
     destination: {
-      ids: ["STN"],
+      ids: ["TG9jYXRpb246bG9uZG9uX2di"],
     },
     outboundDate: {
       start: "2019-05-01",
@@ -168,10 +168,10 @@ fragment RouteStopFragment on RouteStop {
   },
   itinerary: {
     origin: {
-      ids: ["prague_cz"],
+      ids: ["TG9jYXRpb246cHJhZ3VlX2N6"],
     },
     destination: {
-      ids: ["STN"],
+      ids: ["TG9jYXRpb246bG9uZG9uX2di"],
     },
     outboundDate: {
       start: "2019-05-01",

@@ -12,6 +12,7 @@ import {
   mapDate,
   getItineraryType,
   mapSectors,
+  unmaskID,
 } from '../helpers/Itineraries';
 import type {
   ItinerariesReturnSearchParameters,
@@ -34,8 +35,9 @@ export const parseParameters = (
     ? input.itinerary.inboundDate
     : null;
 
-  const flyFrom = origin.ids.join();
-  const flyTo = destination && destination.ids ? destination.ids.join() : null;
+  const flyFrom = unmaskID(origin.ids).join();
+  const flyTo =
+    destination && destination.ids ? unmaskID(destination.ids).join() : null;
 
   const commonSearchParams = {
     fly_from: flyFrom,
