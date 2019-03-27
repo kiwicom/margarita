@@ -80,8 +80,8 @@ class Search extends React.Component<Props> {
       });
     } else {
       this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: this.convertLocationsToParams(travelFrom, 'locationId'),
-        travelTo: this.convertLocationsToParams(travelTo, 'locationId'),
+        travelFrom: this.convertLocationsToParams(travelFrom, 'id'),
+        travelTo: this.convertLocationsToParams(travelTo, 'id'),
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         dateFrom: format(dateFrom, BASIC_ISO_DATE_FORMAT),
