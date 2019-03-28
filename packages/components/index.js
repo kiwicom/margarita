@@ -71,6 +71,7 @@ export type {
 } from './src/passengerCard/PassengerCardTypes';
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
 export { default as DateInput } from './src/dateInput/DateInput';
+export { SortTabs } from './src/sortTabs';
 export {
   default as ContentContainer,
 } from './src/contentContainer/ContentContainer';
