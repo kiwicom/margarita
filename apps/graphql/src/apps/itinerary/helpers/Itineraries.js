@@ -4,7 +4,12 @@ import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
-import type { ApiRouteItem, Sector, Segment } from '../Itinerary';
+import type {
+  ApiRouteItem,
+  Sector,
+  Segment,
+  SearchLocation,
+} from '../Itinerary';
 import type { RouteStop } from '../../booking/Booking';
 
 export const differenceInMinutes = (
@@ -35,6 +40,17 @@ export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   type: type ?? null,
   uniqueNo: uniqueNo ?? null,
 });
+
+export const slugsNeedParsing = (location: ?SearchLocation): boolean => {
+  return location?.ids == null && location?.slugs != null;
+};
+
+export const unmaskReplaceIds = (location: ?SearchLocation): SearchLocation => {
+  return {
+    ...location,
+    ...(location?.ids && { ids: unmaskID(location?.ids ?? []) }),
+  };
+};
 
 export const mapTransporter = (transporter: ?string) => ({
   name: transporter ?? null,

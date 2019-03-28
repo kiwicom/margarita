@@ -13,10 +13,10 @@ const searchParamsOneWay = {
   },
   itinerary: {
     origin: {
-      ids: ['TG9jYXRpb246cHJhZ3VlX2N6'],
+      ids: ['prague_cz'],
     },
     destination: {
-      ids: ['TG9jYXRpb246bG9uZG9uX2di'],
+      ids: ['london_gb'],
     },
     outboundDate: {
       start: new Date('2019-05-01'),

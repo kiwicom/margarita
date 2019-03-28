@@ -15,7 +15,7 @@ type Passengers = {|
   +infants?: number,
 |};
 
-type SearchLocation = {|
+export type SearchLocation = {|
   +ids?: string[],
   +slugs?: string[],
 |};

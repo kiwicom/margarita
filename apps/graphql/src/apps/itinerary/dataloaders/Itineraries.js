@@ -12,14 +12,20 @@ import {
   mapDate,
   getItineraryType,
   mapSectors,
-  unmaskID,
+  slugsNeedParsing,
+  unmaskReplaceIds,
 } from '../helpers/Itineraries';
 import type {
   ItinerariesReturnSearchParameters,
   ItinerariesOneWaySearchParameters,
-  ApiResponseType,
+  ApiResponseType as ApiResponseSearch,
   Itinerary,
+  SearchLocation,
 } from '../Itinerary';
+import type {
+  ApiResponse as ApiResponseLocation,
+  ApiLocation,
+} from '../../location/Location';
 
 const stripTimeZoneOffset = (date: Date) =>
   DateFNS.addMinutes(date, date.getTimezoneOffset());
@@ -35,9 +41,9 @@ export const parseParameters = (
     ? input.itinerary.inboundDate
     : null;
 
-  const flyFrom = origin.ids && unmaskID(origin.ids).join();
-  const flyTo =
-    destination && destination.ids ? unmaskID(destination.ids).join() : null;
+  const destinationIds = destination?.ids;
+  const flyFrom = (origin.ids ?? []).join();
+  const flyTo = destinationIds !== null ? (destinationIds ?? []).join() : null;
 
   const commonSearchParams = {
     fly_from: flyFrom,
@@ -71,12 +77,51 @@ const addReturnSearchQueryParams = inboundDate => {
   };
 };
 
+const parseSlugsToIds = async (
+  location: SearchLocation,
+): Promise<SearchLocation> => {
+  if (!location.slugs) return location;
+
+  const results: $ReadOnlyArray<ApiResponseLocation> = await Promise.all(
+    location.slugs.map(slug => fetch(`/locations/slug?term=${slug}`)),
+  );
+
+  const getFirstValidID = (locations: $ReadOnlyArray<ApiLocation>): ?string =>
+    locations.filter(location => location.id)[0].id;
+
+  const IDs: string[] = results.map(
+    result => getFirstValidID(result.locations) ?? '',
+  );
+
+  return { ...location, ids: IDs.filter(id => id) };
+};
+
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
 ) => {
-  const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
-    parameters.map(params => {
-      return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
+  const results: $ReadOnlyArray<ApiResponseSearch> = await Promise.all(
+    parameters.map(async params => {
+      const { origin, destination } = params.itinerary;
+
+      const parsedOrigin = slugsNeedParsing(origin)
+        ? await parseSlugsToIds(origin)
+        : unmaskReplaceIds(origin);
+
+      const parsedDestination =
+        destination && slugsNeedParsing(destination)
+          ? await parseSlugsToIds(destination)
+          : unmaskReplaceIds(destination);
+
+      const parsedParams: typeof params = {
+        ...params,
+        itinerary: {
+          ...params.itinerary,
+          origin: parsedOrigin,
+          ...(destination && { destination: parsedDestination }),
+        },
+      };
+
+      return fetch(`/v2/search?${qs.stringify(parseParameters(parsedParams))}`);
     }),
   );
   return results.map(res => {
@@ -84,7 +129,7 @@ const fetchItineraries = async (
   });
 };
 
-const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
+const sanitizeItineraries = (response: ApiResponseSearch): Itinerary[] => {
   const itineraries = response.data;
 
   return itineraries.map(itinerary => {

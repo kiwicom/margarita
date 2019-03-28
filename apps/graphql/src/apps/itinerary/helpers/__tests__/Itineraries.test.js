@@ -9,6 +9,8 @@ import {
   mapSectors,
   mapVehicle,
   differenceInMinutes,
+  slugsNeedParsing,
+  unmaskReplaceIds,
 } from '../Itineraries';
 import {
   oneWayRoutesList,
@@ -72,6 +74,34 @@ describe('getItineraryType', () => {
   });
   it('returns null flight type', () => {
     expect(getItineraryType()).toBeNull();
+  });
+});
+
+describe('slugsNeedParsing', () => {
+  const IDs = {
+    ids: ['testID'],
+    slugs: [],
+  };
+  const noSlugsAndIDs = {
+    ids: [],
+    slugs: [],
+  };
+  const noIds = {
+    slugs: ['testSlug'],
+  };
+  expect(slugsNeedParsing(IDs)).toBe(false);
+  expect(slugsNeedParsing(noSlugsAndIDs)).toBe(false);
+  expect(slugsNeedParsing(noIds)).toBe(true);
+});
+
+describe('unmaskReplaceIds', () => {
+  const location = {
+    ids: ['TG9jYXRpb246cHJhZ3VlX2N6', 'TG9jYXRpb246bG9uZG9uX2di'],
+    slugs: ['TestSlugs'],
+  };
+  expect(unmaskReplaceIds(location)).toMatchObject({
+    ids: ['prague_cz', 'london_gb'],
+    slugs: ['TestSlugs'],
   });
 });
 
