@@ -15,9 +15,20 @@ type SortTabsDataType = $ReadOnlyArray<{|
   +icon: SortIconTypes,
 |}>;
 
+export type PriceDurationInfo = {|
+  +price: ?string,
+  +currency: ?string,
+  +duration: ?string,
+|};
+
 export type Props = {|
   +selectedValue: ?SortTypes,
   +onValueChange: (?SortTypes) => void,
+  +priceDurationParams?: {
+    QUALITY: ?PriceDurationInfo,
+    PRICE: ?PriceDurationInfo,
+    DURATION: ?PriceDurationInfo,
+  },
 |};
 
 export const SortTabsData: SortTabsDataType = [
@@ -26,7 +37,11 @@ export const SortTabsData: SortTabsDataType = [
   { label: 'Fastest', value: 'DURATION', icon: 'clock' },
 ];
 
-const SortTabs = ({ selectedValue, onValueChange }: Props) => {
+const SortTabs = ({
+  selectedValue,
+  onValueChange,
+  priceDurationParams,
+}: Props) => {
   const SortTabsList = SortTabsData.map((SortTabData, index) => {
     const { value, label, icon } = SortTabData;
     return (
@@ -39,6 +54,7 @@ const SortTabs = ({ selectedValue, onValueChange }: Props) => {
         isLast={index === SortTabsData.length - 1}
         isActive={value === selectedValue}
         onPress={onValueChange}
+        additionalInfo={priceDurationParams && priceDurationParams[value]}
       />
     );
   });

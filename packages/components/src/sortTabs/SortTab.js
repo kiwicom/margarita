@@ -12,7 +12,7 @@ import {
 } from '@kiwicom/universal-components';
 
 import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
-import type { SortIconTypes, SortTypes } from './SortTabs';
+import type { SortIconTypes, SortTypes, PriceDurationInfo } from './SortTabs';
 
 export type Props = {|
   +label: string,
@@ -20,6 +20,7 @@ export type Props = {|
   +isFirst: boolean,
   +isLast: boolean,
   +isActive: boolean,
+  +additionalInfo: ?PriceDurationInfo,
   +icon: SortIconTypes,
   +onPress: SortTypes => void,
 |};
@@ -47,8 +48,18 @@ export default class SortTab extends React.Component<Props, State> {
   };
 
   render() {
-    const { label, isFirst, isLast, isActive, icon } = this.props;
+    const {
+      label,
+      isFirst,
+      isLast,
+      isActive,
+      icon,
+      additionalInfo,
+    } = this.props;
     const { isHovered } = this.state;
+    const price = additionalInfo?.price;
+    const currency = additionalInfo?.currency;
+    const duration = additionalInfo?.duration;
     return (
       <Hoverable
         onMouseEnter={this.handleOnMouseEnter}
@@ -73,16 +84,23 @@ export default class SortTab extends React.Component<Props, State> {
                 {label}
               </Text>
               <View style={styles.priceDurationContainer}>
-                <Text style={styles.label} align="left" numberOfLines={1}>
-                  1,394 Kč
-                </Text>
-                <Text
-                  style={styles.durationLabel}
-                  align="left"
-                  numberOfLines={1}
-                >
-                  9h 3m
-                </Text>
+                {price || currency ? (
+                  <Text style={styles.label} align="left" numberOfLines={1}>
+                    {price} {currency}
+                  </Text>
+                ) : null}
+                {duration ? (
+                  <Text
+                    style={[
+                      styles.durationLabel,
+                      (price || currency) && styles.marginStartLabel,
+                    ]}
+                    align="left"
+                    numberOfLines={1}
+                  >
+                    {duration}
+                  </Text>
+                ) : null}
               </View>
             </View>
             <Icon
@@ -102,8 +120,10 @@ export default class SortTab extends React.Component<Props, State> {
 }
 
 const borderRadius = parseInt(defaultTokens.borderRadiusSmall, 10);
+const containerHeight = 75;
 const styles = StyleSheet.create({
   container: {
+    height: containerHeight,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -139,11 +159,12 @@ const styles = StyleSheet.create({
   durationLabel: {
     color: defaultTokens.paletteInkLight,
     fontWeight: 'normal',
-    marginStart: parseInt(defaultTokens.paddingButtonSmall, 10),
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
+  marginStartLabel: {
+    marginStart: parseInt(defaultTokens.paddingButtonSmall, 10),
+  },
   label: {
-    flex: 1,
     color: defaultTokens.paletteInkDark,
     fontWeight: designTokens.fontWeightMedium,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),

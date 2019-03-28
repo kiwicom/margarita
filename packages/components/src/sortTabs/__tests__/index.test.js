@@ -6,6 +6,7 @@ import { render, shallow, fireEvent } from 'react-native-testing-library';
 import { SortTabs } from '..';
 
 import { SortTabsData } from '../SortTabs';
+import { priceDurationParams } from '../SortTabs.stories';
 
 describe('SortTabs', () => {
   const onValueChange = jest.fn();
@@ -13,10 +14,23 @@ describe('SortTabs', () => {
     <SortTabs
       selectedValue={SortTabsData[0].value}
       onValueChange={onValueChange}
+      priceDurationParams={priceDurationParams}
     />,
   );
 
-  it('renders', () => {
+  it('renders correctly', () => {
+    expect(
+      shallow(
+        <SortTabs
+          selectedValue={SortTabsData[0].value}
+          onValueChange={jest.fn()}
+          priceDurationParams={priceDurationParams}
+        />,
+      ),
+    ).toMatchSnapshot();
+  });
+
+  it('renders correctly with no parameters', () => {
     expect(
       shallow(
         <SortTabs
