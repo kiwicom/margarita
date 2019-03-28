@@ -35,7 +35,7 @@ export const parseParameters = (
     ? input.itinerary.inboundDate
     : null;
 
-  const flyFrom = unmaskID(origin.ids).join();
+  const flyFrom = origin.ids && unmaskID(origin.ids).join();
   const flyTo =
     destination && destination.ids ? unmaskID(destination.ids).join() : null;
 

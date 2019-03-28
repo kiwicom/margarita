@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 660a2ec16cad1929fff266eb2e63794d
+ * @relayHash 5a59831cfb4cd861e6c016ae5a74f5c6
  */
 
 /* eslint-disable */
@@ -29,7 +29,8 @@ export type ItineraryOneWayInput = {|
   outboundDate: DateRange,
 |};
 export type LocationItineraryInput = {|
-  ids?: ?$ReadOnlyArray<?string>
+  ids?: ?$ReadOnlyArray<?string>,
+  slugs?: ?$ReadOnlyArray<?string>,
 |};
 export type DateRange = {|
   start: any,

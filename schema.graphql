@@ -196,6 +196,14 @@ interface FromToInterface {
   type: BookingType
 }
 
+type GeoIP {
+  """ISO country code"""
+  isoCountryCode: String
+
+  """Coordinates"""
+  coordinates: Coordinate
+}
+
 type HttpError {
   code: Int!
   message: String!
@@ -360,6 +368,9 @@ type LocationEdge {
 input LocationItineraryInput {
   """Locations IDs for travel"""
   ids: [String]
+
+  """Locations slugs (URL) for travel"""
+  slugs: [String]
 }
 
 input LocationsByTermInput {
@@ -452,6 +463,11 @@ type RootQuery {
 
   """Check if itinerary is valid and bookable"""
   checkItinerary(input: ItineraryCheckInput!): Itinerary
+
+  """
+  Geography info by an IP address, if no input provided, it will use request client IP
+  """
+  geoIP(ip: String): GeoIP
 }
 
 """Departure or arrival for a segment or sector"""

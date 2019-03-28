@@ -16,7 +16,8 @@ type Passengers = {|
 |};
 
 type SearchLocation = {|
-  +ids: string[],
+  +ids?: string[],
+  +slugs?: string[],
 |};
 
 export type ItinerariesOneWaySearchParameters = {|

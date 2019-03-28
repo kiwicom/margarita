@@ -9,5 +9,9 @@ export default new GraphQLInputObjectType({
       description: 'Locations IDs for travel',
       type: GraphQLList(GraphQLString),
     },
+    slugs: {
+      description: 'Locations slugs (URL) for travel',
+      type: GraphQLList(GraphQLString),
+    },
   },
 });
