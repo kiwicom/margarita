@@ -8,40 +8,41 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import SortTab from './SortTab';
 
 export type SortIconTypes = 'thumb-up' | 'money' | 'clock';
+export type SortTypes = 'QUALITY' | 'PRICE' | 'DURATION';
 type SortTabsDataType = $ReadOnlyArray<{|
   +label: string,
-  +value: string,
+  +value: SortTypes,
   +icon: SortIconTypes,
 |}>;
 
 export type Props = {|
-  +selectedValue: ?string,
-  +onValueChange: (?string) => void,
+  +selectedValue: ?SortTypes,
+  +onValueChange: (?SortTypes) => void,
 |};
 
-const SortTabsData: SortTabsDataType = [
+export const SortTabsData: SortTabsDataType = [
   { label: 'Best', value: 'QUALITY', icon: 'thumb-up' },
   { label: 'Cheapest', value: 'PRICE', icon: 'money' },
   { label: 'Fastest', value: 'DURATION', icon: 'clock' },
 ];
 
 const SortTabs = ({ selectedValue, onValueChange }: Props) => {
-  const SortTabs = SortTabsData.map((SortTabData, index) => {
+  const SortTabsList = SortTabsData.map((SortTabData, index) => {
     const { value, label, icon } = SortTabData;
     return (
       <SortTab
         key={value}
         label={label}
         value={value}
-        first={index === 0}
+        isFirst={index === 0}
         icon={icon}
-        last={index === SortTabsData.length - 1}
-        active={value === selectedValue}
+        isLast={index === SortTabsData.length - 1}
+        isActive={value === selectedValue}
         onPress={onValueChange}
       />
     );
   });
-  return <View style={styles.container}>{SortTabs}</View>;
+  return <View style={styles.container}>{SortTabsList}</View>;
 };
 
 const styles = StyleSheet.create({

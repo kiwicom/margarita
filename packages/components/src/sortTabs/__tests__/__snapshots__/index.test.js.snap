@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortTabs renders 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "backgroundColor": "#e8edf1",
+        "borderRadius": 3,
+        "flexDirection": "row",
+        "paddingBottom": 2,
+      }
+    }
+  >
+    <SortTab
+      icon="thumb-up"
+      isActive={true}
+      isFirst={true}
+      isLast={false}
+      label="Best"
+      onPress={[MockFunction]}
+      value="QUALITY"
+    />
+    <SortTab
+      icon="money"
+      isActive={false}
+      isFirst={false}
+      isLast={false}
+      label="Cheapest"
+      onPress={[MockFunction]}
+      value="PRICE"
+    />
+    <SortTab
+      icon="clock"
+      isActive={false}
+      isFirst={false}
+      isLast={true}
+      label="Fastest"
+      onPress={[MockFunction]}
+      value="DURATION"
+    />
+  </Component>,
+}
+`;

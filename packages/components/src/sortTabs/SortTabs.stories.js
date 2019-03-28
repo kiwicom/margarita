@@ -5,13 +5,7 @@ import { storiesOf } from '@storybook/react-native';
 import { select, withKnobs } from '@storybook/addon-knobs';
 import { action } from '@storybook/addon-actions';
 
-import SortTabs from './SortTabs';
-
-const SortTabsData = [
-  { label: 'Best', value: 'QUALITY' },
-  { label: 'Cheapest', value: 'PRICE' },
-  { label: 'Fastest', value: 'DURATION' },
-];
+import SortTabs, { SortTabsData } from './SortTabs';
 
 const onValueChange = action('onValueChange');
 
