@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { format } from 'date-fns';
+import { format, eachDayOfInterval } from 'date-fns';
 import memoize from 'memoize-one';
 import isEqual from 'react-fast-compare';
 
@@ -16,19 +16,34 @@ const MONTH_NAME_FORMAT = 'MMMM';
 
 type Props = {|
   +monthDate: MonthDate,
-  +onDayPress: Date => void,
-  +selectedDate: Date,
+  +onDayPress: (Array<Date>) => void,
+  +selectedDates: Array<Date>,
   +weekStartsOn: WeekStarts,
+  +isRangePicker: boolean,
 |};
 
-const checkDate = props =>
-  props.selectedDate &&
-  props.selectedDate.getMonth() === props.monthDate.month &&
-  props.selectedDate.getFullYear() === props.monthDate.year;
+const checkDatesForComponentUpdate = props => {
+  const dayInterval = eachDayOfInterval({
+    start: props.selectedDates[0],
+    end: props.selectedDates[1],
+  });
+  return dayInterval.reduce((accumulator, day) => {
+    if (
+      day &&
+      day.getMonth() === props.monthDate.month &&
+      day.getFullYear() === props.monthDate.year
+    )
+      return true;
+    return accumulator;
+  }, false);
+};
 
 export default class RenderMonth extends React.Component<Props> {
   shouldComponentUpdate(nextProps: Props) {
-    return checkDate(nextProps) || checkDate(this.props);
+    return (
+      checkDatesForComponentUpdate(nextProps) ||
+      checkDatesForComponentUpdate(this.props)
+    );
   }
 
   getWeeks = memoize((monthDate: MonthDate) => {
@@ -40,7 +55,7 @@ export default class RenderMonth extends React.Component<Props> {
   }, isEqual);
 
   render() {
-    const { monthDate, onDayPress, selectedDate } = this.props;
+    const { monthDate, onDayPress, selectedDates, isRangePicker } = this.props;
     const keyPrefix = `${this.props.monthDate.year}-${
       this.props.monthDate.month
     }`;
@@ -59,7 +74,8 @@ export default class RenderMonth extends React.Component<Props> {
             data={week}
             keyPrefix={keyPrefix}
             onDayPress={onDayPress}
-            selectedDate={selectedDate}
+            selectedDates={selectedDates}
+            isRangePicker={isRangePicker}
           />
         ))}
       </View>

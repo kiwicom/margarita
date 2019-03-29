@@ -5,9 +5,11 @@ import { Animated, Easing, View, Platform } from 'react-native';
 
 import { type StylePropType, StyleSheet } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
+import { ExtendedTouchable } from '../ExtendedTouchable';
 
 type Props = {|
   +style?: StylePropType,
+  +onPress?: () => void,
 |};
 
 const SHARED_ANIMATION_CONFIG = {
@@ -22,7 +24,7 @@ export default class DayItemArrow extends React.Component<Props> {
   componentDidMount() {
     this.animating = true;
     if (isAnimationEnabled) {
-      this.handleAnimation();
+      // this.handleAnimation();
     }
   }
 
@@ -51,20 +53,32 @@ export default class DayItemArrow extends React.Component<Props> {
     });
   }
 
+  renderArrows = () => (
+    <View style={styles.touchableContainer}>
+      {isAnimationEnabled && (
+        <Animated.View
+          style={[
+            styles.easingArrow,
+            {
+              transform: [{ scale: this.scale }],
+            },
+          ]}
+        />
+      )}
+      <View style={styles.innerArrow} />
+    </View>
+  );
+
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
-        {isAnimationEnabled && (
-          <Animated.View
-            style={[
-              styles.easingArrow,
-              {
-                transform: [{ scale: this.scale }],
-              },
-            ]}
-          />
+        {this.props.onPress ? (
+          <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
+            {this.renderArrows()}
+          </ExtendedTouchable>
+        ) : (
+          this.renderArrows()
         )}
-        <View style={styles.innerArrow} />
       </View>
     );
   }
@@ -79,6 +93,10 @@ const styles = StyleSheet.create({
     position: 'absolute',
     transform: [{ rotate: '45deg' }],
     zIndex: -1,
+  },
+  touchableContainer: {
+    position: 'relative',
+    // zIndex: -1,
   },
   easingArrow: {
     backgroundColor: designTokens.backgroundDayItemEasingArrow,

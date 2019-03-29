@@ -10,10 +10,11 @@ import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
 
 type Props = {|
-  +onDayPress: Date => void,
-  +selectedDate: Date,
+  +onDayPress: (Array<Date>) => void,
+  +selectedDates: Array<Date>,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStarts,
+  +isRangePicker: boolean,
 |};
 
 type State = {|
@@ -36,8 +37,9 @@ export default class RangeDatePickerContent extends React.Component<
       <RenderMonth
         monthDate={item}
         onDayPress={this.props.onDayPress}
-        selectedDate={this.props.selectedDate}
+        selectedDates={this.props.selectedDates}
         weekStartsOn={this.props.weekStartsOn}
+        isRangePicker={this.props.isRangePicker}
       />
     );
   };
@@ -55,7 +57,7 @@ export default class RangeDatePickerContent extends React.Component<
             data={this.state.nextMonths}
             keyExtractor={this.keyExtractor}
             renderItem={this.renderMonthItem}
-            extraData={this.props.selectedDate}
+            extraData={this.props.selectedDates}
             initialNumToRender={2}
           />
         )}

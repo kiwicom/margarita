@@ -40,8 +40,8 @@ type State = {|
   ...PassengersData,
   +actions: {
     +switchFromTo: () => void,
-    +setDepartureDate: Date => void,
-    +setReturnDate: Date => void,
+    +setDepartureDate: (Date, Date) => void,
+    +setReturnDate: (Date, Date) => void,
     +setTripType: TripTypes => void,
     +setSortBy: SortTypes => void,
     +setModalType: ModalTypes => void,
@@ -140,14 +140,13 @@ export default class SearchContextProvider extends React.Component<
     });
   };
 
-  setDepartureDate = (date: Date) => {
+  setDepartureDate = (dateFrom: Date, dateTo: Date) => {
     this.setState(prevState => {
-      const returnDate = DateFNS.max([prevState.returnDateFrom, date]);
       return {
-        dateFrom: date,
-        dateTo: date,
-        returnDateFrom: returnDate,
-        returnDateTo: returnDate,
+        dateFrom: dateFrom,
+        dateTo: dateTo,
+        returnDateFrom: DateFNS.max([prevState.returnDateFrom, dateTo]),
+        returnDateTo: DateFNS.max([prevState.returnDateTo, dateTo]),
       };
     });
   };
@@ -171,14 +170,14 @@ export default class SearchContextProvider extends React.Component<
     });
   };
 
-  setReturnDate = (date: Date) => {
+  setReturnDate = (returnDateFrom: Date, returnDateTo: Date) => {
     this.setState(prevState => {
-      const departureDate = DateFNS.min([prevState.dateFrom, date]);
+      const departureDate = DateFNS.min([prevState.dateFrom, returnDateFrom]);
       return {
         dateFrom: departureDate,
         dateTo: departureDate,
-        returnDateFrom: date,
-        returnDateTo: date,
+        returnDateFrom: returnDateFrom,
+        returnDateTo: returnDateTo,
       };
     });
   };

@@ -27,9 +27,11 @@ import PickersWrapper from './PickersWrapper';
 type Props = {|
   +tripType: string,
   +dateFrom: Date,
+  +dateTo: Date,
   +returnDateFrom: Date,
-  +setDepartureDate: Date => void,
-  +setReturnDate: Date => void,
+  +returnDateTo: Date,
+  +setDepartureDate: (Date, Date) => void,
+  +setReturnDate: (Date, Date) => void,
   +setTripType: TripTypes => void,
   +layout: number,
 |};
@@ -70,7 +72,7 @@ class Datepickers extends React.Component<Props, State> {
     });
   };
 
-  handleDateChange = (date: Date) => {
+  handleDateChange = (dates: Array<Date>) => {
     const { selectDate } = this.state;
     const {
       tripType,
@@ -81,12 +83,22 @@ class Datepickers extends React.Component<Props, State> {
 
     switch (selectDate) {
       case DATEPICKER_MODE.DEPARTURE:
-        setDepartureDate(date);
+        setDepartureDate(...dates);
         break;
       case DATEPICKER_MODE.RETURN:
+<<<<<<< HEAD
         setReturnDate(date);
         if (tripType === TRIP_TYPES.ONEWAY) {
           setTripType(TRIP_TYPES.RETURN);
+||||||| merged common ancestors
+        setReturnDate(date);
+        if (tripType === 'oneWay') {
+          setTripType('return');
+=======
+        setReturnDate(...dates);
+        if (tripType === 'oneWay') {
+          setTripType('return');
+>>>>>>> Implement possibility of picking range dates
         }
         break;
       default:
@@ -95,17 +107,35 @@ class Datepickers extends React.Component<Props, State> {
     this.handleDatePickerDismiss();
   };
 
-  render() {
-    const { tripType, dateFrom, returnDateFrom, layout } = this.props;
-    const rowLayout = layout >= LAYOUT.largeMobile;
-    const showReturnInput =
-      tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
-    const returnType = tripType === TRIP_TYPES.RETURN;
-    const datePickerDate =
-      this.state.selectDate === DATEPICKER_MODE.DEPARTURE
-        ? dateFrom
-        : returnDateFrom;
+  getDateNames = (dates: ?Array<Date>) => {
+    if (Array.isArray(dates)) {
+      return dates.reduce((acc, date, index) => {
+        if (date) {
+          const prefix = index > 0 ? ',' : '';
+          return `${acc}${prefix} ${format(date, BASIC_ISO_DATE_FORMAT)}`;
+        }
+        return acc;
+      }, '');
+    }
+    return '';
+  };
 
+  render() {
+    const {
+      tripType,
+      dateFrom,
+      dateTo,
+      returnDateFrom,
+      returnDateTo,
+      layout,
+    } = this.props;
+    const rowLayout = layout >= LAYOUT.largeMobile;
+    const showReturnInput = tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
+    const returnType = tripType === TRIP_TYPES.RETURN;
+    const datePickerDates =
+      this.state.selectDate === DATEPICKER_MODE.DEPARTURE
+        ? [dateFrom, dateTo]
+        : [returnDateFrom, returnDateTo];
     return (
       <>
         <PickersWrapper layout={layout}>
@@ -114,7 +144,7 @@ class Datepickers extends React.Component<Props, State> {
             onPress={this.handleDepartureDatePress}
             label="Departure"
             icon={<Icon name="calendar" />}
-            value={format(dateFrom, BASIC_ISO_DATE_FORMAT)}
+            value={this.getDateNames([dateFrom, dateTo])}
           />
           {showReturnInput && (
             <TripInput
@@ -123,7 +153,7 @@ class Datepickers extends React.Component<Props, State> {
               icon={<Icon name="calendar" />}
               value={
                 returnType
-                  ? format(returnDateFrom, BASIC_ISO_DATE_FORMAT)
+                  ? this.getDateNames([returnDateFrom, returnDateTo])
                   : 'No return'
               }
             />
@@ -131,7 +161,7 @@ class Datepickers extends React.Component<Props, State> {
         </PickersWrapper>
         <RangeDatePicker
           isVisible={this.state.isDatePickerVisible}
-          date={datePickerDate}
+          dates={datePickerDates}
           onConfirm={this.handleDateChange}
           onDismiss={this.handleDatePickerDismiss}
           labels={{ cancel: 'Cancel', confirm: 'OK' }}
@@ -157,12 +187,16 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
 
 const select = ({
   dateFrom,
+  dateTo,
   returnDateFrom,
+  returnDateTo,
   tripType,
   actions: { setTripType, setDepartureDate, setReturnDate },
 }: SearchContextState) => ({
   dateFrom,
+  dateTo,
   returnDateFrom,
+  returnDateTo,
   tripType,
   setTripType,
   setDepartureDate,
