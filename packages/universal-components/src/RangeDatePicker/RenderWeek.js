@@ -8,16 +8,18 @@ import RenderDay from './RenderDay';
 
 type Props = {|
   +data: Array<Date>,
-  +onDayPress: Date => void,
+  +onDayPress: (Array<Date>) => void,
   +keyPrefix: string,
-  +selectedDate: Date,
+  +selectedDates: Array<Date>,
+  +isRangePicker: boolean,
 |};
 
 export default function RenderWeek({
   data,
   onDayPress,
   keyPrefix,
-  selectedDate,
+  selectedDates,
+  isRangePicker,
 }: Props) {
   return (
     <View style={styles.row}>
@@ -27,7 +29,8 @@ export default function RenderWeek({
             key={`${keyPrefix}-${+day}-${index}`}
             day={day}
             onPress={onDayPress}
-            selectedDate={selectedDate}
+            selectedDates={selectedDates}
+            isRangePicker={isRangePicker}
           />
         );
       })}

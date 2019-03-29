@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { isEqual } from 'react-fast-compare';
 
 import { Text } from '../Text';
 import { Modal } from '../Modal';
@@ -12,13 +13,13 @@ import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
 
 type State = {
-  date: Date,
+  dates: Array<Date>,
 };
 
-const parseDatePropsToState = ({ date }: Props) => {
-  const tempDate = date ?? new Date();
+const parseDatePropsToState = ({ dates }: Props) => {
+  const tempDate = dates ?? [new Date(), new Date()];
   return {
-    date: tempDate,
+    dates: tempDate,
   };
 };
 
@@ -29,7 +30,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-      date: props.date ?? new Date(),
+      dates: props.dates ?? [new Date(), new Date()],
     };
   }
 
@@ -41,13 +42,13 @@ export default class RangeDatePicker extends React.Component<Props, State> {
 
   handleConfirm = () => {
     const { onConfirm } = this.props;
-    const { date } = this.state;
-    onConfirm(date);
+    const { dates } = this.state;
+    onConfirm(dates);
   };
 
-  handleChangeDate = (date: Date) => {
+  handleChangeDate = (dates: Array<Date>) => {
     this.setState({
-      date,
+      dates,
     });
   };
 
@@ -57,6 +58,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
       labels,
       numberOfRenderedMonths,
       weekStartsOn,
+      isRangePicker,
     } = this.props;
 
     return (
@@ -67,10 +69,11 @@ export default class RangeDatePicker extends React.Component<Props, State> {
       >
         <View style={styles.content}>
           <RangeDatePickerContent
-            selectedDate={this.state.date}
+            selectedDates={this.state.dates}
             onDayPress={this.handleChangeDate}
             numberOfRenderedMonths={numberOfRenderedMonths}
             weekStartsOn={weekStartsOn}
+            isRangePicker={isRangePicker ?? true}
           />
           <View style={styles.buttonsContainer}>
             <Touchable
