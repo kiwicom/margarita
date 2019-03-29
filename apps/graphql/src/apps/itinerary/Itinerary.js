@@ -1,7 +1,6 @@
 // @flow
 
-import type { Location } from '../location/Location';
-import type { RouteStop } from '../booking/Booking';
+import type { RouteStop, Sector, Price } from '../common/CommonTypes';
 
 type Order = 'ASC' | 'DESC';
 type Sort = 'price' | 'duration' | 'quality' | 'date' | 'popularity';
@@ -48,58 +47,16 @@ export type ItineraryCheckParameters = {|
   +passengers: Passengers,
 |};
 
-export type Price = {|
-  +amount: ?number,
-  +currency: ?string,
-|};
-
-export type Time = {|
-  +local: ?(string | number),
-  +utc: ?(string | number),
-|};
-
-export type Transporter = {|
-  +name: ?string,
-|};
-
-export type Vehicle = {|
-  +type: ?string,
-  +uniqueNo: ?string,
-|};
-
-export type Segment = {|
-  +duration: ?number,
-  +id: ?string,
-  +transporter: ?Transporter,
-  +vehicle: ?Vehicle,
-  +arrival: ?RouteStop,
-  +departure: ?RouteStop,
-|};
-
-export type Sector = {|
-  +arrivalTime: ?Time,
-  +departureTime: ?Time,
-  +destination: ?Location,
-  +duration: ?number,
-  +origin: ?Location,
-  +segments: ?Array<Segment>,
-  +stopoverDuration: number | null,
-  +departure: RouteStop,
-  +arrival: RouteStop,
-|};
-
 export type Itinerary = {|
   +id: string,
-  +type: ?string,
-  +isValid: ?boolean,
-  +isChecked: ?boolean,
-  +bookingToken: ?string,
   +price: ?Price,
-  +origin: ?Location,
-  +destination: ?Location,
-  +startTime: ?Time,
-  +endTime: ?Time,
   +sectors: ?Array<Sector>,
+  +type: ?string,
+  +bookingToken: ?string,
+  +isChecked: ?boolean,
+  +isValid: ?boolean,
+  +departure: ?RouteStop,
+  +arrival: ?RouteStop,
 |};
 
 export type ApiRouteItem = {|

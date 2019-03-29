@@ -2,7 +2,7 @@
 
 import { GraphQLObjectType, GraphQLInt, GraphQLList } from 'graphql';
 
-import type { Sector } from '../../../itinerary/Itinerary';
+import type { Sector } from '../../CommonTypes';
 import GraphQLBookingType from '../../../booking/types/enums/BookingType';
 import GraphQLSegment from './Segment';
 import GraphQLRouteStop from './RouteStop';
@@ -20,8 +20,7 @@ export default new GraphQLObjectType({
     },
     stopoverDuration: {
       type: GraphQLInt,
-      resolve: ({ stopoverDuration }: Sector): number | null =>
-        stopoverDuration,
+      resolve: ({ stopoverDuration }: Sector): ?number => stopoverDuration,
     },
     departure: {
       type: GraphQLRouteStop,

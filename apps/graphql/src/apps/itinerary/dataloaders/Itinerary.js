@@ -52,10 +52,8 @@ const sanitizeItinerary = (response: ItineraryApiResponseType): Itinerary => {
     bookingToken: response.booking_token,
     isValid: !response.flights_invalid,
     isChecked: response.flights_checked,
-    startTime: null,
-    endTime: null,
-    origin: null,
-    destination: null,
+    departure: null,
+    arrival: null,
     sectors: null,
     price: {
       currency: 'EUR',
