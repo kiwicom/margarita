@@ -23,7 +23,7 @@ export type PriceDurationInfo = {|
 
 export type Props = {|
   +selectedValue: ?SortTypes,
-  +onValueChange: (?SortTypes) => void,
+  +onValueChange: SortTypes => void,
   +priceDurationParams?: {
     QUALITY: ?PriceDurationInfo,
     PRICE: ?PriceDurationInfo,

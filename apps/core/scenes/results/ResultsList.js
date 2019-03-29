@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
 import {
@@ -14,6 +14,7 @@ import {
 import { ItineraryCard } from '../../components/ItineraryCard';
 import type { ResultsList_data as ResultsListType } from './__generated__/ResultsList_data.graphql';
 import EmptyResults from './EmptyResults';
+import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
   +data: ?ResultsListType,
@@ -50,14 +51,13 @@ class ResultsList extends React.Component<Props> {
       return <EmptyResults />;
     }
     return (
-      <View style={styles.cardList}>
-        <FlatList
-          contentContainerStyle={styles.container}
-          data={data}
-          keyExtractor={this.keyExtractor}
-          renderItem={this.resultItem}
-        />
-      </View>
+      <FlatList
+        contentContainerStyle={styles.container}
+        data={data}
+        keyExtractor={this.keyExtractor}
+        renderItem={this.resultItem}
+        ListHeaderComponent={<SortTabsWrapper />}
+      />
     );
   }
 }
@@ -76,10 +76,6 @@ export default createFragmentContainer(withNavigation(ResultsList), {
 });
 
 const styles = StyleSheet.create({
-  cardList: {
-    backgroundColor: defaultTokens.backgroundBody,
-    flex: 1,
-  },
   container: {
     web: {
       paddingTop: parseInt(defaultTokens.spaceMedium, 10),
