@@ -7,7 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import {
-  ORDINAL_DAY_MONTH_FORMAT,
+  SHORT_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   type TripTypes,
 } from '@kiwicom/margarita-config';
@@ -83,10 +83,31 @@ class Results extends React.Component<Props> {
       travelFromName,
       travelToName,
       dateFrom,
+      dateTo,
       returnDateFrom,
+      returnDateTo,
     } = this.props;
-    const getFormattedDate = date =>
-      DateFNS.format(DateFNS.parseISO(date), ORDINAL_DAY_MONTH_FORMAT);
+
+    const getFormattedDate = (dates: Array<string>) => {
+      if (
+        DateFNS.isSameDay(
+          DateFNS.parseISO(dates[0]),
+          DateFNS.parseISO(dates[1]),
+        )
+      ) {
+        return DateFNS.format(
+          DateFNS.parseISO(dates[0]),
+          SHORT_DAY_MONTH_FORMAT,
+        );
+      }
+      return `${DateFNS.format(
+        DateFNS.parseISO(dates[0]),
+        SHORT_DAY_MONTH_FORMAT,
+      )} - ${DateFNS.format(
+        DateFNS.parseISO(dates[1]),
+        SHORT_DAY_MONTH_FORMAT,
+      )}`;
+    };
 
     const tripType: TripTypes = returnDateFrom
       ? TRIP_TYPES.RETURN
@@ -105,12 +126,12 @@ class Results extends React.Component<Props> {
           tripType={tripType}
           departure={{
             city: travelFromName,
-            localizedDate: getFormattedDate(dateFrom),
+            localizedDate: getFormattedDate([dateFrom, dateTo]),
           }}
           arrival={{
             city: travelToName,
             localizedDate: returnDateFrom
-              ? getFormattedDate(returnDateFrom)
+              ? getFormattedDate([returnDateFrom, returnDateTo])
               : '',
           }}
         />

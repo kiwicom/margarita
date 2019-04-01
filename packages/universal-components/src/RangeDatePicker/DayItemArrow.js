@@ -24,7 +24,7 @@ export default class DayItemArrow extends React.Component<Props> {
   componentDidMount() {
     this.animating = true;
     if (isAnimationEnabled) {
-      // this.handleAnimation();
+      this.handleAnimation();
     }
   }
 
@@ -93,10 +93,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     transform: [{ rotate: '45deg' }],
     zIndex: -1,
-  },
-  touchableContainer: {
-    position: 'relative',
-    // zIndex: -1,
   },
   easingArrow: {
     backgroundColor: designTokens.backgroundDayItemEasingArrow,
