@@ -4,8 +4,8 @@ import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
 
-import type { ApiRouteItem, Sector, Segment } from '../Itinerary';
-import type { RouteStop } from '../../booking/Booking';
+import type { ApiRouteItem } from '../Itinerary';
+import type { RouteStop, Sector, Segment } from '../../common/CommonTypes';
 
 export const differenceInMinutes = (
   from: ?(string | number),
@@ -117,27 +117,15 @@ const sanitizeSector = (
     route => route.flyTo === currentRouteArrivalCode,
   );
 
-  const departure = sanitizeRouteStop(
-    apiRouteItemToDeparture(currentDeparture),
-  );
-  const arrival = sanitizeRouteStop(apiRouteItemToArrival(currentArrival));
+  const departure = apiRouteItemToDeparture(currentDeparture);
+  const arrival = apiRouteItemToArrival(currentArrival);
 
   const currentSector = {
-    departure,
-    arrival,
-    arrivalTime: {
-      local: arrival.time?.local,
-      utc: arrival.time?.utc,
-    },
-    departureTime: {
-      local: departure.time?.local,
-      utc: departure.time?.utc,
-    },
     duration: differenceInMinutes(departure.time?.utc, arrival.time?.utc),
-    destination: mapLocation(currentArrival?.flyTo, currentArrival?.cityTo),
-    origin: mapLocation(currentDeparture?.flyFrom, currentDeparture?.cityFrom),
     segments: [],
     stopoverDuration: 0,
+    departure,
+    arrival,
   };
 
   return {
@@ -146,8 +134,7 @@ const sanitizeSector = (
   };
 };
 
-const apiRouteItemToArrival = (routeItem: ?ApiRouteItem) => ({
-  cityName: routeItem?.cityTo,
+const apiRouteItemToArrival = (routeItem: ?ApiRouteItem): RouteStop => ({
   code: routeItem?.flyTo,
   time: {
     utc: routeItem?.utc_arrival,
@@ -155,28 +142,12 @@ const apiRouteItemToArrival = (routeItem: ?ApiRouteItem) => ({
   },
 });
 
-const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem) => ({
-  cityName: routeItem?.cityFrom,
+const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem): RouteStop => ({
   code: routeItem?.flyFrom,
   time: {
     utc: routeItem?.utc_departure,
     local: routeItem?.local_departure,
   },
-});
-
-const sanitizeRouteStop = ({
-  cityName,
-  code,
-  time,
-}: {|
-  +cityName: ?string,
-  +code: ?string,
-  +time: {| +utc: ?string, +local: ?string |},
-|}): RouteStop => ({
-  cityName,
-  cityId: null,
-  time,
-  code,
 });
 
 const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
@@ -185,48 +156,7 @@ const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
     id: segment?.id,
     transporter: mapTransporter(segment?.airline),
     vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
-    departure: sanitizeRouteStop(apiRouteItemToDeparture(segment)),
-    arrival: sanitizeRouteStop(apiRouteItemToArrival(segment)),
+    departure: apiRouteItemToDeparture(segment),
+    arrival: apiRouteItemToArrival(segment),
   };
 };
-
-export const mapDate = (local: ?string, utc: ?string) => {
-  const localDate = local && DateFNS.parseISO(local).toISOString();
-  const utcDate = utc && DateFNS.parseISO(utc).toISOString();
-  return {
-    local: localDate ?? null,
-    utc: utcDate ?? null,
-  };
-};
-
-export const mapLocationArea = (
-  code: ?string,
-  locationId: ?string,
-  name: ?string,
-  slug: ?string,
-  flagURL: ?string,
-) => ({
-  id: locationId ?? null,
-  code: code ?? null,
-  locationId: locationId ?? null,
-  name: name ?? null,
-  slug: slug ?? null,
-  flagURL: flagURL ?? null,
-});
-
-export const mapLocation = (
-  locationId: ?string,
-  name: ?string,
-  countryName: ?string,
-  countryCode: ?string,
-  slug: ?string,
-) => ({
-  id: locationId ?? null,
-  locationId: locationId ?? null,
-  name: name ?? null,
-  timezone: 'UTC+1',
-  country: mapLocationArea(countryCode, countryCode, countryName),
-  slug: slug ?? null,
-  city: null,
-  type: null,
-});

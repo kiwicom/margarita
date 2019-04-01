@@ -1,10 +1,7 @@
 // @flow
 
 import {
-  mapLocationArea,
-  mapDate,
   getItineraryType,
-  mapLocation,
   mapTransporter,
   mapSectors,
   mapVehicle,
@@ -17,50 +14,6 @@ import {
   twoWayRoutesMap,
 } from '../../__mocks__/itinerariesMock';
 
-describe('mapLocationArea', () => {
-  const name = 'Czech republic';
-  const code = 'CZ';
-  const slug = 'slug';
-  const flagURL = 'flag';
-  it('returns proper structure of the Location Area object', () => {
-    expect(mapLocationArea(code, code, name, slug, flagURL)).toMatchObject({
-      id: code,
-      locationId: code,
-      name,
-      code,
-      slug,
-      flagURL,
-    });
-  });
-  it('returns empty structure of the Location Area object', () => {
-    expect(mapLocationArea()).toMatchObject({
-      id: null,
-      locationId: null,
-      name: null,
-      code: null,
-      slug: null,
-      flagURL: null,
-    });
-  });
-});
-
-describe('mapDate', () => {
-  it('returns proper structure of the Date object', () => {
-    const local = '2019-05-13T15:30:00.000Z';
-    const utc = '2019-05-13T13:30:00.000Z';
-    expect(mapDate(local, utc)).toMatchObject({
-      local: local,
-      utc: utc,
-    });
-  });
-  it('returns empty structure of the Date object', () => {
-    expect(mapDate()).toMatchObject({
-      local: null,
-      utc: null,
-    });
-  });
-});
-
 describe('getItineraryType', () => {
   const routesForReturnFlight = [['OSL', 'PRG'], ['PRG', 'OSL']];
   const routesForOneWayFlight = [['OSL', 'PRG']];
@@ -72,35 +25,6 @@ describe('getItineraryType', () => {
   });
   it('returns null flight type', () => {
     expect(getItineraryType()).toBeNull();
-  });
-});
-
-describe('mapLocation', () => {
-  it('returns proper structure of the Location object', () => {
-    const locationId = 'PRG';
-    const name = 'Prague';
-    const countryName = 'Czech republic';
-    const countryCode = 'CZ';
-    expect(
-      mapLocation(locationId, name, countryName, countryCode),
-    ).toMatchObject({
-      locationId,
-      name,
-      country: {
-        name: countryName,
-        code: countryCode,
-      },
-    });
-  });
-  it('returns empty structure of the Location object', () => {
-    expect(mapLocation()).toMatchObject({
-      locationId: null,
-      name: null,
-      country: {
-        name: null,
-        code: null,
-      },
-    });
   });
 });
 
