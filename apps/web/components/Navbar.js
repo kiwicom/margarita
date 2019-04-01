@@ -2,9 +2,11 @@
 
 import * as React from 'react';
 import { View, Image } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from '@kiwicom/universal-components';
 import Router from 'next/router';
-import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import NavbarLink from './NavbarLink';

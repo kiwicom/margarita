@@ -2,8 +2,11 @@
 
 import * as React from 'react';
 import { View, Platform } from 'react-native';
-import { StyleSheet, Icon } from '@kiwicom/universal-components';
-import { ExtendedTouchable } from '@kiwicom/margarita-components';
+import {
+  StyleSheet,
+  Icon,
+  ExtendedTouchable,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 type Props = {|

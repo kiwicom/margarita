@@ -1,11 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { StyleSheet } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import Text from '../text/Text';
 
 type Props = {|

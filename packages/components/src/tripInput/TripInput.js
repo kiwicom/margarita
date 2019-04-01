@@ -8,9 +8,9 @@ import {
   Icon,
   designTokens,
   type StylePropType,
+  TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
 
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import Text from '../text/Text';
 
 type Props = {|

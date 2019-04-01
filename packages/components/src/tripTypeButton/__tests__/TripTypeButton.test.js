@@ -2,9 +2,9 @@
 
 import * as React from 'react';
 import { shallow, render, fireEvent } from 'react-native-testing-library';
+import { TouchableWithoutFeedback } from '@kiwicom/universal-components';
 
 import TripTypeButton from '../TripTypeButton';
-import TouchableWithoutFeedback from '../../TouchableWithoutFeedback';
 
 const icon = 'flight-direct';
 const label = 'One way';

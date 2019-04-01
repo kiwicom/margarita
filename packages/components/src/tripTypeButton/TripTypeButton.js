@@ -6,10 +6,10 @@ import {
   StyleSheet,
   Icon,
   type IconNameType,
+  TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import Text from '../text/Text';
 
 type Props = {|
