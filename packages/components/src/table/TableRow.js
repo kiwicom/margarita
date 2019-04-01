@@ -2,12 +2,15 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, type StylePropType } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  type StylePropType,
+  ExtendedTouchable,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { omit } from 'ramda';
 
 import Text from '../text/Text';
-import ExtendedTouchable from '../ExtendedTouchable';
 
 type RenderRowProps = {|
   +highlightedLabel?: boolean,

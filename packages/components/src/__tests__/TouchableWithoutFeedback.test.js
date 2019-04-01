@@ -3,8 +3,7 @@
 import * as React from 'react';
 import { shallow } from 'react-native-testing-library';
 import { View } from 'react-native';
-
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
+import { TouchableWithoutFeedback } from '@kiwicom/universal-components';
 
 it('renders', () => {
   expect(

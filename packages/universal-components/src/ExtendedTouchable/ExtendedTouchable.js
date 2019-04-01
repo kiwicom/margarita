@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { omit } from 'ramda';
 
-import TouchableWithoutFeedback from './TouchableWithoutFeedback';
+import { TouchableWithoutFeedback } from '../TouchableWithoutFeedback';
 
 type Props2 = {
   children: React.Node,

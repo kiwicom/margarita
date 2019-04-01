@@ -2,12 +2,15 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, designTokens } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  designTokens,
+  ExtendedTouchable,
+} from '@kiwicom/universal-components';
 import {
   TableRow,
   TableRowDivider,
   CreditCardPaymentForm,
-  ExtendedTouchable,
   Text,
   ContentContainer,
 } from '@kiwicom/margarita-components';

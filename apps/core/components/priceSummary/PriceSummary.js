@@ -6,8 +6,8 @@ import {
   StyleSheet,
   Button,
   designTokens,
+  TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
-import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Expander from './Expander';

@@ -9,9 +9,9 @@ import {
   Icon,
   Hoverable,
   designTokens,
+  TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
 
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import type { SortIconTypes, SortTypes, PriceDurationInfo } from './SortTabs';
 
 export type Props = {|

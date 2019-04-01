@@ -38,6 +38,8 @@ export {
 export { RangeDatePicker } from './RangeDatePicker';
 export { Picker } from './Picker';
 export { PickerButton } from './PickerButton';
+export { TouchableWithoutFeedback } from './TouchableWithoutFeedback';
+export { ExtendedTouchable } from './ExtendedTouchable';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

@@ -1,7 +1,7 @@
 // @flow strict
 
 import * as React from 'react';
-import { TouchableWithoutFeedback as OriginalTouchableWithoutFeedback } from 'react-native'; // eslint-disable-line no-restricted-imports
+import { TouchableWithoutFeedback as OriginalTouchableWithoutFeedback } from 'react-native';
 import type { StylePropType } from '@kiwicom/universal-components';
 
 type Props = {|
