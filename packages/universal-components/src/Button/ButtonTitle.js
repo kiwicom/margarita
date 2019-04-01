@@ -6,13 +6,15 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 import { textColor } from './styles';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
-import type { ButtonType } from './ButtonTypes';
+import type { ButtonType, ButtonSize } from './ButtonTypes';
+import { size as buttonSizeStyle } from './styles/shared';
 
 type Props = {|
   +text: React.Node,
   +type: ButtonType,
   +style?: StylePropType,
   +variant?: 'default' | 'sublabel',
+  +size?: ButtonSize,
 |};
 
 export default function ButtonTitle({
@@ -20,11 +22,14 @@ export default function ButtonTitle({
   style,
   type = 'primary',
   variant = 'default',
+  size = 'normal',
 }: Props) {
   const variantStyle =
-    variant === 'sublabel' ? styles.sublabel : styles.default;
+    variant === 'sublabel'
+      ? styles.sublabel
+      : [styles.default, sizeTheme(size).buttonSizeWrapper];
   return (
-    <Text style={[styles.common, variantStyle, theme(type).text, style]}>
+    <Text style={[styles.common, variantStyle, colorTheme(type).text, style]}>
       {text}
     </Text>
   );
@@ -38,7 +43,6 @@ const styles = StyleSheet.create({
   },
   default: {
     fontWeight: 'bold',
-    fontSize: 16,
     lineHeight: 21,
   },
   sublabel: {
@@ -48,9 +52,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const theme = (type: ButtonType = 'primary') =>
+const colorTheme = (type: ButtonType = 'primary') =>
   StyleSheet.create({
     text: {
       color: textColor[type],
+    },
+  });
+
+const sizeTheme = (size: ButtonSize = 'normal') =>
+  StyleSheet.create({
+    buttonSizeWrapper: {
+      fontSize: buttonSizeStyle[size].fontSize,
     },
   });

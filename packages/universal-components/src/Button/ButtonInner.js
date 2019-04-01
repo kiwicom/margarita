@@ -7,8 +7,9 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
 import ButtonTitle from './ButtonTitle';
-import type { ButtonType } from './ButtonTypes';
+import type { ButtonType, ButtonSize } from './ButtonTypes';
 import { textColor, wrapperColor } from './styles';
+import { size as buttonSizeStyle } from './styles/shared';
 
 type Props = {|
   +children?: React.Node,
@@ -20,8 +21,26 @@ type Props = {|
   +sublabel?: React.Node,
   +label?: React.Node,
   +circled?: boolean,
+  +size?: ButtonSize,
 |};
 
+const paddingTokens = {
+  paddingButton: 'paddingButton',
+  paddingButtonWithIcons: 'paddingButtonWithIcons',
+  paddingButtonWithLeftIcon: 'paddingButtonWithLeftIcon',
+  paddingButtonWithRightIcon: 'paddingButtonWithRightIcon',
+};
+
+const getPaddingToken = (leftIcon, rightIcon) => {
+  if (!leftIcon && rightIcon) {
+    return paddingTokens.paddingButtonWithRightIcon;
+  } else if (leftIcon && !rightIcon) {
+    return paddingTokens.paddingButtonWithLeftIcon;
+  } else if (leftIcon && rightIcon) {
+    return paddingTokens.paddingButtonWithIcons;
+  }
+  return paddingTokens.paddingButton;
+};
 export default function ButtonInner({
   disabled = false,
   type = 'primary',
@@ -32,12 +51,20 @@ export default function ButtonInner({
   sublabel,
   label,
   circled,
+  size,
 }: Props) {
+  const iconSize = size === 'normal' || size === 'large' ? 'medium' : 'small';
   const leftIcon = originalLeftIcon
-    ? React.cloneElement(originalLeftIcon, { color: textColor[type] })
+    ? React.cloneElement(originalLeftIcon, {
+        color: textColor[type],
+        size: iconSize,
+      })
     : originalLeftIcon;
   const rightIcon = originalRightIcon
-    ? React.cloneElement(originalRightIcon, { color: textColor[type] })
+    ? React.cloneElement(originalRightIcon, {
+        color: textColor[type],
+        size: iconSize,
+      })
     : originalRightIcon;
   let justifyContent = layout.default;
   if (leftIcon != null) {
@@ -52,21 +79,29 @@ export default function ButtonInner({
     testID = `ButtonInner${testIDProps}`;
   }
 
+  const paddingToken = getPaddingToken(leftIcon, rightIcon);
+  const leftSpace = size === 'large' ? layout.leftSpaceLarge : layout.leftSpace;
+  const rightSpace =
+    size === 'large' ? layout.rightSpaceLarge : layout.rightSpace;
+
   return (
     <View
       style={[
         styleSheet.buttonWrapper,
         disabled && styleSheet.disabled,
-        theme(type).wrapper,
+        typeTheme(type).wrapper,
         justifyContent,
         circled && styleSheet.buttonCircled,
+        sizeTheme(size, paddingToken).buttonSizeWrapper,
       ]}
       testID={testID}
     >
       <View style={layout.row}>
-        {leftIcon != null && <View style={layout.rightSpace}>{leftIcon}</View>}
+        {leftIcon != null && <View style={rightSpace}>{leftIcon}</View>}
         {children ||
-          (label != null && <ButtonTitle text={label} type={type} />)}
+          (label != null && (
+            <ButtonTitle text={label} type={type} size={size} />
+          ))}
       </View>
       <View style={layout.row}>
         {sublabel != null && (
@@ -74,7 +109,7 @@ export default function ButtonInner({
             <ButtonTitle text={sublabel} type={type} variant="sublabel" />
           </View>
         )}
-        {rightIcon != null && <View style={layout.leftSpace}>{rightIcon}</View>}
+        {rightIcon != null && <View style={leftSpace}>{rightIcon}</View>}
       </View>
     </View>
   );
@@ -101,10 +136,16 @@ const layout = StyleSheet.create({
     alignItems: 'center',
   },
   leftSpace: {
-    marginStart: 5,
+    marginStart: parseInt(defaultTokens.marginButtonIconNormal, 10),
+  },
+  leftSpaceLarge: {
+    marginStart: parseInt(defaultTokens.marginButtonIconLarge, 10),
   },
   rightSpace: {
-    marginEnd: 14,
+    marginEnd: parseInt(defaultTokens.marginButtonIconNormal, 10),
+  },
+  rightSpaceLarge: {
+    marginEnd: parseInt(defaultTokens.marginButtonIconLarge, 10),
   },
 });
 
@@ -113,9 +154,7 @@ const styleSheet = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: parseInt(defaultTokens.spaceXSmall, 10),
     paddingVertical: 11,
-    height: parseInt(defaultTokens.heightButtonNormal, 10),
     borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
   },
   buttonCircled: {
@@ -126,9 +165,18 @@ const styleSheet = StyleSheet.create({
   },
 });
 
-const theme = (type: ButtonType = 'primary') =>
+const typeTheme = (type: ButtonType = 'primary') =>
   StyleSheet.create({
     wrapper: {
       backgroundColor: wrapperColor[type],
+    },
+  });
+
+const sizeTheme = (size: ButtonSize = 'normal', paddingToken) =>
+  StyleSheet.create({
+    buttonSizeWrapper: {
+      height: buttonSizeStyle[size].height,
+      paddingStart: buttonSizeStyle[size].paddingStart[paddingToken],
+      paddingEnd: buttonSizeStyle[size].paddingEnd[paddingToken],
     },
   });

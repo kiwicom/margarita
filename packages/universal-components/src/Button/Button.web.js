@@ -25,6 +25,7 @@ export default function Button({
   block,
   label,
   circled,
+  size = 'normal',
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -35,6 +36,7 @@ export default function Button({
     rightIcon,
     label,
     circled,
+    size,
   };
 
   if (href) {

@@ -37,6 +37,7 @@ storiesOf('Button', module)
       ],
       'primary',
     );
+    const size = select('Size', ['small', 'normal', 'large'], 'normal');
     const disabled = boolean('Disabled', false);
     let sublabel;
     if (Platform.OS !== 'web') {
@@ -45,12 +46,12 @@ storiesOf('Button', module)
     const leftIcon = select(
       'Left Icon',
       ['undefined', ...Object.keys(icons)],
-      'calendar',
+      'camera',
     );
     const rightIcon = select(
       'Right Icon',
       ['undefined', ...Object.keys(icons)],
-      'calendar',
+      'chevron-right',
     );
     const width = number('Width', 300);
     let href;
@@ -74,6 +75,7 @@ storiesOf('Button', module)
         block={block}
         circled={circled}
         label={label}
+        size={size}
       />
     );
   })
