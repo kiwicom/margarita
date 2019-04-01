@@ -8,13 +8,14 @@ import {
   StyleSheet,
   RangeDatePicker,
 } from '@kiwicom/universal-components';
-import { format } from 'date-fns';
+import { format, isSameDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
+import { SHORT_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 import {
   BASIC_ISO_DATE_FORMAT,
   TRIP_TYPES,
@@ -86,19 +87,9 @@ class Datepickers extends React.Component<Props, State> {
         setDepartureDate(...dates);
         break;
       case DATEPICKER_MODE.RETURN:
-<<<<<<< HEAD
-        setReturnDate(date);
+        setReturnDate(...dates);
         if (tripType === TRIP_TYPES.ONEWAY) {
           setTripType(TRIP_TYPES.RETURN);
-||||||| merged common ancestors
-        setReturnDate(date);
-        if (tripType === 'oneWay') {
-          setTripType('return');
-=======
-        setReturnDate(...dates);
-        if (tripType === 'oneWay') {
-          setTripType('return');
->>>>>>> Implement possibility of picking range dates
         }
         break;
       default:
@@ -108,11 +99,16 @@ class Datepickers extends React.Component<Props, State> {
   };
 
   getDateNames = (dates: ?Array<Date>) => {
+    const formatDate = (unformatedDate: Date) =>
+      format(unformatedDate, SHORT_DAY_MONTH_FORMAT);
     if (Array.isArray(dates)) {
+      if (isSameDay(dates[0], dates[1])) {
+        return formatDate(dates[0]);
+      }
       return dates.reduce((acc, date, index) => {
         if (date) {
-          const prefix = index > 0 ? ',' : '';
-          return `${acc}${prefix} ${format(date, BASIC_ISO_DATE_FORMAT)}`;
+          const prefix = index > 0 ? ' -' : '';
+          return `${acc}${prefix} ${formatDate(date)}`;
         }
         return acc;
       }, '');
@@ -130,7 +126,8 @@ class Datepickers extends React.Component<Props, State> {
       layout,
     } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
-    const showReturnInput = tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
+    const showReturnInput =
+      tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
     const returnType = tripType === TRIP_TYPES.RETURN;
     const datePickerDates =
       this.state.selectDate === DATEPICKER_MODE.DEPARTURE
