@@ -34,8 +34,8 @@ class SearchModal extends React.Component<Props> {
 
   handleTripTypeSelect = (type: string) => {
     switch (type) {
-      case 'return':
-      case 'oneWay':
+      case 'Return':
+      case 'OneWay':
         this.props.setTripType(type);
         break;
       default:

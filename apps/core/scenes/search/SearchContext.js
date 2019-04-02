@@ -10,7 +10,7 @@ type Props = {|
   +children: React.Node,
 |};
 
-export type TripTypes = 'return' | 'oneWay';
+export type TripTypes = 'Return' | 'OneWay';
 export type ModalTypes = $Keys<typeof MODAL_TYPE>;
 export type PassengersData = {|
   adults: number,
@@ -74,7 +74,7 @@ const defaultPlaces = {
 };
 
 const defaultState = {
-  tripType: 'return',
+  tripType: 'Return',
   travelFrom: defaultPlaces.origin,
   travelTo: defaultPlaces.departure,
   dateFrom: defaultDepartureDate,

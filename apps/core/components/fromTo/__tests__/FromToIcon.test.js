@@ -22,14 +22,14 @@ it('show correct icons', () => {
     // $FlowExpectedError: It should be ok to pass string
     <FromToIcon data={getData('BOOKING_RETURN')} iconColor="blue" />,
   );
-  const oneWay = render(
+  const OneWay = render(
     // $FlowExpectedError: It should be ok to pass string
     <FromToIcon data={getData('BOOKING_ONE_WAY')} iconColor="blue" />,
   );
 
   expect(multicity.getByType(Icon).props.name).toBe('flight-multicity');
   expect(bookingReturn.getByType(Icon).props.name).toBe('flight-return');
-  expect(oneWay.getByType(Icon).props.name).toBe('flight-direct');
+  expect(OneWay.getByType(Icon).props.name).toBe('flight-direct');
 });
 
 it('renders with missing type', () => {

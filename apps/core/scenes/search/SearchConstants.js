@@ -1,11 +1,11 @@
 // @flow
 
 export const TRIP_TYPE = {
-  return: {
+  Return: {
     icon: 'flight-return',
     label: 'Return',
   },
-  oneWay: {
+  OneWay: {
     icon: 'flight-direct',
     label: 'One way',
   },

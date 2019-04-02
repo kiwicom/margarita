@@ -18,13 +18,13 @@ Object {
       label="Return"
       onSelect={[MockFunction]}
       selected={true}
-      type="return"
+      type="Return"
     />
     <TripTypeSwitchOption
       label="One way"
       onSelect={[MockFunction]}
       selected={false}
-      type="oneWay"
+      type="OneWay"
     />
   </Component>,
 }

@@ -86,7 +86,7 @@ class Search extends React.Component<Props> {
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         dateFrom: format(dateFrom, BASIC_ISO_DATE_FORMAT),
         dateTo: format(dateTo, BASIC_ISO_DATE_FORMAT),
-        ...(tripType === 'return'
+        ...(tripType === 'Return'
           ? {
               returnDateFrom: format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
               returnDateTo: format(returnDateTo, BASIC_ISO_DATE_FORMAT),

@@ -35,7 +35,7 @@ type Props = {|
 
 class SearchFormModes extends React.Component<Props> {
   handleTripTypeSelect = (type: string) => {
-    if (type === 'return' || type === 'oneWay') {
+    if (type === 'Return' || type === 'OneWay') {
       this.props.setTripType(type);
     }
   };

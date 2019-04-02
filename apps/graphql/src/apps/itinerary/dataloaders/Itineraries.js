@@ -88,7 +88,7 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
 
     const departure = head(head(sectors ?? [])?.segments ?? [])?.departure;
     const arrival =
-      type === 'return'
+      type === 'Return'
         ? last(head(sectors ?? [])?.segments ?? [])?.arrival
         : last(last(sectors ?? [])?.segments ?? [])?.arrival;
 

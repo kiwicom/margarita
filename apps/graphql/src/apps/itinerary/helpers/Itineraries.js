@@ -46,10 +46,10 @@ export const getItineraryType = (routes: ?Array<Array<string>>) => {
     return null;
   }
   if (routes.length === 1) {
-    return 'oneway';
+    return 'OneWay';
   }
   if (routes.length === 2) {
-    return 'return';
+    return 'Return';
   }
   return null;
 };

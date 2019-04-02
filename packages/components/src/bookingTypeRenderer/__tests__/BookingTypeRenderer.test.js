@@ -9,31 +9,31 @@ import BookingTypeRenderer from '../BookingTypeRenderer';
 const getComponent = (type: string) => (
   <BookingTypeRenderer
     type={type}
-    oneWayComponent={<View testID="oneWay" />}
-    returnComponent={<View testID="return" />}
+    oneWayComponent={<View testID="OneWay" />}
+    returnComponent={<View testID="Return" />}
     multicityComponent={<View testID="multicity" />}
   />
 );
 
 it('renders only oneWayComponent for type BookingOneWay', () => {
   const { getByTestId } = render(getComponent('BookingOneWay'));
-  expect(getByTestId('oneWay')).toBeDefined();
-  expect(() => getByTestId('return')).toThrow();
+  expect(getByTestId('OneWay')).toBeDefined();
+  expect(() => getByTestId('Return')).toThrow();
   expect(() => getByTestId('multicity')).toThrow();
 });
 
 it('renders only returnComponent for type BookingReturn', () => {
   const { getByTestId } = render(getComponent('BookingReturn'));
-  expect(getByTestId('return')).toBeDefined();
+  expect(getByTestId('Return')).toBeDefined();
   expect(() => getByTestId('multicity')).toThrow();
-  expect(() => getByTestId('oneWay')).toThrow();
+  expect(() => getByTestId('OneWay')).toThrow();
 });
 
 it('renders only multicityComponent for type BookingMulticity', () => {
   const { getByTestId } = render(getComponent('BookingMulticity'));
   expect(getByTestId('multicity')).toBeDefined();
-  expect(() => getByTestId('return')).toThrow();
-  expect(() => getByTestId('oneWay')).toThrow();
+  expect(() => getByTestId('Return')).toThrow();
+  expect(() => getByTestId('OneWay')).toThrow();
 });
 
 it('render null for other types', () => {

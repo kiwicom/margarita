@@ -85,8 +85,8 @@ class Datepickers extends React.Component<Props, State> {
         break;
       case DATEPICKER_MODE.RETURN:
         setReturnDate(date);
-        if (tripType === 'oneWay') {
-          setTripType('return');
+        if (tripType === 'OneWay') {
+          setTripType('Return');
         }
         break;
       default:
@@ -98,8 +98,8 @@ class Datepickers extends React.Component<Props, State> {
   render() {
     const { tripType, dateFrom, returnDateFrom, layout } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
-    const showReturnInput = tripType === 'return' || Platform.OS === 'web';
-    const returnType = tripType === 'return';
+    const showReturnInput = tripType === 'Return' || Platform.OS === 'web';
+    const returnType = tripType === 'Return';
     const datePickerDate =
       this.state.selectDate === DATEPICKER_MODE.DEPARTURE
         ? dateFrom
