@@ -44,18 +44,22 @@ export default function RenderDay({
   isRangePicker,
 }: Props) {
   function handlePress() {
-    onPress && onPress([day, day]);
+    if (onPress) {
+      onPress([day, day]);
+    }
   }
   const isDayInPast = checkedDay => isBefore(checkedDay, new Date());
   const onLeftPress = () => {
     const dayBefore = subDays(day, 1);
-    if (!isDayInPast(dayBefore)) {
-      onPress && onPress([dayBefore, selectedDates[1]]);
+    if (!isDayInPast(dayBefore) && onPress) {
+      onPress([dayBefore, selectedDates[1]]);
     }
   };
 
   const onRightPress = () => {
-    onPress && onPress([selectedDates[0], addDays(day, 1)]);
+    if (onPress) {
+      onPress([selectedDates[0], addDays(day, 1)]);
+    }
   };
 
   const isFieldEmpty = day == null;
@@ -118,10 +122,10 @@ export default function RenderDay({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    zIndex: -100,
+    zIndex: -1,
   },
   onTheTop: {
-    zIndex: 100,
+    zIndex: parseFloat(defaultTokens.zIndexSticky),
   },
   dayContainer: {
     flex: 1,
@@ -141,8 +145,9 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextSecondary,
   },
   selectedDatesContainer: {
-    borderColor: designTokens.borderColorCalendarItem,
+    borderColor: 'transparent',
     backgroundColor: defaultTokens.backgroundButtonInfo,
+    borderWidth: parseFloat(defaultTokens.borderWidthCard),
   },
   startOfSelectedDatesContainer: {
     borderTopStartRadius: parseFloat(defaultTokens.borderRadiusNormal),

@@ -3,7 +3,6 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { isEqual } from 'react-fast-compare';
 
 import { Text } from '../Text';
 import { Modal } from '../Modal';
@@ -12,44 +11,19 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
 
-type State = {
-  dates: Array<Date>,
-};
-
-const parseDatePropsToState = ({ dates }: Props) => {
-  const tempDate = dates ?? [new Date(), new Date()];
-  return {
-    dates: tempDate,
-  };
-};
-
-export default class RangeDatePicker extends React.Component<Props, State> {
+export default class RangeDatePicker extends React.Component<Props> {
   // @TODO load price for days
 
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      dates: props.dates ?? [new Date(), new Date()],
-    };
-  }
-
   handleDismiss = () => {
-    const { onDismiss } = this.props;
-    onDismiss();
-    this.setState(parseDatePropsToState(this.props));
+    this.props.onDismiss();
   };
 
   handleConfirm = () => {
-    const { onConfirm } = this.props;
-    const { dates } = this.state;
-    onConfirm(dates);
+    this.props.onConfirm(this.props.dates);
   };
 
   handleChangeDate = (dates: Array<Date>) => {
-    this.setState({
-      dates,
-    });
+    this.props.onChangeTempDates(dates);
   };
 
   render() {
@@ -69,7 +43,7 @@ export default class RangeDatePicker extends React.Component<Props, State> {
       >
         <View style={styles.content}>
           <RangeDatePickerContent
-            selectedDates={this.state.dates}
+            selectedDates={this.props.dates}
             onDayPress={this.handleChangeDate}
             numberOfRenderedMonths={numberOfRenderedMonths}
             weekStartsOn={weekStartsOn}
