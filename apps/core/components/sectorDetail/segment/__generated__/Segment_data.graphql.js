@@ -22,8 +22,9 @@ export type Segment_data = {|
     |},
     +$fragmentRefs: SegmentStopInfo_data$ref,
   |},
-  +transporter: ?{|
-    +name: ?string
+  +carrier: ?{|
+    +name: ?string,
+    +code: ?string,
   |},
   +$refType: Segment_data$ref,
 |};
@@ -95,16 +96,23 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "transporter",
+      "name": "carrier",
       "storageKey": null,
       "args": null,
-      "concreteType": "Transporter",
+      "concreteType": "Carrier",
       "plural": false,
       "selections": [
         {
           "kind": "ScalarField",
           "alias": null,
           "name": "name",
+          "args": null,
+          "storageKey": null
+        },
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "code",
           "args": null,
           "storageKey": null
         }
@@ -114,5 +122,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'c5127c7f82540f62875447ca704eee4c';
+(node/*: any*/).hash = '73fa9d35e10e0b81f7025fd0f9c170a7';
 module.exports = node;

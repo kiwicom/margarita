@@ -13,8 +13,8 @@ import CardHeader from './components/CardHeader';
 type Props = {|
   +additionalInfo: $PropertyType<AdditionalInfoProps, 'additionalInfo'>,
   +carrier: {|
-    code: string,
-    name: string,
+    code: ?string,
+    name: ?string,
     type?: 'airline' | 'bus' | 'train',
   |},
   +duration: ?number,

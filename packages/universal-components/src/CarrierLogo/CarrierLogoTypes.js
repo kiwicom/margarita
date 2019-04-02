@@ -1,8 +1,8 @@
 // @flow
 
 export type CarrierData = {
-  code: string,
-  name: string,
+  code: ?string,
+  name: ?string,
   type?: 'airline' | 'bus' | 'train',
 };
 

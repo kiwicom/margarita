@@ -147,6 +147,11 @@ enum BookingType {
   BOOKING_ONE_WAY
 }
 
+type Carrier {
+  name: String
+  code: String
+}
+
 """Bookings contact email and phone"""
 type ContactDetails {
   email: String
@@ -491,7 +496,7 @@ type Segment {
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  transporter: Transporter
+  carrier: Carrier
   duration: Int
   vehicle: Vehicle
   departure: RouteStop
@@ -504,10 +509,6 @@ enum SortSearchInput {
   QUALITY
   DATE
   POPULARITY
-}
-
-type Transporter {
-  name: String
 }
 
 type Vehicle {

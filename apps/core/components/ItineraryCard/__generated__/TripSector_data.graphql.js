@@ -8,9 +8,9 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type Carriers_data$ref = any;
 type FlightTimes_data$ref = any;
 type LocalTime_data$ref = any;
-type Transporters_data$ref = any;
 type TripCities_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripSector_data$ref: FragmentReference;
@@ -19,7 +19,7 @@ export type TripSector_data = {|
   +departure: ?{|
     +$fragmentRefs: LocalTime_data$ref
   |},
-  +$fragmentRefs: FlightTimes_data$ref & TripCities_data$ref & Transporters_data$ref,
+  +$fragmentRefs: FlightTimes_data$ref & TripCities_data$ref & Carriers_data$ref,
   +$refType: TripSector_data$ref,
 |};
 */
@@ -67,11 +67,11 @@ const node/*: ReaderFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "Transporters_data",
+      "name": "Carriers_data",
       "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '227826a1d3144a4c03e36a7b426c57d0';
+(node/*: any*/).hash = 'a7d7bbe62b8821991bad18c06845062f';
 module.exports = node;

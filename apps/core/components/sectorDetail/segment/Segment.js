@@ -12,7 +12,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
 import SegmentStopInfo from './SegmentStopInfo';
-import { mockTransporterData } from './SegmentConstants';
+import { mockCarrierData } from './SegmentConstants';
 import { getFormattedDate } from '../../ItineraryCard/TripSectorHelpers';
 import type { Segment_data as SegmentType } from './__generated__/Segment_data.graphql';
 
@@ -36,11 +36,11 @@ const Segment = (props: Props) => {
       <SegmentStopInfo data={props.data?.departure} typeLabel="Departure" />
       <TimelineTransportDetail
         carrier={{
-          code: props.data?.transporter?.name ?? '',
-          name: 'Carrier name', // @TODO - mock value, value is not returned from api yet
+          code: props.data?.carrier?.code,
+          name: props.data?.carrier?.name,
           type: 'airline', // @TODO - mock value, carrier_type value is not returned from api yet
         }}
-        additionalInfo={mockTransporterData} // @TODO - mock data, values are not returned from api yet
+        additionalInfo={mockCarrierData} // @TODO - mock data, values are not returned from api yet
         duration={props.data?.duration}
       />
       <SegmentStopInfo data={props.data?.arrival} typeLabel="Arrival" />
@@ -68,8 +68,9 @@ export default createFragmentContainer(Segment, {
         }
         ...SegmentStopInfo_data
       }
-      transporter {
+      carrier {
         name
+        code
       }
     }
   `,

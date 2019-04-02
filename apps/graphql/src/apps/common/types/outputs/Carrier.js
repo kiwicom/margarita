@@ -3,8 +3,9 @@
 import { GraphQLObjectType, GraphQLString } from 'graphql';
 
 export default new GraphQLObjectType({
-  name: 'Transporter',
+  name: 'Carrier',
   fields: {
     name: { type: GraphQLString },
+    code: { type: GraphQLString },
   },
 });

@@ -9,21 +9,22 @@
 /*::
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type Transporters_data$ref: FragmentReference;
-export type Transporters_data = {|
+declare export opaque type Carriers_data$ref: FragmentReference;
+export type Carriers_data = {|
   +segments: ?$ReadOnlyArray<?{|
-    +transporter: ?{|
-      +name: ?string
+    +carrier: ?{|
+      +name: ?string,
+      +code: ?string,
     |}
   |}>,
-  +$refType: Transporters_data$ref,
+  +$refType: Carriers_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "Transporters_data",
+  "name": "Carriers_data",
   "type": "Sector",
   "metadata": null,
   "argumentDefinitions": [],
@@ -40,16 +41,23 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "LinkedField",
           "alias": null,
-          "name": "transporter",
+          "name": "carrier",
           "storageKey": null,
           "args": null,
-          "concreteType": "Transporter",
+          "concreteType": "Carrier",
           "plural": false,
           "selections": [
             {
               "kind": "ScalarField",
               "alias": null,
               "name": "name",
+              "args": null,
+              "storageKey": null
+            },
+            {
+              "kind": "ScalarField",
+              "alias": null,
+              "name": "code",
               "args": null,
               "storageKey": null
             }
@@ -60,5 +68,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'f003f05cd2e45842dffe914f8aba7860';
+(node/*: any*/).hash = '7c95ca6a8afd45dbe41ca05525788e99';
 module.exports = node;

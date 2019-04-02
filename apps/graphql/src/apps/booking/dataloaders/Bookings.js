@@ -11,8 +11,9 @@ import type {
   ApiRouteStop,
   TypeSpecificData,
   Passenger,
+  ApiCarrier,
 } from '../Booking';
-import type { RouteStop, Segment } from '../../common/CommonTypes';
+import type { RouteStop, Segment, Carrier } from '../../common/CommonTypes';
 
 const cabinBag = '55x40x20, 10kg';
 const personalItem = '35x20x20';
@@ -173,7 +174,7 @@ const sanitizeFlight = (flight: ApiFlight): Segment => {
     departure: sanitizeRouteStop(flight.departure),
     arrival: sanitizeRouteStop(flight.arrival),
     duration: null, // @TODO - calculate duration
-    transporter: null, // @TODO - map values
+    carrier: sanitizeCarrier(flight.airline),
     vehicle: null, // @TODO - map values
   };
 };
@@ -217,6 +218,11 @@ const sanitizeRouteStop = (departureArrival: ?ApiRouteStop): ?RouteStop => {
     },
   };
 };
+
+const sanitizeCarrier = (apiCarrier: ?ApiCarrier): Carrier => ({
+  name: apiCarrier?.name,
+  code: apiCarrier?.iata,
+});
 
 const BookingsLoader = {
   load: () => sanitizeBookings(bookings),

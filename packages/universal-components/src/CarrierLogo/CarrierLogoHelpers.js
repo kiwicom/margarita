@@ -9,6 +9,7 @@ export const getCarrierImageUri = (
   pixelRatio: number,
   carrierData: CarrierData,
 ): string => {
+  const type = carrierData.type ?? CARRIER_TYPE_OPTIONS.AIRLINE;
   let urlSize = carriersLength > 1 || size === SIZE_OPTIONS.SMALL ? 16 : 32;
   if (pixelRatio > 2.25) {
     urlSize *= 4;
@@ -16,11 +17,12 @@ export const getCarrierImageUri = (
     urlSize *= 2;
   }
 
-  return `${BASE_URL}/airlines/${urlSize}/${carrierData.code}.png?default=${
-    carrierData.type === undefined
-      ? CARRIER_TYPE_OPTIONS.AIRLINE
-      : carrierData.type
-  }.png`;
+  if (carrierData.code) {
+    return `${BASE_URL}/airlines/${urlSize}/${
+      carrierData.code
+    }.png?default=${type}.png`;
+  }
+  return `${BASE_URL}/airlines/${urlSize}x${urlSize}/${type}.png`;
 };
 
 export const parseCarriers = (carriers: CarrierData[]): CarrierData[] => {

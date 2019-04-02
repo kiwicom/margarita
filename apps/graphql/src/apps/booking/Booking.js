@@ -14,11 +14,17 @@ export type ApiRouteStop = {|
   |},
 |};
 
+export type ApiCarrier = {|
+  +name: string,
+  +iata: string,
+|};
+
 export type ApiFlight = {|
   +id: string,
   +arrival: ApiRouteStop,
   +departure: ApiRouteStop,
   +return: number,
+  +airline: ApiCarrier,
 |};
 
 export type BookingApiResult = {|
