@@ -6,29 +6,29 @@ import { CarrierLogo } from '@kiwicom/universal-components';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { uniq } from 'ramda';
 
-import type { Transporters_data as TransportersType } from './__generated__/Transporters_data.graphql';
+import type { Carriers_data as CarriersType } from './__generated__/Carriers_data.graphql';
 
-type SegmentsType = $PropertyType<TransportersType, 'segments'>;
+type SegmentsType = $PropertyType<CarriersType, 'segments'>;
 
 type Props = {|
-  +data: ?TransportersType,
+  +data: ?CarriersType,
 |};
 
-const mapTransporters = (segments: SegmentsType) => {
+const mapCarriers = (segments: SegmentsType) => {
   const carriers =
     segments &&
     uniq(
       segments.map(segment => ({
-        name: '',
-        code: (segment && segment.transporter?.name) ?? '',
+        name: segment?.carrier?.name,
+        code: segment?.carrier?.code,
       })),
     );
 
   return carriers;
 };
 
-function Transporters({ data }: Props) {
-  const carriers = mapTransporters(data?.segments);
+function Carriers({ data }: Props) {
+  const carriers = mapCarriers(data?.segments);
 
   if (carriers == null) {
     return null;
@@ -42,12 +42,13 @@ function Transporters({ data }: Props) {
   );
 }
 
-export default createFragmentContainer(Transporters, {
+export default createFragmentContainer(Carriers, {
   data: graphql`
-    fragment Transporters_data on Sector {
+    fragment Carriers_data on Sector {
       segments {
-        transporter {
+        carrier {
           name
+          code
         }
       }
     }

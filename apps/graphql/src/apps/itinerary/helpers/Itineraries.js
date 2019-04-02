@@ -36,8 +36,9 @@ export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   uniqueNo: uniqueNo ?? null,
 });
 
-export const mapTransporter = (transporter: ?string) => ({
-  name: transporter ?? null,
+export const sanitizeCarrier = (routeItem: ?ApiRouteItem) => ({
+  name: null, // @TODO - value is currently missing from API endpoint response
+  code: routeItem?.airline ?? null,
 });
 
 export const getItineraryType = (routes: ?Array<Array<string>>) => {
@@ -154,7 +155,7 @@ const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
   return {
     duration: differenceInMinutes(segment?.utc_departure, segment?.utc_arrival),
     id: segment?.id,
-    transporter: mapTransporter(segment?.airline),
+    carrier: sanitizeCarrier(segment),
     vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
     departure: apiRouteItemToDeparture(segment),
     arrival: apiRouteItemToArrival(segment),

@@ -4,15 +4,15 @@ import { GraphQLObjectType, GraphQLInt } from 'graphql';
 import GlobalID from '@kiwicom/graphql-global-id';
 
 import GraphQLVehicle from './Vehicle';
-import GraphQLTransporter from './Transporter';
+import GraphQLCarrier from './Carrier';
 import GraphQLRouteStop from './RouteStop';
 
 export default new GraphQLObjectType({
   name: 'Segment',
   fields: {
     id: GlobalID(({ id }) => id),
-    transporter: {
-      type: GraphQLTransporter,
+    carrier: {
+      type: GraphQLCarrier,
     },
     duration: {
       type: GraphQLInt,

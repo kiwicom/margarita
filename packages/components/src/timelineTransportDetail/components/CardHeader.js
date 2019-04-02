@@ -12,8 +12,8 @@ import Duration from '../../duration/Duration';
 type Props = {|
   +expanded: boolean,
   +carrier: {|
-    code: string,
-    name: string,
+    code: ?string,
+    name: ?string,
     type?: 'airline' | 'bus' | 'train',
   |},
   +duration: ?number,

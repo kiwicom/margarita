@@ -15,7 +15,7 @@ import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
 import type { TripSector_data as TripSectorType } from './__generated__/TripSector_data.graphql';
 import TimelineArrow from './TimelineArrow';
-import Transporters from './Transporters';
+import Carriers from './Carriers';
 import FlightTimes from './FlightTimes';
 import LocalTime from './LocalTime';
 import TripCities from './TripCities';
@@ -30,7 +30,7 @@ function TripSector({ data, layout }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.carrierLogo}>
-        <Transporters data={data} />
+        <Carriers data={data} />
       </View>
       <View style={styles.tripItems}>
         <View
@@ -74,8 +74,7 @@ export default createFragmentContainer(
         departure {
           ...LocalTime_data
         }
-        duration
-        ...Transporters_data
+        ...Carriers_data
       }
     `,
   },

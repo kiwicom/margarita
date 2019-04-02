@@ -1,6 +1,6 @@
 // @flow
 
-export const mockTransporterData = [
+export const mockCarrierData = [
   {
     title: 'Connection Info',
     information: [

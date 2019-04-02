@@ -26,15 +26,16 @@ export type Sector = {|
 
 export type Segment = {|
   +id: ?string,
-  +transporter: ?Transporter,
+  +carrier: ?Carrier,
   +duration: ?number,
   +vehicle: ?Vehicle,
   +departure: ?RouteStop,
   +arrival: ?RouteStop,
 |};
 
-export type Transporter = {|
+export type Carrier = {|
   +name: ?string,
+  +code: ?string,
 |};
 
 export type Vehicle = {|

@@ -2,7 +2,7 @@
 
 import {
   getItineraryType,
-  mapTransporter,
+  sanitizeCarrier,
   mapSectors,
   mapVehicle,
   differenceInMinutes,
@@ -28,16 +28,20 @@ describe('getItineraryType', () => {
   });
 });
 
-describe('mapTransporter', () => {
-  const name = 'Ryan Air';
-  it('returns proper structure of the Transporter object', () => {
-    expect(mapTransporter(name)).toMatchObject({
-      name,
+describe('sanitizeCarrier', () => {
+  const segment = {
+    airline: 'VY',
+  };
+  it('returns proper structure of the Carrier object', () => {
+    expect(sanitizeCarrier(segment)).toMatchObject({
+      name: null,
+      code: 'VY',
     });
   });
-  it('returns empty structure of the Transporter object', () => {
-    expect(mapTransporter()).toMatchObject({
+  it('returns empty structure of the Carrier object', () => {
+    expect(sanitizeCarrier()).toMatchObject({
       name: null,
+      code: null,
     });
   });
 });
