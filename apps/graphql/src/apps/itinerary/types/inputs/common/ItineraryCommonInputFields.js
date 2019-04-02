@@ -1,5 +1,8 @@
 // @flow
 
+/* eslint-disable kiwicom-incubator/only-nullable-fields */
+// Ok, these are just being used inside other GraphQLInputObjectType
+// TODO: Improve
 import { GraphQLNonNull } from 'graphql';
 
 import LocationItineraryInput from './ItineraryLocationInput';

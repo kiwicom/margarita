@@ -68,7 +68,7 @@ const mapItineraryId = segments => {
 
 export default function ItineraryLoader() {
   return new OptimisticDataloader(
-    async (
+    (
       keys: $ReadOnlyArray<ItineraryCheckParameters>,
     ): Promise<Array<Itinerary | Error>> => fetchItinerary(keys),
     {

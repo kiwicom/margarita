@@ -2,7 +2,7 @@
 
 import React from 'react';
 import * as Expo from 'expo';
-import { Buffer } from 'buffer';
+import { Buffer } from 'buffer'; // eslint-disable-line node/prefer-global/buffer
 import { Fonts } from '@kiwicom/universal-components';
 
 import SharedApp from './App';
