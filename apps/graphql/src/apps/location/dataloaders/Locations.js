@@ -94,9 +94,8 @@ const fetchLocations = async (params: $ReadOnlyArray<LocationInput>) => {
 
 export default function locationsLoader() {
   return new OptimisticDataloader(
-    async (
-      ids: $ReadOnlyArray<LocationInput>,
-    ): Promise<Array<Location[] | Error>> => fetchLocations(ids),
+    (ids: $ReadOnlyArray<LocationInput>): Promise<Array<Location[] | Error>> =>
+      fetchLocations(ids),
     {
       cacheKeyFn: stringify,
     },

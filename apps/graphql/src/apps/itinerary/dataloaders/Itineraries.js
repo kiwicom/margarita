@@ -111,7 +111,7 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
 
 export function createItinerariesLoader() {
   return new OptimisticDataloader(
-    async (
+    (
       keys: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
     ): Promise<Array<Itinerary[] | Error>> => fetchItineraries(keys),
     {

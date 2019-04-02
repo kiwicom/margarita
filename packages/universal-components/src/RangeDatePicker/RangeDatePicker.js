@@ -33,13 +33,6 @@ export default class RangeDatePicker extends React.Component<Props, State> {
     };
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { date } = this.props;
-    if (date != null && date !== prevProps.date) {
-      this.setState(parseDatePropsToState(this.props));
-    }
-  }
-
   handleDismiss = () => {
     const { onDismiss } = this.props;
     onDismiss();
