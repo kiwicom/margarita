@@ -21,6 +21,10 @@ export {
 // src
 export { default as withContext } from './src/withContext/withContext';
 export { default as formatDate } from './src/formatDate';
+
+// constants
+export { TRIP_TYPES } from './constants/TripTypes';
+export type { TripTypes } from './constants/TripTypes';
 // other
 export const noop = () => {};
 export { default as debounce } from 'lodash/debounce';

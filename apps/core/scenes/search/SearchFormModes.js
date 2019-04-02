@@ -13,12 +13,13 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
+  TRIP_TYPES,
+  type TripTypes,
 } from '@kiwicom/margarita-utils';
 
 import {
   withSearchContext,
   type SearchContextState,
-  type TripTypes,
   type ModalTypes,
 } from './SearchContext';
 import { MODAL_TYPE, TRIP_TYPE } from './SearchConstants';
@@ -34,8 +35,8 @@ type Props = {|
 |};
 
 class SearchFormModes extends React.Component<Props> {
-  handleTripTypeSelect = (type: string) => {
-    if (type === 'Return' || type === 'OneWay') {
+  handleTripTypeSelect = (type: TripTypes) => {
+    if (type === TRIP_TYPES.RETURN || type === TRIP_TYPES.ONEWAY) {
       this.props.setTripType(type);
     }
   };

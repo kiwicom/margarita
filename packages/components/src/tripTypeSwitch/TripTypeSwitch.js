@@ -3,19 +3,20 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, type StylePropType } from '@kiwicom/universal-components';
+import { type TripTypes } from '@kiwicom/margarita-utils';
 
 import TripTypeSwitchOption from './TripTypeSwitchOption';
 
 type Props = {|
   +style?: StylePropType,
   +optionsData: {
-    [string]: {|
+    [TripTypes]: {|
       +icon: string,
       +label: string,
     |},
   },
   +selectedType: string,
-  +onSelect: (type: string) => void,
+  +onSelect: (type: TripTypes) => void,
 |};
 
 export default function TripTypeSwitch({

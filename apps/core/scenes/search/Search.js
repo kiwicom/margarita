@@ -20,6 +20,7 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
+  TRIP_TYPES,
 } from '@kiwicom/margarita-utils';
 import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
 
@@ -86,7 +87,7 @@ class Search extends React.Component<Props> {
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         dateFrom: format(dateFrom, BASIC_ISO_DATE_FORMAT),
         dateTo: format(dateTo, BASIC_ISO_DATE_FORMAT),
-        ...(tripType === 'Return'
+        ...(tripType === TRIP_TYPES.RETURN
           ? {
               returnDateFrom: format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
               returnDateTo: format(returnDateTo, BASIC_ISO_DATE_FORMAT),

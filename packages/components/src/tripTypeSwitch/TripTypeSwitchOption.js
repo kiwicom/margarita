@@ -7,14 +7,15 @@ import {
 } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { type TripTypes } from '@kiwicom/margarita-utils';
 
 import Text from '../text/Text';
 
 type Props = {|
-  +type: string,
+  +type: TripTypes,
   +label: string,
   +selected: boolean,
-  +onSelect: (type: string) => void,
+  +onSelect: (type: TripTypes) => void,
 |};
 
 export default class TripTypeSwitchOption extends React.Component<Props> {

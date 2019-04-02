@@ -8,6 +8,7 @@ import {
   StyleSheet,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
+import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-utils';
 
 import AlphaToWhite from './assets/alpha-to-white-horizontal.png';
 import Text from '../text/Text';
@@ -18,7 +19,7 @@ type Trip = {|
 |};
 
 type Props = {|
-  +tripType?: 'OneWay' | 'Return' | 'MultiCity',
+  +tripType?: TripTypes,
   +arrival?: Trip,
   +departure?: Trip,
 |};
@@ -31,13 +32,13 @@ export default function SearchParamsSummary({
   let icon = '';
 
   switch (tripType) {
-    case 'OneWay':
+    case TRIP_TYPES.ONEWAY:
       icon = 'flight-direct';
       break;
-    case 'Return':
+    case TRIP_TYPES.RETURN:
       icon = 'flight-return';
       break;
-    case 'MultiCity':
+    case TRIP_TYPES.MULTICITY:
       icon = 'flight-multicity';
       break;
     default:
@@ -65,7 +66,7 @@ export default function SearchParamsSummary({
         </View>
 
         <View style={styles.date}>
-          {tripType === 'OneWay' ? (
+          {tripType === TRIP_TYPES.ONEWAY ? (
             <AdaptableBadge
               style={styles.badge}
               textStyle={styles.badgeText}

@@ -11,7 +11,7 @@ const getComponent = (type: string) => (
     type={type}
     oneWayComponent={<View testID="OneWay" />}
     returnComponent={<View testID="Return" />}
-    multicityComponent={<View testID="multicity" />}
+    multicityComponent={<View testID="MultiCity" />}
   />
 );
 
@@ -19,19 +19,19 @@ it('renders only oneWayComponent for type BookingOneWay', () => {
   const { getByTestId } = render(getComponent('BookingOneWay'));
   expect(getByTestId('OneWay')).toBeDefined();
   expect(() => getByTestId('Return')).toThrow();
-  expect(() => getByTestId('multicity')).toThrow();
+  expect(() => getByTestId('MultiCity')).toThrow();
 });
 
 it('renders only returnComponent for type BookingReturn', () => {
   const { getByTestId } = render(getComponent('BookingReturn'));
   expect(getByTestId('Return')).toBeDefined();
-  expect(() => getByTestId('multicity')).toThrow();
+  expect(() => getByTestId('MultiCity')).toThrow();
   expect(() => getByTestId('OneWay')).toThrow();
 });
 
 it('renders only multicityComponent for type BookingMulticity', () => {
   const { getByTestId } = render(getComponent('BookingMulticity'));
-  expect(getByTestId('multicity')).toBeDefined();
+  expect(getByTestId('MultiCity')).toBeDefined();
   expect(() => getByTestId('Return')).toThrow();
   expect(() => getByTestId('OneWay')).toThrow();
 });
