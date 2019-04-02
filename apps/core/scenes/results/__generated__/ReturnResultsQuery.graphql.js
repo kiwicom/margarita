@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 660a2ec16cad1929fff266eb2e63794d
+ * @relayHash 074f36fbad44fa0989e99788a0ce5bd9
  */
 
 /* eslint-disable */
@@ -12,21 +12,22 @@ import type { ConcreteRequest } from 'relay-runtime';
 type ResultsList_data$ref = any;
 export type OrderSearchInput = "ASC" | "DESC" | "%future added value";
 export type SortSearchInput = "DATE" | "DURATION" | "POPULARITY" | "PRICE" | "QUALITY" | "%future added value";
-export type ItinerariesOneWaySearchInput = {|
+export type ItinerariesReturnSearchInput = {|
   order?: ?OrderSearchInput,
   sort?: ?SortSearchInput,
   passengers?: ?PassengersInput,
-  itinerary: ItineraryOneWayInput,
+  itinerary: ItineraryReturnInput,
 |};
 export type PassengersInput = {|
   adults?: ?number,
   children?: ?number,
   infants?: ?number,
 |};
-export type ItineraryOneWayInput = {|
+export type ItineraryReturnInput = {|
   origin: LocationItineraryInput,
   destination?: ?LocationItineraryInput,
   outboundDate: DateRange,
+  inboundDate: DateRange,
 |};
 export type LocationItineraryInput = {|
   ids?: ?$ReadOnlyArray<?string>
@@ -35,26 +36,26 @@ export type DateRange = {|
   start: any,
   end?: ?any,
 |};
-export type ResultsOneWayQueryVariables = {|
-  input: ItinerariesOneWaySearchInput
+export type ReturnResultsQueryVariables = {|
+  input: ItinerariesReturnSearchInput
 |};
-export type ResultsOneWayQueryResponse = {|
+export type ReturnResultsQueryResponse = {|
   +searchData: ?{|
     +$fragmentRefs: ResultsList_data$ref
   |}
 |};
-export type ResultsOneWayQuery = {|
-  variables: ResultsOneWayQueryVariables,
-  response: ResultsOneWayQueryResponse,
+export type ReturnResultsQuery = {|
+  variables: ReturnResultsQueryVariables,
+  response: ReturnResultsQueryResponse,
 |};
 */
 
 
 /*
-query ResultsOneWayQuery(
-  $input: ItinerariesOneWaySearchInput!
+query ReturnResultsQuery(
+  $input: ItinerariesReturnSearchInput!
 ) {
-  searchData: searchOneWayItineraries(input: $input) {
+  searchData: searchReturnItineraries(input: $input) {
     ...ResultsList_data
   }
 }
@@ -235,7 +236,7 @@ var v0 = [
   {
     "kind": "LocalArgument",
     "name": "input",
-    "type": "ItinerariesOneWaySearchInput!",
+    "type": "ItinerariesReturnSearchInput!",
     "defaultValue": null
   }
 ],
@@ -244,7 +245,7 @@ v1 = [
     "kind": "Variable",
     "name": "input",
     "variableName": "input",
-    "type": "ItinerariesOneWaySearchInput!"
+    "type": "ItinerariesReturnSearchInput!"
   }
 ],
 v2 = {
@@ -338,7 +339,7 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "ResultsOneWayQuery",
+    "name": "ReturnResultsQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
@@ -346,7 +347,7 @@ return {
       {
         "kind": "LinkedField",
         "alias": "searchData",
-        "name": "searchOneWayItineraries",
+        "name": "searchReturnItineraries",
         "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "ItineraryConnection",
@@ -363,13 +364,13 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ResultsOneWayQuery",
+    "name": "ReturnResultsQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "LinkedField",
         "alias": "searchData",
-        "name": "searchOneWayItineraries",
+        "name": "searchReturnItineraries",
         "storageKey": null,
         "args": (v1/*: any*/),
         "concreteType": "ItineraryConnection",
@@ -526,13 +527,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "ResultsOneWayQuery",
+    "name": "ReturnResultsQuery",
     "id": null,
-    "text": "query ResultsOneWayQuery(\n  $input: ItinerariesOneWaySearchInput!\n) {\n  searchData: searchOneWayItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on Itinerary {\n  sectors {\n    ...RenderTripSectorItem_data\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment ItineraryDetail_data on Itinerary {\n  bookingToken\n  ...SectorsList_data\n}\n\nfragment SectorsList_data on Itinerary {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  transporter {\n    name\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Transporters_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters_data on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query ReturnResultsQuery(\n  $input: ItinerariesReturnSearchInput!\n) {\n  searchData: searchReturnItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryConnection {\n  edges {\n    node {\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on Itinerary {\n  sectors {\n    ...RenderTripSectorItem_data\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment ItineraryDetail_data on Itinerary {\n  bookingToken\n  ...SectorsList_data\n}\n\nfragment SectorsList_data on Itinerary {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  transporter {\n    name\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Transporters_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Transporters_data on Sector {\n  segments {\n    transporter {\n      name\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '48e15b0a54601699fcdaa515f39612ea';
+(node/*: any*/).hash = '92b1b886943cad7161ce49c23470fd12';
 module.exports = node;
