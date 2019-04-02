@@ -172,10 +172,14 @@ export default class SearchContextProvider extends React.Component<
 
   setReturnDate = (returnDateFrom: Date, returnDateTo: Date) => {
     this.setState(prevState => {
-      const departureDate = DateFNS.min([prevState.dateFrom, returnDateFrom]);
+      const departureDateFrom = DateFNS.min([
+        prevState.dateFrom,
+        returnDateFrom,
+      ]);
+      const departureDateTo = DateFNS.min([prevState.dateTo, returnDateFrom]);
       return {
-        dateFrom: departureDate,
-        dateTo: departureDate,
+        dateFrom: departureDateFrom,
+        dateTo: departureDateTo,
         returnDateFrom: returnDateFrom,
         returnDateTo: returnDateTo,
       };

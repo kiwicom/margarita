@@ -2,12 +2,7 @@
 
 import * as React from 'react';
 import { Platform } from 'react-native';
-import { TripInput } from '@kiwicom/margarita-components';
-import {
-  Icon,
-  StyleSheet,
-  RangeDatePicker,
-} from '@kiwicom/universal-components';
+import { StyleSheet } from '@kiwicom/universal-components';
 import { format, isSameDay } from 'date-fns';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
@@ -24,6 +19,7 @@ import {
 
 import { withSearchContext, type SearchContextState } from './SearchContext';
 import PickersWrapper from './PickersWrapper';
+import DatePicker from './DatePicker';
 
 type Props = {|
   +tripType: string,
@@ -38,43 +34,36 @@ type Props = {|
 |};
 
 type State = {|
-  isDatePickerVisible: boolean,
-  selectDate: $Keys<typeof DATEPICKER_MODE> | null,
+  isDepartureDatePickerVisible: boolean,
+  isArrivalDatePickerVisible: boolean,
 |};
-
-const DATEPICKER_MODE = {
-  DEPARTURE: 'DEPARTURE',
-  RETURN: 'RETURN',
-};
 
 class Datepickers extends React.Component<Props, State> {
   state = {
-    isDatePickerVisible: false,
-    selectDate: null,
+    isDepartureDatePickerVisible: false,
+    isArrivalDatePickerVisible: false,
   };
 
   handleDepartureDatePress = () => {
     this.setState({
-      isDatePickerVisible: true,
-      selectDate: DATEPICKER_MODE.DEPARTURE,
+      isDepartureDatePickerVisible: true,
     });
   };
 
   handleReturnDatePress = () => {
     this.setState({
-      isDatePickerVisible: true,
-      selectDate: DATEPICKER_MODE.RETURN,
+      isArrivalDatePickerVisible: true,
     });
   };
 
   handleDatePickerDismiss = () => {
     this.setState({
-      isDatePickerVisible: false,
+      isDepartureDatePickerVisible: false,
+      isArrivalDatePickerVisible: false,
     });
   };
 
   handleDateChange = (dates: Array<Date>) => {
-    const { selectDate } = this.state;
     const {
       tripType,
       setDepartureDate,
@@ -82,19 +71,16 @@ class Datepickers extends React.Component<Props, State> {
       setTripType,
     } = this.props;
 
-    switch (selectDate) {
-      case DATEPICKER_MODE.DEPARTURE:
-        setDepartureDate(...dates);
-        break;
-      case DATEPICKER_MODE.RETURN:
-        setReturnDate(...dates);
-        if (tripType === TRIP_TYPES.ONEWAY) {
-          setTripType(TRIP_TYPES.RETURN);
-        }
-        break;
-      default:
-        break;
+    if (this.state.isDepartureDatePickerVisible) {
+      setDepartureDate(...dates);
     }
+    if (this.state.isArrivalDatePickerVisible) {
+      setReturnDate(...dates);
+      if (tripType === TRIP_TYPES.ONEWAY) {
+        setTripType(TRIP_TYPES.RETURN);
+      }
+    }
+
     this.handleDatePickerDismiss();
   };
 
@@ -107,8 +93,8 @@ class Datepickers extends React.Component<Props, State> {
       }
       return dates.reduce((acc, date, index) => {
         if (date) {
-          const prefix = index > 0 ? ' -' : '';
-          return `${acc}${prefix} ${formatDate(date)}`;
+          const prefix = index > 0 ? ' - ' : '';
+          return `${acc}${prefix}${formatDate(date)}`;
         }
         return acc;
       }, '');
@@ -129,42 +115,42 @@ class Datepickers extends React.Component<Props, State> {
     const showReturnInput =
       tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
     const returnType = tripType === TRIP_TYPES.RETURN;
-    const datePickerDates =
-      this.state.selectDate === DATEPICKER_MODE.DEPARTURE
-        ? [dateFrom, dateTo]
-        : [returnDateFrom, returnDateTo];
+
+    const departureDates = [dateFrom, dateTo];
+    const arrivalDates = [returnDateFrom, returnDateTo];
+    const rangeDatePickerProps = {
+      onConfirm: this.handleDateChange,
+      onDismiss: this.handleDatePickerDismiss,
+      labels: { cancel: 'Cancel', confirm: 'OK' },
+      numberOfRenderedMonths: 12,
+      weekStartsOn: 1,
+    };
     return (
       <>
         <PickersWrapper layout={layout}>
-          <TripInput
+          <DatePicker
             style={rowLayout && styles.rowInput}
             onPress={this.handleDepartureDatePress}
             label="Departure"
-            icon={<Icon name="calendar" />}
-            value={this.getDateNames([dateFrom, dateTo])}
+            icon="calendar"
+            value={this.getDateNames(departureDates)}
+            dates={departureDates}
+            isVisible={this.state.isDepartureDatePickerVisible}
+            {...rangeDatePickerProps}
           />
+
           {showReturnInput && (
-            <TripInput
+            <DatePicker
               onPress={this.handleReturnDatePress}
               label={returnType ? TRIP_TYPES.RETURN : ''}
-              icon={<Icon name="calendar" />}
-              value={
-                returnType
-                  ? this.getDateNames([returnDateFrom, returnDateTo])
-                  : 'No return'
-              }
+              icon="calendar"
+              value={returnType ? this.getDateNames(arrivalDates) : 'No return'}
+              dates={arrivalDates}
+              isVisible={this.state.isArrivalDatePickerVisible}
+              {...rangeDatePickerProps}
             />
           )}
         </PickersWrapper>
-        <RangeDatePicker
-          isVisible={this.state.isDatePickerVisible}
-          dates={datePickerDates}
-          onConfirm={this.handleDateChange}
-          onDismiss={this.handleDatePickerDismiss}
-          labels={{ cancel: 'Cancel', confirm: 'OK' }}
-          numberOfRenderedMonths={12}
-          weekStartsOn={1}
-        />
       </>
     );
   }
