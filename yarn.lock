@@ -1717,13 +1717,21 @@
     strip-ansi "^5.2.0"
     text-table "^0.2.0"
 
-"@kiwicom/fetch@^2.1.1", "@kiwicom/fetch@^2.2.0":
+"@kiwicom/fetch@^2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.2.0.tgz#190d9352f299c8fbe7b12b5bece9469684c2eeed"
   integrity sha512-7B49i+td2r/S0jm1jhTKzK+a5/KDFTvKdmgmgY1XQDcOaBgWGmlhSv/YmkT2wbjHDE6uxv5tzU0kYrc/sbrWew==
   dependencies:
     "@kiwicom/js" "^0.4.0"
     cross-fetch "^3.0.0"
+
+"@kiwicom/fetch@^2.3.1":
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@kiwicom/fetch/-/fetch-2.3.1.tgz#e062b9144a93410191e215faec9bc913c011a788"
+  integrity sha512-Cz7AfbQ1OF7Px372vtyxqHbsgrzBBx7WAxhyULv52YNyo1qKtd7aMlywASTdHT90zWrVAsMU9VMW9qKnJMTmNw==
+  dependencies:
+    "@kiwicom/js" "^0.7.0"
+    cross-fetch "^3.0.2"
 
 "@kiwicom/graphql-global-id@^0.8.0":
   version "0.8.0"
@@ -1784,13 +1792,13 @@
   dependencies:
     ramda "^0.25.0"
 
-"@kiwicom/relay@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-0.19.0.tgz#91edf897ceabbc932a349a3f8641b0b32cae2b75"
-  integrity sha512-Z1cmyhUsQq5JKLt3BNPGfSjlGc9f6jxJneX9eNjlrqzcDS6qb+bYtUzdQZ/8Nn3WvymMYBx2q4RfJHIc6bRZ2w==
+"@kiwicom/relay@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/relay/-/relay-1.1.0.tgz#b3a1eddea0f94eac184b5bd7f0495d7bb22cb6ef"
+  integrity sha512-WG7FAsJKFMAfDP9K1fKoXi52996jVZbLPSTghUn78FBZ77TVt8g6BTBw5oIEkKq0S6lg+mYoQmiDDQcOY57DAg==
   dependencies:
-    "@kiwicom/fetch" "^2.1.1"
-    "@kiwicom/js" "^0.4.0"
+    "@kiwicom/fetch" "^2.3.1"
+    "@kiwicom/js" "^0.7.0"
     react-relay "^3.0.0"
     relay-compiler "^3.0.0"
     relay-runtime "^3.0.0"
@@ -6663,6 +6671,14 @@ cross-fetch@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.1.tgz#3f207bbd829a76e9aa2a953348bd1f2a3cf388a7"
   integrity sha512-qWtpgBAF8ioqBOddRD+pHhrdzm/UWOArkrlIU7c08DlNbOxo5GfUbSY2vr90ZypWf0raW+HNN1F38pi5CEOjiQ==
+  dependencies:
+    node-fetch "2.3.0"
+    whatwg-fetch "3.0.0"
+
+cross-fetch@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/cross-fetch/-/cross-fetch-3.0.2.tgz#b7136491967031949c7f86b15903aef4fa3f1768"
+  integrity sha512-a4Z0EJ5Nck6QtMy9ZqloLfpvu2uMV3sBfMCR+CgSBCZc6z5KR4bfEiD3dkepH8iZgJMXQpTqf8FjMmvu/GMFkg==
   dependencies:
     node-fetch "2.3.0"
     whatwg-fetch "3.0.0"
