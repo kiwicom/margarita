@@ -7,15 +7,17 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Icon } from '../Icon';
 import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
+import { Text } from '../Text';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import type { NotificationStyleType } from '../types';
-import { Text } from '../Text';
+import type { IconNameType } from '../types/_generated-types';
 
 type Props = {|
   +style?: StylePropType,
   +notificationStyle: NotificationStyleType,
   +notificationTitle: React.Node | string,
   +notificationMessage: React.Node | string,
+  +rightIconName?: IconNameType,
   +onPress: () => void,
 |};
 
@@ -27,6 +29,7 @@ export default function ImportantNotification({
   notificationTitle,
   notificationMessage,
   notificationStyle,
+  rightIconName,
 }: Props) {
   let color;
   let iconColor;
@@ -66,6 +69,10 @@ export default function ImportantNotification({
       iconRight = 'chevron-right';
       iconSize = 'medium';
     }
+  }
+
+  if (rightIconName != null) {
+    iconRight = rightIconName;
   }
 
   return (

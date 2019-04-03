@@ -4,6 +4,7 @@ import * as React from 'react';
 import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import type { IconNameType } from '../types/_generated-types';
 import { getStatusBarHeight } from '../utils/StatusBarHeight';
 import { StyleSheet } from '../PlatformStyleSheet';
 import InformativeNotification from './InformativeNotification';
@@ -32,6 +33,7 @@ type State = {|
   notificationStyle: NotificationStyleType,
   notificationTitle: React.Node | string,
   notificationMessage: React.Node | string,
+  rightIconName?: IconNameType,
 |};
 
 const ANIMATION_DURATION = 250;
@@ -50,6 +52,7 @@ export default class Notification extends React.Component<Props, State> {
     notificationStyle: 'error',
     notificationTitle: '',
     notificationMessage: '',
+    rightIconName: undefined,
   };
 
   componentWillUnmount() {
@@ -64,6 +67,7 @@ export default class Notification extends React.Component<Props, State> {
     notificationStyle: NotificationStyleType,
     title: React.Node | string,
     message: React.Node | string,
+    rightIconName?: IconNameType,
   ) {
     const { isOpen } = this.state;
     const { notificationType } = this.props;
@@ -76,6 +80,7 @@ export default class Notification extends React.Component<Props, State> {
           notificationStyle,
           notificationTitle: title,
           notificationMessage: message,
+          rightIconName: rightIconName,
         },
         () => this.showNotification(),
       );
@@ -110,6 +115,7 @@ export default class Notification extends React.Component<Props, State> {
     notificationStyle: NotificationStyleType,
     title: React.Node | string,
     message: React.Node | string,
+    rightIconName?: IconNameType,
   ) => {
     const { notificationType } = this.props;
     const { isOpen } = this.state;
@@ -120,7 +126,12 @@ export default class Notification extends React.Component<Props, State> {
     const timeToLiveOver = Math.abs(now - (this.lastCallTimestamp || 0));
 
     if (isImportant) {
-      this.internalToggleNotification(notificationStyle, title, message);
+      this.internalToggleNotification(
+        notificationStyle,
+        title,
+        message,
+        rightIconName,
+      );
     }
 
     if (
@@ -201,6 +212,7 @@ export default class Notification extends React.Component<Props, State> {
       notificationStyle,
       notificationMessage,
       notificationTitle,
+      rightIconName,
       isOpen,
     } = this.state;
 
@@ -270,6 +282,7 @@ export default class Notification extends React.Component<Props, State> {
             notificationStyle={notificationStyle}
             notificationTitle={notificationTitle}
             notificationMessage={notificationMessage}
+            rightIconName={rightIconName}
             onPress={this.dismissNotification}
           />
         )}

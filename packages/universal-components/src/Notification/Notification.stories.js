@@ -4,6 +4,7 @@ import * as React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { withKnobs, select, text } from '@storybook/addon-knobs';
 
+import icons from '../Icon/icons.json';
 import NotificationExample from './NotificationExample';
 
 storiesOf('Notification', module)
@@ -22,6 +23,11 @@ storiesOf('Notification', module)
     );
     const message = text('Message', 'Error message');
     const title = text('Title', 'Error');
+    const rightIconName = select(
+      'Right Icon',
+      ['undefined', ...Object.keys(icons)],
+      'chevron-right',
+    );
 
     return (
       <NotificationExample
@@ -29,6 +35,7 @@ storiesOf('Notification', module)
         notificationStyle={notificationStyle}
         title={title}
         message={message}
+        rightIconName={rightIconName}
       />
     );
   });
