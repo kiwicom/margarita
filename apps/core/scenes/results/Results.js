@@ -5,8 +5,11 @@ import { SafeAreaView } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
-import { ORDINAL_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
-import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-utils';
+import {
+  ORDINAL_DAY_MONTH_FORMAT,
+  TRIP_TYPES,
+  type TripTypes,
+} from '@kiwicom/margarita-config';
 
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
 import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQuery.graphql';
@@ -81,7 +84,7 @@ export default class Results extends React.Component<Props> {
       ? TRIP_TYPES.RETURN
       : TRIP_TYPES.ONEWAY;
     const QueryComponent =
-      tripType === 'Return' ? ReturnResultsQuery : OneWayResultsQuery;
+      tripType === TRIP_TYPES.RETURN ? ReturnResultsQuery : OneWayResultsQuery;
     const props = {
       render: this.renderInner,
       variables: {

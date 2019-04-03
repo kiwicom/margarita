@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
-import { TRIP_TYPES } from '@kiwicom/margarita-utils';
+import { TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import { MODAL_TYPE, TRIP_TYPE } from './SearchConstants';
 import {

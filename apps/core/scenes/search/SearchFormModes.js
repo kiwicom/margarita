@@ -13,9 +13,8 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-  TRIP_TYPES,
-  type TripTypes,
 } from '@kiwicom/margarita-utils';
+import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,

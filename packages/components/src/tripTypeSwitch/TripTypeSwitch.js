@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, type StylePropType } from '@kiwicom/universal-components';
-import { type TripTypes } from '@kiwicom/margarita-utils';
+import { type TripTypes } from '@kiwicom/margarita-config';
 
 import TripTypeSwitchOption from './TripTypeSwitchOption';
 

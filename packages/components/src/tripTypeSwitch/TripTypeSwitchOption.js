@@ -7,7 +7,7 @@ import {
 } from '@kiwicom/universal-components';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { type TripTypes } from '@kiwicom/margarita-utils';
+import { type TripTypes } from '@kiwicom/margarita-config';
 
 import Text from '../text/Text';
 

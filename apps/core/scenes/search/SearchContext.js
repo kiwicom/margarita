@@ -1,12 +1,8 @@
 // @flow
 
 import * as React from 'react';
-import {
-  withContext,
-  noop,
-  type TripTypes,
-  TRIP_TYPES,
-} from '@kiwicom/margarita-utils';
+import { withContext, noop } from '@kiwicom/margarita-utils';
+import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
 
 import { MODAL_TYPE } from './SearchConstants';

@@ -20,9 +20,8 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-  TRIP_TYPES,
 } from '@kiwicom/margarita-utils';
-import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
+import { BASIC_ISO_DATE_FORMAT, TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,

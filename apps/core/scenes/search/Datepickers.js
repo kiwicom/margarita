@@ -14,10 +14,12 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
+} from '@kiwicom/margarita-utils';
+import {
+  BASIC_ISO_DATE_FORMAT,
   TRIP_TYPES,
   type TripTypes,
-} from '@kiwicom/margarita-utils';
-import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
+} from '@kiwicom/margarita-config';
 
 import { withSearchContext, type SearchContextState } from './SearchContext';
 import PickersWrapper from './PickersWrapper';

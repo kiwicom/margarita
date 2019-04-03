@@ -8,7 +8,7 @@ import {
   StyleSheet,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
-import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-utils';
+import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
 
 import AlphaToWhite from './assets/alpha-to-white-horizontal.png';
 import Text from '../text/Text';

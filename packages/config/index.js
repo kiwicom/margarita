@@ -45,3 +45,7 @@ export const KIWI_INSTAGRAM_LINK =
 export const KIWI_TWITTER_LINK = 'https://twitter.com/kiwicom247';
 export const KIWI_LINKEDIN_LINK = 'https://www.linkedin.com/company/kiwi.com';
 export const KIWI_FACEBOOK_LINK = 'https://www.facebook.com/kiwicom247/';
+
+// constants
+export { TRIP_TYPES } from './constants/TripTypes';
+export type { TripTypes } from './constants/TripTypes';
