@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Dimensions, Platform } from 'react-native';
 
-import withContext from '../src/withContext/withContext';
+import withContext from '../withContext/withContext';
 import { getLayout } from './LayoutContextHelpers';
 import { LAYOUT } from './LayoutConstants';
 

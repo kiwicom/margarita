@@ -1,27 +1,18 @@
 // @flow
 
-// Helpers
-export { capitalize } from './helpers/capitalize';
+export { capitalize } from './src/Capitalize/Capitalize';
 
-// Localization
-export { formatPrice } from './localization/CurrencyFormatter';
-export type { Price } from './localization/CurrencyFormatter';
-export { default as DateFormatter } from './localization/DateFormatter';
-export { default as DateUtils } from './localization/DateUtils';
-export { default as Device } from './device/Device';
+export { formatPrice } from './src/CurrencyFormatter/CurrencyFormatter';
+export type { Price } from './src/CurrencyFormatter/CurrencyFormatter';
+export { default as Device } from './src/Device/Device';
 
-// LayoutContext
-export { LAYOUT } from './layoutContext/LayoutConstants';
-export type { LayoutContextState } from './layoutContext/LayoutContext';
-export { withLayoutContext } from './layoutContext/LayoutContext';
-export {
-  default as LayoutContextProvider,
-} from './layoutContext/LayoutContext';
+export { LAYOUT } from './src/Layout/LayoutConstants';
+export type { LayoutContextState } from './src/Layout/LayoutContext';
+export { withLayoutContext } from './src/Layout/LayoutContext';
+export { default as LayoutContextProvider } from './src/Layout/LayoutContext';
 
-// src
 export { default as withContext } from './src/withContext/withContext';
-export { default as formatDate } from './src/formatDate';
+export { default as formatDate } from './src/FormatDate/FormatDate';
 
-// other
 export const noop = () => {};
 export { default as debounce } from 'lodash/debounce';
