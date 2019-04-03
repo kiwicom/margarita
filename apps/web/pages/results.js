@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Results } from '@kiwicom/margarita-core';
+import { Results, SearchContextProvider } from '@kiwicom/margarita-core';
 import { StyleSheet } from '@kiwicom/universal-components';
 
 import { withPageRouter } from '../components/withPageRouter';
@@ -12,7 +12,9 @@ const results = ({ router }) => {
   return (
     <Layout>
       <View style={styles.container}>
-        <Results {...router.query} />
+        <SearchContextProvider>
+          <Results {...router.query} />
+        </SearchContextProvider>
       </View>
     </Layout>
   );

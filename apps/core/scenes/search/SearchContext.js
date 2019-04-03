@@ -26,12 +26,13 @@ export type Location = {|
 |};
 
 export type LocationSearchType = 'travelTo' | 'travelFrom';
-
+export type SortTypes = 'QUALITY' | 'PRICE' | 'DURATION';
 type State = {|
   tripType: TripTypes,
   travelFrom: Array<Location>,
   travelTo: Array<Location>,
   dateFrom: Date,
+  sortBy: SortTypes,
   dateTo: Date,
   returnDateFrom: Date,
   returnDateTo: Date,
@@ -42,6 +43,7 @@ type State = {|
     +setDepartureDate: Date => void,
     +setReturnDate: Date => void,
     +setTripType: TripTypes => void,
+    +setSortBy: SortTypes => void,
     +setModalType: ModalTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
     +clearLocation: LocationSearchType => void,
@@ -52,6 +54,7 @@ type State = {|
 
 const defaultDepartureDate = DateFNS.addDays(new Date(), 1);
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
+const defaultSortBy = 'QUALITY';
 
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
 const defaultPlaces = {
@@ -79,6 +82,7 @@ const defaultState = {
   travelTo: defaultPlaces.departure,
   dateFrom: defaultDepartureDate,
   dateTo: defaultDepartureDate,
+  sortBy: defaultSortBy,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
   modalType: MODAL_TYPE.HIDDEN,
@@ -90,6 +94,7 @@ const defaultState = {
     setDepartureDate: noop,
     setReturnDate: noop,
     setTripType: noop,
+    setSortBy: noop,
     setModalType: noop,
     setPassengerData: noop,
     setLocation: noop,
@@ -114,6 +119,7 @@ export default class SearchContextProvider extends React.Component<
         setDepartureDate: this.setDepartureDate,
         setReturnDate: this.setReturnDate,
         setTripType: this.setTripType,
+        setSortBy: this.setSortBy,
         setModalType: this.setModalType,
         setPassengerData: this.setPassengerData,
         clearLocation: this.clearLocation,
@@ -179,6 +185,10 @@ export default class SearchContextProvider extends React.Component<
 
   setTripType = (tripType: TripTypes) => {
     this.setState({ tripType });
+  };
+
+  setSortBy = (sortBy: SortTypes) => {
+    this.setState({ sortBy });
   };
 
   setModalType = (modalType: ModalTypes) => {

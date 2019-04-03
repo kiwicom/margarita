@@ -1,8 +1,9 @@
 // @flow
 
 import * as React from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, View } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import {
@@ -16,6 +17,11 @@ import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQu
 import ResultsList from './ResultsList';
 import OneWayResultsQuery from './OneWayResultsQuery';
 import ReturnResultsQuery from './ReturnResultsQuery';
+import {
+  withSearchContext,
+  type SearchContextState,
+} from '../search/SearchContext';
+import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
   +travelFrom: string,
@@ -26,9 +32,10 @@ type Props = {|
   +dateTo: string,
   +returnDateFrom: string,
   +returnDateTo: string,
+  +sortBy: string,
 |};
 
-export default class Results extends React.Component<Props> {
+class Results extends React.Component<Props> {
   renderInner = (
     props: ReturnResultsQueryResponse | OneWayResultsQueryResponse,
   ) => {
@@ -44,8 +51,10 @@ export default class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      sortBy,
     } = this.props;
     return {
+      sort: sortBy,
       itinerary: {
         origin: {
           ids: [travelFrom],
@@ -76,7 +85,6 @@ export default class Results extends React.Component<Props> {
       dateFrom,
       returnDateFrom,
     } = this.props;
-
     const getFormattedDate = date =>
       DateFNS.format(DateFNS.parseISO(date), ORDINAL_DAY_MONTH_FORMAT);
 
@@ -106,13 +114,20 @@ export default class Results extends React.Component<Props> {
               : '',
           }}
         />
-        <QueryComponent {...props} />
+        <View style={styles.resultContainer}>
+          <SortTabsWrapper />
+          <QueryComponent {...props} />
+        </View>
       </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  resultContainer: {
+    backgroundColor: defaultTokens.backgroundBody,
+    flex: 1,
+  },
   container: {
     flex: 1,
     marginTop: designTokens.heightStatusBar,
@@ -122,3 +137,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
   },
 });
+
+const select = ({ sortBy }: SearchContextState) => ({
+  sortBy,
+});
+
+export default withSearchContext(select)(Results);
