@@ -1,5 +1,7 @@
 // @flow
 
+/* eslint-disable kiwicom-incubator/only-nullable-fields */
+
 import {
   GraphQLObjectType,
   GraphQLString,

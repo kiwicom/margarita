@@ -1,11 +1,12 @@
 // @flow
 
-/* eslint-disable no-restricted-imports */
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
-import { Loader } from '@kiwicom/universal-components';
-import { QueryRenderer as KiwiQueryRenderer } from '@kiwicom/relay';
-import { type ReadyState, type GraphQLTaggedNode } from 'react-relay';
+import { View } from 'react-native';
+import { Loader, StyleSheet } from '@kiwicom/universal-components';
+import {
+  QueryRenderer as KiwiQueryRenderer,
+  type GraphQLTaggedNode,
+} from '@kiwicom/relay';
 import { IllustrationWithInformation } from '@kiwicom/margarita-components';
 
 import environment from './Environment';
@@ -17,24 +18,22 @@ type Props = {|
 |};
 
 export default class QueryRenderer extends React.Component<Props> {
-  renderRelayContainer = ({ error, props }: ReadyState) => {
-    if (error) {
-      return (
-        <IllustrationWithInformation
-          illustrationName="Error"
-          text="Something went wrong"
-          description={error.message}
-        />
-      );
-    }
-    if (!props) {
-      return (
-        <View style={styles.container}>
-          <Loader size="large" />
-        </View>
-      );
-    }
-    return this.props.render(props);
+  onSystemError = ({ error }: { error: Error, retry: ?() => void }) => {
+    return (
+      <IllustrationWithInformation
+        illustrationName="Error"
+        text="Something went wrong"
+        description={error.message}
+      />
+    );
+  };
+
+  onLoading = () => {
+    return (
+      <View style={styles.container}>
+        <Loader size="large" />
+      </View>
+    );
   };
 
   render() {
@@ -43,7 +42,9 @@ export default class QueryRenderer extends React.Component<Props> {
         variables={this.props.variables}
         environment={environment}
         query={this.props.query}
-        render={this.renderRelayContainer}
+        onResponse={this.props.render}
+        onSystemError={this.onSystemError}
+        onLoading={this.onLoading}
       />
     );
   }

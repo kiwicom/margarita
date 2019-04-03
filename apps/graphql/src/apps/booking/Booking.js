@@ -1,5 +1,7 @@
 // @flow
 
+import type { RouteStop, Sector } from '../common/CommonTypes';
+
 export type ApiRouteStop = {|
   +where: {|
     +code: string,
@@ -31,32 +33,6 @@ export type BookingApiResult = {|
 export type RouteStopTimeApi = {|
   +utc: ?number,
   +local: ?number,
-|};
-
-type RouteStopTime = {|
-  +utc: ?(number | string),
-  +local: ?(number | string),
-|};
-
-export type RouteStop = {|
-  +cityName: ?string,
-  +cityId: ?string,
-  +time: ?RouteStopTime,
-  +code: ?string,
-|};
-
-export type Segment = {|
-  +id: string,
-  +isReturn: boolean,
-  +departure: ?RouteStop,
-  +arrival: ?RouteStop,
-|};
-
-type Sector = {|
-  +departure: ?RouteStop,
-  +arrival: ?RouteStop,
-  +segments: $ReadOnlyArray<Segment>,
-  +duration?: number,
 |};
 
 export type TypeSpecificData = {|

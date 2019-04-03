@@ -4,7 +4,7 @@ import fetch, { type Options } from './globalFetch';
 import extendHttpHeaders from './helpers/extendHttpHeaders';
 import type { HttpMethod } from './httpMethods';
 
-export default async function tequilaFetch(
+export default function tequilaFetch(
   url: string,
   method: HttpMethod = 'GET',
   options?: Options,

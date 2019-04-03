@@ -4,7 +4,7 @@ import { GraphQLObjectType } from 'graphql';
 
 import GraphQLDateType from './DateType';
 import GraphQLLocation from '../../../location/types/outputs/Location';
-import type { RouteStop } from '../../../booking/Booking';
+import type { RouteStop } from '../../CommonTypes';
 import type { GraphqlContextType } from '../../../../services/graphqlContext/GraphQLContext';
 
 export default new GraphQLObjectType({

@@ -1,5 +1,6 @@
 // @flow
 
+import { head, last } from 'ramda';
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import * as DateFNS from 'date-fns';
@@ -7,13 +8,7 @@ import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 import { UK_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import fetch from '../../../services/fetch/tequilaFetch';
-import {
-  mapLocation,
-  mapDate,
-  getItineraryType,
-  mapSectors,
-  unmaskID,
-} from '../helpers/Itineraries';
+import { getItineraryType, mapSectors, unmaskID } from '../helpers/Itineraries';
 import type {
   ItinerariesReturnSearchParameters,
   ItinerariesOneWaySearchParameters,
@@ -88,27 +83,24 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
   const itineraries = response.data;
 
   return itineraries.map(itinerary => {
+    const type = getItineraryType(itinerary.routes);
+    const sectors = mapSectors(itinerary.route, itinerary.routes);
+
+    const departure = head(head(sectors ?? [])?.segments ?? [])?.departure;
+    const arrival =
+      type === 'return'
+        ? last(head(sectors ?? [])?.segments ?? [])?.arrival
+        : last(last(sectors ?? [])?.segments ?? [])?.arrival;
+
     return {
       id: itinerary.id,
-      type: getItineraryType(itinerary.routes),
+      type,
       bookingToken: itinerary.booking_token,
       isValid: false,
       isChecked: false,
-      startTime: mapDate(itinerary.local_departure, itinerary.utc_departure),
-      endTime: mapDate(itinerary.local_arrival, itinerary.utc_arrival),
-      destination: mapLocation(
-        itinerary.flyTo,
-        itinerary.cityTo,
-        itinerary.countryTo?.name,
-        itinerary.countryTo?.code,
-      ),
-      origin: mapLocation(
-        itinerary.flyFrom,
-        itinerary.cityFrom,
-        itinerary.countryFrom?.name,
-        itinerary.countryFrom?.code,
-      ),
-      sectors: mapSectors(itinerary.route, itinerary.routes),
+      departure,
+      arrival,
+      sectors,
       price: {
         currency: response.currency,
         amount: itinerary.price,
@@ -119,7 +111,7 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
 
 export function createItinerariesLoader() {
   return new OptimisticDataloader(
-    async (
+    (
       keys: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
     ): Promise<Array<Itinerary[] | Error>> => fetchItineraries(keys),
     {

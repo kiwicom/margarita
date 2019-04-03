@@ -2,11 +2,14 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Icon } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  Icon,
+  TouchableWithoutFeedback,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Text from '../text/Text';
-import TouchableWithoutFeedback from '../TouchableWithoutFeedback';
 import type { Props } from './PassengersButtonTypes';
 
 export default function PassengersButton({ onPress, adults, infants }: Props) {

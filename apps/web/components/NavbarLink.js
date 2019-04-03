@@ -2,8 +2,12 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
-import { Text, StyleSheet, Hoverable } from '@kiwicom/universal-components';
+import {
+  Text,
+  StyleSheet,
+  Hoverable,
+  TouchableWithoutFeedback,
+} from '@kiwicom/universal-components';
 import Router from 'next/router';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 

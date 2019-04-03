@@ -196,6 +196,14 @@ interface FromToInterface {
   type: BookingType
 }
 
+type GeoIP {
+  """ISO country code"""
+  isoCountryCode: String
+
+  """Coordinates"""
+  coordinates: Coordinate
+}
+
 type HttpError {
   code: Int!
   message: String!
@@ -230,19 +238,16 @@ input ItinerariesReturnSearchInput {
 }
 
 type Itinerary {
-  destination: Location
-  endTime: DateType
-
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
   therefore it cannot be used as a cache key.
   """
   id(opaque: Boolean = true): ID!
-  origin: Location
   price: Price
   sectors: [Sector]
-  startTime: DateType
+  arrival: RouteStop
+  departure: RouteStop
   type: String
   bookingToken: String
 
@@ -452,6 +457,11 @@ type RootQuery {
 
   """Check if itinerary is valid and bookable"""
   checkItinerary(input: ItineraryCheckInput!): Itinerary
+
+  """
+  Geography info by an IP address, if no input provided, it will use request client IP
+  """
+  geoIP(ip: String): GeoIP
 }
 
 """Departure or arrival for a segment or sector"""

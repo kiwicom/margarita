@@ -4,13 +4,13 @@ import * as React from 'react';
 import { FlatList, View } from 'react-native';
 import { formatPrice } from '@kiwicom/margarita-utils';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
-import { TouchableWithoutFeedback } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   StyleSheet,
   Hoverable,
   Card,
   designTokens,
+  TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
 
 import RenderTripSectorItem from './RenderTripSectorItem';

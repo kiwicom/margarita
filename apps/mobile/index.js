@@ -2,7 +2,6 @@
 
 import React from 'react';
 import * as Expo from 'expo';
-import { Buffer } from 'buffer';
 import { Fonts } from '@kiwicom/universal-components';
 
 import SharedApp from './App';
@@ -15,8 +14,6 @@ type Props = {||};
 type State = {|
   fontsLoaded: boolean,
 |};
-
-global.Buffer = Buffer; // No global Buffer in react-native, and graphql-relay needs it
 
 class App extends React.Component<Props, State> {
   constructor(props: Props) {

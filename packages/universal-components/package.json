@@ -70,6 +70,7 @@
     "@storybook/addon-ondevice-knobs": "^",
     "@storybook/react": "^",
     "babel-preset-expo": "^",
+    "ramda": "^",
     "react": "^",
     "react-dom": "^",
     "react-native": "^",

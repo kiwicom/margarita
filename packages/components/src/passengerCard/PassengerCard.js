@@ -2,13 +2,18 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Text, StyleSheet, Icon, Card } from '@kiwicom/universal-components';
+import {
+  Text,
+  StyleSheet,
+  Icon,
+  Card,
+  ExtendedTouchable,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
-import ExtendedTouchable from '../ExtendedTouchable';
 import VisaInfo from '../visaInfo/VisaInfo';
 import {
   type PassengerCardType,

@@ -3,16 +3,17 @@
 import * as React from 'react';
 import { Image, View, Platform } from 'react-native';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
-import { Touchable, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Touchable,
+  StyleSheet,
+  TouchableWithoutFeedback,
+} from '@kiwicom/universal-components';
 import {
   withNavigation,
   type Navigation,
   Routes,
 } from '@kiwicom/margarita-navigation';
-import {
-  BlackToAlpha,
-  TouchableWithoutFeedback,
-} from '@kiwicom/margarita-components';
+import { BlackToAlpha } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { Booking_data as BookingType } from './__generated__/Booking_data.graphql';

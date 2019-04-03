@@ -10,10 +10,9 @@ import type {
   ApiFlight,
   ApiRouteStop,
   TypeSpecificData,
-  Segment,
   Passenger,
-  RouteStop,
 } from '../Booking';
+import type { RouteStop, Segment } from '../../common/CommonTypes';
 
 const cabinBag = '55x40x20, 10kg';
 const personalItem = '35x20x20';
@@ -95,7 +94,7 @@ const sanitizeReturn = (booking: BookingApiResult) => {
   const segments = booking.flights.map(flight => {
     const segment = sanitizeFlight(flight);
 
-    if (segment.isReturn) {
+    if (flight.return) {
       inboundSegments.push(segment);
     } else {
       outboundSegments.push(segment);
@@ -170,10 +169,12 @@ const sanitizeMulticity = (booking: BookingApiResult) => {
 
 const sanitizeFlight = (flight: ApiFlight): Segment => {
   return {
-    isReturn: flight.return === 1,
     id: flight.id,
     departure: sanitizeRouteStop(flight.departure),
     arrival: sanitizeRouteStop(flight.arrival),
+    duration: null, // @TODO - calculate duration
+    transporter: null, // @TODO - map values
+    vehicle: null, // @TODO - map values
   };
 };
 
@@ -202,15 +203,14 @@ const detectType = (booking: BookingApiResult) => {
   return 'BookingOneWay';
 };
 
-const sanitizeRouteStop = (departureArrival: ?ApiRouteStop) => {
+const sanitizeRouteStop = (departureArrival: ?ApiRouteStop): ?RouteStop => {
   if (departureArrival == null) {
     return null;
   }
 
   return {
-    cityName: departureArrival.where.name,
-    cityId: departureArrival.where.city_id,
     code: departureArrival.where.code,
+    cityId: departureArrival.where.city_id,
     time: {
       utc: departureArrival.when.utc,
       local: departureArrival.when.local,

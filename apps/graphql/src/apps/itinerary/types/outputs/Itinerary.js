@@ -9,17 +9,14 @@ import {
 import GlobalID from '@kiwicom/graphql-global-id';
 import * as DateFNS from 'date-fns';
 
-import type { Itinerary, Sector } from '../../Itinerary';
+import type { Sector } from '../../../common/CommonTypes';
+import type { Itinerary } from '../../Itinerary';
 import GraphQLPrice from '../../../common/types/outputs/Price';
 import GraphQLSector from '../../../common/types/outputs/Sector';
-import GraphQLLocation from '../../../location/types/outputs/Location';
-import GraphQLDateType from '../../../common/types/outputs/DateType';
+import GraphQLRouteStop from '../../../common/types/outputs/RouteStop';
 
 const itineraryResponseFields = {
-  destination: { type: GraphQLLocation },
-  endTime: { type: GraphQLDateType },
   id: GlobalID(({ id }) => id),
-  origin: { type: GraphQLLocation },
   price: { type: GraphQLPrice },
   sectors: {
     type: new GraphQLList(GraphQLSector),
@@ -33,7 +30,12 @@ const itineraryResponseFields = {
       }));
     },
   },
-  startTime: { type: GraphQLDateType },
+  arrival: {
+    type: GraphQLRouteStop,
+  },
+  departure: {
+    type: GraphQLRouteStop,
+  },
   type: { type: GraphQLString },
   bookingToken: { type: GraphQLString },
   isChecked: {
@@ -59,8 +61,8 @@ const getStopoverDuration = (
     return null;
   }
 
-  const currentSectorDeparture = sector.departureTime?.utc;
-  const previousSectorArrival = previousSector.arrivalTime?.utc;
+  const currentSectorDeparture = sector.departure?.time?.utc;
+  const previousSectorArrival = previousSector.arrival?.time?.utc;
 
   if (currentSectorDeparture == null || previousSectorArrival == null) {
     return null;

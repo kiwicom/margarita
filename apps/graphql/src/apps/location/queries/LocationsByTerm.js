@@ -26,7 +26,7 @@ export default {
     },
     ...connectionArgs,
   },
-  resolve: async (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
+  resolve: (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
     return catchDataloaderError(async () => {
       const { term, types } = args.input;
       const locations = await dataLoader.locations.load({

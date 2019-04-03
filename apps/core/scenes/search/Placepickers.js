@@ -2,11 +2,12 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
+import { TripInput } from '@kiwicom/margarita-components';
 import {
-  TripInput,
+  Icon,
+  StyleSheet,
   TouchableWithoutFeedback,
-} from '@kiwicom/margarita-components';
-import { Icon, StyleSheet } from '@kiwicom/universal-components';
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   withLayoutContext,
