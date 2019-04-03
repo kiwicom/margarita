@@ -18,8 +18,8 @@ exports[`Button - native should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -35,14 +35,14 @@
-              \\"paddingHorizontal\\": 8,
+@@ -33,40 +33,134 @@
+              \\"justifyContent\\": \\"center\\",
               \\"paddingVertical\\": 11,
             },
             false,
@@ -32,22 +32,31 @@ exports[`Button - native should match snapshot diff 1`] = `
 +             \\"justifyContent\\": \\"space-between\\",
             },
             false,
+            Object {
+              \\"height\\": 44,
+-             \\"paddingEnd\\": 16,
+-             \\"paddingStart\\": 16,
++             \\"paddingEnd\\": 12,
++             \\"paddingStart\\": 12,
+            },
           ]
         }
       >
-@@ -52,18 +52,112 @@
+        <View
+          style={
+            Object {
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
-            }
-          }
-        >
++           }
++         }
++       >
 +         <View
 +           style={
 +             Object {
-+               \\"marginEnd\\": 14,
-+             }
-+           }
-+         >
++               \\"marginEnd\\": 8,
+              }
+            }
+          >
 +           <Text
 +             style={
 +               Array [
@@ -119,7 +128,7 @@ exports[`Button - native should match snapshot diff 1`] = `
 +         <View
 +           style={
 +             Object {
-+               \\"marginStart\\": 5,
++               \\"marginStart\\": 8,
 +             }
 +           }
 +         >
@@ -191,6 +200,7 @@ exports[`Button - native should match the snapshot 1`] = `
         name="chevron-right"
       />
     }
+    size="normal"
     sublabel="Button sublabel"
     type="info"
   >
@@ -229,8 +239,8 @@ exports[`Button - web should match snapshot diff 1`] = `
       style={
         Array [
           Object {
-@@ -27,34 +25,93 @@
-            \\"paddingHorizontal\\": 8,
+@@ -25,39 +23,98 @@
+            \\"justifyContent\\": \\"center\\",
             \\"paddingVertical\\": 11,
           },
           false,
@@ -244,6 +254,13 @@ exports[`Button - web should match snapshot diff 1`] = `
           },
 -         undefined,
 +         false,
+          Object {
+            \\"height\\": 44,
+-           \\"paddingEnd\\": 16,
+-           \\"paddingStart\\": 16,
++           \\"paddingEnd\\": 12,
++           \\"paddingStart\\": 12,
+          },
         ]
       }
     >
@@ -258,7 +275,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 +       <View
 +         style={
 +           Object {
-+             \\"marginEnd\\": 14,
++             \\"marginEnd\\": 8,
             }
           }
         >
@@ -298,7 +315,7 @@ exports[`Button - web should match snapshot diff 1`] = `
 +       <View
 +         style={
 +           Object {
-+             \\"marginStart\\": 5,
++             \\"marginStart\\": 8,
 +           }
 +         }
 +       >
@@ -323,9 +340,9 @@ exports[`Button - web should match snapshot diff 1`] = `
 +         >
 +           
 +         </Text>
-+       </View>
-      </View>
+        </View>
 - </button>
++     </View>
 +   </View>
 + </a>"
 `;
@@ -359,6 +376,7 @@ exports[`Button - web should match the snapshot 1`] = `
         name="chevron-right"
       />
     }
+    size="normal"
     type="info"
   >
     Button text

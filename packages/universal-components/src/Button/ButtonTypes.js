@@ -14,6 +14,8 @@ export type ButtonType =
   | 'facebook'
   | 'google';
 
+export type ButtonSize = 'small' | 'normal' | 'large';
+
 export type Props = {|
   +onPress: () => void,
   +children?: React.Node,
@@ -28,4 +30,5 @@ export type Props = {|
   +block?: boolean,
   +label?: React.Node,
   +circled?: boolean,
+  +size?: ButtonSize,
 |};
