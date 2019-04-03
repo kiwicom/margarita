@@ -21,6 +21,7 @@ import {
   withSearchContext,
   type SearchContextState,
 } from '../search/SearchContext';
+import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
   +travelFrom: string,
@@ -39,11 +40,7 @@ class Results extends React.Component<Props> {
     props: ReturnResultsQueryResponse | OneWayResultsQueryResponse,
   ) => {
     const { searchData } = props;
-    return (
-      <View style={styles.resultContainer}>
-        <ResultsList data={searchData} />
-      </View>
-    );
+    return <ResultsList data={searchData} />;
   };
 
   parseSearchParametersByType = (type: TripTypes) => {
@@ -117,7 +114,10 @@ class Results extends React.Component<Props> {
               : '',
           }}
         />
-        <QueryComponent {...props} />
+        <View style={styles.resultContainer}>
+          <SortTabsWrapper />
+          <QueryComponent {...props} />
+        </View>
       </SafeAreaView>
     );
   }

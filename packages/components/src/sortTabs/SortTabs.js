@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
     backgroundColor: defaultTokens.backgroundButtonSecondary,
     paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
+    paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
+    paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
   },
 });
 

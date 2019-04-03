@@ -9,6 +9,8 @@ Object {
         "borderRadius": 3,
         "flexDirection": "row",
         "paddingBottom": 2,
+        "paddingHorizontal": 2,
+        "paddingTop": 2,
       }
     }
   >
@@ -73,6 +75,8 @@ Object {
         "borderRadius": 3,
         "flexDirection": "row",
         "paddingBottom": 2,
+        "paddingHorizontal": 2,
+        "paddingTop": 2,
       }
     }
   >

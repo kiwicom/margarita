@@ -14,7 +14,6 @@ import {
 import { ItineraryCard } from '../../components/ItineraryCard';
 import type { ResultsList_data as ResultsListType } from './__generated__/ResultsList_data.graphql';
 import EmptyResults from './EmptyResults';
-import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
   +data: ?ResultsListType,
@@ -56,7 +55,6 @@ class ResultsList extends React.Component<Props> {
         data={data}
         keyExtractor={this.keyExtractor}
         renderItem={this.resultItem}
-        ListHeaderComponent={<SortTabsWrapper />}
       />
     );
   }

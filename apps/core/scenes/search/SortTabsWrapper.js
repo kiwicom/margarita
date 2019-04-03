@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   container: {
     padding: 0,
     ios: {
-      marginBottom: 8,
+      marginTop: 8,
     },
     android: {
       marginVertical: 4,
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       width: '100%',
       maxWidth: designTokens.widthScreenNormal,
-      marginBottom: parseInt(defaultTokens.spaceMedium, 10),
+      marginTop: parseInt(defaultTokens.spaceMedium, 10),
       borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
     },
   },
