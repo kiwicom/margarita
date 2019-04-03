@@ -2,7 +2,7 @@
 
 import { DATE_TIME_FORMAT } from '@kiwicom/margarita-config';
 
-import formatDate from '../formatDate';
+import formatDate from '../FormatDate';
 
 it('formats date correctly', () => {
   const date = new Date('2018-11-28T16:20:00.000Z');

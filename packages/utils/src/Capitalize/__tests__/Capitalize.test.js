@@ -2,7 +2,7 @@
 
 import fc from 'fast-check';
 
-import { capitalize } from '../capitalize';
+import { capitalize } from '../Capitalize';
 
 describe('capitalize', () => {
   it('returns a string with its first letter capitalized', () => {
