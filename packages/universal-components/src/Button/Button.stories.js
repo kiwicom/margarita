@@ -62,6 +62,7 @@ storiesOf('Button', module)
     }
     const circled = boolean('circled', false);
     const label = text('label', 'Playground button');
+
     return (
       <Button
         type={type}
