@@ -18,10 +18,10 @@ describe('getItineraryType', () => {
   const routesForReturnFlight = [['OSL', 'PRG'], ['PRG', 'OSL']];
   const routesForOneWayFlight = [['OSL', 'PRG']];
   it('returns return flight type', () => {
-    expect(getItineraryType(routesForReturnFlight)).toBe('return');
+    expect(getItineraryType(routesForReturnFlight)).toBe('Return');
   });
   it('returns one-way flight type', () => {
-    expect(getItineraryType(routesForOneWayFlight)).toBe('oneway');
+    expect(getItineraryType(routesForOneWayFlight)).toBe('OneWay');
   });
   it('returns null flight type', () => {
     expect(getItineraryType()).toBeNull();

@@ -2,12 +2,12 @@
 
 import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
+import { TRIP_TYPES } from '@kiwicom/margarita-config';
 
-import { TRIP_TYPE, MODAL_TYPE } from './SearchConstants';
+import { MODAL_TYPE, TRIP_TYPE } from './SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
-  type TripTypes,
   type ModalTypes,
   type PassengersData,
   type Location,
@@ -20,7 +20,7 @@ type Props = {|
   +tripType: string,
   +travelFrom: ?Location,
   +travelTo: ?Location,
-  +setTripType: TripTypes => void,
+  +setTripType: string => void,
   +handlePassengersSave: PassengersData => void,
   +setModalType: ModalTypes => void,
   ...$ReadOnly<PassengersData>,
@@ -34,8 +34,8 @@ class SearchModal extends React.Component<Props> {
 
   handleTripTypeSelect = (type: string) => {
     switch (type) {
-      case 'return':
-      case 'oneWay':
+      case TRIP_TYPES.RETURN:
+      case TRIP_TYPES.ONEWAY:
         this.props.setTripType(type);
         break;
       default:

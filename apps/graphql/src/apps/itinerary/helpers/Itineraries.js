@@ -3,6 +3,7 @@
 import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
+import { TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import type { ApiRouteItem } from '../Itinerary';
 import type { RouteStop, Sector, Segment } from '../../common/CommonTypes';
@@ -46,10 +47,10 @@ export const getItineraryType = (routes: ?Array<Array<string>>) => {
     return null;
   }
   if (routes.length === 1) {
-    return 'oneway';
+    return TRIP_TYPES.ONEWAY;
   }
   if (routes.length === 2) {
-    return 'return';
+    return TRIP_TYPES.RETURN;
   }
   return null;
 };

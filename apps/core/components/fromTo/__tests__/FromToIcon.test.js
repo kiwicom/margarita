@@ -14,22 +14,22 @@ const getData = (type: ?BookingType) => ({
 });
 
 it('show correct icons', () => {
-  const multicity = render(
+  const MultiCity = render(
     // $FlowExpectedError: It should be ok to pass string
     <FromToIcon data={getData('BOOKING_MULTICITY')} iconColor="blue" />,
   );
-  const bookingReturn = render(
+  const BookingReturn = render(
     // $FlowExpectedError: It should be ok to pass string
     <FromToIcon data={getData('BOOKING_RETURN')} iconColor="blue" />,
   );
-  const oneWay = render(
+  const OneWay = render(
     // $FlowExpectedError: It should be ok to pass string
     <FromToIcon data={getData('BOOKING_ONE_WAY')} iconColor="blue" />,
   );
 
-  expect(multicity.getByType(Icon).props.name).toBe('flight-multicity');
-  expect(bookingReturn.getByType(Icon).props.name).toBe('flight-return');
-  expect(oneWay.getByType(Icon).props.name).toBe('flight-direct');
+  expect(MultiCity.getByType(Icon).props.name).toBe('flight-multicity');
+  expect(BookingReturn.getByType(Icon).props.name).toBe('flight-return');
+  expect(OneWay.getByType(Icon).props.name).toBe('flight-direct');
 });
 
 it('renders with missing type', () => {

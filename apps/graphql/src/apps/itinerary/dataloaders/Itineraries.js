@@ -5,7 +5,7 @@ import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
-import { UK_DATE_FORMAT } from '@kiwicom/margarita-config';
+import { UK_DATE_FORMAT, TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import fetch from '../../../services/fetch/tequilaFetch';
 import { getItineraryType, mapSectors, unmaskID } from '../helpers/Itineraries';
@@ -88,7 +88,7 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
 
     const departure = head(head(sectors ?? [])?.segments ?? [])?.departure;
     const arrival =
-      type === 'return'
+      type === TRIP_TYPES.RETURN
         ? last(head(sectors ?? [])?.segments ?? [])?.arrival
         : last(last(sectors ?? [])?.segments ?? [])?.arrival;
 

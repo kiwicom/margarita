@@ -6,11 +6,11 @@ import { shallow, render, fireEvent } from 'react-native-testing-library';
 import TripTypeSwitch from '../TripTypeSwitch';
 
 const optionsData = {
-  return: {
+  Return: {
     icon: 'flight-return',
     label: 'Return',
   },
-  oneWay: {
+  OneWay: {
     icon: 'flight-direct',
     label: 'One way',
   },
@@ -20,7 +20,7 @@ const onSelect = jest.fn();
 const { getByText } = render(
   <TripTypeSwitch
     optionsData={optionsData}
-    selectedType={'return'}
+    selectedType={'Return'}
     onSelect={onSelect}
   />,
 );
@@ -36,7 +36,7 @@ it('renders', () => {
     shallow(
       <TripTypeSwitch
         optionsData={optionsData}
-        selectedType={'return'}
+        selectedType={'Return'}
         onSelect={jest.fn()}
       />,
     ),

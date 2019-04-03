@@ -15,13 +15,13 @@ import {
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
-import { BASIC_ISO_DATE_FORMAT } from '@kiwicom/margarita-config';
-
 import {
-  withSearchContext,
+  BASIC_ISO_DATE_FORMAT,
+  TRIP_TYPES,
   type TripTypes,
-  type SearchContextState,
-} from './SearchContext';
+} from '@kiwicom/margarita-config';
+
+import { withSearchContext, type SearchContextState } from './SearchContext';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|
@@ -85,8 +85,8 @@ class Datepickers extends React.Component<Props, State> {
         break;
       case DATEPICKER_MODE.RETURN:
         setReturnDate(date);
-        if (tripType === 'oneWay') {
-          setTripType('return');
+        if (tripType === TRIP_TYPES.ONEWAY) {
+          setTripType(TRIP_TYPES.RETURN);
         }
         break;
       default:
@@ -98,8 +98,9 @@ class Datepickers extends React.Component<Props, State> {
   render() {
     const { tripType, dateFrom, returnDateFrom, layout } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
-    const showReturnInput = tripType === 'return' || Platform.OS === 'web';
-    const returnType = tripType === 'return';
+    const showReturnInput =
+      tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
+    const returnType = tripType === TRIP_TYPES.RETURN;
     const datePickerDate =
       this.state.selectDate === DATEPICKER_MODE.DEPARTURE
         ? dateFrom
@@ -118,7 +119,7 @@ class Datepickers extends React.Component<Props, State> {
           {showReturnInput && (
             <TripInput
               onPress={this.handleReturnDatePress}
-              label={returnType ? 'Return' : ''}
+              label={returnType ? TRIP_TYPES.RETURN : ''}
               icon={<Icon name="calendar" />}
               value={
                 returnType

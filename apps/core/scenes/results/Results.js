@@ -5,7 +5,11 @@ import { SafeAreaView } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
-import { ORDINAL_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
+import {
+  ORDINAL_DAY_MONTH_FORMAT,
+  TRIP_TYPES,
+  type TripTypes,
+} from '@kiwicom/margarita-config';
 
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
 import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQuery.graphql';
@@ -23,8 +27,6 @@ type Props = {|
   +returnDateFrom: string,
   +returnDateTo: string,
 |};
-
-type TripTypes = 'Return' | 'OneWay';
 
 export default class Results extends React.Component<Props> {
   renderInner = (
@@ -55,7 +57,7 @@ export default class Results extends React.Component<Props> {
           start: dateFrom,
           end: dateTo,
         },
-        ...(type === 'Return'
+        ...(type === TRIP_TYPES.RETURN
           ? {
               inboundDate: {
                 start: returnDateFrom,
@@ -78,9 +80,11 @@ export default class Results extends React.Component<Props> {
     const getFormattedDate = date =>
       DateFNS.format(DateFNS.parseISO(date), ORDINAL_DAY_MONTH_FORMAT);
 
-    const tripType: TripTypes = returnDateFrom ? 'Return' : 'OneWay';
+    const tripType: TripTypes = returnDateFrom
+      ? TRIP_TYPES.RETURN
+      : TRIP_TYPES.ONEWAY;
     const QueryComponent =
-      tripType === 'Return' ? ReturnResultsQuery : OneWayResultsQuery;
+      tripType === TRIP_TYPES.RETURN ? ReturnResultsQuery : OneWayResultsQuery;
     const props = {
       render: this.renderInner,
       variables: {

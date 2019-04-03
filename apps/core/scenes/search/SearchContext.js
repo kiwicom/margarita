@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { withContext, noop } from '@kiwicom/margarita-utils';
+import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
 
 import { MODAL_TYPE } from './SearchConstants';
@@ -10,7 +11,6 @@ type Props = {|
   +children: React.Node,
 |};
 
-export type TripTypes = 'return' | 'oneWay';
 export type ModalTypes = $Keys<typeof MODAL_TYPE>;
 export type PassengersData = {|
   adults: number,
@@ -74,7 +74,7 @@ const defaultPlaces = {
 };
 
 const defaultState = {
-  tripType: 'return',
+  tripType: TRIP_TYPES.RETURN,
   travelFrom: defaultPlaces.origin,
   travelTo: defaultPlaces.departure,
   dateFrom: defaultDepartureDate,
