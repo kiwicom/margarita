@@ -12,7 +12,6 @@
     "@kiwicom/test-utils": "^0.5.0",
     "apollo-server": "^2.2.6",
     "apollo-server-lambda": "^2.4.8",
-    "buffer": "^5.2.1",
     "chalk": "^2.4.2",
     "dataloader": "^1.4.0",
     "graphql": "^14.0.2",
