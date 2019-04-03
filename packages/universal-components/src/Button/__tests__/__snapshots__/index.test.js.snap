@@ -18,7 +18,7 @@ exports[`Button - native should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -33,40 +33,134 @@
+@@ -33,41 +33,135 @@
               \\"justifyContent\\": \\"center\\",
               \\"paddingVertical\\": 11,
             },
@@ -39,6 +39,8 @@ exports[`Button - native should match snapshot diff 1`] = `
 +             \\"paddingEnd\\": 12,
 +             \\"paddingStart\\": 12,
             },
+-           undefined,
++           Object {},
           ]
         }
       >
@@ -48,15 +50,15 @@ exports[`Button - native should match snapshot diff 1`] = `
               \\"alignItems\\": \\"center\\",
               \\"flexDirection\\": \\"row\\",
 +           }
-+         }
+          }
 +       >
 +         <View
 +           style={
 +             Object {
 +               \\"marginEnd\\": 8,
-              }
-            }
-          >
++             }
++           }
++         >
 +           <Text
 +             style={
 +               Array [
@@ -74,29 +76,29 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 },
 +                 undefined,
 +               ]
-+             }
-+           >
+              }
+            >
 +             f
 +           </Text>
 +         </View>
           Button text
         </View>
-        <View
-          style={
-            Object {
-              \\"alignItems\\": \\"center\\",
-              \\"flexDirection\\": \\"row\\",
-            }
-          }
--       />
-+       >
-+         <View
-+           style={
-+             Object {
-+               \\"alignItems\\": \\"center\\",
-+               \\"flexDirection\\": \\"row\\",
-+             }
++       <View
++         style={
++           Object {
++             \\"alignItems\\": \\"center\\",
++             \\"flexDirection\\": \\"row\\",
 +           }
++         }
++       >
+          <View
+            style={
+              Object {
+                \\"alignItems\\": \\"center\\",
+                \\"flexDirection\\": \\"row\\",
+              }
+            }
+-       />
 +         >
 +           <Text
 +             style={
@@ -201,6 +203,7 @@ exports[`Button - native should match the snapshot 1`] = `
       />
     }
     size="normal"
+    style={Object {}}
     sublabel="Button sublabel"
     type="info"
   >
@@ -239,7 +242,7 @@ exports[`Button - web should match snapshot diff 1`] = `
       style={
         Array [
           Object {
-@@ -25,39 +23,98 @@
+@@ -25,22 +23,22 @@
             \\"justifyContent\\": \\"center\\",
             \\"paddingVertical\\": 11,
           },
@@ -261,24 +264,26 @@ exports[`Button - web should match snapshot diff 1`] = `
 +           \\"paddingEnd\\": 12,
 +           \\"paddingStart\\": 12,
           },
+-         undefined,
++         Object {},
         ]
       }
     >
       <View
         style={
-          Object {
+@@ -48,17 +46,76 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
-+         }
-+       }
-+     >
+          }
+        }
+      >
 +       <View
 +         style={
 +           Object {
 +             \\"marginEnd\\": 8,
-            }
-          }
-        >
++           }
++         }
++       >
 +         <Text
 +           style={
 +             Array [
@@ -308,16 +313,16 @@ exports[`Button - web should match snapshot diff 1`] = `
           Object {
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
-          }
-        }
--     />
++         }
++       }
 +     >
 +       <View
 +         style={
 +           Object {
 +             \\"marginStart\\": 8,
-+           }
-+         }
+            }
+          }
+-     />
 +       >
 +         <Text
 +           style={
@@ -377,6 +382,7 @@ exports[`Button - web should match the snapshot 1`] = `
       />
     }
     size="normal"
+    style={Object {}}
     type="info"
   >
     Button text

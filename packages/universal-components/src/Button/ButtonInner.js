@@ -10,6 +10,7 @@ import ButtonTitle from './ButtonTitle';
 import type { ButtonType, ButtonSize } from './ButtonTypes';
 import { textColor, wrapperColor } from './styles';
 import { size as buttonSizeStyle } from './styles/shared';
+import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
   +children?: React.Node,
@@ -22,6 +23,7 @@ type Props = {|
   +label?: React.Node,
   +circled?: boolean,
   +size?: ButtonSize,
+  +style?: StylePropType,
 |};
 
 export default function ButtonInner({
@@ -35,6 +37,7 @@ export default function ButtonInner({
   label,
   circled,
   size,
+  style,
 }: Props) {
   const iconSize = size === 'normal' || size === 'large' ? 'medium' : 'small';
   const leftIcon = originalLeftIcon
@@ -65,7 +68,6 @@ export default function ButtonInner({
   const leftSpace = size === 'large' ? layout.leftSpaceLarge : layout.leftSpace;
   const rightSpace =
     size === 'large' ? layout.rightSpaceLarge : layout.rightSpace;
-
   return (
     <View
       style={[
@@ -75,6 +77,7 @@ export default function ButtonInner({
         justifyContent,
         circled && styleSheet.buttonCircled,
         sizeTheme(size, leftIcon != null, rightIcon != null).buttonSizeWrapper,
+        style,
       ]}
       testID={testID}
     >

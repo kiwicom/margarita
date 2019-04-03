@@ -3,6 +3,7 @@
 import * as React from 'react';
 
 import { Icon } from '../Icon';
+import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 export type ButtonType =
   | 'primary'
@@ -31,4 +32,5 @@ export type Props = {|
   +label?: React.Node,
   +circled?: boolean,
   +size?: ButtonSize,
+  +style?: StylePropType,
 |};

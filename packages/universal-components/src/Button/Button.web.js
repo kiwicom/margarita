@@ -26,6 +26,7 @@ export default function Button({
   label,
   circled,
   size = 'normal',
+  style,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -37,6 +38,7 @@ export default function Button({
     label,
     circled,
     size,
+    style,
   };
 
   if (href) {

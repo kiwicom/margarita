@@ -24,7 +24,7 @@ const type = 'info';
 const testID = 'testID';
 const circled = false;
 const size = 'normal';
-
+const style = {};
 afterEach(() => {
   Platform.OS = originalPlatform;
 });
@@ -46,6 +46,7 @@ describe('Button - web', () => {
       label={buttonText}
       circled={circled}
       size={size}
+      style={style}
     />,
   );
 
@@ -72,6 +73,7 @@ describe('Button - web', () => {
         testID,
         circled,
         size,
+        style,
       }),
     ).toBeDefined();
   });
@@ -114,6 +116,7 @@ describe('Button - web', () => {
         block={block}
         circled={circled}
         size={size}
+        style={style}
       >
         {buttonText}
       </ButtonWeb>,
@@ -135,6 +138,7 @@ describe('Button - web', () => {
         block={block}
         circled={circled}
         size={size}
+        style={style}
       >
         {buttonText}
       </ButtonWeb>,
@@ -162,6 +166,7 @@ describe('Button - native', () => {
       label={buttonText}
       circled={circled}
       size={size}
+      style={style}
     />,
   );
 
@@ -192,6 +197,7 @@ describe('Button - native', () => {
         testID,
         circled,
         size,
+        style,
       }),
     ).toBeDefined();
   });
@@ -210,6 +216,7 @@ describe('Button - native', () => {
         block={block}
         circled={circled}
         size={size}
+        style={style}
       >
         {buttonText}
       </ButtonNative>,
@@ -231,6 +238,7 @@ describe('Button - native', () => {
         block={block}
         circled={circled}
         size={size}
+        style={style}
       >
         {buttonText}
       </ButtonNative>,
