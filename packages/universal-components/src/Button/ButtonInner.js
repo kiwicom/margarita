@@ -24,23 +24,6 @@ type Props = {|
   +size?: ButtonSize,
 |};
 
-const paddingTokens = {
-  paddingButton: 'paddingButton',
-  paddingButtonWithIcons: 'paddingButtonWithIcons',
-  paddingButtonWithLeftIcon: 'paddingButtonWithLeftIcon',
-  paddingButtonWithRightIcon: 'paddingButtonWithRightIcon',
-};
-
-const getPaddingToken = (leftIcon, rightIcon) => {
-  if (!leftIcon && rightIcon) {
-    return paddingTokens.paddingButtonWithRightIcon;
-  } else if (leftIcon && !rightIcon) {
-    return paddingTokens.paddingButtonWithLeftIcon;
-  } else if (leftIcon && rightIcon) {
-    return paddingTokens.paddingButtonWithIcons;
-  }
-  return paddingTokens.paddingButton;
-};
 export default function ButtonInner({
   disabled = false,
   type = 'primary',
@@ -79,7 +62,6 @@ export default function ButtonInner({
     testID = `ButtonInner${testIDProps}`;
   }
 
-  const paddingToken = getPaddingToken(leftIcon, rightIcon);
   const leftSpace = size === 'large' ? layout.leftSpaceLarge : layout.leftSpace;
   const rightSpace =
     size === 'large' ? layout.rightSpaceLarge : layout.rightSpace;
@@ -92,7 +74,7 @@ export default function ButtonInner({
         typeTheme(type).wrapper,
         justifyContent,
         circled && styleSheet.buttonCircled,
-        sizeTheme(size, paddingToken).buttonSizeWrapper,
+        sizeTheme(size, leftIcon != null, rightIcon != null).buttonSizeWrapper,
       ]}
       testID={testID}
     >
@@ -172,11 +154,19 @@ const typeTheme = (type: ButtonType = 'primary') =>
     },
   });
 
-const sizeTheme = (size: ButtonSize = 'normal', paddingToken) =>
+const sizeTheme = (
+  size: ButtonSize = 'normal',
+  leftIcon: boolean,
+  rightIcon: boolean,
+) =>
   StyleSheet.create({
     buttonSizeWrapper: {
       height: buttonSizeStyle[size].height,
-      paddingStart: buttonSizeStyle[size].paddingStart[paddingToken],
-      paddingEnd: buttonSizeStyle[size].paddingEnd[paddingToken],
+      paddingStart: leftIcon
+        ? buttonSizeStyle[size].paddingWithIcon
+        : buttonSizeStyle[size].padding,
+      paddingEnd: rightIcon
+        ? buttonSizeStyle[size].paddingWithIcon
+        : buttonSizeStyle[size].padding,
     },
   });
