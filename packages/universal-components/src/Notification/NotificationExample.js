@@ -6,6 +6,7 @@ import { View } from 'react-native';
 import Notification from './Notification';
 import { Button } from '../Button';
 import { StyleSheet } from '../PlatformStyleSheet';
+import type { IconNameType } from '../types/_generated-types';
 import type { NotificationType } from '../types';
 
 type Props = {|
@@ -13,6 +14,7 @@ type Props = {|
   +notificationType: NotificationType,
   +title: React.Node | string,
   +message: React.Node | string,
+  +rightIconName?: IconNameType,
   +onDismiss?: () => void,
 |};
 export default class NotificationExample extends React.Component<Props> {
@@ -21,9 +23,14 @@ export default class NotificationExample extends React.Component<Props> {
   }
 
   renderNotification = () => {
-    const { notificationStyle, title, message } = this.props;
+    const { notificationStyle, title, message, rightIconName } = this.props;
     if (this.notification) {
-      this.notification.toggleNotification(notificationStyle, title, message);
+      this.notification.toggleNotification(
+        notificationStyle,
+        title,
+        message,
+        rightIconName,
+      );
     }
   };
 
