@@ -3,14 +3,10 @@
 import * as React from 'react';
 import { Animated, Easing, View, Platform } from 'react-native';
 
-import { type StylePropType, StyleSheet } from '../PlatformStyleSheet';
-import { designTokens } from '../DesignTokens';
-import { ExtendedTouchable } from '../ExtendedTouchable';
-
-type Props = {|
-  +style?: StylePropType,
-  +onPress?: () => void,
-|};
+import { StyleSheet } from '../../PlatformStyleSheet';
+import { designTokens } from '../../DesignTokens';
+import { ExtendedTouchable } from '../../ExtendedTouchable';
+import { type Props } from './DayItemArrowTypes';
 
 const SHARED_ANIMATION_CONFIG = {
   duration: designTokens.durationArrowScaleAnimation,

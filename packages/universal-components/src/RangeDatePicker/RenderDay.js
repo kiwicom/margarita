@@ -18,7 +18,7 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
-import DayItemArrow from './DayItemArrow';
+import { DayItemArrow } from './DayItemArrow';
 
 type Props = {|
   +day: Date,
@@ -77,10 +77,11 @@ export default function RenderDay({
         disabled={isDayInPast(day) || isFieldEmpty}
       >
         <>
-          {isStartOfSelectedDates && (
+          {isStartOfSelectedDates && isRangePicker && (
             <DayItemArrow
               onPress={onArrowPress(onLeftPress)}
               style={styles.leftArrow}
+              direction="left"
             />
           )}
           <View
@@ -107,10 +108,11 @@ export default function RenderDay({
               </>
             )}
           </View>
-          {isEndOfSelectedDates && (
+          {isEndOfSelectedDates && isRangePicker && (
             <DayItemArrow
               onPress={onArrowPress(onRightPress)}
               style={styles.rightArrow}
+              direction="right"
             />
           )}
         </>
@@ -121,7 +123,7 @@ export default function RenderDay({
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: parseFloat(defaultTokens.zIndexDefault),
     zIndex: -1,
   },
   onTheTop: {
@@ -133,9 +135,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: designTokens.paddingCalendarItem / 2,
-    borderTopWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
-    borderColor: 'transparent',
   },
   day: {
     fontSize: designTokens.fontSizeCalendarItem,
@@ -145,19 +144,15 @@ const styles = StyleSheet.create({
     color: defaultTokens.colorTextSecondary,
   },
   selectedDatesContainer: {
-    borderColor: 'transparent',
     backgroundColor: defaultTokens.backgroundButtonInfo,
-    borderWidth: parseFloat(defaultTokens.borderWidthCard),
   },
   startOfSelectedDatesContainer: {
     borderTopStartRadius: parseFloat(defaultTokens.borderRadiusNormal),
     borderBottomStartRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    borderStartWidth: parseFloat(defaultTokens.borderWidthCard),
   },
   endOfSelectedDatesContainer: {
     borderTopEndRadius: parseFloat(defaultTokens.borderRadiusNormal),
     borderBottomEndRadius: parseFloat(defaultTokens.borderRadiusNormal),
-    borderEndWidth: parseFloat(defaultTokens.borderWidthCard),
   },
   selectedDatesText: {
     color: defaultTokens.colorTextButtonPrimary,
@@ -168,9 +163,15 @@ const styles = StyleSheet.create({
   leftArrow: {
     start: 0,
     top: 12,
+    android: {
+      top: 0,
+    },
   },
   rightArrow: {
     end: 0,
     top: 12,
+    android: {
+      top: 0,
+    },
   },
 });
