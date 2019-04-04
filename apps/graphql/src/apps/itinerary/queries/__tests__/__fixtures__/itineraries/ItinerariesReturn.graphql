@@ -5,6 +5,25 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
+fragment Sector on Sector {
+  duration
+  stopoverDuration
+  segments {
+    departure {
+      ...RouteStopFragment
+    }
+    arrival {
+      ...RouteStopFragment
+    }
+  }
+  departure {
+    ...RouteStopFragment
+  }
+  arrival {
+    ...RouteStopFragment
+  }
+}
+
 {
   searchReturnItineraries(input: {
   order: ASC,
@@ -34,22 +53,12 @@ fragment RouteStopFragment on RouteStop {
     edges {
       node {
         id
-        sectors {
-          duration
-          stopoverDuration
-          segments {
-            departure {
-              ...RouteStopFragment
-            }
-            arrival {
-              ...RouteStopFragment
-            }
+          ... on ItineraryReturn {
+          inbound {
+            ...Sector
           }
-          departure {
-            ...RouteStopFragment
-          }
-          arrival {
-            ...RouteStopFragment
+          outbound {
+            ...Sector
           }
         }
       }

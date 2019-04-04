@@ -28,6 +28,7 @@ const ItinerariesReturn = {
     { dataLoader }: GraphqlContextType,
   ) => {
     const itineraries = await dataLoader.itineraries.load(args.input);
+
     return connectionFromArray<Itinerary>(itineraries, args);
   },
 };

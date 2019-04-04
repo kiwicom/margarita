@@ -10,31 +10,31 @@
 import type { ReaderFragment } from 'relay-runtime';
 type SectorDetail_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type SectorsList_data$ref: FragmentReference;
-export type SectorsList_data = {|
-  +sectors: ?$ReadOnlyArray<?{|
+declare export opaque type ItineraryOneWay_itinerary$ref: FragmentReference;
+export type ItineraryOneWay_itinerary = {|
+  +sector: ?{|
     +$fragmentRefs: SectorDetail_data$ref
-  |}>,
-  +$refType: SectorsList_data$ref,
+  |},
+  +$refType: ItineraryOneWay_itinerary$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "SectorsList_data",
-  "type": "ItineraryInterface",
+  "name": "ItineraryOneWay_itinerary",
+  "type": "ItineraryOneWay",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "sectors",
+      "name": "sector",
       "storageKey": null,
       "args": null,
       "concreteType": "Sector",
-      "plural": true,
+      "plural": false,
       "selections": [
         {
           "kind": "FragmentSpread",
@@ -46,5 +46,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'f8177b6122a5eeaf9d69647ec4bfbe4b';
+(node/*: any*/).hash = '8a45a4ee48817606e2231a50b01cea89';
 module.exports = node;
