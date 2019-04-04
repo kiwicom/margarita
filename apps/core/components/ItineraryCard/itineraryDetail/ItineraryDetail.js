@@ -51,7 +51,7 @@ class ItineraryDetail extends React.Component<Props> {
 
 export default createFragmentContainer(ItineraryDetail, {
   data: graphql`
-    fragment ItineraryDetail_data on Itinerary {
+    fragment ItineraryDetail_data on ItineraryInterface {
       bookingToken
       ...SectorsList_data
     }

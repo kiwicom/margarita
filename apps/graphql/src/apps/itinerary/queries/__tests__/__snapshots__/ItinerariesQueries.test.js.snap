@@ -63,7 +63,7 @@ fragment RouteStopFragment on RouteStop {
       "edges": [
         {
           "node": {
-            "id": "SXRpbmVyYXJ5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
+            "id": "SXRpbmVyYXJ5T25lV2F5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
             "sectors": [
               {
                 "duration": 3435,
@@ -215,7 +215,7 @@ fragment RouteStopFragment on RouteStop {
       "edges": [
         {
           "node": {
-            "id": "SXRpbmVyYXJ5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
+            "id": "SXRpbmVyYXJ5T25lV2F5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
             "sectors": [
               {
                 "duration": 3435,

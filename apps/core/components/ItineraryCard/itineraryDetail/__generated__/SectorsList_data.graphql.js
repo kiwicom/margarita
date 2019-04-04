@@ -23,7 +23,7 @@ export type SectorsList_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "SectorsList_data",
-  "type": "Itinerary",
+  "type": "ItineraryInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -46,5 +46,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '69baa4a530b47a8f4f720b3ffb4583df';
+(node/*: any*/).hash = 'f8177b6122a5eeaf9d69647ec4bfbe4b';
 module.exports = node;

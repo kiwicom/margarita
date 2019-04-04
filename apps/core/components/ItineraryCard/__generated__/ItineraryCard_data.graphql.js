@@ -29,7 +29,7 @@ export type ItineraryCard_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "ItineraryCard_data",
-  "type": "Itinerary",
+  "type": "ItineraryInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -82,5 +82,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '1801b771ac22794bea9c368a12ac6a9e';
+(node/*: any*/).hash = '241a5f902ce4dee4cd2b2b0d4a3f0648';
 module.exports = node;

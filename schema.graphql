@@ -274,22 +274,65 @@ input ItineraryCheckInput {
   passengers: PassengersInput!
 }
 
+interface ItineraryInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  price: Price
+  sectors: [Sector]
+  arrival: RouteStop
+  departure: RouteStop
+  type: String
+  bookingToken: String
+
+  """All segments successfully checked"""
+  isChecked: Boolean
+
+  """Itinerary is valid (exists and is not sold-out or cancelled)"""
+  isValid: Boolean
+}
+
 """A connection to a list of items."""
-type ItineraryConnection {
+type ItineraryInterfaceConnection {
   """Information to aid in pagination."""
   pageInfo: PageInfo!
 
   """A list of edges."""
-  edges: [ItineraryEdge]
+  edges: [ItineraryInterfaceEdge]
 }
 
 """An edge in a connection."""
-type ItineraryEdge {
+type ItineraryInterfaceEdge {
   """The item at the end of the edge"""
-  node: Itinerary
+  node: ItineraryInterface
 
   """A cursor for use in pagination"""
   cursor: String!
+}
+
+"""Itinerary from A to B with no return, but with possible stopovers"""
+type ItineraryOneWay implements ItineraryInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  price: Price
+  sectors: [Sector]
+  arrival: RouteStop
+  departure: RouteStop
+  type: String
+  bookingToken: String
+
+  """All segments successfully checked"""
+  isChecked: Boolean
+
+  """Itinerary is valid (exists and is not sold-out or cancelled)"""
+  isValid: Boolean
 }
 
 input ItineraryOneWayInput {
@@ -301,6 +344,28 @@ input ItineraryOneWayInput {
 
   """Date Range of departure"""
   outboundDate: DateRange!
+}
+
+"""Itinerary from A to B with no return, but with possible stopovers"""
+type ItineraryReturn implements ItineraryInterface {
+  """
+  The globally unique ID of an object. You can unmask this ID to get original
+  value but please note that this unmasked ID is not globally unique anymore and
+  therefore it cannot be used as a cache key.
+  """
+  id(opaque: Boolean = true): ID!
+  price: Price
+  sectors: [Sector]
+  arrival: RouteStop
+  departure: RouteStop
+  type: String
+  bookingToken: String
+
+  """All segments successfully checked"""
+  isChecked: Boolean
+
+  """Itinerary is valid (exists and is not sold-out or cancelled)"""
+  isValid: Boolean
 }
 
 input ItineraryReturnInput {
@@ -455,10 +520,10 @@ type RootQuery {
   locationsByTerm(input: LocationsByTermInput!, after: String, first: Int, before: String, last: Int): LocationsResult
 
   """Query to fetch all one way itineraries(flights, busses, trains)"""
-  searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+  searchOneWayItineraries(input: ItinerariesOneWaySearchInput!, after: String, first: Int, before: String, last: Int): ItineraryInterfaceConnection
 
   """Query to fetch all return itineraries(flights, busses, trains)"""
-  searchReturnItineraries(input: ItinerariesReturnSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryConnection
+  searchReturnItineraries(input: ItinerariesReturnSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryInterfaceConnection
 
   """Check if itinerary is valid and bookable"""
   checkItinerary(input: ItineraryCheckInput!): Itinerary
