@@ -26,7 +26,7 @@ export type ResultsList_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "ResultsList_data",
-  "type": "ItineraryConnection",
+  "type": "ItineraryInterfaceConnection",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -36,7 +36,7 @@ const node/*: ReaderFragment*/ = {
       "name": "edges",
       "storageKey": null,
       "args": null,
-      "concreteType": "ItineraryEdge",
+      "concreteType": "ItineraryInterfaceEdge",
       "plural": true,
       "selections": [
         {
@@ -45,7 +45,7 @@ const node/*: ReaderFragment*/ = {
           "name": "node",
           "storageKey": null,
           "args": null,
-          "concreteType": "Itinerary",
+          "concreteType": null,
           "plural": false,
           "selections": [
             {
@@ -67,5 +67,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'afa99fed96d27e3809635e42673c3aec';
+(node/*: any*/).hash = '6bb70c83738a299e2504868bce08f220';
 module.exports = node;

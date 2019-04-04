@@ -120,7 +120,7 @@ class ItineraryCard extends React.Component<Props, State> {
 
 export default createFragmentContainer(ItineraryCard, {
   data: graphql`
-    fragment ItineraryCard_data on Itinerary {
+    fragment ItineraryCard_data on ItineraryInterface {
       sectors {
         ...RenderTripSectorItem_data
       }

@@ -19,7 +19,7 @@ function SectorsList(props: Props) {
 
 export default createFragmentContainer(SectorsList, {
   data: graphql`
-    fragment SectorsList_data on Itinerary {
+    fragment SectorsList_data on ItineraryInterface {
       sectors {
         ...SectorDetail_data
       }

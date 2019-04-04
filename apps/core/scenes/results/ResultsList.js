@@ -62,7 +62,7 @@ class ResultsList extends React.Component<Props> {
 
 export default createFragmentContainer(withNavigation(ResultsList), {
   data: graphql`
-    fragment ResultsList_data on ItineraryConnection {
+    fragment ResultsList_data on ItineraryInterfaceConnection {
       edges {
         node {
           id

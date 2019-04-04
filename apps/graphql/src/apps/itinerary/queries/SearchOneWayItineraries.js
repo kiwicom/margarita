@@ -3,7 +3,8 @@
 import { GraphQLNonNull } from 'graphql';
 import { connectionFromArray, connectionArgs } from '@kiwicom/graphql-utils';
 
-import { type Args, ItinerariesConnection } from '../helpers/queryVariables';
+import { type Args } from '../helpers/queryVariables';
+import { ItinerariesConnection } from '../types/outputs/ItineraryConnection';
 import ItinerariesOneWaySearchInput from '../types/inputs/ItinerariesOneWaySearchInput';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import type {

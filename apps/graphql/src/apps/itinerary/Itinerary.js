@@ -1,5 +1,7 @@
 // @flow
 
+import { type TripTypes } from '@kiwicom/margarita-config';
+
 import type { RouteStop, Sector, Price } from '../common/CommonTypes';
 
 type Order = 'ASC' | 'DESC';
@@ -51,7 +53,7 @@ export type Itinerary = {|
   +id: string,
   +price: ?Price,
   +sectors: ?Array<Sector>,
-  +type: ?string,
+  +type: ?TripTypes,
   +bookingToken: ?string,
   +isChecked: ?boolean,
   +isValid: ?boolean,
