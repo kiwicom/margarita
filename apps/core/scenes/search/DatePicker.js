@@ -59,6 +59,11 @@ class DatePicker extends React.Component<Props, State> {
     this.setState({ tempDates: dates });
   };
 
+  handleDismiss = () => {
+    this.props.onDismiss();
+    this.setState(state => ({ tempDates: state.previousDates }));
+  };
+
   render() {
     const {
       style,
@@ -87,7 +92,7 @@ class DatePicker extends React.Component<Props, State> {
           isVisible={isVisible}
           dates={this.state.tempDates}
           onConfirm={onConfirm}
-          onDismiss={onDismiss}
+          onDismiss={this.handleDismiss}
           onChangeTempDates={this.onChangeTempDates}
           labels={labels}
           numberOfRenderedMonths={numberOfRenderedMonths}
