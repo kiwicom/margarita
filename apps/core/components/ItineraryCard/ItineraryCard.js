@@ -73,6 +73,22 @@ class ItineraryCard extends React.Component<Props, State> {
       return null;
     }
 
+    // Temporary fix: TODO: Improve in next PR
+    const sectors = [];
+
+    const sector = data.sector;
+    const inbound = data.inbound;
+    const outbound = data.outbound;
+
+    if (sector != null) {
+      sectors.push(sector);
+    }
+
+    if (inbound != null && outbound != null) {
+      sectors.push(outbound);
+      sectors.push(inbound);
+    }
+
     const priceObject = {
       amount: parseFloat(data.price?.amount) ?? 0,
       currency: data.price?.currency ?? 'CZK',
@@ -97,7 +113,7 @@ class ItineraryCard extends React.Component<Props, State> {
                 detailOpened={detailOpened}
               >
                 <FlatList
-                  data={data.sectors}
+                  data={sectors}
                   keyExtractor={this.keyExtractor}
                   renderItem={this.renderSectorItem}
                 />
@@ -121,8 +137,18 @@ class ItineraryCard extends React.Component<Props, State> {
 export default createFragmentContainer(ItineraryCard, {
   data: graphql`
     fragment ItineraryCard_data on ItineraryInterface {
-      sectors {
-        ...RenderTripSectorItem_data
+      ... on ItineraryOneWay {
+        sector {
+          ...RenderTripSectorItem_data
+        }
+      }
+      ... on ItineraryReturn {
+        inbound {
+          ...RenderTripSectorItem_data
+        }
+        outbound {
+          ...RenderTripSectorItem_data
+        }
       }
       price {
         currency

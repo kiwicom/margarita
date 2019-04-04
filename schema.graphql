@@ -282,10 +282,8 @@ interface ItineraryInterface {
   """
   id(opaque: Boolean = true): ID!
   price: Price
-  sectors: [Sector]
   arrival: RouteStop
   departure: RouteStop
-  type: String
   bookingToken: String
 
   """All segments successfully checked"""
@@ -322,10 +320,8 @@ type ItineraryOneWay implements ItineraryInterface {
   """
   id(opaque: Boolean = true): ID!
   price: Price
-  sectors: [Sector]
   arrival: RouteStop
   departure: RouteStop
-  type: String
   bookingToken: String
 
   """All segments successfully checked"""
@@ -333,6 +329,7 @@ type ItineraryOneWay implements ItineraryInterface {
 
   """Itinerary is valid (exists and is not sold-out or cancelled)"""
   isValid: Boolean
+  sector: Sector
 }
 
 input ItineraryOneWayInput {
@@ -355,10 +352,8 @@ type ItineraryReturn implements ItineraryInterface {
   """
   id(opaque: Boolean = true): ID!
   price: Price
-  sectors: [Sector]
   arrival: RouteStop
   departure: RouteStop
-  type: String
   bookingToken: String
 
   """All segments successfully checked"""
@@ -366,6 +361,8 @@ type ItineraryReturn implements ItineraryInterface {
 
   """Itinerary is valid (exists and is not sold-out or cancelled)"""
   isValid: Boolean
+  outbound: Sector
+  inbound: Sector
 }
 
 input ItineraryReturnInput {

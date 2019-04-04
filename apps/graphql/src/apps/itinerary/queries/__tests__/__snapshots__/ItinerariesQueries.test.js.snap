@@ -34,10 +34,18 @@ fragment RouteStopFragment on RouteStop {
     edges {
       node {
         id
-        sectors {
-          duration
-          stopoverDuration
-          segments {
+        ... on ItineraryOneWay {
+          sector {
+            duration
+            stopoverDuration
+            segments {
+              departure {
+                ...RouteStopFragment
+              }
+              arrival {
+                ...RouteStopFragment
+              }
+            }
             departure {
               ...RouteStopFragment
             }
@@ -45,17 +53,12 @@ fragment RouteStopFragment on RouteStop {
               ...RouteStopFragment
             }
           }
-          departure {
-            ...RouteStopFragment
-          }
-          arrival {
-            ...RouteStopFragment
-          }
         }
       }
     }
   }
 }
+
 ~~~~~~~~~~ OUTPUT ~~~~~~~~~~
 {
   "data": {
@@ -64,82 +67,80 @@ fragment RouteStopFragment on RouteStop {
         {
           "node": {
             "id": "SXRpbmVyYXJ5T25lV2F5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
-            "sectors": [
-              {
-                "duration": 3435,
-                "stopoverDuration": null,
-                "segments": [
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-01T17:45:00.000Z",
-                        "local": "2019-03-01T18:45:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-01T18:50:00.000Z",
-                        "local": "2019-03-01T19:50:00.000Z"
-                      }
+            "sector": {
+              "duration": 3435,
+              "stopoverDuration": null,
+              "segments": [
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-03-01T17:45:00.000Z",
+                      "local": "2019-03-01T18:45:00.000Z"
                     }
                   },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-02T14:15:00.000Z",
-                        "local": "2019-03-02T15:15:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-03T00:45:00.000Z",
-                        "local": "2019-03-02T19:45:00.000Z"
-                      }
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-03-01T18:50:00.000Z",
+                      "local": "2019-03-01T19:50:00.000Z"
                     }
-                  },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-03T03:55:00.000Z",
-                        "local": "2019-03-02T22:55:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-03T07:24:00.000Z",
-                        "local": "2019-03-03T02:24:00.000Z"
-                      }
-                    }
-                  },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-03T23:50:00.000Z",
-                        "local": "2019-03-03T18:50:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-04T03:00:00.000Z",
-                        "local": "2019-03-03T22:00:00.000Z"
-                      }
-                    }
-                  }
-                ],
-                "departure": {
-                  "time": {
-                    "utc": "2019-03-01T17:45:00.000Z",
-                    "local": "2019-03-01T18:45:00.000Z"
                   }
                 },
-                "arrival": {
-                  "time": {
-                    "utc": "2019-03-04T03:00:00.000Z",
-                    "local": "2019-03-03T22:00:00.000Z"
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-03-02T14:15:00.000Z",
+                      "local": "2019-03-02T15:15:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-03-03T00:45:00.000Z",
+                      "local": "2019-03-02T19:45:00.000Z"
+                    }
+                  }
+                },
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-03-03T03:55:00.000Z",
+                      "local": "2019-03-02T22:55:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-03-03T07:24:00.000Z",
+                      "local": "2019-03-03T02:24:00.000Z"
+                    }
+                  }
+                },
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-03-03T23:50:00.000Z",
+                      "local": "2019-03-03T18:50:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-03-04T03:00:00.000Z",
+                      "local": "2019-03-03T22:00:00.000Z"
+                    }
                   }
                 }
+              ],
+              "departure": {
+                "time": {
+                  "utc": "2019-03-01T17:45:00.000Z",
+                  "local": "2019-03-01T18:45:00.000Z"
+                }
+              },
+              "arrival": {
+                "time": {
+                  "utc": "2019-03-04T03:00:00.000Z",
+                  "local": "2019-03-03T22:00:00.000Z"
+                }
               }
-            ]
+            }
           }
         }
       ]
@@ -154,6 +155,25 @@ fragment RouteStopFragment on RouteStop {
   time {
     utc
     local
+  }
+}
+
+fragment Sector on Sector {
+  duration
+  stopoverDuration
+  segments {
+    departure {
+      ...RouteStopFragment
+    }
+    arrival {
+      ...RouteStopFragment
+    }
+  }
+  departure {
+    ...RouteStopFragment
+  }
+  arrival {
+    ...RouteStopFragment
   }
 }
 
@@ -186,28 +206,19 @@ fragment RouteStopFragment on RouteStop {
     edges {
       node {
         id
-        sectors {
-          duration
-          stopoverDuration
-          segments {
-            departure {
-              ...RouteStopFragment
-            }
-            arrival {
-              ...RouteStopFragment
-            }
+          ... on ItineraryReturn {
+          inbound {
+            ...Sector
           }
-          departure {
-            ...RouteStopFragment
-          }
-          arrival {
-            ...RouteStopFragment
+          outbound {
+            ...Sector
           }
         }
       }
     }
   }
 }
+
 ~~~~~~~~~~ OUTPUT ~~~~~~~~~~
 {
   "data": {
@@ -215,83 +226,127 @@ fragment RouteStopFragment on RouteStop {
       "edges": [
         {
           "node": {
-            "id": "SXRpbmVyYXJ5T25lV2F5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
-            "sectors": [
-              {
-                "duration": 3435,
-                "stopoverDuration": null,
-                "segments": [
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-01T17:45:00.000Z",
-                        "local": "2019-03-01T18:45:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-01T18:50:00.000Z",
-                        "local": "2019-03-01T19:50:00.000Z"
-                      }
+            "id": "SXRpbmVyYXJ5UmV0dXJuOjg5MDM4NDUxNzc0NDY4MDRfMHwxOTkxMjE1NjA5MTk5OTM2Ml8wfDE5OTEyMTU2MDkxOTk5MzYyXzF8MTk5MTIxNTYwOTE5OTkzNjJfMnwxOTkxMjE1NjA5MTk5OTM2Ml8zfDQwNTA2MDIwNjQ0NTk4MTVfMA==",
+            "inbound": {
+              "duration": 1866,
+              "stopoverDuration": 44729,
+              "segments": [
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-06-06T05:29:00.000Z",
+                      "local": "2019-06-06T00:29:00.000Z"
                     }
                   },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-02T14:15:00.000Z",
-                        "local": "2019-03-02T15:15:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-03T00:45:00.000Z",
-                        "local": "2019-03-02T19:45:00.000Z"
-                      }
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-06-06T09:04:00.000Z",
+                      "local": "2019-06-06T05:04:00.000Z"
                     }
-                  },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-03T03:55:00.000Z",
-                        "local": "2019-03-02T22:55:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-03T07:24:00.000Z",
-                        "local": "2019-03-03T02:24:00.000Z"
-                      }
-                    }
-                  },
-                  {
-                    "departure": {
-                      "time": {
-                        "utc": "2019-03-03T23:50:00.000Z",
-                        "local": "2019-03-03T18:50:00.000Z"
-                      }
-                    },
-                    "arrival": {
-                      "time": {
-                        "utc": "2019-03-04T03:00:00.000Z",
-                        "local": "2019-03-03T22:00:00.000Z"
-                      }
-                    }
-                  }
-                ],
-                "departure": {
-                  "time": {
-                    "utc": "2019-03-01T17:45:00.000Z",
-                    "local": "2019-03-01T18:45:00.000Z"
                   }
                 },
-                "arrival": {
-                  "time": {
-                    "utc": "2019-03-04T03:00:00.000Z",
-                    "local": "2019-03-03T22:00:00.000Z"
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-06-06T14:30:00.000Z",
+                      "local": "2019-06-06T10:30:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-06-06T16:40:00.000Z",
+                      "local": "2019-06-06T13:40:00.000Z"
+                    }
+                  }
+                },
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-06-06T20:20:00.000Z",
+                      "local": "2019-06-06T17:20:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-06-07T06:45:00.000Z",
+                      "local": "2019-06-07T08:45:00.000Z"
+                    }
+                  }
+                },
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-06-07T09:10:00.000Z",
+                      "local": "2019-06-07T11:10:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-06-07T12:35:00.000Z",
+                      "local": "2019-06-07T14:35:00.000Z"
+                    }
                   }
                 }
+              ],
+              "departure": {
+                "time": {
+                  "utc": "2019-06-06T05:29:00.000Z",
+                  "local": "2019-06-06T00:29:00.000Z"
+                }
+              },
+              "arrival": {
+                "time": {
+                  "utc": "2019-06-07T12:35:00.000Z",
+                  "local": "2019-06-07T14:35:00.000Z"
+                }
               }
-            ]
+            },
+            "outbound": {
+              "duration": 1410,
+              "stopoverDuration": null,
+              "segments": [
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-05-05T04:30:00.000Z",
+                      "local": "2019-05-05T06:30:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-05-05T07:50:00.000Z",
+                      "local": "2019-05-05T09:50:00.000Z"
+                    }
+                  }
+                },
+                {
+                  "departure": {
+                    "time": {
+                      "utc": "2019-05-05T14:50:00.000Z",
+                      "local": "2019-05-05T16:50:00.000Z"
+                    }
+                  },
+                  "arrival": {
+                    "time": {
+                      "utc": "2019-05-06T04:00:00.000Z",
+                      "local": "2019-05-05T23:00:00.000Z"
+                    }
+                  }
+                }
+              ],
+              "departure": {
+                "time": {
+                  "utc": "2019-05-05T04:30:00.000Z",
+                  "local": "2019-05-05T06:30:00.000Z"
+                }
+              },
+              "arrival": {
+                "time": {
+                  "utc": "2019-05-06T04:00:00.000Z",
+                  "local": "2019-05-05T23:00:00.000Z"
+                }
+              }
+            }
           }
         }
       ]

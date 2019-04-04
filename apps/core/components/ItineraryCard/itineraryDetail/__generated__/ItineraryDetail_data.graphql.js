@@ -8,12 +8,14 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type SectorsList_data$ref = any;
+type ItineraryOneWay_itinerary$ref = any;
+type ItineraryReturn_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryDetail_data$ref: FragmentReference;
 export type ItineraryDetail_data = {|
+  +__typename: string,
   +bookingToken: ?string,
-  +$fragmentRefs: SectorsList_data$ref,
+  +$fragmentRefs: ItineraryOneWay_itinerary$ref & ItineraryReturn_itinerary$ref,
   +$refType: ItineraryDetail_data$ref,
 |};
 */
@@ -29,17 +31,41 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
+      "name": "__typename",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
       "name": "bookingToken",
       "args": null,
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "SectorsList_data",
-      "args": null
+      "kind": "InlineFragment",
+      "type": "ItineraryOneWay",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ItineraryOneWay_itinerary",
+          "args": null
+        }
+      ]
+    },
+    {
+      "kind": "InlineFragment",
+      "type": "ItineraryReturn",
+      "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "ItineraryReturn_itinerary",
+          "args": null
+        }
+      ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '90b7f0bc5d6d02c54cf4b48fa1fc9fbc';
+(node/*: any*/).hash = '1971ffb2113c9ca281096c43704cffcc';
 module.exports = node;

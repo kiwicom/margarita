@@ -13,12 +13,18 @@ type RenderTripSectorItem_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard_data$ref: FragmentReference;
 export type ItineraryCard_data = {|
-  +sectors: ?$ReadOnlyArray<?{|
-    +$fragmentRefs: RenderTripSectorItem_data$ref
-  |}>,
   +price: ?{|
     +currency: ?string,
     +amount: ?number,
+  |},
+  +sector?: ?{|
+    +$fragmentRefs: RenderTripSectorItem_data$ref
+  |},
+  +inbound?: ?{|
+    +$fragmentRefs: RenderTripSectorItem_data$ref
+  |},
+  +outbound?: ?{|
+    +$fragmentRefs: RenderTripSectorItem_data$ref
   |},
   +$fragmentRefs: ItineraryDetail_data$ref,
   +$refType: ItineraryCard_data$ref,
@@ -26,29 +32,21 @@ export type ItineraryCard_data = {|
 */
 
 
-const node/*: ReaderFragment*/ = {
+const node/*: ReaderFragment*/ = (function(){
+var v0 = [
+  {
+    "kind": "FragmentSpread",
+    "name": "RenderTripSectorItem_data",
+    "args": null
+  }
+];
+return {
   "kind": "Fragment",
   "name": "ItineraryCard_data",
   "type": "ItineraryInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "LinkedField",
-      "alias": null,
-      "name": "sectors",
-      "storageKey": null,
-      "args": null,
-      "concreteType": "Sector",
-      "plural": true,
-      "selections": [
-        {
-          "kind": "FragmentSpread",
-          "name": "RenderTripSectorItem_data",
-          "args": null
-        }
-      ]
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -78,9 +76,52 @@ const node/*: ReaderFragment*/ = {
       "kind": "FragmentSpread",
       "name": "ItineraryDetail_data",
       "args": null
+    },
+    {
+      "kind": "InlineFragment",
+      "type": "ItineraryOneWay",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "sector",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Sector",
+          "plural": false,
+          "selections": (v0/*: any*/)
+        }
+      ]
+    },
+    {
+      "kind": "InlineFragment",
+      "type": "ItineraryReturn",
+      "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "inbound",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Sector",
+          "plural": false,
+          "selections": (v0/*: any*/)
+        },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "outbound",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Sector",
+          "plural": false,
+          "selections": (v0/*: any*/)
+        }
+      ]
     }
   ]
 };
+})();
 // prettier-ignore
-(node/*: any*/).hash = '241a5f902ce4dee4cd2b2b0d4a3f0648';
+(node/*: any*/).hash = 'd54b91ad0798e2593fb1f181413a7bae';
 module.exports = node;

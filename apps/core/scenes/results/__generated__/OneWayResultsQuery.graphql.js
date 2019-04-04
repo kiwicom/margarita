@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 16e9336a780f999092ff442211a292c3
+ * @relayHash 6836462538d7933017bdc9ef99a842a5
  */
 
 /* eslint-disable */
@@ -70,8 +70,18 @@ fragment ResultsList_data on ItineraryInterfaceConnection {
 }
 
 fragment ItineraryCard_data on ItineraryInterface {
-  sectors {
-    ...RenderTripSectorItem_data
+  ... on ItineraryOneWay {
+    sector {
+      ...RenderTripSectorItem_data
+    }
+  }
+  ... on ItineraryReturn {
+    inbound {
+      ...RenderTripSectorItem_data
+    }
+    outbound {
+      ...RenderTripSectorItem_data
+    }
   }
   price {
     currency
@@ -95,12 +105,27 @@ fragment RenderTripSectorItem_data on Sector {
 }
 
 fragment ItineraryDetail_data on ItineraryInterface {
+  __typename
   bookingToken
-  ...SectorsList_data
+  ... on ItineraryOneWay {
+    ...ItineraryOneWay_itinerary
+  }
+  ... on ItineraryReturn {
+    ...ItineraryReturn_itinerary
+  }
 }
 
-fragment SectorsList_data on ItineraryInterface {
-  sectors {
+fragment ItineraryOneWay_itinerary on ItineraryOneWay {
+  sector {
+    ...SectorDetail_data
+  }
+}
+
+fragment ItineraryReturn_itinerary on ItineraryReturn {
+  inbound {
+    ...SectorDetail_data
+  }
+  outbound {
     ...SectorDetail_data
   }
 }
@@ -336,6 +361,94 @@ v7 = [
       (v2/*: any*/)
     ]
   }
+],
+v8 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "departure",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": [
+      (v4/*: any*/),
+      (v5/*: any*/)
+    ]
+  },
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "stopoverDuration",
+    "args": null,
+    "storageKey": null
+  },
+  (v6/*: any*/),
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "arrival",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": [
+      (v5/*: any*/),
+      (v4/*: any*/)
+    ]
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "segments",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "Segment",
+    "plural": true,
+    "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "carrier",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Carrier",
+        "plural": false,
+        "selections": [
+          (v3/*: any*/),
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "code",
+            "args": null,
+            "storageKey": null
+          }
+        ]
+      },
+      (v2/*: any*/),
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "departure",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "RouteStop",
+        "plural": false,
+        "selections": (v7/*: any*/)
+      },
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "arrival",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "RouteStop",
+        "plural": false,
+        "selections": (v7/*: any*/)
+      },
+      (v6/*: any*/)
+    ]
+  }
 ];
 return {
   "kind": "Request",
@@ -396,111 +509,7 @@ return {
                 "concreteType": null,
                 "plural": false,
                 "selections": [
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "__typename",
-                    "args": null,
-                    "storageKey": null
-                  },
                   (v2/*: any*/),
-                  {
-                    "kind": "LinkedField",
-                    "alias": null,
-                    "name": "sectors",
-                    "storageKey": null,
-                    "args": null,
-                    "concreteType": "Sector",
-                    "plural": true,
-                    "selections": [
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "departure",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "RouteStop",
-                        "plural": false,
-                        "selections": [
-                          (v4/*: any*/),
-                          (v5/*: any*/)
-                        ]
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "name": "stopoverDuration",
-                        "args": null,
-                        "storageKey": null
-                      },
-                      (v6/*: any*/),
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "arrival",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "RouteStop",
-                        "plural": false,
-                        "selections": [
-                          (v5/*: any*/),
-                          (v4/*: any*/)
-                        ]
-                      },
-                      {
-                        "kind": "LinkedField",
-                        "alias": null,
-                        "name": "segments",
-                        "storageKey": null,
-                        "args": null,
-                        "concreteType": "Segment",
-                        "plural": true,
-                        "selections": [
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "carrier",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "Carrier",
-                            "plural": false,
-                            "selections": [
-                              (v3/*: any*/),
-                              {
-                                "kind": "ScalarField",
-                                "alias": null,
-                                "name": "code",
-                                "args": null,
-                                "storageKey": null
-                              }
-                            ]
-                          },
-                          (v2/*: any*/),
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "departure",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "RouteStop",
-                            "plural": false,
-                            "selections": (v7/*: any*/)
-                          },
-                          {
-                            "kind": "LinkedField",
-                            "alias": null,
-                            "name": "arrival",
-                            "storageKey": null,
-                            "args": null,
-                            "concreteType": "RouteStop",
-                            "plural": false,
-                            "selections": (v7/*: any*/)
-                          },
-                          (v6/*: any*/)
-                        ]
-                      }
-                    ]
-                  },
                   {
                     "kind": "LinkedField",
                     "alias": null,
@@ -529,9 +538,58 @@ return {
                   {
                     "kind": "ScalarField",
                     "alias": null,
+                    "name": "__typename",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
+                    "kind": "ScalarField",
+                    "alias": null,
                     "name": "bookingToken",
                     "args": null,
                     "storageKey": null
+                  },
+                  {
+                    "kind": "InlineFragment",
+                    "type": "ItineraryOneWay",
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "sector",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sector",
+                        "plural": false,
+                        "selections": (v8/*: any*/)
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "InlineFragment",
+                    "type": "ItineraryReturn",
+                    "selections": [
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "inbound",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sector",
+                        "plural": false,
+                        "selections": (v8/*: any*/)
+                      },
+                      {
+                        "kind": "LinkedField",
+                        "alias": null,
+                        "name": "outbound",
+                        "storageKey": null,
+                        "args": null,
+                        "concreteType": "Sector",
+                        "plural": false,
+                        "selections": (v8/*: any*/)
+                      }
+                    ]
                   }
                 ]
               }
@@ -545,7 +603,7 @@ return {
     "operationKind": "query",
     "name": "OneWayResultsQuery",
     "id": null,
-    "text": "query OneWayResultsQuery(\n  $input: ItinerariesOneWaySearchInput!\n) {\n  searchData: searchOneWayItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on ItineraryInterface {\n  sectors {\n    ...RenderTripSectorItem_data\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment ItineraryDetail_data on ItineraryInterface {\n  bookingToken\n  ...SectorsList_data\n}\n\nfragment SectorsList_data on ItineraryInterface {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Carriers_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Carriers_data on Sector {\n  segments {\n    carrier {\n      name\n      code\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query OneWayResultsQuery(\n  $input: ItinerariesOneWaySearchInput!\n) {\n  searchData: searchOneWayItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on ItineraryInterface {\n  ... on ItineraryOneWay {\n    sector {\n      ...RenderTripSectorItem_data\n    }\n  }\n  ... on ItineraryReturn {\n    inbound {\n      ...RenderTripSectorItem_data\n    }\n    outbound {\n      ...RenderTripSectorItem_data\n    }\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment ItineraryDetail_data on ItineraryInterface {\n  __typename\n  bookingToken\n  ... on ItineraryOneWay {\n    ...ItineraryOneWay_itinerary\n  }\n  ... on ItineraryReturn {\n    ...ItineraryReturn_itinerary\n  }\n}\n\nfragment ItineraryOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment ItineraryReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Carriers_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Carriers_data on Sector {\n  segments {\n    carrier {\n      name\n      code\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

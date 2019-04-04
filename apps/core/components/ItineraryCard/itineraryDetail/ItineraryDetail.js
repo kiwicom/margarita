@@ -8,7 +8,8 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 
 import type { ItineraryDetail_data as ItineraryType } from './__generated__/ItineraryDetail_data.graphql';
 import ItineraryDetailWrapper from './ItineraryDetailWrapper';
-import SectorsList from './SectorsList';
+import ItineraryOneWay from './ItineraryOneWay';
+import ItineraryReturn from './ItineraryReturn';
 
 type Props = {|
   +data: ?ItineraryType,
@@ -25,12 +26,17 @@ class ItineraryDetail extends React.Component<Props> {
 
   render() {
     const { data, localizedPrice, onClose } = this.props;
-
+    const typename = data?.__typename;
     return (
       <ItineraryDetailWrapper onClose={onClose}>
         <View style={styles.container}>
           <ScrollView style={styles.content}>
-            <SectorsList data={data} />
+            {typename === 'ItineraryOneWay' && (
+              <ItineraryOneWay itinerary={data} />
+            )}
+            {typename === 'ItineraryReturn' && (
+              <ItineraryReturn itinerary={data} />
+            )}
           </ScrollView>
           <View style={styles.footer}>
             {Platform.OS !== 'web' && (
@@ -52,8 +58,14 @@ class ItineraryDetail extends React.Component<Props> {
 export default createFragmentContainer(ItineraryDetail, {
   data: graphql`
     fragment ItineraryDetail_data on ItineraryInterface {
+      __typename
       bookingToken
-      ...SectorsList_data
+      ... on ItineraryOneWay {
+        ...ItineraryOneWay_itinerary
+      }
+      ... on ItineraryReturn {
+        ...ItineraryReturn_itinerary
+      }
     }
   `,
 });
