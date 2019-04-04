@@ -33,11 +33,11 @@
     "@storybook/addon-ondevice-knobs": "^",
     "@storybook/react": "^",
     "babel-preset-expo": "^",
+    "date-fns": "^",
     "react": "^",
     "react-native": "^",
     "react-native-testing-library": "^",
     "react-test-renderer": "^",
-    "styled-components": "^",
-    "date-fns": "^"
+    "styled-components": "^"
   }
 }

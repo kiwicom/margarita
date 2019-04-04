@@ -18,10 +18,10 @@
   "peerDependencies": {
     "date-fns": "^",
     "expo": "^",
+    "json-stable-stringify": "^",
     "ramda": "^",
     "react": "^",
     "react-native": "^",
-    "react-native-testing-library": "^",
-    "json-stable-stringify": "^"
+    "react-native-testing-library": "^"
   }
 }

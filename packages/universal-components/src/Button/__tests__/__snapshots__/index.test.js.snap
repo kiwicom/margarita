@@ -177,11 +177,11 @@ exports[`Button - native should match the snapshot 1`] = `
       ],
       "results": Array [
         Object {
-          "type": "return",
+          "isThrow": false,
           "value": undefined,
         },
         Object {
-          "type": "return",
+          "isThrow": false,
           "value": undefined,
         },
       ],

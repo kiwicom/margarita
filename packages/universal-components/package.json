@@ -32,12 +32,12 @@
   "dependencies": {
     "@kiwicom/orbit-design-tokens": "^0.3.0",
     "@storybook/react-native": "^4.1.13",
+    "memoize-one": "^5.0.0",
+    "react-fast-compare": "^2.0.4",
     "react-native-modal": "^7.0.2",
     "react-native-multi-slider": "https://github.com/kiwicom/react-native-multi-slider.git#beb71bf5eb210fed393cb29b18032105b725611e",
     "react-native-status-bar-height": "^2.2.0",
-    "styled-components": "^4.1.3",
-    "memoize-one": "^5.0.0",
-    "react-fast-compare": "^2.0.4"
+    "styled-components": "^4.1.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -70,14 +70,14 @@
     "@storybook/addon-ondevice-knobs": "^",
     "@storybook/react": "^",
     "babel-preset-expo": "^",
+    "date-fns": "^",
     "ramda": "^",
     "react": "^",
     "react-dom": "^",
     "react-native": "^",
     "react-native-testing-library": "^",
     "react-test-renderer": "^",
-    "styled-components": "^",
-    "date-fns": "^"
+    "styled-components": "^"
   },
   "rnpm": {
     "assets": [
