@@ -104,12 +104,26 @@ export type ApiResponseType = {|
   |}>,
 |};
 
-export type ItineraryApiResponseType = {|
+export type ItineraryApiResponse = {|
   +flights_checked?: boolean,
   +flights_invalid?: boolean,
   +booking_token?: string,
   +total?: number,
-  +flights?: $ReadOnlyArray<{|
-    +id?: string,
-  |}>,
+  +flights?: Array<ItineraryApiSegment>,
+|};
+
+export type ItineraryApiSegment = {|
+  +id?: string,
+  +src?: string,
+  +dst?: string,
+  +flight_no?: string,
+  +local_arrival?: string,
+  +local_departure?: string,
+  +utc_arrival?: string,
+  +utc_departure?: string,
+  +return?: number,
+  +airline?: {|
+    +Name?: string,
+    +iatacode?: string,
+  |},
 |};
