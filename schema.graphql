@@ -346,7 +346,7 @@ input ItineraryOneWayInput {
   outboundDate: DateRange!
 }
 
-"""Itinerary from A to B with no return, but with possible stopovers"""
+"""Itinerary from A to B with return trip, and with possible stopovers"""
 type ItineraryReturn implements ItineraryInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original

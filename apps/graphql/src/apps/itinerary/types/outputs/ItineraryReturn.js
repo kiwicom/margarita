@@ -9,7 +9,7 @@ import ItineraryInterface, { commonFields } from './ItineraryInterface';
 export default new GraphQLObjectType({
   name: 'ItineraryReturn',
   description:
-    'Itinerary from A to B with no return, but with possible stopovers',
+    'Itinerary from A to B with return trip, and with possible stopovers',
   interfaces: [ItineraryInterface],
   isTypeOf: ({ type }: Itinerary) => type === TRIP_TYPES.RETURN,
   fields: {
