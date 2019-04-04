@@ -3,7 +3,7 @@
 import * as DateFNS from 'date-fns';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
-import { TRIP_TYPES } from '@kiwicom/margarita-config';
+import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
 
 import type { ApiRouteItem } from '../Itinerary';
 import type { RouteStop, Sector, Segment } from '../../common/CommonTypes';
@@ -53,6 +53,19 @@ export const getItineraryType = (routes: ?Array<Array<string>>) => {
     return TRIP_TYPES.RETURN;
   }
   return null;
+};
+
+export const getItineraryDeparture = (sectors: ?Array<Sector>): ?RouteStop => {
+  return head(head(sectors ?? [])?.segments ?? [])?.departure;
+};
+
+export const getItineraryArrival = (
+  tripType: ?TripTypes,
+  sectors: ?Array<Sector>,
+): ?RouteStop => {
+  return tripType === TRIP_TYPES.RETURN
+    ? last(head(sectors ?? [])?.segments ?? [])?.arrival
+    : last(last(sectors ?? [])?.segments ?? [])?.arrival;
 };
 
 /**

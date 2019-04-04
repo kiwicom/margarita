@@ -1,14 +1,19 @@
 // @flow
 
-import { head, last } from 'ramda';
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import * as DateFNS from 'date-fns';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
-import { UK_DATE_FORMAT, TRIP_TYPES } from '@kiwicom/margarita-config';
+import { UK_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import fetch from '../../../services/fetch/tequilaFetch';
-import { getItineraryType, mapSectors, unmaskID } from '../helpers/Itineraries';
+import {
+  getItineraryType,
+  getItineraryDeparture,
+  getItineraryArrival,
+  mapSectors,
+  unmaskID,
+} from '../helpers/Itineraries';
 import type {
   ItinerariesReturnSearchParameters,
   ItinerariesOneWaySearchParameters,
@@ -85,12 +90,8 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
   return itineraries.map(itinerary => {
     const type = getItineraryType(itinerary.routes);
     const sectors = mapSectors(itinerary.route, itinerary.routes);
-
-    const departure = head(head(sectors ?? [])?.segments ?? [])?.departure;
-    const arrival =
-      type === TRIP_TYPES.RETURN
-        ? last(head(sectors ?? [])?.segments ?? [])?.arrival
-        : last(last(sectors ?? [])?.segments ?? [])?.arrival;
+    const departure = getItineraryDeparture(sectors);
+    const arrival = getItineraryArrival(type, sectors);
 
     return {
       id: itinerary.id,

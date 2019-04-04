@@ -6,10 +6,19 @@ import { OptimisticDataloader } from '@kiwicom/graphql-utils';
 
 import fetch from '../../../services/fetch/tequilaFetch';
 import type {
-  ItineraryCheckParameters,
-  ItineraryApiResponseType,
   Itinerary,
+  ItineraryCheckParameters,
+  ItineraryApiResponse,
 } from '../Itinerary';
+import {
+  getItineraryDeparture,
+  getItineraryArrival,
+} from '../helpers/Itineraries';
+import {
+  sanitizeSectors,
+  getItineraryId,
+  getItineraryType,
+} from '../helpers/Itinerary';
 
 export const parseParameters = (input: ItineraryCheckParameters) => {
   const passengersTotal =
@@ -28,7 +37,7 @@ export const parseParameters = (input: ItineraryCheckParameters) => {
 const fetchItinerary = async (
   parameters: $ReadOnlyArray<ItineraryCheckParameters>,
 ) => {
-  const results: $ReadOnlyArray<ItineraryApiResponseType> = await Promise.all(
+  const results: $ReadOnlyArray<ItineraryApiResponse> = await Promise.all(
     parameters.map(params => {
       return fetch(
         `/v2/booking/check_flights?${qs.stringify(parseParameters(params))}`,
@@ -40,30 +49,30 @@ const fetchItinerary = async (
   });
 };
 
-const sanitizeItinerary = (response: ItineraryApiResponseType): Itinerary => {
+const sanitizeItinerary = (response: ItineraryApiResponse): Itinerary => {
   /**
-   * @TODO - map remaining (null) data
    * @TODO - `price.currency` - Tequila API currently always returns total price
    * in EUR, should be unified with search results where currency can be variable
    */
+  const sectors = sanitizeSectors(response.flights);
+  const type = getItineraryType(sectors);
+  const departure = getItineraryDeparture(sectors);
+  const arrival = getItineraryArrival(type, sectors);
+
   return {
-    id: mapItineraryId(response.flights),
-    type: null,
+    id: getItineraryId(response.flights),
+    type,
     bookingToken: response.booking_token,
     isValid: !response.flights_invalid,
     isChecked: response.flights_checked,
-    departure: null,
-    arrival: null,
-    sectors: null,
+    departure,
+    arrival,
+    sectors,
     price: {
       currency: 'EUR',
       amount: response.total,
     },
   };
-};
-
-const mapItineraryId = segments => {
-  return segments ? segments.map(segment => segment.id).join('|') : '';
 };
 
 export default function ItineraryLoader() {
