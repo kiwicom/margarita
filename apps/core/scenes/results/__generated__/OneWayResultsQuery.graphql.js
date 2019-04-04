@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6836462538d7933017bdc9ef99a842a5
+ * @relayHash 4e22a02058e7e0ad04f0adcaabe2148b
  */
 
 /* eslint-disable */
@@ -70,18 +70,12 @@ fragment ResultsList_data on ItineraryInterfaceConnection {
 }
 
 fragment ItineraryCard_data on ItineraryInterface {
+  __typename
   ... on ItineraryOneWay {
-    sector {
-      ...RenderTripSectorItem_data
-    }
+    ...TripSectorOneWay_itinerary
   }
   ... on ItineraryReturn {
-    inbound {
-      ...RenderTripSectorItem_data
-    }
-    outbound {
-      ...RenderTripSectorItem_data
-    }
+    ...TripSectorReturn_itinerary
   }
   price {
     currency
@@ -90,18 +84,19 @@ fragment ItineraryCard_data on ItineraryInterface {
   ...ItineraryDetail_data
 }
 
-fragment RenderTripSectorItem_data on Sector {
-  departure {
-    stop {
-      city {
-        name
-        id
-      }
-      id
-    }
+fragment TripSectorOneWay_itinerary on ItineraryOneWay {
+  sector {
+    ...RenderTripSectorItem_data
   }
-  stopoverDuration
-  ...TripSector_data
+}
+
+fragment TripSectorReturn_itinerary on ItineraryReturn {
+  inbound {
+    ...RenderTripSectorItem_data
+  }
+  outbound {
+    ...RenderTripSectorItem_data
+  }
 }
 
 fragment ItineraryDetail_data on ItineraryInterface {
@@ -201,6 +196,20 @@ fragment SegmentStopInfo_data on RouteStop {
     locationId
     id
   }
+}
+
+fragment RenderTripSectorItem_data on Sector {
+  departure {
+    stop {
+      city {
+        name
+        id
+      }
+      id
+    }
+  }
+  stopoverDuration
+  ...TripSector_data
 }
 
 fragment TripSector_data on Sector {
@@ -511,6 +520,13 @@ return {
                 "selections": [
                   (v2/*: any*/),
                   {
+                    "kind": "ScalarField",
+                    "alias": null,
+                    "name": "__typename",
+                    "args": null,
+                    "storageKey": null
+                  },
+                  {
                     "kind": "LinkedField",
                     "alias": null,
                     "name": "price",
@@ -534,13 +550,6 @@ return {
                         "storageKey": null
                       }
                     ]
-                  },
-                  {
-                    "kind": "ScalarField",
-                    "alias": null,
-                    "name": "__typename",
-                    "args": null,
-                    "storageKey": null
                   },
                   {
                     "kind": "ScalarField",
@@ -603,7 +612,7 @@ return {
     "operationKind": "query",
     "name": "OneWayResultsQuery",
     "id": null,
-    "text": "query OneWayResultsQuery(\n  $input: ItinerariesOneWaySearchInput!\n) {\n  searchData: searchOneWayItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on ItineraryInterface {\n  ... on ItineraryOneWay {\n    sector {\n      ...RenderTripSectorItem_data\n    }\n  }\n  ... on ItineraryReturn {\n    inbound {\n      ...RenderTripSectorItem_data\n    }\n    outbound {\n      ...RenderTripSectorItem_data\n    }\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment ItineraryDetail_data on ItineraryInterface {\n  __typename\n  bookingToken\n  ... on ItineraryOneWay {\n    ...ItineraryOneWay_itinerary\n  }\n  ... on ItineraryReturn {\n    ...ItineraryReturn_itinerary\n  }\n}\n\nfragment ItineraryOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment ItineraryReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Carriers_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Carriers_data on Sector {\n  segments {\n    carrier {\n      name\n      code\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
+    "text": "query OneWayResultsQuery(\n  $input: ItinerariesOneWaySearchInput!\n) {\n  searchData: searchOneWayItineraries(input: $input) {\n    ...ResultsList_data\n  }\n}\n\nfragment ResultsList_data on ItineraryInterfaceConnection {\n  edges {\n    node {\n      __typename\n      id\n      ...ItineraryCard_data\n    }\n  }\n}\n\nfragment ItineraryCard_data on ItineraryInterface {\n  __typename\n  ... on ItineraryOneWay {\n    ...TripSectorOneWay_itinerary\n  }\n  ... on ItineraryReturn {\n    ...TripSectorReturn_itinerary\n  }\n  price {\n    currency\n    amount\n  }\n  ...ItineraryDetail_data\n}\n\nfragment TripSectorOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...RenderTripSectorItem_data\n  }\n}\n\nfragment TripSectorReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...RenderTripSectorItem_data\n  }\n  outbound {\n    ...RenderTripSectorItem_data\n  }\n}\n\nfragment ItineraryDetail_data on ItineraryInterface {\n  __typename\n  bookingToken\n  ... on ItineraryOneWay {\n    ...ItineraryOneWay_itinerary\n  }\n  ... on ItineraryReturn {\n    ...ItineraryReturn_itinerary\n  }\n}\n\nfragment ItineraryOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment ItineraryReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment RenderTripSectorItem_data on Sector {\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n  stopoverDuration\n  ...TripSector_data\n}\n\nfragment TripSector_data on Sector {\n  duration\n  ...FlightTimes_data\n  ...TripCities_data\n  departure {\n    ...LocalTime_data\n  }\n  ...Carriers_data\n}\n\nfragment FlightTimes_data on Sector {\n  arrival {\n    ...LocalTime_data\n  }\n  departure {\n    ...LocalTime_data\n  }\n}\n\nfragment TripCities_data on Sector {\n  arrival {\n    ...LocationName_data\n  }\n  departure {\n    ...LocationName_data\n  }\n}\n\nfragment LocalTime_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment Carriers_data on Sector {\n  segments {\n    carrier {\n      name\n      code\n    }\n    id\n  }\n}\n\nfragment LocationName_data on RouteStop {\n  stop {\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n",
     "metadata": {}
   }
 };
