@@ -41,6 +41,9 @@ export { default as Duration } from './src/duration/Duration';
 export {
   default as BookingTypeRenderer,
 } from './src/bookingTypeRenderer/BookingTypeRenderer';
+export {
+  default as ItineraryTypeRenderer,
+} from './src/itineraryTypeRenderer/ItineraryTypeRenderer';
 export { default as Alert } from './src/alert/Alert';
 export {
   default as AlertContextProvider,

@@ -5,6 +5,7 @@ import { View, ScrollView, Platform } from 'react-native';
 import { Button, StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { ItineraryTypeRenderer } from '@kiwicom/margarita-components';
 
 import type { ItineraryDetail_data as ItineraryType } from './__generated__/ItineraryDetail_data.graphql';
 import ItineraryDetailWrapper from './ItineraryDetailWrapper';
@@ -31,12 +32,11 @@ class ItineraryDetail extends React.Component<Props> {
       <ItineraryDetailWrapper onClose={onClose}>
         <View style={styles.container}>
           <ScrollView style={styles.content}>
-            {typename === 'ItineraryOneWay' && (
-              <ItineraryOneWay itinerary={data} />
-            )}
-            {typename === 'ItineraryReturn' && (
-              <ItineraryReturn itinerary={data} />
-            )}
+            <ItineraryTypeRenderer
+              typename={typename}
+              oneWayComponent={<ItineraryOneWay itinerary={data} />}
+              returnComponent={<ItineraryReturn itinerary={data} />}
+            />
           </ScrollView>
           <View style={styles.footer}>
             {Platform.OS !== 'web' && (
