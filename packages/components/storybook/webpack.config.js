@@ -4,7 +4,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /universal-components\/src\/.*\.js$/,
+        test: [/universal-components\/src\/.*\.js$/, /config\/.*\.js$/],
         use: {
           loader: 'babel-loader',
           options: {
