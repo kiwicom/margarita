@@ -6,28 +6,33 @@ import { isSameDay } from 'date-fns';
 import {
   Icon,
   RangeDatePicker,
-  type RangeDatePickerProps,
+  type WeekStartsType,
   type StylePropType,
   type IconNameType,
 } from '@kiwicom/universal-components';
 
 type Props = {|
+  +dates: $ReadOnlyArray<Date>,
+  +icon: IconNameType,
+  +isRangePicker?: boolean,
+  +isVisible: boolean,
+  +label: string,
+  +buttonLabels: {|
+    +cancel: React.Node,
+    +confirm: React.Node,
+  |},
+  +numberOfRenderedMonths: number,
+  +onConfirm: ($ReadOnlyArray<Date>) => void,
+  +onDismiss: () => void,
+  +onPress: () => void,
   +style?: StylePropType,
-  onPress: () => void,
-  label: string,
-  icon: IconNameType,
-  value: string,
-  ...$Rest<
-    RangeDatePickerProps,
-    {|
-      +onChangeTempDates: (Array<Date>) => void,
-    |},
-  >,
+  +value: string,
+  +weekStartsOn: WeekStartsType,
 |};
 
 type State = {|
-  tempDates: Array<Date>,
-  previousDates: Array<Date>,
+  tempDates: $ReadOnlyArray<Date>,
+  previousDates: $ReadOnlyArray<Date>,
 |};
 const parseDatePropsToState = ({ dates }: Props) => {
   const tempDate = dates ?? [new Date(), new Date()];
@@ -55,7 +60,7 @@ class DatePicker extends React.Component<Props, State> {
     return null;
   }
 
-  onChangeTempDates = (dates: Array<Date>) => {
+  onChangeTempDates = (dates: $ReadOnlyArray<Date>) => {
     this.setState({ tempDates: dates });
   };
 
@@ -72,9 +77,8 @@ class DatePicker extends React.Component<Props, State> {
       icon,
       value,
       isVisible,
-      onDismiss,
       onConfirm,
-      labels,
+      buttonLabels,
       numberOfRenderedMonths,
       weekStartsOn,
     } = this.props;
@@ -94,7 +98,7 @@ class DatePicker extends React.Component<Props, State> {
           onConfirm={onConfirm}
           onDismiss={this.handleDismiss}
           onChangeTempDates={this.onChangeTempDates}
-          labels={labels}
+          labels={buttonLabels}
           numberOfRenderedMonths={numberOfRenderedMonths}
           weekStartsOn={weekStartsOn}
         />

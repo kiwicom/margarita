@@ -10,9 +10,8 @@ import {
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-utils';
-import { SHORT_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 import {
-  BASIC_ISO_DATE_FORMAT,
+  LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   type TripTypes,
 } from '@kiwicom/margarita-config';
@@ -63,7 +62,7 @@ class Datepickers extends React.Component<Props, State> {
     });
   };
 
-  handleDateChange = (dates: Array<Date>) => {
+  handleDateChange = (dates: $ReadOnlyArray<Date>) => {
     const {
       tripType,
       setDepartureDate,
@@ -84,9 +83,9 @@ class Datepickers extends React.Component<Props, State> {
     this.handleDatePickerDismiss();
   };
 
-  getDateNames = (dates: ?Array<Date>) => {
+  getDateNames = (dates: ?$ReadOnlyArray<Date>) => {
     const formatDate = (unformatedDate: Date) =>
-      format(unformatedDate, SHORT_DAY_MONTH_FORMAT);
+      format(unformatedDate, LONG_DAY_MONTH_FORMAT);
     if (Array.isArray(dates)) {
       if (isSameDay(dates[0], dates[1])) {
         return formatDate(dates[0]);
@@ -118,10 +117,10 @@ class Datepickers extends React.Component<Props, State> {
 
     const departureDates = [dateFrom, dateTo];
     const arrivalDates = [returnDateFrom, returnDateTo];
-    const rangeDatePickerProps = {
+    const sharedDatePickerProps = {
       onConfirm: this.handleDateChange,
       onDismiss: this.handleDatePickerDismiss,
-      labels: { cancel: 'Cancel', confirm: 'OK' },
+      buttonLabels: { cancel: 'Cancel', confirm: 'OK' },
       numberOfRenderedMonths: 12,
       weekStartsOn: 1,
     };
@@ -136,7 +135,7 @@ class Datepickers extends React.Component<Props, State> {
             value={this.getDateNames(departureDates)}
             dates={departureDates}
             isVisible={this.state.isDepartureDatePickerVisible}
-            {...rangeDatePickerProps}
+            {...sharedDatePickerProps}
           />
 
           {showReturnInput && (
@@ -147,7 +146,7 @@ class Datepickers extends React.Component<Props, State> {
               value={returnType ? this.getDateNames(arrivalDates) : 'No return'}
               dates={arrivalDates}
               isVisible={this.state.isArrivalDatePickerVisible}
-              {...rangeDatePickerProps}
+              {...sharedDatePickerProps}
             />
           )}
         </PickersWrapper>

@@ -10,7 +10,7 @@ type Props = {|
   +data: Array<Date>,
   +onDayPress: (Array<Date>) => void,
   +keyPrefix: string,
-  +selectedDates: Array<Date>,
+  +selectedDates: $ReadOnlyArray<Date>,
   +isRangePicker: boolean,
 |};
 

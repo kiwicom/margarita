@@ -10,8 +10,8 @@ import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
 
 type Props = {|
-  +onDayPress: (Array<Date>) => void,
-  +selectedDates: Array<Date>,
+  +onDayPress: ($ReadOnlyArray<Date>) => void,
+  +selectedDates: $ReadOnlyArray<Date>,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStarts,
   +isRangePicker: boolean,

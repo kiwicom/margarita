@@ -6,10 +6,10 @@ import { type WeekStarts } from './libs';
 
 export type Props = {|
   +isVisible: boolean,
-  +dates: Array<Date>,
-  +onConfirm: (Array<Date>) => void,
+  +dates: $ReadOnlyArray<Date>,
+  +onConfirm: ($ReadOnlyArray<Date>) => void,
   +onDismiss: () => void,
-  +onChangeTempDates: (Array<Date>) => void,
+  +onChangeTempDates: ($ReadOnlyArray<Date>) => void,
   +isRangePicker?: boolean,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStarts,

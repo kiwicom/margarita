@@ -1,12 +1,17 @@
 // @flow
 
 import * as React from 'react';
-import { Animated, Easing, View, Platform } from 'react-native';
+import { Animated, Easing, View } from 'react-native';
 
-import { StyleSheet } from '../../PlatformStyleSheet';
-import { designTokens } from '../../DesignTokens';
-import { ExtendedTouchable } from '../../ExtendedTouchable';
-import { type Props } from './DayItemArrowTypes';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
+import { designTokens } from '../DesignTokens';
+import { ExtendedTouchable } from '../ExtendedTouchable';
+
+export type Props = {|
+  +style?: StylePropType,
+  +onPress?: () => void,
+  +direction?: 'left' | 'right',
+|};
 
 const SHARED_ANIMATION_CONFIG = {
   duration: designTokens.durationArrowScaleAnimation,
@@ -14,14 +19,24 @@ const SHARED_ANIMATION_CONFIG = {
   easing: Easing.ease,
 };
 
-const isAnimationEnabled = Platform.OS !== 'android';
+const RenderArrows = ({ scale }) => (
+  <View style={styles.touchableContainer}>
+    <Animated.View
+      style={[
+        styles.easingArrow,
+        {
+          transform: [{ scale }],
+        },
+      ]}
+    />
+    <View style={styles.innerArrow} />
+  </View>
+);
 
-export default class DayItemArrow extends React.Component<Props> {
+export default class AnimatedDayItemArrow extends React.Component<Props> {
   componentDidMount() {
     this.animating = true;
-    if (isAnimationEnabled) {
-      this.handleAnimation();
-    }
+    this.handleAnimation();
   }
 
   componentWillUnmount() {
@@ -49,31 +64,15 @@ export default class DayItemArrow extends React.Component<Props> {
     });
   }
 
-  renderArrows = () => (
-    <View style={styles.touchableContainer}>
-      {isAnimationEnabled && (
-        <Animated.View
-          style={[
-            styles.easingArrow,
-            {
-              transform: [{ scale: this.scale }],
-            },
-          ]}
-        />
-      )}
-      <View style={styles.innerArrow} />
-    </View>
-  );
-
   render() {
     return (
       <View style={[styles.container, this.props.style]}>
         {this.props.onPress ? (
           <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
-            {this.renderArrows()}
+            <RenderArrows scale={this.scale} />
           </ExtendedTouchable>
         ) : (
-          this.renderArrows()
+          <RenderArrows scale={this.scale} />
         )}
       </View>
     );
