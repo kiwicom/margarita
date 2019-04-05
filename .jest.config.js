@@ -1,4 +1,4 @@
-{
+module.exports = {
   "preset": "jest-expo",
   "testPathIgnorePatterns": [
     "<rootDir>/.next/",
