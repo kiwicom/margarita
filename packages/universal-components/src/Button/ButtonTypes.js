@@ -33,4 +33,5 @@ export type Props = {|
   +circled?: boolean,
   +size?: ButtonSize,
   +style?: StylePropType,
+  +isLoading?: boolean,
 |};

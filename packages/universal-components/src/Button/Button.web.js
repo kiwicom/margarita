@@ -27,6 +27,7 @@ export default function Button({
   circled,
   size = 'normal',
   style,
+  isLoading = false,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -39,8 +40,9 @@ export default function Button({
     circled,
     size,
     style,
+    isLoading,
   };
-
+  const isDisabled = disabled || isLoading;
   if (href) {
     return (
       <a
@@ -49,7 +51,7 @@ export default function Button({
         style={{
           ...wrapperStyle,
           ...displayBlock(block, width),
-          ...disabledStyle(disabled),
+          ...disabledStyle(isDisabled),
         }}
       >
         <ButtonInner {...buttonInnerProps} />
@@ -66,7 +68,7 @@ export default function Button({
       style={{
         ...wrapperStyle,
         ...displayBlock(block, width),
-        ...disabledStyle(disabled),
+        ...disabledStyle(isDisabled),
       }}
     >
       <ButtonInner {...buttonInnerProps} />

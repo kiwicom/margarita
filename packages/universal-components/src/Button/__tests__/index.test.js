@@ -147,6 +147,46 @@ describe('Button - web', () => {
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
   });
+
+  it('should match snapshot difference with loading state', () => {
+    const base = render(
+      <ButtonWeb
+        onPress={noop}
+        type={type}
+        sublabel={buttonSublabel}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        width={width}
+        disabled={disabled}
+        href={href}
+        block={block}
+        circled={circled}
+        size={size}
+        isLoading={false}
+      >
+        {buttonText}
+      </ButtonWeb>,
+    );
+    const loading = render(
+      <ButtonWeb
+        onPress={noop}
+        type={type}
+        sublabel={buttonSublabel}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        width={width}
+        disabled={disabled}
+        href={href}
+        block={block}
+        circled={circled}
+        size={size}
+        isLoading
+      >
+        {buttonText}
+      </ButtonWeb>,
+    );
+    expect(snapshotDiff(base, loading)).toMatchSnapshot();
+  });
 });
 
 describe('Button - native', () => {
@@ -222,6 +262,46 @@ describe('Button - native', () => {
       </ButtonNative>,
     );
     expect(output).toMatchSnapshot();
+  });
+
+  it('should match snapshot difference with loading state', () => {
+    const base = render(
+      <ButtonNative
+        onPress={noop}
+        type={type}
+        sublabel={buttonSublabel}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        width={width}
+        disabled={disabled}
+        href={href}
+        block={block}
+        circled={circled}
+        size={size}
+        isLoading={false}
+      >
+        {buttonText}
+      </ButtonNative>,
+    );
+    const loading = render(
+      <ButtonNative
+        onPress={noop}
+        type={type}
+        sublabel={buttonSublabel}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        width={width}
+        disabled={disabled}
+        href={href}
+        block={block}
+        circled={circled}
+        size={size}
+        isLoading
+      >
+        {buttonText}
+      </ButtonNative>,
+    );
+    expect(snapshotDiff(base, loading)).toMatchSnapshot();
   });
 
   it('should match snapshot diff', () => {
