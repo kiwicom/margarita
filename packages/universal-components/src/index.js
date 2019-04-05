@@ -49,7 +49,7 @@ export { designTokens } from './DesignTokens';
 /* Types */
 export type { IconNameType } from './types/_generated-types';
 export type { Theme } from './ThemeProvider';
-export type { RangeDatePickerProps } from './RangeDatePicker';
+export type { RangeDatePickerProps, WeekStartsType } from './RangeDatePicker';
 
 export type {
   StylePropType,

@@ -7,7 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
 import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import {
-  SHORT_DAY_MONTH_FORMAT,
+  LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   type TripTypes,
 } from '@kiwicom/margarita-config';
@@ -88,7 +88,7 @@ class Results extends React.Component<Props> {
       returnDateTo,
     } = this.props;
 
-    const getFormattedDate = (dates: Array<string>) => {
+    const getFormattedDate = (dates: $ReadOnlyArray<string>) => {
       if (
         DateFNS.isSameDay(
           DateFNS.parseISO(dates[0]),
@@ -97,15 +97,15 @@ class Results extends React.Component<Props> {
       ) {
         return DateFNS.format(
           DateFNS.parseISO(dates[0]),
-          SHORT_DAY_MONTH_FORMAT,
+          LONG_DAY_MONTH_FORMAT,
         );
       }
       return `${DateFNS.format(
         DateFNS.parseISO(dates[0]),
-        SHORT_DAY_MONTH_FORMAT,
+        LONG_DAY_MONTH_FORMAT,
       )} - ${DateFNS.format(
         DateFNS.parseISO(dates[1]),
-        SHORT_DAY_MONTH_FORMAT,
+        LONG_DAY_MONTH_FORMAT,
       )}`;
     };
 

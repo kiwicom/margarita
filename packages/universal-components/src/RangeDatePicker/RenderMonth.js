@@ -17,7 +17,7 @@ const MONTH_NAME_FORMAT = 'MMMM';
 type Props = {|
   +monthDate: MonthDate,
   +onDayPress: (Array<Date>) => void,
-  +selectedDates: Array<Date>,
+  +selectedDates: $ReadOnlyArray<Date>,
   +weekStartsOn: WeekStarts,
   +isRangePicker: boolean,
 |};

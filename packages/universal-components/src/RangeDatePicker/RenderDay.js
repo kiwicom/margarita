@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   format,
@@ -14,18 +14,25 @@ import {
   startOfDay,
 } from 'date-fns';
 
-import { StyleSheet } from '../PlatformStyleSheet';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
-import { DayItemArrow } from './DayItemArrow';
+import DayItemArrow from './DayItemArrow';
+import AnimatedDayItemArrow from './AnimatedDayItemArrow';
 
 type Props = {|
   +day: Date,
   +onPress?: (Array<Date>) => void,
   +price?: ?string,
-  +selectedDates: Array<Date>,
+  +selectedDates: $ReadOnlyArray<Date>,
   +isRangePicker: boolean,
+|};
+
+type RenderArrowProps = {|
+  +style?: StylePropType,
+  +onPress?: () => void,
+  +direction?: 'left' | 'right',
 |};
 
 const DayPrice = ({ price }) => (
@@ -35,6 +42,13 @@ const DayPrice = ({ price }) => (
     </Text>
   </View>
 );
+
+const RenderArrow = (props: RenderArrowProps) =>
+  Platform.OS === 'android' ? (
+    <DayItemArrow {...props} />
+  ) : (
+    <AnimatedDayItemArrow style={props.style} onPress={props.onPress} />
+  );
 
 export default function RenderDay({
   day,
@@ -78,7 +92,7 @@ export default function RenderDay({
       >
         <>
           {isStartOfSelectedDates && isRangePicker && (
-            <DayItemArrow
+            <RenderArrow
               onPress={onArrowPress(onLeftPress)}
               style={styles.leftArrow}
               direction="left"
@@ -109,7 +123,7 @@ export default function RenderDay({
             )}
           </View>
           {isEndOfSelectedDates && isRangePicker && (
-            <DayItemArrow
+            <RenderArrow
               onPress={onArrowPress(onRightPress)}
               style={styles.rightArrow}
               direction="right"
@@ -123,7 +137,7 @@ export default function RenderDay({
 
 const styles = StyleSheet.create({
   container: {
-    flex: parseFloat(defaultTokens.zIndexDefault),
+    flex: 1,
     zIndex: -1,
   },
   onTheTop: {

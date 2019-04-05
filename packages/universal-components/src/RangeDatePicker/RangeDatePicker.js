@@ -22,7 +22,7 @@ export default class RangeDatePicker extends React.Component<Props> {
     this.props.onConfirm(this.props.dates);
   };
 
-  handleChangeDate = (dates: Array<Date>) => {
+  handleChangeDate = (dates: $ReadOnlyArray<Date>) => {
     this.props.onChangeTempDates(dates);
   };
 

@@ -4,24 +4,27 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { StyleSheet } from '../../PlatformStyleSheet';
-import { ExtendedTouchable } from '../../ExtendedTouchable';
-import { type Props } from './DayItemArrowTypes';
+import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
+import { ExtendedTouchable } from '../ExtendedTouchable';
+
+export type Props = {|
+  +style?: StylePropType,
+  +onPress?: () => void,
+  +direction?: 'left' | 'right',
+|};
+
+const RenderArrows = ({ direction }) => (
+  <View style={styles.touchableContainer}>
+    <View
+      style={[
+        styles.arrow,
+        direction === 'left' ? styles.arrowLeft : styles.arrowRight,
+      ]}
+    />
+  </View>
+);
 
 export default class DayItemArrow extends React.Component<Props> {
-  renderArrow = () => (
-    <View style={styles.touchableContainer}>
-      <View
-        style={[
-          styles.arrow,
-          this.props.direction === 'left'
-            ? styles.arrowLeft
-            : styles.arrowRight,
-        ]}
-      />
-    </View>
-  );
-
   render() {
     return (
       <View
@@ -35,10 +38,10 @@ export default class DayItemArrow extends React.Component<Props> {
       >
         {this.props.onPress ? (
           <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
-            {this.renderArrow()}
+            <RenderArrows direction={this.props.direction} />
           </ExtendedTouchable>
         ) : (
-          this.renderArrow()
+          <RenderArrows direction={this.props.direction} />
         )}
       </View>
     );
