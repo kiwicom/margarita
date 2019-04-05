@@ -12,6 +12,7 @@ type Props = {|
   +style?: StylePropType,
   +disabled?: boolean,
   +testID?: string,
+  +isLoading?: boolean,
 |};
 
 /**

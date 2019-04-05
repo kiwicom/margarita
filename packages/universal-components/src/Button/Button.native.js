@@ -20,6 +20,7 @@ export default function Button({
   circled = false,
   size = 'normal',
   style,
+  isLoading = false,
 }: Props) {
   const buttonInnerProps = {
     disabled,
@@ -33,11 +34,12 @@ export default function Button({
     circled,
     size,
     style,
+    isLoading,
   };
-
+  const isDisabled = disabled || isLoading;
   return (
     <GenericButtonWrapper
-      disabled={!onPress || disabled}
+      disabled={!onPress || isDisabled}
       onPress={onPress}
       testID={testID}
       width={width}

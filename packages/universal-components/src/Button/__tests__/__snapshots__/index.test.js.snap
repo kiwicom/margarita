@@ -18,7 +18,7 @@ exports[`Button - native should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -33,41 +33,135 @@
+@@ -33,22 +33,22 @@
               \\"justifyContent\\": \\"center\\",
               \\"paddingVertical\\": 11,
             },
@@ -41,9 +41,12 @@ exports[`Button - native should match snapshot diff 1`] = `
             },
 -           undefined,
 +           Object {},
+            false,
           ]
         }
       >
+        <ActivityIndicator
+@@ -60,21 +60,115 @@
         <View
           style={
             Object {
@@ -162,6 +165,149 @@ exports[`Button - native should match snapshot diff 1`] = `
   </View>"
 `;
 
+exports[`Button - native should match snapshot difference with loading state 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -45,130 +45,21 @@
+              \\"height\\": 44,
+              \\"paddingEnd\\": 12,
+              \\"paddingStart\\": 12,
+            },
+            undefined,
+-           false,
++           Object {
++             \\"flexDirection\\": \\"column\\",
++             \\"opacity\\": 0.5,
++           },
+          ]
+        }
+      >
+        <ActivityIndicator
+-         animating={false}
++         animating={true}
+          color=\\"#fff\\"
+          hidesWhenStopped={true}
+          size=\\"small\\"
+        />
+-       <View
+-         style={
+-           Object {
+-             \\"alignItems\\": \\"center\\",
+-             \\"flexDirection\\": \\"row\\",
+-           }
+-         }
+-       >
+-         <View
+-           style={
+-             Object {
+-               \\"marginEnd\\": 8,
+-             }
+-           }
+-         >
+-           <Text
+-             style={
+-               Array [
+-                 Object {
+-                   \\"fontFamily\\": \\"orbit-icons\\",
+-                 },
+-                 Object {
+-                   \\"fontSize\\": 24,
+-                   \\"height\\": 24,
+-                   \\"lineHeight\\": 24,
+-                   \\"width\\": 24,
+-                 },
+-                 Object {
+-                   \\"color\\": \\"#0176D2\\",
+-                 },
+-                 undefined,
+-               ]
+-             }
+-           >
+-             f
+-           </Text>
+-         </View>
+-         Button text
+-       </View>
+-       <View
+-         style={
+-           Object {
+-             \\"alignItems\\": \\"center\\",
+-             \\"flexDirection\\": \\"row\\",
+-           }
+-         }
+-       >
+-         <View
+-           style={
+-             Object {
+-               \\"alignItems\\": \\"center\\",
+-               \\"flexDirection\\": \\"row\\",
+-             }
+-           }
+-         >
+-           <Text
+-             style={
+-               Array [
+-                 Object {
+-                   \\"margin\\": 0,
+-                 },
+-                 Array [
+-                   Object {},
+-                   Object {
+-                     \\"fontSize\\": 14,
+-                     \\"fontWeight\\": \\"normal\\",
+-                     \\"lineHeight\\": 18,
+-                   },
+-                   Object {
+-                     \\"color\\": \\"#0176D2\\",
+-                   },
+-                   undefined,
+-                 ],
+-                 Object {
+-                   \\"fontFamily\\": \\"Roboto\\",
+-                 },
+-               ]
+-             }
+-           >
+-             Button sublabel
+-           </Text>
+-         </View>
+-         <View
+-           style={
+-             Object {
+-               \\"marginStart\\": 8,
+-             }
+-           }
+-         >
+-           <Text
+-             style={
+-               Array [
+-                 Object {
+-                   \\"fontFamily\\": \\"orbit-icons\\",
+-                 },
+-                 Object {
+-                   \\"fontSize\\": 24,
+-                   \\"height\\": 24,
+-                   \\"lineHeight\\": 24,
+-                   \\"width\\": 24,
+-                 },
+-                 Object {
+-                   \\"color\\": \\"#0176D2\\",
+-                 },
+-                 undefined,
+-               ]
+-             }
+-           >
+-             
+-           </Text>
+-         </View>
+-       </View>
+      </View>
+    </View>
+  </View>"
+`;
+
 exports[`Button - native should match the snapshot 1`] = `
 <Button
   disabled={false}
@@ -192,6 +338,7 @@ exports[`Button - native should match the snapshot 1`] = `
   <ButtonInner
     circled={false}
     disabled={false}
+    isLoading={false}
     leftIcon={
       <Icon
         name="calendar"
@@ -266,12 +413,12 @@ exports[`Button - web should match snapshot diff 1`] = `
           },
 -         undefined,
 +         Object {},
+          false,
         ]
       }
     >
-      <View
-        style={
-@@ -48,17 +46,76 @@
+      <ActivityIndicator
+@@ -55,17 +53,76 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
           }
@@ -352,6 +499,130 @@ exports[`Button - web should match snapshot diff 1`] = `
 + </a>"
 `;
 
+exports[`Button - web should match snapshot difference with loading state 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -2,14 +2,14 @@
+    href=\\"https://lolilol.com\\"
+    style={
+      Object {
+        \\"backgroundColor\\": \\"transparent\\",
+        \\"border\\": 0,
+-       \\"cursor\\": \\"pointer\\",
++       \\"cursor\\": \\"initial\\",
+        \\"display\\": \\"inline-block\\",
+        \\"padding\\": 0,
+-       \\"pointerEvents\\": \\"auto\\",
++       \\"pointerEvents\\": \\"none\\",
+        \\"textDecoration\\": \\"none\\",
+        \\"width\\": 200,
+      }
+    }
+  >
+@@ -35,94 +35,20 @@
+            \\"height\\": 44,
+            \\"paddingEnd\\": 12,
+            \\"paddingStart\\": 12,
+          },
+          undefined,
+-         false,
++         Object {
++           \\"flexDirection\\": \\"column\\",
++           \\"opacity\\": 0.5,
++         },
+        ]
+      }
+    >
+      <ActivityIndicator
+-       animating={false}
++       animating={true}
+        color=\\"#fff\\"
+        hidesWhenStopped={true}
+        size=\\"small\\"
+      />
+-     <View
+-       style={
+-         Object {
+-           \\"alignItems\\": \\"center\\",
+-           \\"flexDirection\\": \\"row\\",
+-         }
+-       }
+-     >
+-       <View
+-         style={
+-           Object {
+-             \\"marginEnd\\": 8,
+-           }
+-         }
+-       >
+-         <Text
+-           style={
+-             Array [
+-               Object {
+-                 \\"fontFamily\\": \\"orbit-icons\\",
+-               },
+-               Object {
+-                 \\"fontSize\\": 24,
+-                 \\"height\\": 24,
+-                 \\"lineHeight\\": 24,
+-                 \\"width\\": 24,
+-               },
+-               Object {
+-                 \\"color\\": \\"#0176D2\\",
+-               },
+-               undefined,
+-             ]
+-           }
+-         >
+-           f
+-         </Text>
+-       </View>
+-       Button text
+-     </View>
+-     <View
+-       style={
+-         Object {
+-           \\"alignItems\\": \\"center\\",
+-           \\"flexDirection\\": \\"row\\",
+-         }
+-       }
+-     >
+-       <View
+-         style={
+-           Object {
+-             \\"marginStart\\": 8,
+-           }
+-         }
+-       >
+-         <Text
+-           style={
+-             Array [
+-               Object {
+-                 \\"fontFamily\\": \\"orbit-icons\\",
+-               },
+-               Object {
+-                 \\"fontSize\\": 24,
+-                 \\"height\\": 24,
+-                 \\"lineHeight\\": 24,
+-                 \\"width\\": 24,
+-               },
+-               Object {
+-                 \\"color\\": \\"#0176D2\\",
+-               },
+-               undefined,
+-             ]
+-           }
+-         >
+-           
+-         </Text>
+-       </View>
+-     </View>
+    </View>
+  </a>"
+`;
+
 exports[`Button - web should match the snapshot 1`] = `
 <a
   href="https://lolilol.com"
@@ -371,6 +642,7 @@ exports[`Button - web should match the snapshot 1`] = `
   <ButtonInner
     circled={false}
     disabled={false}
+    isLoading={false}
     leftIcon={
       <Icon
         name="calendar"

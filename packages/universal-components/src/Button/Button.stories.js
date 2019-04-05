@@ -62,7 +62,7 @@ storiesOf('Button', module)
     }
     const circled = boolean('circled', false);
     const label = text('label', 'Playground button');
-
+    const isLoading = boolean('Is loading', false);
     return (
       <Button
         type={type}
@@ -77,6 +77,7 @@ storiesOf('Button', module)
         circled={circled}
         label={label}
         size={size}
+        isLoading={isLoading}
       />
     );
   })

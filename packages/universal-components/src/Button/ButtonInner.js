@@ -11,6 +11,7 @@ import type { ButtonType, ButtonSize } from './ButtonTypes';
 import { textColor, wrapperColor } from './styles';
 import { size as buttonSizeStyle } from './styles/shared';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
+import { Loader } from '../Loader';
 
 type Props = {|
   +children?: React.Node,
@@ -24,6 +25,7 @@ type Props = {|
   +circled?: boolean,
   +size?: ButtonSize,
   +style?: StylePropType,
+  +isLoading?: boolean,
 |};
 
 export default function ButtonInner({
@@ -38,6 +40,7 @@ export default function ButtonInner({
   circled,
   size,
   style,
+  isLoading,
 }: Props) {
   const iconSize = size === 'normal' || size === 'large' ? 'medium' : 'small';
   const leftIcon = originalLeftIcon
@@ -78,24 +81,38 @@ export default function ButtonInner({
         circled && styleSheet.buttonCircled,
         sizeTheme(size, leftIcon != null, rightIcon != null).buttonSizeWrapper,
         style,
+        isLoading && styleSheet.loadingState,
       ]}
       testID={testID}
     >
-      <View style={layout.row}>
-        {leftIcon != null && <View style={rightSpace}>{leftIcon}</View>}
-        {children ||
-          (label != null && (
-            <ButtonTitle text={label} type={type} size={size} />
-          ))}
-      </View>
-      <View style={layout.row}>
-        {sublabel != null && (
+      <Loader
+        size={size === 'large' ? 'large' : 'small'}
+        color={
+          type === 'secondary' || type === 'google'
+            ? defaultTokens.paletteProductNormal
+            : defaultTokens.paletteWhite
+        }
+        animating={isLoading}
+      />
+      {isLoading || (
+        <>
           <View style={layout.row}>
-            <ButtonTitle text={sublabel} type={type} variant="sublabel" />
+            {leftIcon != null && <View style={rightSpace}>{leftIcon}</View>}
+            {children ||
+              (label != null && (
+                <ButtonTitle text={label} type={type} size={size} />
+              ))}
           </View>
-        )}
-        {rightIcon != null && <View style={leftSpace}>{rightIcon}</View>}
-      </View>
+          <View style={layout.row}>
+            {sublabel != null && (
+              <View style={layout.row}>
+                <ButtonTitle text={sublabel} type={type} variant="sublabel" />
+              </View>
+            )}
+            {rightIcon != null && <View style={leftSpace}>{rightIcon}</View>}
+          </View>
+        </>
+      )}
     </View>
   );
 }
@@ -147,6 +164,10 @@ const styleSheet = StyleSheet.create({
   },
   disabled: {
     opacity: 0.5,
+  },
+  loadingState: {
+    opacity: 0.5,
+    flexDirection: 'column',
   },
 });
 
