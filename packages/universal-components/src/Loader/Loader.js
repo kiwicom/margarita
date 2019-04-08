@@ -7,13 +7,15 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 type Props = {|
   +size?: 'large' | 'small',
   +color?: string,
-  +animating?: boolean,
+  +isVisible?: boolean,
 |};
 
 export default function Loader({
   size = 'small',
   color = defaultTokens.paletteProductNormal,
-  animating = true,
+  isVisible = true,
 }: Props) {
-  return <ActivityIndicator size={size} color={color} animating={animating} />;
+  return isVisible ? (
+    <ActivityIndicator size={size} color={color} animating={isVisible} />
+  ) : null;
 }
