@@ -5,7 +5,7 @@ import { GraphQLNonNull } from 'graphql';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import ItineraryCheckInput from '../types/inputs/ItineraryCheckInput';
 import type { ItineraryCheckParameters } from '../Itinerary';
-import { GraphQLItinerary } from '../types/outputs/Itinerary';
+import GraphQLItineraryInterface from '../types/outputs/ItineraryInterface';
 
 type Args = {|
   +input: ItineraryCheckParameters,
@@ -13,7 +13,7 @@ type Args = {|
 
 const Itinerary = {
   name: 'CheckItinerary',
-  type: GraphQLItinerary,
+  type: GraphQLItineraryInterface,
   description: 'Check if itinerary is valid and bookable',
   args: {
     input: {

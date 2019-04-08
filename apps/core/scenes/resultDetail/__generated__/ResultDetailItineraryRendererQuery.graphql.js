@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 77159d29e78c40068a5a5d009f057aec
+ * @relayHash 5db217d9f3dc5389cf1f02c1f8f0c468
  */
 
 /* eslint-disable */
@@ -42,6 +42,7 @@ query ResultDetailItineraryRendererQuery(
 
 fragment ResultDetailItinerary_data_2VV6jB on RootQuery {
   checkItinerary(input: $input) {
+    __typename
     isChecked
     isValid
     id
@@ -99,9 +100,16 @@ return {
             "type": "ItineraryCheckInput!"
           }
         ],
-        "concreteType": "Itinerary",
+        "concreteType": null,
         "plural": false,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -131,7 +139,7 @@ return {
     "operationKind": "query",
     "name": "ResultDetailItineraryRendererQuery",
     "id": null,
-    "text": "query ResultDetailItineraryRendererQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailItinerary_data_2VV6jB\n}\n\nfragment ResultDetailItinerary_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    isChecked\n    isValid\n    id\n  }\n}\n",
+    "text": "query ResultDetailItineraryRendererQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailItinerary_data_2VV6jB\n}\n\nfragment ResultDetailItinerary_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    id\n  }\n}\n",
     "metadata": {}
   }
 };

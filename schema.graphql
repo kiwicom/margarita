@@ -242,27 +242,6 @@ input ItinerariesReturnSearchInput {
   itinerary: ItineraryReturnInput!
 }
 
-type Itinerary {
-  """
-  The globally unique ID of an object. You can unmask this ID to get original
-  value but please note that this unmasked ID is not globally unique anymore and
-  therefore it cannot be used as a cache key.
-  """
-  id(opaque: Boolean = true): ID!
-  price: Price
-  sectors: [Sector]
-  arrival: RouteStop
-  departure: RouteStop
-  type: String
-  bookingToken: String
-
-  """All segments successfully checked"""
-  isChecked: Boolean
-
-  """Itinerary is valid (exists and is not sold-out or cancelled)"""
-  isValid: Boolean
-}
-
 input ItineraryCheckInput {
   """Token received in search results"""
   bookingToken: String!
@@ -523,7 +502,7 @@ type RootQuery {
   searchReturnItineraries(input: ItinerariesReturnSearchInput!, after: String, first: Int, before: String, last: Int): ItineraryInterfaceConnection
 
   """Check if itinerary is valid and bookable"""
-  checkItinerary(input: ItineraryCheckInput!): Itinerary
+  checkItinerary(input: ItineraryCheckInput!): ItineraryInterface
 
   """
   Geography info by an IP address, if no input provided, it will use request client IP
