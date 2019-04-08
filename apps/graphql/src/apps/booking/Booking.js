@@ -1,6 +1,7 @@
 // @flow
 
 import type { RouteStop, Sector } from '../common/CommonTypes';
+import ItineraryInterface from '../itinerary/types/outputs/ItineraryInterface';
 
 export type ApiRouteStop = {|
   +where: {|
@@ -54,17 +55,29 @@ export type Bag = {|
   +quantity: number,
 |};
 
+export type HoldBags = {|
+  +flightID: string,
+  +first: number,
+  +second: number,
+  +third: number,
+|};
+
 export type Passenger = {|
-  +bags: $ReadOnlyArray<Bag>,
+  +bags?: $ReadOnlyArray<Bag>,
   +birthday: string,
   +category: string,
   +firstname: string,
-  +id: number,
-  +insuranceType: string,
+  +id?: number,
+  +insuranceType?: string,
+  +cardNumber?: string,
+  +holdBags?: $ReadOnlyArray<HoldBags>,
+  +expiration?: string,
+  +title: 'Mr' | 'Ms',
   +lastname: string,
   +nationality: string,
-  +title: string,
-  +visaRequired: boolean,
+  +visaRequired?: boolean,
+  +email?: string,
+  +phone?: string,
 |};
 
 export type ContactDetails = {|
@@ -82,4 +95,19 @@ export type Booking = {|
   +contact: ContactDetails,
   +type: 'BookingReturn' | 'BookingMulticity' | 'BookingOneWay',
   ...TypeSpecificData,
+|};
+
+export type SaveBookingPayloadType = {|
+  +bookingToken: string,
+  +bags: number,
+  +passengers: $ReadOnlyArray<Passenger>,
+  +paymentGateway?: string,
+  +language?: string,
+  +locale?: string,
+|};
+
+export type SaveBookingOutputType = {|
+  +transactionId: string,
+  +itinerary: ItineraryInterface,
+  +passengers: $ReadOnlyArray<Passenger>,
 |};

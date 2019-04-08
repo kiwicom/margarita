@@ -92,24 +92,26 @@ export const commonFields = {
         quantity: 0,
       };
       passengers.forEach(passenger => {
-        passenger.bags.forEach(bag => {
-          switch (bag.type) {
-            case CABIN_BAG:
-              cabinBag.quantity += bag.quantity;
-              cabinBag.dimensions = bag.dimensions;
-              break;
-            case PERSONAL_ITEM:
-              personalItem.quantity += bag.quantity;
-              personalItem.dimensions = bag.dimensions;
-              break;
-            case CHECKED_BAGGAGE:
-              checkedBaggage.quantity += bag.quantity;
-              checkedBaggage.dimensions = bag.dimensions;
-              break;
-            default:
-              break;
-          }
-        });
+        if (passenger.bags) {
+          passenger.bags.forEach(bag => {
+            switch (bag.type) {
+              case CABIN_BAG:
+                cabinBag.quantity += bag.quantity;
+                cabinBag.dimensions = bag.dimensions;
+                break;
+              case PERSONAL_ITEM:
+                personalItem.quantity += bag.quantity;
+                personalItem.dimensions = bag.dimensions;
+                break;
+              case CHECKED_BAGGAGE:
+                checkedBaggage.quantity += bag.quantity;
+                checkedBaggage.dimensions = bag.dimensions;
+                break;
+              default:
+                break;
+            }
+          });
+        }
       });
       return [personalItem, cabinBag, checkedBaggage];
     },

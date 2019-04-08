@@ -4,6 +4,7 @@ import DataLoader from 'dataloader';
 
 import { createItinerariesLoader } from '../../apps/itinerary/dataloaders/Itineraries';
 import createItineraryLoader from '../../apps/itinerary/dataloaders/Itinerary';
+import createSaveBookingLoader from '../../apps/booking/dataloaders/SaveBooking';
 import {
   type ItinerariesOneWaySearchParameters,
   type ItinerariesReturnSearchParameters,
@@ -15,8 +16,22 @@ import createLocationLoader, {
   type LocationInput,
 } from '../../apps/location/dataloaders/Locations';
 import bookingsLoader from '../../apps/booking/dataloaders/Bookings';
-import type { Booking } from '../../apps/booking/Booking';
+import type {
+  Booking,
+  SaveBookingOutputType,
+  SaveBookingPayloadType,
+} from '../../apps/booking/Booking';
 import bookingDetailLoader from '../../apps/booking/dataloaders/BookingDetail';
+import parseAcceptLanguage from '../helpers/parseAcceptLanguage';
+
+type LocaleType = {|
+  +language?: string,
+  +territory?: string,
+|};
+
+type CreateContextType = {|
+  +acceptLanguageHeaders: ?string,
+|};
 
 export type GraphqlContextType = {|
   +dataLoader: {|
@@ -25,20 +40,32 @@ export type GraphqlContextType = {|
       Itinerary[],
     >,
     +itinerary: DataLoader<ItineraryCheckParameters, Itinerary>,
+    +saveBooking: DataLoader<SaveBookingPayloadType, SaveBookingOutputType>,
     +locations: DataLoader<LocationInput, Locations>,
     +bookings: {| +load: () => Booking[] |},
     +booking: {| +load: (id: string) => Booking |},
   |},
+  +locale: LocaleType,
 |};
 
-export default function createContext() {
+export default function createContext(props: ?CreateContextType) {
+  const [language, territory] = parseAcceptLanguage(
+    props?.acceptLanguageHeaders,
+  );
+  const locale: LocaleType = {
+    language,
+    territory,
+  };
+
   return {
     dataLoader: {
       itineraries: createItinerariesLoader(),
       itinerary: createItineraryLoader(),
       locations: createLocationLoader(),
+      saveBooking: createSaveBookingLoader(),
       bookings: bookingsLoader,
       booking: bookingDetailLoader,
     },
+    locale,
   };
 }
