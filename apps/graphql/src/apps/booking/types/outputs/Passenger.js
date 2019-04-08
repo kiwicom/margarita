@@ -8,6 +8,7 @@ import {
 } from 'graphql';
 import globalID from '@kiwicom/graphql-global-id';
 
+import PassengerTitle from '../enums/PassengerTitle';
 import GraphQLBagType from './Bag';
 
 export default new GraphQLObjectType({
@@ -20,6 +21,15 @@ export default new GraphQLObjectType({
     },
     birthday: {
       type: GraphQLString,
+    },
+    email: {
+      type: GraphQLString,
+    },
+    phone: {
+      type: GraphQLString,
+    },
+    title: {
+      type: PassengerTitle,
     },
     category: {
       type: GraphQLString,
@@ -34,9 +44,6 @@ export default new GraphQLObjectType({
       type: GraphQLString,
     },
     nationality: {
-      type: GraphQLString,
-    },
-    title: {
       type: GraphQLString,
     },
     visaRequired: {

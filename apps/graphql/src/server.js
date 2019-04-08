@@ -17,9 +17,11 @@ const server = new ApolloServer({
     //   - tokens and user identities are per request
     //   - dataloaders use Map internally (not LRU) and they would otherwise
     //     grow indefinitely because the Map content is not garbage collected
+    const acceptLanguageHeaders: string = req.headers['accept-language'];
+
     return {
       clientIP: requestIp.getClientIp(req),
-      ...createContext(),
+      ...createContext({ acceptLanguageHeaders }),
     };
   },
 });

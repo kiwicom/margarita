@@ -1,5 +1,6 @@
 schema {
   query: RootQuery
+  mutation: RootMutation
 }
 
 """Passenger's bag type and quantity"""
@@ -207,6 +208,25 @@ type GeoIP {
 
   """Coordinates"""
   coordinates: Coordinate
+}
+
+"""Number of hold bags for a passenger for a given flight"""
+input HoldBags {
+  """Flight ID for the bags checked"""
+  flightID: String
+
+  """Number of first hold bags for given passenger"""
+  first: Int
+
+  """
+  Number of second hold bags for given passenger (first has to have a value)
+  """
+  second: Int
+
+  """
+  Number of third hold bags for given passenger (first and second have to have a value)
+  """
+  third: Int
 }
 
 type HttpError {
@@ -465,13 +485,35 @@ type Passenger {
   id(opaque: Boolean = true): ID!
   bags: [Bag]
   birthday: String
+  email: String
+  phone: String
+  title: PassengerTitle
   category: String
   firstname: String
   insuranceType: String
   lastname: String
   nationality: String
-  title: String
   visaRequired: Boolean
+}
+
+"""Passenger information input"""
+input PassengerInput {
+  birthday: String!
+  cardNumber: String!
+  email: String!
+
+  """Number of baggage for passenger specified in each flight of the trip"""
+  holdBags: [HoldBags]!
+
+  """Expiration date (UTC) of travel document"""
+  expiration: String!
+  phone: String!
+  title: PassengerTitle!
+  category: String!
+  firstname: String!
+  insuranceType: String
+  lastname: String!
+  nationality: String!
 }
 
 input PassengersInput {
@@ -480,9 +522,21 @@ input PassengersInput {
   infants: Int
 }
 
+enum PassengerTitle {
+  Mr
+  Ms
+}
+
 type Price {
   amount: Float
   currency: String
+}
+
+type RootMutation {
+  """
+  Mutation (POST Request) that saves a given booking. Initiates the reservation process on the backend.
+  """
+  saveBooking(payload: SaveBookingPayload): SaveBookingOutput
 }
 
 type RootQuery {
@@ -519,6 +573,33 @@ type RouteStop {
   This could be bus stop, trainstation, airport, anywhere the Sector or segment comes to a stop
   """
   stop: Location
+}
+
+type SaveBookingOutput {
+  """
+  The unique ID of the transaction which then can be used to identify the booking in subsequent calls e.g confirm payment
+  """
+  transactionId: String
+  itinerary: ItineraryInterface
+  passengers: [Passenger]
+}
+
+input SaveBookingPayload {
+  """Token received in Search Results"""
+  bookingToken: String!
+
+  """Number of checked bags for the booking"""
+  bags: Int!
+
+  """
+  Specifies the payment gateway to use for the booking. If using Zooz, set to payu
+  """
+  paymentGateway: String
+
+  """
+  Information about the passengers traveling such as name, nationality, etc
+  """
+  passengers: [PassengerInput]!
 }
 
 type Sector implements FromToInterface {

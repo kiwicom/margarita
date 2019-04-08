@@ -8,10 +8,11 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+export type PassengerTitle = "Mr" | "Ms" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Passenger_data$ref: FragmentReference;
 export type Passenger_data = {|
-  +title: ?string,
+  +title: ?PassengerTitle,
   +firstname: ?string,
   +lastname: ?string,
   +birthday: ?string,
