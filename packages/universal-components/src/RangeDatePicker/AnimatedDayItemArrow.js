@@ -34,34 +34,35 @@ const RenderArrows = ({ scale }) => (
 );
 
 export default class AnimatedDayItemArrow extends React.Component<Props> {
-  componentDidMount() {
-    this.animating = true;
-    this.handleAnimation();
-  }
+  static scale: Animated.Value = new Animated.Value(0);
+  static animating: boolean;
 
-  componentWillUnmount() {
-    this.animating = false;
-  }
+  static handleAnimation() {
+    AnimatedDayItemArrow.scale.setValue(0);
 
-  animating: boolean;
-  scale: Animated.Value = new Animated.Value(0);
-
-  handleAnimation() {
     Animated.sequence([
-      Animated.delay(100),
-      Animated.timing(this.scale, {
+      Animated.timing(AnimatedDayItemArrow.scale, {
         ...SHARED_ANIMATION_CONFIG,
         toValue: 1,
       }),
-      Animated.timing(this.scale, {
+      Animated.timing(AnimatedDayItemArrow.scale, {
         ...SHARED_ANIMATION_CONFIG,
         toValue: 0,
       }),
     ]).start(() => {
-      if (this.animating) {
-        this.handleAnimation();
+      if (AnimatedDayItemArrow.animating) {
+        AnimatedDayItemArrow.handleAnimation();
       }
     });
+  }
+
+  componentDidMount() {
+    AnimatedDayItemArrow.animating = true;
+    AnimatedDayItemArrow.handleAnimation();
+  }
+
+  componentWillUnmount() {
+    AnimatedDayItemArrow.animating = false;
   }
 
   render() {
@@ -69,10 +70,10 @@ export default class AnimatedDayItemArrow extends React.Component<Props> {
       <View style={[styles.container, this.props.style]}>
         {this.props.onPress ? (
           <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
-            <RenderArrows scale={this.scale} />
+            <RenderArrows scale={AnimatedDayItemArrow.scale} />
           </ExtendedTouchable>
         ) : (
-          <RenderArrows scale={this.scale} />
+          <RenderArrows scale={AnimatedDayItemArrow.scale} />
         )}
       </View>
     );
