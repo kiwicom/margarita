@@ -21,7 +21,7 @@
     "storybook:web:universal-components": "yarn workspace @kiwicom/universal-components storybook",
     "storybook:mobile:universal-components": "yarn workspace @kiwicom/margarita-mobile-storybook start:universal-components",
     "relay": "yarn babel-node scripts/relay-compiler.js",
-    "lint": "eslint . --report-unused-disable-directives",
+    "lint": "yarn jest --config=.jest-eslint.config.js",
     "flow": "flow --include-warnings",
     "test": "yarn monorepo-run-tests",
     "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall"
