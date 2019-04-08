@@ -6,12 +6,12 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Icon } from '../Icon';
 import { StyleSheet } from '../PlatformStyleSheet';
-import ButtonTitle from './ButtonTitle';
 import type { ButtonType, ButtonSize } from './ButtonTypes';
-import { textColor, wrapperColor } from './styles';
+import { wrapperColor } from './styles';
 import { size as buttonSizeStyle } from './styles/shared';
 import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import { Loader } from '../Loader';
+import ButtonContent from './ButtonContent';
 
 type Props = {|
   +children?: React.Node,
@@ -33,8 +33,8 @@ export default function ButtonInner({
   type = 'primary',
   testID: testIDProps,
   children,
-  leftIcon: originalLeftIcon,
-  rightIcon: originalRightIcon,
+  leftIcon,
+  rightIcon,
   sublabel,
   label,
   circled,
@@ -42,19 +42,6 @@ export default function ButtonInner({
   style,
   isLoading,
 }: Props) {
-  const iconSize = size === 'normal' || size === 'large' ? 'medium' : 'small';
-  const leftIcon = originalLeftIcon
-    ? React.cloneElement(originalLeftIcon, {
-        color: textColor[type],
-        size: iconSize,
-      })
-    : originalLeftIcon;
-  const rightIcon = originalRightIcon
-    ? React.cloneElement(originalRightIcon, {
-        color: textColor[type],
-        size: iconSize,
-      })
-    : originalRightIcon;
   let justifyContent = layout.default;
   if (leftIcon != null) {
     justifyContent = layout.flexStart;
@@ -68,20 +55,17 @@ export default function ButtonInner({
     testID = `ButtonInner${testIDProps}`;
   }
 
-  const leftSpace = size === 'large' ? layout.leftSpaceLarge : layout.leftSpace;
-  const rightSpace =
-    size === 'large' ? layout.rightSpaceLarge : layout.rightSpace;
   return (
     <View
       style={[
-        styleSheet.buttonWrapper,
-        disabled && styleSheet.disabled,
+        styles.buttonWrapper,
+        disabled && styles.disabled,
         typeTheme(type).wrapper,
         justifyContent,
-        circled && styleSheet.buttonCircled,
+        circled && styles.buttonCircled,
         sizeTheme(size, leftIcon != null, rightIcon != null).buttonSizeWrapper,
         style,
-        isLoading && styleSheet.loadingState,
+        isLoading && styles.loadingState,
       ]}
       testID={testID}
     >
@@ -92,26 +76,18 @@ export default function ButtonInner({
             ? defaultTokens.paletteProductNormal
             : defaultTokens.paletteWhite
         }
-        animating={isLoading}
+        isVisible={isLoading}
       />
-      {isLoading || (
-        <>
-          <View style={layout.row}>
-            {leftIcon != null && <View style={rightSpace}>{leftIcon}</View>}
-            {children ||
-              (label != null && (
-                <ButtonTitle text={label} type={type} size={size} />
-              ))}
-          </View>
-          <View style={layout.row}>
-            {sublabel != null && (
-              <View style={layout.row}>
-                <ButtonTitle text={sublabel} type={type} variant="sublabel" />
-              </View>
-            )}
-            {rightIcon != null && <View style={leftSpace}>{rightIcon}</View>}
-          </View>
-        </>
+      {!isLoading && (
+        <ButtonContent
+          type={type}
+          children={children}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}
+          sublabel={sublabel}
+          label={label}
+          size={size}
+        />
       )}
     </View>
   );
@@ -133,25 +109,9 @@ const layout = StyleSheet.create({
       justifyContent: 'center',
     },
   },
-  row: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  leftSpace: {
-    marginStart: parseInt(defaultTokens.marginButtonIconNormal, 10),
-  },
-  leftSpaceLarge: {
-    marginStart: parseInt(defaultTokens.marginButtonIconLarge, 10),
-  },
-  rightSpace: {
-    marginEnd: parseInt(defaultTokens.marginButtonIconNormal, 10),
-  },
-  rightSpaceLarge: {
-    marginEnd: parseInt(defaultTokens.marginButtonIconLarge, 10),
-  },
 });
 
-const styleSheet = StyleSheet.create({
+const styles = StyleSheet.create({
   buttonWrapper: {
     flexDirection: 'row',
     justifyContent: 'center',

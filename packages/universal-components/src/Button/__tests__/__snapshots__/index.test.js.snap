@@ -18,7 +18,7 @@ exports[`Button - native should match snapshot diff 1`] = `
       }
     >
       <View
-@@ -33,22 +33,22 @@
+@@ -33,42 +33,136 @@
               \\"justifyContent\\": \\"center\\",
               \\"paddingVertical\\": 11,
             },
@@ -45,8 +45,6 @@ exports[`Button - native should match snapshot diff 1`] = `
           ]
         }
       >
-        <ActivityIndicator
-@@ -60,21 +60,115 @@
         <View
           style={
             Object {
@@ -170,27 +168,16 @@ exports[`Button - native should match snapshot difference with loading state 1`]
 - First value
 + Second value
 
-@@ -45,130 +45,21 @@
+@@ -45,124 +45,21 @@
               \\"height\\": 44,
               \\"paddingEnd\\": 12,
               \\"paddingStart\\": 12,
             },
             undefined,
 -           false,
-+           Object {
-+             \\"flexDirection\\": \\"column\\",
-+             \\"opacity\\": 0.5,
-+           },
-          ]
-        }
-      >
-        <ActivityIndicator
--         animating={false}
-+         animating={true}
-          color=\\"#fff\\"
-          hidesWhenStopped={true}
-          size=\\"small\\"
-        />
+-         ]
+-       }
+-     >
 -       <View
 -         style={
 -           Object {
@@ -201,7 +188,7 @@ exports[`Button - native should match snapshot difference with loading state 1`]
 -       >
 -         <View
 -           style={
--             Object {
+            Object {
 -               \\"marginEnd\\": 8,
 -             }
 -           }
@@ -294,15 +281,23 @@ exports[`Button - native should match snapshot difference with loading state 1`]
 -                 },
 -                 Object {
 -                   \\"color\\": \\"#0176D2\\",
--                 },
++             \\"flexDirection\\": \\"column\\",
++             \\"opacity\\": 0.5,
+            },
 -                 undefined,
--               ]
--             }
--           >
+          ]
+        }
+      >
 -             
 -           </Text>
 -         </View>
 -       </View>
++       <ActivityIndicator
++         animating={true}
++         color=\\"#fff\\"
++         hidesWhenStopped={true}
++         size=\\"small\\"
++       />
       </View>
     </View>
   </View>"
@@ -417,8 +412,8 @@ exports[`Button - web should match snapshot diff 1`] = `
         ]
       }
     >
-      <ActivityIndicator
-@@ -55,17 +53,76 @@
+      <View
+@@ -49,17 +47,76 @@
             \\"alignItems\\": \\"center\\",
             \\"flexDirection\\": \\"row\\",
           }
@@ -521,30 +516,19 @@ exports[`Button - web should match snapshot difference with loading state 1`] = 
       }
     }
   >
-@@ -35,94 +35,20 @@
+@@ -35,88 +35,20 @@
             \\"height\\": 44,
             \\"paddingEnd\\": 12,
             \\"paddingStart\\": 12,
           },
           undefined,
 -         false,
-+         Object {
-+           \\"flexDirection\\": \\"column\\",
-+           \\"opacity\\": 0.5,
-+         },
-        ]
-      }
-    >
-      <ActivityIndicator
--       animating={false}
-+       animating={true}
-        color=\\"#fff\\"
-        hidesWhenStopped={true}
-        size=\\"small\\"
-      />
+-       ]
+-     }
+-   >
 -     <View
 -       style={
--         Object {
+          Object {
 -           \\"alignItems\\": \\"center\\",
 -           \\"flexDirection\\": \\"row\\",
 -         }
@@ -562,7 +546,9 @@ exports[`Button - web should match snapshot difference with loading state 1`] = 
 -             Array [
 -               Object {
 -                 \\"fontFamily\\": \\"orbit-icons\\",
--               },
++           \\"flexDirection\\": \\"column\\",
++           \\"opacity\\": 0.5,
+          },
 -               Object {
 -                 \\"fontSize\\": 24,
 -                 \\"height\\": 24,
@@ -573,9 +559,9 @@ exports[`Button - web should match snapshot difference with loading state 1`] = 
 -                 \\"color\\": \\"#0176D2\\",
 -               },
 -               undefined,
--             ]
--           }
--         >
+        ]
+      }
+    >
 -           f
 -         </Text>
 -       </View>
@@ -619,6 +605,12 @@ exports[`Button - web should match snapshot difference with loading state 1`] = 
 -         </Text>
 -       </View>
 -     </View>
++     <ActivityIndicator
++       animating={true}
++       color=\\"#fff\\"
++       hidesWhenStopped={true}
++       size=\\"small\\"
++     />
     </View>
   </a>"
 `;
