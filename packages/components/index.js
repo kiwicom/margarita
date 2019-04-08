@@ -58,6 +58,7 @@ export {
 export {
   default as CreditCardPaymentForm,
 } from './src/creditCardPaymentForm/CreditCardPaymentForm';
+export { default as PassengerForm } from './src/passengerForm/PassengerForm';
 
 // types
 export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
