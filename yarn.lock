@@ -1668,12 +1668,12 @@
     "@kiwicom/babel-plugin-orbit-components" "^1.2.0"
     babel-plugin-relay "^3.0.0"
 
-"@kiwicom/eslint-config@^3.3.5":
-  version "3.3.5"
-  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-3.3.5.tgz#3520ccb606e865f66d7c66b68e2652be934d9293"
-  integrity sha512-GKYgTDd2kQx69oBYu5lyLKCTR/1VkDMDm4/uRkpAq4FDJdncomjENVudn5NRnHta1gPGTu7V/a3VTGxhZxdvsA==
+"@kiwicom/eslint-config@^3.3.6":
+  version "3.3.6"
+  resolved "https://registry.yarnpkg.com/@kiwicom/eslint-config/-/eslint-config-3.3.6.tgz#9962a597a92d9c4dda2808d72537a97335cadfd1"
+  integrity sha512-eq7/HSBW+MFfr8OyZgta7pznZGTVth/01s83RDMM1FCUToFrOBc40UbJmjMO6oWoXitq8MFTMrqtVYA9eAWw3A==
   dependencies:
-    "@kiwicom/monorepo" "^0.13.0"
+    "@kiwicom/monorepo" "^0.14.0"
     chalk "^2.4.2"
     create-jest-runner "^0.5.0"
     eslint-config-prettier "^4.1.0"
@@ -1736,10 +1736,10 @@
   resolved "https://registry.yarnpkg.com/@kiwicom/js/-/js-0.7.0.tgz#b86a4c3263a425a0fb2be9e802e99f095a428040"
   integrity sha512-/BKZLXM1OmNOYMSoo13W20mrjywty2KhWxicwTHCpqImG1OLcgmR9wTBoTh2NG/+NOH439C52NOgXhiHfPR+kw==
 
-"@kiwicom/monorepo@^0.13.0":
-  version "0.13.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/monorepo/-/monorepo-0.13.0.tgz#b2fd58a5a2122635f7a70cde361ad1b406053025"
-  integrity sha512-o5fEC0sVDCzAjDFNuMiu7awd0B4IBVHn6ucy+MPmUMXlqKFGROwVvmZSwogQcZvSOxgx7pP17dIZPiypjJih9Q==
+"@kiwicom/monorepo@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/monorepo/-/monorepo-0.14.0.tgz#860bf2de4bd392ef15b6d7535571beeced064950"
+  integrity sha512-5sooWJykF0nCEC676HW0dG0cozh99re3UAR1OWPZbyOZGKMudDqY2M4c7Gj1jSJm6CR5T12IWSU8M5urFTAizw==
   dependencies:
     "@babel/register" "^7.4.0"
     "@kiwicom/js" "^0.7.0"
