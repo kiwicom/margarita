@@ -24,7 +24,7 @@
     "webpack": "^4.29.1"
   },
   "devDependencies": {
-    "@kiwicom/monorepo": "^0.13.0",
+    "@kiwicom/monorepo": "^0.14.0",
     "apollo-server-lambda": "^2.4.8",
     "babel-loader": "^8.0.5",
     "bufferutil": "^4.0.1",
