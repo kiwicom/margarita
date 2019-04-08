@@ -4,9 +4,9 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, Icon } from '@kiwicom/universal-components';
 import type { IconNameType } from '@kiwicom/universal-components';
-import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import Text from '../../text/Text';
 import { bags, type BagTitleType } from './BagTypes';
 
 type Props = {|

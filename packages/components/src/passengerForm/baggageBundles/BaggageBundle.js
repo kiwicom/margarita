@@ -3,9 +3,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, RadioButton } from '@kiwicom/universal-components';
-import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import Text from '../../text/Text';
 import { type BagTitleType } from './BagTypes';
 import BaggageTypeDetail from './BaggageTypeDetail';
 

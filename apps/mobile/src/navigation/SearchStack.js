@@ -13,7 +13,6 @@ import {
   SearchScreen,
   ResultsScreen,
   ResultDetailScreen,
-  PassengerFormScreen,
   PaymentScreen,
 } from '../screens';
 
@@ -50,12 +49,6 @@ const StackNavigator: NavigationNavigator<
       screen: PaymentScreen,
       navigationOptions: {
         title: 'Payment',
-      },
-    },
-    [Routes.PASSENGER_FORM]: {
-      screen: PassengerFormScreen,
-      navigationOptions: {
-        title: 'Edit Passenger',
       },
     },
   }: NavigationRouteConfigMap),

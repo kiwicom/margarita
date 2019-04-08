@@ -6,8 +6,9 @@ import {
   StyleSheet,
   TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
-import { Text } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+
+import Text from '../../text/Text';
 
 type Props = {|
   +text: string,

@@ -1,11 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import { HeaderWithIcon } from '@kiwicom/margarita-components';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
+import HeaderWithIcon from '../../headerWithIcon/HeaderWithIcon';
 import Header from './Header';
 import BaggageBundle from './BaggageBundle';
 import { bags } from './BagTypes';
