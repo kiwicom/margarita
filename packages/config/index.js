@@ -2,7 +2,7 @@
 
 export const DEBOUNCE_TIME = 250;
 
-export const DAY_MONTH_DATE_FORMAT = 'ddd MM/dd';
+export const DAY_MONTH_DATE_FORMAT = 'E MM/dd';
 export const HOURS_MINUTES_FORMAT = 'H:mm';
 export const LONG_DAY_MONTH_FORMAT = 'EEE d MMM';
 export const US_DATE_FORMAT = 'MM/dd/yyyy';
