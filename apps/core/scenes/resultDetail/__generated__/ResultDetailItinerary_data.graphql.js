@@ -47,7 +47,7 @@ const node/*: ReaderFragment*/ = {
           "type": "ItineraryCheckInput!"
         }
       ],
-      "concreteType": "Itinerary",
+      "concreteType": null,
       "plural": false,
       "selections": [
         {

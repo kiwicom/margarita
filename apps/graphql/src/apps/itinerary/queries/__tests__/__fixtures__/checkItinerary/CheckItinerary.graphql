@@ -5,10 +5,29 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
+fragment Sector on Sector {
+  duration
+  stopoverDuration
+  segments {
+    departure {
+      ...RouteStopFragment
+    }
+    arrival {
+      ...RouteStopFragment
+    }
+  }
+  departure {
+    ...RouteStopFragment
+  }
+  arrival {
+    ...RouteStopFragment
+  }
+}
+
 {
   checkItinerary(input: { bookingToken: "token", bags: 1, passengers: { adults: 1 }}) {
     id
-    type
+    __typename
     isValid
     isChecked
     price {
@@ -21,22 +40,12 @@ fragment RouteStopFragment on RouteStop {
     arrival {
       ...RouteStopFragment
     }
-    sectors {
-      duration
-      stopoverDuration
-      departure {
-        ...RouteStopFragment
+    ... on ItineraryReturn {
+      inbound {
+        ...Sector
       }
-      arrival {
-        ...RouteStopFragment
-      }
-      segments {
-        departure {
-          ...RouteStopFragment
-        }
-        arrival {
-          ...RouteStopFragment
-        }
+      outbound {
+        ...Sector
       }
     }
   }

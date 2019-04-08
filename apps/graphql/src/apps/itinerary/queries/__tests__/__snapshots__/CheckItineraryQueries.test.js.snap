@@ -9,10 +9,29 @@ fragment RouteStopFragment on RouteStop {
   }
 }
 
+fragment Sector on Sector {
+  duration
+  stopoverDuration
+  segments {
+    departure {
+      ...RouteStopFragment
+    }
+    arrival {
+      ...RouteStopFragment
+    }
+  }
+  departure {
+    ...RouteStopFragment
+  }
+  arrival {
+    ...RouteStopFragment
+  }
+}
+
 {
   checkItinerary(input: { bookingToken: "token", bags: 1, passengers: { adults: 1 }}) {
     id
-    type
+    __typename
     isValid
     isChecked
     price {
@@ -25,22 +44,12 @@ fragment RouteStopFragment on RouteStop {
     arrival {
       ...RouteStopFragment
     }
-    sectors {
-      duration
-      stopoverDuration
-      departure {
-        ...RouteStopFragment
+    ... on ItineraryReturn {
+      inbound {
+        ...Sector
       }
-      arrival {
-        ...RouteStopFragment
-      }
-      segments {
-        departure {
-          ...RouteStopFragment
-        }
-        arrival {
-          ...RouteStopFragment
-        }
+      outbound {
+        ...Sector
       }
     }
   }
@@ -50,8 +59,8 @@ fragment RouteStopFragment on RouteStop {
 {
   "data": {
     "checkItinerary": {
-      "id": "SXRpbmVyYXJ5OjM5OTAxMjg0MzMzODA5NTZfMHw0MDgzNTg2MzUzMTMxMjQxXzB8ODkzNjgzMTM1OTQxNzc5M18wfDg5MzY4MzEzNTk0MTc3OTNfMQ==",
-      "type": "Return",
+      "id": "SXRpbmVyYXJ5UmV0dXJuOjM5OTAxMjg0MzMzODA5NTZfMHw0MDgzNTg2MzUzMTMxMjQxXzB8ODkzNjgzMTM1OTQxNzc5M18wfDg5MzY4MzEzNTk0MTc3OTNfMQ==",
+      "__typename": "ItineraryReturn",
       "isValid": true,
       "isChecked": false,
       "price": {
@@ -70,100 +79,98 @@ fragment RouteStopFragment on RouteStop {
           "local": "2019-03-08T11:40:00.000Z"
         }
       },
-      "sectors": [
-        {
-          "duration": 850,
-          "stopoverDuration": null,
-          "departure": {
-            "time": {
-              "utc": "2019-03-07T20:30:00.000Z",
-              "local": "2019-03-07T21:30:00.000Z"
-            }
-          },
-          "arrival": {
-            "time": {
-              "utc": "2019-03-08T10:40:00.000Z",
-              "local": "2019-03-08T11:40:00.000Z"
-            }
-          },
-          "segments": [
-            {
-              "departure": {
-                "time": {
-                  "utc": "2019-03-07T20:30:00.000Z",
-                  "local": "2019-03-07T21:30:00.000Z"
-                }
-              },
-              "arrival": {
-                "time": {
-                  "utc": "2019-03-07T22:55:00.000Z",
-                  "local": "2019-03-07T23:55:00.000Z"
-                }
+      "inbound": {
+        "duration": 640,
+        "stopoverDuration": 1105,
+        "segments": [
+          {
+            "departure": {
+              "time": {
+                "utc": "2019-03-09T05:05:00.000Z",
+                "local": "2019-03-09T06:05:00.000Z"
               }
             },
-            {
-              "departure": {
-                "time": {
-                  "utc": "2019-03-08T07:10:00.000Z",
-                  "local": "2019-03-08T08:10:00.000Z"
-                }
-              },
-              "arrival": {
-                "time": {
-                  "utc": "2019-03-08T10:40:00.000Z",
-                  "local": "2019-03-08T11:40:00.000Z"
-                }
+            "arrival": {
+              "time": {
+                "utc": "2019-03-09T07:45:00.000Z",
+                "local": "2019-03-09T08:45:00.000Z"
               }
             }
-          ]
+          },
+          {
+            "departure": {
+              "time": {
+                "utc": "2019-03-09T14:00:00.000Z",
+                "local": "2019-03-09T15:00:00.000Z"
+              }
+            },
+            "arrival": {
+              "time": {
+                "utc": "2019-03-09T15:45:00.000Z",
+                "local": "2019-03-09T16:45:00.000Z"
+              }
+            }
+          }
+        ],
+        "departure": {
+          "time": {
+            "utc": "2019-03-09T05:05:00.000Z",
+            "local": "2019-03-09T06:05:00.000Z"
+          }
         },
-        {
-          "duration": 640,
-          "stopoverDuration": 1105,
-          "departure": {
-            "time": {
-              "utc": "2019-03-09T05:05:00.000Z",
-              "local": "2019-03-09T06:05:00.000Z"
-            }
-          },
-          "arrival": {
-            "time": {
-              "utc": "2019-03-09T15:45:00.000Z",
-              "local": "2019-03-09T16:45:00.000Z"
-            }
-          },
-          "segments": [
-            {
-              "departure": {
-                "time": {
-                  "utc": "2019-03-09T05:05:00.000Z",
-                  "local": "2019-03-09T06:05:00.000Z"
-                }
-              },
-              "arrival": {
-                "time": {
-                  "utc": "2019-03-09T07:45:00.000Z",
-                  "local": "2019-03-09T08:45:00.000Z"
-                }
+        "arrival": {
+          "time": {
+            "utc": "2019-03-09T15:45:00.000Z",
+            "local": "2019-03-09T16:45:00.000Z"
+          }
+        }
+      },
+      "outbound": {
+        "duration": 850,
+        "stopoverDuration": null,
+        "segments": [
+          {
+            "departure": {
+              "time": {
+                "utc": "2019-03-07T20:30:00.000Z",
+                "local": "2019-03-07T21:30:00.000Z"
               }
             },
-            {
-              "departure": {
-                "time": {
-                  "utc": "2019-03-09T14:00:00.000Z",
-                  "local": "2019-03-09T15:00:00.000Z"
-                }
-              },
-              "arrival": {
-                "time": {
-                  "utc": "2019-03-09T15:45:00.000Z",
-                  "local": "2019-03-09T16:45:00.000Z"
-                }
+            "arrival": {
+              "time": {
+                "utc": "2019-03-07T22:55:00.000Z",
+                "local": "2019-03-07T23:55:00.000Z"
               }
             }
-          ]
+          },
+          {
+            "departure": {
+              "time": {
+                "utc": "2019-03-08T07:10:00.000Z",
+                "local": "2019-03-08T08:10:00.000Z"
+              }
+            },
+            "arrival": {
+              "time": {
+                "utc": "2019-03-08T10:40:00.000Z",
+                "local": "2019-03-08T11:40:00.000Z"
+              }
+            }
+          }
+        ],
+        "departure": {
+          "time": {
+            "utc": "2019-03-07T20:30:00.000Z",
+            "local": "2019-03-07T21:30:00.000Z"
+          }
+        },
+        "arrival": {
+          "time": {
+            "utc": "2019-03-08T10:40:00.000Z",
+            "local": "2019-03-08T11:40:00.000Z"
+          }
         }
-      ]
+      }
     }
   }
 }
