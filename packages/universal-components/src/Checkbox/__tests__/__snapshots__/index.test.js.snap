@@ -60,7 +60,7 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
         Object {
           \\"display\\": \\"flex\\",
           \\"flex\\": 1,
-@@ -58,18 +80,20 @@
+@@ -61,15 +83,17 @@
               Object {
                 \\"color\\": \\"#46515e\\",
                 \\"fontSize\\": 14,
@@ -69,9 +69,6 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
 -             undefined,
 +             Object {},
             ],
-            Object {
-              \\"fontFamily\\": \\"Roboto\\",
-            },
           ]
         }
 -     />
@@ -84,8 +81,8 @@ exports[`CheckBox - native should match snapshot diff 1`] = `
             Object {
               \\"margin\\": 0,
 @@ -82,8 +106,10 @@
-            Object {
-              \\"fontFamily\\": \\"Roboto\\",
+              \\"fontSize\\": 12,
+              \\"lineHeight\\": 16,
             },
           ]
         }
@@ -180,7 +177,7 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
           Object {
             \\"display\\": \\"flex\\",
             \\"flex\\": 1,
-@@ -77,18 +103,20 @@
+@@ -80,15 +106,17 @@
                 Object {
                   \\"color\\": \\"#46515e\\",
                   \\"fontSize\\": 14,
@@ -189,9 +186,6 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
 -               undefined,
 +               Object {},
               ],
-              Object {
-                \\"fontFamily\\": \\"Roboto\\",
-              },
             ]
           }
 -       />
@@ -204,8 +198,8 @@ exports[`CheckBox - web should match snapshot diff 1`] = `
               Object {
                 \\"margin\\": 0,
 @@ -101,9 +129,11 @@
-              Object {
-                \\"fontFamily\\": \\"Roboto\\",
+                \\"fontSize\\": 12,
+                \\"lineHeight\\": 16,
               },
             ]
           }

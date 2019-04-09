@@ -39,7 +39,7 @@ exports[`PickerButton should match snapshot diff 1`] = `
             \\"borderRadius\\": 6,
             \\"flex\\": 1,
             \\"flexBasis\\": 44,
-@@ -21,21 +46,21 @@
+@@ -24,18 +49,18 @@
               },
               Array [
                 Object {
@@ -51,9 +51,6 @@ exports[`PickerButton should match snapshot diff 1`] = `
                 },
 +               false,
               ],
-              Object {
-                \\"fontFamily\\": \\"Roboto\\",
-              },
             ]
           }
 -   />

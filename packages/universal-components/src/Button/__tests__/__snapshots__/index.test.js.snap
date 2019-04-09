@@ -107,6 +107,9 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                 Object {
 +                   \\"margin\\": 0,
 +                 },
++                 Object {
++                   \\"fontFamily\\": \\"Roboto\\",
++                 },
 +                 Array [
 +                   Object {},
 +                   Object {
@@ -119,9 +122,6 @@ exports[`Button - native should match snapshot diff 1`] = `
 +                   },
 +                   undefined,
 +                 ],
-+                 Object {
-+                   \\"fontFamily\\": \\"Roboto\\",
-+                 },
 +               ]
 +             }
 +           >
@@ -239,6 +239,9 @@ exports[`Button - native should match snapshot difference with loading state 1`]
 -                 Object {
 -                   \\"margin\\": 0,
 -                 },
+-                 Object {
+-                   \\"fontFamily\\": \\"Roboto\\",
+-                 },
 -                 Array [
 -                   Object {},
 -                   Object {
@@ -251,9 +254,6 @@ exports[`Button - native should match snapshot difference with loading state 1`]
 -                   },
 -                   undefined,
 -                 ],
--                 Object {
--                   \\"fontFamily\\": \\"Roboto\\",
--                 },
 -               ]
 -             }
 -           >
