@@ -18,6 +18,7 @@ type Props = {|
   +renderButtons?: React.Node,
   +renderCollapseContent: React.Node,
   +renderVisibleContent: React.Node,
+  +isLoading?: boolean,
 |};
 type State = {|
   +expanded: boolean,
@@ -83,6 +84,7 @@ class PriceSummary extends React.Component<Props, State> {
       renderButtons,
       onButtonPress,
       buttonLabel,
+      isLoading,
     } = this.props;
     return (
       <>
@@ -115,6 +117,7 @@ class PriceSummary extends React.Component<Props, State> {
                     block={true}
                     onPress={onButtonPress}
                     label={buttonLabel}
+                    isLoading={isLoading}
                   />
                 )}
           </View>

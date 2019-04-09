@@ -1,17 +1,18 @@
 // @flow
 
 import * as React from 'react';
-import { Text, Loader } from '@kiwicom/universal-components';
 import {
   graphql,
   createRefetchContainer,
   type RelayRefetchProp,
 } from '@kiwicom/margarita-relay';
+import { IllustrationWithInformation } from '@kiwicom/margarita-components';
 
-import type { ResultDetailItinerary_data as ResultDetailItineraryType } from './__generated__/ResultDetailItinerary_data.graphql';
+import type { ResultDetailInner_data as ResultDetailInnerType } from './__generated__/ResultDetailInner_data.graphql';
+import ResultDetailContent from './resultDetailContent/ResultDetailContent';
 
 type Props = {|
-  +data: ?ResultDetailItineraryType,
+  +data: ?ResultDetailInnerType,
   +relay: RelayRefetchProp,
 |};
 
@@ -24,7 +25,7 @@ type Props = {|
 const REFETCH_INTERVAL = 5 * 1000;
 const REFETCH_TIMEOUT = 30 * 60 * 1000;
 
-class ResultDetailItinerary extends React.Component<Props> {
+class ResultDetailInner extends React.Component<Props> {
   componentDidMount() {
     this.tryStartItineraryCheck();
   }
@@ -73,38 +74,35 @@ class ResultDetailItinerary extends React.Component<Props> {
 
   render() {
     if (!this.props.data?.checkItinerary?.isValid) {
-      return <Text>Not valid booking</Text>;
+      return (
+        <IllustrationWithInformation
+          illustrationName="NoResults"
+          text="Sorry, booking is not valid"
+          description="Booking is not valid or no longer available"
+        />
+      );
     }
-
-    return (
-      <>
-        {!this.props.data?.checkItinerary?.isChecked && <Loader size="small" />}
-        <Text>
-          {`Checked: ${
-            this.props.data?.checkItinerary?.isChecked ? 'YES' : 'NO'
-          }`}
-        </Text>
-      </>
-    );
+    return <ResultDetailContent data={this.props.data?.checkItinerary} />;
   }
 }
 
 export default createRefetchContainer(
-  ResultDetailItinerary,
+  ResultDetailInner,
   {
     data: graphql`
-      fragment ResultDetailItinerary_data on RootQuery
+      fragment ResultDetailInner_data on RootQuery
         @argumentDefinitions(input: { type: "ItineraryCheckInput!" }) {
         checkItinerary(input: $input) {
           isChecked
           isValid
+          ...ResultDetailContent_data
         }
       }
     `,
   },
   graphql`
-    query ResultDetailItineraryQuery($input: ItineraryCheckInput!) {
-      ...ResultDetailItinerary_data @arguments(input: $input)
+    query ResultDetailInnerQuery($input: ItineraryCheckInput!) {
+      ...ResultDetailInner_data @arguments(input: $input)
     }
   `,
 );
