@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 5db217d9f3dc5389cf1f02c1f8f0c468
+ * @relayHash e569b9b7a8c965af4f1d59a92ee8aa7b
  */
 
 /* eslint-disable */
@@ -9,7 +9,7 @@
 
 /*::
 import type { ConcreteRequest } from 'relay-runtime';
-type ResultDetailItinerary_data$ref = any;
+type ResultDetailInner_data$ref = any;
 export type ItineraryCheckInput = {|
   bookingToken: string,
   bags: number,
@@ -20,33 +20,38 @@ export type PassengersInput = {|
   children?: ?number,
   infants?: ?number,
 |};
-export type ResultDetailItineraryRendererQueryVariables = {|
+export type ResultDetailQueryVariables = {|
   input: ItineraryCheckInput
 |};
-export type ResultDetailItineraryRendererQueryResponse = {|
-  +$fragmentRefs: ResultDetailItinerary_data$ref
+export type ResultDetailQueryResponse = {|
+  +$fragmentRefs: ResultDetailInner_data$ref
 |};
-export type ResultDetailItineraryRendererQuery = {|
-  variables: ResultDetailItineraryRendererQueryVariables,
-  response: ResultDetailItineraryRendererQueryResponse,
+export type ResultDetailQuery = {|
+  variables: ResultDetailQueryVariables,
+  response: ResultDetailQueryResponse,
 |};
 */
 
 
 /*
-query ResultDetailItineraryRendererQuery(
+query ResultDetailQuery(
   $input: ItineraryCheckInput!
 ) {
-  ...ResultDetailItinerary_data_2VV6jB
+  ...ResultDetailInner_data_2VV6jB
 }
 
-fragment ResultDetailItinerary_data_2VV6jB on RootQuery {
+fragment ResultDetailInner_data_2VV6jB on RootQuery {
   checkItinerary(input: $input) {
     __typename
     isChecked
     isValid
+    ...ResultDetailContent_data
     id
   }
+}
+
+fragment ResultDetailContent_data on ItineraryInterface {
+  isChecked
 }
 */
 
@@ -63,14 +68,14 @@ return {
   "kind": "Request",
   "fragment": {
     "kind": "Fragment",
-    "name": "ResultDetailItineraryRendererQuery",
+    "name": "ResultDetailQuery",
     "type": "RootQuery",
     "metadata": null,
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
         "kind": "FragmentSpread",
-        "name": "ResultDetailItinerary_data",
+        "name": "ResultDetailInner_data",
         "args": [
           {
             "kind": "Variable",
@@ -84,7 +89,7 @@ return {
   },
   "operation": {
     "kind": "Operation",
-    "name": "ResultDetailItineraryRendererQuery",
+    "name": "ResultDetailQuery",
     "argumentDefinitions": (v0/*: any*/),
     "selections": [
       {
@@ -137,13 +142,13 @@ return {
   },
   "params": {
     "operationKind": "query",
-    "name": "ResultDetailItineraryRendererQuery",
+    "name": "ResultDetailQuery",
     "id": null,
-    "text": "query ResultDetailItineraryRendererQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailItinerary_data_2VV6jB\n}\n\nfragment ResultDetailItinerary_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    id\n  }\n}\n",
+    "text": "query ResultDetailQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailInner_data_2VV6jB\n}\n\nfragment ResultDetailInner_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    ...ResultDetailContent_data\n    id\n  }\n}\n\nfragment ResultDetailContent_data on ItineraryInterface {\n  isChecked\n}\n",
     "metadata": {}
   }
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = 'e5a1a7ada46dce3d39027a9adfdba8a1';
+(node/*: any*/).hash = '2a71068d1823e2eb2435562d2adcc8ba';
 module.exports = node;

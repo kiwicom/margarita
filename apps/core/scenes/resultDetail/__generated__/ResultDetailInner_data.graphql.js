@@ -8,21 +8,23 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
+type ResultDetailContent_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ResultDetailItinerary_data$ref: FragmentReference;
-export type ResultDetailItinerary_data = {|
+declare export opaque type ResultDetailInner_data$ref: FragmentReference;
+export type ResultDetailInner_data = {|
   +checkItinerary: ?{|
     +isChecked: ?boolean,
     +isValid: ?boolean,
+    +$fragmentRefs: ResultDetailContent_data$ref,
   |},
-  +$refType: ResultDetailItinerary_data$ref,
+  +$refType: ResultDetailInner_data$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "ResultDetailItinerary_data",
+  "name": "ResultDetailInner_data",
   "type": "RootQuery",
   "metadata": null,
   "argumentDefinitions": [
@@ -63,11 +65,16 @@ const node/*: ReaderFragment*/ = {
           "name": "isValid",
           "args": null,
           "storageKey": null
+        },
+        {
+          "kind": "FragmentSpread",
+          "name": "ResultDetailContent_data",
+          "args": null
         }
       ]
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'ebc499373293ca5593f7c63c15f27ced';
+(node/*: any*/).hash = '7ef96791fb3e0c95284e40ec183ef080';
 module.exports = node;
