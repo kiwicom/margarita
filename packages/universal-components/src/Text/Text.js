@@ -52,9 +52,6 @@ const Text = ({
   if (align) {
     textStyle.push(styles[align]);
   }
-  if (style) {
-    textStyle.push(style);
-  }
 
   let fontFamily = theme.styles.normalFontFamily;
   if (expo && (Platform.OS === 'ios' || Platform.OS === 'android')) {
@@ -67,6 +64,11 @@ const Text = ({
     }
   }
   textStyle.push(fontFamily);
+
+  if (style) {
+    // It is important that this is the last one to be added, so consumer can overwrite styles
+    textStyle.push(style);
+  }
 
   return (
     <RNText

@@ -5,7 +5,7 @@ exports[`Rating should match snapshot diff 1`] = `
 - <Rating />
 + <Rating rating={3} style={{\\"color\\": \\"#ffb100\\"}} />
 
-@@ -6,15 +6,17 @@
+@@ -9,12 +9,14 @@
         },
         Array [
           Object {
@@ -16,9 +16,6 @@ exports[`Rating should match snapshot diff 1`] = `
 +           \\"color\\": \\"#ffb100\\",
 +         },
         ],
-        Object {
-          \\"fontFamily\\": \\"Roboto\\",
-        },
       ]
     }
   >
