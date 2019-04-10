@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d4e8c958d7201ac3ca613d3f52134f1a
+ * @relayHash ed571121d6df14ae970901b6e9e5c5ac
  */
 
 /* eslint-disable */
@@ -52,6 +52,10 @@ fragment ResultDetailInner_data_2VV6jB on RootQuery {
 
 fragment ResultDetailContent_data on ItineraryInterface {
   isChecked
+  price {
+    currency
+    amount
+  }
 }
 */
 
@@ -130,6 +134,31 @@ return {
             "storageKey": null
           },
           {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "price",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Price",
+            "plural": false,
+            "selections": [
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "currency",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "amount",
+                "args": null,
+                "storageKey": null
+              }
+            ]
+          },
+          {
             "kind": "ScalarField",
             "alias": null,
             "name": "id",
@@ -144,7 +173,7 @@ return {
     "operationKind": "query",
     "name": "ResultDetailInnerQuery",
     "id": null,
-    "text": "query ResultDetailInnerQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailInner_data_2VV6jB\n}\n\nfragment ResultDetailInner_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    ...ResultDetailContent_data\n    id\n  }\n}\n\nfragment ResultDetailContent_data on ItineraryInterface {\n  isChecked\n}\n",
+    "text": "query ResultDetailInnerQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailInner_data_2VV6jB\n}\n\nfragment ResultDetailInner_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    ...ResultDetailContent_data\n    id\n  }\n}\n\nfragment ResultDetailContent_data on ItineraryInterface {\n  isChecked\n  price {\n    currency\n    amount\n  }\n}\n",
     "metadata": {}
   }
 };

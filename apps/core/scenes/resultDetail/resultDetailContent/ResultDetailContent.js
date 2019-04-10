@@ -13,6 +13,7 @@ import {
   type Navigation,
 } from '@kiwicom/margarita-navigation';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
+import { formatPrice } from '@kiwicom/margarita-utils';
 
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
@@ -57,6 +58,10 @@ class ResultDetailContent extends React.Component<Props, State> {
   };
 
   render() {
+    const localizedPrice = formatPrice(
+      this.props.data?.price?.amount,
+      this.props.data?.price?.currency,
+    );
     return (
       <>
         <ContentContainer>
@@ -90,7 +95,7 @@ class ResultDetailContent extends React.Component<Props, State> {
           renderVisibleContent={
             <TableRow
               label="Subtotal"
-              value="123 Kč"
+              value={localizedPrice}
               highlightedLabel
               highlightedValue
             />
@@ -105,6 +110,10 @@ export default createFragmentContainer(withNavigation(ResultDetailContent), {
   data: graphql`
     fragment ResultDetailContent_data on ItineraryInterface {
       isChecked
+      price {
+        currency
+        amount
+      }
     }
   `,
 });

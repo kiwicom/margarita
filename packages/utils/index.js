@@ -3,7 +3,6 @@
 export { capitalize } from './src/Capitalize/Capitalize';
 
 export { formatPrice } from './src/CurrencyFormatter/CurrencyFormatter';
-export type { Price } from './src/CurrencyFormatter/CurrencyFormatter';
 export { default as Device } from './src/Device/Device';
 
 export { LAYOUT } from './src/Layout/LayoutConstants';

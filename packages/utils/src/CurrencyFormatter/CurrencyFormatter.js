@@ -7,12 +7,10 @@ import 'intl/locale-data/complete';
 
 const DEVICE_LOCALE = getLocaleDashed();
 
-export type Price = {|
-  +currency: string,
-  +amount: number,
-|};
-
-export const formatPrice = ({ currency, amount }: Price) => {
+export const formatPrice = (amount: ?number, currency: ?string): string => {
+  if (amount == null || currency == null) {
+    return 'Not specified';
+  }
   return Intl.NumberFormat(DEVICE_LOCALE, {
     style: 'currency',
     currency,

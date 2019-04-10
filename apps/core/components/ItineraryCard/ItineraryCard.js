@@ -61,11 +61,10 @@ class ItineraryCard extends React.Component<Props, State> {
       return null;
     }
     const typename = data.__typename;
-    const priceObject = {
-      amount: parseFloat(data.price?.amount) ?? 0,
-      currency: data.price?.currency ?? 'CZK',
-    };
-    const localizedPrice = formatPrice(priceObject);
+    const localizedPrice = formatPrice(
+      data.price?.amount,
+      data.price?.currency,
+    );
 
     return (
       <Card
