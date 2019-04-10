@@ -10,15 +10,16 @@ import isEqual from 'react-fast-compare';
 import { Text } from '../Text';
 import { StyleSheet } from '../PlatformStyleSheet';
 import RenderWeek from './RenderWeek';
-import { type MonthDate, getMonthMatrix, type WeekStarts } from './libs';
+import { getMonthMatrix } from './libs';
+import type { MonthDateType, WeekStartsType } from './RangeDatePickerTypes';
 
 const MONTH_NAME_FORMAT = 'MMMM';
 
 type Props = {|
-  +monthDate: MonthDate,
+  +monthDate: MonthDateType,
   +onDayPress: (Array<Date>) => void,
   +selectedDates: $ReadOnlyArray<Date>,
-  +weekStartsOn: WeekStarts,
+  +weekStartsOn: WeekStartsType,
   +isRangePicker: boolean,
 |};
 
@@ -46,7 +47,7 @@ export default class RenderMonth extends React.Component<Props> {
     );
   }
 
-  getWeeks = memoize((monthDate: MonthDate) => {
+  getWeeks = memoize((monthDate: MonthDateType) => {
     return getMonthMatrix(
       monthDate,
       this.props.weekStartsOn,
@@ -55,7 +56,13 @@ export default class RenderMonth extends React.Component<Props> {
   }, isEqual);
 
   render() {
-    const { monthDate, onDayPress, selectedDates, isRangePicker } = this.props;
+    const {
+      monthDate,
+      onDayPress,
+      selectedDates,
+      isRangePicker,
+      weekStartsOn,
+    } = this.props;
     const keyPrefix = `${this.props.monthDate.year}-${
       this.props.monthDate.month
     }`;
@@ -76,6 +83,7 @@ export default class RenderMonth extends React.Component<Props> {
             onDayPress={onDayPress}
             selectedDates={selectedDates}
             isRangePicker={isRangePicker}
+            weekStartsOn={weekStartsOn}
           />
         ))}
       </View>

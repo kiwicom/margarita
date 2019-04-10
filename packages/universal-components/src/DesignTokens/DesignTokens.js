@@ -19,6 +19,7 @@ const designTokens = {
 
   fontSizeCalendarItem: 18,
   heightCalendarItem: 52,
+  widthDraggableCalendarItem: 30,
   paddingCalendarItem: 8,
 
   durationArrowScaleAnimation: 800,

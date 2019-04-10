@@ -5,7 +5,8 @@ import { View, FlatList } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
-import { getNextMonths, type MonthDate, type WeekStarts } from './libs';
+import { getMonths } from './libs';
+import type { MonthDateType, WeekStartsType } from './RangeDatePickerTypes';
 import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
 
@@ -13,12 +14,12 @@ type Props = {|
   +onDayPress: ($ReadOnlyArray<Date>) => void,
   +selectedDates: $ReadOnlyArray<Date>,
   +numberOfRenderedMonths: number,
-  +weekStartsOn: WeekStarts,
+  +weekStartsOn: WeekStartsType,
   +isRangePicker: boolean,
 |};
 
 type State = {|
-  nextMonths: Array<MonthDate>,
+  nextMonths: Array<MonthDateType>,
 |};
 
 export default class RangeDatePickerContent extends React.Component<
@@ -28,11 +29,11 @@ export default class RangeDatePickerContent extends React.Component<
   constructor(props: Props) {
     super(props);
     this.state = {
-      nextMonths: getNextMonths(props.numberOfRenderedMonths),
+      nextMonths: getMonths(props.numberOfRenderedMonths),
     };
   }
 
-  renderMonthItem = ({ item }: {| +item: MonthDate |}) => {
+  renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
     return (
       <RenderMonth
         monthDate={item}
@@ -44,7 +45,7 @@ export default class RangeDatePickerContent extends React.Component<
     );
   };
 
-  keyExtractor = (item: MonthDate, index: number) =>
+  keyExtractor = (item: MonthDateType, index: number) =>
     `month-${item.year}-${item.month}-${index}`;
 
   render() {
