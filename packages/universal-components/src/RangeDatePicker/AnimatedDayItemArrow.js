@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { Animated, Easing, View } from 'react-native';
+import { Animated, Easing, View, InteractionManager } from 'react-native';
 
 import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
@@ -25,7 +25,7 @@ const RenderArrows = ({ scale }) => (
       style={[
         styles.easingArrow,
         {
-          transform: [{ scale }],
+          transform: [{ scale: scale ?? 0 }],
         },
       ]}
     />
@@ -36,33 +36,56 @@ const RenderArrows = ({ scale }) => (
 export default class AnimatedDayItemArrow extends React.Component<Props> {
   static scale: Animated.Value = new Animated.Value(0);
   static animating: boolean;
+  static numberOfInstances: number;
 
   static handleAnimation() {
+    if (AnimatedDayItemArrow.scale === undefined) {
+      AnimatedDayItemArrow.scale = new Animated.Value(0);
+    }
+
+    if (AnimatedDayItemArrow.scale._value === 0) {
+      Animated.sequence([
+        Animated.timing(AnimatedDayItemArrow.scale, {
+          ...SHARED_ANIMATION_CONFIG,
+          toValue: 1,
+        }),
+        Animated.timing(AnimatedDayItemArrow.scale, {
+          ...SHARED_ANIMATION_CONFIG,
+          toValue: 0.1,
+        }),
+      ]).start(() => {
+        AnimatedDayItemArrow.scale.setValue(0);
+        if (AnimatedDayItemArrow.animating) {
+          AnimatedDayItemArrow.handleAnimation();
+        }
+      });
+    }
+  }
+
+  componentDidMount() {
     AnimatedDayItemArrow.scale.setValue(0);
 
-    Animated.sequence([
-      Animated.timing(AnimatedDayItemArrow.scale, {
-        ...SHARED_ANIMATION_CONFIG,
-        toValue: 1,
-      }),
-      Animated.timing(AnimatedDayItemArrow.scale, {
-        ...SHARED_ANIMATION_CONFIG,
-        toValue: 0,
-      }),
-    ]).start(() => {
-      if (AnimatedDayItemArrow.animating) {
+    if (AnimatedDayItemArrow.numberOfInstances === undefined) {
+      AnimatedDayItemArrow.numberOfInstances = 1;
+    } else {
+      AnimatedDayItemArrow.numberOfInstances++;
+    }
+    InteractionManager.runAfterInteractions(() => {
+      if (
+        !AnimatedDayItemArrow.animating &&
+        AnimatedDayItemArrow.numberOfInstances !== 0
+      ) {
+        AnimatedDayItemArrow.animating = true;
         AnimatedDayItemArrow.handleAnimation();
       }
     });
   }
 
-  componentDidMount() {
-    AnimatedDayItemArrow.animating = true;
-    AnimatedDayItemArrow.handleAnimation();
-  }
-
   componentWillUnmount() {
-    AnimatedDayItemArrow.animating = false;
+    AnimatedDayItemArrow.numberOfInstances--;
+    if (AnimatedDayItemArrow.numberOfInstances === 0) {
+      AnimatedDayItemArrow.animating = false;
+    }
   }
 
   render() {
