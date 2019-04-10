@@ -13,6 +13,7 @@ import {
 import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
+  NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
   type TripTypes,
 } from '@kiwicom/margarita-config';
 
@@ -124,7 +125,7 @@ class Datepickers extends React.Component<Props, State> {
       onConfirm: this.handleDateChange,
       onDismiss: this.handleDatePickerDismiss,
       buttonLabels: { cancel: 'Cancel', confirm: 'OK' },
-      numberOfRenderedMonths: 12,
+      numberOfRenderedMonths: NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
       weekStartsOn: 1,
     };
     return (

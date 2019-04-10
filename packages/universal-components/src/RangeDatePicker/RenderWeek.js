@@ -5,13 +5,15 @@ import { View } from 'react-native';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import RenderDay from './RenderDay';
+import type { WeekStartsType } from './RangeDatePickerTypes';
 
 type Props = {|
-  +data: Array<Date>,
+  +data: Array<?Date>,
   +onDayPress: (Array<Date>) => void,
   +keyPrefix: string,
   +selectedDates: $ReadOnlyArray<Date>,
   +isRangePicker: boolean,
+  +weekStartsOn: WeekStartsType,
 |};
 
 export default function RenderWeek({
@@ -20,6 +22,7 @@ export default function RenderWeek({
   keyPrefix,
   selectedDates,
   isRangePicker,
+  weekStartsOn,
 }: Props) {
   return (
     <View style={styles.row}>
@@ -31,6 +34,7 @@ export default function RenderWeek({
             onPress={onDayPress}
             selectedDates={selectedDates}
             isRangePicker={isRangePicker}
+            weekStartsOn={weekStartsOn}
           />
         );
       })}

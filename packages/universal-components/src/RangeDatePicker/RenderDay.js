@@ -6,7 +6,6 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   format,
   addDays,
-  isBefore,
   isWithinInterval,
   subDays,
   isSameDay,
@@ -14,25 +13,38 @@ import {
   startOfDay,
 } from 'date-fns';
 
+import type { OnLayout, OnDragEvent } from '../types';
 import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
 import { designTokens } from '../DesignTokens';
 import { Text } from '../Text';
 import { Touchable } from '../Touchable';
 import DayItemArrow from './DayItemArrow';
 import AnimatedDayItemArrow from './AnimatedDayItemArrow';
+import DraggableItem from './DraggableItem';
+import { findRelatedItem, isDayInPast } from './libs';
+import type {
+  DayItemSizeType,
+  GrabbedSideType,
+  WeekStartsType,
+} from './RangeDatePickerTypes';
 
 type Props = {|
-  +day: Date,
+  +day: ?Date,
   +onPress?: (Array<Date>) => void,
   +price?: ?string,
   +selectedDates: $ReadOnlyArray<Date>,
   +isRangePicker: boolean,
+  +weekStartsOn: WeekStartsType,
+|};
+
+type State = {|
+  isDragging?: boolean,
 |};
 
 type RenderArrowProps = {|
   +style?: StylePropType,
   +onPress?: () => void,
-  +direction?: 'left' | 'right',
+  +direction?: GrabbedSideType,
 |};
 
 const DayPrice = ({ price }) => (
@@ -50,89 +62,159 @@ const RenderArrow = (props: RenderArrowProps) =>
     <AnimatedDayItemArrow style={props.style} onPress={props.onPress} />
   );
 
-export default function RenderDay({
-  day,
-  onPress,
-  price,
-  selectedDates,
-  isRangePicker,
-}: Props) {
-  function handlePress() {
-    if (onPress) {
-      onPress([day, day]);
-    }
-  }
-  const isDayInPast = checkedDay => isBefore(checkedDay, new Date());
-  const onLeftPress = () => {
-    const dayBefore = subDays(day, 1);
-    if (!isDayInPast(dayBefore) && onPress) {
-      onPress([dayBefore, selectedDates[1]]);
+export default class RenderDay extends React.Component<Props, State> {
+  static dayItemSize: DayItemSizeType = {
+    width: 51,
+    height: 52,
+  };
+
+  state = { isDragging: undefined };
+
+  handlePress = () => {
+    if (this.props.onPress && this.props.day) {
+      this.props.onPress([this.props.day, this.props.day]);
     }
   };
 
-  const onRightPress = () => {
-    if (onPress) {
-      onPress([selectedDates[0], addDays(day, 1)]);
+  onLeftPress = () => {
+    if (this.props.day) {
+      const dayBefore = subDays(this.props.day, 1);
+      if (!isDayInPast(dayBefore) && this.props.onPress) {
+        this.props.onPress([dayBefore, this.props.selectedDates[1]]);
+      }
     }
   };
 
-  const isFieldEmpty = day == null;
-  const isStartOfSelectedDates = isSameDay(selectedDates[0], day);
-  const isEndOfSelectedDates = isSameDay(selectedDates[1], day);
-  const isDaySelected = isWithinInterval(day, {
-    start: startOfDay(selectedDates[0]),
-    end: endOfDay(selectedDates[1]),
-  });
-  const onArrowPress = onPress => (isRangePicker ? onPress : undefined);
-  return (
-    <View style={[styles.container, isDaySelected && styles.onTheTop]}>
-      <Touchable
-        onPress={handlePress}
-        disabled={isDayInPast(day) || isFieldEmpty}
+  onRightPress = () => {
+    if (this.props.onPress && this.props.day) {
+      this.props.onPress([
+        this.props.selectedDates[0],
+        this.props.day && addDays(this.props.day, 1),
+      ]);
+    }
+  };
+
+  onDrag = (event: OnDragEvent, grabbedSide: GrabbedSideType) => {
+    if (!this.state.isDragging) {
+      this.setState({ isDragging: true });
+    }
+    if (this.props.day) {
+      findRelatedItem(
+        event,
+        {
+          grabbedStartDay: this.props.day,
+          selectedDates: this.props.selectedDates,
+          dayItemSize: RenderDay.dayItemSize,
+          grabbedSide: grabbedSide,
+          weekStartsOn: this.props.weekStartsOn,
+        },
+        newSelectedDate => {
+          if (this.props.onPress) {
+            this.props.onPress(newSelectedDate);
+          }
+        },
+      );
+    }
+  };
+
+  onDrop = () => {
+    this.setState({ isDragging: false });
+  };
+
+  measureDayItem = (e: OnLayout) => {
+    const { width, height } = e.nativeEvent.layout;
+    RenderDay.dayItemSize = {
+      width,
+      height,
+    };
+  };
+
+  render() {
+    const { day, price, selectedDates, isRangePicker } = this.props;
+    const isFieldEmpty = day == null;
+    const isStartOfSelectedDates = day && isSameDay(selectedDates[0], day);
+    const isEndOfSelectedDates = day && isSameDay(selectedDates[1], day);
+    const isDaySelected =
+      day &&
+      isWithinInterval(day, {
+        start: startOfDay(selectedDates[0]),
+        end: endOfDay(selectedDates[1]),
+      });
+    const onArrowPress = onPress => (isRangePicker ? onPress : undefined);
+    return (
+      <View
+        style={[styles.container, isDaySelected && styles.onTheTop]}
+        onLayout={this.measureDayItem}
       >
-        <>
-          {isStartOfSelectedDates && isRangePicker && (
-            <RenderArrow
-              onPress={onArrowPress(onLeftPress)}
-              style={styles.leftArrow}
-              direction="left"
-            />
-          )}
-          <View
-            style={[
-              styles.dayContainer,
-              isDaySelected && styles.selectedDatesContainer,
-              isStartOfSelectedDates && styles.startOfSelectedDatesContainer,
-              isEndOfSelectedDates && styles.endOfSelectedDatesContainer,
-            ]}
-          >
-            {!isFieldEmpty && (
-              <>
-                <Text
-                  weight="bold"
-                  style={[
-                    styles.day,
-                    isDaySelected && styles.selectedDatesText,
-                    isDayInPast(day) && styles.dayInPast,
-                  ]}
-                >
-                  {format(day, 'd')}
-                </Text>
-                {price ?? <DayPrice price={price} />}
-              </>
+        <View>
+          {isRangePicker &&
+            (isStartOfSelectedDates || this.state.isDragging) && (
+              <DraggableItem
+                onDrag={this.onDrag}
+                onDrop={this.onDrop}
+                style={styles.draggableItemLeft}
+                grabbedSide="left"
+              />
             )}
-          </View>
-          {isEndOfSelectedDates && isRangePicker && (
-            <RenderArrow
-              onPress={onArrowPress(onRightPress)}
-              style={styles.rightArrow}
-              direction="right"
+
+          <Touchable
+            onPress={this.handlePress}
+            disabled={isDayInPast(day) || isFieldEmpty}
+          >
+            <>
+              {isStartOfSelectedDates && isRangePicker && (
+                <RenderArrow
+                  onPress={onArrowPress(this.onLeftPress)}
+                  style={styles.leftArrow}
+                  direction="left"
+                />
+              )}
+              <View
+                style={[
+                  styles.dayContainer,
+                  isDaySelected && styles.selectedDatesContainer,
+                  isStartOfSelectedDates &&
+                    styles.startOfSelectedDatesContainer,
+                  isEndOfSelectedDates && styles.endOfSelectedDatesContainer,
+                ]}
+              >
+                {!isFieldEmpty && (
+                  <>
+                    <Text
+                      weight="bold"
+                      style={[
+                        styles.day,
+                        isDaySelected && styles.selectedDatesText,
+                        isDayInPast(day) && styles.dayInPast,
+                      ]}
+                    >
+                      {day && format(day, 'd')}
+                    </Text>
+                    {price != null ?? <DayPrice price={price} />}
+                  </>
+                )}
+              </View>
+              {isEndOfSelectedDates && isRangePicker && (
+                <RenderArrow
+                  onPress={onArrowPress(this.onRightPress)}
+                  style={styles.rightArrow}
+                  direction="right"
+                />
+              )}
+            </>
+          </Touchable>
+          {isRangePicker && (isEndOfSelectedDates || this.state.isDragging) && (
+            <DraggableItem
+              onDrag={this.onDrag}
+              onDrop={this.onDrop}
+              style={styles.draggableItemRight}
+              grabbedSide="right"
             />
           )}
-        </>
-      </Touchable>
-    </View>
-  );
+        </View>
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
@@ -187,5 +269,11 @@ const styles = StyleSheet.create({
     android: {
       top: 0,
     },
+  },
+  draggableItemLeft: {
+    start: -designTokens.widthDraggableCalendarItem / 2,
+  },
+  draggableItemRight: {
+    end: -designTokens.widthDraggableCalendarItem / 2,
   },
 });

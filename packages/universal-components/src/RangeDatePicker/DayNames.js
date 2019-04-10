@@ -8,10 +8,11 @@ import { format } from 'date-fns';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 import { designTokens } from '../DesignTokens';
-import { getCurrentWeekArray, type WeekStarts } from './libs';
+import { getCurrentWeekArray } from './libs';
+import type { WeekStartsType } from './RangeDatePickerTypes';
 
 type Props = {|
-  weekStartsOn: WeekStarts,
+  +weekStartsOn: WeekStartsType,
 |};
 
 const getDayNames = weekStartsOn =>

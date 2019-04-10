@@ -75,6 +75,7 @@
     "react": "^",
     "react-dom": "^",
     "react-native": "^",
+    "react-native-gesture-handler": "^1.1.0",
     "react-native-testing-library": "^",
     "react-test-renderer": "^",
     "styled-components": "^"
