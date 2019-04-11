@@ -35,3 +35,5 @@ coverage/
 # IDE
 .idea
 .vscode
+
+deploy

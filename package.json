@@ -7,8 +7,6 @@
     "server": "yarn workspace @kiwicom/margarita-graphql start",
     "web": "yarn workspace @kiwicom/margarita-web dev",
     "create-dotenv": "yarn babel-node ./scripts/create-dotenv.js",
-    "preweb:deploy": "yarn create-dotenv",
-    "web:deploy": "yarn workspace @kiwicom/margarita-web deploy",
     "web:analyze": "yarn workspace @kiwicom/margarita-web analyze",
     "docs": "yarn workspace @kiwicom/margarita-docs start",
     "docs:deploy": "yarn workspace @kiwicom/margarita-docs deploy",
