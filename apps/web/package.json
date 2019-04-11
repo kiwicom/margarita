@@ -28,6 +28,7 @@
     "next": "^8.0.3",
     "next-images": "^1.0.4",
     "next-plugin-transpile-modules": "^2.0.0",
+    "qs": "^6.7.0",
     "react-native-web": "^0.10.1",
     "url-search-params-polyfill": "^5.0.0",
     "webpack-bundle-analyzer": "^3.1.0"
