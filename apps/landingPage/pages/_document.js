@@ -1,8 +1,15 @@
 // @flow
 
 import React from 'react';
-import Document from 'next/document';
-import { ServerStyleSheet } from 'styled-components';
+import Document, { Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+`;
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: Function) {
@@ -23,5 +30,21 @@ export default class CustomDocument extends Document {
     } finally {
       sheet.seal();
     }
+  }
+
+  render() {
+    return (
+      <html>
+        <Head>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link rel="icon" type="image/png" href="/static/logo_margarita.png" />
+        </Head>
+        <body>
+          <Main />
+          <NextScript />
+          <GlobalStyle />
+        </body>
+      </html>
+    );
   }
 }
