@@ -140,7 +140,7 @@ jobs:
           at: ~/margarita
       - run:
           name: Add .env file (react-native-dotenv)
-          command: echo GRAPHQL_URL=$GRAPHQL_URL > .env
+          command: yarn create-dotenv
       - run:
           name: Login into Expo
           command: npx expo login -u $EXPO_USERNAME -p $EXPO_PASSWORD
