@@ -5,6 +5,7 @@ import DataLoader from 'dataloader';
 import { createItinerariesLoader } from '../../apps/itinerary/dataloaders/Itineraries';
 import createItineraryLoader from '../../apps/itinerary/dataloaders/Itinerary';
 import createSaveBookingLoader from '../../apps/booking/dataloaders/SaveBooking';
+import createConfirmPaymentLoader from '../../apps/booking/dataloaders/ConfirmPayment';
 import {
   type ItinerariesOneWaySearchParameters,
   type ItinerariesReturnSearchParameters,
@@ -20,6 +21,8 @@ import type {
   Booking,
   SaveBookingOutputType,
   SaveBookingPayloadType,
+  ConfirmPaymentOutputType,
+  ConfirmPaymentPayloadType,
 } from '../../apps/booking/Booking';
 import bookingDetailLoader from '../../apps/booking/dataloaders/BookingDetail';
 import parseAcceptLanguage from '../helpers/parseAcceptLanguage';
@@ -41,6 +44,10 @@ export type GraphqlContextType = {|
     >,
     +itinerary: DataLoader<ItineraryCheckParameters, Itinerary>,
     +saveBooking: DataLoader<SaveBookingPayloadType, SaveBookingOutputType>,
+    +confirmPayment: DataLoader<
+      ConfirmPaymentPayloadType,
+      ConfirmPaymentOutputType,
+    >,
     +locations: DataLoader<LocationInput, Locations>,
     +bookings: {| +load: () => Booking[] |},
     +booking: {| +load: (id: string) => Booking |},
@@ -65,6 +72,7 @@ export default function createContext(props: ?CreateContextType) {
       saveBooking: createSaveBookingLoader(),
       bookings: bookingsLoader,
       booking: bookingDetailLoader,
+      confirmPayment: createConfirmPaymentLoader(),
     },
     locale,
   };

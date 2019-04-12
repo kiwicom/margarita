@@ -1,0 +1,5 @@
+mutation {
+    confirmPayment(payload:{transactionId: "sandbox_5130968", bookingToken: "5130968"}){
+        isSuccess
+    }
+}

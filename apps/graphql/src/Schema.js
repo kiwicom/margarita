@@ -7,7 +7,8 @@ import SearchReturnItineraries from './apps/itinerary/queries/SearchReturnItiner
 import LocationsByTerm from './apps/location/queries/LocationsByTerm';
 import CustomerBookings from './apps/booking/queries/CustomerBookings';
 import BookingDetail from './apps/booking/queries/BookingDetail';
-import SaveBooking from './apps/booking/queries/SaveBooking';
+import SaveBooking from './apps/booking/mutations/SaveBooking';
+import ConfirmPayment from './apps/booking/mutations/ConfirmPayment';
 import CheckItinerary from './apps/itinerary/queries/CheckItinerary';
 import BookingOneWay from './apps/booking/types/outputs/BookingOneWay';
 import BookingMulticity from './apps/booking/types/outputs/BookingMulticity';
@@ -16,6 +17,7 @@ import GeoIP from './apps/geoIp/queries/GeoIP';
 import ItineraryReturn from './apps/itinerary/types/outputs/ItineraryReturn';
 import ItineraryOneWay from './apps/itinerary/types/outputs/ItineraryOneWay';
 import SaveBookingOutput from './apps/booking/types/outputs/SaveBooking';
+import ConfirmPaymentOutput from './apps/booking/types/outputs/ConfirmPayment';
 
 const schema = new GraphQLSchema({
   query: new GraphQLObjectType({
@@ -34,6 +36,7 @@ const schema = new GraphQLSchema({
     name: 'RootMutation',
     fields: {
       saveBooking: SaveBooking,
+      confirmPayment: ConfirmPayment,
     },
   }),
   types: [
@@ -43,6 +46,7 @@ const schema = new GraphQLSchema({
     ItineraryReturn,
     ItineraryOneWay,
     SaveBookingOutput,
+    ConfirmPaymentOutput,
   ],
 });
 

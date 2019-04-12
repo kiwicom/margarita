@@ -111,3 +111,18 @@ export type SaveBookingOutputType = {|
   +itinerary: ItineraryInterface,
   +passengers: $ReadOnlyArray<Passenger>,
 |};
+
+export type ConfirmPaymentPayloadType = {|
+  +bookingToken?: string,
+  +transactionId: string,
+|};
+
+export type ConfirmPaymentOutputType = {|
+  +isSuccess: boolean,
+  +price: number,
+|};
+
+export type ConfirmPaymentAPIResponse = {|
+  +status: number,
+  +price: number,
+|};

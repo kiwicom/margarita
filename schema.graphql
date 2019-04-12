@@ -153,6 +153,24 @@ type Carrier {
   code: String
 }
 
+type ConfirmPaymentOutput {
+  """
+  Should be 0 (zero) that means the confirm_payment was successful, any other result means that something went wrong
+  """
+  status: Int
+
+  """The average price of the booking per passenger"""
+  price: Float
+}
+
+input ConfirmPaymentPayload {
+  """Token received in Search Results"""
+  bookingToken: String
+
+  """Token received from save_booking that identifies the booking process"""
+  transactionId: String!
+}
+
 """Bookings contact email and phone"""
 type ContactDetails {
   email: String
@@ -534,9 +552,12 @@ type Price {
 
 type RootMutation {
   """
-  Mutation (POST Request) that saves a given booking. Initiates the reservation process on the backend.
+  Saves a given booking. Initiates the reservation process on the backend. (POST Request)
   """
   saveBooking(payload: SaveBookingPayload): SaveBookingOutput
+
+  """Confirms the payment for a given booking. (POST Request)"""
+  confirmPayment(payload: ConfirmPaymentPayload): ConfirmPaymentOutput
 }
 
 type RootQuery {
