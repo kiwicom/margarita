@@ -33,10 +33,21 @@ import Datepickers from './Datepickers';
 import SearchModal from './SearchModal';
 import SearchFormModes from './SearchFormModes';
 
+type SearchParameters = {|
+  +dateFrom: string,
+  +dateTo: string,
+  +returnDateFrom: string,
+  +returnDateTo: string,
+  +tripType: string,
+  +travelFrom: ?$ReadOnlyArray<Location>,
+  +travelTo: ?$ReadOnlyArray<Location>,
+  +sort: string,
+|};
+
 type Props = {
   +navigation: Navigation,
-  +travelFrom: ?Location,
-  +travelTo: ?Location,
+  +travelFrom: ?$ReadOnlyArray<Location>,
+  +travelTo: ?$ReadOnlyArray<Location>,
   +dateFrom: Date,
   +dateTo: Date,
   +returnDateFrom: Date,
@@ -47,6 +58,7 @@ type Props = {
   +bags: number,
   +layout: number,
   +setAlertContent: (alertContent: AlertContent | null) => void,
+  +onSubmit?: SearchParameters => void,
 };
 
 class Search extends React.Component<Props> {
@@ -58,39 +70,54 @@ class Search extends React.Component<Props> {
     if (Array.isArray(locations)) {
       return locations.reduce((acc, location, index) => {
         const prefix = index > 0 ? ',' : '';
-        return `${acc}${prefix}${location[field]}`;
+        const locationField = location[field] ?? '';
+        return `${acc}${prefix}${locationField}`;
       }, '');
     }
     return '';
   };
 
   handleSubmitPress = () => {
-    const {
-      travelFrom,
-      travelTo,
-      dateFrom,
-      dateTo,
-      returnDateFrom,
-      returnDateTo,
-      tripType,
-    } = this.props;
+    const { travelFrom, travelTo, tripType, onSubmit } = this.props;
     if (travelFrom == null) {
       this.props.setAlertContent({
         message: 'Please fill this form completely before you proceed',
       });
     } else {
+      const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
+      const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
+      const returnDateFrom = format(
+        this.props.returnDateFrom,
+        BASIC_ISO_DATE_FORMAT,
+      );
+      const returnDateTo = format(
+        this.props.returnDateTo,
+        BASIC_ISO_DATE_FORMAT,
+      );
+      if (onSubmit != null) {
+        onSubmit({
+          dateFrom,
+          dateTo,
+          returnDateFrom,
+          returnDateTo,
+          tripType,
+          travelFrom,
+          travelTo,
+          sort: 'QUALITY',
+        });
+      }
       this.props.navigation.navigate(Routes.RESULTS, {
         travelFrom: this.convertLocationsToParams(travelFrom, 'id'),
         travelTo: this.convertLocationsToParams(travelTo, 'id'),
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         sort: 'QUALITY',
-        dateFrom: format(dateFrom, BASIC_ISO_DATE_FORMAT),
-        dateTo: format(dateTo, BASIC_ISO_DATE_FORMAT),
+        dateFrom,
+        dateTo,
         ...(tripType === TRIP_TYPES.RETURN
           ? {
-              returnDateFrom: format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
-              returnDateTo: format(returnDateTo, BASIC_ISO_DATE_FORMAT),
+              returnDateFrom,
+              returnDateTo,
             }
           : {}),
       });

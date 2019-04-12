@@ -9,6 +9,14 @@ import { MODAL_TYPE } from './SearchConstants';
 
 type Props = {|
   +children: React.Node,
+  +dateFrom?: string,
+  +dateTo?: string,
+  +returnDateFrom?: string,
+  +returnDateTo?: string,
+  +tripType?: TripTypes,
+  +sortBy?: SortTypes,
+  +travelFrom?: Array<Location>,
+  +travelTo?: Array<Location>,
 |};
 
 export type ModalTypes = $Keys<typeof MODAL_TYPE>;
@@ -105,6 +113,10 @@ const defaultState = {
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
 
+const parseDate = (date?: string, key: string) => {
+  return date ? { [key]: new Date(date) } : {};
+};
+
 export default class SearchContextProvider extends React.Component<
   Props,
   State,
@@ -112,8 +124,21 @@ export default class SearchContextProvider extends React.Component<
   constructor(props: Props) {
     super(props);
 
+    const {
+      children, // eslint-disable-line no-unused-vars
+      dateFrom,
+      dateTo,
+      returnDateFrom,
+      returnDateTo,
+      ...rest
+    } = props;
     this.state = {
       ...defaultState,
+      ...parseDate(dateFrom, 'dateFrom'),
+      ...parseDate(dateTo, 'dateTo'),
+      ...parseDate(returnDateFrom, 'returnDateFrom'),
+      ...parseDate(returnDateTo, 'returnDateTo'),
+      ...rest,
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
