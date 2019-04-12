@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches expected output: ConfirmPayment.graphql 1`] = `
+~~~~~~~~~~ INPUT ~~~~~~~~~~
+mutation {
+    confirmPayment(payload:{transactionId: "sandbox_5130968", bookingToken: "5130968"}){
+        isSuccess
+    }
+}
+~~~~~~~~~~ OUTPUT ~~~~~~~~~~
+{
+  "data": {
+    "confirmPayment": {
+      "isSuccess": true
+    }
+  }
+}
+`;

@@ -12,7 +12,7 @@ type Args = {|
 const SaveBooking = {
   name: 'SaveBooking',
   description:
-    'Mutation (POST Request) that saves a given booking. Initiates the reservation process on the backend.',
+    'Saves a given booking. Initiates the reservation process on the backend. (POST Request)',
   args: {
     payload: {
       type: SaveBookingPayload,
