@@ -7,7 +7,7 @@ import {
 } from '@kiwicom/graphql-utils';
 import { type ConnectionArguments } from 'graphql-relay';
 
-import type { Booking } from '../Booking';
+import type { Booking } from '../manageMyBooking';
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
 import GraphQLBookingInterface from '../types/outputs/BookingInterface';
 

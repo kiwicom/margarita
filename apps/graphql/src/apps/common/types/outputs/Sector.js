@@ -3,7 +3,7 @@
 import { GraphQLObjectType, GraphQLInt, GraphQLList } from 'graphql';
 
 import type { Sector } from '../../CommonTypes';
-import GraphQLBookingType from '../../../booking/types/enums/BookingType';
+import GraphQLBookingType from '../../../manageMyBooking/types/enums/BookingType';
 import GraphQLSegment from './Segment';
 import GraphQLRouteStop from './RouteStop';
 import FromToInterface from './FromToInterface';

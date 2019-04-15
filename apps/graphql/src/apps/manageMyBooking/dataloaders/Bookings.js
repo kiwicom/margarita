@@ -12,7 +12,7 @@ import type {
   TypeSpecificData,
   Passenger,
   ApiCarrier,
-} from '../Booking';
+} from '../manageMyBooking';
 import type { RouteStop, Segment, Carrier } from '../../common/CommonTypes';
 
 const cabinBag = '55x40x20, 10kg';

@@ -7,9 +7,9 @@ import fetch from '../../../services/fetch/tequilaFetch';
 import type {
   SaveBookingPayloadType,
   SaveBookingOutputType,
-  Passenger,
   HoldBags,
 } from '../Booking';
+import type { Passenger } from '../../manageMyBooking/manageMyBooking';
 
 type ParsedPassenger = {|
   +birthday: string,
