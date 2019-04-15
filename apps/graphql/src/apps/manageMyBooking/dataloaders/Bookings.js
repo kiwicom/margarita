@@ -2,6 +2,7 @@
 
 import { head, last } from 'ramda';
 import differenceInMinutes from 'date-fns/differenceInMinutes';
+import { capitalize } from '@kiwicom/margarita-utils';
 
 import bookings from '../__datasets__/AllBookings.json';
 import type {
@@ -12,6 +13,7 @@ import type {
   TypeSpecificData,
   Passenger,
   ApiCarrier,
+  PassengerTitle,
 } from '../manageMyBooking';
 import type { RouteStop, Segment, Carrier } from '../../common/CommonTypes';
 
@@ -51,6 +53,8 @@ export const sanitizeBooking = (booking: BookingApiResult) => {
 
 const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
   booking.passengers.map(passenger => {
+    const passengerTitle = capitalize(passenger.title);
+    const title: PassengerTitle = (passengerTitle: any);
     return {
       id: passenger.id,
       bags,
@@ -60,7 +64,7 @@ const sanitizePassengers = (booking: BookingApiResult): Array<Passenger> =>
       insuranceType: passenger.insuranceType,
       lastname: passenger.lastname,
       nationality: passenger.nationality,
-      title: passenger.title,
+      title,
       visaRequired: false,
     };
   });
