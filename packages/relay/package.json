@@ -4,15 +4,15 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
+    "@kiwicom/margarita-components": "^0",
     "@kiwicom/margarita-graphql": "^0",
-    "@kiwicom/relay": "^1.2.0",
-    "@kiwicom/margarita-components": "^0"
+    "@kiwicom/relay": "^1.2.0"
   },
   "peerDependencies": {
+    "@kiwicom/universal-components": "^",
     "react": "^",
     "react-native": "^",
-    "react-relay": "^",
-    "@kiwicom/universal-components": "^",
-    "react-native-dotenv": "^"
+    "react-native-dotenv": "^",
+    "react-relay": "^"
   }
 }
