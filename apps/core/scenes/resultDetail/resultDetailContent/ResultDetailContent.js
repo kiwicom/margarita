@@ -13,7 +13,7 @@ import {
   type Navigation,
 } from '@kiwicom/margarita-navigation';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
-import { formatPrice } from '@kiwicom/margarita-utils';
+import { formatPrice } from '@kiwicom/margarita-localization';
 
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';

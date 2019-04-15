@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { default as NextApp, Container } from 'next/app';
-import { LayoutContextProvider } from '@kiwicom/margarita-utils';
+import { LayoutContextProvider } from '@kiwicom/margarita-device';
 import { Alert, AlertContextProvider } from '@kiwicom/margarita-components';
 import { UserContextProvider } from '@kiwicom/margarita-core';
 

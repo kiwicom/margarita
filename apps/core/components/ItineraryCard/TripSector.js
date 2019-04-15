@@ -9,7 +9,7 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-} from '@kiwicom/margarita-utils';
+} from '@kiwicom/margarita-device';
 import { Duration } from '@kiwicom/margarita-components';
 import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 

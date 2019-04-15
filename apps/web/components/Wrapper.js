@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import styled from 'styled-components';
-import { LAYOUT } from '@kiwicom/margarita-utils';
+import { LAYOUT } from '@kiwicom/margarita-device';
 import { ScrollView } from 'react-native';
 
 import Layout from './Layout';

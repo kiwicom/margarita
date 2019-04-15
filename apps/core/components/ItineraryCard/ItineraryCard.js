@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { formatPrice } from '@kiwicom/margarita-utils';
+import { formatPrice } from '@kiwicom/margarita-localization';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {

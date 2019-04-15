@@ -6,7 +6,7 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import {
   withLayoutContext,
   type LayoutContextState,
-} from '@kiwicom/margarita-utils';
+} from '@kiwicom/margarita-device';
 
 import Navbar from './Navbar';
 

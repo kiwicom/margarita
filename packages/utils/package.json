@@ -13,10 +13,7 @@
   },
   "peerDependencies": {
     "date-fns": "^",
-    "expo-localization": "^",
-    "intl": "^",
     "react": "^",
-    "react-native": "^",
     "react-test-renderer": "^"
   }
 }

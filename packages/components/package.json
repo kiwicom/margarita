@@ -11,6 +11,7 @@
   "dependencies": {
     "@kiwicom/margarita-config": "^0",
     "@kiwicom/margarita-utils": "^0",
+    "@kiwicom/margarita-device": "^0",
     "@kiwicom/universal-components": "0.0.17",
     "@storybook/react-native": "^4.1.13",
     "ramda": "^0.26.1",
