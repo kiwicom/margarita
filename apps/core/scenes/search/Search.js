@@ -42,6 +42,9 @@ type SearchParameters = {|
   +travelFrom: ?$ReadOnlyArray<Location>,
   +travelTo: ?$ReadOnlyArray<Location>,
   +sort: string,
+  +adults: number,
+  +infants: number,
+  +bags: number,
 |};
 
 type Props = {
@@ -78,7 +81,15 @@ class Search extends React.Component<Props> {
   };
 
   handleSubmitPress = () => {
-    const { travelFrom, travelTo, tripType, onSubmit } = this.props;
+    const {
+      travelFrom,
+      travelTo,
+      tripType,
+      adults,
+      infants,
+      bags,
+      onSubmit,
+    } = this.props;
     if (travelFrom == null) {
       this.props.setAlertContent({
         message: 'Please fill this form completely before you proceed',
@@ -104,6 +115,9 @@ class Search extends React.Component<Props> {
           travelFrom,
           travelTo,
           sort: 'QUALITY',
+          adults,
+          infants,
+          bags,
         });
       }
       this.props.navigation.navigate(Routes.RESULTS, {
@@ -112,6 +126,9 @@ class Search extends React.Component<Props> {
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         sort: 'QUALITY',
+        adults,
+        infants,
+        bags,
         dateFrom,
         dateTo,
         ...(tripType === TRIP_TYPES.RETURN

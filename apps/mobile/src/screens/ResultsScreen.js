@@ -15,6 +15,8 @@ type Props = {|
         +dateTo: string,
         +returnDateFrom: string,
         +returnDateTo: string,
+        +adults: number,
+        +infants: number,
         +sort: string,
       |},
     |},

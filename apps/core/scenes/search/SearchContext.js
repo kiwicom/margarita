@@ -17,6 +17,9 @@ type Props = {|
   +sortBy?: SortTypes,
   +travelFrom?: Array<Location>,
   +travelTo?: Array<Location>,
+  +adults?: string,
+  +infants?: string,
+  +bags?: string,
 |};
 
 export type ModalTypes = $Keys<typeof MODAL_TYPE>;
@@ -117,6 +120,10 @@ const parseDate = (date?: string, key: string) => {
   return date ? { [key]: new Date(date) } : {};
 };
 
+const parseNumber = (value?: string, key: string) => {
+  return value ? { [key]: parseInt(value, 10) } : {};
+};
+
 export default class SearchContextProvider extends React.Component<
   Props,
   State,
@@ -130,6 +137,9 @@ export default class SearchContextProvider extends React.Component<
       dateTo,
       returnDateFrom,
       returnDateTo,
+      adults,
+      infants,
+      bags,
       ...rest
     } = props;
     this.state = {
@@ -138,6 +148,9 @@ export default class SearchContextProvider extends React.Component<
       ...parseDate(dateTo, 'dateTo'),
       ...parseDate(returnDateFrom, 'returnDateFrom'),
       ...parseDate(returnDateTo, 'returnDateTo'),
+      ...parseNumber(adults, 'adults'),
+      ...parseNumber(infants, 'infants'),
+      ...parseNumber(bags, 'bags'),
       ...rest,
       actions: {
         switchFromTo: this.switchFromTo,

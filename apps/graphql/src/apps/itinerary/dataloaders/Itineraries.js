@@ -47,7 +47,7 @@ export const parseParameters = (
     date_to: outboundDate.end ? parseDate(outboundDate.end) : null,
     fly_to: flyTo,
     ...(input.passengers && {
-      adults: input.passengers.adults ?? 0,
+      adults: input.passengers.adults ?? 1,
       children: input.passengers.children ?? 0,
       infants: input.passengers.infants ?? 0,
     }),

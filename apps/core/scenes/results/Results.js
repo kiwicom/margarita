@@ -32,6 +32,8 @@ type Props = {|
   +dateTo: string,
   +returnDateFrom: string,
   +returnDateTo: string,
+  +adults: string | number,
+  +infants: string | number,
   +sortBy: string,
 |};
 
@@ -51,9 +53,15 @@ class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      adults,
+      infants,
       sortBy,
     } = this.props;
     return {
+      passengers: {
+        adults: parseInt(adults, 10),
+        infants: parseInt(infants, 10),
+      },
       sort: sortBy,
       itinerary: {
         origin: {
