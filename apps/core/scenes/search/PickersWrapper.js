@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
-import { LAYOUT } from '@kiwicom/margarita-utils';
+import { LAYOUT } from '@kiwicom/margarita-device';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 type Props = {|

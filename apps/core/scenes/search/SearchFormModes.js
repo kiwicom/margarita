@@ -13,7 +13,7 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-} from '@kiwicom/margarita-utils';
+} from '@kiwicom/margarita-device';
 import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import {

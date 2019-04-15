@@ -11,7 +11,7 @@ import {
   UserContextProvider,
 } from '@kiwicom/margarita-core';
 import { AlertContextProvider } from '@kiwicom/margarita-components';
-import { LayoutContextProvider } from '@kiwicom/margarita-utils';
+import { LayoutContextProvider } from '@kiwicom/margarita-device';
 
 import TabNavigator from './src/navigation/TabNavigator';
 

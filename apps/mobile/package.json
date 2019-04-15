@@ -15,6 +15,7 @@
     "@kiwicom/margarita-navigation": "^0",
     "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-utils": "^0",
+    "@kiwicom/margarita-device": "^0",
     "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
     "expo": "^32.0.5",
     "intl": "^1.2.5",

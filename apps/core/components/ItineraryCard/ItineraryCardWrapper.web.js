@@ -10,12 +10,12 @@ import {
   Button,
   designTokens,
 } from '@kiwicom/universal-components';
+import { noop } from '@kiwicom/margarita-utils';
 import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-  noop,
-} from '@kiwicom/margarita-utils';
+} from '@kiwicom/margarita-device';
 
 type Props = {|
   +localizedPrice: string,

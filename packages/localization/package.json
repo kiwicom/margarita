@@ -1,0 +1,10 @@
+{
+  "name": "@kiwicom/margarita-localization",
+  "version": "0.0.0",
+  "private": true,
+  "main": "index.js",
+  "peerDependencies": {
+    "intl": "^",
+    "expo-localization": "^"
+  }
+}

@@ -8,7 +8,7 @@ import {
   type StylePropType,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { Device } from '@kiwicom/margarita-utils';
+import { Device } from '@kiwicom/margarita-device';
 
 export type Props = {|
   +children: React.Node,

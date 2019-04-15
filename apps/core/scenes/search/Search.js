@@ -20,7 +20,7 @@ import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
-} from '@kiwicom/margarita-utils';
+} from '@kiwicom/margarita-device';
 import { BASIC_ISO_DATE_FORMAT, TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import {
