@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View, Platform } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
@@ -12,6 +12,7 @@ import {
   type TripTypes,
 } from '@kiwicom/margarita-config';
 
+import SearchForm from '../../components/searchForm/SearchForm';
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
 import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQuery.graphql';
 import ResultsList from './ResultsList';
@@ -130,19 +131,26 @@ class Results extends React.Component<Props> {
     };
     return (
       <SafeAreaView style={styles.container}>
-        <SearchParamsSummary
-          tripType={tripType}
-          departure={{
-            city: travelFromName,
-            localizedDate: getFormattedDate([dateFrom, dateTo]),
-          }}
-          arrival={{
-            city: travelToName,
-            localizedDate: returnDateFrom
-              ? getFormattedDate([returnDateFrom, returnDateTo])
-              : '',
-          }}
-        />
+        {Platform.OS === 'mobile ' ? (
+          <SearchParamsSummary
+            tripType={tripType}
+            departure={{
+              city: travelFromName,
+              localizedDate: getFormattedDate([dateFrom, dateTo]),
+            }}
+            arrival={{
+              city: travelToName,
+              localizedDate: returnDateFrom
+                ? getFormattedDate([returnDateFrom, returnDateTo])
+                : '',
+            }}
+          />
+        ) : (
+          <View style={styles.searchFormContainer}>
+            <SearchForm />
+          </View>
+        )}
+
         <View style={styles.resultContainer}>
           <SortTabsWrapper />
           <QueryComponent {...props} />
@@ -164,6 +172,10 @@ const styles = StyleSheet.create({
       marginTop: 0,
     },
     justifyContent: 'flex-start',
+  },
+  searchFormContainer: {
+    paddingHorizontal: 100,
+    paddingVertical: 20,
   },
 });
 

@@ -20,8 +20,8 @@ import {
   withSearchContext,
   type SearchContextState,
   type ModalTypes,
-} from './SearchContext';
-import { MODAL_TYPE, TRIP_TYPE } from './SearchConstants';
+} from '../../scenes/search/SearchContext';
+import { MODAL_TYPE, TRIP_TYPE } from '../../scenes/search/SearchConstants';
 
 type Props = {|
   +tripType: string,
