@@ -4,7 +4,9 @@
   "private": true,
   "main": "index.js",
   "peerDependencies": {
-    "intl": "^",
-    "expo-localization": "^"
+    "intl": "^"
+  },
+  "dependencies": {
+    "@kiwicom/margarita-device": "^0"
   }
 }
