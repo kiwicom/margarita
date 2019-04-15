@@ -16,7 +16,10 @@ import {
   type TripTypes,
 } from '@kiwicom/margarita-config';
 
-import { withSearchContext, type SearchContextState } from './SearchContext';
+import {
+  withSearchContext,
+  type SearchContextState,
+} from '../../scenes/search/SearchContext';
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
 

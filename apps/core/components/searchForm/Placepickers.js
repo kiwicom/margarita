@@ -20,8 +20,8 @@ import {
   type SearchContextState,
   type ModalTypes,
   type Location,
-} from './SearchContext';
-import { MODAL_TYPE } from './SearchConstants';
+} from '../../scenes/search/SearchContext';
+import { MODAL_TYPE } from '../../scenes/search/SearchConstants';
 import PickersWrapper from './PickersWrapper';
 
 type Props = {|

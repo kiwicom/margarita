@@ -4,14 +4,14 @@ import * as React from 'react';
 import { Modal, Select, PassengersInputs } from '@kiwicom/margarita-components';
 import { TRIP_TYPES } from '@kiwicom/margarita-config';
 
-import { MODAL_TYPE, TRIP_TYPE } from './SearchConstants';
+import { MODAL_TYPE, TRIP_TYPE } from '../../scenes/search/SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
   type ModalTypes,
   type PassengersData,
   type Location,
-} from './SearchContext';
+} from '../../scenes/search/SearchContext';
 import PlacePicker from './PlacePicker/PlacePickerRenderer';
 
 type Props = {|

@@ -12,13 +12,13 @@ import { debounce } from '@kiwicom/margarita-utils';
 import { DEBOUNCE_TIME } from '@kiwicom/margarita-config';
 
 import NotFound from './NotFound';
-import { MODAL_TYPE } from '../SearchConstants';
+import { MODAL_TYPE } from '../../../scenes/search/SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
   type Location,
   type LocationSearchType,
-} from '../SearchContext';
+} from '../../../scenes/search/SearchContext';
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 import {
   mapOptionToLocation,
