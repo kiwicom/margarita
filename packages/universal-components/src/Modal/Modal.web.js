@@ -77,8 +77,10 @@ const styles = StyleSheet.create({
     zIndex: parseInt(defaultTokens.zIndexModal, 10),
   },
   backdrop: {
-    position: 'absolute',
     height: '100%',
     width: '100%',
+    web: {
+      position: 'fixed',
+    },
   },
 });
