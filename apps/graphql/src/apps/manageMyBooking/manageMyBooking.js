@@ -61,6 +61,8 @@ export type HoldBags = {|
   +third: number,
 |};
 
+export type PassengerTitle = 'Mr' | 'mr' | 'Ms' | 'ms';
+
 export type Passenger = {|
   +bags?: $ReadOnlyArray<Bag>,
   +birthday: string,
@@ -71,7 +73,7 @@ export type Passenger = {|
   +cardNumber?: string,
   +holdBags?: $ReadOnlyArray<HoldBags>,
   +expiration?: string,
-  +title: 'Mr' | 'Ms',
+  +title: PassengerTitle,
   +lastname: string,
   +nationality: string,
   +visaRequired?: boolean,
