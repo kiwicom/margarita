@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, View, Platform } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
@@ -12,11 +12,17 @@ import {
   type TripTypes,
 } from '@kiwicom/margarita-config';
 import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-device';
+import {
   withNavigation,
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
 
+import SearchForm from '../../components/searchForm/SearchForm';
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
 import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQuery.graphql';
 import ResultsList from './ResultsList';
@@ -27,6 +33,7 @@ import {
   type SearchContextState,
 } from '../search/SearchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
+import type { SearchParameters } from '../search/Search';
 
 type Props = {|
   +navigation: Navigation,
@@ -42,6 +49,8 @@ type Props = {|
   +infants: string | number,
   +bags: string | number,
   +sortBy: string,
+  +layout: number,
+  +onSubmit?: SearchParameters => void,
 |};
 
 class Results extends React.Component<Props> {
@@ -110,6 +119,7 @@ class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      onSubmit,
     } = this.props;
 
     const getFormattedDate = (dates: $ReadOnlyArray<string>) => {
@@ -144,21 +154,34 @@ class Results extends React.Component<Props> {
         input: this.parseSearchParametersByType(tripType),
       },
     };
+    const desktopLayout = this.props.layout >= LAYOUT.desktop;
     return (
       <SafeAreaView style={styles.container}>
-        <SearchParamsSummary
-          tripType={tripType}
-          departure={{
-            city: travelFromName,
-            localizedDate: getFormattedDate([dateFrom, dateTo]),
-          }}
-          arrival={{
-            city: travelToName,
-            localizedDate: returnDateFrom
-              ? getFormattedDate([returnDateFrom, returnDateTo])
-              : '',
-          }}
-        />
+        {Platform.OS === 'web' ? (
+          <View
+            style={[
+              styles.searchFormContainer,
+              desktopLayout && styles.desktopSearchForm,
+            ]}
+          >
+            <SearchForm onSubmit={onSubmit} />
+          </View>
+        ) : (
+          <SearchParamsSummary
+            tripType={tripType}
+            departure={{
+              city: travelFromName,
+              localizedDate: getFormattedDate([dateFrom, dateTo]),
+            }}
+            arrival={{
+              city: travelToName,
+              localizedDate: returnDateFrom
+                ? getFormattedDate([returnDateFrom, returnDateTo])
+                : '',
+            }}
+          />
+        )}
+
         <View style={styles.resultContainer}>
           <SortTabsWrapper />
           <QueryComponent {...props} />
@@ -181,10 +204,25 @@ const styles = StyleSheet.create({
     },
     justifyContent: 'flex-start',
   },
+  searchFormContainer: {
+    width: '100%',
+    padding: parseInt(defaultTokens.spaceMedium, 10),
+  },
+  desktopSearchForm: {
+    web: {
+      paddingHorizontal: 125,
+    },
+  },
 });
 
 const select = ({ sortBy }: SearchContextState) => ({
   sortBy,
 });
 
-export default withNavigation(withSearchContext(select)(Results));
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
+});
+
+export default withLayoutContext(layoutSelect)(
+  withNavigation(withSearchContext(select)(Results)),
+);

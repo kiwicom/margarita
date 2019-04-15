@@ -1,39 +1,20 @@
 // @flow
 
 import * as React from 'react';
-import { View, Platform } from 'react-native';
-import { StyleSheet, Button, Icon } from '@kiwicom/universal-components';
-import {
-  Illustration,
-  withAlertContext,
-  type AlertContextState,
-  type AlertContent,
-} from '@kiwicom/margarita-components';
+import { View } from 'react-native';
+import { StyleSheet } from '@kiwicom/universal-components';
+import { Illustration } from '@kiwicom/margarita-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import {
-  withNavigation,
-  Routes,
-  type Navigation,
-} from '@kiwicom/margarita-navigation';
-import format from 'date-fns/format';
 import {
   withLayoutContext,
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-device';
-import { BASIC_ISO_DATE_FORMAT, TRIP_TYPES } from '@kiwicom/margarita-config';
 
-import {
-  withSearchContext,
-  type SearchContextState,
-  type Location,
-} from './SearchContext';
-import Placepickers from './Placepickers';
-import Datepickers from './Datepickers';
-import SearchModal from './SearchModal';
-import SearchFormModes from './SearchFormModes';
+import type { Location } from './SearchContext';
+import SearchForm from '../../components/searchForm/SearchForm';
 
-type SearchParameters = {|
+export type SearchParameters = {|
   +dateFrom: string,
   +dateTo: string,
   +returnDateFrom: string,
@@ -47,100 +28,12 @@ type SearchParameters = {|
   +bags: number,
 |};
 
-type Props = {
-  +navigation: Navigation,
-  +travelFrom: ?$ReadOnlyArray<Location>,
-  +travelTo: ?$ReadOnlyArray<Location>,
-  +dateFrom: Date,
-  +dateTo: Date,
-  +returnDateFrom: Date,
-  +returnDateTo: Date,
-  +tripType: string,
-  +adults: number,
-  +infants: number,
-  +bags: number,
+type Props = {|
   +layout: number,
-  +setAlertContent: (alertContent: AlertContent | null) => void,
   +onSubmit?: SearchParameters => void,
-};
+|};
 
 class Search extends React.Component<Props> {
-  static navigationOptions = {
-    header: null,
-  };
-
-  convertLocationsToParams = (locations, field) => {
-    if (Array.isArray(locations)) {
-      return locations.reduce((acc, location, index) => {
-        const prefix = index > 0 ? ',' : '';
-        const locationField = location[field] ?? '';
-        return `${acc}${prefix}${locationField}`;
-      }, '');
-    }
-    return '';
-  };
-
-  handleSubmitPress = () => {
-    const {
-      travelFrom,
-      travelTo,
-      tripType,
-      adults,
-      infants,
-      bags,
-      onSubmit,
-    } = this.props;
-    if (travelFrom == null) {
-      this.props.setAlertContent({
-        message: 'Please fill this form completely before you proceed',
-      });
-    } else {
-      const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
-      const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
-      const returnDateFrom = format(
-        this.props.returnDateFrom,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      const returnDateTo = format(
-        this.props.returnDateTo,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      if (onSubmit != null) {
-        onSubmit({
-          dateFrom,
-          dateTo,
-          returnDateFrom,
-          returnDateTo,
-          tripType,
-          travelFrom,
-          travelTo,
-          sort: 'QUALITY',
-          adults,
-          infants,
-          bags,
-        });
-      }
-      this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: this.convertLocationsToParams(travelFrom, 'id'),
-        travelTo: this.convertLocationsToParams(travelTo, 'id'),
-        travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
-        travelToName: this.convertLocationsToParams(travelTo, 'name'),
-        sort: 'QUALITY',
-        adults,
-        infants,
-        bags,
-        dateFrom,
-        dateTo,
-        ...(tripType === TRIP_TYPES.RETURN
-          ? {
-              returnDateFrom,
-              returnDateTo,
-            }
-          : {}),
-      });
-    }
-  };
-
   render() {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
 
@@ -150,27 +43,9 @@ class Search extends React.Component<Props> {
           <View style={styles.illustrationWrapper}>
             <Illustration name="Boarding" style={styles.boardingIllustration} />
           </View>
-          <SearchFormModes />
-
-          <View style={desktopLayout && styles.inputsDesktop}>
-            <Placepickers />
-            <Datepickers />
-
-            <View
-              style={[styles.bottom, desktopLayout && styles.bottomDesktop]}
-            >
-              <Button
-                onPress={this.handleSubmitPress}
-                label="Search"
-                rightIcon={
-                  Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
-                }
-              />
-            </View>
-          </View>
+          <SearchForm onSubmit={this.props.onSubmit} />
           <View style={styles.bottomSpacer} />
         </View>
-        <SearchModal />
       </View>
     );
   }
@@ -201,22 +76,6 @@ const styles = StyleSheet.create({
       maxWidth: 1100,
     },
   },
-  inputsDesktop: {
-    web: {
-      flexDirection: 'row',
-    },
-  },
-  bottom: {
-    marginTop: parseInt(defaultTokens.spaceXSmall, 10),
-    web: {
-      marginTop: 0,
-    },
-  },
-  bottomDesktop: {
-    web: {
-      width: 130,
-    },
-  },
   illustrationWrapper: {
     flex: 5,
     justifyContent: 'flex-end',
@@ -245,40 +104,4 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
   layout,
 });
 
-const selectSearchContextState = ({
-  travelFrom,
-  travelTo,
-  dateFrom,
-  dateTo,
-  returnDateFrom,
-  returnDateTo,
-  tripType,
-  adults,
-  infants,
-  bags,
-}: SearchContextState) => ({
-  travelFrom,
-  travelTo,
-  dateFrom,
-  dateTo,
-  returnDateFrom,
-  returnDateTo,
-  tripType,
-  adults,
-  infants,
-  bags,
-});
-
-const selectAlertContextState = ({
-  actions: { setAlertContent },
-}: AlertContextState) => ({
-  setAlertContent,
-});
-
-export default withNavigation(
-  withLayoutContext(layoutSelect)(
-    withAlertContext(selectAlertContextState)(
-      withSearchContext(selectSearchContextState)(Search),
-    ),
-  ),
-);
+export default withLayoutContext(layoutSelect)(Search);
