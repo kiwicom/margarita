@@ -3,7 +3,7 @@
 import { GraphQLObjectType, GraphQLList } from 'graphql';
 
 import BookingInterface, { commonFields } from './BookingInterface';
-import type { Booking } from '../../Booking';
+import type { Booking } from '../../manageMyBooking';
 import GraphQLSector from '../../../common/types/outputs/Sector';
 import FromToInterface from '../../../common/types/outputs/FromToInterface';
 

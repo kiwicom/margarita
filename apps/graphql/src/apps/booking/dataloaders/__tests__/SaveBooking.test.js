@@ -1,15 +1,12 @@
 // @flow
 
-import type {
-  HoldBags,
-  Passenger,
-  SaveBookingPayloadType,
-} from '../../Booking';
+import type { HoldBags, SaveBookingPayloadType } from '../../Booking';
 import {
   parseParameters,
   parsePassengers,
   parseHoldBags,
 } from '../SaveBooking';
+import type { Passenger } from '../../../manageMyBooking/manageMyBooking';
 
 const HoldBagsParam: Array<HoldBags> = [
   { flightID: '341202495', first: 1, second: 1, third: 0 },

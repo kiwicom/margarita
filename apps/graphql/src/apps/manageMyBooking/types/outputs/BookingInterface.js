@@ -10,7 +10,7 @@ import {
 import globalID from '@kiwicom/graphql-global-id';
 
 import GraphQLRouteStop from '../../../common/types/outputs/RouteStop';
-import type { Booking, Bag } from '../../Booking';
+import type { Booking, Bag } from '../../manageMyBooking';
 import GraphQLBookingType from '../enums/BookingType';
 import GraphQLContactDetails from './ContactDetails';
 import GraphQLPassenger from './Passenger';

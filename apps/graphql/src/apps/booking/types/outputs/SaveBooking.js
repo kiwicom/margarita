@@ -2,7 +2,7 @@
 
 import { GraphQLObjectType, GraphQLString, GraphQLList } from 'graphql';
 
-import Passenger from './Passenger';
+import Passenger from '../../../manageMyBooking/types/outputs/Passenger';
 import ItineraryInterface from '../../../itinerary/types/outputs/ItineraryInterface';
 
 const SaveBookingOutput = new GraphQLObjectType({

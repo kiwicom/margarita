@@ -3,7 +3,7 @@
 import { GraphQLInterfaceType } from 'graphql';
 
 import GraphQLRouteStop from './RouteStop';
-import GraphQLBookingType from '../../../booking/types/enums/BookingType';
+import GraphQLBookingType from '../../../manageMyBooking/types/enums/BookingType';
 
 export default new GraphQLInterfaceType({
   name: 'FromToInterface',

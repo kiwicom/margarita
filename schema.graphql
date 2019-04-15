@@ -154,10 +154,8 @@ type Carrier {
 }
 
 type ConfirmPaymentOutput {
-  """
-  Should be 0 (zero) that means the confirm_payment was successful, any other result means that something went wrong
-  """
-  status: Int
+  """Indicates whether the payment was successful"""
+  isSuccess: Boolean
 
   """The average price of the booking per passenger"""
   price: Float

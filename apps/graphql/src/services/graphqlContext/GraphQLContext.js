@@ -16,15 +16,15 @@ import createLocationLoader, {
   type Locations,
   type LocationInput,
 } from '../../apps/location/dataloaders/Locations';
-import bookingsLoader from '../../apps/booking/dataloaders/Bookings';
+import bookingsLoader from '../../apps/manageMyBooking/dataloaders/Bookings';
+import type { Booking } from '../../apps/manageMyBooking/manageMyBooking';
 import type {
-  Booking,
   SaveBookingOutputType,
   SaveBookingPayloadType,
   ConfirmPaymentOutputType,
   ConfirmPaymentPayloadType,
 } from '../../apps/booking/Booking';
-import bookingDetailLoader from '../../apps/booking/dataloaders/BookingDetail';
+import bookingDetailLoader from '../../apps/manageMyBooking/dataloaders/BookingDetail';
 import parseAcceptLanguage from '../helpers/parseAcceptLanguage';
 
 type LocaleType = {|

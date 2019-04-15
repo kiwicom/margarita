@@ -7,7 +7,7 @@ import {
   GraphQLNonNull,
 } from 'graphql';
 
-import PassengerTitle from '../enums/PassengerTitle';
+import PassengerTitle from '../../../manageMyBooking/types/enums/PassengerTitle';
 import HoldBags from './HoldBags';
 
 export default new GraphQLInputObjectType({
