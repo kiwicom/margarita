@@ -1,6 +1,6 @@
 // @flow
 
-import { getLocaleDashed } from '../GetDeviceLocale/GetDeviceLocale';
+import { getLocaleDashed } from '@kiwicom/margarita-device';
 
 import 'intl'; // Polyfill because of Android
 import 'intl/locale-data/complete';
