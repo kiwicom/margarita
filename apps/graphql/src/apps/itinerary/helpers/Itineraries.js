@@ -7,6 +7,7 @@ import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
 
 import type { ApiRouteItem } from '../Itinerary';
 import type { RouteStop, Sector, Segment } from '../../common/CommonTypes';
+import airlines from './airlines.json';
 
 export const differenceInMinutes = (
   from: ?(string | number),
@@ -37,10 +38,15 @@ export const mapVehicle = (type: ?string, uniqueNo: ?string) => ({
   uniqueNo: uniqueNo ?? null,
 });
 
-export const sanitizeCarrier = (routeItem: ?ApiRouteItem) => ({
-  name: null, // @TODO - value is currently missing from API endpoint response
-  code: routeItem?.airline ?? null,
-});
+export const sanitizeCarrier = (routeItem: ?ApiRouteItem) => {
+  // @TODO - value is currently missing from API endpoint response
+  // JSON file is used from https://github.com/BesrourMS/Airlines/blob/master/airlines.json
+  const airline = airlines.find(airline => airline.iata === routeItem?.airline);
+  return {
+    name: airline?.name,
+    code: routeItem?.airline,
+  };
+};
 
 export const getItineraryType = (routes: ?Array<Array<string>>) => {
   if (routes == null) {

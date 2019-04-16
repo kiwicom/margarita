@@ -34,14 +34,14 @@ describe('sanitizeCarrier', () => {
   };
   it('returns proper structure of the Carrier object', () => {
     expect(sanitizeCarrier(segment)).toMatchObject({
-      name: null,
+      name: 'Vueling Airlines',
       code: 'VY',
     });
   });
   it('returns empty structure of the Carrier object', () => {
     expect(sanitizeCarrier()).toMatchObject({
-      name: null,
-      code: null,
+      name: undefined,
+      code: undefined,
     });
   });
 });
