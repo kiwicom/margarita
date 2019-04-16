@@ -5,11 +5,6 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { FlatList } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
-import {
-  withNavigation,
-  Routes,
-  type Navigation,
-} from '@kiwicom/margarita-navigation';
 
 import { ItineraryCard } from '../../components/ItineraryCard';
 import type { ResultsList_data as ResultsListType } from './__generated__/ResultsList_data.graphql';
@@ -17,7 +12,7 @@ import EmptyResults from './EmptyResults';
 
 type Props = {|
   +data: ?ResultsListType,
-  +navigation: Navigation,
+  +onBookPress: (?string) => void,
 |};
 
 type ResultItemType = {|
@@ -29,15 +24,11 @@ type ResultItemType = {|
 |};
 
 class ResultsList extends React.Component<Props> {
-  onBookPress = bookingToken => {
-    this.props.navigation.navigate(Routes.RESULT_DETAIL, {
-      bookingToken,
-    });
-  };
-
   resultItem = ({ item }: {| +item: ResultItemType |}) => {
     if (item.node) {
-      return <ItineraryCard data={item.node} onBookPress={this.onBookPress} />;
+      return (
+        <ItineraryCard data={item.node} onBookPress={this.props.onBookPress} />
+      );
     }
     return null;
   };
@@ -60,7 +51,7 @@ class ResultsList extends React.Component<Props> {
   }
 }
 
-export default createFragmentContainer(withNavigation(ResultsList), {
+export default createFragmentContainer(ResultsList, {
   data: graphql`
     fragment ResultsList_data on ItineraryInterfaceConnection {
       edges {

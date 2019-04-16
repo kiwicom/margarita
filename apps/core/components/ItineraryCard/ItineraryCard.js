@@ -22,7 +22,7 @@ import TripSectorReturn from './TripSectorReturn';
 
 type Props = {|
   +data: ItineraryCardType,
-  +onBookPress: () => void,
+  +onBookPress: (?string) => void,
 |};
 
 type State = {|

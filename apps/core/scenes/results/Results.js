@@ -11,6 +11,11 @@ import {
   TRIP_TYPES,
   type TripTypes,
 } from '@kiwicom/margarita-config';
+import {
+  withNavigation,
+  Routes,
+  type Navigation,
+} from '@kiwicom/margarita-navigation';
 
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
 import type { OneWayResultsQueryResponse } from './__generated__/OneWayResultsQuery.graphql';
@@ -24,6 +29,7 @@ import {
 import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
+  +navigation: Navigation,
   +travelFrom: string,
   +travelTo: string,
   +travelFromName: string,
@@ -34,15 +40,25 @@ type Props = {|
   +returnDateTo: string,
   +adults: string | number,
   +infants: string | number,
+  +bags: string | number,
   +sortBy: string,
 |};
 
 class Results extends React.Component<Props> {
+  handleBookPress = (bookingToken: ?string) => {
+    const { adults, infants } = this.props;
+    this.props.navigation.navigate(Routes.RESULT_DETAIL, {
+      adults,
+      infants,
+      bookingToken,
+    });
+  };
+
   renderInner = (
     props: ReturnResultsQueryResponse | OneWayResultsQueryResponse,
   ) => {
     const { searchData } = props;
-    return <ResultsList data={searchData} />;
+    return <ResultsList data={searchData} onBookPress={this.handleBookPress} />;
   };
 
   parseSearchParametersByType = (type: TripTypes) => {
@@ -171,4 +187,4 @@ const select = ({ sortBy }: SearchContextState) => ({
   sortBy,
 });
 
-export default withSearchContext(select)(Results);
+export default withNavigation(withSearchContext(select)(Results));

@@ -9,10 +9,16 @@ import { withPageRouter } from '../components/withPageRouter';
 import Layout from '../components/Layout';
 
 const resultDetail = ({ router }) => {
+  const { bookingToken, adults, infants } = router.query;
+  const params = {
+    bookingToken,
+    adults: parseInt(adults ?? 1, 10),
+    infants: parseInt(infants ?? 0, 10),
+  };
   return (
     <Layout>
       <View style={styles.container}>
-        <ResultDetail {...router.query} />
+        <ResultDetail {...params} />
       </View>
     </Layout>
   );

@@ -2,19 +2,21 @@
 
 import * as React from 'react';
 import { ResultDetail } from '@kiwicom/margarita-core';
-import { type NavigationScreenProp } from 'react-navigation';
-
-type NavigationParams = {|
-  +bookingToken: string,
-|};
 
 type Props = {|
-  +navigation: NavigationScreenProp<NavigationParams>,
+  +navigation: {|
+    +state: {|
+      +params: {|
+        +bookingToken: string,
+        +adults: number,
+        +infants: number,
+      |},
+    |},
+  |},
 |};
 
 export default class ResultDetailScreen extends React.Component<Props> {
   render() {
-    const bookingToken = this.props.navigation.getParam('bookingToken');
-    return <ResultDetail bookingToken={bookingToken} />;
+    return <ResultDetail {...this.props.navigation.state.params} />;
   }
 }
