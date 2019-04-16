@@ -8,6 +8,8 @@ import ResultDetailInner from './ResultDetailInner';
 
 type Props = {|
   +bookingToken: ?string,
+  +adults: ?number,
+  +infants: ?number,
 |};
 
 export default class ResultDetail extends React.Component<Props> {
@@ -16,6 +18,7 @@ export default class ResultDetail extends React.Component<Props> {
   };
 
   render() {
+    const { bookingToken, adults, infants } = this.props;
     return (
       <QueryRenderer
         query={graphql`
@@ -25,9 +28,9 @@ export default class ResultDetail extends React.Component<Props> {
         `}
         variables={{
           input: {
-            bookingToken: this.props.bookingToken,
+            bookingToken,
             bags: 0, // @TODO - use real data from search context
-            passengers: { adults: 1 }, // @TODO - use real data
+            passengers: { adults, infants },
           },
         }}
         render={this.renderInner}
