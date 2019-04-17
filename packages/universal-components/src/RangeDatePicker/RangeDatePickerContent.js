@@ -59,12 +59,15 @@ export default class RangeDatePickerContent extends React.Component<
             renderItem={this.renderMonthItem}
             extraData={this.props.selectedDates}
             initialNumToRender={2}
+            style={styles.flatList}
           />
         )}
       </View>
     );
   }
 }
+
+const scrollBarWidth = 17;
 
 const styles = StyleSheet.create({
   container: {
@@ -75,5 +78,8 @@ const styles = StyleSheet.create({
   },
   monthsContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
+  },
+  flatList: {
+    web: { paddingEnd: scrollBarWidth },
   },
 });
