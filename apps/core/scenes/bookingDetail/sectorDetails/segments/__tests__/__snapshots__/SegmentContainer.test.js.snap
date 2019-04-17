@@ -2,41 +2,27 @@
 
 exports[`renders 1`] = `
 Object {
-  "output": <React.Fragment>
-    <Touchable
-      accessibilityComponentType="button"
-      accessibilityTraits="button"
-      borderlessRipple={false}
-      disabled={false}
-      onPress={[Function]}
-      rippleColor="rgba(0, 0, 0, 0.32)"
-    >
-      <AnimatedComponent
-        style={
-          Array [
-            Object {
-              "alignSelf": "center",
-              "flex": 1,
-            },
-            Object {
-              "transform": Array [
-                Object {
-                  "rotate": "0deg",
-                },
-                Object {
-                  "perspective": 1000,
-                },
-              ],
-            },
-          ]
-        }
-      >
-        <Icon
-          color="#00a991"
-          name="chevron-down"
+  "output": <SectorDetailsWrapper>
+    <BookingTypeRenderer
+      multicityComponent={
+        <ForwardRef(Relay(SectorsListMulticity))
+          data={null}
         />
-      </AnimatedComponent>
-    </Touchable>
-  </React.Fragment>,
+      }
+      oneWayComponent={
+        <ForwardRef(Relay(SectorsListOneWay))
+          data={null}
+        />
+      }
+      returnComponent={
+        <ForwardRef(Relay(SectorsListReturn))
+          data={null}
+        />
+      }
+    />
+    <ForwardRef(Relay(SegmentMap))
+      data={null}
+    />
+  </SectorDetailsWrapper>,
 }
 `;

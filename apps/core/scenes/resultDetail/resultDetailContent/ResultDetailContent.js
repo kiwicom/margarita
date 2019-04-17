@@ -17,10 +17,11 @@ import { formatPrice } from '@kiwicom/margarita-localization';
 
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
-import type { ResultDetailContent_data as ResultDetailContentType } from './__generated__/ResultDetailContent_data.graphql';
+import type { ResultDetailContent_itinerary as ResultDetailContentType } from './__generated__/ResultDetailContent_itinerary.graphql';
+import ItinerarySectorDetails from '../../../components/sectorDetails/ItinerarySectorDetails';
 
 type Props = {|
-  +data: ?ResultDetailContentType,
+  +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
 |};
 
@@ -59,12 +60,13 @@ class ResultDetailContent extends React.Component<Props, State> {
 
   render() {
     const localizedPrice = formatPrice(
-      this.props.data?.price?.amount,
-      this.props.data?.price?.currency,
+      this.props.itinerary?.price?.amount,
+      this.props.itinerary?.price?.currency,
     );
     return (
       <>
         <ContentContainer>
+          <ItinerarySectorDetails itinerary={this.props.itinerary} />
           <ResultDetailPassenger />
           <ContactDetailsForm
             onChangeEmail={this.handleChangeEmail}
@@ -73,7 +75,7 @@ class ResultDetailContent extends React.Component<Props, State> {
           />
         </ContentContainer>
         <PriceSummary
-          isLoading={!this.props.data?.isChecked}
+          isLoading={!this.props.itinerary?.isChecked}
           onButtonPress={this.handleContinue}
           renderCollapseContent={
             <>
@@ -107,13 +109,14 @@ class ResultDetailContent extends React.Component<Props, State> {
 }
 
 export default createFragmentContainer(withNavigation(ResultDetailContent), {
-  data: graphql`
-    fragment ResultDetailContent_data on ItineraryInterface {
+  itinerary: graphql`
+    fragment ResultDetailContent_itinerary on ItineraryInterface {
       isChecked
       price {
         currency
         amount
       }
+      ...ItinerarySectorDetails_itinerary
     }
   `,
 });
