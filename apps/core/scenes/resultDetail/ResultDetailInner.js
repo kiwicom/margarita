@@ -82,7 +82,7 @@ class ResultDetailInner extends React.Component<Props> {
         />
       );
     }
-    return <ResultDetailContent data={this.props.data?.checkItinerary} />;
+    return <ResultDetailContent itinerary={this.props.data?.checkItinerary} />;
   }
 }
 
@@ -95,7 +95,7 @@ export default createRefetchContainer(
         checkItinerary(input: $input) {
           isChecked
           isValid
-          ...ResultDetailContent_data
+          ...ResultDetailContent_itinerary
         }
       }
     `,

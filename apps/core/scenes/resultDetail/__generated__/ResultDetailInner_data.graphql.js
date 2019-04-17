@@ -8,14 +8,14 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type ResultDetailContent_data$ref = any;
+type ResultDetailContent_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ResultDetailInner_data$ref: FragmentReference;
 export type ResultDetailInner_data = {|
   +checkItinerary: ?{|
     +isChecked: ?boolean,
     +isValid: ?boolean,
-    +$fragmentRefs: ResultDetailContent_data$ref,
+    +$fragmentRefs: ResultDetailContent_itinerary$ref,
   |},
   +$refType: ResultDetailInner_data$ref,
 |};
@@ -68,7 +68,7 @@ const node/*: ReaderFragment*/ = {
         },
         {
           "kind": "FragmentSpread",
-          "name": "ResultDetailContent_data",
+          "name": "ResultDetailContent_itinerary",
           "args": null
         }
       ]
@@ -76,5 +76,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '7ef96791fb3e0c95284e40ec183ef080';
+(node/*: any*/).hash = '09baa11b372dd55aa4e221d466f266b8';
 module.exports = node;

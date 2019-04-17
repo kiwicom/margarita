@@ -75,3 +75,6 @@ export { SortTabs } from './src/sortTabs';
 export {
   default as ContentContainer,
 } from './src/contentContainer/ContentContainer';
+export {
+  default as SectorDetailsWrapper,
+} from './src/sectorDetailsWrapper/SectorDetailsWrapper';
