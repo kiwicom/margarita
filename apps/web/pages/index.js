@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Search, SearchContextProvider } from '@kiwicom/margarita-core';
+import { Search } from '@kiwicom/margarita-core';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { withRouter, type Router } from 'next/router';
 import qs from 'qs';
@@ -25,9 +25,7 @@ function IndexPage({ router }: Props) {
   return (
     <Layout>
       <View style={styles.page}>
-        <SearchContextProvider {...qs.parse(router.query)}>
-          <Search onSubmit={onSubmit} />
-        </SearchContextProvider>
+        <Search onSubmit={onSubmit} />
       </View>
     </Layout>
   );
