@@ -3,6 +3,7 @@
 import stringify from 'json-stable-stringify';
 import qs from 'querystring';
 import { OptimisticDataloader } from '@kiwicom/graphql-utils';
+import { head } from 'ramda';
 
 import fetch from '../../../services/fetch/tequilaFetch';
 import { type Location, type ApiLocation } from '../Location';
@@ -69,6 +70,25 @@ function sanitizeLocations(locations: $ReadOnlyArray<ApiLocation>) {
 }
 
 const fetchLocations = async (params: $ReadOnlyArray<LocationInput>) => {
+  const first = head(params);
+  if (first?.code !== undefined) {
+    // if code is defined, query by id
+    // TODO: Split into two dataloaders, this is getting smelly
+    const res = await fetch(
+      `/locations/id?limit=${params.length}&` +
+        params
+          .map((param: LocationInput) => {
+            if (param.code !== undefined) {
+              const code = param.code ?? '';
+              return `id=${code}`;
+            }
+            return '';
+          })
+          .join('&'),
+    );
+
+    return res.locations.map(location => sanitizeLocations([location]));
+  }
   const data = await Promise.all(
     params.map(param => {
       const locationsTypes = param.types ? param.types : [];
