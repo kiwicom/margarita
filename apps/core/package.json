@@ -15,7 +15,8 @@
     "@kiwicom/margarita-localization": "^0",
     "@kiwicom/margarita-device": "^0",
     "geolib": "^2.0.24",
-    "memoize-one": "^5.0.0"
+    "memoize-one": "^5.0.0",
+    "qs": "^6.7.0"
   },
   "peerDependencies": {
     "date-fns": "^",

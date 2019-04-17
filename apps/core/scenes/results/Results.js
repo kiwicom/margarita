@@ -10,6 +10,7 @@ import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   type TripTypes,
+  BASIC_ISO_DATE_FORMAT,
 } from '@kiwicom/margarita-config';
 import {
   withLayoutContext,
@@ -32,22 +33,23 @@ import ReturnResultsQuery from './ReturnResultsQuery';
 import {
   withSearchContext,
   type SearchContextState,
+  type Location,
 } from '../search/SearchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
   +navigation: Navigation,
-  +travelFrom: string,
-  +travelTo: string,
+  +travelFrom: $ReadOnlyArray<Location>,
+  +travelTo: $ReadOnlyArray<Location>,
   +travelFromName: string,
   +travelToName: string,
-  +dateFrom: string,
-  +dateTo: string,
-  +returnDateFrom: string,
-  +returnDateTo: string,
-  +adults: string | number,
-  +infants: string | number,
-  +bags: string | number,
+  +dateFrom: Date,
+  +dateTo: Date,
+  +returnDateFrom: Date,
+  +returnDateTo: Date,
+  +adults: number,
+  +infants: number,
+  +bags: number,
   +sortBy: string,
   +layout: number,
 |};
@@ -89,20 +91,20 @@ class Results extends React.Component<Props> {
       sort: sortBy,
       itinerary: {
         origin: {
-          ids: [travelFrom],
+          ids: travelFrom.map(location => location.id),
         },
         destination: {
-          ids: [travelTo],
+          ids: travelTo.map(location => location.id),
         },
         outboundDate: {
-          start: dateFrom,
-          end: dateTo,
+          start: DateFNS.format(dateFrom, BASIC_ISO_DATE_FORMAT),
+          end: DateFNS.format(dateTo, BASIC_ISO_DATE_FORMAT),
         },
         ...(type === TRIP_TYPES.RETURN
           ? {
               inboundDate: {
-                start: returnDateFrom,
-                end: returnDateTo,
+                start: DateFNS.format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
+                end: DateFNS.format(returnDateTo, BASIC_ISO_DATE_FORMAT),
               },
             }
           : {}),
@@ -119,24 +121,26 @@ class Results extends React.Component<Props> {
       returnDateFrom,
       returnDateTo,
     } = this.props;
-
-    const getFormattedDate = (dates: $ReadOnlyArray<string>) => {
+    const getFormattedDate = (dates: $ReadOnlyArray<Date>) => {
+      const stringDates: $ReadOnlyArray<string> = dates.map(date =>
+        DateFNS.format(date, BASIC_ISO_DATE_FORMAT),
+      );
       if (
         DateFNS.isSameDay(
-          DateFNS.parseISO(dates[0]),
-          DateFNS.parseISO(dates[1]),
+          DateFNS.parseISO(stringDates[0]),
+          DateFNS.parseISO(stringDates[1]),
         )
       ) {
         return DateFNS.format(
-          DateFNS.parseISO(dates[0]),
+          DateFNS.parseISO(stringDates[0]),
           LONG_DAY_MONTH_FORMAT,
         );
       }
       return `${DateFNS.format(
-        DateFNS.parseISO(dates[0]),
+        DateFNS.parseISO(stringDates[0]),
         LONG_DAY_MONTH_FORMAT,
       )} - ${DateFNS.format(
-        DateFNS.parseISO(dates[1]),
+        DateFNS.parseISO(stringDates[1]),
         LONG_DAY_MONTH_FORMAT,
       )}`;
     };
@@ -213,7 +217,29 @@ const styles = StyleSheet.create({
   },
 });
 
-const select = ({ sortBy }: SearchContextState) => ({
+const select = ({
+  travelFrom,
+  travelTo,
+  dateFrom,
+  dateTo,
+  returnDateFrom,
+  returnDateTo,
+  tripType,
+  adults,
+  infants,
+  bags,
+  sortBy,
+}: SearchContextState) => ({
+  travelFrom,
+  travelTo,
+  dateFrom,
+  dateTo,
+  returnDateFrom,
+  returnDateTo,
+  tripType,
+  adults,
+  infants,
+  bags,
   sortBy,
 });
 

@@ -2,19 +2,17 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Results, SearchContextProvider } from '@kiwicom/margarita-core';
+import { Results } from '@kiwicom/margarita-core';
 import { StyleSheet } from '@kiwicom/universal-components';
 
 import { withPageRouter } from '../components/withPageRouter';
 import Layout from '../components/Layout';
 
-const results = ({ router }) => {
+const results = () => {
   return (
     <Layout>
       <View style={styles.container}>
-        <SearchContextProvider>
-          <Results {...router.query} />
-        </SearchContextProvider>
+        <Results />
       </View>
     </Layout>
   );

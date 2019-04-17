@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import qs from 'qs';
 import {
   LAYOUT,
   withLayoutContext,
@@ -103,8 +104,8 @@ class SearchForm extends React.Component<Props> {
         });
       }
       this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: this.convertLocationsToParams(travelFrom, 'id'),
-        travelTo: this.convertLocationsToParams(travelTo, 'id'),
+        travelFrom: qs.stringify(travelFrom),
+        travelTo: qs.stringify(travelTo),
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         sort: 'QUALITY',
