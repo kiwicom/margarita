@@ -5,7 +5,7 @@ import { type ConnectionArguments } from 'graphql-relay';
 import { connectionFromArray, connectionArgs } from '@kiwicom/graphql-utils';
 
 import type { GraphqlContextType } from '../../../services/graphqlContext/GraphQLContext';
-import type { LocationTypeInput } from '../dataloaders/Locations';
+import type { LocationTypeInput } from '../../common/types/inputs/LocationTypeInput';
 import type { Location } from '../Location';
 import GraphQLocationsResult from '../types/outputs/LocationsResult';
 import LocationsByTermInput from '../types/inputs/LocationsByTermInput';
@@ -29,7 +29,7 @@ export default {
   resolve: (_: mixed, args: Args, { dataLoader }: GraphqlContextType) => {
     return catchDataloaderError(async () => {
       const { term, types } = args.input;
-      const locations = await dataLoader.locations.load({
+      const locations = await dataLoader.locations.byTerm.load({
         term,
         types,
       });

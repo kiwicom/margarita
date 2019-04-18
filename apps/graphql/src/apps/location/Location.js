@@ -21,6 +21,8 @@ export type Location = {|
   +type: ?string,
 |};
 
+export type Locations = $ReadOnlyArray<Location>;
+
 type ApiLocationArea = {|
   id: ?string,
   name: ?string,

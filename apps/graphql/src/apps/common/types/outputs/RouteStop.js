@@ -28,11 +28,8 @@ export default new GraphQLObjectType({
         if (code == null) {
           return null;
         }
-        const stops = await dataLoader.locations.load({ code });
-        if (!Array.isArray(stops) || stops.length < 1) {
-          return null;
-        }
-        return stops[0];
+        const stop = await dataLoader.locations.byID.load({ code });
+        return stop;
       },
     },
   },
