@@ -1,21 +1,13 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
-import {
-  StyleSheet,
-  designTokens,
-  ExtendedTouchable,
-} from '@kiwicom/universal-components';
 import {
   TableRow,
   TableRowDivider,
   CreditCardPaymentForm,
-  Text,
   ContentContainer,
 } from '@kiwicom/margarita-components';
 import { withNavigation, type Navigation } from '@kiwicom/margarita-navigation';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { PriceSummary } from '../../components/priceSummary';
 
@@ -74,10 +66,6 @@ class Payment extends React.Component<Props, State> {
     this.setState({ cardholdersName });
   };
 
-  handleRedeemPromoCodePress = () => {
-    // @TODO
-  };
-
   handleChangeCreditCardSave = () => {
     this.setState(state => ({ isCreditCardSaved: !state.isCreditCardSaved }));
   };
@@ -115,13 +103,6 @@ class Payment extends React.Component<Props, State> {
             yearOfExpiry={yearOfExpiry}
             onSecurityCodeHelpPress={this.handleSecurityCodeHelpPress}
           />
-          <View style={styles.centeredContainer}>
-            <ExtendedTouchable onPress={this.handleRedeemPromoCodePress}>
-              <Text style={styles.redeemPromoCode} weight="bold">
-                Redeem promo code
-              </Text>
-            </ExtendedTouchable>
-          </View>
         </ContentContainer>
 
         <PriceSummary
@@ -129,13 +110,9 @@ class Payment extends React.Component<Props, State> {
           onButtonPress={this.handleReview}
           renderCollapseContent={
             <>
-              <TableRow label="1x Passenger" value="123 Kč" />
-              <TableRow label="1x Cabin bag" value="123 Kč" />
-              <TableRow label="1x Personal item" value="123 Kč" />
-              <TableRowDivider />
-              <TableRow label="Price" value="123 Kč" />
-              <TableRow label="Service fee" value="123 Kč" />
-              <TableRow label="Other fees" value="123 Kč" />
+              <TableRow label="1x Passenger" value="€100" />
+              <TableRow label="1x Cabin bag" value="€100" />
+              <TableRow label="1x Personal item" value="€100" />
               <TableRowDivider />
             </>
           }
@@ -152,20 +129,5 @@ class Payment extends React.Component<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  centeredContainer: {
-    web: {
-      alignSelf: 'center',
-      maxWidth: designTokens.widthScreenNormal,
-      alignItems: 'flex-start',
-    },
-  },
-  redeemPromoCode: {
-    color: defaultTokens.colorTextButtonLinkPrimary,
-    marginTop: parseFloat(defaultTokens.spaceMedium),
-    marginHorizontal: parseFloat(defaultTokens.spaceLarge),
-  },
-});
 
 export default withNavigation(Payment);

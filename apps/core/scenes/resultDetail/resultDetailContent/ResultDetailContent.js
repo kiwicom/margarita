@@ -50,10 +50,6 @@ class ResultDetailContent extends React.Component<Props, State> {
     this.setState({ phoneCountryCode });
   };
 
-  handleAddPromoCode = () => {
-    // @TODO
-  };
-
   handleContinue = () => {
     this.props.navigation.navigate(Routes.PAYMENT);
   };
@@ -79,18 +75,9 @@ class ResultDetailContent extends React.Component<Props, State> {
           onButtonPress={this.handleContinue}
           renderCollapseContent={
             <>
-              <TableRow label="1x Passenger" value="123 Kč" />
-              <TableRow label="1x Cabin bag" value="123 Kč" />
-              <TableRow label="1x Personal item" value="123 Kč" />
-              <TableRowDivider />
-              <TableRow label="Price" value="123 Kč" />
-              <TableRow label="Service fee" value="123 Kč" />
-              <TableRow label="Other fees" value="123 Kč" />
-              <TableRow
-                label="Add a promo code"
-                onPress={this.handleAddPromoCode}
-                highlightedLabel
-              />
+              <TableRow label="1x Passenger" value="€100" />
+              <TableRow label="1x Cabin bag" value="€100" />
+              <TableRow label="1x Personal item" value="€100" />
               <TableRowDivider />
             </>
           }
