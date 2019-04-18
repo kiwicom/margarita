@@ -12,6 +12,7 @@ it('renders', () => {
   style={
     Object {
       "alignItems": "center",
+      "backgroundColor": "#fff",
       "flexDirection": "row",
       "height": 50,
       "justifyContent": "space-between",
