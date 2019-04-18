@@ -36,7 +36,7 @@ var v0 = [
 return {
   "kind": "Fragment",
   "name": "SectorInfoReturn_data",
-  "type": "BookingReturn",
+  "type": "ReturnInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -69,5 +69,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '6a0e54b1d1815b2d718178e3b024a2ad';
+(node/*: any*/).hash = '00b607093f2e52de1d5907b4319d1b04';
 module.exports = node;

@@ -5,8 +5,8 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type { SectorInfo_data as BookingType } from './__generated__/SectorInfo_data.graphql';
-import FromTo from '../../../components/fromTo/FromTo';
-import FromToWrapper from '../../../components/fromTo/FromToWrapper';
+import FromTo from '../fromTo/FromTo';
+import FromToWrapper from '../fromTo/FromToWrapper';
 import SectorDates from './SectorDates';
 
 type Props = {|

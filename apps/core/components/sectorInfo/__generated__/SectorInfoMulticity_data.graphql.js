@@ -23,7 +23,7 @@ export type SectorInfoMulticity_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "SectorInfoMulticity_data",
-  "type": "BookingMulticity",
+  "type": "MulticityInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -46,5 +46,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'c3e4446b6ac9881172f5079ca0bb76ec';
+(node/*: any*/).hash = 'bc095fe18cb352a0abd4e9e16c907311';
 module.exports = node;

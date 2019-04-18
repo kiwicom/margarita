@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9da79913e526447b29d7dc4171a91e18
+ * @relayHash f80c74b5a23bc8e0aa15393ca9e88cda
  */
 
 /* eslint-disable */
@@ -85,13 +85,13 @@ fragment Bag_data on Bag {
   quantity
 }
 
-fragment SectorInfoOneWay_data on BookingOneWay {
+fragment SectorInfoOneWay_data on OneWayInterface {
   sector {
     ...SectorInfo_data
   }
 }
 
-fragment SectorInfoReturn_data on BookingReturn {
+fragment SectorInfoReturn_data on ReturnInterface {
   ...FromTo_data
   inbound {
     ...SectorDates_data
@@ -101,7 +101,7 @@ fragment SectorInfoReturn_data on BookingReturn {
   }
 }
 
-fragment SectorInfoMulticity_data on BookingMulticity {
+fragment SectorInfoMulticity_data on MulticityInterface {
   sectors {
     ...SectorInfo_data
   }
@@ -452,7 +452,7 @@ fragment CityName_data on RouteStop {
 }
 
 fragment FromToIcon_data on FromToInterface {
-  type
+  __typename
 }
 */
 
@@ -476,21 +476,21 @@ v1 = [
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "type",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "name",
   "args": null,
   "storageKey": null
 },
 v4 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "id",
   "args": null,
   "storageKey": null
 },
@@ -503,8 +503,8 @@ v5 = {
   "concreteType": "LocationArea",
   "plural": false,
   "selections": [
-    (v4/*: any*/),
-    (v3/*: any*/)
+    (v3/*: any*/),
+    (v4/*: any*/)
   ]
 },
 v6 = {
@@ -524,7 +524,7 @@ v6 = {
       "storageKey": null
     },
     (v5/*: any*/),
-    (v3/*: any*/)
+    (v4/*: any*/)
   ]
 },
 v7 = {
@@ -556,14 +556,74 @@ v9 = {
   "args": null,
   "storageKey": null
 },
-v10 = {
+v10 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "departure",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": (v8/*: any*/)
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "arrival",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": (v8/*: any*/)
+  },
+  (v2/*: any*/),
+  (v9/*: any*/)
+],
+v11 = [
+  (v6/*: any*/)
+],
+v12 = [
+  (v7/*: any*/)
+],
+v13 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "departure",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": (v12/*: any*/)
+  },
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "arrival",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "RouteStop",
+    "plural": false,
+    "selections": (v12/*: any*/)
+  },
+  (v9/*: any*/)
+],
+v14 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "type",
+  "args": null,
+  "storageKey": null
+},
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "stopoverDuration",
   "args": null,
   "storageKey": null
 },
-v11 = [
+v16 = [
   (v7/*: any*/),
   {
     "kind": "LinkedField",
@@ -574,7 +634,7 @@ v11 = [
     "concreteType": "Location",
     "plural": false,
     "selections": [
-      (v4/*: any*/),
+      (v3/*: any*/),
       {
         "kind": "ScalarField",
         "alias": null,
@@ -582,7 +642,7 @@ v11 = [
         "args": null,
         "storageKey": null
       },
-      (v3/*: any*/),
+      (v4/*: any*/),
       {
         "kind": "LinkedField",
         "alias": null,
@@ -612,7 +672,7 @@ v11 = [
     ]
   }
 ],
-v12 = {
+v17 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "segments",
@@ -621,7 +681,7 @@ v12 = {
   "concreteType": "Segment",
   "plural": true,
   "selections": [
-    (v3/*: any*/),
+    (v4/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -630,7 +690,7 @@ v12 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v11/*: any*/)
+      "selections": (v16/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -640,7 +700,7 @@ v12 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v11/*: any*/)
+      "selections": (v16/*: any*/)
     },
     (v9/*: any*/),
     {
@@ -652,7 +712,7 @@ v12 = {
       "concreteType": "Carrier",
       "plural": false,
       "selections": [
-        (v4/*: any*/),
+        (v3/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -664,37 +724,11 @@ v12 = {
     }
   ]
 },
-v13 = [
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "departure",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "RouteStop",
-    "plural": false,
-    "selections": (v8/*: any*/)
-  },
-  {
-    "kind": "LinkedField",
-    "alias": null,
-    "name": "arrival",
-    "storageKey": null,
-    "args": null,
-    "concreteType": "RouteStop",
-    "plural": false,
-    "selections": (v8/*: any*/)
-  },
-  (v2/*: any*/),
-  (v9/*: any*/),
-  (v10/*: any*/),
-  (v12/*: any*/)
+v18 = [
+  (v15/*: any*/),
+  (v17/*: any*/)
 ],
-v14 = [
-  (v6/*: any*/)
-],
-v15 = [
-  (v7/*: any*/),
+v19 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -705,11 +739,12 @@ v15 = [
     "plural": false,
     "selections": [
       (v5/*: any*/),
-      (v3/*: any*/)
+      (v4/*: any*/)
     ]
   }
 ],
-v16 = [
+v20 = [
+  (v15/*: any*/),
   {
     "kind": "LinkedField",
     "alias": null,
@@ -718,7 +753,7 @@ v16 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v15/*: any*/)
+    "selections": (v19/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -728,11 +763,9 @@ v16 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v15/*: any*/)
+    "selections": (v19/*: any*/)
   },
-  (v9/*: any*/),
-  (v10/*: any*/),
-  (v12/*: any*/)
+  (v17/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -775,12 +808,66 @@ return {
         "concreteType": null,
         "plural": false,
         "selections": [
+          (v2/*: any*/),
           {
-            "kind": "ScalarField",
+            "kind": "LinkedField",
             "alias": null,
-            "name": "__typename",
+            "name": "sector",
+            "storageKey": null,
             "args": null,
-            "storageKey": null
+            "concreteType": "Sector",
+            "plural": false,
+            "selections": (v10/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "departure",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "RouteStop",
+            "plural": false,
+            "selections": (v11/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "arrival",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "RouteStop",
+            "plural": false,
+            "selections": (v11/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "inbound",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Sector",
+            "plural": false,
+            "selections": (v13/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "outbound",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Sector",
+            "plural": false,
+            "selections": (v13/*: any*/)
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "sectors",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "Sector",
+            "plural": true,
+            "selections": (v10/*: any*/)
           },
           {
             "kind": "ScalarField",
@@ -803,7 +890,7 @@ return {
             "args": null,
             "storageKey": null
           },
-          (v2/*: any*/),
+          (v14/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -813,7 +900,7 @@ return {
             "concreteType": "Passenger",
             "plural": true,
             "selections": [
-              (v3/*: any*/),
+              (v4/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -860,7 +947,7 @@ return {
             "concreteType": "Bag",
             "plural": true,
             "selections": [
-              (v2/*: any*/),
+              (v14/*: any*/),
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -870,7 +957,7 @@ return {
               }
             ]
           },
-          (v3/*: any*/),
+          (v4/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "BookingOneWay",
@@ -883,7 +970,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v13/*: any*/)
+                "selections": (v18/*: any*/)
               }
             ]
           },
@@ -894,32 +981,12 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "departure",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "RouteStop",
-                "plural": false,
-                "selections": (v14/*: any*/)
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
-                "name": "arrival",
-                "storageKey": null,
-                "args": null,
-                "concreteType": "RouteStop",
-                "plural": false,
-                "selections": (v14/*: any*/)
-              },
-              {
-                "kind": "LinkedField",
-                "alias": null,
                 "name": "inbound",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v16/*: any*/)
+                "selections": (v20/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -929,7 +996,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v16/*: any*/)
+                "selections": (v20/*: any*/)
               }
             ]
           },
@@ -945,7 +1012,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": true,
-                "selections": (v13/*: any*/)
+                "selections": (v18/*: any*/)
               }
             ]
           }
@@ -957,7 +1024,7 @@ return {
     "operationKind": "query",
     "name": "BookingDetailQuery",
     "id": null,
-    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper_data\n    id\n  }\n}\n\nfragment BookingDetailWrapper_data on BookingInterface {\n  ...SectorDetails_data\n  ...Passengers_data\n}\n\nfragment SectorDetails_data on BookingInterface {\n  __typename\n  ...SectorInfoOneWay_data\n  ...SectorInfoReturn_data\n  ...SectorInfoMulticity_data\n  ...Header_data\n  ...SegmentContainer_data\n}\n\nfragment Passengers_data on BookingInterface {\n  ...PassengersList_data\n  ...VisaInfoSummary_data\n}\n\nfragment PassengersList_data on BookingInterface {\n  passengers {\n    id\n    ...Passenger_data\n  }\n  bagInfo {\n    type\n    ...Bag_data\n  }\n}\n\nfragment VisaInfoSummary_data on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger_data on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag_data on Bag {\n  type\n  quantity\n}\n\nfragment SectorInfoOneWay_data on BookingOneWay {\n  sector {\n    ...SectorInfo_data\n  }\n}\n\nfragment SectorInfoReturn_data on BookingReturn {\n  ...FromTo_data\n  inbound {\n    ...SectorDates_data\n  }\n  outbound {\n    ...SectorDates_data\n  }\n}\n\nfragment SectorInfoMulticity_data on BookingMulticity {\n  sectors {\n    ...SectorInfo_data\n  }\n}\n\nfragment Header_data on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SegmentContainer_data on BookingInterface {\n  __typename\n  ...SectorsListOneWay_data\n  ...SectorsListReturn_data\n  ...SectorsListMulticity_data\n  ...SegmentMap_data\n}\n\nfragment SectorsListOneWay_data on BookingOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListReturn_data on BookingReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListMulticity_data on BookingMulticity {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SegmentMap_data on BookingInterface {\n  ...MapLines_data\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines_data on BookingInterface {\n  __typename\n  ...OneWaySegmentLines_data\n  ...ReturnSegmentLines_data\n  ...MulticitySegmentLines_data\n}\n\nfragment OneWaySegmentLines_data on BookingOneWay {\n  sector {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment ReturnSegmentLines_data on BookingReturn {\n  inbound {\n    ...DrawSegmentLine_data\n  }\n  outbound {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment MulticitySegmentLines_data on BookingMulticity {\n  sectors {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment DrawSegmentLine_data on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment SectorInfo_data on Sector {\n  ...FromTo_data\n  ...SectorDates_data\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment SectorDates_data on Sector {\n  departure {\n    ...SectorDate_data\n  }\n  arrival {\n    ...SectorDate_data\n  }\n  duration\n}\n\nfragment SectorDate_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  type\n}\n",
+    "text": "query BookingDetailQuery(\n  $id: ID!\n) {\n  bookingDetail(id: $id) {\n    __typename\n    ...BookingDetailWrapper_data\n    id\n  }\n}\n\nfragment BookingDetailWrapper_data on BookingInterface {\n  ...SectorDetails_data\n  ...Passengers_data\n}\n\nfragment SectorDetails_data on BookingInterface {\n  __typename\n  ...SectorInfoOneWay_data\n  ...SectorInfoReturn_data\n  ...SectorInfoMulticity_data\n  ...Header_data\n  ...SegmentContainer_data\n}\n\nfragment Passengers_data on BookingInterface {\n  ...PassengersList_data\n  ...VisaInfoSummary_data\n}\n\nfragment PassengersList_data on BookingInterface {\n  passengers {\n    id\n    ...Passenger_data\n  }\n  bagInfo {\n    type\n    ...Bag_data\n  }\n}\n\nfragment VisaInfoSummary_data on BookingInterface {\n  passengers {\n    visaRequired\n    id\n  }\n}\n\nfragment Passenger_data on Passenger {\n  title\n  firstname\n  lastname\n  birthday\n}\n\nfragment Bag_data on Bag {\n  type\n  quantity\n}\n\nfragment SectorInfoOneWay_data on OneWayInterface {\n  sector {\n    ...SectorInfo_data\n  }\n}\n\nfragment SectorInfoReturn_data on ReturnInterface {\n  ...FromTo_data\n  inbound {\n    ...SectorDates_data\n  }\n  outbound {\n    ...SectorDates_data\n  }\n}\n\nfragment SectorInfoMulticity_data on MulticityInterface {\n  sectors {\n    ...SectorInfo_data\n  }\n}\n\nfragment Header_data on BookingInterface {\n  bookingId: id(opaque: false)\n  status\n}\n\nfragment SegmentContainer_data on BookingInterface {\n  __typename\n  ...SectorsListOneWay_data\n  ...SectorsListReturn_data\n  ...SectorsListMulticity_data\n  ...SegmentMap_data\n}\n\nfragment SectorsListOneWay_data on BookingOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListReturn_data on BookingReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorsListMulticity_data on BookingMulticity {\n  sectors {\n    ...SectorDetail_data\n  }\n}\n\nfragment SegmentMap_data on BookingInterface {\n  ...MapLines_data\n  type\n  ... on BookingOneWay {\n    sector {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingReturn {\n    inbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n    outbound {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n  ... on BookingMulticity {\n    sectors {\n      segments {\n        arrival {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        departure {\n          stop {\n            locationId\n            city {\n              name\n              id\n            }\n            coordinates {\n              latitude: lat\n              longitude: lng\n            }\n            id\n          }\n        }\n        id\n      }\n    }\n  }\n}\n\nfragment MapLines_data on BookingInterface {\n  __typename\n  ...OneWaySegmentLines_data\n  ...ReturnSegmentLines_data\n  ...MulticitySegmentLines_data\n}\n\nfragment OneWaySegmentLines_data on BookingOneWay {\n  sector {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment ReturnSegmentLines_data on BookingReturn {\n  inbound {\n    ...DrawSegmentLine_data\n  }\n  outbound {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment MulticitySegmentLines_data on BookingMulticity {\n  sectors {\n    ...DrawSegmentLine_data\n  }\n}\n\nfragment DrawSegmentLine_data on Sector {\n  segments {\n    departure {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    arrival {\n      stop {\n        coordinates {\n          latitude: lat\n          longitude: lng\n        }\n        id\n      }\n    }\n    id\n  }\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment SectorInfo_data on Sector {\n  ...FromTo_data\n  ...SectorDates_data\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment SectorDates_data on Sector {\n  departure {\n    ...SectorDate_data\n  }\n  arrival {\n    ...SectorDate_data\n  }\n  duration\n}\n\nfragment SectorDate_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  __typename\n}\n",
     "metadata": {}
   }
 };

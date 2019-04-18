@@ -5,8 +5,8 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 
-import FromTo from '../../../components/fromTo/FromTo';
-import FromToWrapper from '../../../components/fromTo/FromToWrapper';
+import FromTo from '../fromTo/FromTo';
+import FromToWrapper from '../fromTo/FromToWrapper';
 import SectorDates from './SectorDates';
 import type { SectorInfoReturn_data as BookingType } from './__generated__/SectorInfoReturn_data.graphql';
 
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
 
 export default createFragmentContainer(SectorInfoReturn, {
   data: graphql`
-    fragment SectorInfoReturn_data on BookingReturn {
+    fragment SectorInfoReturn_data on ReturnInterface {
       ...FromTo_data
       inbound {
         ...SectorDates_data
