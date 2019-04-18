@@ -12,10 +12,13 @@ import {
   type Itinerary,
   type ItineraryCheckParameters,
 } from '../../apps/itinerary/Itinerary';
-import createLocationLoader, {
-  type Locations,
-  type LocationInput,
-} from '../../apps/location/dataloaders/Locations';
+import createLocationByIDLoader, {
+  type LocationInputID,
+} from '../../apps/location/dataloaders/LocationsByID';
+import createLocationByTermLoader, {
+  type LocationInputTerm,
+} from '../../apps/location/dataloaders/LocationsByTerm';
+import type { Locations } from '../../apps/location/Location';
 import bookingsLoader from '../../apps/manageMyBooking/dataloaders/Bookings';
 import type { Booking } from '../../apps/manageMyBooking/manageMyBooking';
 import type {
@@ -48,7 +51,10 @@ export type GraphqlContextType = {|
       ConfirmPaymentPayloadType,
       ConfirmPaymentOutputType,
     >,
-    +locations: DataLoader<LocationInput, Locations>,
+    +locations: {
+      byID: DataLoader<LocationInputID, Locations>,
+      byTerm: DataLoader<LocationInputTerm, Locations>,
+    },
     +bookings: {| +load: () => Booking[] |},
     +booking: {| +load: (id: string) => Booking |},
   |},
@@ -68,7 +74,10 @@ export default function createContext(props: ?CreateContextType) {
     dataLoader: {
       itineraries: createItinerariesLoader(),
       itinerary: createItineraryLoader(),
-      locations: createLocationLoader(),
+      locations: {
+        byID: createLocationByIDLoader(),
+        byTerm: createLocationByTermLoader(),
+      },
       saveBooking: createSaveBookingLoader(),
       bookings: bookingsLoader,
       booking: bookingDetailLoader,
