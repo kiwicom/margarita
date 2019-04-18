@@ -70,7 +70,7 @@ type BookingInterfaceEdge {
 }
 
 """Booking from A to B, B to C and so on, with possible stopovers"""
-type BookingMulticity implements BookingInterface & FromToInterface {
+type BookingMulticity implements BookingInterface & FromToInterface & MulticityInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -94,7 +94,7 @@ type BookingMulticity implements BookingInterface & FromToInterface {
 }
 
 """Booking from A to B with no return, but possible stopovers"""
-type BookingOneWay implements BookingInterface & FromToInterface {
+type BookingOneWay implements BookingInterface & FromToInterface & OneWayInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -118,7 +118,7 @@ type BookingOneWay implements BookingInterface & FromToInterface {
 }
 
 """Booking from A to B with return, and possible stopovers"""
-type BookingReturn implements BookingInterface & FromToInterface {
+type BookingReturn implements BookingInterface & FromToInterface & ReturnInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -215,7 +215,6 @@ so that we can re-use one component to show from to with correct icon
 interface FromToInterface {
   departure: RouteStop
   arrival: RouteStop
-  type: BookingType
 }
 
 type GeoIP {
@@ -327,7 +326,7 @@ type ItineraryInterfaceEdge {
 }
 
 """Itinerary from A to B with no return, but with possible stopovers"""
-type ItineraryOneWay implements ItineraryInterface {
+type ItineraryOneWay implements ItineraryInterface & FromToInterface & OneWayInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -359,7 +358,7 @@ input ItineraryOneWayInput {
 }
 
 """Itinerary from A to B with return trip, and with possible stopovers"""
-type ItineraryReturn implements ItineraryInterface {
+type ItineraryReturn implements ItineraryInterface & FromToInterface & ReturnInterface {
   """
   The globally unique ID of an object. You can unmask this ID to get original
   value but please note that this unmasked ID is not globally unique anymore and
@@ -471,6 +470,20 @@ enum LocationType {
   SPECIAL
 }
 
+"""Used for multicity type Booking and Itinerary"""
+interface MulticityInterface {
+  departure: RouteStop
+  arrival: RouteStop
+  sectors: [Sector]
+}
+
+"""Used for one-way type Booking and Itinerary"""
+interface OneWayInterface {
+  departure: RouteStop
+  arrival: RouteStop
+  sector: Sector
+}
+
 enum OrderSearchInput {
   ASC
   DESC
@@ -546,6 +559,14 @@ enum PassengerTitle {
 type Price {
   amount: Float
   currency: String
+}
+
+"""Used for return type Booking and Itinerary"""
+interface ReturnInterface {
+  departure: RouteStop
+  arrival: RouteStop
+  outbound: Sector
+  inbound: Sector
 }
 
 type RootMutation {

@@ -8,11 +8,10 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FromToIcon_data$ref: FragmentReference;
 export type FromToIcon_data = {|
-  +type: ?BookingType,
+  +__typename: string,
   +$refType: FromToIcon_data$ref,
 |};
 */
@@ -28,12 +27,12 @@ const node/*: ReaderFragment*/ = {
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "type",
+      "name": "__typename",
       "args": null,
       "storageKey": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '9d4d9c1128c0c3d9e233c590f542ce5c';
+(node/*: any*/).hash = 'd3c245b85ee2a317e9550d005c871493';
 module.exports = node;

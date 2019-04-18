@@ -3,17 +3,20 @@
 import { GraphQLInterfaceType } from 'graphql';
 
 import GraphQLRouteStop from './RouteStop';
+import GraphQLSector from './Sector';
 
 export default new GraphQLInterfaceType({
-  name: 'FromToInterface',
-  description:
-    'This data needs to be accessed on a Trip and on BookingOneWay/Return/Multicity, so that we can re-use one component to show from to with correct icon',
+  name: 'OneWayInterface',
+  description: 'Used for one-way type Booking and Itinerary',
   fields: {
     departure: {
       type: GraphQLRouteStop,
     },
     arrival: {
       type: GraphQLRouteStop,
+    },
+    sector: {
+      type: GraphQLSector,
     },
   },
 });

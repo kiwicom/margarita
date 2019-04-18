@@ -23,7 +23,7 @@ export type SectorInfoOneWay_data = {|
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "SectorInfoOneWay_data",
-  "type": "BookingOneWay",
+  "type": "OneWayInterface",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
@@ -46,5 +46,5 @@ const node/*: ReaderFragment*/ = {
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = '149df0d6725ec74ef42017c168e6732e';
+(node/*: any*/).hash = '7a36efa0d1bf1bbda1b0cd57a9ec8b7e';
 module.exports = node;

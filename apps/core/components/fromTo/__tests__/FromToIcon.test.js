@@ -5,26 +5,26 @@ import { render } from 'react-native-testing-library';
 import { Icon } from '@kiwicom/universal-components';
 
 import { FromToIcon } from '../FromToIcon';
-import type { FromToIcon_data as BookingType } from '../__generated__/FromToIcon_data.graphql';
+import type { FromToIcon_data as FromToType } from '../__generated__/FromToIcon_data.graphql';
 
 const $refType: any = null;
-const getData = (type: ?BookingType) => ({
-  type,
+const getData = (type: ?FromToType) => ({
+  __typename: type,
   $refType,
 });
 
 it('show correct icons', () => {
   const MultiCity = render(
     // $FlowExpectedError: It should be ok to pass string
-    <FromToIcon data={getData('BOOKING_MULTICITY')} iconColor="blue" />,
+    <FromToIcon data={getData('BookingMulticity')} iconColor="blue" />,
   );
   const BookingReturn = render(
     // $FlowExpectedError: It should be ok to pass string
-    <FromToIcon data={getData('BOOKING_RETURN')} iconColor="blue" />,
+    <FromToIcon data={getData('BookingReturn')} iconColor="blue" />,
   );
   const OneWay = render(
     // $FlowExpectedError: It should be ok to pass string
-    <FromToIcon data={getData('BOOKING_ONE_WAY')} iconColor="blue" />,
+    <FromToIcon data={getData('BookingOneWay')} iconColor="blue" />,
   );
 
   expect(MultiCity.getByType(Icon).props.name).toBe('flight-multicity');

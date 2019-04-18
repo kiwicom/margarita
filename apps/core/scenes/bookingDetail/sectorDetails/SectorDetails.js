@@ -8,9 +8,9 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { View } from 'react-native';
 
 import Header from './Header';
-import SectorInfoOneWay from './SectorInfoOneWay';
-import SectorInfoMulticity from './SectorInfoMulticity';
-import SectorInfoReturn from './SectorInfoReturn';
+import SectorInfoOneWay from '../../../components/sectorInfo/SectorInfoOneWay';
+import SectorInfoMulticity from '../../../components/sectorInfo/SectorInfoMulticity';
+import SectorInfoReturn from '../../../components/sectorInfo/SectorInfoReturn';
 import SegmentContainer from './segments/SegmentContainer';
 import type { SectorDetails_data as BookingType } from './__generated__/SectorDetails_data.graphql';
 
