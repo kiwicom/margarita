@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     width: 122,
     height: parseInt(defaultTokens.heightButtonNormal, 10),
     paddingStart: 11,
-    paddingEnd: parseInt(defaultTokens.paddingButtonNormal, 10),
+    paddingEnd: parseInt(defaultTokens.spaceMedium, 10),
     backgroundColor: defaultTokens.backgroundButtonSecondary,
     borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
   },

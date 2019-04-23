@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: parseInt(defaultTokens.paddingButtonSmall, 10),
+    padding: parseInt(defaultTokens.spaceSmall, 10),
     backgroundColor: defaultTokens.paletteWhite,
     overflow: 'hidden',
     web: {
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
   marginStartLabel: {
-    marginStart: parseInt(defaultTokens.paddingButtonSmall, 10),
+    marginStart: parseInt(defaultTokens.spaceSmall, 10),
   },
   label: {
     color: defaultTokens.paletteInkDark,

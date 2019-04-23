@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     web: {
       width: '30%',
       minWidth: 250,
-      marginEnd: parseInt(defaultTokens.paddingButtonNormal, 10),
+      marginEnd: parseInt(defaultTokens.spaceMedium, 10),
       justifyContent: 'flex-start',
     },
   },

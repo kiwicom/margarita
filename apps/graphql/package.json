@@ -6,11 +6,11 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "@kiwicom/fetch": "^2.2.0",
-    "@kiwicom/margarita-utils": "^0",
-    "@kiwicom/graphql-global-id": "^0.8.0",
-    "@kiwicom/graphql-utils": "^0.6.0",
+    "@kiwicom/graphql-global-id": "^0.10.0",
+    "@kiwicom/graphql-utils": "^0.7.0",
     "@kiwicom/margarita-config": "^0",
-    "@kiwicom/test-utils": "^0.5.0",
+    "@kiwicom/margarita-utils": "^0",
+    "@kiwicom/test-utils": "^0.9.0",
     "apollo-server": "^2.2.6",
     "apollo-server-lambda": "^2.4.8",
     "chalk": "^2.4.2",
@@ -25,7 +25,7 @@
     "webpack": "^4.29.1"
   },
   "devDependencies": {
-    "@kiwicom/monorepo": "^0.14.0",
+    "@kiwicom/monorepo": "^0.19.0",
     "apollo-server-lambda": "^2.4.8",
     "babel-loader": "^8.0.5",
     "bufferutil": "^4.0.1",
