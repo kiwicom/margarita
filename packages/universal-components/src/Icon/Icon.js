@@ -13,7 +13,7 @@ import iconsMap from './icons.json';
 import type { Props } from './IconTypes';
 
 const sanitizeIconCharacter = (iconCharacter: string) => {
-  if (/^E(?:.{3})$/.test(iconCharacter)) {
+  if (/^E(.{3})$/.test(iconCharacter)) {
     return String.fromCharCode(parseInt(iconCharacter, 16));
   }
   return iconCharacter;
