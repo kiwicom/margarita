@@ -25,7 +25,7 @@ function IndexPage({ router }: Props) {
   return (
     <Layout>
       <View style={styles.page}>
-        <Search onSubmit={onSubmit} />
+        <Search onSubmit={onSubmit} routerQuery={router.query} />
       </View>
     </Layout>
   );

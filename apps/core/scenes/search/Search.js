@@ -11,7 +11,11 @@ import {
   type LayoutContextState,
 } from '@kiwicom/margarita-device';
 
-import type { Location } from './SearchContext';
+import {
+  withSearchContext,
+  type Location,
+  type SearchContextState,
+} from './SearchContext';
 import SearchForm from '../../components/searchForm/SearchForm';
 
 export type SearchParameters = {|
@@ -31,9 +35,16 @@ export type SearchParameters = {|
 type Props = {|
   +layout: number,
   +onSubmit?: SearchParameters => void,
+  +routerQuery: SearchParameters,
+  +setStateFromQueryParams: SearchParameters => void,
 |};
 
 class Search extends React.Component<Props> {
+  componentDidMount() {
+    const { setStateFromQueryParams, routerQuery } = this.props;
+    setStateFromQueryParams(routerQuery);
+  }
+
   render() {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
 
@@ -104,4 +115,12 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
   layout,
 });
 
-export default withLayoutContext(layoutSelect)(Search);
+const searchContextStateSelect = ({
+  actions: { setStateFromQueryParams },
+}: SearchContextState) => ({
+  setStateFromQueryParams,
+});
+
+export default withSearchContext(searchContextStateSelect)(
+  withLayoutContext(layoutSelect)(Search),
+);
