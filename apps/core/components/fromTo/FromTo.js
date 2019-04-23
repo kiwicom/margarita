@@ -24,6 +24,7 @@ const FromTo = ({ data, iconColor, withFlags, ...rest }: Props) => (
       prependFlag={withFlags}
       appendFlag={false}
       data={data?.departure}
+      style={styles.cityName}
       {...rest}
     />
     <FromToIcon data={data} iconColor={iconColor} />
@@ -31,6 +32,7 @@ const FromTo = ({ data, iconColor, withFlags, ...rest }: Props) => (
       prependFlag={false}
       appendFlag={withFlags}
       data={data?.arrival}
+      style={[styles.cityName, styles.alignRight]}
       {...rest}
     />
   </View>
@@ -46,7 +48,12 @@ FromTo.defaultProps = {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+  },
+  cityName: {
+    flex: 1,
+  },
+  alignRight: {
+    justifyContent: 'flex-end',
   },
 });
 
