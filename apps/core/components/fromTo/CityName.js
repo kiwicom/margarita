@@ -1,7 +1,11 @@
 // @flow
 
 import * as React from 'react';
-import { Text, StyleSheet } from '@kiwicom/universal-components';
+import {
+  Text,
+  StyleSheet,
+  type StylePropType,
+} from '@kiwicom/universal-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { Image, View } from 'react-native';
 
@@ -13,6 +17,7 @@ type Props = {|
   +fontSize: 'normal' | 'large',
   +prependFlag: boolean,
   +appendFlag: boolean,
+  +style?: StylePropType,
 |};
 
 const CityName = (props: Props) => {
@@ -27,7 +32,7 @@ const CityName = (props: Props) => {
     />
   );
   return (
-    <View style={styles.row}>
+    <View style={[styles.row, props.style]}>
       {props.prependFlag && flag}
       <Text size={props.fontSize} type={props.textType}>
         {props.data?.stop?.city?.name}
