@@ -52,7 +52,7 @@
     "@babel/preset-flow": "^7.0.0",
     "@kiwicom/babel-preset-kiwicom": "^2.6.3",
     "@kiwicom/eslint-config": "^3.3.6",
-    "@kiwicom/monorepo": "^0.14.0",
+    "@kiwicom/monorepo": "^0.19.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-preset-expo": "^5.0.0",

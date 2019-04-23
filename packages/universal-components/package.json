@@ -30,7 +30,7 @@
   "author": "kiwi.com",
   "license": "MIT",
   "dependencies": {
-    "@kiwicom/orbit-design-tokens": "^0.3.0",
+    "@kiwicom/orbit-design-tokens": "^0.5.0",
     "@storybook/react-native": "^4.1.13",
     "memoize-one": "^5.0.0",
     "react-fast-compare": "^2.0.4",

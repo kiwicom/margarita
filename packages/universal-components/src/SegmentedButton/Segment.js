@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: parseInt(defaultTokens.heightInputNormal, 10),
-    paddingHorizontal: parseInt(defaultTokens.paddingButtonSmall, 10),
+    paddingHorizontal: parseInt(defaultTokens.spaceSmall, 10),
     backgroundColor: defaultTokens.paletteCloudLight,
     marginEnd: parseInt(defaultTokens.spaceXXXSmall, 10),
     overflow: 'hidden',

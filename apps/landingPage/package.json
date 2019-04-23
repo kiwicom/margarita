@@ -12,8 +12,8 @@
   },
   "dependencies": {
     "@kiwicom/margarita-config": "^0",
-    "@kiwicom/orbit-components": "^0.33.0",
-    "@kiwicom/orbit-design-tokens": "^0.3.0",
+    "@kiwicom/orbit-components": "^0.39.0",
+    "@kiwicom/orbit-design-tokens": "^0.5.0",
     "next": "^8.0.3",
     "next-transpile-modules": "^2.1.0",
     "styled-components": "^4.1.3"

@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   radio: {
     flex: 1,
-    paddingEnd: parseInt(defaultTokens.paddingButtonNormal, 10),
+    paddingEnd: parseInt(defaultTokens.spaceMedium, 10),
     alignItems: 'center',
     justifyContent: 'space-between',
   },

@@ -10,7 +10,7 @@
     "write-translations": "docusaurus-write-translations"
   },
   "devDependencies": {
-    "docusaurus": "^1.7.2"
+    "docusaurus": "^1.8.1"
   },
   "dependencies": {
     "react": "^16.8.3"
