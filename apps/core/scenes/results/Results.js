@@ -36,6 +36,7 @@ import {
   type Location,
 } from '../search/SearchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
+import { type SearchParameters } from '../search/Search';
 
 type Props = {|
   +navigation: Navigation,
@@ -52,9 +53,16 @@ type Props = {|
   +bags: number,
   +sortBy: string,
   +layout: number,
+  +routerQuery: SearchParameters,
+  +setStateFromQueryParams: SearchParameters => void,
 |};
 
 class Results extends React.Component<Props> {
+  componentDidMount() {
+    const { setStateFromQueryParams, routerQuery } = this.props;
+    setStateFromQueryParams(routerQuery);
+  }
+
   handleBookPress = (bookingToken: ?string) => {
     const { adults, infants } = this.props;
     this.props.navigation.navigate(Routes.RESULT_DETAIL, {
@@ -229,6 +237,7 @@ const select = ({
   infants,
   bags,
   sortBy,
+  actions: { setStateFromQueryParams },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -241,6 +250,7 @@ const select = ({
   infants,
   bags,
   sortBy,
+  setStateFromQueryParams,
 });
 
 const layoutSelect = ({ layout }: LayoutContextState) => ({

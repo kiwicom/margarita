@@ -4,15 +4,20 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { Results } from '@kiwicom/margarita-core';
 import { StyleSheet } from '@kiwicom/universal-components';
+import { type Router } from 'next/router';
 
 import { withPageRouter } from '../components/withPageRouter';
 import Layout from '../components/Layout';
 
-const results = () => {
+type Props = {
+  +router: Router,
+};
+
+const results = ({ router }: Props) => {
   return (
     <Layout>
       <View style={styles.container}>
-        <Results />
+        <Results routerQuery={router.query} />
       </View>
     </Layout>
   );
@@ -23,4 +28,4 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-export default withPageRouter<React.Element<any>>(results);
+export default withPageRouter<{}>(results);

@@ -4,6 +4,7 @@ import * as React from 'react';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
+import qs from 'qs';
 
 import { MODAL_TYPE } from './SearchConstants';
 
@@ -22,6 +23,28 @@ type Props = {|
   +bags?: string,
 |};
 
+type ParseFieldsParams = {|
+  +dateFrom?: ?string,
+  +dateTo?: ?string,
+  +returnDateFrom?: ?string,
+  +returnDateTo?: ?string,
+  +adults?: ?string,
+  +infants?: ?string,
+  +bags?: ?string,
+  +travelFrom?: ?string,
+  +travelTo?: ?string,
+|};
+
+type ParseFieldsReturn = {|
+  +dateFrom?: Date,
+  +dateTo?: Date,
+  +returnDateFrom?: Date,
+  +returnDateTo?: Date,
+  +adults?: number,
+  +infants?: number,
+  +bags?: number,
+|};
+
 export type ModalTypes = $Keys<typeof MODAL_TYPE>;
 export type PassengersData = {|
   adults: number,
@@ -38,17 +61,21 @@ export type Location = {|
 
 export type LocationSearchType = 'travelTo' | 'travelFrom';
 export type SortTypes = 'QUALITY' | 'PRICE' | 'DURATION';
-type State = {|
-  tripType: TripTypes,
-  travelFrom: Array<Location>,
-  travelTo: Array<Location>,
+type StateParams = {|
+  travelFrom: $ReadOnlyArray<Location>,
+  travelTo: $ReadOnlyArray<Location>,
   dateFrom: Date,
   sortBy: SortTypes,
   dateTo: Date,
   returnDateFrom: Date,
   returnDateTo: Date,
-  modalType: ModalTypes,
   ...PassengersData,
+|};
+
+type State = {|
+  tripType: TripTypes,
+  modalType: ModalTypes,
+  ...StateParams,
   +actions: {
     +switchFromTo: () => void,
     +setDepartureDate: (Date, Date) => void,
@@ -60,6 +87,7 @@ type State = {|
     +clearLocation: LocationSearchType => void,
     +addLocation: (type: LocationSearchType, location: Location) => void,
     +setLocation: (type: LocationSearchType, location: Location) => void,
+    +setStateFromQueryParams: Object => void,
   },
 |};
 
@@ -111,16 +139,17 @@ const defaultState = {
     setLocation: noop,
     clearLocation: noop,
     addLocation: noop,
+    setStateFromQueryParams: noop,
   },
 };
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
 
-const parseDate = (date?: string, key: string) => {
+const parseDate = (date: ?string, key: string) => {
   return date ? { [key]: new Date(date) } : {};
 };
 
-const parseNumber = (value?: string, key: string) => {
+const parseNumber = (value: ?string, key: string) => {
   return value ? { [key]: parseInt(value, 10) } : {};
 };
 
@@ -144,14 +173,16 @@ export default class SearchContextProvider extends React.Component<
     } = props;
     this.state = {
       ...defaultState,
-      ...parseDate(dateFrom, 'dateFrom'),
-      ...parseDate(dateTo, 'dateTo'),
-      ...parseDate(returnDateFrom, 'returnDateFrom'),
-      ...parseDate(returnDateTo, 'returnDateTo'),
-      ...parseNumber(adults, 'adults'),
-      ...parseNumber(infants, 'infants'),
-      ...parseNumber(bags, 'bags'),
       ...rest,
+      ...this.parseFields({
+        dateFrom,
+        dateTo,
+        returnDateFrom,
+        returnDateTo,
+        adults,
+        infants,
+        bags,
+      }),
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
@@ -163,9 +194,22 @@ export default class SearchContextProvider extends React.Component<
         clearLocation: this.clearLocation,
         addLocation: this.addLocation,
         setLocation: this.setLocation,
+        setStateFromQueryParams: this.setStateFromQueryParams,
       },
     };
   }
+
+  parseFields = (params: ParseFieldsParams): ParseFieldsReturn => {
+    return {
+      ...parseDate(params.dateFrom, 'dateFrom'),
+      ...parseDate(params.dateTo, 'dateTo'),
+      ...parseDate(params.returnDateFrom, 'returnDateFrom'),
+      ...parseDate(params.returnDateTo, 'returnDateTo'),
+      ...parseNumber(params.adults, 'adults'),
+      ...parseNumber(params.infants, 'infants'),
+      ...parseNumber(params.bags, 'bags'),
+    };
+  };
 
   switchFromTo = () => {
     this.setState(state => {
@@ -175,6 +219,29 @@ export default class SearchContextProvider extends React.Component<
         travelFrom: to,
         travelTo: from,
       };
+    });
+  };
+
+  parseLocationParam = (param: ?string): $ReadOnlyArray<Location> | null => {
+    if (param == null) {
+      return null;
+    }
+    const asObject: {| [key: string]: Location |} = qs.parse(param);
+    const asLocationArray: $ReadOnlyArray<Location> = Object.keys(asObject).map(
+      key => asObject[key],
+    );
+    return asLocationArray;
+  };
+
+  setStateFromQueryParams = (params: ParseFieldsParams) => {
+    const parsedParams: ParseFieldsParams = qs.parse(params);
+
+    const travelFrom = this.parseLocationParam(parsedParams.travelFrom);
+    const travelTo = this.parseLocationParam(parsedParams.travelTo);
+    this.setState({
+      ...this.parseFields(parsedParams),
+      ...(travelFrom ? { travelFrom } : {}),
+      ...(travelTo ? { travelTo } : {}),
     });
   };
 
