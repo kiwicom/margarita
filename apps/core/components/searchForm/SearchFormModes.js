@@ -14,39 +14,59 @@ import {
   LAYOUT,
   type LayoutContextState,
 } from '@kiwicom/margarita-device';
-import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
+import { TRIP_TYPES } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,
   type SearchContextState,
-  type ModalTypes,
+  type PassengersData,
 } from '../../scenes/search/SearchContext';
-import { MODAL_TYPE, TRIP_TYPE } from '../../scenes/search/SearchConstants';
+import {
+  TRIP_TYPE,
+  FORM_MODE,
+  type FormMode,
+} from '../../scenes/search/SearchConstants';
+import TripTypeSelect from './TripTypeSelect';
+import PassengersModal from './PassengersModal';
 
 type Props = {|
   +tripType: string,
-  +adults: number,
-  +infants: number,
-  +bags: number,
-  +setTripType: TripTypes => void,
-  +setModalType: ModalTypes => void,
+  ...$ReadOnly<PassengersData>,
+  +setPassengerData: ($ReadOnly<PassengersData>) => void,
   +layout: number,
+  +setTripType: string => void,
 |};
 
-class SearchFormModes extends React.Component<Props> {
-  handleTripTypeSelect = (type: TripTypes) => {
+type State = {|
+  +showTripTypeModal: boolean,
+  +showPassengerModal: boolean,
+  +formMode: FormMode,
+|};
+
+class SearchFormModes extends React.Component<Props, State> {
+  state = {
+    showTripTypeModal: false,
+    showPassengerModal: false,
+    formMode: FORM_MODE.TRIP_TYPE,
+  };
+
+  handlePassengersSave = (passengersData: $ReadOnly<PassengersData>) => {
+    this.props.setPassengerData(passengersData);
+    this.togglePassengerModal();
+  };
+
+  handleTripTypeSelect = (type: string) => {
     if (type === TRIP_TYPES.RETURN || type === TRIP_TYPES.ONEWAY) {
       this.props.setTripType(type);
+      this.toggleTripTypeModal();
     }
   };
 
-  handleTripTypePress = () => {
-    this.props.setModalType(MODAL_TYPE.TRIP_TYPE);
-  };
+  toggleTripTypeModal = () =>
+    this.setState(state => ({ showTripTypeModal: !state.showTripTypeModal }));
 
-  handlePassengersPress = () => {
-    this.props.setModalType(MODAL_TYPE.PASSENGERS);
-  };
+  togglePassengerModal = () =>
+    this.setState(state => ({ showPassengerModal: !state.showPassengerModal }));
 
   render() {
     const { tripType, adults, infants, bags, layout } = this.props;
@@ -63,17 +83,27 @@ class SearchFormModes extends React.Component<Props> {
           />
         ) : (
           <TripTypeButton
-            onPress={this.handleTripTypePress}
+            onPress={this.toggleTripTypeModal}
             icon={TRIP_TYPE[tripType].icon}
             label={TRIP_TYPE[tripType].label}
           />
         )}
         <View style={styles.hSpacer} />
         <PassengersButton
-          onPress={this.handlePassengersPress}
+          onPress={this.togglePassengerModal}
           adults={adults}
           infants={infants}
           bags={bags}
+        />
+        <TripTypeSelect
+          isVisible={this.state.showTripTypeModal}
+          onClose={this.toggleTripTypeModal}
+          handleTripTypeSelect={this.handleTripTypeSelect}
+        />
+        <PassengersModal
+          isVisible={this.state.showPassengerModal}
+          onClose={this.togglePassengerModal}
+          handlePassengersSave={this.handlePassengersSave}
         />
       </View>
     );
@@ -105,14 +135,14 @@ const select = ({
   adults,
   infants,
   bags,
-  actions: { setTripType, setModalType },
+  actions: { setTripType, setPassengerData },
 }: SearchContextState) => ({
   tripType,
   adults,
   infants,
   bags,
   setTripType,
-  setModalType,
+  setPassengerData,
 });
 
 export default withLayoutContext(layoutSelect)(

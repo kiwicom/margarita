@@ -6,8 +6,6 @@ import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
 import qs from 'qs';
 
-import { MODAL_TYPE } from './SearchConstants';
-
 type Props = {|
   +children: React.Node,
   +dateFrom?: string,
@@ -45,7 +43,6 @@ type ParseFieldsReturn = {|
   +bags?: number,
 |};
 
-export type ModalTypes = $Keys<typeof MODAL_TYPE>;
 export type PassengersData = {|
   adults: number,
   infants: number,
@@ -74,7 +71,6 @@ type StateParams = {|
 
 type State = {|
   tripType: TripTypes,
-  modalType: ModalTypes,
   ...StateParams,
   +actions: {
     +switchFromTo: () => void,
@@ -82,7 +78,6 @@ type State = {|
     +setReturnDate: (Date, Date) => void,
     +setTripType: TripTypes => void,
     +setSortBy: SortTypes => void,
-    +setModalType: ModalTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
     +clearLocation: LocationSearchType => void,
     +addLocation: (type: LocationSearchType, location: Location) => void,
@@ -124,7 +119,6 @@ const defaultState = {
   sortBy: defaultSortBy,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
-  modalType: MODAL_TYPE.HIDDEN,
   adults: 1,
   infants: 0,
   bags: 0,
@@ -134,7 +128,6 @@ const defaultState = {
     setReturnDate: noop,
     setTripType: noop,
     setSortBy: noop,
-    setModalType: noop,
     setPassengerData: noop,
     setLocation: noop,
     clearLocation: noop,
@@ -189,7 +182,6 @@ export default class SearchContextProvider extends React.Component<
         setReturnDate: this.setReturnDate,
         setTripType: this.setTripType,
         setSortBy: this.setSortBy,
-        setModalType: this.setModalType,
         setPassengerData: this.setPassengerData,
         clearLocation: this.clearLocation,
         addLocation: this.addLocation,
@@ -297,10 +289,6 @@ export default class SearchContextProvider extends React.Component<
 
   setSortBy = (sortBy: SortTypes) => {
     this.setState({ sortBy });
-  };
-
-  setModalType = (modalType: ModalTypes) => {
-    this.setState({ modalType });
   };
 
   setPassengerData = (passengerData: $ReadOnly<PassengersData>) => {

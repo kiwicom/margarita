@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { TripInput } from '@kiwicom/margarita-components';
+import { TripInput, Modal } from '@kiwicom/margarita-components';
 import {
   Icon,
   StyleSheet,
@@ -18,27 +18,31 @@ import {
 import {
   withSearchContext,
   type SearchContextState,
-  type ModalTypes,
   type Location,
 } from '../../scenes/search/SearchContext';
-import { MODAL_TYPE } from '../../scenes/search/SearchConstants';
 import PickersWrapper from './PickersWrapper';
+import PlacePicker from './PlacePicker/PlacePickerRenderer';
+import {
+  PLACE_TYPE,
+  type PlaceType,
+} from '../../scenes/search/SearchConstants';
 
 type Props = {|
   +travelFrom: ?Array<Location>,
   +travelTo: ?Array<Location>,
   +handlePlaceSwitchPress: () => void,
-  +setModalType: ModalTypes => void,
   +layout: number,
 |};
 
-class Placepickers extends React.Component<Props> {
-  handleFromPress = () => {
-    this.props.setModalType(MODAL_TYPE.ORIGIN);
-  };
+type State = {|
+  +isModalOpen: boolean,
+  +placeType: PlaceType,
+|};
 
-  handleToPress = () => {
-    this.props.setModalType(MODAL_TYPE.DESTINATION);
+class Placepickers extends React.Component<Props, State> {
+  state = {
+    isModalOpen: false,
+    placeType: PLACE_TYPE.ORIGIN,
   };
 
   getLocationsNames = (locations: ?Array<Location>) => {
@@ -54,10 +58,17 @@ class Placepickers extends React.Component<Props> {
     return '';
   };
 
+  onClose = () => this.setState({ isModalOpen: false });
+
+  handleFromPress = () =>
+    this.setState({ placeType: PLACE_TYPE.ORIGIN, isModalOpen: true });
+
+  handleToPress = () =>
+    this.setState({ placeType: PLACE_TYPE.DESTINATION, isModalOpen: true });
+
   render() {
     const { layout, travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
-
     return (
       <PickersWrapper layout={layout}>
         <TripInput
@@ -80,6 +91,12 @@ class Placepickers extends React.Component<Props> {
           icon={<Icon name="airplane-landing" />}
           value={this.getLocationsNames(travelTo)}
         />
+        <Modal isVisible={this.state.isModalOpen} onClose={this.onClose}>
+          <PlacePicker
+            onClose={this.onClose}
+            placeType={this.state.placeType}
+          />
+        </Modal>
       </PickersWrapper>
     );
   }
@@ -127,12 +144,11 @@ const layoutSelect = ({ layout }: LayoutContextState) => ({
 const select = ({
   travelFrom,
   travelTo,
-  actions: { switchFromTo, setModalType },
+  actions: { switchFromTo },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
   handlePlaceSwitchPress: switchFromTo,
-  setModalType,
 });
 
 export default withLayoutContext(layoutSelect)(
