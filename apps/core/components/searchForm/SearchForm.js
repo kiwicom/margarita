@@ -30,7 +30,6 @@ import {
 } from '../../scenes/search/SearchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
-import SearchModal from './SearchModal';
 import SearchFormModes from './SearchFormModes';
 import type { SearchParameters } from '../../scenes/search/Search';
 
@@ -127,7 +126,6 @@ class SearchForm extends React.Component<Props> {
 
   render() {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
-
     return (
       <>
         <SearchFormModes />
@@ -144,7 +142,6 @@ class SearchForm extends React.Component<Props> {
             />
           </View>
         </View>
-        <SearchModal />
       </>
     );
   }

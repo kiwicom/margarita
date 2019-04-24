@@ -2,7 +2,11 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, type StylePropType } from '@kiwicom/universal-components';
+import {
+  StyleSheet,
+  type StylePropType,
+  type IconNameType,
+} from '@kiwicom/universal-components';
 import { type TripTypes } from '@kiwicom/margarita-config';
 
 import TripTypeSwitchOption from './TripTypeSwitchOption';
@@ -11,7 +15,7 @@ type Props = {|
   +style?: StylePropType,
   +optionsData: {
     [TripTypes]: {|
-      +icon: string,
+      +icon: IconNameType,
       +label: string,
     |},
   },

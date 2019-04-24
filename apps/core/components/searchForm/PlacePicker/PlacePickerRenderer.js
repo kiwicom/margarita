@@ -5,22 +5,51 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 
 import type { PlacePickerRendererQueryResponse } from './__generated__/PlacePickerRendererQuery.graphql';
 import PlacePickerContent from './PlacePickerContent';
+import {
+  PLACE_TYPE,
+  type PlaceType,
+} from '../../../scenes/search/SearchConstants';
 
 // @TODO s set the QueryRenderer variables base on closest location
 
-const renderInner = (data: PlacePickerRendererQueryResponse) => (
-  <PlacePickerContent locations={data} />
-);
+type Props = {|
+  +placeType: PlaceType,
+  +onClose: () => void,
+|};
 
-export default function PlacePickerRenderer() {
-  return (
-    <QueryRenderer
-      query={graphql`
-        query PlacePickerRendererQuery {
-          ...PlacePickerContent_locations
-        }
-      `}
-      render={renderInner}
-    />
-  );
+export default class PlacePickerRenderer extends React.Component<Props> {
+  renderInner = (data: PlacePickerRendererQueryResponse) => {
+    const { placeType, onClose } = this.props;
+    return (
+      <PlacePickerContent
+        pickerType={this.getPickerType(placeType)}
+        locations={data}
+        onClose={onClose}
+      />
+    );
+  };
+
+  getPickerType = (placeType: PlaceType) => {
+    switch (placeType) {
+      case PLACE_TYPE.DESTINATION:
+        return 'travelTo';
+      case PLACE_TYPE.ORIGIN:
+        return 'travelFrom';
+      default:
+        return null;
+    }
+  };
+
+  render() {
+    return (
+      <QueryRenderer
+        query={graphql`
+          query PlacePickerRendererQuery {
+            ...PlacePickerContent_locations
+          }
+        `}
+        render={this.renderInner}
+      />
+    );
+  }
 }

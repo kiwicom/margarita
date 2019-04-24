@@ -12,7 +12,6 @@ import { debounce } from '@kiwicom/margarita-utils';
 import { DEBOUNCE_TIME } from '@kiwicom/margarita-config';
 
 import NotFound from './NotFound';
-import { MODAL_TYPE } from '../../../scenes/search/SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
@@ -33,6 +32,7 @@ type Props = {|
   +relay: RelayRefetchProp,
   +onChangeText: string => void,
   +travelFrom: ?Array<Location>,
+  +onClose: () => void,
   +travelTo: ?Array<Location>,
   +clearLocation: (type: 'travelTo' | 'travelFrom') => void,
   +setLocation: (
@@ -43,7 +43,6 @@ type Props = {|
     type: LocationSearchType,
     location: Location | Location[],
   ) => void,
-  +setModalType: ('HIDDEN') => void,
 |};
 
 type State = {|
@@ -124,12 +123,11 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   handlePressOption = (option: OptionType) => {
-    const { setModalType, setLocation, pickerType } = this.props;
+    const { setLocation, pickerType } = this.props;
     const location = mapOptionToLocation(option);
 
     setLocation(pickerType, location);
-
-    setModalType(MODAL_TYPE.HIDDEN);
+    this.props.onClose();
   };
 
   handleClearSearch = () => {
@@ -189,30 +187,16 @@ class PlacePickerContent extends React.Component<Props, State> {
   }
 }
 
-const getPickerType = modalType => {
-  switch (modalType) {
-    case MODAL_TYPE.DESTINATION:
-      return 'travelTo';
-    case MODAL_TYPE.ORIGIN:
-      return 'travelFrom';
-    default:
-      return null;
-  }
-};
-
 const select = ({
   travelFrom,
   travelTo,
-  modalType,
-  actions: { setModalType, clearLocation, addLocation, setLocation },
+  actions: { clearLocation, addLocation, setLocation },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
-  setModalType,
   clearLocation,
   addLocation,
   setLocation,
-  pickerType: getPickerType(modalType),
 });
 
 const styles = StyleSheet.create({
