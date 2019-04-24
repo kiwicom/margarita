@@ -5,9 +5,9 @@ import { View } from 'react-native';
 import { StyleSheet } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
+import { formatDate } from '@kiwicom/margarita-utils';
 
 import SegmentStopInfoRow from './SegmentStopInfoRow';
-import { getFormattedDate } from '../../ItineraryCard/TripSectorHelpers';
 import type { SegmentStopInfo_data as RouteStopType } from './__generated__/SegmentStopInfo_data.graphql';
 
 type Props = {|
@@ -27,7 +27,7 @@ const SegmentStopInfo = (props: Props) => {
       <SegmentStopInfoRow
         iconName="clock"
         infoLabel={props.typeLabel}
-        infoText={getFormattedDate(props.data?.time?.local)}
+        infoText={formatDate(props.data?.time?.local)}
       />
     </View>
   );

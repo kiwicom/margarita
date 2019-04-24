@@ -10,10 +10,10 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
+import { formatDate } from '@kiwicom/margarita-utils';
 
 import SegmentStopInfo from './SegmentStopInfo';
 import { mockCarrierData } from './SegmentConstants';
-import { getFormattedDate } from '../../ItineraryCard/TripSectorHelpers';
 import type { Segment_data as SegmentType } from './__generated__/Segment_data.graphql';
 
 type Props = {|
@@ -21,7 +21,7 @@ type Props = {|
 |};
 
 const Segment = (props: Props) => {
-  const formattedDate = getFormattedDate(
+  const formattedDate = formatDate(
     props.data?.departure?.time?.local,
     LONG_DAY_MONTH_FORMAT,
   );
