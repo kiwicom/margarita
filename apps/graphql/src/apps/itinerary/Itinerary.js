@@ -2,14 +2,21 @@
 
 import { type TripTypes } from '@kiwicom/margarita-config';
 
-import type { RouteStop, Sector, Price } from '../common/CommonTypes';
+import type {
+  RouteStop,
+  Sector,
+  Price,
+  HoldBagOption,
+} from '../common/CommonTypes';
 
 type Order = 'ASC' | 'DESC';
 type Sort = 'price' | 'duration' | 'quality' | 'date' | 'popularity';
+
 type DateRange = {|
   start: Date,
   end?: Date,
 |};
+
 type Passengers = {|
   +adults?: number,
   +children?: number,
@@ -59,6 +66,14 @@ export type Itinerary = {|
   +isValid: ?boolean,
   +departure: ?RouteStop,
   +arrival: ?RouteStop,
+  +holdBagOptions: ?Array<HoldBagOption>,
+|};
+
+export type HoldBagProps = {|
+  +weight: ?number,
+  +width: ?number,
+  +height: ?number,
+  +length: ?number,
 |};
 
 export type ApiRouteItem = {|
@@ -81,9 +96,17 @@ export type ApiCountry = {|
   +name: string,
 |};
 
+export type ApiBagsPrice = { [string]: ?number };
+export type ApiBagsLimits = {|
+  hold_weight?: number,
+  hold_width?: number,
+  hold_height?: number,
+  hold_length?: number,
+|};
+
 // @TODO data should be with "?"
-export type ApiResponseType = {|
-  +currency: string,
+export type ItinerariesApiResponse = {|
+  +currency?: string,
   +data: $ReadOnlyArray<{|
     +id: string,
     +airlines: Array<string>,
@@ -101,15 +124,20 @@ export type ApiResponseType = {|
     +route: Array<ApiRouteItem>,
     +routes: Array<Array<string>>,
     +booking_token: string,
+    +bags_price?: ApiBagsPrice,
+    +baglimit?: ApiBagsLimits,
   |}>,
 |};
 
 export type ItineraryApiResponse = {|
+  +currency?: string,
   +flights_checked?: boolean,
   +flights_invalid?: boolean,
   +booking_token?: string,
   +total?: number,
   +flights?: Array<ItineraryApiSegment>,
+  +bags_price?: ApiBagsPrice,
+  +luggage?: $ReadOnlyArray<?number>,
 |};
 
 export type ItineraryApiSegment = {|

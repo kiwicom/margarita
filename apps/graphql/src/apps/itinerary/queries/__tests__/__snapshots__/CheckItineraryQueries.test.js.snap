@@ -38,6 +38,15 @@ fragment Sector on Sector {
       currency
       amount
     }
+    holdBagOptions {
+      quantity,
+      dimensions,
+      weight,
+      price {
+        currency
+        amount
+      },
+    }
     departure {
       ...RouteStopFragment
     }
@@ -67,6 +76,17 @@ fragment Sector on Sector {
         "currency": "EUR",
         "amount": 692.88
       },
+      "holdBagOptions": [
+        {
+          "quantity": 1,
+          "dimensions": "27 x 52 x 78",
+          "weight": "23 kg",
+          "price": {
+            "currency": "EUR",
+            "amount": 117.6
+          }
+        }
+      ],
       "departure": {
         "time": {
           "utc": "2019-03-07T20:30:00.000Z",

@@ -42,3 +42,10 @@ export type Vehicle = {|
   +type: ?string,
   +uniqueNo: ?string,
 |};
+
+export type HoldBagOption = {|
+  +quantity: ?number,
+  +price: ?Price,
+  +dimensions: ?string,
+  +weight: ?string,
+|};

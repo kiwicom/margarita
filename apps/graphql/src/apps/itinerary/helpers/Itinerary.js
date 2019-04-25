@@ -4,7 +4,7 @@ import { head, last } from 'ramda';
 import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
 
 import { differenceInMinutes } from './Itineraries';
-import type { ItineraryApiSegment } from '../Itinerary';
+import type { ItineraryApiSegment, HoldBagProps } from '../Itinerary';
 import type {
   RouteStop,
   Sector,
@@ -122,4 +122,15 @@ export const getItineraryType = (sectors: ?Array<Sector>): ?TripTypes => {
     default:
       return null;
   }
+};
+
+export const sanitizeHoldBagProps = (
+  bagProps: ?$ReadOnlyArray<?number>,
+): HoldBagProps => {
+  return {
+    weight: bagProps?.[4],
+    width: bagProps?.[6],
+    height: bagProps?.[7],
+    length: bagProps?.[5],
+  };
 };
