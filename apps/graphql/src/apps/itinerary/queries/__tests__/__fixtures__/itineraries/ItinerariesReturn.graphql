@@ -53,6 +53,15 @@ fragment Sector on Sector {
     edges {
       node {
         id
+        holdBagOptions {
+          quantity,
+          dimensions,
+          weight,
+          price {
+            currency
+            amount
+          },
+        }
           ... on ItineraryReturn {
           inbound {
             ...Sector

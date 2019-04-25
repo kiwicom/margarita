@@ -225,6 +225,13 @@ type GeoIP {
   coordinates: Coordinate
 }
 
+type HoldBagOption {
+  quantity: Int
+  price: Price
+  dimensions: String
+  weight: String
+}
+
 """Number of hold bags for a passenger for a given flight"""
 input HoldBags {
   """Flight ID for the bags checked"""
@@ -305,6 +312,7 @@ interface ItineraryInterface {
 
   """Itinerary is valid (exists and is not sold-out or cancelled)"""
   isValid: Boolean
+  holdBagOptions: [HoldBagOption]
 }
 
 """A connection to a list of items."""
@@ -343,6 +351,7 @@ type ItineraryOneWay implements ItineraryInterface & FromToInterface & OneWayInt
 
   """Itinerary is valid (exists and is not sold-out or cancelled)"""
   isValid: Boolean
+  holdBagOptions: [HoldBagOption]
   sector: Sector
 }
 
@@ -375,6 +384,7 @@ type ItineraryReturn implements ItineraryInterface & FromToInterface & ReturnInt
 
   """Itinerary is valid (exists and is not sold-out or cancelled)"""
   isValid: Boolean
+  holdBagOptions: [HoldBagOption]
   outbound: Sector
   inbound: Sector
 }

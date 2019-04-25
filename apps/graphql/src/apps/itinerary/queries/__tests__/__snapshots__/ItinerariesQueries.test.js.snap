@@ -34,6 +34,15 @@ fragment RouteStopFragment on RouteStop {
     edges {
       node {
         id
+        holdBagOptions {
+          quantity,
+          dimensions,
+          weight,
+          price {
+            currency
+            amount
+          },
+        }
         ... on ItineraryOneWay {
           sector {
             duration
@@ -67,6 +76,7 @@ fragment RouteStopFragment on RouteStop {
         {
           "node": {
             "id": "SXRpbmVyYXJ5T25lV2F5OjM5OTEyMjc5NzgyMjAxMTlfMHwzOTE1MzYxNjAzMzExMTg1XzB8ODc3NjMwMTgzOTg2NDEyM18wfDEyMzQ1MzE2NjE2NTYxNjc4XzA=",
+            "holdBagOptions": [],
             "sector": {
               "duration": 3435,
               "stopoverDuration": null,
@@ -206,6 +216,15 @@ fragment Sector on Sector {
     edges {
       node {
         id
+        holdBagOptions {
+          quantity,
+          dimensions,
+          weight,
+          price {
+            currency
+            amount
+          },
+        }
           ... on ItineraryReturn {
           inbound {
             ...Sector
@@ -227,6 +246,17 @@ fragment Sector on Sector {
         {
           "node": {
             "id": "SXRpbmVyYXJ5UmV0dXJuOjg5MDM4NDUxNzc0NDY4MDRfMHwxOTkxMjE1NjA5MTk5OTM2Ml8wfDE5OTEyMTU2MDkxOTk5MzYyXzF8MTk5MTIxNTYwOTE5OTkzNjJfMnwxOTkxMjE1NjA5MTk5OTM2Ml8zfDQwNTA2MDIwNjQ0NTk4MTVfMA==",
+            "holdBagOptions": [
+              {
+                "quantity": 1,
+                "dimensions": null,
+                "weight": "20 kg",
+                "price": {
+                  "currency": "EUR",
+                  "amount": 160.19
+                }
+              }
+            ],
             "inbound": {
               "duration": 1866,
               "stopoverDuration": 44729,

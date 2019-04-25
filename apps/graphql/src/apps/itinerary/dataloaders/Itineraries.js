@@ -11,13 +11,15 @@ import {
   getItineraryType,
   getItineraryDeparture,
   getItineraryArrival,
+  getHoldBagOptions,
+  sanitizeHoldBagProps,
   mapSectors,
   unmaskID,
 } from '../helpers/Itineraries';
 import type {
   ItinerariesReturnSearchParameters,
   ItinerariesOneWaySearchParameters,
-  ApiResponseType,
+  ItinerariesApiResponse,
   Itinerary,
 } from '../Itinerary';
 
@@ -74,7 +76,7 @@ const addReturnSearchQueryParams = inboundDate => {
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
 ) => {
-  const results: $ReadOnlyArray<ApiResponseType> = await Promise.all(
+  const results: $ReadOnlyArray<ItinerariesApiResponse> = await Promise.all(
     parameters.map(params => {
       return fetch(`/v2/search?${qs.stringify(parseParameters(params))}`);
     }),
@@ -84,14 +86,21 @@ const fetchItineraries = async (
   });
 };
 
-const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
+const sanitizeItineraries = (response: ItinerariesApiResponse): Itinerary[] => {
   const itineraries = response.data;
 
   return itineraries.map(itinerary => {
+    const currency = response.currency;
     const type = getItineraryType(itinerary.routes);
     const sectors = mapSectors(itinerary.route, itinerary.routes);
     const departure = getItineraryDeparture(sectors);
     const arrival = getItineraryArrival(type, sectors);
+    const holdBagProps = sanitizeHoldBagProps(itinerary.baglimit);
+    const holdBagOptions = getHoldBagOptions(
+      itinerary.bags_price,
+      currency,
+      holdBagProps,
+    );
 
     return {
       id: itinerary.id,
@@ -102,8 +111,9 @@ const sanitizeItineraries = (response: ApiResponseType): Itinerary[] => {
       departure,
       arrival,
       sectors,
+      holdBagOptions,
       price: {
-        currency: response.currency,
+        currency,
         amount: itinerary.price,
       },
     };

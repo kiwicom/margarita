@@ -5,8 +5,18 @@ import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
 import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
 
-import type { ApiRouteItem } from '../Itinerary';
-import type { RouteStop, Sector, Segment } from '../../common/CommonTypes';
+import type {
+  ApiRouteItem,
+  HoldBagProps,
+  ApiBagsPrice,
+  ApiBagsLimits,
+} from '../Itinerary';
+import type {
+  RouteStop,
+  Sector,
+  Segment,
+  HoldBagOption,
+} from '../../common/CommonTypes';
 import airlines from './airlines.json';
 
 export const differenceInMinutes = (
@@ -179,5 +189,65 @@ const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
     vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
     departure: apiRouteItemToDeparture(segment),
     arrival: apiRouteItemToArrival(segment),
+  };
+};
+
+const parseBagDimensions = (bagProps: ?HoldBagProps): ?string => {
+  if (bagProps != null) {
+    const { width, height, length } = bagProps;
+    if (width != null && height != null && length != null) {
+      return `${width} x ${height} x ${length}`;
+    }
+  }
+  return null;
+};
+
+const parseBagWeight = (weight: ?number): ?string => {
+  if (weight == null) {
+    return null;
+  }
+  return `${weight} kg`;
+};
+
+export const getHoldBagOptions = (
+  prices: ?ApiBagsPrice,
+  currency: ?string,
+  bagProps: ?HoldBagProps,
+): ?Array<HoldBagOption> => {
+  /**
+   * NOTE: For now there is only 1-3 available and bookable quantity for hold bags.
+   * This value is defined by current data available on endpoints and will be extended later
+   * with more combinations, after new bags implementation will be ready for booking
+   * endpoint https://docs.kiwi.com/booking/ (planned for Q2 2019)
+   */
+  const possibleHoldBagQuantities = [1, 2, 3];
+  const dimensions = parseBagDimensions(bagProps);
+  const weight = parseBagWeight(bagProps?.weight);
+  return possibleHoldBagQuantities.reduce((acc, quantity) => {
+    const priceAmount = prices?.[quantity.toString()];
+    if (priceAmount == null) {
+      return acc;
+    }
+    const option = {
+      quantity,
+      dimensions,
+      weight,
+      price: {
+        currency,
+        amount: priceAmount,
+      },
+    };
+    return [...acc, option];
+  }, []);
+};
+
+export const sanitizeHoldBagProps = (
+  bagProps: ?ApiBagsLimits,
+): HoldBagProps => {
+  return {
+    weight: bagProps?.hold_weight,
+    width: bagProps?.hold_width,
+    height: bagProps?.hold_height,
+    length: bagProps?.hold_length,
   };
 };

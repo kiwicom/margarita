@@ -13,11 +13,13 @@ import type {
 import {
   getItineraryDeparture,
   getItineraryArrival,
+  getHoldBagOptions,
 } from '../helpers/Itineraries';
 import {
   sanitizeSectors,
   getItineraryId,
   getItineraryType,
+  sanitizeHoldBagProps,
 } from '../helpers/Itinerary';
 
 export const parseParameters = (input: ItineraryCheckParameters) => {
@@ -54,10 +56,17 @@ const sanitizeItinerary = (response: ItineraryApiResponse): Itinerary => {
    * @TODO - `price.currency` - Tequila API currently always returns total price
    * in EUR, should be unified with search results where currency can be variable
    */
+  const currency = response.currency;
   const sectors = sanitizeSectors(response.flights);
   const type = getItineraryType(sectors);
   const departure = getItineraryDeparture(sectors);
   const arrival = getItineraryArrival(type, sectors);
+  const holdBagProps = sanitizeHoldBagProps(response.luggage);
+  const holdBagOptions = getHoldBagOptions(
+    response.bags_price,
+    currency,
+    holdBagProps,
+  );
 
   return {
     id: getItineraryId(response.flights),
@@ -68,8 +77,9 @@ const sanitizeItinerary = (response: ItineraryApiResponse): Itinerary => {
     departure,
     arrival,
     sectors,
+    holdBagOptions,
     price: {
-      currency: 'EUR',
+      currency,
       amount: response.total,
     },
   };
