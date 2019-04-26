@@ -17,6 +17,7 @@ import {
   isAfter,
   addWeeks,
   isSameDay,
+  getWeeksInMonth,
 } from 'date-fns';
 import isEqual from 'react-fast-compare';
 
@@ -31,7 +32,7 @@ import type {
 import type { OnDragEvent } from '../types';
 
 const minimalNumberOfLinesInMonth = 4;
-const spaceBetweenMonths = 60;
+export const spaceBetweenMonths = 60;
 const touchBufferRatio = 0.5;
 
 // @TODO add tests
@@ -70,6 +71,7 @@ export const getMonthMatrix = (
 
 export const getMonths = (
   numberOfMonths: number,
+  weekStartsOn: WeekStartsType,
   whichMonthsToRender: 'prev' | 'next' = 'next',
   startDate: Date = new Date(),
 ): Array<MonthDateType> =>
@@ -82,6 +84,7 @@ export const getMonths = (
     return {
       month: getMonth(newMonth),
       year: getYear(newMonth),
+      numberOfWeeks: getWeeksInMonth(newMonth, { weekStartsOn: weekStartsOn }),
     };
   });
 
@@ -98,15 +101,15 @@ export const generateNeighbourhood = (
   const whichMonthsToRender = fingerRelativePosition.y > 0 ? 'prev' : 'next';
   const neighbourhood = getMonths(
     howManyMonthsToRender(fingerRelativePosition, dayItemSize),
+    weekStartsOn,
     whichMonthsToRender,
     day,
   ).map<AnotatedMonthType>(item => ({
     year: item.year,
     month: item.month,
-    weeks: getMonthMatrix(
-      { year: item.year, month: item.month },
-      weekStartsOn,
-      (day, { isSameMonth }) => (isSameMonth ? new Date(day) : null),
+    numberOfWeeks: item.numberOfWeeks,
+    weeks: getMonthMatrix(item, weekStartsOn, (day, { isSameMonth }) =>
+      isSameMonth ? new Date(day) : null,
     ),
   }));
   return neighbourhood;
