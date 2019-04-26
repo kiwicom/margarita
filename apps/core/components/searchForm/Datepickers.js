@@ -124,7 +124,7 @@ class Datepickers extends React.Component<Props, State> {
     const sharedDatePickerProps = {
       onConfirm: this.handleDateChange,
       onDismiss: this.handleDatePickerDismiss,
-      buttonLabels: { cancel: 'Cancel', confirm: 'OK' },
+      buttonLabels: { cancel: 'Close', confirm: 'Set Date' },
       numberOfRenderedMonths: NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
       weekStartsOn: 1,
     };

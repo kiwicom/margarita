@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, FlatList } from 'react-native';
+import { View, FlatList, Image } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -9,6 +9,7 @@ import { getMonths } from './libs';
 import type { MonthDateType, WeekStartsType } from './RangeDatePickerTypes';
 import RenderMonth from './RenderMonth';
 import DayNames from './DayNames';
+import AlphaToWhite from './assets/alpha-to-white-vertical.png';
 
 type Props = {|
   +onDayPress: ($ReadOnlyArray<Date>) => void,
@@ -53,15 +54,24 @@ export default class RangeDatePickerContent extends React.Component<
       <View style={styles.container}>
         <DayNames weekStartsOn={this.props.weekStartsOn} />
         {this.state.nextMonths && (
-          <FlatList
-            contentContainerStyle={styles.monthsContainer}
-            data={this.state.nextMonths}
-            keyExtractor={this.keyExtractor}
-            renderItem={this.renderMonthItem}
-            extraData={this.props.selectedDates}
-            initialNumToRender={2}
-            style={styles.flatList}
-          />
+          <>
+            <FlatList
+              contentContainerStyle={styles.monthsContainer}
+              data={this.state.nextMonths}
+              keyExtractor={this.keyExtractor}
+              renderItem={this.renderMonthItem}
+              extraData={this.props.selectedDates}
+              initialNumToRender={2}
+              style={styles.flatList}
+            />
+            <View style={styles.gradientOverlapContainer}>
+              <Image
+                source={AlphaToWhite}
+                style={styles.gradientOverlapImage}
+                resizeMode="stretch"
+              />
+            </View>
+          </>
         )}
       </View>
     );
@@ -69,6 +79,7 @@ export default class RangeDatePickerContent extends React.Component<
 }
 
 const scrollBarWidth = 17;
+const gradientHeight = 20;
 
 const styles = StyleSheet.create({
   container: {
@@ -77,8 +88,17 @@ const styles = StyleSheet.create({
       minWidth: 382,
     },
   },
+  gradientOverlapContainer: {
+    position: 'relative',
+    marginTop: -gradientHeight,
+  },
+  gradientOverlapImage: {
+    height: gradientHeight,
+    width: '100%',
+  },
   monthsContainer: {
-    margin: parseFloat(defaultTokens.spaceXSmall),
+    marginHorizontal: parseFloat(defaultTokens.spaceXSmall),
+    paddingBottom: gradientHeight,
   },
   flatList: {
     web: { paddingEnd: scrollBarWidth },
