@@ -4,9 +4,8 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Text } from '../Text';
+import { Button } from '../Button';
 import { Modal } from '../Modal';
-import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
@@ -50,18 +49,17 @@ export default class RangeDatePicker extends React.Component<Props> {
             isRangePicker={isRangePicker ?? true}
           />
           <View style={styles.buttonsContainer}>
-            <Touchable
-              onPress={this.handleDismiss}
-              style={styles.confirmButton}
-            >
-              <Text style={styles.buttonText}>{labels.cancel}</Text>
-            </Touchable>
-            <Touchable
-              style={styles.confirmButton}
-              onPress={this.handleConfirm}
-            >
-              <Text style={styles.buttonText}>{labels.confirm}</Text>
-            </Touchable>
+            <View style={styles.buttonWrapper}>
+              <Button
+                label={labels.cancel}
+                onPress={this.handleDismiss}
+                type="secondary"
+                style={styles.closeButton}
+              />
+            </View>
+            <View style={styles.buttonWrapper}>
+              <Button label={labels.confirm} onPress={this.handleConfirm} />
+            </View>
           </View>
         </View>
       </Modal>
@@ -76,17 +74,14 @@ const styles = StyleSheet.create({
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
     overflow: 'hidden',
   },
-  confirmButton: {
-    borderColor: defaultTokens.paletteWhite,
-    borderTopWidth: StyleSheet.hairlineWidth,
-    height: 50,
-    justifyContent: 'center',
+  buttonsContainer: {
+    margin: parseFloat(defaultTokens.spaceXSmall),
+    flexDirection: 'row',
   },
-  buttonText: {
-    textAlign: 'center',
-    color: defaultTokens.paletteProductNormal,
-    fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
-    fontWeight: 'normal',
-    backgroundColor: 'transparent',
+  buttonWrapper: {
+    flex: 1,
+  },
+  closeButton: {
+    marginEnd: parseFloat(defaultTokens.spaceXSmall),
   },
 });
