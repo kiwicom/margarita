@@ -24,11 +24,13 @@ export type DayItemPositionType = {| x: number, y: number, day: Date |};
 export type MonthDateType = {|
   +year: number,
   +month: number,
+  +numberOfWeeks: number,
 |};
 
 export type AnotatedMonthType = {|
   +year: number,
   +month: number,
+  +numberOfWeeks: number,
   +weeks: Array<Array<?Date>>,
 |};
 

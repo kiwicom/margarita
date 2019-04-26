@@ -65,7 +65,7 @@ const RenderArrow = (props: RenderArrowProps) =>
 export default class RenderDay extends React.Component<Props, State> {
   static dayItemSize: DayItemSizeType = {
     width: 51,
-    height: 52,
+    height: designTokens.heightCalendarItem,
   };
 
   state = { isDragging: undefined };
@@ -122,10 +122,9 @@ export default class RenderDay extends React.Component<Props, State> {
   };
 
   measureDayItem = (e: OnLayout) => {
-    const { width, height } = e.nativeEvent.layout;
     RenderDay.dayItemSize = {
-      width,
-      height,
+      width: e.nativeEvent.layout.width,
+      height: designTokens.heightCalendarItem,
     };
   };
 
@@ -227,7 +226,7 @@ const styles = StyleSheet.create({
   },
   dayContainer: {
     flex: 1,
-    minHeight: designTokens.heightCalendarItem,
+    height: designTokens.heightCalendarItem,
     alignItems: 'center',
     justifyContent: 'center',
     padding: designTokens.paddingCalendarItem / 2,
