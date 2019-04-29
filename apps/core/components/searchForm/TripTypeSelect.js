@@ -1,7 +1,20 @@
 // @flow
 
 import * as React from 'react';
-import { Modal, Select } from '@kiwicom/margarita-components';
+import {
+  Modal,
+  Select,
+  TripTypeButton,
+  TripTypeSwitch,
+} from '@kiwicom/margarita-components';
+import { Platform } from 'react-native';
+import {
+  LAYOUT,
+  withLayoutContext,
+  type LayoutContextState,
+} from '@kiwicom/margarita-device';
+import { TRIP_TYPES } from '@kiwicom/margarita-config';
+import { StyleSheet } from '@kiwicom/universal-components';
 
 import { TRIP_TYPE } from '../../scenes/search/SearchConstants';
 import {
@@ -10,30 +23,82 @@ import {
 } from '../../scenes/search/SearchContext';
 
 type Props = {|
-  +isVisible: boolean,
-  +onClose: () => void,
   +tripType: string,
-  +handleTripTypeSelect: string => void,
+  +layout: number,
+  +setTripType: string => void,
 |};
 
-class TripTypeSelect extends React.Component<Props> {
+type State = {|
+  +showTripTypeModal: boolean,
+|};
+
+class TripTypeSelect extends React.Component<Props, State> {
+  state = {
+    showTripTypeModal: false,
+  };
+
+  handleTripTypeSelect = (type: string) => {
+    if (type === TRIP_TYPES.RETURN || type === TRIP_TYPES.ONEWAY) {
+      this.props.setTripType(type);
+    }
+  };
+
+  toggleTripTypeModal = () =>
+    this.setState(state => ({ showTripTypeModal: !state.showTripTypeModal }));
+
   render() {
-    const { isVisible, tripType, onClose, handleTripTypeSelect } = this.props;
+    const { tripType, layout } = this.props;
+    const desktopLayout = layout >= LAYOUT.desktop;
     return (
-      <Modal isVisible={isVisible} onClose={onClose}>
-        <Select
-          optionsData={TRIP_TYPE}
-          selectedType={tripType}
-          onSelect={handleTripTypeSelect}
-          onClosePress={onClose}
-        />
-      </Modal>
+      <>
+        {Platform.OS === 'web' ? (
+          <TripTypeSwitch
+            style={!desktopLayout && styles.flexTripTypeSwitch}
+            optionsData={TRIP_TYPE}
+            selectedType={tripType}
+            onSelect={this.handleTripTypeSelect}
+          />
+        ) : (
+          <TripTypeButton
+            onPress={this.toggleTripTypeModal}
+            icon={TRIP_TYPE[tripType].icon}
+            label={TRIP_TYPE[tripType].label}
+          />
+        )}
+        <Modal
+          isVisible={this.state.showTripTypeModal}
+          onClose={this.toggleTripTypeModal}
+        >
+          <Select
+            optionsData={TRIP_TYPE}
+            selectedType={tripType}
+            onSelect={this.handleTripTypeSelect}
+            onClosePress={this.toggleTripTypeModal}
+          />
+        </Modal>
+      </>
     );
   }
 }
 
-const select = ({ tripType }: SearchContextState) => ({
-  tripType,
+const styles = StyleSheet.create({
+  flexTripTypeSwitch: {
+    flex: 1,
+  },
 });
 
-export default withSearchContext(select)(TripTypeSelect);
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
+});
+
+const select = ({
+  tripType,
+  actions: { setTripType },
+}: SearchContextState) => ({
+  tripType,
+  setTripType,
+});
+
+export default withLayoutContext(layoutSelect)(
+  withSearchContext(select)(TripTypeSelect),
+);
