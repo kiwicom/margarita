@@ -1,5 +1,15 @@
 service: margarita-graphql
 
+plugins:
+  - serverless-webpack
+  - serverless-offline
+  - serverless-dotenv-plugin
+
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+
 provider:
   name: aws
   runtime: nodejs8.10
@@ -7,7 +17,7 @@ provider:
   region: eu-central-1
 functions:
   margarita-graphql:
-    handler: lambda/dist/index.handler
+    handler: src/server.handler
     environmentVariables:
       BASE_URL: ${env:BASE_URL}
       API_KEY: ${env:API_KEY}
@@ -16,7 +26,7 @@ functions:
           path: /graphql
           method: post
           cors:
-            origin: '*'
+            origin: "*"
             headers:
               - Content-Type
               - X-Amz-Date
@@ -30,7 +40,7 @@ functions:
           path: /graphql
           method: get
           cors:
-            origin: '*'
+            origin: "*"
             headers:
               - Content-Type
               - X-Amz-Date

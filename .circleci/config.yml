@@ -89,7 +89,7 @@ jobs:
           name: Deploy to S3
           command: AWS_ACCESS_KEY_ID=$ACCESS_KEY AWS_SECRET_ACCESS_KEY=$SECRET_KEY aws s3 sync apps/landingPage/out s3://margarita-landing-page/ --delete
 
-  build-and-deploy-graphql:
+  deploy-graphql:
     <<: *defaults
     steps:
       - checkout
@@ -106,9 +106,6 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
-      - run:
-          name: Build GraphQL lambda
-          command: yarn graphql:build
       - run:
           name: Deploy GraphQL lambda
           command: yarn graphql:deploy
@@ -179,7 +176,7 @@ workflows:
       - unit-tests:
           requires:
             - install-dependencies
-      - build-and-deploy-graphql:
+      - deploy-graphql:
           requires:
             - lint
             - flow
