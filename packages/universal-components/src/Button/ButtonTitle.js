@@ -61,6 +61,7 @@ const colorTheme = (type: ButtonType = 'primary') =>
 
 const sizeTheme = (size: ButtonSize = 'normal') =>
   StyleSheet.create({
+    // eslint-disable-next-line react-native/no-unused-styles
     buttonSizeWrapper: {
       fontSize: buttonSizeStyle[size].fontSize,
     },

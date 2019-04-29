@@ -27,7 +27,7 @@
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "concurrently": "^4.1.0",
-    "expo-cli": "^2.11.6",
+    "expo-cli": "^2.15.4",
     "react-native-storybook-loader": "^1.8.0"
   },
   "peerDependencies": {

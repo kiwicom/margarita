@@ -99,7 +99,9 @@ class TextInput extends React.Component<Props, State> {
     const { onFocus, disabled } = this.props;
     if (!disabled) {
       this.setFocus(true);
-      onFocus?.();
+      if (onFocus != null) {
+        onFocus();
+      }
     }
   };
 
@@ -107,7 +109,9 @@ class TextInput extends React.Component<Props, State> {
     const { onBlur, disabled } = this.props;
     if (!disabled) {
       this.setFocus(false);
-      onBlur?.();
+      if (onBlur) {
+        onBlur();
+      }
     }
   };
 
@@ -115,7 +119,9 @@ class TextInput extends React.Component<Props, State> {
     const { onChangeText, disabled } = this.props;
     if (!disabled) {
       this.setState({ value });
-      onChangeText?.(value);
+      if (onChangeText) {
+        onChangeText(value);
+      }
     }
   };
 
@@ -143,7 +149,9 @@ class TextInput extends React.Component<Props, State> {
   clearValue = () => {
     const { onChangeText } = this.props;
     this.setState({ value: '' });
-    onChangeText?.('');
+    if (onChangeText) {
+      onChangeText('');
+    }
   };
 
   render() {

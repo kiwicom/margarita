@@ -64,7 +64,9 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       singleSliderValue: values,
     });
-    onValuesChange?.(values);
+    if (onValuesChange != null) {
+      onValuesChange(values);
+    }
   };
 
   multiSliderValuesChange = (values: Array<number>) => {
@@ -72,7 +74,9 @@ export default class Slider extends React.Component<Props, State> {
     this.setState({
       multiSliderValues: values,
     });
-    onValuesChange?.(values);
+    if (onValuesChange != null) {
+      onValuesChange(values);
+    }
   };
 
   onLayout = ({ nativeEvent }: OnLayout) => {

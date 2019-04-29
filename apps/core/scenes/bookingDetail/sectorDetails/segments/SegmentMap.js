@@ -140,7 +140,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// eslint-disable-next-line babel/no-unused-expressions
+/* eslint-disable */
 graphql`
   fragment SegmentMap_segmentMapStop on RouteStop @relay(mask: false) {
     stop {
@@ -156,7 +156,6 @@ graphql`
   }
 `;
 
-// eslint-disable-next-line babel/no-unused-expressions
 graphql`
   fragment SegmentMap_segmentMapSegment on Sector @relay(mask: false) {
     segments {
@@ -169,6 +168,7 @@ graphql`
     }
   }
 `;
+/* eslint-enable */
 
 export default createFragmentContainer(SegmentMap, {
   data: graphql`

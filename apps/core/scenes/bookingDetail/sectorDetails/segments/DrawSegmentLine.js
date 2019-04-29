@@ -1,7 +1,5 @@
 // @flow
 
-/* eslint-disable relay/unused-fields */ // latitude & longitude are used by Polyline
-
 import * as React from 'react';
 import { MapView } from '@kiwicom/margarita-map';
 import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
@@ -32,7 +30,7 @@ const DrawSegmentLine = (props: Props) => {
   });
 };
 
-// eslint-disable-next-line babel/no-unused-expressions
+/* eslint-disable */
 graphql`
   fragment DrawSegmentLine_coordinates on RouteStop @relay(mask: false) {
     stop {
@@ -43,6 +41,7 @@ graphql`
     }
   }
 `;
+/* eslint-enable */
 
 export default createFragmentContainer(DrawSegmentLine, {
   data: graphql`

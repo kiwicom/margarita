@@ -200,7 +200,9 @@ export default class Notification extends React.Component<Props, State> {
   dismissNotification = () => {
     const { onDismiss } = this.props;
     this.hideNotification();
-    onDismiss?.();
+    if (onDismiss) {
+      onDismiss();
+    }
   };
 
   render() {

@@ -144,6 +144,7 @@ const sizeTheme = (
   rightIcon: boolean,
 ) =>
   StyleSheet.create({
+    // eslint-disable-next-line react-native/no-unused-styles
     buttonSizeWrapper: {
       height: buttonSizeStyle[size].height,
       paddingStart: leftIcon
