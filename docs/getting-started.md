@@ -24,7 +24,7 @@ yarn
 
    - `GRAPHQL_URL`
      - URL of GraphQL server
-     - E. g.: `'http://127.0.0.1:4000'`
+     - E. g.: `'http://127.0.0.1:4000/graphql'`
 
    **apps/graphql/.env**:
 

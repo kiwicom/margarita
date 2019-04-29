@@ -13,7 +13,6 @@
     "landing-page": "yarn workspace @kiwicom/margarita-landing-page start",
     "landing-page:deploy": "yarn workspace @kiwicom/margarita-landing-page deploy",
     "test-ci": "yarn flow && yarn lint && yarn test --ci --color --maxWorkers=2",
-    "graphql:build": "yarn workspace @kiwicom/margarita-graphql build",
     "graphql:deploy": "yarn workspace @kiwicom/margarita-graphql deploy",
     "voyager": "yarn workspace @kiwicom/margarita-voyager start",
     "storybook:web:margarita-components": "yarn workspace @kiwicom/margarita-components storybook",
