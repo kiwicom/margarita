@@ -7,3 +7,5 @@ export { default as formatDate } from './src/FormatDate/FormatDate';
 
 export const noop = () => {};
 export { default as debounce } from 'lodash/debounce';
+export { default as differenceInMinutes } from './src/differenceInMinutes';
+export { default as fromISO } from './src/fromISO';
