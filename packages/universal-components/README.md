@@ -66,8 +66,8 @@ Note: For web projects, you need to ensure you support the `.web.js` extension. 
 
 # Contributing
 
-See [CONTRIBUTING.md](https://github.com/kiwicom/universal-components/blob/master/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/kiwicom/margarita/blob/master/packages/universal-components/CONTRIBUTING.md)
 
-Repository: <https://github.com/kiwicom/universal-components>
+Repository: <https://github.com/kiwicom/margarita>
 
-Forward your suggestions, issues and bugs [here](https://github.com/kiwicom/universal-components/issues).
+Forward your suggestions, issues and bugs [here](https://github.com/kiwicom/margarita/issues).

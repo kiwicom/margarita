@@ -15,6 +15,13 @@ type Props = {|
 const hoverMonitor = HoverMonitor();
 
 class Hoverable extends React.Component<Props> {
+  componentDidMount() {
+    // eslint-disable-next-line no-console
+    console.warn(
+      'This component is deprecated and will be removed in a future release. Please use withHover instead',
+    );
+  }
+
   handleOnMouseEnter = () => {
     const { onMouseEnter } = this.props;
     if (onMouseEnter && hoverMonitor.hoverEnabled) {
