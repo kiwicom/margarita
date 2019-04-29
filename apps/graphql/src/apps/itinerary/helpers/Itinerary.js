@@ -2,8 +2,8 @@
 
 import { head, last } from 'ramda';
 import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
+import { differenceInMinutes, fromISO } from '@kiwicom/margarita-utils';
 
-import { differenceInMinutes } from './Itineraries';
 import type { ItineraryApiSegment, HoldBagProps } from '../Itinerary';
 import type {
   RouteStop,
@@ -58,7 +58,10 @@ const sanitizeSector = (segments: Array<Segment>): Sector => {
   const arrival = last(segments)?.arrival;
 
   return {
-    duration: differenceInMinutes(departure?.time?.utc, arrival?.time?.utc),
+    duration: differenceInMinutes(
+      fromISO(departure?.time?.utc),
+      fromISO(arrival?.time?.utc),
+    ),
     segments,
     stopoverDuration: 0,
     departure,
@@ -70,7 +73,10 @@ const sanitizeSegment = (segment: ItineraryApiSegment): Segment => {
   return {
     id: segment.id,
     carrier: sanitizeCarrier(segment),
-    duration: differenceInMinutes(segment.utc_departure, segment.utc_arrival),
+    duration: differenceInMinutes(
+      fromISO(segment.utc_departure),
+      fromISO(segment.utc_arrival),
+    ),
     vehicle: sanitizeVehicle(segment),
     departure: sanitizeDeparture(segment),
     arrival: sanitizeArrival(segment),

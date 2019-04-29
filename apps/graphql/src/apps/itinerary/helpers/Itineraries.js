@@ -1,6 +1,6 @@
 // @flow
 
-import * as DateFNS from 'date-fns';
+import { differenceInMinutes, fromISO } from '@kiwicom/margarita-utils';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
 import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
@@ -18,27 +18,6 @@ import type {
   HoldBagOption,
 } from '../../common/CommonTypes';
 import airlines from './airlines.json';
-
-export const differenceInMinutes = (
-  from: ?(string | number),
-  to: ?(string | number),
-) => {
-  if (from == null || to == null) {
-    return null;
-  }
-  const parseNonSpecificDate = date =>
-    typeof date === 'string'
-      ? DateFNS.parseISO(date)
-      : DateFNS.fromUnixTime(date);
-
-  return parseInt(
-    DateFNS.differenceInMinutes(
-      parseNonSpecificDate(to),
-      parseNonSpecificDate(from),
-    ),
-    10,
-  );
-};
 
 export const unmaskID = (ids: string[]): string[] =>
   ids.map(id => fromGlobalId(id));
@@ -152,7 +131,10 @@ const sanitizeSector = (
   const arrival = apiRouteItemToArrival(currentArrival);
 
   const currentSector = {
-    duration: differenceInMinutes(departure.time?.utc, arrival.time?.utc),
+    duration: differenceInMinutes(
+      fromISO(departure.time?.utc),
+      fromISO(arrival.time?.utc),
+    ),
     segments: [],
     stopoverDuration: 0,
     departure,
@@ -183,7 +165,10 @@ const apiRouteItemToDeparture = (routeItem: ?ApiRouteItem): RouteStop => ({
 
 const sanitizeSegment = (segment: ?ApiRouteItem): Segment => {
   return {
-    duration: differenceInMinutes(segment?.utc_departure, segment?.utc_arrival),
+    duration: differenceInMinutes(
+      fromISO(segment?.utc_departure),
+      fromISO(segment?.utc_arrival),
+    ),
     id: segment?.id,
     carrier: sanitizeCarrier(segment),
     vehicle: mapVehicle(segment?.vehicle_type, String(segment?.flight_no)),
