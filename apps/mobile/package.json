@@ -12,10 +12,10 @@
     "@kiwicom/margarita-components": "^0",
     "@kiwicom/margarita-config": "^0",
     "@kiwicom/margarita-core": "^0",
+    "@kiwicom/margarita-device": "^0",
     "@kiwicom/margarita-navigation": "^0",
     "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-utils": "^0",
-    "@kiwicom/margarita-device": "^0",
     "crna-make-symlinks-for-yarn-workspaces": "^1.0.1",
     "expo": "^32.0.5",
     "intl": "^1.2.5",
@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.0.0",
-    "expo-cli": "^2.11.6",
+    "expo-cli": "^2.15.4",
     "metro-bundler-config-yarn-workspaces": "^1.0.3"
   },
   "peerDependencies": {

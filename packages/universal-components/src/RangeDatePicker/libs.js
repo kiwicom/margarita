@@ -285,6 +285,7 @@ export const findRelatedItem = (
             callback(newSelectedDate);
           }
         }
+        return null;
       });
     });
   });

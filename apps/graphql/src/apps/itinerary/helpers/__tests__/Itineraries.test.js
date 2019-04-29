@@ -11,7 +11,7 @@ import {
   oneWayRoutesMap,
   twoWayRoutesList,
   twoWayRoutesMap,
-} from '../../__mocks__/itinerariesMock';
+} from '../../__datasets__/itinerariesMock';
 
 describe('getItineraryType', () => {
   const routesForReturnFlight = [['OSL', 'PRG'], ['PRG', 'OSL']];

@@ -15,20 +15,20 @@ import {
 type ReducedDangerouslyImpreciseStyle = $Rest<
   ____DangerouslyImpreciseStyle_Internal,
   {|
-    left: *, // use 'start' instead
-    right: *, // use 'end' instead
-    paddingLeft: *, // use 'paddingStart' instead
-    paddingRight: *, // use 'paddingEnd' instead
-    marginLeft: *, // use 'marginStart' instead
-    marginRight: *, // use 'marginEnd' instead
-    borderLeftWidth: *, // use 'borderStartWidth' instead
-    borderRightWidth: *, // use 'borderEndWidth' instead
-    borderLeftColor: *, // use 'borderStartColor' instead
-    borderRightColor: *, // use 'borderEndColor' instead
-    borderBottomLeftRadius: *, // use 'borderBottomStartRadius' instead
-    borderBottomRightRadius: *, // use 'borderBottomEndRadius' instead
-    borderTopLeftRadius: *, // use 'borderTopStartRadius' instead
-    borderTopRightRadius: *, // use 'borderTopEndRadius' instead
+    left: any, // use 'start' instead
+    right: any, // use 'end' instead
+    paddingLeft: any, // use 'paddingStart' instead
+    paddingRight: any, // use 'paddingEnd' instead
+    marginLeft: any, // use 'marginStart' instead
+    marginRight: any, // use 'marginEnd' instead
+    borderLeftWidth: any, // use 'borderStartWidth' instead
+    borderRightWidth: any, // use 'borderEndWidth' instead
+    borderLeftColor: any, // use 'borderStartColor' instead
+    borderRightColor: any, // use 'borderEndColor' instead
+    borderBottomLeftRadius: any, // use 'borderBottomStartRadius' instead
+    borderBottomRightRadius: any, // use 'borderBottomEndRadius' instead
+    borderTopLeftRadius: any, // use 'borderTopStartRadius' instead
+    borderTopRightRadius: any, // use 'borderTopEndRadius' instead
   |},
 >;
 
@@ -41,7 +41,7 @@ export type PlatformStyleObjectType = {
     $Rest<
       ReducedDangerouslyImpreciseStyle,
       {|
-        elevation: *, // elevation should be only used under the Android key
+        elevation: any, // elevation should be only used under the Android key
       |},
     > & {
       android: ReducedDangerouslyImpreciseStyle,

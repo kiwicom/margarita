@@ -58,9 +58,11 @@ const styles = StyleSheet.create({
 
 const theme = (type: BadgeType = 'primary') =>
   StyleSheet.create({
+    // eslint-disable-next-line react-native/no-unused-styles
     wrapper: {
       backgroundColor: wrapperColor[type],
     },
+    // eslint-disable-next-line react-native/no-unused-styles
     text: {
       color: textColor[type],
     },
