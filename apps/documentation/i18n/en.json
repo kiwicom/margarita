@@ -41,6 +41,10 @@
         "title": "Getting Started",
         "sidebar_label": "Getting Started"
       },
+      "guide-firebase-user": {
+        "title": "Guide: Firebase implementation",
+        "sidebar_label": "Guide: Firebase implementation"
+      },
       "guide-tequila-api-key": {
         "title": "Guide: Get your Tequila API key",
         "sidebar_label": "Guide: Get your Tequila API key"

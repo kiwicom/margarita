@@ -13,33 +13,29 @@ import SignOut from './SignOut';
 import SignIn from './SignIn';
 
 type Props = {|
+  +isFirebaseAvailable: boolean,
   +isUserSignedIn: boolean,
+  +signIn: () => void,
+  +signOut: () => void,
 |};
 
-class Profile extends React.Component<Props> {
-  handleSignIn = () => {
-    // @TODO
-  };
-
-  handleSignOut = () => {
-    // @TODO
-  };
-
-  render() {
-    return (
-      <ContentContainer>
-        <Illustration name="Lounge" style={styles.illustration} />
-        <Card style={styles.card}>
-          {this.props.isUserSignedIn ? (
-            <SignOut onPress={this.handleSignOut} />
-          ) : (
-            <SignIn onPress={this.handleSignIn} />
-          )}
-        </Card>
-      </ContentContainer>
-    );
-  }
-}
+const Profile = (props: Props) => {
+  return (
+    <ContentContainer>
+      <Illustration name="Lounge" style={styles.illustration} />
+      <Card>
+        {props.isUserSignedIn ? (
+          <SignOut onPress={props.signOut} />
+        ) : (
+          <SignIn
+            disabled={!props.isFirebaseAvailable}
+            onPress={props.signIn}
+          />
+        )}
+      </Card>
+    </ContentContainer>
+  );
+};
 
 const styles = StyleSheet.create({
   illustration: {
@@ -48,8 +44,15 @@ const styles = StyleSheet.create({
   },
 });
 
-const selectUserContextState = ({ isUserSignedIn }: UserContextState) => ({
+const selectUserContextState = ({
+  isFirebaseAvailable,
   isUserSignedIn,
+  actions: { signIn, signOut },
+}: UserContextState) => ({
+  isFirebaseAvailable,
+  isUserSignedIn,
+  signIn,
+  signOut,
 });
 
 export default withUserContext(selectUserContextState)(Profile);

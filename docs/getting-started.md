@@ -25,6 +25,20 @@ yarn
    - `GRAPHQL_URL`
      - URL of GraphQL server
      - E. g.: `'http://127.0.0.1:4000/graphql'`
+   - `FIREBASE_API_KEY`
+   - `FIREBASE_AUTH_DOMAIN`
+   - `FIREBASE_DATABASE_URL`
+   - `FIREBASE_PROJECT_ID`
+   - `FIREBASE_STORAGE_BUCKET`
+   - `FIREBASE_MESSAGING_SENDER_ID`
+     - Variables for sample Firebase implementation
+     - **Optional** - can be left empty 
+     - More info: [Guide: Firebase implementation](./guide-firebase-user)
+   - `GOOGLE_OAUTH_IOS`
+   - `GOOGLE_OAUTH_ANDROID`
+     - Variables for user Google login in native version
+     - **Optional** - can be left empty 
+     - More info: [Guide: Firebase implementation](./guide-firebase-user)
 
    **apps/graphql/.env**:
 
