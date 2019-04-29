@@ -35,9 +35,14 @@ const minimalNumberOfLinesInMonth = 4;
 export const spaceBetweenMonths = 60;
 const touchBufferRatio = 0.5;
 
-// @TODO add tests
+type SetProperDateIntervalArguments = {|
+  +grabbedSide: GrabbedSideType,
+  +newDateWithXYShift: Date,
+  +grabbedStartDay: Date,
+  +selectedDates: $ReadOnlyArray<Date>,
+|};
 
-export const getCurrentWeekArray = (
+export const getWeekArrayOfSpecificDate = (
   day: Date,
   weekStartsOn: WeekStartsType,
 ) => {
@@ -61,7 +66,7 @@ export const getMonthMatrix = (
     { weekStartsOn },
   );
   return matrix.map<Array<?Date>>(weekDay =>
-    getCurrentWeekArray(weekDay, weekStartsOn).map(day =>
+    getWeekArrayOfSpecificDate(weekDay, weekStartsOn).map(day =>
       convertDate(day, {
         isSameMonth: isSameMonth(date, day),
       }),
@@ -75,7 +80,7 @@ export const getMonths = (
   whichMonthsToRender: 'prev' | 'next' = 'next',
   startDate: Date = new Date(),
 ): Array<MonthDateType> =>
-  new Array(numberOfMonths).fill(undefined).map((_, index) => {
+  new Array(Math.abs(numberOfMonths)).fill(undefined).map((_, index) => {
     const newMonth =
       whichMonthsToRender === 'prev'
         ? subMonths(startDate, numberOfMonths - 1 - index)
@@ -92,18 +97,19 @@ export const isDayInPast = (checkedDay: ?Date) =>
   checkedDay && isBefore(checkedDay, new Date());
 
 export const generateNeighbourhood = (
-  day: Date,
+  grabbedStartDay: Date,
   fingerRelativePosition: { x: number, y: number },
   dayItemSize: DayItemSizeType,
   weekStartsOn: WeekStartsType,
 ) => {
   // @TODO Optimise this function to not generate neighbourhood every time
-  const whichMonthsToRender = fingerRelativePosition.y > 0 ? 'prev' : 'next';
+  const isDraggingUp = fingerRelativePosition.y < 0;
+  const whichMonthsToRender = isDraggingUp ? 'prev' : 'next';
   const neighbourhood = getMonths(
-    howManyMonthsToRender(fingerRelativePosition, dayItemSize),
+    howManyMonthsToRender(fingerRelativePosition.y, dayItemSize),
     weekStartsOn,
     whichMonthsToRender,
-    day,
+    grabbedStartDay,
   ).map<AnotatedMonthType>(item => ({
     year: item.year,
     month: item.month,
@@ -116,19 +122,14 @@ export const generateNeighbourhood = (
 };
 
 export const howManyMonthsToRender = (
-  fingerRelativePosition: {
-    x: number,
-    y: number,
-  },
+  fingerRelativePositionY: number,
   dayItemSize: DayItemSizeType,
 ) => {
-  const vectorSize = Math.sqrt(
-    Math.pow(fingerRelativePosition.x, 2) +
-      Math.pow(fingerRelativePosition.y, 2),
-  );
-  return Math.ceil(
-    vectorSize / dayItemSize.height / minimalNumberOfLinesInMonth,
-  );
+  const months =
+    Math.abs(fingerRelativePositionY) /
+    dayItemSize.height /
+    minimalNumberOfLinesInMonth;
+  return Math.ceil(months) + 1;
 };
 
 export const getNumberOfMonthsCrossedByFinger = (
@@ -185,12 +186,12 @@ export const getNumberOfMonthsCrossedByFinger = (
 export const getTouchBuffer = (dayItemHeight: number) =>
   dayItemHeight * touchBufferRatio;
 
-export const setProperDateInterval = (
-  grabbedSide: GrabbedSideType,
-  newDateWithXYShift: Date,
-  grabbedStartDay: Date,
-  selectedDates: $ReadOnlyArray<Date>,
-) => {
+export const setProperDateInterval = ({
+  grabbedSide,
+  newDateWithXYShift,
+  grabbedStartDay,
+  selectedDates,
+}: SetProperDateIntervalArguments) => {
   if (grabbedSide === 'left') {
     if (isBefore(newDateWithXYShift, grabbedStartDay)) {
       return [newDateWithXYShift, selectedDates[1]];
@@ -269,12 +270,12 @@ export const findRelatedItem = (
             return null;
           }
 
-          const newSelectedDate = setProperDateInterval(
+          const newSelectedDate = setProperDateInterval({
             grabbedSide,
             newDateWithXYShift,
             grabbedStartDay,
             selectedDates,
-          );
+          });
 
           if (
             !isEqual(selectedDates, newSelectedDate) &&
