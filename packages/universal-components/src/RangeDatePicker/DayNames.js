@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
 import { designTokens } from '../DesignTokens';
-import { getCurrentWeekArray } from './libs';
+import { getWeekArrayOfSpecificDate } from './libs';
 import type { WeekStartsType } from './RangeDatePickerTypes';
 
 type Props = {|
@@ -16,7 +16,9 @@ type Props = {|
 |};
 
 const getDayNames = weekStartsOn =>
-  getCurrentWeekArray(new Date(), weekStartsOn).map(day => format(day, 'E'));
+  getWeekArrayOfSpecificDate(new Date(), weekStartsOn).map(day =>
+    format(day, 'E'),
+  );
 
 const DayName = ({ name }) => (
   <View style={styles.dayNameContainer}>
