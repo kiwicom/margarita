@@ -1,7 +1,7 @@
 // @flow
 
-import '@babel/polyfill';
 import express from 'express';
+import serverless from 'serverless-http';
 import compression from 'compression';
 import { ApolloServer } from 'apollo-server-express';
 import requestIp from 'request-ip';
@@ -10,7 +10,10 @@ import morgan from 'morgan';
 
 import createContext from './services/graphqlContext/GraphQLContext';
 import schema from './Schema';
-import Logger from './services/logger/Logger';
+
+const isDevelopment = process.env.NODE_ENV === 'development';
+
+const playgroundEndpoint = isDevelopment ? '/graphql' : '/staging/graphql';
 
 const server = new ApolloServer({
   schema,
@@ -27,9 +30,11 @@ const server = new ApolloServer({
       ...createContext({ acceptLanguageHeaders }),
     };
   },
+  playground: {
+    endpoint: playgroundEndpoint,
+  },
+  introspection: true,
 });
-
-const isDevelopment = process.env.NODE_ENV === 'development';
 
 const app = express();
 app.use(compression());
@@ -39,12 +44,7 @@ if (isDevelopment) {
   app.use(morgan('dev'));
 }
 
-server.applyMiddleware({ app, path: '/' });
+server.applyMiddleware({ app });
 
-if (isDevelopment) {
-  app.listen({ port: 4000 }, () =>
-    Logger.info(`🚀 Server ready at http://localhost:4000`),
-  );
-} else {
-  app.listen();
-}
+const handler = serverless(app);
+export { handler };

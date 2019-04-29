@@ -1,26 +1,22 @@
 // @flow
 
+// webpack.config.js
 const path = require('path');
-const webpack = require('webpack');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const slsw = require('serverless-webpack');
+const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  mode: 'none',
+  entry: slsw.lib.entries,
   target: 'node',
-  plugins: [new webpack.IgnorePlugin(/\/iconv-loader$/)],
+  mode: slsw.lib.webpack.isLocal ? 'development' : 'production',
   optimization: {
-    nodeEnv: false,
-    namedModules: true,
-    namedChunks: true,
-    minimizer: [new UglifyJsPlugin()],
+    minimize: false,
   },
-  entry: {
-    index: './lambda/graphql.js',
+  performance: {
+    hints: false,
   },
-  output: {
-    path: path.resolve(__dirname, 'lambda', 'dist'),
-    filename: '[name].js',
-  },
+  devtool: 'nosources-source-map',
+  externals: [nodeExternals()],
   module: {
     rules: [
       {
@@ -32,14 +28,22 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            babelrc: true,
-            rootMode: 'upward',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: true,
+              rootMode: 'upward',
+            },
           },
-        },
+        ],
       },
     ],
+  },
+  output: {
+    libraryTarget: 'commonjs2',
+    path: path.join(__dirname, '.webpack'),
+    filename: '[name].js',
+    sourceMapFilename: '[file].map',
   },
 };
