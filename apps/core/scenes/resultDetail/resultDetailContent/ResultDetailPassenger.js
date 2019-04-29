@@ -1,9 +1,15 @@
 // @flow
 
 import * as React from 'react';
-import { PassengerCards, PassengerForm } from '@kiwicom/margarita-components';
+import { PassengerCards } from '@kiwicom/margarita-components';
+import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-type Props = {||};
+import type { ResultDetailPassenger_itinerary as ResultDetailPassengerType } from './__generated__/ResultDetailPassenger_itinerary.graphql';
+import PassengerForm from '../../../components/passengerForm/PassengerForm';
+
+type Props = {|
+  +itinerary: ?ResultDetailPassengerType,
+|};
 
 type State = {|
   +isFormVisible: boolean,
@@ -36,10 +42,7 @@ const passengerCards = [
   },
 ];
 
-export default class ResultDetailPassenger extends React.Component<
-  Props,
-  State,
-> {
+class ResultDetailPassenger extends React.Component<Props, State> {
   state = {
     isFormVisible: false,
   };
@@ -70,8 +73,17 @@ export default class ResultDetailPassenger extends React.Component<
         <PassengerForm
           isVisible={this.state.isFormVisible}
           onRequestClose={this.handleFormCloseRequest}
+          itinerary={this.props.itinerary}
         />
       </>
     );
   }
 }
+
+export default createFragmentContainer(ResultDetailPassenger, {
+  itinerary: graphql`
+    fragment ResultDetailPassenger_itinerary on ItineraryInterface {
+      ...PassengerForm_itinerary
+    }
+  `,
+});

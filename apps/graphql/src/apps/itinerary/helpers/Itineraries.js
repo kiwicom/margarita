@@ -181,7 +181,7 @@ const parseBagDimensions = (bagProps: ?HoldBagProps): ?string => {
   if (bagProps != null) {
     const { width, height, length } = bagProps;
     if (width != null && height != null && length != null) {
-      return `${width} x ${height} x ${length}`;
+      return `${width} x ${height} x ${length} cm`;
     }
   }
   return null;
@@ -200,30 +200,36 @@ export const getHoldBagOptions = (
   bagProps: ?HoldBagProps,
 ): ?Array<HoldBagOption> => {
   /**
-   * NOTE: For now there is only 1-3 available and bookable quantity for hold bags.
+   * NOTE: For now there is only 0-3 available and bookable quantity for hold bags.
    * This value is defined by current data available on endpoints and will be extended later
    * with more combinations, after new bags implementation will be ready for booking
    * endpoint https://docs.kiwi.com/booking/ (planned for Q2 2019)
    */
+  const defaultOption = {
+    quantity: 0,
+  };
   const possibleHoldBagQuantities = [1, 2, 3];
   const dimensions = parseBagDimensions(bagProps);
   const weight = parseBagWeight(bagProps?.weight);
-  return possibleHoldBagQuantities.reduce((acc, quantity) => {
-    const priceAmount = prices?.[quantity.toString()];
-    if (priceAmount == null) {
-      return acc;
-    }
-    const option = {
-      quantity,
-      dimensions,
-      weight,
-      price: {
-        currency,
-        amount: priceAmount,
-      },
-    };
-    return [...acc, option];
-  }, []);
+  return possibleHoldBagQuantities.reduce(
+    (acc, quantity) => {
+      const priceAmount = prices?.[quantity.toString()];
+      if (quantity == null || priceAmount == null) {
+        return acc;
+      }
+      const option = {
+        quantity,
+        dimensions,
+        weight,
+        price: {
+          currency,
+          amount: priceAmount,
+        },
+      };
+      return [...acc, option];
+    },
+    [defaultOption],
+  );
 };
 
 export const sanitizeHoldBagProps = (

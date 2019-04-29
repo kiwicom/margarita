@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f59eb08d02d8f40e2855956f43e4e548
+ * @relayHash 8c4922855710d809aabe9320f51d5cdc
  */
 
 /* eslint-disable */
@@ -56,7 +56,12 @@ fragment ResultDetailContent_itinerary on ItineraryInterface {
     currency
     amount
   }
+  ...ResultDetailPassenger_itinerary
   ...ItinerarySectorDetails_itinerary
+}
+
+fragment ResultDetailPassenger_itinerary on ItineraryInterface {
+  ...PassengerForm_itinerary
 }
 
 fragment ItinerarySectorDetails_itinerary on ItineraryInterface {
@@ -216,6 +221,26 @@ fragment SegmentStopInfo_data on RouteStop {
     id
   }
 }
+
+fragment PassengerForm_itinerary on ItineraryInterface {
+  ...BaggageBundles_itinerary
+}
+
+fragment BaggageBundles_itinerary on ItineraryInterface {
+  holdBagOptions {
+    ...BaggageBundle_bagOption
+  }
+}
+
+fragment BaggageBundle_bagOption on HoldBagOption {
+  quantity
+  dimensions
+  weight
+  price {
+    amount
+    currency
+  }
+}
 */
 
 const node/*: ConcreteRequest*/ = (function(){
@@ -230,25 +255,39 @@ var v0 = [
 v1 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "__typename",
+  "name": "currency",
   "args": null,
   "storageKey": null
 },
 v2 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "name",
+  "name": "amount",
   "args": null,
   "storageKey": null
 },
 v3 = {
   "kind": "ScalarField",
   "alias": null,
-  "name": "id",
+  "name": "__typename",
   "args": null,
   "storageKey": null
 },
 v4 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "name",
+  "args": null,
+  "storageKey": null
+},
+v5 = {
+  "kind": "ScalarField",
+  "alias": null,
+  "name": "id",
+  "args": null,
+  "storageKey": null
+},
+v6 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "city",
@@ -257,11 +296,11 @@ v4 = {
   "concreteType": "LocationArea",
   "plural": false,
   "selections": [
-    (v2/*: any*/),
-    (v3/*: any*/)
+    (v4/*: any*/),
+    (v5/*: any*/)
   ]
 },
-v5 = {
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "stop",
@@ -277,11 +316,11 @@ v5 = {
       "args": null,
       "storageKey": null
     },
-    (v4/*: any*/),
-    (v3/*: any*/)
+    (v6/*: any*/),
+    (v5/*: any*/)
   ]
 },
-v6 = {
+v8 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -299,24 +338,24 @@ v6 = {
     }
   ]
 },
-v7 = [
-  (v5/*: any*/),
-  (v6/*: any*/)
+v9 = [
+  (v7/*: any*/),
+  (v8/*: any*/)
 ],
-v8 = {
+v10 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "duration",
   "args": null,
   "storageKey": null
 },
-v9 = [
-  (v5/*: any*/)
-],
-v10 = [
-  (v6/*: any*/)
-],
 v11 = [
+  (v7/*: any*/)
+],
+v12 = [
+  (v8/*: any*/)
+],
+v13 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -325,7 +364,7 @@ v11 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v10/*: any*/)
+    "selections": (v12/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -335,19 +374,19 @@ v11 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v10/*: any*/)
+    "selections": (v12/*: any*/)
   },
-  (v8/*: any*/)
+  (v10/*: any*/)
 ],
-v12 = {
+v14 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "stopoverDuration",
   "args": null,
   "storageKey": null
 },
-v13 = [
-  (v6/*: any*/),
+v15 = [
+  (v8/*: any*/),
   {
     "kind": "LinkedField",
     "alias": null,
@@ -357,7 +396,7 @@ v13 = [
     "concreteType": "Location",
     "plural": false,
     "selections": [
-      (v2/*: any*/),
+      (v4/*: any*/),
       {
         "kind": "ScalarField",
         "alias": null,
@@ -365,11 +404,11 @@ v13 = [
         "args": null,
         "storageKey": null
       },
-      (v3/*: any*/)
+      (v5/*: any*/)
     ]
   }
 ],
-v14 = {
+v16 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "segments",
@@ -378,7 +417,7 @@ v14 = {
   "concreteType": "Segment",
   "plural": true,
   "selections": [
-    (v3/*: any*/),
+    (v5/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -387,7 +426,7 @@ v14 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v13/*: any*/)
+      "selections": (v15/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -397,9 +436,9 @@ v14 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v13/*: any*/)
+      "selections": (v15/*: any*/)
     },
-    (v8/*: any*/),
+    (v10/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -409,7 +448,7 @@ v14 = {
       "concreteType": "Carrier",
       "plural": false,
       "selections": [
-        (v2/*: any*/),
+        (v4/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -421,7 +460,7 @@ v14 = {
     }
   ]
 },
-v15 = [
+v17 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -431,13 +470,13 @@ v15 = [
     "concreteType": "Location",
     "plural": false,
     "selections": [
-      (v4/*: any*/),
-      (v3/*: any*/)
+      (v6/*: any*/),
+      (v5/*: any*/)
     ]
   }
 ],
-v16 = [
-  (v12/*: any*/),
+v18 = [
+  (v14/*: any*/),
   {
     "kind": "LinkedField",
     "alias": null,
@@ -446,7 +485,7 @@ v16 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v15/*: any*/)
+    "selections": (v17/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -456,9 +495,9 @@ v16 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v15/*: any*/)
+    "selections": (v17/*: any*/)
   },
-  (v14/*: any*/)
+  (v16/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -527,23 +566,56 @@ return {
             "concreteType": "Price",
             "plural": false,
             "selections": [
+              (v1/*: any*/),
+              (v2/*: any*/)
+            ]
+          },
+          {
+            "kind": "LinkedField",
+            "alias": null,
+            "name": "holdBagOptions",
+            "storageKey": null,
+            "args": null,
+            "concreteType": "HoldBagOption",
+            "plural": true,
+            "selections": [
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "currency",
+                "name": "quantity",
                 "args": null,
                 "storageKey": null
               },
               {
                 "kind": "ScalarField",
                 "alias": null,
-                "name": "amount",
+                "name": "dimensions",
                 "args": null,
                 "storageKey": null
+              },
+              {
+                "kind": "ScalarField",
+                "alias": null,
+                "name": "weight",
+                "args": null,
+                "storageKey": null
+              },
+              {
+                "kind": "LinkedField",
+                "alias": null,
+                "name": "price",
+                "storageKey": null,
+                "args": null,
+                "concreteType": "Price",
+                "plural": false,
+                "selections": [
+                  (v2/*: any*/),
+                  (v1/*: any*/)
+                ]
               }
             ]
           },
-          (v1/*: any*/),
+          (v3/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -561,7 +633,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v7/*: any*/)
+                "selections": (v9/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -571,10 +643,10 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v7/*: any*/)
+                "selections": (v9/*: any*/)
               },
-              (v1/*: any*/),
-              (v8/*: any*/)
+              (v3/*: any*/),
+              (v10/*: any*/)
             ]
           },
           {
@@ -585,7 +657,7 @@ return {
             "args": null,
             "concreteType": "RouteStop",
             "plural": false,
-            "selections": (v9/*: any*/)
+            "selections": (v11/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -595,7 +667,7 @@ return {
             "args": null,
             "concreteType": "RouteStop",
             "plural": false,
-            "selections": (v9/*: any*/)
+            "selections": (v11/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -605,7 +677,7 @@ return {
             "args": null,
             "concreteType": "Sector",
             "plural": false,
-            "selections": (v11/*: any*/)
+            "selections": (v13/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -615,9 +687,9 @@ return {
             "args": null,
             "concreteType": "Sector",
             "plural": false,
-            "selections": (v11/*: any*/)
+            "selections": (v13/*: any*/)
           },
-          (v3/*: any*/),
+          (v5/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "ItineraryOneWay",
@@ -631,8 +703,8 @@ return {
                 "concreteType": "Sector",
                 "plural": false,
                 "selections": [
-                  (v12/*: any*/),
-                  (v14/*: any*/)
+                  (v14/*: any*/),
+                  (v16/*: any*/)
                 ]
               }
             ]
@@ -649,7 +721,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v16/*: any*/)
+                "selections": (v18/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -659,7 +731,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v16/*: any*/)
+                "selections": (v18/*: any*/)
               }
             ]
           }
@@ -671,7 +743,7 @@ return {
     "operationKind": "query",
     "name": "ResultDetailQuery",
     "id": null,
-    "text": "query ResultDetailQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailInner_data_2VV6jB\n}\n\nfragment ResultDetailInner_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    ...ResultDetailContent_itinerary\n    id\n  }\n}\n\nfragment ResultDetailContent_itinerary on ItineraryInterface {\n  isChecked\n  price {\n    currency\n    amount\n  }\n  ...ItinerarySectorDetails_itinerary\n}\n\nfragment ItinerarySectorDetails_itinerary on ItineraryInterface {\n  __typename\n  ...ItineraryOneWay_itinerary\n  ...ItineraryReturn_itinerary\n  ...SectorInfoOneWay_data\n  ...SectorInfoReturn_data\n}\n\nfragment ItineraryOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment ItineraryReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorInfoOneWay_data on OneWayInterface {\n  sector {\n    ...SectorInfo_data\n  }\n}\n\nfragment SectorInfoReturn_data on ReturnInterface {\n  ...FromTo_data\n  inbound {\n    ...SectorDates_data\n  }\n  outbound {\n    ...SectorDates_data\n  }\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment SectorDates_data on Sector {\n  departure {\n    ...SectorDate_data\n  }\n  arrival {\n    ...SectorDate_data\n  }\n  duration\n}\n\nfragment SectorDate_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  __typename\n}\n\nfragment SectorInfo_data on Sector {\n  ...FromTo_data\n  ...SectorDates_data\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n",
+    "text": "query ResultDetailQuery(\n  $input: ItineraryCheckInput!\n) {\n  ...ResultDetailInner_data_2VV6jB\n}\n\nfragment ResultDetailInner_data_2VV6jB on RootQuery {\n  checkItinerary(input: $input) {\n    __typename\n    isChecked\n    isValid\n    ...ResultDetailContent_itinerary\n    id\n  }\n}\n\nfragment ResultDetailContent_itinerary on ItineraryInterface {\n  isChecked\n  price {\n    currency\n    amount\n  }\n  ...ResultDetailPassenger_itinerary\n  ...ItinerarySectorDetails_itinerary\n}\n\nfragment ResultDetailPassenger_itinerary on ItineraryInterface {\n  ...PassengerForm_itinerary\n}\n\nfragment ItinerarySectorDetails_itinerary on ItineraryInterface {\n  __typename\n  ...ItineraryOneWay_itinerary\n  ...ItineraryReturn_itinerary\n  ...SectorInfoOneWay_data\n  ...SectorInfoReturn_data\n}\n\nfragment ItineraryOneWay_itinerary on ItineraryOneWay {\n  sector {\n    ...SectorDetail_data\n  }\n}\n\nfragment ItineraryReturn_itinerary on ItineraryReturn {\n  inbound {\n    ...SectorDetail_data\n  }\n  outbound {\n    ...SectorDetail_data\n  }\n}\n\nfragment SectorInfoOneWay_data on OneWayInterface {\n  sector {\n    ...SectorInfo_data\n  }\n}\n\nfragment SectorInfoReturn_data on ReturnInterface {\n  ...FromTo_data\n  inbound {\n    ...SectorDates_data\n  }\n  outbound {\n    ...SectorDates_data\n  }\n}\n\nfragment FromTo_data on FromToInterface {\n  departure {\n    ...CityName_data\n  }\n  arrival {\n    ...CityName_data\n  }\n  ...FromToIcon_data\n}\n\nfragment SectorDates_data on Sector {\n  departure {\n    ...SectorDate_data\n  }\n  arrival {\n    ...SectorDate_data\n  }\n  duration\n}\n\nfragment SectorDate_data on RouteStop {\n  time {\n    local\n  }\n}\n\nfragment CityName_data on RouteStop {\n  stop {\n    countryFlagURL\n    city {\n      name\n      id\n    }\n    id\n  }\n}\n\nfragment FromToIcon_data on FromToInterface {\n  __typename\n}\n\nfragment SectorInfo_data on Sector {\n  ...FromTo_data\n  ...SectorDates_data\n}\n\nfragment SectorDetail_data on Sector {\n  ...SectorStopoverDuration_data\n  ...SectorHeader_data\n  segments {\n    id\n    departure {\n      time {\n        local\n      }\n    }\n    arrival {\n      time {\n        local\n      }\n    }\n    ...Segment_data\n  }\n}\n\nfragment SectorStopoverDuration_data on Sector {\n  stopoverDuration\n  departure {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment SectorHeader_data on Sector {\n  duration\n  arrival {\n    stop {\n      city {\n        name\n        id\n      }\n      id\n    }\n  }\n}\n\nfragment Segment_data on Segment {\n  duration\n  arrival {\n    ...SegmentStopInfo_data\n  }\n  departure {\n    time {\n      local\n    }\n    ...SegmentStopInfo_data\n  }\n  carrier {\n    name\n    code\n  }\n}\n\nfragment SegmentStopInfo_data on RouteStop {\n  time {\n    local\n  }\n  stop {\n    name\n    locationId\n    id\n  }\n}\n\nfragment PassengerForm_itinerary on ItineraryInterface {\n  ...BaggageBundles_itinerary\n}\n\nfragment BaggageBundles_itinerary on ItineraryInterface {\n  holdBagOptions {\n    ...BaggageBundle_bagOption\n  }\n}\n\nfragment BaggageBundle_bagOption on HoldBagOption {\n  quantity\n  dimensions\n  weight\n  price {\n    amount\n    currency\n  }\n}\n",
     "metadata": {}
   }
 };
