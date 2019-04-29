@@ -5,59 +5,62 @@ import { View } from 'react-native';
 import { StyleSheet, Icon } from '@kiwicom/universal-components';
 import type { IconNameType } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { Text } from '@kiwicom/margarita-components';
 
-import Text from '../../text/Text';
-import { bags, type BagTitleType } from './BagTypes';
+import { BAG_TYPE, type BagType } from './BagTypes';
 
 type Props = {|
-  +type: BagTitleType,
-  +dimensions: string,
+  +selected: boolean,
+  +type: BagType,
   +quantity: number,
-  +chosen: boolean,
-  +weight: string,
+  +dimensions: ?string,
+  +weight: ?string,
 |};
 
 function getIcon(type, quantity): IconNameType {
   if (quantity === 0) {
-    if (type === bags.PERSONAL_ITEM) return 'baggage-personal-item'; // @TODO add "no personal item icon"
-    if (type === bags.CHECKED_BAG) return 'close';
+    if (type === BAG_TYPE.PERSONAL_ITEM) return 'baggage-personal-item-none';
+    if (type === BAG_TYPE.CHECKED_BAG) return 'close';
   }
   switch (type) {
-    case bags.PERSONAL_ITEM:
+    case BAG_TYPE.PERSONAL_ITEM:
       return 'baggage-personal-item';
-    case bags.CABIN_BAG:
+    case BAG_TYPE.CABIN_BAG:
       return 'baggage-cabin';
     default:
       return 'baggage-cabin';
   }
 }
 
-const BagIcon = ({ type, quantity, chosen }) => {
+const BagIcon = ({ type, quantity, selected }) => {
   let color = defaultTokens.colorIconAttention;
   if (quantity === 0) {
-    if (chosen && type === bags.PERSONAL_ITEM) {
+    if (selected && type === BAG_TYPE.PERSONAL_ITEM) {
       color = defaultTokens.colorIconWarning;
-    } else if (!chosen) {
+    } else if (!selected) {
       color = defaultTokens.colorIconSecondary;
     }
   }
   return <Icon name={getIcon(type, quantity)} color={color} />;
 };
 
-const BagTitle = ({ quantity, type, chosen, weight }) => {
+const BagTitle = ({ quantity, type, selected, weight }) => {
   let text = type;
   let textType = 'primary';
-  if (type === bags.CHECKED_BAG) {
+  if (type === BAG_TYPE.CHECKED_BAG && weight != null) {
     text = `${weight} ${type.toLowerCase()}`;
   }
+  if (quantity > 1) {
+    text = `${quantity}x ${text}`;
+  }
   if (quantity === 0) {
-    if (chosen && type === bags.PERSONAL_ITEM) {
+    if (selected && type === BAG_TYPE.PERSONAL_ITEM) {
       textType = 'warning';
-    } else if (!chosen) {
+    } else if (!selected) {
       textType = 'secondary';
     }
-    if (type === bags.PERSONAL_ITEM) text = 'No personal item';
-    if (type === bags.CHECKED_BAG) text = 'No checked baggage';
+    if (type === BAG_TYPE.PERSONAL_ITEM) text = 'No personal item';
+    if (type === BAG_TYPE.CHECKED_BAG) text = 'No checked baggage';
   }
   return (
     <Text type={textType} size="large">
@@ -70,19 +73,19 @@ export default function BaggageTypeDetail({
   type,
   dimensions,
   quantity,
-  chosen,
+  selected,
   weight,
 }: Props) {
   return (
     <View style={styles.container}>
       <View style={[styles.row, quantity === 0 && styles.paddingRow]}>
         <View style={styles.iconWrapper}>
-          <BagIcon chosen={chosen} type={type} quantity={quantity} />
+          <BagIcon selected={selected} type={type} quantity={quantity} />
         </View>
         <BagTitle
           quantity={quantity}
           type={type}
-          chosen={chosen}
+          selected={selected}
           weight={weight}
         />
       </View>

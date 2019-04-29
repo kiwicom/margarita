@@ -63,7 +63,7 @@ class ResultDetailContent extends React.Component<Props, State> {
       <>
         <ContentContainer>
           <ItinerarySectorDetails itinerary={this.props.itinerary} />
-          <ResultDetailPassenger />
+          <ResultDetailPassenger itinerary={this.props.itinerary} />
           <ContactDetailsForm
             onChangeEmail={this.handleChangeEmail}
             onChangePhoneNumber={this.handleChangePhoneNumber}
@@ -103,6 +103,7 @@ export default createFragmentContainer(withNavigation(ResultDetailContent), {
         currency
         amount
       }
+      ...ResultDetailPassenger_itinerary
       ...ItinerarySectorDetails_itinerary
     }
   `,

@@ -78,8 +78,14 @@ fragment Sector on Sector {
       },
       "holdBagOptions": [
         {
+          "quantity": 0,
+          "dimensions": null,
+          "weight": null,
+          "price": null
+        },
+        {
           "quantity": 1,
-          "dimensions": "27 x 52 x 78",
+          "dimensions": "27 x 52 x 78 cm",
           "weight": "23 kg",
           "price": {
             "currency": "EUR",

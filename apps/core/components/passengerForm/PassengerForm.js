@@ -12,11 +12,14 @@ import {
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
+import { DateInput } from '@kiwicom/margarita-components';
+import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import DateInput from '../dateInput/DateInput';
 import BaggageBundles from './baggageBundles/BaggageBundles';
+import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
 
 type Props = {|
+  +itinerary: ?PassengerFormType,
   +isVisible: boolean,
   +onRequestClose: () => void,
 |};
@@ -45,7 +48,7 @@ const nationalityData = [
   },
 ];
 
-export default class PassengerForm extends React.Component<Props, State> {
+class PassengerForm extends React.Component<Props, State> {
   state = {
     gender: null,
     givenName: null,
@@ -131,7 +134,7 @@ export default class PassengerForm extends React.Component<Props, State> {
               label="Nationality"
               formLabelContainerStyle={styles.inputLabel}
             />
-            <BaggageBundles />
+            <BaggageBundles itinerary={this.props.itinerary} />
           </View>
         </ScrollView>
         <View style={[styles.menuRow, styles.widthLimit]}>
@@ -212,4 +215,12 @@ const styles = StyleSheet.create({
   inputLabel: {
     marginTop: parseInt(defaultTokens.spaceSmall, 10),
   },
+});
+
+export default createFragmentContainer(PassengerForm, {
+  itinerary: graphql`
+    fragment PassengerForm_itinerary on ItineraryInterface {
+      ...BaggageBundles_itinerary
+    }
+  `,
 });

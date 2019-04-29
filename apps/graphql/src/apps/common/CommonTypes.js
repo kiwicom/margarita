@@ -44,8 +44,8 @@ export type Vehicle = {|
 |};
 
 export type HoldBagOption = {|
-  +quantity: ?number,
-  +price: ?Price,
-  +dimensions: ?string,
-  +weight: ?string,
+  +quantity: number,
+  +price?: ?Price,
+  +dimensions?: ?string,
+  +weight?: ?string,
 |};

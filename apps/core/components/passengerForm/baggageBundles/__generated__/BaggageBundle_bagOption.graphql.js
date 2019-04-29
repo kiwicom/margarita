@@ -8,33 +8,46 @@
 
 /*::
 import type { ReaderFragment } from 'relay-runtime';
-type ItinerarySectorDetails_itinerary$ref = any;
-type ResultDetailPassenger_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
-declare export opaque type ResultDetailContent_itinerary$ref: FragmentReference;
-export type ResultDetailContent_itinerary = {|
-  +isChecked: ?boolean,
+declare export opaque type BaggageBundle_bagOption$ref: FragmentReference;
+export type BaggageBundle_bagOption = {|
+  +quantity: ?number,
+  +dimensions: ?string,
+  +weight: ?string,
   +price: ?{|
-    +currency: ?string,
     +amount: ?number,
+    +currency: ?string,
   |},
-  +$fragmentRefs: ResultDetailPassenger_itinerary$ref & ItinerarySectorDetails_itinerary$ref,
-  +$refType: ResultDetailContent_itinerary$ref,
+  +$refType: BaggageBundle_bagOption$ref,
 |};
 */
 
 
 const node/*: ReaderFragment*/ = {
   "kind": "Fragment",
-  "name": "ResultDetailContent_itinerary",
-  "type": "ItineraryInterface",
+  "name": "BaggageBundle_bagOption",
+  "type": "HoldBagOption",
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
     {
       "kind": "ScalarField",
       "alias": null,
-      "name": "isChecked",
+      "name": "quantity",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "dimensions",
+      "args": null,
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "weight",
       "args": null,
       "storageKey": null
     },
@@ -50,31 +63,21 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "currency",
+          "name": "amount",
           "args": null,
           "storageKey": null
         },
         {
           "kind": "ScalarField",
           "alias": null,
-          "name": "amount",
+          "name": "currency",
           "args": null,
           "storageKey": null
         }
       ]
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ResultDetailPassenger_itinerary",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "ItinerarySectorDetails_itinerary",
-      "args": null
     }
   ]
 };
 // prettier-ignore
-(node/*: any*/).hash = 'da3025b9e0443e5398835d4df3e71b1b';
+(node/*: any*/).hash = '8a3f7f04b2ee16ca321d7f952d67f472';
 module.exports = node;
