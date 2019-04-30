@@ -7,7 +7,7 @@ import {
   Text,
   StyleSheet,
   Icon,
-  Hoverable,
+  withHover,
   designTokens,
   TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
@@ -23,25 +23,12 @@ export type Props = {|
   +additionalInfo: ?PriceDurationInfo,
   +icon: SortIconTypes,
   +onPress: SortTypes => void,
+  +isHovered: boolean,
+  +onMouseLeave: () => void,
+  +onMouseEnter: () => void,
 |};
 
-type State = {|
-  isHovered: boolean,
-|};
-
-export default class SortTab extends React.Component<Props, State> {
-  state = {
-    isHovered: false,
-  };
-
-  handleOnMouseEnter = () => {
-    this.setState({ isHovered: true });
-  };
-
-  handleOnMouseLeave = () => {
-    this.setState({ isHovered: false });
-  };
-
+class SortTab extends React.Component<Props> {
   handleOnPress = () => {
     const { value, onPress } = this.props;
     onPress(value);
@@ -55,69 +42,72 @@ export default class SortTab extends React.Component<Props, State> {
       isActive,
       icon,
       additionalInfo,
+      isHovered,
+      onMouseEnter,
+      onMouseLeave,
     } = this.props;
-    const { isHovered } = this.state;
     const price = additionalInfo?.price;
     const currency = additionalInfo?.currency;
     const duration = additionalInfo?.duration;
     return (
-      <Hoverable
-        onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
+      <TouchableWithoutFeedback
+        onPress={this.handleOnPress}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <TouchableWithoutFeedback onPress={this.handleOnPress}>
-          <View
-            style={[
-              styles.container,
-              isFirst && styles.containerFirst,
-              isLast && styles.containerLast,
-              isActive && styles.containerActive,
-              isHovered && styles.containerHovered,
-            ]}
-          >
-            <View>
-              <Text
-                style={[styles.label, isActive && styles.labelActive]}
-                align="left"
-                numberOfLines={1}
-              >
-                {label}
-              </Text>
-              <View style={styles.priceDurationContainer}>
-                {price || currency ? (
-                  <Text style={styles.label} align="left" numberOfLines={1}>
-                    {price} {currency}
-                  </Text>
-                ) : null}
-                {duration ? (
-                  <Text
-                    style={[
-                      styles.durationLabel,
-                      (price || currency) && styles.marginStartLabel,
-                    ]}
-                    align="left"
-                    numberOfLines={1}
-                  >
-                    {duration}
-                  </Text>
-                ) : null}
-              </View>
+        <View
+          style={[
+            styles.container,
+            isFirst && styles.containerFirst,
+            isLast && styles.containerLast,
+            isActive && styles.containerActive,
+            isHovered && styles.containerHovered,
+          ]}
+        >
+          <View>
+            <Text
+              style={[styles.label, isActive && styles.labelActive]}
+              align="left"
+              numberOfLines={1}
+            >
+              {label}
+            </Text>
+            <View style={styles.priceDurationContainer}>
+              {price || currency ? (
+                <Text style={styles.label} align="left" numberOfLines={1}>
+                  {price} {currency}
+                </Text>
+              ) : null}
+              {duration ? (
+                <Text
+                  style={[
+                    styles.durationLabel,
+                    (price || currency) && styles.marginStartLabel,
+                  ]}
+                  align="left"
+                  numberOfLines={1}
+                >
+                  {duration}
+                </Text>
+              ) : null}
             </View>
-            <Icon
-              size="small"
-              name={icon}
-              color={
-                isActive
-                  ? defaultTokens.paletteProductNormal
-                  : defaultTokens.colorIconPrimary
-              }
-            />
           </View>
-        </TouchableWithoutFeedback>
-      </Hoverable>
+          <Icon
+            size="small"
+            name={icon}
+            color={
+              isActive
+                ? defaultTokens.paletteProductNormal
+                : defaultTokens.colorIconPrimary
+            }
+          />
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
+
+export default withHover(SortTab);
 
 const borderRadius = parseInt(defaultTokens.borderRadiusSmall, 10);
 const containerHeight = 75;

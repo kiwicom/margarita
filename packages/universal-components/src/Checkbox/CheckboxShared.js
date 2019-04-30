@@ -7,7 +7,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import CheckboxText from './CheckboxText';
 import CheckboxIcon from './CheckboxIcon';
 import { StyleSheet } from '../PlatformStyleSheet';
-import { Hoverable } from '../Hoverable';
+import { withHover } from '../WithHover';
 
 type Props = {|
   +label?: React.Node,
@@ -17,11 +17,13 @@ type Props = {|
   +info?: React.Node,
   +onPress?: () => void,
   +children?: React.Node,
+  +isHovered: boolean,
+  +onMouseLeave: () => void,
+  +onMouseEnter: () => void,
 |};
 
 type State = {|
   focusDisplayed: boolean,
-  hovered: boolean,
   pressed: boolean,
 |};
 
@@ -31,18 +33,9 @@ class CheckboxShared extends React.Component<Props, State> {
 
     this.state = {
       focusDisplayed: false,
-      hovered: false,
       pressed: false,
     };
   }
-
-  handleOnMouseEnter = () => {
-    this.setState({ hovered: true });
-  };
-
-  handleOnMouseLeave = () => {
-    this.setState({ hovered: false });
-  };
 
   handleOnPressIn = () => {
     this.setState({ pressed: true });
@@ -69,38 +62,34 @@ class CheckboxShared extends React.Component<Props, State> {
       info,
       onPress,
       children,
+      isHovered,
     } = this.props;
-    const { focusDisplayed, hovered, pressed } = this.state;
+    const { focusDisplayed, pressed } = this.state;
 
     return (
-      <Hoverable
-        onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
+      <TouchableWithoutFeedback
+        accessibilityRole="button"
+        onPress={onPress}
+        onPressIn={this.handleOnPressIn}
+        onPressOut={this.handleOnPressOut}
+        onFocus={this.handleOnFocus}
+        onBlur={this.handleOnBlur}
+        disabled={disabled}
       >
-        <TouchableWithoutFeedback
-          accessibilityRole="button"
-          onPress={onPress}
-          onPressIn={this.handleOnPressIn}
-          onPressOut={this.handleOnPressOut}
-          onFocus={this.handleOnFocus}
-          onBlur={this.handleOnBlur}
-          disabled={disabled}
-        >
-          <View style={[styles.view, disabled && styles.viewDisabled]}>
-            <CheckboxIcon
-              checked={checked}
-              hasError={hasError}
-              disabled={disabled}
-              focused={focusDisplayed}
-              hovered={hovered}
-              pressed={pressed}
-            />
-            {children || (
-              <CheckboxText label={label} checked={checked} info={info} />
-            )}
-          </View>
-        </TouchableWithoutFeedback>
-      </Hoverable>
+        <View style={[styles.view, disabled && styles.viewDisabled]}>
+          <CheckboxIcon
+            checked={checked}
+            hasError={hasError}
+            disabled={disabled}
+            focused={focusDisplayed}
+            hovered={isHovered}
+            pressed={pressed}
+          />
+          {children || (
+            <CheckboxText label={label} checked={checked} info={info} />
+          )}
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
@@ -118,4 +107,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CheckboxShared;
+export default withHover(CheckboxShared);

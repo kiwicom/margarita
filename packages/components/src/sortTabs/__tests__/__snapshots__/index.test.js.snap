@@ -14,7 +14,7 @@ Object {
       }
     }
   >
-    <SortTab
+    <WithHover
       additionalInfo={
         Object {
           "currency": "EUR",
@@ -30,7 +30,7 @@ Object {
       onPress={[MockFunction]}
       value="QUALITY"
     />
-    <SortTab
+    <WithHover
       additionalInfo={
         Object {
           "currency": "EUR",
@@ -46,7 +46,7 @@ Object {
       onPress={[MockFunction]}
       value="PRICE"
     />
-    <SortTab
+    <WithHover
       additionalInfo={
         Object {
           "currency": "EUR",
@@ -80,7 +80,7 @@ Object {
       }
     }
   >
-    <SortTab
+    <WithHover
       icon="thumb-up"
       isActive={true}
       isFirst={true}
@@ -89,7 +89,7 @@ Object {
       onPress={[MockFunction]}
       value="QUALITY"
     />
-    <SortTab
+    <WithHover
       icon="money"
       isActive={false}
       isFirst={false}
@@ -98,7 +98,7 @@ Object {
       onPress={[MockFunction]}
       value="PRICE"
     />
-    <SortTab
+    <WithHover
       icon="clock"
       isActive={false}
       isFirst={false}

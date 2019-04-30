@@ -5,7 +5,7 @@ import { View } from 'react-native';
 import {
   Text,
   StyleSheet,
-  Hoverable,
+  withHover,
   TouchableWithoutFeedback,
 } from '@kiwicom/universal-components';
 import Router from 'next/router';
@@ -14,13 +14,16 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 type Props = {|
   +label: string,
   +route: string,
+  +isHovered: boolean,
+  +onMouseLeave: () => void,
+  +onMouseEnter: () => void,
 |};
 
 type State = {|
   +isActive: boolean,
 |};
 
-export default class NavbarLink extends React.Component<Props, State> {
+class NavbarLink extends React.Component<Props, State> {
   state = {
     isActive: false,
   };
@@ -31,42 +34,36 @@ export default class NavbarLink extends React.Component<Props, State> {
     }
   }
 
-  onMouseEnter = () => {
-    this.setState({ isActive: true });
-  };
-
-  onMouseLeave = () => {
-    if (Router.route !== this.props.route) {
-      // If this is the active route, it should always stay marked as active
-      this.setState({ isActive: false });
-    }
-  };
-
   onPress = () => {
     Router.push(this.props.route);
   };
 
   render() {
+    const { label, isHovered, onMouseEnter, onMouseLeave } = this.props;
     return (
-      <Hoverable
-        onMouseEnter={this.onMouseEnter}
-        onMouseLeave={this.onMouseLeave}
+      <TouchableWithoutFeedback
+        onPress={this.onPress}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
       >
-        <TouchableWithoutFeedback onPress={this.onPress}>
-          <View style={styles.container}>
-            <Text
-              size="small"
-              type="primary"
-              style={[styles.label, this.state.isActive && styles.activeLabel]}
-            >
-              {this.props.label}
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </Hoverable>
+        <View style={styles.container}>
+          <Text
+            size="small"
+            type="primary"
+            style={[
+              styles.label,
+              (isHovered || this.state.isActive) && styles.activeLabel,
+            ]}
+          >
+            {label}
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
+
+export default withHover(NavbarLink);
 
 const styles = StyleSheet.create({
   container: {
