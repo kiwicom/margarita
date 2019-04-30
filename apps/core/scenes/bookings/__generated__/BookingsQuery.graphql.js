@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7f408b4bde38856c74eb768c182b4072
+ * @relayHash d0fb6a952205fd9d1fa15d4048713629
  */
 
 /* eslint-disable */
@@ -201,8 +201,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "opaque",
-                        "value": false,
-                        "type": "Boolean"
+                        "value": false
                       }
                     ],
                     "storageKey": "id(opaque:false)"
@@ -215,8 +214,7 @@ return {
                       {
                         "kind": "Literal",
                         "name": "dimensions",
-                        "value": "_1200x628",
-                        "type": "BookingDestinationImageDimensions"
+                        "value": "_1200x628"
                       }
                     ],
                     "storageKey": "destinationImageUrl(dimensions:\"_1200x628\")"

@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap_segmentMapSegment$ref: FragmentReference;
+declare export opaque type SegmentMap_segmentMapSegment$fragmentType: SegmentMap_segmentMapSegment$ref;
 export type SegmentMap_segmentMapSegment = {
   +segments: ?$ReadOnlyArray<?{
     +arrival: ?{
@@ -37,6 +38,11 @@ export type SegmentMap_segmentMapSegment = {
       }
     },
   }>
+};
+export type SegmentMap_segmentMapSegment$data = SegmentMap_segmentMapSegment;
+export type SegmentMap_segmentMapSegment$key = {
+  +$data?: SegmentMap_segmentMapSegment$data,
+  +$fragmentRefs: SegmentMap_segmentMapSegment$ref,
 };
 */
 

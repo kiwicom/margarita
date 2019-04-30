@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type ItineraryCard_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ResultsList_data$ref: FragmentReference;
+declare export opaque type ResultsList_data$fragmentType: ResultsList_data$ref;
 export type ResultsList_data = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
@@ -20,6 +21,11 @@ export type ResultsList_data = {|
   |}>,
   +$refType: ResultsList_data$ref,
 |};
+export type ResultsList_data$data = ResultsList_data;
+export type ResultsList_data$key = {
+  +$data?: ResultsList_data$data,
+  +$fragmentRefs: ResultsList_data$ref,
+};
 */
 
 

@@ -12,12 +12,18 @@ type ItineraryOneWay_itinerary$ref = any;
 type ItineraryReturn_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryDetail_data$ref: FragmentReference;
+declare export opaque type ItineraryDetail_data$fragmentType: ItineraryDetail_data$ref;
 export type ItineraryDetail_data = {|
   +__typename: string,
   +bookingToken: ?string,
   +$fragmentRefs: ItineraryOneWay_itinerary$ref & ItineraryReturn_itinerary$ref,
   +$refType: ItineraryDetail_data$ref,
 |};
+export type ItineraryDetail_data$data = ItineraryDetail_data;
+export type ItineraryDetail_data$key = {
+  +$data?: ItineraryDetail_data$data,
+  +$fragmentRefs: ItineraryDetail_data$ref,
+};
 */
 
 

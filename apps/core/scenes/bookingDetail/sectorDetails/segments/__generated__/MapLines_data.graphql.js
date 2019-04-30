@@ -13,11 +13,17 @@ type OneWaySegmentLines_data$ref = any;
 type ReturnSegmentLines_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type MapLines_data$ref: FragmentReference;
+declare export opaque type MapLines_data$fragmentType: MapLines_data$ref;
 export type MapLines_data = {|
   +__typename: string,
   +$fragmentRefs: OneWaySegmentLines_data$ref & ReturnSegmentLines_data$ref & MulticitySegmentLines_data$ref,
   +$refType: MapLines_data$ref,
 |};
+export type MapLines_data$data = MapLines_data;
+export type MapLines_data$key = {
+  +$data?: MapLines_data$data,
+  +$fragmentRefs: MapLines_data$ref,
+};
 */
 
 

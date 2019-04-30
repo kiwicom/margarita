@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorHeader_data$ref: FragmentReference;
+declare export opaque type SectorHeader_data$fragmentType: SectorHeader_data$ref;
 export type SectorHeader_data = {|
   +duration: ?number,
   +arrival: ?{|
@@ -21,6 +22,11 @@ export type SectorHeader_data = {|
   |},
   +$refType: SectorHeader_data$ref,
 |};
+export type SectorHeader_data$data = SectorHeader_data;
+export type SectorHeader_data$key = {
+  +$data?: SectorHeader_data$data,
+  +$fragmentRefs: SectorHeader_data$ref,
+};
 */
 
 

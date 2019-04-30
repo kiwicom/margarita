@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8c4922855710d809aabe9320f51d5cdc
+ * @relayHash b602f502872637ee3570cca06964d97e
  */
 
 /* eslint-disable */
@@ -252,42 +252,49 @@ var v0 = [
     "defaultValue": null
   }
 ],
-v1 = {
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
+  }
+],
+v2 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "currency",
   "args": null,
   "storageKey": null
 },
-v2 = {
+v3 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "amount",
   "args": null,
   "storageKey": null
 },
-v3 = {
+v4 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "__typename",
   "args": null,
   "storageKey": null
 },
-v4 = {
+v5 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "name",
   "args": null,
   "storageKey": null
 },
-v5 = {
+v6 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "id",
   "args": null,
   "storageKey": null
 },
-v6 = {
+v7 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "city",
@@ -296,11 +303,11 @@ v6 = {
   "concreteType": "LocationArea",
   "plural": false,
   "selections": [
-    (v4/*: any*/),
-    (v5/*: any*/)
+    (v5/*: any*/),
+    (v6/*: any*/)
   ]
 },
-v7 = {
+v8 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "stop",
@@ -316,11 +323,11 @@ v7 = {
       "args": null,
       "storageKey": null
     },
-    (v6/*: any*/),
-    (v5/*: any*/)
+    (v7/*: any*/),
+    (v6/*: any*/)
   ]
 },
-v8 = {
+v9 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "time",
@@ -338,24 +345,24 @@ v8 = {
     }
   ]
 },
-v9 = [
-  (v7/*: any*/),
-  (v8/*: any*/)
+v10 = [
+  (v8/*: any*/),
+  (v9/*: any*/)
 ],
-v10 = {
+v11 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "duration",
   "args": null,
   "storageKey": null
 },
-v11 = [
-  (v7/*: any*/)
-],
 v12 = [
   (v8/*: any*/)
 ],
 v13 = [
+  (v9/*: any*/)
+],
+v14 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -364,7 +371,7 @@ v13 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v12/*: any*/)
+    "selections": (v13/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -374,19 +381,19 @@ v13 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v12/*: any*/)
+    "selections": (v13/*: any*/)
   },
-  (v10/*: any*/)
+  (v11/*: any*/)
 ],
-v14 = {
+v15 = {
   "kind": "ScalarField",
   "alias": null,
   "name": "stopoverDuration",
   "args": null,
   "storageKey": null
 },
-v15 = [
-  (v8/*: any*/),
+v16 = [
+  (v9/*: any*/),
   {
     "kind": "LinkedField",
     "alias": null,
@@ -396,7 +403,7 @@ v15 = [
     "concreteType": "Location",
     "plural": false,
     "selections": [
-      (v4/*: any*/),
+      (v5/*: any*/),
       {
         "kind": "ScalarField",
         "alias": null,
@@ -404,11 +411,11 @@ v15 = [
         "args": null,
         "storageKey": null
       },
-      (v5/*: any*/)
+      (v6/*: any*/)
     ]
   }
 ],
-v16 = {
+v17 = {
   "kind": "LinkedField",
   "alias": null,
   "name": "segments",
@@ -417,7 +424,7 @@ v16 = {
   "concreteType": "Segment",
   "plural": true,
   "selections": [
-    (v5/*: any*/),
+    (v6/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -426,7 +433,7 @@ v16 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v15/*: any*/)
+      "selections": (v16/*: any*/)
     },
     {
       "kind": "LinkedField",
@@ -436,9 +443,9 @@ v16 = {
       "args": null,
       "concreteType": "RouteStop",
       "plural": false,
-      "selections": (v15/*: any*/)
+      "selections": (v16/*: any*/)
     },
-    (v10/*: any*/),
+    (v11/*: any*/),
     {
       "kind": "LinkedField",
       "alias": null,
@@ -448,7 +455,7 @@ v16 = {
       "concreteType": "Carrier",
       "plural": false,
       "selections": [
-        (v4/*: any*/),
+        (v5/*: any*/),
         {
           "kind": "ScalarField",
           "alias": null,
@@ -460,7 +467,7 @@ v16 = {
     }
   ]
 },
-v17 = [
+v18 = [
   {
     "kind": "LinkedField",
     "alias": null,
@@ -470,13 +477,13 @@ v17 = [
     "concreteType": "Location",
     "plural": false,
     "selections": [
-      (v6/*: any*/),
-      (v5/*: any*/)
+      (v7/*: any*/),
+      (v6/*: any*/)
     ]
   }
 ],
-v18 = [
-  (v14/*: any*/),
+v19 = [
+  (v15/*: any*/),
   {
     "kind": "LinkedField",
     "alias": null,
@@ -485,7 +492,7 @@ v18 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v17/*: any*/)
+    "selections": (v18/*: any*/)
   },
   {
     "kind": "LinkedField",
@@ -495,9 +502,9 @@ v18 = [
     "args": null,
     "concreteType": "RouteStop",
     "plural": false,
-    "selections": (v17/*: any*/)
+    "selections": (v18/*: any*/)
   },
-  (v16/*: any*/)
+  (v17/*: any*/)
 ];
 return {
   "kind": "Request",
@@ -511,14 +518,7 @@ return {
       {
         "kind": "FragmentSpread",
         "name": "ResultDetailInner_data",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": null
-          }
-        ]
+        "args": (v1/*: any*/)
       }
     ]
   },
@@ -532,14 +532,7 @@ return {
         "alias": null,
         "name": "checkItinerary",
         "storageKey": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "ItineraryCheckInput!"
-          }
-        ],
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [
@@ -566,8 +559,8 @@ return {
             "concreteType": "Price",
             "plural": false,
             "selections": [
-              (v1/*: any*/),
-              (v2/*: any*/)
+              (v2/*: any*/),
+              (v3/*: any*/)
             ]
           },
           {
@@ -609,13 +602,13 @@ return {
                 "concreteType": "Price",
                 "plural": false,
                 "selections": [
-                  (v2/*: any*/),
-                  (v1/*: any*/)
+                  (v3/*: any*/),
+                  (v2/*: any*/)
                 ]
               }
             ]
           },
-          (v3/*: any*/),
+          (v4/*: any*/),
           {
             "kind": "LinkedField",
             "alias": null,
@@ -633,7 +626,7 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v9/*: any*/)
+                "selections": (v10/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -643,10 +636,10 @@ return {
                 "args": null,
                 "concreteType": "RouteStop",
                 "plural": false,
-                "selections": (v9/*: any*/)
+                "selections": (v10/*: any*/)
               },
-              (v3/*: any*/),
-              (v10/*: any*/)
+              (v4/*: any*/),
+              (v11/*: any*/)
             ]
           },
           {
@@ -657,7 +650,7 @@ return {
             "args": null,
             "concreteType": "RouteStop",
             "plural": false,
-            "selections": (v11/*: any*/)
+            "selections": (v12/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -667,7 +660,7 @@ return {
             "args": null,
             "concreteType": "RouteStop",
             "plural": false,
-            "selections": (v11/*: any*/)
+            "selections": (v12/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -677,7 +670,7 @@ return {
             "args": null,
             "concreteType": "Sector",
             "plural": false,
-            "selections": (v13/*: any*/)
+            "selections": (v14/*: any*/)
           },
           {
             "kind": "LinkedField",
@@ -687,9 +680,9 @@ return {
             "args": null,
             "concreteType": "Sector",
             "plural": false,
-            "selections": (v13/*: any*/)
+            "selections": (v14/*: any*/)
           },
-          (v5/*: any*/),
+          (v6/*: any*/),
           {
             "kind": "InlineFragment",
             "type": "ItineraryOneWay",
@@ -703,8 +696,8 @@ return {
                 "concreteType": "Sector",
                 "plural": false,
                 "selections": [
-                  (v14/*: any*/),
-                  (v16/*: any*/)
+                  (v15/*: any*/),
+                  (v17/*: any*/)
                 ]
               }
             ]
@@ -721,7 +714,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v18/*: any*/)
+                "selections": (v19/*: any*/)
               },
               {
                 "kind": "LinkedField",
@@ -731,7 +724,7 @@ return {
                 "args": null,
                 "concreteType": "Sector",
                 "plural": false,
-                "selections": (v18/*: any*/)
+                "selections": (v19/*: any*/)
               }
             ]
           }

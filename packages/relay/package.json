@@ -6,7 +6,7 @@
   "dependencies": {
     "@kiwicom/margarita-components": "^0",
     "@kiwicom/margarita-graphql": "^0",
-    "@kiwicom/relay": "^1.2.0"
+    "@kiwicom/relay": "^2.0.0"
   },
   "peerDependencies": {
     "@kiwicom/universal-components": "^",

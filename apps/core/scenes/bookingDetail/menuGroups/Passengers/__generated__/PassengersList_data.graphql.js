@@ -13,6 +13,7 @@ type Passenger_data$ref = any;
 export type BagType = "CABIN_BAG" | "CHECKED_BAGGAGE" | "PERSONAL_ITEM" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type PassengersList_data$ref: FragmentReference;
+declare export opaque type PassengersList_data$fragmentType: PassengersList_data$ref;
 export type PassengersList_data = {|
   +passengers: ?$ReadOnlyArray<?{|
     +id: string,
@@ -24,6 +25,11 @@ export type PassengersList_data = {|
   |}>,
   +$refType: PassengersList_data$ref,
 |};
+export type PassengersList_data$data = PassengersList_data;
+export type PassengersList_data$key = {
+  +$data?: PassengersList_data$data,
+  +$fragmentRefs: PassengersList_data$ref,
+};
 */
 
 

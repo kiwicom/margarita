@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type BaggageBundle_bagOption$ref: FragmentReference;
+declare export opaque type BaggageBundle_bagOption$fragmentType: BaggageBundle_bagOption$ref;
 export type BaggageBundle_bagOption = {|
   +quantity: ?number,
   +dimensions: ?string,
@@ -20,6 +21,11 @@ export type BaggageBundle_bagOption = {|
   |},
   +$refType: BaggageBundle_bagOption$ref,
 |};
+export type BaggageBundle_bagOption$data = BaggageBundle_bagOption;
+export type BaggageBundle_bagOption$key = {
+  +$data?: BaggageBundle_bagOption$data,
+  +$fragmentRefs: BaggageBundle_bagOption$ref,
+};
 */
 
 

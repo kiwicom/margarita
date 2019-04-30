@@ -10,10 +10,16 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FromToIcon_data$ref: FragmentReference;
+declare export opaque type FromToIcon_data$fragmentType: FromToIcon_data$ref;
 export type FromToIcon_data = {|
   +__typename: string,
   +$refType: FromToIcon_data$ref,
 |};
+export type FromToIcon_data$data = FromToIcon_data;
+export type FromToIcon_data$key = {
+  +$data?: FromToIcon_data$data,
+  +$fragmentRefs: FromToIcon_data$ref,
+};
 */
 
 

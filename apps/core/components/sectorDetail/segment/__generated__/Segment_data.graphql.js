@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type SegmentStopInfo_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Segment_data$ref: FragmentReference;
+declare export opaque type Segment_data$fragmentType: Segment_data$ref;
 export type Segment_data = {|
   +duration: ?number,
   +arrival: ?{|
@@ -28,6 +29,11 @@ export type Segment_data = {|
   |},
   +$refType: Segment_data$ref,
 |};
+export type Segment_data$data = Segment_data;
+export type Segment_data$key = {
+  +$data?: Segment_data$data,
+  +$fragmentRefs: Segment_data$ref,
+};
 */
 
 

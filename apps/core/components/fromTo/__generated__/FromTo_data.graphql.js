@@ -12,6 +12,7 @@ type CityName_data$ref = any;
 type FromToIcon_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FromTo_data$ref: FragmentReference;
+declare export opaque type FromTo_data$fragmentType: FromTo_data$ref;
 export type FromTo_data = {|
   +departure: ?{|
     +$fragmentRefs: CityName_data$ref
@@ -22,6 +23,11 @@ export type FromTo_data = {|
   +$fragmentRefs: FromToIcon_data$ref,
   +$refType: FromTo_data$ref,
 |};
+export type FromTo_data$data = FromTo_data;
+export type FromTo_data$key = {
+  +$data?: FromTo_data$data,
+  +$fragmentRefs: FromTo_data$ref,
+};
 */
 
 

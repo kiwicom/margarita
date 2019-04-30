@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorStopoverDuration_data$ref: FragmentReference;
+declare export opaque type SectorStopoverDuration_data$fragmentType: SectorStopoverDuration_data$ref;
 export type SectorStopoverDuration_data = {|
   +stopoverDuration: ?number,
   +departure: ?{|
@@ -21,6 +22,11 @@ export type SectorStopoverDuration_data = {|
   |},
   +$refType: SectorStopoverDuration_data$ref,
 |};
+export type SectorStopoverDuration_data$data = SectorStopoverDuration_data;
+export type SectorStopoverDuration_data$key = {
+  +$data?: SectorStopoverDuration_data$data,
+  +$fragmentRefs: SectorStopoverDuration_data$ref,
+};
 */
 
 

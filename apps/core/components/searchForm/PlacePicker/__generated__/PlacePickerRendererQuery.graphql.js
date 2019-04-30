@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9bdca0ebeb0cbce2be8d11e44636bdc5
+ * @relayHash 28bb4d5bd6bf6e37f1476e766c9a1cf3
  */
 
 /* eslint-disable */
@@ -75,8 +75,7 @@ const node/*: ConcreteRequest*/ = {
             "name": "input",
             "value": {
               "term": ""
-            },
-            "type": "LocationsByTermInput!"
+            }
           }
         ],
         "concreteType": null,

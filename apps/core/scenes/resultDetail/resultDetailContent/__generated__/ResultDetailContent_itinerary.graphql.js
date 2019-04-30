@@ -12,6 +12,7 @@ type ItinerarySectorDetails_itinerary$ref = any;
 type ResultDetailPassenger_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ResultDetailContent_itinerary$ref: FragmentReference;
+declare export opaque type ResultDetailContent_itinerary$fragmentType: ResultDetailContent_itinerary$ref;
 export type ResultDetailContent_itinerary = {|
   +isChecked: ?boolean,
   +price: ?{|
@@ -21,6 +22,11 @@ export type ResultDetailContent_itinerary = {|
   +$fragmentRefs: ResultDetailPassenger_itinerary$ref & ItinerarySectorDetails_itinerary$ref,
   +$refType: ResultDetailContent_itinerary$ref,
 |};
+export type ResultDetailContent_itinerary$data = ResultDetailContent_itinerary;
+export type ResultDetailContent_itinerary$key = {
+  +$data?: ResultDetailContent_itinerary$data,
+  +$fragmentRefs: ResultDetailContent_itinerary$ref,
+};
 */
 
 

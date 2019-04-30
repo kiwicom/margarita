@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 export type LocationType = "AIRPORT" | "AUTONOMOUS_TERRITORY" | "BUS_STATION" | "CITY" | "CONTINENT" | "COUNTRY" | "REGION" | "SPECIAL" | "STATION" | "SUBDIVISION" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type PlacePickerContent_locations$ref: FragmentReference;
+declare export opaque type PlacePickerContent_locations$fragmentType: PlacePickerContent_locations$ref;
 export type PlacePickerContent_locations = {|
   +locationsByTerm: ?{|
     +edges?: ?$ReadOnlyArray<?{|
@@ -24,6 +25,11 @@ export type PlacePickerContent_locations = {|
   |},
   +$refType: PlacePickerContent_locations$ref,
 |};
+export type PlacePickerContent_locations$data = PlacePickerContent_locations;
+export type PlacePickerContent_locations$key = {
+  +$data?: PlacePickerContent_locations$data,
+  +$fragmentRefs: PlacePickerContent_locations$ref,
+};
 */
 
 
@@ -52,8 +58,7 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "Variable",
           "name": "input",
-          "variableName": "input",
-          "type": "LocationsByTermInput!"
+          "variableName": "input"
         }
       ],
       "concreteType": null,

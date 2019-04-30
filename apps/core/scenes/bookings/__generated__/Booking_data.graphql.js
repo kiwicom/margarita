@@ -13,12 +13,18 @@ type DateAndPassengerCount_data$ref = any;
 type FromTo_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Booking_data$ref: FragmentReference;
+declare export opaque type Booking_data$fragmentType: Booking_data$ref;
 export type Booking_data = {|
   +destinationImageUrl: ?string,
   +relayId: string,
   +$fragmentRefs: BookingBadges_data$ref & FromTo_data$ref & DateAndPassengerCount_data$ref,
   +$refType: Booking_data$ref,
 |};
+export type Booking_data$data = Booking_data;
+export type Booking_data$key = {
+  +$data?: Booking_data$data,
+  +$fragmentRefs: Booking_data$ref,
+};
 */
 
 
@@ -37,8 +43,7 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "Literal",
           "name": "dimensions",
-          "value": "_1200x628",
-          "type": "BookingDestinationImageDimensions"
+          "value": "_1200x628"
         }
       ],
       "storageKey": "destinationImageUrl(dimensions:\"_1200x628\")"

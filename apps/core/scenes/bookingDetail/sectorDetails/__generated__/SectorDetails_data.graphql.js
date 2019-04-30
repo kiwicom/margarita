@@ -15,11 +15,17 @@ type SectorInfoReturn_data$ref = any;
 type SegmentContainer_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorDetails_data$ref: FragmentReference;
+declare export opaque type SectorDetails_data$fragmentType: SectorDetails_data$ref;
 export type SectorDetails_data = {|
   +__typename: string,
   +$fragmentRefs: SectorInfoOneWay_data$ref & SectorInfoReturn_data$ref & SectorInfoMulticity_data$ref & Header_data$ref & SegmentContainer_data$ref,
   +$refType: SectorDetails_data$ref,
 |};
+export type SectorDetails_data$data = SectorDetails_data;
+export type SectorDetails_data$key = {
+  +$data?: SectorDetails_data$data,
+  +$fragmentRefs: SectorDetails_data$ref,
+};
 */
 
 
