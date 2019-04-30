@@ -49,10 +49,6 @@
         "title": "What is this all about?",
         "sidebar_label": "What is this all about?"
       },
-      "need-help": {
-        "title": "Need help?",
-        "sidebar_label": "Need help?"
-      },
       "packages/index": {
         "title": "List of Packages",
         "sidebar_label": "List of Packages"
