@@ -6,79 +6,57 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { StyleSheet } from '../PlatformStyleSheet';
 import { Text } from '../Text';
-import { Hoverable } from '../Hoverable';
+import { withHover } from '../WithHover';
 
 type Props = {|
   +dayId: number,
   +selected?: boolean,
   +disabled?: boolean,
   +onDaySelect: (dayId: number) => void,
+  +isHovered: boolean,
+  +onMouseLeave: () => void,
+  +onMouseEnter: () => void,
 |};
 
-type State = {|
-  hovered: boolean,
-|};
-
-export default class DatePickerDayTile extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      hovered: false,
-    };
-  }
-
+class DatePickerDayTile extends React.Component<Props> {
   handleDayPress = () => {
     const { onDaySelect, dayId } = this.props;
     onDaySelect(dayId);
   };
 
-  handleOnMouseEnter = () => {
-    this.setState({ hovered: true });
-  };
-
-  handleOnMouseLeave = () => {
-    this.setState({ hovered: false });
-  };
-
   render() {
-    const { hovered } = this.state;
-    const { dayId, selected, disabled } = this.props;
+    const { dayId, selected, disabled, isHovered } = this.props;
 
     if (dayId < 1) {
       return <View style={styles.dayTile} />;
     }
 
     return (
-      <Hoverable
+      <TouchableWithoutFeedback
         disabled={selected || disabled}
-        onMouseEnter={this.handleOnMouseEnter}
-        onMouseLeave={this.handleOnMouseLeave}
+        onPress={this.handleDayPress}
       >
-        <TouchableWithoutFeedback
-          disabled={selected || disabled}
-          onPress={this.handleDayPress}
+        <View
+          style={[
+            styles.dayTile,
+            styles.date,
+            isHovered && styles.dateHovered,
+            selected && styles.selected,
+            disabled && styles.disabled,
+          ]}
         >
-          <View
-            style={[
-              styles.dayTile,
-              styles.date,
-              hovered && styles.dateHovered,
-              selected && styles.selected,
-              disabled && styles.disabled,
-            ]}
+          <Text
+            style={[styles.dateLabel, selected && styles.dateLabelSelected]}
           >
-            <Text
-              style={[styles.dateLabel, selected && styles.dateLabelSelected]}
-            >
-              {dayId}
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </Hoverable>
+            {dayId}
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
     );
   }
 }
+
+export default withHover(DatePickerDayTile);
 
 const styles = StyleSheet.create({
   dayTile: {

@@ -7,7 +7,7 @@ import { graphql, createFragmentContainer } from '@kiwicom/margarita-relay';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   StyleSheet,
-  Hoverable,
+  withHover,
   Card,
   designTokens,
   TouchableWithoutFeedback,
@@ -23,25 +23,18 @@ import TripSectorReturn from './TripSectorReturn';
 type Props = {|
   +data: ItineraryCardType,
   +onBookPress: (?string) => void,
+  +isHovered: boolean,
+  +onMouseLeave: () => void,
+  +onMouseEnter: () => void,
 |};
 
 type State = {|
   detailOpened: boolean,
-  hovered: boolean,
 |};
 
 class ItineraryCard extends React.Component<Props, State> {
   state = {
     detailOpened: false,
-    hovered: false,
-  };
-
-  handleOnMouseEnter = () => {
-    this.setState({ hovered: true });
-  };
-
-  handleOnMouseLeave = () => {
-    this.setState({ hovered: false });
   };
 
   handlePress = () => {
@@ -55,8 +48,8 @@ class ItineraryCard extends React.Component<Props, State> {
   };
 
   render() {
-    const { detailOpened, hovered } = this.state;
-    const { data, onBookPress } = this.props;
+    const { detailOpened } = this.state;
+    const { data, onBookPress, isHovered, ...rest } = this.props;
     if (data == null) {
       return null;
     }
@@ -70,28 +63,23 @@ class ItineraryCard extends React.Component<Props, State> {
       <Card
         style={[
           styles.container,
-          (hovered || detailOpened) && styles.containerElevated,
+          (isHovered || detailOpened) && styles.containerElevated,
         ]}
       >
-        <Hoverable
-          onMouseEnter={this.handleOnMouseEnter}
-          onMouseLeave={this.handleOnMouseLeave}
-        >
-          <TouchableWithoutFeedback onPress={this.handlePress}>
-            <View>
-              <ItineraryCardWrapper
-                localizedPrice={localizedPrice}
-                detailOpened={detailOpened}
-              >
-                <ItineraryTypeRenderer
-                  typename={typename}
-                  oneWayComponent={<TripSectorOneWay itinerary={data} />}
-                  returnComponent={<TripSectorReturn itinerary={data} />}
-                />
-              </ItineraryCardWrapper>
-            </View>
-          </TouchableWithoutFeedback>
-        </Hoverable>
+        <TouchableWithoutFeedback onPress={this.handlePress} {...rest}>
+          <View>
+            <ItineraryCardWrapper
+              localizedPrice={localizedPrice}
+              detailOpened={detailOpened}
+            >
+              <ItineraryTypeRenderer
+                typename={typename}
+                oneWayComponent={<TripSectorOneWay itinerary={data} />}
+                returnComponent={<TripSectorReturn itinerary={data} />}
+              />
+            </ItineraryCardWrapper>
+          </View>
+        </TouchableWithoutFeedback>
         {detailOpened && (
           <ItineraryDetail
             data={data}
@@ -105,7 +93,7 @@ class ItineraryCard extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(ItineraryCard, {
+export default createFragmentContainer(withHover(ItineraryCard), {
   data: graphql`
     fragment ItineraryCard_data on ItineraryInterface {
       __typename
