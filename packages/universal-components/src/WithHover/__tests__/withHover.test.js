@@ -12,9 +12,13 @@ afterEach(() => {
   Platform.OS = originalPlatform;
 });
 
-const Hoverable = withHover((props: { isHovered: boolean }) => (
-  <View testID="childView" {...props} />
-));
+const Hoverable = withHover(
+  (props: {
+    isHovered: boolean,
+    onMouseEnter: () => void,
+    onMouseLeave: () => void,
+  }) => <View testID="childView" {...props} />,
+);
 
 describe('Hoverable - web', () => {
   Platform.OS = 'web';

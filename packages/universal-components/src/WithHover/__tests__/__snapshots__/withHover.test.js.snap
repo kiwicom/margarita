@@ -2,24 +2,18 @@
 
 exports[`Hoverable - native should match snapshot 1`] = `
 <View
+  isHovered={false}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
->
-  <View
-    isHovered={false}
-    testID="childView"
-  />
-</View>
+  testID="childView"
+/>
 `;
 
 exports[`Hoverable - web should match snapshot 1`] = `
 <View
+  isHovered={false}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}
->
-  <View
-    isHovered={false}
-    testID="childView"
-  />
-</View>
+  testID="childView"
+/>
 `;
