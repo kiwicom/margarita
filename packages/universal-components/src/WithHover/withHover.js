@@ -1,17 +1,18 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
 
 type HoverProps = {
   +isHovered: boolean,
+  +onMouseEnter: () => void,
+  +onMouseLeave: () => void,
 };
 
 type WithHoverState = {|
   +isHovered: boolean,
 |};
 
-export default function withHover<Config: { isHovered: boolean }>(
+export default function withHover<Config: HoverProps>(
   Component: React.AbstractComponent<Config>,
 ): React.AbstractComponent<$Diff<Config, HoverProps>> {
   return class WithHover extends React.Component<
@@ -32,12 +33,12 @@ export default function withHover<Config: { isHovered: boolean }>(
 
     render() {
       return (
-        <View
+        <Component
+          {...this.props}
+          isHovered={this.state.isHovered}
           onMouseEnter={this.handleOnMouseEnter}
           onMouseLeave={this.handleOnMouseLeave}
-        >
-          <Component {...this.props} isHovered={this.state.isHovered} />
-        </View>
+        />
       );
     }
   };

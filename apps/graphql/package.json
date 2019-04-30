@@ -30,7 +30,8 @@
     "serverless-offline": "^4.9.4",
     "serverless-webpack": "^5.2.0",
     "uglifyjs-webpack-plugin": "^2.1.2",
-    "webpack": "^4.29.1"
+    "webpack": "^4.29.1",
+    "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "^7.4.4",
@@ -43,8 +44,7 @@
     "serverless": "^1.41.1",
     "serverless-dotenv-plugin": "^2.0.1",
     "utf-8-validate": "^5.0.2",
-    "webpack-cli": "^3.2.3",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-cli": "^3.2.3"
   },
   "peerDependencies": {
     "@babel/preset-flow": "^7.0.0",

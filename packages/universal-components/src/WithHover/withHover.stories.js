@@ -11,13 +11,17 @@ import withHover from './withHover';
 
 type Props = {|
   +isHovered: boolean,
+  +onMouseEnter: () => void,
+  +onMouseLeave: () => void,
 |};
 
 class Square extends React.Component<Props> {
   render() {
+    const { isHovered, ...rest } = this.props;
     return (
       <View
-        style={[styles.square, this.props.isHovered && styles.squareHovered]}
+        style={[styles.square, isHovered && styles.squareHovered]}
+        {...rest}
       />
     );
   }
