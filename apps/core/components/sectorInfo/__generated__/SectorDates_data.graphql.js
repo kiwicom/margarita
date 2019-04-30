@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type SectorDate_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorDates_data$ref: FragmentReference;
+declare export opaque type SectorDates_data$fragmentType: SectorDates_data$ref;
 export type SectorDates_data = {|
   +departure: ?{|
     +$fragmentRefs: SectorDate_data$ref
@@ -21,6 +22,11 @@ export type SectorDates_data = {|
   +duration: ?number,
   +$refType: SectorDates_data$ref,
 |};
+export type SectorDates_data$data = SectorDates_data;
+export type SectorDates_data$key = {
+  +$data?: SectorDates_data$data,
+  +$fragmentRefs: SectorDates_data$ref,
+};
 */
 
 

@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type ResultDetailContent_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ResultDetailInner_data$ref: FragmentReference;
+declare export opaque type ResultDetailInner_data$fragmentType: ResultDetailInner_data$ref;
 export type ResultDetailInner_data = {|
   +checkItinerary: ?{|
     +isChecked: ?boolean,
@@ -19,6 +20,11 @@ export type ResultDetailInner_data = {|
   |},
   +$refType: ResultDetailInner_data$ref,
 |};
+export type ResultDetailInner_data$data = ResultDetailInner_data;
+export type ResultDetailInner_data$key = {
+  +$data?: ResultDetailInner_data$data,
+  +$fragmentRefs: ResultDetailInner_data$ref,
+};
 */
 
 
@@ -45,8 +51,7 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "Variable",
           "name": "input",
-          "variableName": "input",
-          "type": "ItineraryCheckInput!"
+          "variableName": "input"
         }
       ],
       "concreteType": null,

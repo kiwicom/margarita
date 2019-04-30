@@ -12,6 +12,7 @@ type MapLines_data$ref = any;
 export type BookingType = "BOOKING_MULTICITY" | "BOOKING_ONE_WAY" | "BOOKING_RETURN" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap_data$ref: FragmentReference;
+declare export opaque type SegmentMap_data$fragmentType: SegmentMap_data$ref;
 export type SegmentMap_data = {|
   +type: ?BookingType,
   +sector?: ?{|
@@ -129,6 +130,11 @@ export type SegmentMap_data = {|
   +$fragmentRefs: MapLines_data$ref,
   +$refType: SegmentMap_data$ref,
 |};
+export type SegmentMap_data$data = SegmentMap_data;
+export type SegmentMap_data$key = {
+  +$data?: SegmentMap_data$data,
+  +$fragmentRefs: SegmentMap_data$ref,
+};
 */
 
 
@@ -237,16 +243,16 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "MapLines_data",
-      "args": null
-    },
-    {
       "kind": "ScalarField",
       "alias": null,
       "name": "type",
       "args": null,
       "storageKey": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "MapLines_data",
+      "args": null
     },
     {
       "kind": "InlineFragment",

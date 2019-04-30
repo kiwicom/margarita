@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type DrawSegmentLine_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ReturnSegmentLines_data$ref: FragmentReference;
+declare export opaque type ReturnSegmentLines_data$fragmentType: ReturnSegmentLines_data$ref;
 export type ReturnSegmentLines_data = {|
   +inbound: ?{|
     +$fragmentRefs: DrawSegmentLine_data$ref
@@ -20,6 +21,11 @@ export type ReturnSegmentLines_data = {|
   |},
   +$refType: ReturnSegmentLines_data$ref,
 |};
+export type ReturnSegmentLines_data$data = ReturnSegmentLines_data;
+export type ReturnSegmentLines_data$key = {
+  +$data?: ReturnSegmentLines_data$data,
+  +$fragmentRefs: ReturnSegmentLines_data$ref,
+};
 */
 
 

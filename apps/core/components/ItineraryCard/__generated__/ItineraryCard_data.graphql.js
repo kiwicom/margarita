@@ -13,6 +13,7 @@ type TripSectorOneWay_itinerary$ref = any;
 type TripSectorReturn_itinerary$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryCard_data$ref: FragmentReference;
+declare export opaque type ItineraryCard_data$fragmentType: ItineraryCard_data$ref;
 export type ItineraryCard_data = {|
   +__typename: string,
   +price: ?{|
@@ -22,6 +23,11 @@ export type ItineraryCard_data = {|
   +$fragmentRefs: ItineraryDetail_data$ref & TripSectorOneWay_itinerary$ref & TripSectorReturn_itinerary$ref,
   +$refType: ItineraryCard_data$ref,
 |};
+export type ItineraryCard_data$data = ItineraryCard_data;
+export type ItineraryCard_data$key = {
+  +$data?: ItineraryCard_data$data,
+  +$fragmentRefs: ItineraryCard_data$ref,
+};
 */
 
 
@@ -65,11 +71,6 @@ const node/*: ReaderFragment*/ = {
       ]
     },
     {
-      "kind": "FragmentSpread",
-      "name": "ItineraryDetail_data",
-      "args": null
-    },
-    {
       "kind": "InlineFragment",
       "type": "ItineraryOneWay",
       "selections": [
@@ -90,6 +91,11 @@ const node/*: ReaderFragment*/ = {
           "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "ItineraryDetail_data",
+      "args": null
     }
   ]
 };

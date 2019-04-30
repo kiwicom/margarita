@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Carriers_data$ref: FragmentReference;
+declare export opaque type Carriers_data$fragmentType: Carriers_data$ref;
 export type Carriers_data = {|
   +segments: ?$ReadOnlyArray<?{|
     +carrier: ?{|
@@ -19,6 +20,11 @@ export type Carriers_data = {|
   |}>,
   +$refType: Carriers_data$ref,
 |};
+export type Carriers_data$data = Carriers_data;
+export type Carriers_data$key = {
+  +$data?: Carriers_data$data,
+  +$fragmentRefs: Carriers_data$ref,
+};
 */
 
 

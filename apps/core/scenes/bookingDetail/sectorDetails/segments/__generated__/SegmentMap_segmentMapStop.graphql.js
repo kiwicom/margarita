@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentMap_segmentMapStop$ref: FragmentReference;
+declare export opaque type SegmentMap_segmentMapStop$fragmentType: SegmentMap_segmentMapStop$ref;
 export type SegmentMap_segmentMapStop = {
   +stop: ?{
     +locationId: ?string,
@@ -21,6 +22,11 @@ export type SegmentMap_segmentMapStop = {
       +longitude: ?number,
     },
   }
+};
+export type SegmentMap_segmentMapStop$data = SegmentMap_segmentMapStop;
+export type SegmentMap_segmentMapStop$key = {
+  +$data?: SegmentMap_segmentMapStop$data,
+  +$fragmentRefs: SegmentMap_segmentMapStop$ref,
 };
 */
 

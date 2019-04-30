@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8f19daaf2ee71f9be1e492cf78a0dd9f
+ * @relayHash fbe0f0b1ffcbb68bceb702691847e3ba
  */
 
 /* eslint-disable */
@@ -281,8 +281,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "ItinerariesReturnSearchInput!"
+    "variableName": "input"
   }
 ],
 v2 = {

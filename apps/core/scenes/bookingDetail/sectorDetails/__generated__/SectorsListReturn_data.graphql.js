@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type SectorDetail_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorsListReturn_data$ref: FragmentReference;
+declare export opaque type SectorsListReturn_data$fragmentType: SectorsListReturn_data$ref;
 export type SectorsListReturn_data = {|
   +inbound: ?{|
     +$fragmentRefs: SectorDetail_data$ref
@@ -20,6 +21,11 @@ export type SectorsListReturn_data = {|
   |},
   +$refType: SectorsListReturn_data$ref,
 |};
+export type SectorsListReturn_data$data = SectorsListReturn_data;
+export type SectorsListReturn_data$key = {
+  +$data?: SectorsListReturn_data$data,
+  +$fragmentRefs: SectorsListReturn_data$ref,
+};
 */
 
 

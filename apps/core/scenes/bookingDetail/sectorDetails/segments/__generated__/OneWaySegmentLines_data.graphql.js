@@ -11,12 +11,18 @@ import type { ReaderFragment } from 'relay-runtime';
 type DrawSegmentLine_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type OneWaySegmentLines_data$ref: FragmentReference;
+declare export opaque type OneWaySegmentLines_data$fragmentType: OneWaySegmentLines_data$ref;
 export type OneWaySegmentLines_data = {|
   +sector: ?{|
     +$fragmentRefs: DrawSegmentLine_data$ref
   |},
   +$refType: OneWaySegmentLines_data$ref,
 |};
+export type OneWaySegmentLines_data$data = OneWaySegmentLines_data;
+export type OneWaySegmentLines_data$key = {
+  +$data?: OneWaySegmentLines_data$data,
+  +$fragmentRefs: OneWaySegmentLines_data$ref,
+};
 */
 
 

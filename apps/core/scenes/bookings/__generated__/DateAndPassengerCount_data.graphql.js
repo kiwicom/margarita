@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type DateAndPassengerCount_data$ref: FragmentReference;
+declare export opaque type DateAndPassengerCount_data$fragmentType: DateAndPassengerCount_data$ref;
 export type DateAndPassengerCount_data = {|
   +passengerCount: ?number,
   +departure: ?{|
@@ -19,6 +20,11 @@ export type DateAndPassengerCount_data = {|
   |},
   +$refType: DateAndPassengerCount_data$ref,
 |};
+export type DateAndPassengerCount_data$data = DateAndPassengerCount_data;
+export type DateAndPassengerCount_data$key = {
+  +$data?: DateAndPassengerCount_data$data,
+  +$fragmentRefs: DateAndPassengerCount_data$ref,
+};
 */
 
 

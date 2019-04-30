@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 export type PassengerTitle = "Mr" | "Ms" | "%future added value";
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Passenger_data$ref: FragmentReference;
+declare export opaque type Passenger_data$fragmentType: Passenger_data$ref;
 export type Passenger_data = {|
   +title: ?PassengerTitle,
   +firstname: ?string,
@@ -18,6 +19,11 @@ export type Passenger_data = {|
   +birthday: ?string,
   +$refType: Passenger_data$ref,
 |};
+export type Passenger_data$data = Passenger_data;
+export type Passenger_data$key = {
+  +$data?: Passenger_data$data,
+  +$fragmentRefs: Passenger_data$ref,
+};
 */
 
 

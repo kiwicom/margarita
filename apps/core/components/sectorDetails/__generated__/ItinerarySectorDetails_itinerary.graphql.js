@@ -14,11 +14,17 @@ type SectorInfoOneWay_data$ref = any;
 type SectorInfoReturn_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItinerarySectorDetails_itinerary$ref: FragmentReference;
+declare export opaque type ItinerarySectorDetails_itinerary$fragmentType: ItinerarySectorDetails_itinerary$ref;
 export type ItinerarySectorDetails_itinerary = {|
   +__typename: string,
   +$fragmentRefs: ItineraryOneWay_itinerary$ref & ItineraryReturn_itinerary$ref & SectorInfoOneWay_data$ref & SectorInfoReturn_data$ref,
   +$refType: ItinerarySectorDetails_itinerary$ref,
 |};
+export type ItinerarySectorDetails_itinerary$data = ItinerarySectorDetails_itinerary;
+export type ItinerarySectorDetails_itinerary$key = {
+  +$data?: ItinerarySectorDetails_itinerary$data,
+  +$fragmentRefs: ItinerarySectorDetails_itinerary$ref,
+};
 */
 
 

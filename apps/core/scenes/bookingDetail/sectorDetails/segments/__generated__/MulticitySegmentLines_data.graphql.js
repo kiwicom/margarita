@@ -11,12 +11,18 @@ import type { ReaderFragment } from 'relay-runtime';
 type DrawSegmentLine_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type MulticitySegmentLines_data$ref: FragmentReference;
+declare export opaque type MulticitySegmentLines_data$fragmentType: MulticitySegmentLines_data$ref;
 export type MulticitySegmentLines_data = {|
   +sectors: ?$ReadOnlyArray<?{|
     +$fragmentRefs: DrawSegmentLine_data$ref
   |}>,
   +$refType: MulticitySegmentLines_data$ref,
 |};
+export type MulticitySegmentLines_data$data = MulticitySegmentLines_data;
+export type MulticitySegmentLines_data$key = {
+  +$data?: MulticitySegmentLines_data$data,
+  +$fragmentRefs: MulticitySegmentLines_data$ref,
+};
 */
 
 

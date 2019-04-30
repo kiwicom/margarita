@@ -11,12 +11,18 @@ import type { ReaderFragment } from 'relay-runtime';
 type SectorInfo_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorInfoOneWay_data$ref: FragmentReference;
+declare export opaque type SectorInfoOneWay_data$fragmentType: SectorInfoOneWay_data$ref;
 export type SectorInfoOneWay_data = {|
   +sector: ?{|
     +$fragmentRefs: SectorInfo_data$ref
   |},
   +$refType: SectorInfoOneWay_data$ref,
 |};
+export type SectorInfoOneWay_data$data = SectorInfoOneWay_data;
+export type SectorInfoOneWay_data$key = {
+  +$data?: SectorInfoOneWay_data$data,
+  +$fragmentRefs: SectorInfoOneWay_data$ref,
+};
 */
 
 

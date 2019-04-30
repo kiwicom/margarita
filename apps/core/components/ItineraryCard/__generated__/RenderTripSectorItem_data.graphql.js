@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type TripSector_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type RenderTripSectorItem_data$ref: FragmentReference;
+declare export opaque type RenderTripSectorItem_data$fragmentType: RenderTripSectorItem_data$ref;
 export type RenderTripSectorItem_data = {|
   +departure: ?{|
     +stop: ?{|
@@ -23,6 +24,11 @@ export type RenderTripSectorItem_data = {|
   +$fragmentRefs: TripSector_data$ref,
   +$refType: RenderTripSectorItem_data$ref,
 |};
+export type RenderTripSectorItem_data$data = RenderTripSectorItem_data;
+export type RenderTripSectorItem_data$key = {
+  +$data?: RenderTripSectorItem_data$data,
+  +$fragmentRefs: RenderTripSectorItem_data$ref,
+};
 */
 
 

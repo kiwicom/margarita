@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type LocationName_data$ref: FragmentReference;
+declare export opaque type LocationName_data$fragmentType: LocationName_data$ref;
 export type LocationName_data = {|
   +stop: ?{|
     +city: ?{|
@@ -18,6 +19,11 @@ export type LocationName_data = {|
   |},
   +$refType: LocationName_data$ref,
 |};
+export type LocationName_data$data = LocationName_data;
+export type LocationName_data$key = {
+  +$data?: LocationName_data$data,
+  +$fragmentRefs: LocationName_data$ref,
+};
 */
 
 

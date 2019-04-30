@@ -10,12 +10,18 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type VisaInfoSummary_data$ref: FragmentReference;
+declare export opaque type VisaInfoSummary_data$fragmentType: VisaInfoSummary_data$ref;
 export type VisaInfoSummary_data = {|
   +passengers: ?$ReadOnlyArray<?{|
     +visaRequired: ?boolean
   |}>,
   +$refType: VisaInfoSummary_data$ref,
 |};
+export type VisaInfoSummary_data$data = VisaInfoSummary_data;
+export type VisaInfoSummary_data$key = {
+  +$data?: VisaInfoSummary_data$data,
+  +$fragmentRefs: VisaInfoSummary_data$ref,
+};
 */
 
 

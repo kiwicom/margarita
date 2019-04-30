@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type LocalTime_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type FlightTimes_data$ref: FragmentReference;
+declare export opaque type FlightTimes_data$fragmentType: FlightTimes_data$ref;
 export type FlightTimes_data = {|
   +arrival: ?{|
     +$fragmentRefs: LocalTime_data$ref
@@ -20,6 +21,11 @@ export type FlightTimes_data = {|
   |},
   +$refType: FlightTimes_data$ref,
 |};
+export type FlightTimes_data$data = FlightTimes_data;
+export type FlightTimes_data$key = {
+  +$data?: FlightTimes_data$data,
+  +$fragmentRefs: FlightTimes_data$ref,
+};
 */
 
 

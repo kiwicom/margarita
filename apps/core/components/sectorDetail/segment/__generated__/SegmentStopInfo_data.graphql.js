@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SegmentStopInfo_data$ref: FragmentReference;
+declare export opaque type SegmentStopInfo_data$fragmentType: SegmentStopInfo_data$ref;
 export type SegmentStopInfo_data = {|
   +time: ?{|
     +local: ?any
@@ -20,6 +21,11 @@ export type SegmentStopInfo_data = {|
   |},
   +$refType: SegmentStopInfo_data$ref,
 |};
+export type SegmentStopInfo_data$data = SegmentStopInfo_data;
+export type SegmentStopInfo_data$key = {
+  +$data?: SegmentStopInfo_data$data,
+  +$fragmentRefs: SegmentStopInfo_data$ref,
+};
 */
 
 

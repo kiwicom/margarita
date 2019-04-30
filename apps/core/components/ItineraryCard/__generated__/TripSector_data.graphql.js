@@ -14,6 +14,7 @@ type LocalTime_data$ref = any;
 type TripCities_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type TripSector_data$ref: FragmentReference;
+declare export opaque type TripSector_data$fragmentType: TripSector_data$ref;
 export type TripSector_data = {|
   +duration: ?number,
   +departure: ?{|
@@ -22,6 +23,11 @@ export type TripSector_data = {|
   +$fragmentRefs: FlightTimes_data$ref & TripCities_data$ref & Carriers_data$ref,
   +$refType: TripSector_data$ref,
 |};
+export type TripSector_data$data = TripSector_data;
+export type TripSector_data$key = {
+  +$data?: TripSector_data$data,
+  +$fragmentRefs: TripSector_data$ref,
+};
 */
 
 
@@ -40,16 +46,6 @@ const node/*: ReaderFragment*/ = {
       "storageKey": null
     },
     {
-      "kind": "FragmentSpread",
-      "name": "FlightTimes_data",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "TripCities_data",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
       "alias": null,
       "name": "departure",
@@ -64,6 +60,16 @@ const node/*: ReaderFragment*/ = {
           "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "FlightTimes_data",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "TripCities_data",
+      "args": null
     },
     {
       "kind": "FragmentSpread",

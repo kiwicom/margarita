@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 9946aa85641d91be849fe110645b6474
+ * @relayHash e89629af2899b23037f8337d7b283170
  */
 
 /* eslint-disable */
@@ -60,6 +60,13 @@ var v0 = [
     "type": "LocationsByTermInput!",
     "defaultValue": null
   }
+],
+v1 = [
+  {
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input"
+  }
 ];
 return {
   "kind": "Request",
@@ -73,14 +80,7 @@ return {
       {
         "kind": "FragmentSpread",
         "name": "PlacePickerContent_locations",
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": null
-          }
-        ]
+        "args": (v1/*: any*/)
       }
     ]
   },
@@ -94,14 +94,7 @@ return {
         "alias": null,
         "name": "locationsByTerm",
         "storageKey": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "LocationsByTermInput!"
-          }
-        ],
+        "args": (v1/*: any*/),
         "concreteType": null,
         "plural": false,
         "selections": [

@@ -13,6 +13,7 @@ type SectorStopoverDuration_data$ref = any;
 type Segment_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorDetail_data$ref: FragmentReference;
+declare export opaque type SectorDetail_data$fragmentType: SectorDetail_data$ref;
 export type SectorDetail_data = {|
   +segments: ?$ReadOnlyArray<?{|
     +id: string,
@@ -31,6 +32,11 @@ export type SectorDetail_data = {|
   +$fragmentRefs: SectorStopoverDuration_data$ref & SectorHeader_data$ref,
   +$refType: SectorDetail_data$ref,
 |};
+export type SectorDetail_data$data = SectorDetail_data;
+export type SectorDetail_data$key = {
+  +$data?: SectorDetail_data$data,
+  +$fragmentRefs: SectorDetail_data$ref,
+};
 */
 
 
@@ -62,16 +68,6 @@ return {
   "metadata": null,
   "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "FragmentSpread",
-      "name": "SectorStopoverDuration_data",
-      "args": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "SectorHeader_data",
-      "args": null
-    },
     {
       "kind": "LinkedField",
       "alias": null,
@@ -114,6 +110,16 @@ return {
           "args": null
         }
       ]
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "SectorStopoverDuration_data",
+      "args": null
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "SectorHeader_data",
+      "args": null
     }
   ]
 };

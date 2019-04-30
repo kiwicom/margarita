@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type Booking_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type BookingList_data$ref: FragmentReference;
+declare export opaque type BookingList_data$fragmentType: BookingList_data$ref;
 export type BookingList_data = {|
   +edges: ?$ReadOnlyArray<?{|
     +node: ?{|
@@ -20,6 +21,11 @@ export type BookingList_data = {|
   |}>,
   +$refType: BookingList_data$ref,
 |};
+export type BookingList_data$data = BookingList_data;
+export type BookingList_data$key = {
+  +$data?: BookingList_data$data,
+  +$fragmentRefs: BookingList_data$ref,
+};
 */
 
 
@@ -56,8 +62,7 @@ const node/*: ReaderFragment*/ = {
                 {
                   "kind": "Literal",
                   "name": "opaque",
-                  "value": false,
-                  "type": "Boolean"
+                  "value": false
                 }
               ],
               "storageKey": "id(opaque:false)"

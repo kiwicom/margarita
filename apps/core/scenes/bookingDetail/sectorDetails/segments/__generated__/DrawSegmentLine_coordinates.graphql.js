@@ -10,6 +10,7 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type DrawSegmentLine_coordinates$ref: FragmentReference;
+declare export opaque type DrawSegmentLine_coordinates$fragmentType: DrawSegmentLine_coordinates$ref;
 export type DrawSegmentLine_coordinates = {
   +stop: ?{
     +coordinates: ?{
@@ -17,6 +18,11 @@ export type DrawSegmentLine_coordinates = {
       +longitude: ?number,
     }
   }
+};
+export type DrawSegmentLine_coordinates$data = DrawSegmentLine_coordinates;
+export type DrawSegmentLine_coordinates$key = {
+  +$data?: DrawSegmentLine_coordinates$data,
+  +$fragmentRefs: DrawSegmentLine_coordinates$ref,
 };
 */
 

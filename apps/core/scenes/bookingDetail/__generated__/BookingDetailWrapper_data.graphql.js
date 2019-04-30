@@ -12,10 +12,16 @@ type Passengers_data$ref = any;
 type SectorDetails_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type BookingDetailWrapper_data$ref: FragmentReference;
+declare export opaque type BookingDetailWrapper_data$fragmentType: BookingDetailWrapper_data$ref;
 export type BookingDetailWrapper_data = {|
   +$fragmentRefs: SectorDetails_data$ref & Passengers_data$ref,
   +$refType: BookingDetailWrapper_data$ref,
 |};
+export type BookingDetailWrapper_data$data = BookingDetailWrapper_data;
+export type BookingDetailWrapper_data$key = {
+  +$data?: BookingDetailWrapper_data$data,
+  +$fragmentRefs: BookingDetailWrapper_data$ref,
+};
 */
 
 

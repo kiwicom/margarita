@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash f80c74b5a23bc8e0aa15393ca9e88cda
+ * @relayHash 2b8a1dc5446905c72dd475d59f537e4c
  */
 
 /* eslint-disable */
@@ -469,8 +469,7 @@ v1 = [
   {
     "kind": "Variable",
     "name": "id",
-    "variableName": "id",
-    "type": "ID!"
+    "variableName": "id"
   }
 ],
 v2 = {
@@ -877,8 +876,7 @@ return {
               {
                 "kind": "Literal",
                 "name": "opaque",
-                "value": false,
-                "type": "Boolean"
+                "value": false
               }
             ],
             "storageKey": "id(opaque:false)"

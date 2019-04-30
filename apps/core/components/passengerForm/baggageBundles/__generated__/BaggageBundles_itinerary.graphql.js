@@ -11,12 +11,18 @@ import type { ReaderFragment } from 'relay-runtime';
 type BaggageBundle_bagOption$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type BaggageBundles_itinerary$ref: FragmentReference;
+declare export opaque type BaggageBundles_itinerary$fragmentType: BaggageBundles_itinerary$ref;
 export type BaggageBundles_itinerary = {|
   +holdBagOptions: ?$ReadOnlyArray<?{|
     +$fragmentRefs: BaggageBundle_bagOption$ref
   |}>,
   +$refType: BaggageBundles_itinerary$ref,
 |};
+export type BaggageBundles_itinerary$data = BaggageBundles_itinerary;
+export type BaggageBundles_itinerary$key = {
+  +$data?: BaggageBundles_itinerary$data,
+  +$fragmentRefs: BaggageBundles_itinerary$ref,
+};
 */
 
 

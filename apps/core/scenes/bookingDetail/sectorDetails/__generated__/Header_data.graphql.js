@@ -10,11 +10,17 @@
 import type { ReaderFragment } from 'relay-runtime';
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Header_data$ref: FragmentReference;
+declare export opaque type Header_data$fragmentType: Header_data$ref;
 export type Header_data = {|
   +bookingId: string,
   +status: ?string,
   +$refType: Header_data$ref,
 |};
+export type Header_data$data = Header_data;
+export type Header_data$key = {
+  +$data?: Header_data$data,
+  +$fragmentRefs: Header_data$ref,
+};
 */
 
 
@@ -33,8 +39,7 @@ const node/*: ReaderFragment*/ = {
         {
           "kind": "Literal",
           "name": "opaque",
-          "value": false,
-          "type": "Boolean"
+          "value": false
         }
       ],
       "storageKey": "id(opaque:false)"

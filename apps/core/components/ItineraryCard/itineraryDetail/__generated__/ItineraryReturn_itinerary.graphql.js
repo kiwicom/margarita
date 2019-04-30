@@ -11,6 +11,7 @@ import type { ReaderFragment } from 'relay-runtime';
 type SectorDetail_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type ItineraryReturn_itinerary$ref: FragmentReference;
+declare export opaque type ItineraryReturn_itinerary$fragmentType: ItineraryReturn_itinerary$ref;
 export type ItineraryReturn_itinerary = {|
   +inbound: ?{|
     +$fragmentRefs: SectorDetail_data$ref
@@ -20,6 +21,11 @@ export type ItineraryReturn_itinerary = {|
   |},
   +$refType: ItineraryReturn_itinerary$ref,
 |};
+export type ItineraryReturn_itinerary$data = ItineraryReturn_itinerary;
+export type ItineraryReturn_itinerary$key = {
+  +$data?: ItineraryReturn_itinerary$data,
+  +$fragmentRefs: ItineraryReturn_itinerary$ref,
+};
 */
 
 

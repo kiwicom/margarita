@@ -12,10 +12,16 @@ type PassengersList_data$ref = any;
 type VisaInfoSummary_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type Passengers_data$ref: FragmentReference;
+declare export opaque type Passengers_data$fragmentType: Passengers_data$ref;
 export type Passengers_data = {|
   +$fragmentRefs: PassengersList_data$ref & VisaInfoSummary_data$ref,
   +$refType: Passengers_data$ref,
 |};
+export type Passengers_data$data = Passengers_data;
+export type Passengers_data$key = {
+  +$data?: Passengers_data$data,
+  +$fragmentRefs: Passengers_data$ref,
+};
 */
 
 

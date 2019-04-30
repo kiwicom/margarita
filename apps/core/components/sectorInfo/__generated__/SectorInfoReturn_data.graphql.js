@@ -12,6 +12,7 @@ type FromTo_data$ref = any;
 type SectorDates_data$ref = any;
 import type { FragmentReference } from "relay-runtime";
 declare export opaque type SectorInfoReturn_data$ref: FragmentReference;
+declare export opaque type SectorInfoReturn_data$fragmentType: SectorInfoReturn_data$ref;
 export type SectorInfoReturn_data = {|
   +inbound: ?{|
     +$fragmentRefs: SectorDates_data$ref
@@ -22,6 +23,11 @@ export type SectorInfoReturn_data = {|
   +$fragmentRefs: FromTo_data$ref,
   +$refType: SectorInfoReturn_data$ref,
 |};
+export type SectorInfoReturn_data$data = SectorInfoReturn_data;
+export type SectorInfoReturn_data$key = {
+  +$data?: SectorInfoReturn_data$data,
+  +$fragmentRefs: SectorInfoReturn_data$ref,
+};
 */
 
 
@@ -41,11 +47,6 @@ return {
   "argumentDefinitions": [],
   "selections": [
     {
-      "kind": "FragmentSpread",
-      "name": "FromTo_data",
-      "args": null
-    },
-    {
       "kind": "LinkedField",
       "alias": null,
       "name": "inbound",
@@ -64,6 +65,11 @@ return {
       "concreteType": "Sector",
       "plural": false,
       "selections": (v0/*: any*/)
+    },
+    {
+      "kind": "FragmentSpread",
+      "name": "FromTo_data",
+      "args": null
     }
   ]
 };
