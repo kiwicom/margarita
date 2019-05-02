@@ -66,6 +66,7 @@ export default createFragmentContainer(ResultsList, {
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: parseInt(defaultTokens.spaceXSmall, 10),
     web: {
       paddingTop: parseInt(defaultTokens.spaceMedium, 10),
       paddingHorizontal: parseInt(defaultTokens.spaceSmall, 10),

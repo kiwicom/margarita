@@ -14,7 +14,7 @@ type WithHoverState = {|
   +isHovered: boolean,
 |};
 
-const hoverMonitor = new HoverMonitor();
+const hoverMonitor = HoverMonitor();
 
 export default function withHover<Config: HoverProps>(
   Component: React.AbstractComponent<Config>,

@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Text,
@@ -49,6 +49,7 @@ class SortTab extends React.Component<Props> {
     const price = additionalInfo?.price;
     const currency = additionalInfo?.currency;
     const duration = additionalInfo?.duration;
+    const isMobile = Platform.OS !== 'web';
     return (
       <TouchableWithoutFeedback
         onPress={this.handleOnPress}
@@ -64,7 +65,7 @@ class SortTab extends React.Component<Props> {
             isHovered && styles.containerHovered,
           ]}
         >
-          <View>
+          <View style={isMobile && styles.rowContainer}>
             <Text
               style={[styles.label, isActive && styles.labelActive]}
               align="left"
@@ -72,7 +73,12 @@ class SortTab extends React.Component<Props> {
             >
               {label}
             </Text>
-            <View style={styles.priceDurationContainer}>
+            <View
+              style={[
+                styles.priceDurationContainer,
+                isMobile && styles.priceTagMobile,
+              ]}
+            >
               {price || currency ? (
                 <Text style={styles.label} align="left" numberOfLines={1}>
                   {price} {currency}
@@ -110,11 +116,13 @@ class SortTab extends React.Component<Props> {
 export default withHover(SortTab);
 
 const borderRadius = parseInt(defaultTokens.borderRadiusSmall, 10);
-const containerHeight = 75;
+const containerHeight = {
+  web: 75,
+  mobile: 40,
+};
 const styles = StyleSheet.create({
   container: {
-    height: containerHeight,
-    flex: 1,
+    height: containerHeight.mobile,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: parseInt(defaultTokens.spaceSmall, 10),
@@ -122,21 +130,45 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     web: {
       userSelect: 'none',
+      flex: 1,
+      height: containerHeight.web,
     },
   },
+  rowContainer: {
+    flexDirection: 'row',
+    flex: 1,
+  },
+  priceTagMobile: {
+    paddingTop: 0,
+    paddingHorizontal: parseInt(defaultTokens.spaceMedium, 10),
+  },
   containerFirst: {
-    borderTopStartRadius: borderRadius,
-    borderBottomStartRadius: borderRadius,
+    web: {
+      borderTopStartRadius: borderRadius,
+      borderBottomStartRadius: borderRadius,
+    },
   },
   containerLast: {
-    borderTopEndRadius: borderRadius,
-    borderBottomEndRadius: borderRadius,
+    web: {
+      borderTopEndRadius: borderRadius,
+      borderBottomEndRadius: borderRadius,
+    },
     marginEnd: 0,
   },
   containerActive: {
     backgroundColor: defaultTokens.paletteWhite,
-    borderBottomWidth: 2,
-    borderBottomColor: defaultTokens.paletteProductNormal,
+    web: {
+      borderBottomWidth: 2,
+      borderBottomColor: defaultTokens.paletteProductNormal,
+    },
+    ios: {
+      borderStartWidth: 4,
+      borderStartColor: defaultTokens.paletteProductNormal,
+    },
+    android: {
+      borderStartWidth: 4,
+      borderStartColor: defaultTokens.paletteProductNormal,
+    },
   },
   containerHovered: {
     backgroundColor: defaultTokens.paletteWhiteHover,

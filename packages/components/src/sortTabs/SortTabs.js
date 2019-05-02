@@ -63,12 +63,17 @@ const SortTabs = ({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
+    flexDirection: 'column',
+    paddingTop: 1,
+    paddingBottom: 1,
     backgroundColor: defaultTokens.backgroundButtonSecondary,
-    paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
+    web: {
+      flexDirection: 'row',
+      borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
+      paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
+      paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
+      paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
+    },
   },
 });
 
