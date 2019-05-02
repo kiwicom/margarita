@@ -165,6 +165,7 @@ class Results extends React.Component<Props> {
       },
     };
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
+    const mobileLayout = this.props.layout < LAYOUT.largeMobile;
     return (
       <SafeAreaView style={styles.container}>
         {Platform.OS === 'web' ? (
@@ -192,7 +193,12 @@ class Results extends React.Component<Props> {
           />
         )}
 
-        <View style={styles.resultContainer}>
+        <View
+          style={[
+            styles.resultContainer,
+            !mobileLayout && styles.flexContainer,
+          ]}
+        >
           <SortTabsWrapper />
           <QueryComponent {...props} />
         </View>
@@ -204,6 +210,8 @@ class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   resultContainer: {
     backgroundColor: defaultTokens.backgroundBody,
+  },
+  flexContainer: {
     flex: 1,
   },
   container: {
