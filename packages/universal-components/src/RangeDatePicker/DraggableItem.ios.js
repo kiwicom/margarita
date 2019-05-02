@@ -6,14 +6,13 @@ import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { designTokens } from '../DesignTokens';
-import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { GrabbedSideType, XY } from './RangeDatePickerTypes';
 import type { OnDragEvent, OnDropEvent } from '../types';
 
 type Props = {
-  +style?: StylePropType,
   +onDrag: (OnDragEvent, GrabbedSideType) => void,
-  +onDrop: OnDropEvent => void,
+  +onDrop: () => void,
   +grabbedSide: GrabbedSideType,
 };
 
@@ -50,7 +49,7 @@ export default class DraggableItem extends React.Component<Props> {
 
   onHandlerStateChange = (event: OnDropEvent) => {
     if (event.nativeEvent.oldState === State.ACTIVE) {
-      this.props.onDrop(event);
+      this.props.onDrop();
       this.lastOffset.x += event.nativeEvent.translationX;
       this.lastOffset.y += event.nativeEvent.translationY;
       this.translateX.setOffset(this.lastOffset.x);
@@ -76,7 +75,9 @@ export default class DraggableItem extends React.Component<Props> {
                 { translateY: this.translateY },
               ],
             },
-            this.props.style,
+            this.props.grabbedSide === 'left'
+              ? styles.draggableItemLeft
+              : styles.draggableItemRight,
           ]}
         />
       </PanGestureHandler>
@@ -90,5 +91,11 @@ const styles = StyleSheet.create({
     height: designTokens.heightCalendarItem,
     zIndex: parseFloat(defaultTokens.zIndexOnTheTop),
     position: 'absolute',
+  },
+  draggableItemLeft: {
+    start: -designTokens.widthDraggableCalendarItem / 2,
+  },
+  draggableItemRight: {
+    end: -designTokens.widthDraggableCalendarItem / 2,
   },
 });
