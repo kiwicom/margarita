@@ -66,6 +66,7 @@ export default createFragmentContainer(ResultsList, {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: defaultTokens.backgroundBody,
     paddingTop: parseInt(defaultTokens.spaceXSmall, 10),
     web: {
       paddingTop: parseInt(defaultTokens.spaceMedium, 10),
