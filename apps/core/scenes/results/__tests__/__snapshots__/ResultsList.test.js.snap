@@ -1,0 +1,122 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<RCTScrollView
+  contentContainerStyle={Object {}}
+  data={
+    Array [
+      Object {
+        "node": Object {
+          "id": "1",
+        },
+      },
+      Object {
+        "node": Object {
+          "id": "2",
+        },
+      },
+    ]
+  }
+  disableVirtualization={false}
+  getItem={[Function]}
+  getItemCount={[Function]}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  numColumns={1}
+  onContentSizeChange={[Function]}
+  onEndReachedThreshold={2}
+  onLayout={[Function]}
+  onMomentumScrollEnd={[Function]}
+  onScroll={[Function]}
+  onScrollBeginDrag={[Function]}
+  onScrollEndDrag={[Function]}
+  renderItem={[Function]}
+  scrollEventThrottle={50}
+  stickyHeaderIndices={Array []}
+  updateCellsBatchingPeriod={50}
+  viewabilityConfigCallbackPairs={Array []}
+  windowSize={21}
+>
+  <View>
+    <View
+      onLayout={[Function]}
+      style={null}
+    />
+    <View
+      onLayout={[Function]}
+      style={null}
+    />
+  </View>
+</RCTScrollView>
+`;
+
+exports[`renders with empty input 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexGrow": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <Text
+    style={
+      Array [
+        Object {
+          "margin": 0,
+        },
+        Object {
+          "fontWeight": "700",
+        },
+        Object {
+          "fontFamily": "Roboto",
+        },
+        Object {
+          "color": "#171b1e",
+          "fontSize": 14,
+          "paddingBottom": 20,
+          "paddingHorizontal": 10,
+        },
+      ]
+    }
+  >
+    Sorry, we couldn't find that connection
+  </Text>
+  <Text
+    style={
+      Array [
+        Object {
+          "margin": 0,
+        },
+        Object {
+          "fontFamily": "Roboto",
+        },
+        Object {
+          "color": "#7f91a8",
+          "fontSize": 12,
+          "paddingBottom": 40,
+          "paddingHorizontal": 10,
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    Try changing up your search a bit. We'll try harder next time.
+  </Text>
+  <Image
+    source={1}
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "resizeMode": "contain",
+        },
+        undefined,
+      ]
+    }
+  />
+</View>
+`;

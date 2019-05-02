@@ -25,6 +25,11 @@
     "ramda": "^",
     "react": "^",
     "react-native": "^",
-    "react-native-testing-library": "^"
+    "react-native-testing-library": "^",
+    "react-test-renderer": "",
+    "@kiwicom/relay": ""
+  },
+  "devDependencies": {
+    "relay-test-utils": "^4.0.0"
   }
 }

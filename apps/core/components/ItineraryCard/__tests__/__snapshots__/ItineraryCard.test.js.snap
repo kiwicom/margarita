@@ -1,0 +1,835 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ItineraryCard 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#fff",
+        "borderBottomWidth": 0.5,
+        "borderColor": "#e8edf1",
+        "borderStyle": "solid",
+        "borderTopWidth": 0.5,
+        "padding": 10,
+      },
+      Array [
+        Object {
+          "marginBottom": 8,
+          "padding": 0,
+        },
+        false,
+      ],
+    ]
+  }
+>
+  <View
+    accessibilityComponentType="button"
+    accessibilityTraits="button"
+    accessible={true}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+  >
+    <View>
+      <View
+        style={
+          Array [
+            Object {
+              "paddingHorizontal": 15,
+              "paddingVertical": 5,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "paddingStart": 103,
+            }
+          }
+        >
+          <View
+            style={
+              Array [
+                Object {
+                  "alignSelf": "flex-start",
+                  "borderRadius": 3,
+                  "flexDirection": "row",
+                  "flexWrap": "wrap",
+                  "paddingHorizontal": 4,
+                },
+                Object {
+                  "backgroundColor": "#f5f7f9",
+                },
+                undefined,
+              ]
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "margin": 0,
+                  },
+                  Object {
+                    "fontFamily": "Roboto",
+                  },
+                  Array [
+                    Object {
+                      "color": "#fff",
+                      "fontSize": 12,
+                      "fontWeight": "500",
+                      "letterSpacing": 0.3,
+                      "lineHeight": 18,
+                    },
+                    Object {},
+                    Object {
+                      "color": "#171b1e",
+                    },
+                  ],
+                ]
+              }
+            >
+              Stays 
+              42 minutes
+               in &lt;mock-value-for-field-"name"&gt;
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "paddingHorizontal": 15,
+              "paddingVertical": 5,
+            },
+            undefined,
+          ]
+        }
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flex": 1,
+              "flexDirection": "row",
+              "height": 70,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "paddingEnd": 16,
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "backgroundColor": "transparent",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "flexWrap": "wrap",
+                    "justifyContent": "space-between",
+                  },
+                  Object {
+                    "height": 24,
+                    "width": 24,
+                  },
+                  false,
+                ]
+              }
+            >
+              <Image
+                source={
+                  Object {
+                    "uri": "https://images.kiwi.com/airlines/64/<mock-value-for-field-\\"code\\">.png?default=airline.png",
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "backgroundColor": "transparent",
+                      "borderRadius": 3,
+                    },
+                    Object {
+                      "height": 24,
+                      "width": 24,
+                    },
+                    false,
+                  ]
+                }
+              />
+            </View>
+          </View>
+          <View
+            style={
+              Object {
+                "alignItems": "center",
+                "flex": 1,
+                "flexDirection": "row",
+              }
+            }
+          >
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <View
+                style={
+                  Object {
+                    "minWidth": 55,
+                  }
+                }
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "margin": 0,
+                      },
+                      Object {
+                        "fontFamily": "Roboto",
+                      },
+                      Object {
+                        "color": "#171b1e",
+                        "fontSize": 14,
+                        "fontWeight": "bold",
+                        "padding": 5,
+                      },
+                    ]
+                  }
+                >
+                  0:00
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "margin": 0,
+                      },
+                      Object {
+                        "fontFamily": "Roboto",
+                      },
+                      Object {
+                        "color": "#171b1e",
+                        "fontSize": 14,
+                        "fontWeight": "bold",
+                        "padding": 5,
+                      },
+                    ]
+                  }
+                >
+                  0:00
+                </Text>
+              </View>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "minHeight": 35,
+                  }
+                }
+              >
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#bac7d5",
+                      "borderRadius": 50,
+                      "height": 6,
+                      "width": 6,
+                    }
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#e8edf1",
+                        "flex": 1,
+                        "width": 2,
+                      },
+                      Object {
+                        "marginBottom": -5,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "bottom": 0,
+                        "justifyContent": "center",
+                        "marginBottom": 3,
+                        "position": "absolute",
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "rotate": "45deg",
+                          },
+                        ],
+                        "zIndex": 825,
+                      },
+                      Object {
+                        "marginTop": -4,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "height": 7,
+                          "position": "relative",
+                          "width": 7,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderBottomStartRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "bottom": 0,
+                            "height": 2,
+                            "position": "absolute",
+                            "width": 7,
+                          },
+                          Object {
+                            "backgroundColor": "#fff",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderTopEndRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "end": 0,
+                            "height": 7,
+                            "position": "absolute",
+                            "width": 2,
+                          },
+                          Object {
+                            "backgroundColor": "#fff",
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "bottom": 0,
+                        "justifyContent": "center",
+                        "marginBottom": 3,
+                        "position": "absolute",
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "rotate": "45deg",
+                          },
+                        ],
+                        "zIndex": 825,
+                      },
+                      Object {
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "height": 7,
+                          "position": "relative",
+                          "width": 7,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderBottomStartRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "bottom": 0,
+                            "height": 2,
+                            "position": "absolute",
+                            "width": 7,
+                          },
+                          Object {
+                            "backgroundColor": "#fff",
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderTopEndRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "end": 0,
+                            "height": 7,
+                            "position": "absolute",
+                            "width": 2,
+                          },
+                          Object {
+                            "backgroundColor": "#fff",
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "bottom": 0,
+                        "justifyContent": "center",
+                        "marginBottom": 3,
+                        "position": "absolute",
+                        "top": 0,
+                        "transform": Array [
+                          Object {
+                            "rotate": "45deg",
+                          },
+                        ],
+                        "zIndex": 825,
+                      },
+                      undefined,
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "height": 7,
+                          "position": "relative",
+                          "width": 7,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderBottomStartRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "bottom": 0,
+                            "height": 2,
+                            "position": "absolute",
+                            "width": 7,
+                          },
+                          undefined,
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#cad5df",
+                            "position": "absolute",
+                          },
+                          Object {
+                            "backgroundColor": "#bac7d5",
+                            "borderTopEndRadius": 3,
+                            "borderTopStartRadius": 3,
+                            "end": 0,
+                            "height": 7,
+                            "position": "absolute",
+                            "width": 2,
+                          },
+                          undefined,
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "backgroundColor": "#e8edf1",
+                        "flex": 1,
+                        "width": 2,
+                      },
+                      Object {
+                        "marginTop": -3,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Object {
+                      "backgroundColor": "#bac7d5",
+                      "borderRadius": 50,
+                      "height": 6,
+                      "width": 6,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={Object {}}
+              >
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "margin": 0,
+                      },
+                      Object {
+                        "fontFamily": "Roboto",
+                      },
+                      Object {
+                        "fontSize": 12,
+                        "lineHeight": 17,
+                        "padding": 5,
+                      },
+                    ]
+                  }
+                >
+                  &lt;mock-value-for-field-"name"&gt;
+                </Text>
+                <Text
+                  numberOfLines={1}
+                  style={
+                    Array [
+                      Object {
+                        "margin": 0,
+                      },
+                      Object {
+                        "fontFamily": "Roboto",
+                      },
+                      Object {
+                        "fontSize": 12,
+                        "lineHeight": 17,
+                        "padding": 5,
+                      },
+                    ]
+                  }
+                >
+                  &lt;mock-value-for-field-"name"&gt;
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignItems": "flex-end",
+                    "flex": 1,
+                  },
+                  Object {},
+                ]
+              }
+            >
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "margin": 0,
+                    },
+                    Object {
+                      "fontFamily": "Roboto",
+                    },
+                    Array [
+                      Object {
+                        "color": "#7f91a8",
+                        "fontSize": 12,
+                        "lineHeight": 17,
+                        "padding": 5,
+                      },
+                      Object {},
+                    ],
+                  ]
+                }
+              >
+                Tue 1 Jan
+              </Text>
+              <View
+                style={
+                  Object {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  }
+                }
+              >
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "margin": 0,
+                      },
+                      Object {
+                        "fontFamily": "Roboto",
+                      },
+                      Array [
+                        Object {
+                          "color": "#7f91a8",
+                          "fontSize": 12,
+                        },
+                        Array [
+                          Object {
+                            "color": "#7f91a8",
+                            "fontSize": 12,
+                            "lineHeight": 17,
+                            "padding": 5,
+                          },
+                          Object {},
+                        ],
+                      ],
+                    ]
+                  }
+                >
+                  0h 42m
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "borderStyle": "dotted",
+              "height": 0,
+              "position": "relative",
+              "width": "100%",
+            },
+            Object {
+              "borderColor": "#e8edf1",
+              "borderWidth": 2,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "position": "absolute",
+                "width": 750,
+              },
+              Object {
+                "backgroundColor": "#fff",
+                "bottom": -2,
+                "height": 2,
+                "left": -2,
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "paddingHorizontal": 15,
+              "paddingVertical": 5,
+            },
+            Object {
+              "flexDirection": "row",
+              "justifyContent": "flex-end",
+              "marginBottom": 5,
+              "marginTop": 2,
+            },
+          ]
+        }
+      >
+        <RCTScrollView
+          horizontal={true}
+          style={
+            Object {
+              "flexDirection": "row",
+            }
+          }
+        >
+          <View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 3,
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "paddingHorizontal": 4,
+                  },
+                  Object {
+                    "backgroundColor": "#F9971E",
+                  },
+                  Object {
+                    "marginEnd": 10,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "margin": 0,
+                    },
+                    Object {
+                      "fontFamily": "Roboto",
+                    },
+                    Array [
+                      Object {
+                        "color": "#fff",
+                        "fontSize": 12,
+                        "fontWeight": "500",
+                        "letterSpacing": 0.3,
+                        "lineHeight": 18,
+                      },
+                      Object {},
+                      Object {
+                        "color": "#FFFFFF",
+                      },
+                    ],
+                  ]
+                }
+              >
+                Cheapest
+              </Text>
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "flex-start",
+                    "borderRadius": 3,
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "paddingHorizontal": 4,
+                  },
+                  Object {
+                    "backgroundColor": "#f5f7f9",
+                  },
+                  Object {
+                    "marginEnd": 10,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "margin": 0,
+                    },
+                    Object {
+                      "fontFamily": "Roboto",
+                    },
+                    Array [
+                      Object {
+                        "color": "#fff",
+                        "fontSize": 12,
+                        "fontWeight": "500",
+                        "letterSpacing": 0.3,
+                        "lineHeight": 18,
+                      },
+                      Object {},
+                      Object {
+                        "color": "#171b1e",
+                      },
+                    ],
+                  ]
+                }
+              >
+                Wi-fi
+              </Text>
+            </View>
+          </View>
+        </RCTScrollView>
+        <Text
+          style={
+            Array [
+              Object {
+                "margin": 0,
+              },
+              Object {
+                "fontFamily": "Roboto",
+              },
+              Array [
+                Object {
+                  "color": "#00826f",
+                  "fontSize": 16,
+                  "fontWeight": "bold",
+                },
+                undefined,
+              ],
+            ]
+          }
+        >
+          €12.20
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

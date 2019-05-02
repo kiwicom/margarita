@@ -19,10 +19,13 @@ const _x = (command /*: string */, args /*: string[] */) => {
 const clientSchema = printSchema(schema);
 fs.writeFileSync(path.join(__dirname, '..', 'schema.graphql'), clientSchema);
 
+const exclude =
+  "--exclude='**/node_modules/**','**/__mocks__/**','**/__generated__/**'";
 _x('yarn', [
   'relay-compiler',
-  '--src=./apps',
+  '--src=./apps/core', // we are currently only using relay fragments in core. We need to change this and run in each workspace separately if we add fragments in more workspaces.
   '--schema=./schema.graphql',
   '--verbose',
+  exclude,
   ...process.argv.slice(2),
 ]);
