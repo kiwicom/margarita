@@ -55,11 +55,11 @@ const DayPrice = ({ price }) => (
   </View>
 );
 
-const RenderArrow = (props: RenderArrowProps) =>
+const RenderArrow = ({ style, onPress, direction }: RenderArrowProps) =>
   Platform.OS === 'android' ? (
-    <DayItemArrow {...props} />
+    <DayItemArrow style={style} onPress={onPress} direction={direction} />
   ) : (
-    <AnimatedDayItemArrow style={props.style} onPress={props.onPress} />
+    <AnimatedDayItemArrow style={style} onPress={onPress} />
   );
 
 export default class RenderDay extends React.Component<Props, State> {
@@ -151,8 +151,8 @@ export default class RenderDay extends React.Component<Props, State> {
               <DraggableItem
                 onDrag={this.onDrag}
                 onDrop={this.onDrop}
-                style={styles.draggableItemLeft}
                 grabbedSide="left"
+                dayItemSize={RenderDay.dayItemSize}
               />
             )}
 
@@ -207,8 +207,8 @@ export default class RenderDay extends React.Component<Props, State> {
             <DraggableItem
               onDrag={this.onDrag}
               onDrop={this.onDrop}
-              style={styles.draggableItemRight}
               grabbedSide="right"
+              dayItemSize={RenderDay.dayItemSize}
             />
           )}
         </View>
@@ -274,11 +274,5 @@ const styles = StyleSheet.create({
     android: {
       top: 0,
     },
-  },
-  draggableItemLeft: {
-    start: -designTokens.widthDraggableCalendarItem / 2,
-  },
-  draggableItemRight: {
-    end: -designTokens.widthDraggableCalendarItem / 2,
   },
 });
