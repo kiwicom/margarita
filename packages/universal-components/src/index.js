@@ -22,7 +22,6 @@ export { Text } from './Text';
 export { TextInput } from './TextInput';
 export { Tooltip, TooltipBubble } from './Tooltip';
 export { DatePicker } from './DatePicker';
-export { Hoverable } from './Hoverable';
 export { withHover } from './WithHover';
 export { Slider } from './Slider';
 export { Touchable } from './Touchable';

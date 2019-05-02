@@ -2,6 +2,8 @@
 
 import * as React from 'react';
 
+import HoverMonitor from './HoverMonitor';
+
 type HoverProps = {
   +isHovered: boolean,
   +onMouseEnter: () => void,
@@ -11,6 +13,8 @@ type HoverProps = {
 type WithHoverState = {|
   +isHovered: boolean,
 |};
+
+const hoverMonitor = new HoverMonitor();
 
 export default function withHover<Config: HoverProps>(
   Component: React.AbstractComponent<Config>,
@@ -24,7 +28,9 @@ export default function withHover<Config: HoverProps>(
     };
 
     handleOnMouseEnter = () => {
-      this.setState({ isHovered: true });
+      if (hoverMonitor.hoverEnabled) {
+        this.setState({ isHovered: true });
+      }
     };
 
     handleOnMouseLeave = () => {
