@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { render, shallow, fireEvent } from 'react-native-testing-library';
+import { render, fireEvent } from 'react-native-testing-library';
 
 import { SortTabs } from '..';
 
@@ -20,7 +20,7 @@ describe('SortTabs', () => {
 
   it('renders correctly', () => {
     expect(
-      shallow(
+      render(
         <SortTabs
           selectedValue={SortTabsData[0].value}
           onValueChange={jest.fn()}
@@ -32,7 +32,7 @@ describe('SortTabs', () => {
 
   it('renders correctly with no parameters', () => {
     expect(
-      shallow(
+      render(
         <SortTabs
           selectedValue={SortTabsData[0].value}
           onValueChange={jest.fn()}
