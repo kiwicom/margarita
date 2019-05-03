@@ -43,6 +43,8 @@ Object {
         label: 
       </Text>
       <Text
+        ellipsizeMode="clip"
+        numberOfLines={1}
         style={
           Object {
             "color": "#171b1e",
@@ -99,6 +101,8 @@ Object {
         label: 
       </Text>
       <Text
+        ellipsizeMode="clip"
+        numberOfLines={1}
         style={
           Object {
             "color": "#171b1e",

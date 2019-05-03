@@ -17,6 +17,7 @@ type Props = {|
   +dataTest?: string,
   +italic?: boolean,
   numberOfLines?: ?number,
+  ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip',
   size?: 'normal' | 'large' | 'small',
   +style?: StylePropType,
   +uppercase?: boolean,

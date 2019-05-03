@@ -49,6 +49,7 @@ export type PlatformStyleObjectType = {
       web: {
         ...ReducedDangerouslyImpreciseStyle,
         position?: 'absolute' | 'relative' | 'fixed',
+        overflow?: 'visible' | 'hidden' | 'scroll' | 'auto',
       }, // might need to be expanded
     },
   >,

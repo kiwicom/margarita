@@ -34,7 +34,9 @@ export const Layout = ({ layoutReady, children }: Props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    overflow: 'hidden',
+    web: {
+      overflow: 'auto',
+    },
   },
 });
 

@@ -25,6 +25,7 @@ const Text = ({
   dataTest,
   italic,
   numberOfLines,
+  ellipsizeMode,
   size,
   style,
   type,
@@ -75,6 +76,7 @@ const Text = ({
       data-test={dataTest}
       style={textStyle}
       numberOfLines={numberOfLines}
+      ellipsizeMode={ellipsizeMode}
     >
       {children}
     </RNText>

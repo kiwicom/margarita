@@ -14,22 +14,21 @@ it('renders', () => {
       </Layout>,
     ),
   ).toMatchInlineSnapshot(`
-Object {
-  "output": <Component
-    style={
-      Object {
-        "flex": 1,
-        "overflow": "hidden",
-      }
+    Object {
+      "output": <Component
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <React.Fragment>
+          <Navbar />
+          <Component />
+        </React.Fragment>
+      </Component>,
     }
-  >
-    <React.Fragment>
-      <Navbar />
-      <Component />
-    </React.Fragment>
-  </Component>,
-}
-`);
+  `);
 });
 
 it('renders with multiple children', () => {
@@ -41,21 +40,20 @@ it('renders with multiple children', () => {
       </Layout>,
     ),
   ).toMatchInlineSnapshot(`
-Object {
-  "output": <Component
-    style={
-      Object {
-        "flex": 1,
-        "overflow": "hidden",
-      }
+    Object {
+      "output": <Component
+        style={
+          Object {
+            "flex": 1,
+          }
+        }
+      >
+        <React.Fragment>
+          <Navbar />
+          <Component />
+          <Component />
+        </React.Fragment>
+      </Component>,
     }
-  >
-    <React.Fragment>
-      <Navbar />
-      <Component />
-      <Component />
-    </React.Fragment>
-  </Component>,
-}
-`);
+  `);
 });
