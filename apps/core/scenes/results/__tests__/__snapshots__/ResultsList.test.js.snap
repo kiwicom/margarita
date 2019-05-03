@@ -2,7 +2,12 @@
 
 exports[`renders 1`] = `
 <RCTScrollView
-  contentContainerStyle={Object {}}
+  contentContainerStyle={
+    Object {
+      "backgroundColor": "#f5f7f9",
+      "paddingTop": 8,
+    }
+  }
   data={
     Array [
       Object {

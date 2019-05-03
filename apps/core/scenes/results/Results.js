@@ -164,11 +164,12 @@ class Results extends React.Component<Props> {
         input: this.parseSearchParametersByType(tripType),
       },
     };
+    const isWeb = Platform.OS === 'web';
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
-    const mobileLayout = this.props.layout < LAYOUT.largeMobile;
+    const mobileWebLayout = isWeb && this.props.layout < LAYOUT.largeMobile;
     return (
       <SafeAreaView style={styles.container}>
-        {Platform.OS === 'web' ? (
+        {isWeb ? (
           <View
             style={[
               styles.searchFormContainer,
@@ -196,7 +197,7 @@ class Results extends React.Component<Props> {
         <View
           style={[
             styles.resultContainer,
-            !mobileLayout && styles.flexContainer,
+            !mobileWebLayout && styles.flexContainer,
           ]}
         >
           <SortTabsWrapper />
