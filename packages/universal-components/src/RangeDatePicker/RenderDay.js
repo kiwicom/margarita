@@ -159,6 +159,7 @@ export default class RenderDay extends React.Component<Props, State> {
           <Touchable
             onPress={this.handlePress}
             disabled={isDayInPast(day) || isFieldEmpty}
+            style={styles.dayTouchableContainer}
           >
             <>
               {isStartOfSelectedDates && isRangePicker && (
@@ -230,6 +231,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: designTokens.paddingCalendarItem / 2,
+  },
+  dayTouchableContainer: {
+    web: {
+      height: designTokens.heightCalendarItem,
+    },
   },
   day: {
     fontSize: designTokens.fontSizeCalendarItem,
