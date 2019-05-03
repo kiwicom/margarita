@@ -1,9 +1,14 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
+import {
+  withLayoutContext,
+  LAYOUT,
+  type LayoutContextState,
+} from '@kiwicom/margarita-device';
 
 import SortTab from './SortTab';
 
@@ -29,6 +34,7 @@ export type Props = {|
     PRICE: ?PriceDurationInfo,
     DURATION: ?PriceDurationInfo,
   },
+  +layout: number,
 |};
 
 export const SortTabsData: SortTabsDataType = [
@@ -41,11 +47,14 @@ const SortTabs = ({
   selectedValue,
   onValueChange,
   priceDurationParams,
+  layout,
 }: Props) => {
+  const mobileLayout = layout < LAYOUT.largeMobile || Platform.OS !== 'web';
   const SortTabsList = SortTabsData.map((SortTabData, index) => {
     const { value, label, icon } = SortTabData;
     return (
       <SortTab
+        mobileLayout={mobileLayout}
         key={value}
         label={label}
         value={value}
@@ -58,23 +67,34 @@ const SortTabs = ({
       />
     );
   });
-  return <View style={styles.container}>{SortTabsList}</View>;
+  return (
+    <View
+      style={mobileLayout ? styles.containerMobile : styles.containerDesktop}
+    >
+      {SortTabsList}
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  containerDesktop: {
+    backgroundColor: defaultTokens.backgroundButtonSecondary,
+    flexDirection: 'row',
+    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
+    paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
+    paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
+    paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
+  },
+  containerMobile: {
+    backgroundColor: defaultTokens.backgroundButtonSecondary,
     flexDirection: 'column',
     paddingTop: 1,
     paddingBottom: 1,
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
-    web: {
-      flexDirection: 'row',
-      borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
-      paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
-      paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
-      paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
-    },
   },
 });
 
-export default SortTabs;
+const layoutSelect = ({ layout }: LayoutContextState) => ({
+  layout,
+});
+
+export default withLayoutContext(layoutSelect)(SortTabs);

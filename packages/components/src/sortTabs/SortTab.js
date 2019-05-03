@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Platform } from 'react-native';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   Text,
@@ -26,6 +26,7 @@ export type Props = {|
   +isHovered: boolean,
   +onMouseLeave: () => void,
   +onMouseEnter: () => void,
+  +mobileLayout: boolean,
 |};
 
 class SortTab extends React.Component<Props> {
@@ -45,11 +46,11 @@ class SortTab extends React.Component<Props> {
       isHovered,
       onMouseEnter,
       onMouseLeave,
+      mobileLayout,
     } = this.props;
     const price = additionalInfo?.price;
     const currency = additionalInfo?.currency;
     const duration = additionalInfo?.duration;
-    const isMobile = Platform.OS !== 'web';
     return (
       <TouchableWithoutFeedback
         onPress={this.handleOnPress}
@@ -59,13 +60,17 @@ class SortTab extends React.Component<Props> {
         <View
           style={[
             styles.container,
-            isFirst && styles.containerFirst,
-            isLast && styles.containerLast,
-            isActive && styles.containerActive,
+            mobileLayout ? styles.heightMobile : styles.heightWeb,
+            isFirst && !mobileLayout && styles.containerFirst,
+            isLast && !mobileLayout && styles.containerLast,
+            isActive &&
+              (mobileLayout
+                ? styles.containerActiveMobile
+                : styles.containerActiveWeb),
             isHovered && styles.containerHovered,
           ]}
         >
-          <View style={isMobile && styles.rowContainer}>
+          <View style={mobileLayout && styles.rowContainer}>
             <Text
               style={[styles.label, isActive && styles.labelActive]}
               align="left"
@@ -75,8 +80,8 @@ class SortTab extends React.Component<Props> {
             </Text>
             <View
               style={[
-                styles.priceDurationContainer,
-                isMobile && styles.priceTagMobile,
+                styles.priceDurationContainerWeb,
+                mobileLayout && styles.priceDurationContainerMobile,
               ]}
             >
               {price || currency ? (
@@ -122,7 +127,6 @@ const containerHeight = {
 };
 const styles = StyleSheet.create({
   container: {
-    height: containerHeight.mobile,
     flexDirection: 'row',
     justifyContent: 'space-between',
     padding: parseInt(defaultTokens.spaceSmall, 10),
@@ -134,46 +138,43 @@ const styles = StyleSheet.create({
       height: containerHeight.web,
     },
   },
+  heightMobile: {
+    height: containerHeight.mobile,
+  },
+  heightWeb: {
+    height: containerHeight.web,
+  },
   rowContainer: {
     flexDirection: 'row',
     flex: 1,
   },
-  priceTagMobile: {
+  priceDurationContainerMobile: {
     paddingTop: 0,
     paddingHorizontal: parseInt(defaultTokens.spaceMedium, 10),
   },
   containerFirst: {
-    web: {
-      borderTopStartRadius: borderRadius,
-      borderBottomStartRadius: borderRadius,
-    },
+    borderTopStartRadius: borderRadius,
+    borderBottomStartRadius: borderRadius,
   },
   containerLast: {
-    web: {
-      borderTopEndRadius: borderRadius,
-      borderBottomEndRadius: borderRadius,
-    },
+    borderTopEndRadius: borderRadius,
+    borderBottomEndRadius: borderRadius,
     marginEnd: 0,
   },
-  containerActive: {
+  containerActiveWeb: {
     backgroundColor: defaultTokens.paletteWhite,
-    web: {
-      borderBottomWidth: 2,
-      borderBottomColor: defaultTokens.paletteProductNormal,
-    },
-    ios: {
-      borderStartWidth: 4,
-      borderStartColor: defaultTokens.paletteProductNormal,
-    },
-    android: {
-      borderStartWidth: 4,
-      borderStartColor: defaultTokens.paletteProductNormal,
-    },
+    borderBottomWidth: 2,
+    borderBottomColor: defaultTokens.paletteProductNormal,
+  },
+  containerActiveMobile: {
+    backgroundColor: defaultTokens.paletteWhite,
+    borderStartWidth: 4,
+    borderStartColor: defaultTokens.paletteProductNormal,
   },
   containerHovered: {
     backgroundColor: defaultTokens.paletteWhiteHover,
   },
-  priceDurationContainer: {
+  priceDurationContainerWeb: {
     paddingTop: parseInt(defaultTokens.paddingTag, 10),
     flex: 1,
     flexDirection: 'row',
