@@ -38,7 +38,11 @@ export default function TripInput({
       <View style={[styles.container, style]}>
         {Platform.OS !== 'web' && <View style={styles.icon}>{inputIcon}</View>}
         <Text style={styles.label}>{label.length > 0 ? `${label}: ` : ''}</Text>
-        {value !== '' && <Text style={styles.value}>{value}</Text>}
+        {value !== '' && (
+          <Text numberOfLines={1} ellipsizeMode="clip" style={styles.value}>
+            {value}
+          </Text>
+        )}
         {value === '' && placeholder != null && <Text>{placeholder}</Text>}
       </View>
     </TouchableWithoutFeedback>
