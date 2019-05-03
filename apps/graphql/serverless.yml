@@ -15,8 +15,6 @@ provider:
   runtime: nodejs8.10
   stage: staging
   region: eu-central-1
-  apiGateway:
-    minimumCompressionSize: 1024
 functions:
   margarita-graphql:
     handler: src/server.handler
