@@ -44,7 +44,6 @@ class PassengerCard extends React.Component<Props> {
     nationality: '',
     dateOfBirth: '',
     id: '',
-    insurance: '',
     bags: null,
   };
 
@@ -106,11 +105,6 @@ class PassengerCard extends React.Component<Props> {
           </View>
           <Separator />
           <View style={styles.containerBottom}>
-            <PassengerCardDetail
-              value={insurance}
-              label="Travel Insurance"
-              style="normal"
-            />
             <View style={styles.bagsRowWrapper}>
               <Text type="secondary" style={styles.textPadding}>
                 Bags
@@ -126,6 +120,13 @@ class PassengerCard extends React.Component<Props> {
                   ))}
               </View>
             </View>
+            {insurance != null && (
+              <PassengerCardDetail
+                value={insurance}
+                label="Travel Insurance"
+                style="normal"
+              />
+            )}
           </View>
         </Card>
         {visaRequired != null && <VisaInfo visaRequired={visaRequired} />}
