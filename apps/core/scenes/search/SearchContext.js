@@ -2,7 +2,12 @@
 
 import * as React from 'react';
 import { withContext, noop } from '@kiwicom/margarita-utils';
-import { type TripTypes, TRIP_TYPES } from '@kiwicom/margarita-config';
+import {
+  type TripTypes,
+  TRIP_TYPES,
+  SEARCH_RESULTS_LIMIT,
+  DEFAULT_SEARCH_SORTING,
+} from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
 import qs from 'qs';
 
@@ -14,6 +19,7 @@ type Props = {|
   +returnDateTo?: string,
   +tripType?: TripTypes,
   +sortBy?: SortTypes,
+  +limit?: number,
   +travelFrom?: Array<Location>,
   +travelTo?: Array<Location>,
   +adults?: string,
@@ -63,6 +69,7 @@ type StateParams = {|
   travelTo: $ReadOnlyArray<Location>,
   dateFrom: Date,
   sortBy: SortTypes,
+  limit: number,
   dateTo: Date,
   returnDateFrom: Date,
   returnDateTo: Date,
@@ -88,8 +95,8 @@ type State = {|
 
 const defaultDepartureDate = DateFNS.addDays(new Date(), 1);
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
-const defaultSortBy = 'QUALITY';
-
+const defaultSortBy = DEFAULT_SEARCH_SORTING;
+const defaultLimit = SEARCH_RESULTS_LIMIT;
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
 const defaultPlaces = {
   origin: [
@@ -117,6 +124,7 @@ const defaultState = {
   dateFrom: defaultDepartureDate,
   dateTo: defaultDepartureDate,
   sortBy: defaultSortBy,
+  limit: defaultLimit,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
   adults: 1,

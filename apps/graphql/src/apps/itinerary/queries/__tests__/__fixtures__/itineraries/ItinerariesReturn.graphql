@@ -28,6 +28,7 @@ fragment Sector on Sector {
   searchReturnItineraries(input: {
   order: ASC,
   sort: QUALITY,
+  limit: 10,
   passengers: {
     adults: 1,
     children: 0,

@@ -263,6 +263,9 @@ input ItinerariesOneWaySearchInput {
   """Sorting of the search"""
   sort: SortSearchInput
 
+  """Limit results of the search (max 200)"""
+  limit: Int
+
   """How many passengers are travelling"""
   passengers: PassengersInput
 
@@ -276,6 +279,9 @@ input ItinerariesReturnSearchInput {
 
   """Sorting of the search"""
   sort: SortSearchInput
+
+  """Limit results of the search (max 200)"""
+  limit: Int
 
   """How many passengers are travelling"""
   passengers: PassengersInput

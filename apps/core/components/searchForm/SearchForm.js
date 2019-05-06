@@ -46,6 +46,7 @@ type Props = {
   +infants: number,
   +bags: number,
   +layout: number,
+  +limit: number,
   +setAlertContent: (alertContent: AlertContent | null) => void,
   +onSubmit?: SearchParameters => void,
 };
@@ -70,6 +71,7 @@ class SearchForm extends React.Component<Props> {
       adults,
       infants,
       bags,
+      limit,
       onSubmit,
     } = this.props;
     if (travelFrom == null || travelFrom.length === 0) {
@@ -97,6 +99,7 @@ class SearchForm extends React.Component<Props> {
           travelFrom,
           travelTo,
           sort: 'QUALITY',
+          limit,
           adults,
           infants,
           bags,
@@ -108,6 +111,7 @@ class SearchForm extends React.Component<Props> {
         travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
         travelToName: this.convertLocationsToParams(travelTo, 'name'),
         sort: 'QUALITY',
+        limit,
         adults,
         infants,
         bags,
@@ -181,6 +185,7 @@ const selectSearchContextState = ({
   adults,
   infants,
   bags,
+  limit,
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -192,6 +197,7 @@ const selectSearchContextState = ({
   adults,
   infants,
   bags,
+  limit,
 });
 
 const selectAlertContextState = ({
