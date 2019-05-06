@@ -5,10 +5,10 @@ import { PanGestureHandler, State } from 'react-native-gesture-handler';
 import { Animated } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { designTokens } from '../DesignTokens';
-import { StyleSheet } from '../PlatformStyleSheet';
-import type { GrabbedSideType, XY } from './RangeDatePickerTypes';
-import type { OnDragEvent, OnDropEvent } from '../types';
+import { designTokens } from '../../DesignTokens';
+import { StyleSheet } from '../../PlatformStyleSheet';
+import type { GrabbedSideType, XY } from '../RangeDatePickerTypes';
+import type { OnDragEvent, OnDropEvent } from '../../types';
 
 type Props = {
   +onDrag: (OnDragEvent, GrabbedSideType) => void,

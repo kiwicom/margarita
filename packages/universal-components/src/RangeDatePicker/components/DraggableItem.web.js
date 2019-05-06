@@ -5,13 +5,15 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { DraggableCore, type DraggableData, type Event } from 'react-draggable';
 
-import { designTokens } from '../DesignTokens';
-import type { GrabbedSideType, DayItemSizeType } from './RangeDatePickerTypes';
-import type { OnDragEvent } from '../types';
+import { designTokens } from '../../DesignTokens';
+import { TouchableWithoutFeedback } from '../../TouchableWithoutFeedback';
+import type { GrabbedSideType, DayItemSizeType } from '../RangeDatePickerTypes';
+import type { OnDragEvent } from '../../types';
 
 type Props = {
   +onDrag: (OnDragEvent, GrabbedSideType) => void,
   +onDrop: () => void,
+  +onPress: () => void,
   +grabbedSide: GrabbedSideType,
   +dayItemSize: DayItemSizeType,
 };
@@ -38,13 +40,15 @@ export default class DraggableItem extends React.Component<Props> {
   render() {
     return (
       <DraggableCore onDrag={this.handleDrag} onStop={this.handleStop}>
-        <View
-          style={
-            this.props.grabbedSide === 'left'
-              ? styles.draggableItemLeft
-              : styles.draggableItemRight
-          }
-        />
+        <TouchableWithoutFeedback onPress={this.props.onPress}>
+          <View
+            style={
+              this.props.grabbedSide === 'left'
+                ? styles.draggableItemLeft
+                : styles.draggableItemRight
+            }
+          />
+        </TouchableWithoutFeedback>
       </DraggableCore>
     );
   }

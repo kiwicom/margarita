@@ -9,8 +9,8 @@ import { designTokens } from '../DesignTokens';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { getMonths, spaceBetweenMonths } from './libs';
 import type { MonthDateType, WeekStartsType } from './RangeDatePickerTypes';
-import RenderMonth from './RenderMonth';
-import DayNames from './DayNames';
+import RenderMonth from './components/RenderMonth';
+import DayNames from './components/DayNames';
 import AlphaToWhite from './assets/alpha-to-white-vertical.png';
 
 type Props = {|
@@ -119,7 +119,7 @@ const gradientHeight = 20;
 
 const styles = StyleSheet.create({
   container: {
-    height: 428,
+    flex: 1,
     web: {
       minWidth: 382,
     },

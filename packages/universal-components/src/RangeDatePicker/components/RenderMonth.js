@@ -7,11 +7,11 @@ import { format, eachDayOfInterval } from 'date-fns';
 import memoize from 'memoize-one';
 import isEqual from 'react-fast-compare';
 
-import { Text } from '../Text';
-import { StyleSheet } from '../PlatformStyleSheet';
+import { Text } from '../../Text';
+import { StyleSheet } from '../../PlatformStyleSheet';
 import RenderWeek from './RenderWeek';
-import { getMonthMatrix } from './libs';
-import type { MonthDateType, WeekStartsType } from './RangeDatePickerTypes';
+import { getMonthMatrix } from '../libs';
+import type { MonthDateType, WeekStartsType } from '../RangeDatePickerTypes';
 
 const MONTH_NAME_FORMAT = 'MMMM';
 

@@ -4,25 +4,15 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
-import { ExtendedTouchable } from '../ExtendedTouchable';
+import { StyleSheet, type StylePropType } from '../../PlatformStyleSheet';
+import { ExtendedTouchable } from '../../ExtendedTouchable';
+import { SimpleArrow } from './SimpleArrow';
 
 export type Props = {|
   +style?: StylePropType,
   +onPress?: () => void,
   +direction?: 'left' | 'right',
 |};
-
-const RenderArrows = ({ direction }) => (
-  <View style={styles.touchableContainer}>
-    <View
-      style={[
-        styles.arrow,
-        direction === 'left' ? styles.arrowLeft : styles.arrowRight,
-      ]}
-    />
-  </View>
-);
 
 export default class DayItemArrow extends React.Component<Props> {
   render() {
@@ -38,17 +28,18 @@ export default class DayItemArrow extends React.Component<Props> {
       >
         {this.props.onPress ? (
           <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
-            <RenderArrows direction={this.props.direction} />
+            <SimpleArrow
+              direction={this.props.direction}
+              style={styles.arrow}
+            />
           </ExtendedTouchable>
         ) : (
-          <RenderArrows direction={this.props.direction} />
+          <SimpleArrow direction={this.props.direction} style={styles.arrow} />
         )}
       </View>
     );
   }
 }
-
-const arrowSize = 4;
 
 const styles = StyleSheet.create({
   container: {
@@ -58,23 +49,14 @@ const styles = StyleSheet.create({
     height: '100%',
     alignItems: 'center',
   },
-  arrow: {
-    marginTop: 20,
-    width: 0,
-    height: 0,
-    borderWidth: arrowSize,
-    borderColor: 'transparent',
-  },
+
   containerArrowLeft: {
     alignItems: 'flex-start',
   },
   containerArrowRight: {
     alignItems: 'flex-end',
   },
-  arrowLeft: {
-    borderEndColor: defaultTokens.backgroundBody,
-  },
-  arrowRight: {
-    borderStartColor: defaultTokens.backgroundBody,
+  arrow: {
+    marginTop: 20,
   },
 });
