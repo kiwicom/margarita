@@ -23,7 +23,6 @@ const passengerCards = [
     nationality: 'Russian',
     dateOfBirth: '22/04/1980',
     id: 'DF45SV8',
-    insurance: 'Travel Insurance Name',
     passengerCount: 1,
     bags: [
       { count: 2, type: '40x15x30cm, 3kg' },

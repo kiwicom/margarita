@@ -70,11 +70,6 @@ Object {
           }
         }
       >
-        <PassengerCardDetail
-          label="Travel Insurance"
-          style="normal"
-          value=""
-        />
         <Component
           style={
             Object {
@@ -170,11 +165,6 @@ Object {
           }
         }
       >
-        <PassengerCardDetail
-          label="Travel Insurance"
-          style="normal"
-          value="Travel Inusurance Name"
-        />
         <Component
           style={
             Object {
@@ -203,6 +193,11 @@ Object {
             />
           </Component>
         </Component>
+        <PassengerCardDetail
+          label="Travel Insurance"
+          style="normal"
+          value="Travel Inusurance Name"
+        />
       </Component>
     </Card>
   </Component>,

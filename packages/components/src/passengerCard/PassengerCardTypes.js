@@ -13,7 +13,7 @@ export type PassengerCardType = {|
   +nationality: string,
   +dateOfBirth: string,
   +id: string,
-  +insurance: string,
+  +insurance?: ?string,
   +bags: null | Array<Bag>,
   +passengerCount: number,
   +visaRequired?: ?boolean,
