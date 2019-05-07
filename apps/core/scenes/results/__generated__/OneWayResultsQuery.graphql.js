@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 26d2fac5b7474e86dd8a0b6f2da4871f
+ * @relayHash d52e98f983e17ffabded26e5e680590f
  */
 
 /* eslint-disable */
@@ -15,6 +15,7 @@ export type SortSearchInput = "DATE" | "DURATION" | "POPULARITY" | "PRICE" | "QU
 export type ItinerariesOneWaySearchInput = {|
   order?: ?OrderSearchInput,
   sort?: ?SortSearchInput,
+  limit?: ?number,
   passengers?: ?PassengersInput,
   itinerary: ItineraryOneWayInput,
 |};

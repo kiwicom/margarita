@@ -53,6 +53,7 @@ type Props = {|
   +bags: number,
   +sortBy: string,
   +layout: number,
+  +limit: number,
   +routerQuery: SearchParameters,
   +setStateFromQueryParams: SearchParameters => void,
 |};
@@ -90,6 +91,7 @@ class Results extends React.Component<Props> {
       adults,
       infants,
       sortBy,
+      limit,
     } = this.props;
     return {
       passengers: {
@@ -97,6 +99,7 @@ class Results extends React.Component<Props> {
         infants: parseInt(infants, 10),
       },
       sort: sortBy,
+      limit,
       itinerary: {
         origin: {
           ids: travelFrom.map(location => location.id),
@@ -246,6 +249,7 @@ const select = ({
   infants,
   bags,
   sortBy,
+  limit,
   actions: { setStateFromQueryParams },
 }: SearchContextState) => ({
   travelFrom,
@@ -259,6 +263,7 @@ const select = ({
   infants,
   bags,
   sortBy,
+  limit,
   setStateFromQueryParams,
 });
 

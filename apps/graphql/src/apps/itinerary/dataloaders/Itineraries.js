@@ -45,6 +45,7 @@ export const parseParameters = (
     fly_from: flyFrom,
     ...(input.order && { asc: input.order === 'ASC' ? 1 : 0 }),
     ...(input.sort && { sort: input.sort }),
+    ...(input.limit ? { limit: input.limit } : {}),
     date_from: parseDate(outboundDate.start),
     date_to: outboundDate.end ? parseDate(outboundDate.end) : null,
     fly_to: flyTo,

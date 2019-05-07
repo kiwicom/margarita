@@ -30,6 +30,7 @@ type SearchLocation = {|
 export type ItinerariesOneWaySearchParameters = {|
   +order?: Order,
   +sort?: Sort,
+  +limit?: number,
   +itinerary: {|
     +origin: SearchLocation,
     +destination?: SearchLocation,
@@ -41,6 +42,7 @@ export type ItinerariesOneWaySearchParameters = {|
 export type ItinerariesReturnSearchParameters = {|
   +order?: Order,
   +sort?: Sort,
+  +limit?: number,
   +itinerary: {|
     +origin: SearchLocation,
     +destination?: SearchLocation,

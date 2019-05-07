@@ -1,7 +1,6 @@
 // @flow
 
 export const DEBOUNCE_TIME = 250;
-
 export const DAY_MONTH_DATE_FORMAT = 'E MM/dd';
 export const HOURS_MINUTES_FORMAT = 'H:mm';
 export const LONG_DAY_MONTH_FORMAT = 'EEE d MMM';
@@ -46,6 +45,8 @@ export const KIWI_LINKEDIN_LINK = 'https://www.linkedin.com/company/kiwi.com';
 export const KIWI_FACEBOOK_LINK = 'https://www.facebook.com/kiwicom247/';
 
 export const NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER = 6;
+export const SEARCH_RESULTS_LIMIT = 50;
+export const DEFAULT_SEARCH_SORTING = 'QUALITY';
 
 // constants
 export { TRIP_TYPES } from './constants/TripTypes';
