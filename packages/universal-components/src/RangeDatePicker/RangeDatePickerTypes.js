@@ -13,7 +13,9 @@ export type Props = {|
   +isRangePicker?: boolean,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStartsType,
-  +labels: {|
+  +label: string,
+  +dateFormat: string,
+  +buttonLabels: {|
     +cancel: React.Node,
     +confirm: React.Node,
   |},

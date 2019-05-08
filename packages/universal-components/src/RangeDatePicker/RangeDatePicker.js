@@ -9,6 +9,7 @@ import { Modal } from '../Modal';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
+import ControlContainer from './components/ControlContainer';
 
 export default class RangeDatePicker extends React.Component<Props> {
   // @TODO load price for days
@@ -28,10 +29,13 @@ export default class RangeDatePicker extends React.Component<Props> {
   render() {
     const {
       isVisible,
-      labels,
+      label,
+      buttonLabels,
       numberOfRenderedMonths,
       weekStartsOn,
       isRangePicker,
+      dates,
+      dateFormat,
     } = this.props;
 
     return (
@@ -48,17 +52,29 @@ export default class RangeDatePicker extends React.Component<Props> {
             weekStartsOn={weekStartsOn}
             isRangePicker={isRangePicker ?? true}
           />
-          <View style={styles.buttonsContainer}>
-            <View style={styles.buttonWrapper}>
-              <Button
-                label={labels.cancel}
-                onPress={this.handleDismiss}
-                type="secondary"
-                style={styles.closeButton}
+          <View style={styles.bottomContainer}>
+            <View style={[styles.controlContainer]}>
+              <ControlContainer
+                label={label}
+                dates={dates}
+                dateFormat={dateFormat}
               />
             </View>
-            <View style={styles.buttonWrapper}>
-              <Button label={labels.confirm} onPress={this.handleConfirm} />
+            <View style={styles.row}>
+              <View style={styles.buttonWrapper}>
+                <Button
+                  label={buttonLabels.cancel}
+                  onPress={this.handleDismiss}
+                  type="secondary"
+                  style={styles.closeButton}
+                />
+              </View>
+              <View style={styles.buttonWrapper}>
+                <Button
+                  label={buttonLabels.confirm}
+                  onPress={this.handleConfirm}
+                />
+              </View>
             </View>
           </View>
         </View>
@@ -70,7 +86,7 @@ export default class RangeDatePicker extends React.Component<Props> {
 const styles = StyleSheet.create({
   content: {
     flexDirection: 'column',
-    backgroundColor: 'white',
+    backgroundColor: defaultTokens.backgroundModal,
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
     overflow: 'hidden',
     flex: 1,
@@ -79,8 +95,13 @@ const styles = StyleSheet.create({
       maxHeight: 700,
     },
   },
-  buttonsContainer: {
+  controlContainer: {
+    marginBottom: parseFloat(defaultTokens.spaceXSmall),
+  },
+  bottomContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
+  },
+  row: {
     flexDirection: 'row',
   },
   buttonWrapper: {
