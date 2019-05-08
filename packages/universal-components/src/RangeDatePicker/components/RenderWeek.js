@@ -3,9 +3,9 @@
 import * as React from 'react';
 import { View } from 'react-native';
 
-import { StyleSheet } from '../PlatformStyleSheet';
+import { StyleSheet } from '../../PlatformStyleSheet';
 import RenderDay from './RenderDay';
-import type { WeekStartsType } from './RangeDatePickerTypes';
+import type { WeekStartsType } from '../RangeDatePickerTypes';
 
 type Props = {|
   +data: Array<?Date>,

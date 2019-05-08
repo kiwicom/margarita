@@ -3,9 +3,9 @@
 import * as React from 'react';
 import { Animated, Easing, View, InteractionManager } from 'react-native';
 
-import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
-import { designTokens } from '../DesignTokens';
-import { ExtendedTouchable } from '../ExtendedTouchable';
+import { StyleSheet, type StylePropType } from '../../PlatformStyleSheet';
+import { designTokens } from '../../DesignTokens';
+import { ExtendedTouchable } from '../../ExtendedTouchable';
 
 export type Props = {|
   +style?: StylePropType,
@@ -33,58 +33,55 @@ const RenderArrows = ({ scale }) => (
   </View>
 );
 
-export default class AnimatedDayItemArrow extends React.Component<Props> {
+export default class DayItemArrow extends React.Component<Props> {
   static scale: Animated.Value = new Animated.Value(0);
   static animating: boolean;
   static numberOfInstances: number;
 
   static handleAnimation() {
-    if (AnimatedDayItemArrow.scale === undefined) {
-      AnimatedDayItemArrow.scale = new Animated.Value(0);
+    if (DayItemArrow.scale === undefined) {
+      DayItemArrow.scale = new Animated.Value(0);
     }
 
-    if (AnimatedDayItemArrow.scale._value === 0) {
+    if (DayItemArrow.scale._value === 0) {
       Animated.sequence([
-        Animated.timing(AnimatedDayItemArrow.scale, {
+        Animated.timing(DayItemArrow.scale, {
           ...SHARED_ANIMATION_CONFIG,
           toValue: 1,
         }),
-        Animated.timing(AnimatedDayItemArrow.scale, {
+        Animated.timing(DayItemArrow.scale, {
           ...SHARED_ANIMATION_CONFIG,
           toValue: 0.1,
         }),
       ]).start(() => {
-        AnimatedDayItemArrow.scale.setValue(0);
-        if (AnimatedDayItemArrow.animating) {
-          AnimatedDayItemArrow.handleAnimation();
+        DayItemArrow.scale.setValue(0);
+        if (DayItemArrow.animating) {
+          DayItemArrow.handleAnimation();
         }
       });
     }
   }
 
   componentDidMount() {
-    AnimatedDayItemArrow.scale.setValue(0);
+    DayItemArrow.scale.setValue(0);
 
-    if (AnimatedDayItemArrow.numberOfInstances === undefined) {
-      AnimatedDayItemArrow.numberOfInstances = 1;
+    if (DayItemArrow.numberOfInstances === undefined) {
+      DayItemArrow.numberOfInstances = 1;
     } else {
-      AnimatedDayItemArrow.numberOfInstances++;
+      DayItemArrow.numberOfInstances++;
     }
     InteractionManager.runAfterInteractions(() => {
-      if (
-        !AnimatedDayItemArrow.animating &&
-        AnimatedDayItemArrow.numberOfInstances !== 0
-      ) {
-        AnimatedDayItemArrow.animating = true;
-        AnimatedDayItemArrow.handleAnimation();
+      if (!DayItemArrow.animating && DayItemArrow.numberOfInstances !== 0) {
+        DayItemArrow.animating = true;
+        DayItemArrow.handleAnimation();
       }
     });
   }
 
   componentWillUnmount() {
-    AnimatedDayItemArrow.numberOfInstances--;
-    if (AnimatedDayItemArrow.numberOfInstances === 0) {
-      AnimatedDayItemArrow.animating = false;
+    DayItemArrow.numberOfInstances--;
+    if (DayItemArrow.numberOfInstances === 0) {
+      DayItemArrow.animating = false;
     }
   }
 
@@ -93,10 +90,10 @@ export default class AnimatedDayItemArrow extends React.Component<Props> {
       <View style={[styles.container, this.props.style]}>
         {this.props.onPress ? (
           <ExtendedTouchable overlap={20} onPress={this.props.onPress}>
-            <RenderArrows scale={AnimatedDayItemArrow.scale} />
+            <RenderArrows scale={DayItemArrow.scale} />
           </ExtendedTouchable>
         ) : (
-          <RenderArrows scale={AnimatedDayItemArrow.scale} />
+          <RenderArrows scale={DayItemArrow.scale} />
         )}
       </View>
     );

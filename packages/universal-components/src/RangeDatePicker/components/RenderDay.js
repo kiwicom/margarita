@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, Platform } from 'react-native';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   format,
@@ -13,20 +13,19 @@ import {
   startOfDay,
 } from 'date-fns';
 
-import type { OnLayout, OnDragEvent } from '../types';
-import { StyleSheet, type StylePropType } from '../PlatformStyleSheet';
-import { designTokens } from '../DesignTokens';
-import { Text } from '../Text';
-import { Touchable } from '../Touchable';
+import type { OnLayout, OnDragEvent } from '../../types';
+import { StyleSheet } from '../../PlatformStyleSheet';
+import { designTokens } from '../../DesignTokens';
+import { Text } from '../../Text';
+import { Touchable } from '../../Touchable';
 import DayItemArrow from './DayItemArrow';
-import AnimatedDayItemArrow from './AnimatedDayItemArrow';
 import DraggableItem from './DraggableItem';
-import { findRelatedItem, isDayInPast } from './libs';
+import { findRelatedItem, isDayInPast } from '../libs';
 import type {
   DayItemSizeType,
   GrabbedSideType,
   WeekStartsType,
-} from './RangeDatePickerTypes';
+} from '../RangeDatePickerTypes';
 
 type Props = {|
   +day: ?Date,
@@ -41,12 +40,6 @@ type State = {|
   isDragging?: boolean,
 |};
 
-type RenderArrowProps = {|
-  +style?: StylePropType,
-  +onPress?: () => void,
-  +direction?: GrabbedSideType,
-|};
-
 const DayPrice = ({ price }) => (
   <View>
     <Text numberOfLines={1} style={styles.price}>
@@ -54,13 +47,6 @@ const DayPrice = ({ price }) => (
     </Text>
   </View>
 );
-
-const RenderArrow = ({ style, onPress, direction }: RenderArrowProps) =>
-  Platform.OS === 'android' ? (
-    <DayItemArrow style={style} onPress={onPress} direction={direction} />
-  ) : (
-    <AnimatedDayItemArrow style={style} onPress={onPress} />
-  );
 
 export default class RenderDay extends React.Component<Props, State> {
   static dayItemSize: DayItemSizeType = {
@@ -133,6 +119,9 @@ export default class RenderDay extends React.Component<Props, State> {
     const isFieldEmpty = day == null;
     const isStartOfSelectedDates = day && isSameDay(selectedDates[0], day);
     const isEndOfSelectedDates = day && isSameDay(selectedDates[1], day);
+    const isPossibleToChangeDateThisDirection =
+      (day && !isDayInPast(subDays(day, 1))) ||
+      !isSameDay(selectedDates[0], selectedDates[1]);
     const isDaySelected =
       day &&
       isWithinInterval(day, {
@@ -140,21 +129,34 @@ export default class RenderDay extends React.Component<Props, State> {
         end: endOfDay(selectedDates[1]),
       });
     const onArrowPress = onPress => (isRangePicker ? onPress : undefined);
+
+    const isLeftArrowRendered =
+      isStartOfSelectedDates &&
+      isPossibleToChangeDateThisDirection &&
+      isRangePicker;
+    const isRightArrowRendered = isEndOfSelectedDates && isRangePicker;
+    const isLeftDraggableItemRendered =
+      isRangePicker &&
+      isPossibleToChangeDateThisDirection &&
+      (isStartOfSelectedDates || this.state.isDragging);
+    const isRightDraggableItemRendered =
+      isRangePicker && (isEndOfSelectedDates || this.state.isDragging);
+
     return (
       <View
         style={[styles.container, isDaySelected && styles.onTheTop]}
         onLayout={this.measureDayItem}
       >
         <View>
-          {isRangePicker &&
-            (isStartOfSelectedDates || this.state.isDragging) && (
-              <DraggableItem
-                onDrag={this.onDrag}
-                onDrop={this.onDrop}
-                grabbedSide="left"
-                dayItemSize={RenderDay.dayItemSize}
-              />
-            )}
+          {isLeftDraggableItemRendered && (
+            <DraggableItem
+              onDrag={this.onDrag}
+              onDrop={this.onDrop}
+              onPress={onArrowPress(this.onLeftPress)}
+              grabbedSide="left"
+              dayItemSize={RenderDay.dayItemSize}
+            />
+          )}
 
           <Touchable
             onPress={this.handlePress}
@@ -162,8 +164,8 @@ export default class RenderDay extends React.Component<Props, State> {
             style={styles.dayTouchableContainer}
           >
             <>
-              {isStartOfSelectedDates && isRangePicker && (
-                <RenderArrow
+              {isLeftArrowRendered && (
+                <DayItemArrow
                   onPress={onArrowPress(this.onLeftPress)}
                   style={styles.leftArrow}
                   direction="left"
@@ -194,8 +196,8 @@ export default class RenderDay extends React.Component<Props, State> {
                   </>
                 )}
               </View>
-              {isEndOfSelectedDates && isRangePicker && (
-                <RenderArrow
+              {isRightArrowRendered && (
+                <DayItemArrow
                   onPress={onArrowPress(this.onRightPress)}
                   style={styles.rightArrow}
                   direction="right"
@@ -203,10 +205,11 @@ export default class RenderDay extends React.Component<Props, State> {
               )}
             </>
           </Touchable>
-          {isRangePicker && (isEndOfSelectedDates || this.state.isDragging) && (
+          {isRightDraggableItemRendered && (
             <DraggableItem
               onDrag={this.onDrag}
               onDrop={this.onDrop}
+              onPress={onArrowPress(this.onRightPress)}
               grabbedSide="right"
               dayItemSize={RenderDay.dayItemSize}
             />
@@ -267,12 +270,20 @@ const styles = StyleSheet.create({
     android: {
       top: 0,
     },
+    web: {
+      top: 6,
+      start: -7,
+    },
   },
   rightArrow: {
     end: 0,
     top: 12,
     android: {
       top: 0,
+    },
+    web: {
+      top: 6,
+      end: -7,
     },
   },
 });

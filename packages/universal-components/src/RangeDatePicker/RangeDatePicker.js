@@ -73,6 +73,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: parseFloat(defaultTokens.borderRadiusBadge),
     overflow: 'hidden',
+    flex: 1,
+    web: {
+      marginVertical: parseFloat(defaultTokens.spaceSmall),
+      maxHeight: 700,
+    },
   },
   buttonsContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),

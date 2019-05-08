@@ -5,11 +5,11 @@ import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format } from 'date-fns';
 
-import { StyleSheet } from '../PlatformStyleSheet';
-import { Text } from '../Text';
-import { designTokens } from '../DesignTokens';
-import { getWeekArrayOfSpecificDate } from './libs';
-import type { WeekStartsType } from './RangeDatePickerTypes';
+import { StyleSheet } from '../../PlatformStyleSheet';
+import { Text } from '../../Text';
+import { designTokens } from '../../DesignTokens';
+import { getWeekArrayOfSpecificDate } from '../libs';
+import type { WeekStartsType } from '../RangeDatePickerTypes';
 
 type Props = {|
   +weekStartsOn: WeekStartsType,
