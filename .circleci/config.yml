@@ -102,16 +102,13 @@ jobs:
           command: |
             sudo npm i -g serverless
             yarn install
-      - run:
-          name: Add .env file
-          command: yarn create-dotenv
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy GraphQL lambda
-          command: yarn graphql:deploy
+          command: BASE_URL=$BASE_URL API_KEY=$API_KEY yarn graphql:deploy
 
   build-and-deploy-documentation:
     <<: *defaults
