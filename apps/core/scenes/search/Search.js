@@ -31,6 +31,8 @@ export type SearchParameters = {|
   +infants: number,
   +bags: number,
   +limit: number,
+  +nightsInDestinationFrom: string,
+  +nightsInDestinationTo: string,
 |};
 
 type Props = {|

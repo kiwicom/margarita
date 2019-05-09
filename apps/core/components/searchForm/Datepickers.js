@@ -23,6 +23,7 @@ import {
 } from '../../contexts/searchContext/SearchContext';
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
+import { type ConfirmType } from './DatePickerTypes';
 
 type Props = {|
   +tripType: string,
@@ -30,8 +31,13 @@ type Props = {|
   +dateTo: Date,
   +returnDateFrom: Date,
   +returnDateTo: Date,
+  +isNightsInDestinationSelected: boolean,
+  +nightsInDestinationFrom: string,
+  +nightsInDestinationTo: string,
   +setDepartureDate: (Date, Date) => void,
   +setReturnDate: (Date, Date) => void,
+  +setNightsInDestination: (number, number) => void,
+  +setNightsInDestinationSelection: boolean => void,
   +setTripType: TripTypes => void,
   +layout: number,
 |};
@@ -66,24 +72,38 @@ class Datepickers extends React.Component<Props, State> {
     });
   };
 
-  handleDateChange = (dates: $ReadOnlyArray<Date>) => {
+  handleDateChange = ({
+    dates,
+    isNightsInDestinationSelected,
+    nightsInDestination,
+  }: ConfirmType) => {
     const {
       tripType,
       setDepartureDate,
       setReturnDate,
       setTripType,
+      setNightsInDestination,
+      setNightsInDestinationSelection,
     } = this.props;
 
-    if (this.state.isDepartureDatePickerVisible) {
+    if (this.state.isDepartureDatePickerVisible && dates) {
       setDepartureDate(...dates);
     }
-    if (this.state.isArrivalDatePickerVisible) {
-      setReturnDate(...dates);
+    if (
+      this.state.isArrivalDatePickerVisible &&
+      isNightsInDestinationSelected != null
+    ) {
+      setNightsInDestinationSelection(isNightsInDestinationSelected);
+
+      if (!isNightsInDestinationSelected && dates) {
+        setReturnDate(...dates);
+      } else if (nightsInDestination) {
+        setNightsInDestination(...nightsInDestination);
+      }
       if (tripType === TRIP_TYPES.ONEWAY) {
         setTripType(TRIP_TYPES.RETURN);
       }
     }
-
     this.handleDatePickerDismiss();
   };
 
@@ -105,6 +125,41 @@ class Datepickers extends React.Component<Props, State> {
     return '';
   };
 
+  getNightsInDestinationNames = (nightsInDestination: ?Array<number>) => {
+    if (Array.isArray(nightsInDestination)) {
+      return `${nightsInDestination[0]} - ${nightsInDestination[1]} nights`;
+    }
+    return '';
+  };
+
+  handleNightsInDestinationChange = (nightsInDestination: Array<number>) => {
+    this.props.setNightsInDestination(
+      nightsInDestination[0],
+      nightsInDestination[1],
+    );
+  };
+
+  handleNightsInDestinationSelectionChange = (
+    isNightsInDestinationSelected: boolean,
+  ) => {
+    this.props.setNightsInDestinationSelection(isNightsInDestinationSelected);
+  };
+
+  getProperReturnName = ({
+    returnType,
+    arrivalDates,
+    isNightsInDestinationSelected,
+    nightsInDestination,
+  }) => {
+    if (returnType) {
+      if (isNightsInDestinationSelected) {
+        return this.getNightsInDestinationNames(nightsInDestination);
+      }
+      return this.getDateNames(arrivalDates);
+    }
+    return 'No return';
+  };
+
   render() {
     const {
       tripType,
@@ -113,20 +168,27 @@ class Datepickers extends React.Component<Props, State> {
       returnDateFrom,
       returnDateTo,
       layout,
+      nightsInDestinationFrom,
+      nightsInDestinationTo,
+      isNightsInDestinationSelected,
     } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
     const showReturnInput =
       tripType === TRIP_TYPES.RETURN || Platform.OS === 'web';
     const returnType = tripType === TRIP_TYPES.RETURN;
 
+    const nightsInDestination = [
+      parseInt(nightsInDestinationFrom, 10),
+      parseInt(nightsInDestinationTo, 10),
+    ];
     const departureDates = [dateFrom, dateTo];
     const arrivalDates = [returnDateFrom, returnDateTo];
     const sharedDatePickerProps = {
       onConfirm: this.handleDateChange,
       onDismiss: this.handleDatePickerDismiss,
-      buttonLabels: { cancel: 'Close', confirm: 'Set Date' },
       numberOfRenderedMonths: NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
-      weekStartsOn: 1,
+      nightsInDestination: nightsInDestination,
+      isNightsInDestinationSelected: isNightsInDestinationSelected,
     };
     return (
       <>
@@ -147,9 +209,15 @@ class Datepickers extends React.Component<Props, State> {
               onPress={this.handleReturnDatePress}
               label={returnType ? TRIP_TYPES.RETURN : ''}
               icon="calendar"
-              value={returnType ? this.getDateNames(arrivalDates) : 'No return'}
+              value={this.getProperReturnName({
+                returnType,
+                arrivalDates,
+                isNightsInDestinationSelected,
+                nightsInDestination,
+              })}
               dates={arrivalDates}
               isVisible={this.state.isArrivalDatePickerVisible}
+              isNightsInDestinationVisible
               {...sharedDatePickerProps}
             />
           )}
@@ -176,17 +244,31 @@ const select = ({
   dateTo,
   returnDateFrom,
   returnDateTo,
+  isNightsInDestinationSelected,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
   tripType,
-  actions: { setTripType, setDepartureDate, setReturnDate },
+  actions: {
+    setTripType,
+    setDepartureDate,
+    setReturnDate,
+    setNightsInDestinationSelection,
+    setNightsInDestination,
+  },
 }: SearchContextState) => ({
   dateFrom,
   dateTo,
   returnDateFrom,
   returnDateTo,
+  isNightsInDestinationSelected,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
   tripType,
   setTripType,
   setDepartureDate,
   setReturnDate,
+  setNightsInDestinationSelection,
+  setNightsInDestination,
 });
 
 export default withLayoutContext(layoutSelect)(

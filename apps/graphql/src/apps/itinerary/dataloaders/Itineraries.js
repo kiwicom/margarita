@@ -36,6 +36,9 @@ export const parseParameters = (
   const inboundDate = input.itinerary.inboundDate
     ? input.itinerary.inboundDate
     : null;
+  const nightsInDestination = input.itinerary.nightsInDestination
+    ? input.itinerary.nightsInDestination
+    : null;
 
   const flyFrom = unmaskID(origin.ids).join();
   const flyTo =
@@ -59,20 +62,23 @@ export const parseParameters = (
 
   return {
     ...commonSearchParams,
-    ...addReturnSearchQueryParams(inboundDate),
+    ...addReturnSearchQueryParams(inboundDate, nightsInDestination),
   };
 };
 
-const addReturnSearchQueryParams = inboundDate => {
-  return {
-    ...(inboundDate && {
-      return_from: parseDate(inboundDate.start),
-      ...(inboundDate.end && {
-        return_to: parseDate(inboundDate.end),
+const addReturnSearchQueryParams = (inboundDate, nightsInDestination) => ({
+  ...(!inboundDate && nightsInDestination
+    ? {
+        nights_in_dst_from: nightsInDestination.from,
+        nights_in_dst_to: nightsInDestination.to,
+      }
+    : inboundDate && {
+        return_from: parseDate(inboundDate.start),
+        ...(inboundDate.end && {
+          return_to: parseDate(inboundDate.end),
+        }),
       }),
-    }),
-  };
-};
+});
 
 const fetchItineraries = async (
   parameters: $ReadOnlyArray<ItinerariesReturnSearchParameters>,
@@ -89,7 +95,6 @@ const fetchItineraries = async (
 
 const sanitizeItineraries = (response: ItinerariesApiResponse): Itinerary[] => {
   const itineraries = response.data;
-
   return itineraries.map(itinerary => {
     const currency = response.currency;
     const type = getItineraryType(itinerary.routes);

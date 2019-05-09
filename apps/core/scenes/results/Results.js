@@ -53,6 +53,9 @@ type Props = {|
   +sortBy: string,
   +layout: number,
   +limit: number,
+  +nightsInDestinationFrom: string,
+  +nightsInDestinationTo: string,
+  +isNightsInDestinationSelected: boolean,
   +routerQuery: SearchParameters,
   +setStateFromQueryParams: SearchParameters => void,
 |};
@@ -91,6 +94,9 @@ class Results extends React.Component<Props> {
       infants,
       sortBy,
       limit,
+      nightsInDestinationFrom,
+      nightsInDestinationTo,
+      isNightsInDestinationSelected,
     } = this.props;
     return {
       passengers: {
@@ -111,12 +117,19 @@ class Results extends React.Component<Props> {
           end: DateFNS.format(dateTo, BASIC_ISO_DATE_FORMAT),
         },
         ...(type === TRIP_TYPES.RETURN
-          ? {
-              inboundDate: {
-                start: DateFNS.format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
-                end: DateFNS.format(returnDateTo, BASIC_ISO_DATE_FORMAT),
-              },
-            }
+          ? !isNightsInDestinationSelected
+            ? {
+                inboundDate: {
+                  start: DateFNS.format(returnDateFrom, BASIC_ISO_DATE_FORMAT),
+                  end: DateFNS.format(returnDateTo, BASIC_ISO_DATE_FORMAT),
+                },
+              }
+            : {
+                nightsInDestination: {
+                  from: parseInt(nightsInDestinationFrom, 10),
+                  to: parseInt(nightsInDestinationTo, 10),
+                },
+              }
           : {}),
       },
     };
@@ -248,6 +261,9 @@ const select = ({
   infants,
   sortBy,
   limit,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
+  isNightsInDestinationSelected,
   actions: { setStateFromQueryParams },
 }: SearchContextState) => ({
   travelFrom,
@@ -261,6 +277,9 @@ const select = ({
   infants,
   sortBy,
   limit,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
+  isNightsInDestinationSelected,
   setStateFromQueryParams,
 });
 

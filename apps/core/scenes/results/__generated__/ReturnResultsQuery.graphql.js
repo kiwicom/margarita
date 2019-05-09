@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7335b5e01cb66a0da2105a80f567d658
+ * @relayHash 4dfd0dcd31df57229c600b149bdfc774
  */
 
 /* eslint-disable */
@@ -28,7 +28,8 @@ export type ItineraryReturnInput = {|
   origin: LocationItineraryInput,
   destination?: ?LocationItineraryInput,
   outboundDate: DateRange,
-  inboundDate: DateRange,
+  inboundDate?: ?DateRange,
+  nightsInDestination?: ?NightsInDestination,
 |};
 export type LocationItineraryInput = {|
   ids?: ?$ReadOnlyArray<?string>
@@ -36,6 +37,10 @@ export type LocationItineraryInput = {|
 export type DateRange = {|
   start: any,
   end?: ?any,
+|};
+export type NightsInDestination = {|
+  from?: ?number,
+  to?: ?number,
 |};
 export type ReturnResultsQueryVariables = {|
   input: ItinerariesReturnSearchInput

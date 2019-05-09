@@ -12,28 +12,35 @@ import {
 } from '@kiwicom/universal-components';
 import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
+import { type ConfirmType } from './DatePickerTypes';
+
 type Props = {|
   +dates: $ReadOnlyArray<Date>,
   +icon: IconNameType,
   +isRangePicker?: boolean,
   +isVisible: boolean,
   +label: string,
-  +buttonLabels: {|
-    +cancel: React.Node,
-    +confirm: React.Node,
+  +buttonLabels?: {|
+    +cancel: string,
+    +confirm: string,
   |},
   +numberOfRenderedMonths: number,
-  +onConfirm: ($ReadOnlyArray<Date>) => void,
+  +onConfirm: ConfirmType => void,
   +onDismiss: () => void,
   +onPress: () => void,
   +style?: StylePropType,
   +value: string,
-  +weekStartsOn: WeekStartsType,
+  +weekStartsOn?: WeekStartsType,
+  +isNightsInDestinationVisible?: boolean,
+  +isNightsInDestinationSelected: boolean,
+  +nightsInDestination: $ReadOnlyArray<number>,
 |};
 
 type State = {|
   tempDates: $ReadOnlyArray<Date>,
   previousDates: $ReadOnlyArray<Date>,
+  tempNightsInDestination: $ReadOnlyArray<number>,
+  tempIsNightsInDestinationSelected: boolean,
 |};
 const parseDatePropsToState = ({ dates }: Props) => {
   const tempDate = dates ?? [new Date(), new Date()];
@@ -48,6 +55,8 @@ class DatePicker extends React.Component<Props, State> {
     this.state = {
       tempDates: props.dates,
       previousDates: props.dates,
+      tempNightsInDestination: props.nightsInDestination,
+      tempIsNightsInDestinationSelected: props.isNightsInDestinationSelected,
     };
   }
 
@@ -65,9 +74,28 @@ class DatePicker extends React.Component<Props, State> {
     this.setState({ tempDates: dates });
   };
 
+  onChangeTempIsNightsInDestinationSelected = (
+    isNightsInDestinationSelected: boolean,
+  ) => {
+    this.setState({
+      tempIsNightsInDestinationSelected: isNightsInDestinationSelected,
+    });
+  };
+
+  onChangeTempNightInDestinations = (
+    nightsInDestination: $ReadOnlyArray<number>,
+  ) => {
+    this.setState({ tempNightsInDestination: nightsInDestination });
+  };
+
   handleDismiss = () => {
     this.props.onDismiss();
-    this.setState(state => ({ tempDates: state.previousDates }));
+    this.setState(state => ({
+      tempDates: state.previousDates,
+      tempNightsInDestination: this.props.nightsInDestination,
+      tempIsNightsInDestinationSelected: this.props
+        .isNightsInDestinationSelected,
+    }));
   };
 
   render() {
@@ -82,6 +110,7 @@ class DatePicker extends React.Component<Props, State> {
       buttonLabels,
       numberOfRenderedMonths,
       weekStartsOn,
+      isNightsInDestinationVisible,
     } = this.props;
     return (
       <>
@@ -102,8 +131,17 @@ class DatePicker extends React.Component<Props, State> {
           label={label}
           buttonLabels={buttonLabels}
           numberOfRenderedMonths={numberOfRenderedMonths}
-          weekStartsOn={weekStartsOn}
+          weekStartsOn={weekStartsOn ?? 1}
           dateFormat={LONG_DAY_MONTH_FORMAT}
+          isNightsInDestinationVisible={isNightsInDestinationVisible}
+          nightsInDestination={this.state.tempNightsInDestination}
+          onNightsInDestinationChange={this.onChangeTempNightInDestinations}
+          isNightsInDestinationSelected={
+            this.state.tempIsNightsInDestinationSelected
+          }
+          onNightsInDestinationSelectionChange={
+            this.onChangeTempIsNightsInDestinationSelected
+          }
         />
       </>
     );
