@@ -10,6 +10,7 @@ import {
   type StylePropType,
   type IconNameType,
 } from '@kiwicom/universal-components';
+import { LONG_DAY_MONTH_FORMAT } from '@kiwicom/margarita-config';
 
 type Props = {|
   +dates: $ReadOnlyArray<Date>,
@@ -98,9 +99,11 @@ class DatePicker extends React.Component<Props, State> {
           onConfirm={onConfirm}
           onDismiss={this.handleDismiss}
           onChangeTempDates={this.onChangeTempDates}
-          labels={buttonLabels}
+          label={label}
+          buttonLabels={buttonLabels}
           numberOfRenderedMonths={numberOfRenderedMonths}
           weekStartsOn={weekStartsOn}
+          dateFormat={LONG_DAY_MONTH_FORMAT}
         />
       </>
     );
