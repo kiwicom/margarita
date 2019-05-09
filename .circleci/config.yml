@@ -108,7 +108,7 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy GraphQL lambda
-          command: BASE_URL=$BASE_URL API_KEY=$API_KEY yarn graphql:deploy
+          command: BASE_URL=$BASE_URL API_KEY=$API_KEY yarn workspace @kiwicom/margarita-graphql deploy
 
   build-and-deploy-documentation:
     <<: *defaults
