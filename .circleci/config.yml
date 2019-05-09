@@ -102,6 +102,9 @@ jobs:
           command: |
             sudo npm i -g serverless
             yarn install
+      - run:
+          name: Add .env file
+          command: yarn create-dotenv
       - save_cache:
           paths:
             - node_modules
