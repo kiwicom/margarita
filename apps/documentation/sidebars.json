@@ -13,7 +13,8 @@
       "contributing",
       "folder-structure",
       "technical-overview",
-      "guide-tequila-api-key"
+      "guide-tequila-api-key",
+      "guide-firebase-user"
     ],
     "Apps": [
       "apps/index",

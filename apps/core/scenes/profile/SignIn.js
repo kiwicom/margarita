@@ -6,10 +6,11 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Text } from '@kiwicom/margarita-components';
 
 type Props = {|
+  +disabled: boolean,
   +onPress: () => void,
 |};
 
-export default function SignIn({ onPress }: Props) {
+export default function SignIn({ disabled, onPress }: Props) {
   return (
     <>
       <Text size="large" type="primary" weight="bold">
@@ -18,7 +19,7 @@ export default function SignIn({ onPress }: Props) {
       <Text size="small" type="secondary" style={styles.description}>
         Sign in to see your bookings and tickets
       </Text>
-      <Button onPress={onPress} label="Sign In" />
+      <Button disabled={disabled} onPress={onPress} label="Sign In" />
     </>
   );
 }

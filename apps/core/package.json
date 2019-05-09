@@ -16,7 +16,8 @@
     "@kiwicom/universal-components": "0.0.17",
     "geolib": "^2.0.24",
     "memoize-one": "^5.0.0",
-    "qs": "^6.7.0"
+    "qs": "^6.7.0",
+    "firebase": "^5.9.1"
   },
   "peerDependencies": {
     "date-fns": "^",
@@ -25,6 +26,7 @@
     "ramda": "^",
     "react": "^",
     "react-native": "^",
+    "react-native-dotenv": "^",
     "react-native-testing-library": "^",
     "react-test-renderer": "",
     "@kiwicom/relay": ""
