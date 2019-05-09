@@ -16,7 +16,7 @@ export default {
     type: SortSearchInput,
   },
   limit: {
-    description: 'Limit results of the search (max 200)',
+    description: 'Limit of results to get from the search (maximum 200)',
     type: GraphQLInt,
   },
   passengers: {
