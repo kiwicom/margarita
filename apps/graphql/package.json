@@ -42,7 +42,6 @@
     "flow-aws-lambda": "https://github.com/yarax/flow-aws-lambda#407f59f87889345a77b642fbeac91ff5f89865a1",
     "nodemon": "^1.18.7",
     "serverless": "^1.41.1",
-    "serverless-dotenv-plugin": "^2.0.1",
     "utf-8-validate": "^5.0.2",
     "webpack-cli": "^3.2.3"
   },
