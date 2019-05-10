@@ -103,8 +103,8 @@ jobs:
             sudo npm i -g serverless
             yarn install
       - run:
-          name: Add .env file
-          command: yarn create-dotenv
+          name: Generate .env file for GraphQL
+          command: echo BASE_URL=$BASE_URL >> .env && echo API_KEY=$API_KEY >> .env
       - run:
           name: Copy .env file to graphql folder
           command: cp ~/margarita/.env ~/margarita/apps/graphql
