@@ -20569,10 +20569,10 @@ serve@^10.1.2:
     serve-handler "5.0.8"
     update-check "1.5.2"
 
-serverless-dotenv-plugin@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-2.0.1.tgz#a2dbee0030c3bbd5801b37ca9266405ce5d9304b"
-  integrity sha512-qtahguv0X3UOeFdJ7C27CoRp9/6dqwTNTe+mZLPX5FDBQwhDOZzKtVIeW7bJLKWzz3JnAJfCOqpArWLpZduHBA==
+serverless-dotenv-plugin@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-2.1.1.tgz#73f4638f71811a065ee51e2b363f2157327afabc"
+  integrity sha512-T08fI0XoWGMKfs1KEpYrFwG/6A+qR2UZyANgchV7jJAhRhCtO0my1oMTLovyone5UHXOwTojrwUw3pm8NYa3rg==
   dependencies:
     chalk "^2.1.0"
     dotenv "^4.0.0"

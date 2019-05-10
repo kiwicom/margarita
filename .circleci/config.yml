@@ -102,13 +102,19 @@ jobs:
           command: |
             sudo npm i -g serverless
             yarn install
+      - run:
+          name: Add .env file
+          command: yarn create-dotenv
+      - run:
+          name: Copy .env file to graphql folder
+          command: cp ~/margarita/.env ~/margarita/apps/graphql
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Deploy GraphQL lambda
-          command: BASE_URL=$BASE_URL API_KEY=$API_KEY yarn workspace @kiwicom/margarita-graphql deploy
+          command: yarn graphql:deploy
 
   build-and-deploy-documentation:
     <<: *defaults
