@@ -37,7 +37,7 @@ const server = new ApolloServer({
 });
 
 const app = express();
-app.use(compression());
+app.use(compression({ threshold: 0 }));
 app.use(cors());
 
 if (isDevelopment) {
