@@ -20569,6 +20569,11 @@ serve@^10.1.2:
     serve-handler "5.0.8"
     update-check "1.5.2"
 
+serverless-content-encoding@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/serverless-content-encoding/-/serverless-content-encoding-1.1.0.tgz#d284fb16ac25f8603d42dcc3afa826438baf5b01"
+  integrity sha1-0oT7Fqwl+GA9QtzDr6gmQ4uvWwE=
+
 serverless-dotenv-plugin@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-2.1.1.tgz#73f4638f71811a065ee51e2b363f2157327afabc"

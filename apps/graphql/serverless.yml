@@ -4,11 +4,14 @@ plugins:
   - serverless-webpack
   - serverless-offline
   - serverless-dotenv-plugin
+  - serverless-content-encoding
 
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
     includeModules: true
+  contentEncoding:
+    minimumCompressionSize: 0 
 provider:
   name: aws
   runtime: nodejs8.10
