@@ -33,7 +33,7 @@ const ContainerLogoCard = styled.div`
   }
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     :nth-child(2) {
-      margin: 0 80px;
+      margin: 0 40px;
     }
   }
 `;

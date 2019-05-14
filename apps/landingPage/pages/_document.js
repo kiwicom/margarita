@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
+    @import url('https://images.kiwi.com/fonts/circular-pro/style.css');
+    font-family: 'Circular Pro', sans-serif;
   }
 `;
 
