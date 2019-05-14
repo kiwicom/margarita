@@ -22,6 +22,10 @@ type Props = {|
   +placeholder?: string,
 |};
 
+const getEmptyLocationPlaceholder = (field: string): string => {
+  return field === 'From' ? '' : 'Anywhere';
+};
+
 export default function TripInput({
   style,
   icon,
@@ -33,16 +37,23 @@ export default function TripInput({
   const inputIcon = React.cloneElement(icon, {
     color: defaultTokens.colorIconSecondary,
   });
+  const hasValue = value.length > 0;
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <View style={[styles.container, style]}>
+      <View
+        style={[
+          styles.container,
+          !hasValue && label === 'From' && styles.warningContainer,
+          style,
+        ]}
+      >
         {Platform.OS !== 'web' && <View style={styles.icon}>{inputIcon}</View>}
         <Text style={styles.label}>{label.length > 0 ? `${label}: ` : ''}</Text>
-        {value !== '' && (
+        {
           <Text numberOfLines={1} ellipsizeMode="clip" style={styles.value}>
-            {value}
+            {hasValue ? value : getEmptyLocationPlaceholder(label)}
           </Text>
-        )}
+        }
         {value === '' && placeholder != null && <Text>{placeholder}</Text>}
       </View>
     </TouchableWithoutFeedback>
@@ -65,6 +76,9 @@ const styles = StyleSheet.create({
       borderWidth: 1,
       borderColor: defaultTokens.paletteInkLighter,
     },
+  },
+  warningContainer: {
+    borderColor: defaultTokens.paletteRedNormal,
   },
   icon: {
     marginEnd: 10,

@@ -76,7 +76,7 @@ class SearchForm extends React.Component<Props> {
     } = this.props;
     if (travelFrom == null || travelFrom.length === 0) {
       this.props.setAlertContent({
-        message: 'Please fill this form completely before you proceed',
+        message: 'Please choose an origin place',
       });
     } else {
       const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
