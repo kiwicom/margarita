@@ -55,7 +55,7 @@ class Search extends React.Component<Props> {
           <View style={styles.illustrationWrapper}>
             <Illustration name="Boarding" style={styles.boardingIllustration} />
           </View>
-          <SearchForm onSubmit={this.props.onSubmit} />
+          <SearchForm showButton={true} onSubmit={this.props.onSubmit} />
           <View style={styles.bottomSpacer} />
         </View>
       </View>
