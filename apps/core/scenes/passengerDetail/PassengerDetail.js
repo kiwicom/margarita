@@ -19,13 +19,20 @@ const passengerCards = [
     name: 'John Doe',
     gender: 'male',
     nationality: 'Russian',
-    dateOfBirth: '22/04/1980',
+    dateOfBirth: new Date('22/04/1980'),
     id: 'DF45SV8',
     insurance: 'Travel Insurance Name',
     passengerCount: 1,
     bags: [
-      { count: 2, type: '40x15x30cm, 3kg' },
-      { count: 1, type: '55x20x40cm, 8kg' },
+      {
+        quantity: 1,
+        dimensions: '28 x 52 x 78 cm',
+        weight: '20 kg',
+        price: {
+          amount: 84,
+          currency: 'EUR',
+        },
+      },
     ],
     visaRequired: true,
   },
@@ -33,22 +40,51 @@ const passengerCards = [
     name: 'Jana Nováková',
     gender: 'female',
     nationality: 'Czech',
-    dateOfBirth: '22/04/1984',
+    dateOfBirth: new Date('1980-06-22'),
     id: 'DF45SV9',
     insurance: 'Travel Insurance Name',
     passengerCount: 1,
-    bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
+    bags: [
+      {
+        quantity: 1,
+        dimensions: '11 x 32 x 70 cm',
+        weight: '10 kg',
+        price: {
+          amount: 84,
+          currency: 'EUR',
+        },
+      },
+    ],
     visaRequired: false,
   },
   {
-    name: 'Jana Nováková',
-    gender: 'female',
+    name: 'Martin Došek',
+    gender: 'male',
     nationality: 'Czech',
-    dateOfBirth: '22/04/1984',
+    dateOfBirth: new Date('1984-06-12'),
     id: 'DF45SV3',
     insurance: 'Travel Insurance Name',
     passengerCount: 1,
-    bags: [{ count: 1, type: '40x15x30cm, 3kg' }],
+    bags: [
+      {
+        quantity: 1,
+        dimensions: '11 x 32 x 70 cm',
+        weight: '10 kg',
+        price: {
+          amount: 84,
+          currency: 'EUR',
+        },
+      },
+      {
+        quantity: 2,
+        dimensions: '40 x 52 x 78 cm',
+        weight: '10 kg',
+        price: {
+          amount: 84,
+          currency: 'EUR',
+        },
+      },
+    ],
   },
 ];
 
@@ -65,8 +101,8 @@ export default function PassengerDetail() {
     <ScrollView>
       <PassengerCards
         passengerCards={passengerCards}
-        actionIconName="edit"
-        onActionPress={handleEditPassenger}
+        editIconName="edit"
+        onEditPress={handleEditPassenger}
       />
       <MenuGroup title="Contact details">
         <View>

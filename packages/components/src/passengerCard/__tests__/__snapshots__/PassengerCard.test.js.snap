@@ -31,7 +31,7 @@ Object {
             }
           }
         >
-          0. Passenger
+           
         </WithTheme>
       </Component>
       <Component
@@ -51,7 +51,7 @@ Object {
         <PassengerCardDetail
           label="Date of birth"
           style="normal"
-          value=""
+          value="-"
         />
         <PassengerCardDetail
           label="ID"
@@ -146,7 +146,7 @@ Object {
         <PassengerCardDetail
           label="Date of birth"
           style="normal"
-          value="22/04/1980"
+          value="04/12/1980"
         />
         <PassengerCardDetail
           label="ID"
@@ -184,12 +184,12 @@ Object {
           </WithTheme>
           <Component>
             <BagInformation
-              count={2}
-              type="40x15x30cm, 3kg"
+              count={1}
+              type="11 x 32 x 70 cm, 10 kg"
             />
             <BagInformation
-              count={1}
-              type="55x20x40cm, 8kg"
+              count={2}
+              type="40 x 52 x 78 cm, 10 kg"
             />
           </Component>
         </Component>

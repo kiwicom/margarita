@@ -12,7 +12,13 @@ import {
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
-import { DateInput } from '@kiwicom/margarita-components';
+import {
+  DateInput,
+  type PassengerCardType,
+  withAlertContext,
+  type AlertContent,
+  type AlertContextState,
+} from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
 import BaggageBundles from './baggageBundles/BaggageBundles';
@@ -22,14 +28,8 @@ type Props = {|
   +itinerary: ?PassengerFormType,
   +isVisible: boolean,
   +onRequestClose: () => void,
-|};
-
-type State = {|
-  gender: ?string,
-  givenName: ?string,
-  lastName: ?string,
-  nationality: ?string,
-  birthDate: ?Date,
+  +onRequestSave: PassengerCardType => void,
+  +setAlertContent: (alertContent: AlertContent | null) => void,
 |};
 
 const genderData = [
@@ -48,42 +48,75 @@ const nationalityData = [
   },
 ];
 
+type State = {
+  ...PassengerCardType,
+  lastName: ?string,
+};
+
 class PassengerForm extends React.Component<Props, State> {
   state = {
-    gender: null,
-    givenName: null,
+    gender: 'male',
+    name: null,
     lastName: null,
+    id: null,
     nationality: null,
-    birthDate: null,
+    dateOfBirth: null,
+    bags: null,
+    passengerCount: 1,
   };
 
-  handleGenderChange = (gender: ?string) => {
+  handleGenderChange = (gender: any) => {
     this.setState({ gender });
   };
 
-  handleGivenNameChange = (givenName: string) => {
-    this.setState({ givenName });
+  handleNameChange = (name: string) => {
+    this.setState({ name });
   };
 
   handleLastNameChange = (lastName: string) => {
     this.setState({ lastName });
   };
 
-  handleBirthDateChange = (birthDate: ?Date) => {
-    this.setState({ birthDate });
+  handleBirthDateChange = (dateOfBirth: ?Date) => {
+    this.setState({ dateOfBirth });
   };
 
   handleNationalityChange = (nationality: ?string) => {
     this.setState({ nationality });
   };
 
+  handleIdChange = (id: ?string) => {
+    this.setState({ id });
+  };
+
   handleSavePress = () => {
-    // @TODO - update passenger props
-    this.requestClose();
+    const {
+      nationality,
+      id,
+      dateOfBirth,
+      lastName,
+      name,
+      gender,
+      bags,
+    } = this.state;
+    const newPassenger = {
+      nationality,
+      id,
+      dateOfBirth,
+      gender,
+      name: `${name ?? ''} ${lastName ?? ''}`,
+      bags,
+      passengerCount: 1,
+    };
+    this.props.onRequestSave(newPassenger);
   };
 
   requestClose = () => {
     this.props.onRequestClose();
+  };
+
+  handleSelectedBaggageBundle = bags => {
+    this.setState({ bags: [bags] });
   };
 
   render() {
@@ -101,7 +134,7 @@ class PassengerForm extends React.Component<Props, State> {
               onValueChange={this.handleGenderChange}
             />
             <TextInput
-              onChangeText={this.handleGivenNameChange}
+              onChangeText={this.handleNameChange}
               label="Given names"
               autoCorrect={false}
               type="text"
@@ -114,8 +147,15 @@ class PassengerForm extends React.Component<Props, State> {
               type="text"
               formLabelContainerStyle={styles.inputLabel}
             />
+            <TextInput
+              onChangeText={this.handleIdChange}
+              label="Passport or ID number"
+              autoCorrect={false}
+              type="text"
+              formLabelContainerStyle={styles.inputLabel}
+            />
             <DateInput
-              date={this.state.birthDate}
+              date={this.state.dateOfBirth}
               defaultDate={new Date('1990-01-01')}
               dateFormat={US_DATE_FORMAT}
               onDateChange={this.handleBirthDateChange}
@@ -134,7 +174,10 @@ class PassengerForm extends React.Component<Props, State> {
               label="Nationality"
               formLabelContainerStyle={styles.inputLabel}
             />
-            <BaggageBundles itinerary={this.props.itinerary} />
+            <BaggageBundles
+              onSelectedBaggageBundle={this.handleSelectedBaggageBundle}
+              itinerary={this.props.itinerary}
+            />
           </View>
         </ScrollView>
         <View style={[styles.menuRow, styles.widthLimit]}>
@@ -217,10 +260,19 @@ const styles = StyleSheet.create({
   },
 });
 
-export default createFragmentContainer(PassengerForm, {
-  itinerary: graphql`
-    fragment PassengerForm_itinerary on ItineraryInterface {
-      ...BaggageBundles_itinerary
-    }
-  `,
+const selectAlertContextState = ({
+  actions: { setAlertContent },
+}: AlertContextState) => ({
+  setAlertContent,
 });
+
+export default createFragmentContainer(
+  withAlertContext(selectAlertContextState)(PassengerForm),
+  {
+    itinerary: graphql`
+      fragment PassengerForm_itinerary on ItineraryInterface {
+        ...BaggageBundles_itinerary
+      }
+    `,
+  },
+);

@@ -27,3 +27,8 @@ export {
 export {
   default as UserContextProvider,
 } from './components/userContext/UserContext';
+
+// Types
+export type {
+  default as BaggageBundleType,
+} from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';

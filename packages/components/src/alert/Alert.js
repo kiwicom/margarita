@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { Button, StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Modal from '../modal/Modal';
 import Text from '../text/Text';
@@ -26,7 +27,11 @@ class Alert extends React.Component<Props> {
     const isVisible = this.props.alertContent != null;
 
     return (
-      <Modal isVisible={isVisible} onClose={this.onClose}>
+      <Modal
+        modalStyle={styles.modal}
+        isVisible={isVisible}
+        onClose={this.onClose}
+      >
         <View style={styles.container}>
           <Text style={styles.title} weight="bold" size="large" align="center">
             {this.props.alertContent?.title}
@@ -44,6 +49,9 @@ class Alert extends React.Component<Props> {
 const styles = StyleSheet.create({
   container: {
     margin: 16,
+  },
+  modal: {
+    zIndex: parseInt(defaultTokens.zIndexOnTheTop, 10),
   },
   title: {
     marginVertical: 8,
