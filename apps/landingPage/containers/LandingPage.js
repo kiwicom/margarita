@@ -8,7 +8,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Menu from './Menu';
 import Features from './Features';
-import Playground from './Playground';
+import Try from './Try';
 import DeveloperExperience from './DeveloperExperience';
 
 export const theme = {
@@ -27,7 +27,7 @@ export default function LandingPage() {
         <Header />
         <Features />
         <DeveloperExperience />
-        <Playground />
+        <Try />
         <Footer />
       </Container>
     </ThemeProvider>

@@ -5,14 +5,16 @@ import styled from 'styled-components';
 
 import Content from '../components/Content';
 import Highlight from '../components/Highlight';
+import AccentedText from '../components/AccentedText';
+import { CardItems, CardItem, CardDescription } from '../components/Card';
 import Title from '../components/Title';
 
 export default function DeveloperInfo() {
   return (
     <Content id="developer-experience">
-      <Title>Developer experience</Title>
-      <Items>
-        <Item>
+      <Title>Technology</Title>
+      <CardItems>
+        <CardItem>
           <ImageContainer>
             <Image
               src="/static/icon-multi-platform.jpg"
@@ -21,14 +23,14 @@ export default function DeveloperInfo() {
               alt="Multiplatform app"
             />
           </ImageContainer>
-          <Text>Truly </Text>
+          <CardTitle>Real </CardTitle>
           <HighlightLeftOffset>multi-platform app </HighlightLeftOffset>
-          <Description>
+          <CardDescription>
             One codebase for iOS, Android and web. And with user experience like
             in native apps.
-          </Description>
-        </Item>
-        <Item>
+          </CardDescription>
+        </CardItem>
+        <CardItem>
           <ImageContainer>
             <Image
               src="/static/icon-modern-technologies.jpg"
@@ -37,14 +39,14 @@ export default function DeveloperInfo() {
               alt="React logo"
             />
           </ImageContainer>
-          <Text>Developed with </Text>
+          <CardTitle>Developed with </CardTitle>
           <HighlightLeftOffset>modern technologies</HighlightLeftOffset>
-          <Description>
+          <CardDescription>
             React Native and GraphQL are battle-tested modern technologies for
             the best developer experience.
-          </Description>
-        </Item>
-        <Item>
+          </CardDescription>
+        </CardItem>
+        <CardItem>
           <ImageContainer>
             <Image
               src="/static/icon-open-source.jpg"
@@ -53,38 +55,20 @@ export default function DeveloperInfo() {
               alt="Open-source licence"
             />
           </ImageContainer>
-          <Text>API is free and </Text>
+          <CardTitle>API is free and </CardTitle>
           <HighlightLeftOffset block>app is open-sourced</HighlightLeftOffset>
-          <Description>
+          <CardDescription>
             There are no fees. Even our API is free and bought tickets have the
-            same price like on Kiwi. You can fork Margarita and use it for
+            same price like on Kiwi.com. You can fork Margarita and use it for
             whatever.
-          </Description>
-        </Item>
-      </Items>
+          </CardDescription>
+        </CardItem>
+      </CardItems>
     </Content>
   );
 }
-const Items = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  width: 100%;
-`;
-const Item = styled.div`
-  flex: 1;
-  margin: 20px 0;
-  font-size: 22px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-direction: column;
-  padding-right: 20px;
-  flex-basis: 300px;
-  min-width: 300px;
+const CardTitle = styled(AccentedText)`
+  margin-top: 20px;
 `;
 const Image = styled.img`
   width: 120px;
@@ -94,18 +78,7 @@ const ImageContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const Text = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-top: 20px;
-`;
 const HighlightLeftOffset = styled(Highlight)`
   position: relative;
   left: -5px;
-`;
-
-const Description = styled.div`
-  font-size: 16px;
-  font-weight: normal;
-  margin-top: 20px;
 `;
