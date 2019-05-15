@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Separator } from '@kiwicom/orbit-components/lib/';
+import { Button, Separator } from '@kiwicom/orbit-components/lib/';
 import {
   Instagram,
   Linkedin,
@@ -16,9 +16,20 @@ import {
   KIWI_LINKEDIN_LINK,
   CODE_KIWI_FACEBOOK_LINK,
   CODE_KIWI_LINK,
+  GITHUB_LINK,
+  TEQUILA_LINK,
+  DOCUMENTATION_LINK,
 } from '@kiwicom/margarita-config';
 
+import Content from '../components/Content';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
+
+const links = [
+  { title: 'GitHub', link: GITHUB_LINK },
+  { title: 'Tequila', link: TEQUILA_LINK },
+  { title: 'Documentation', link: DOCUMENTATION_LINK },
+  { title: 'Code.kiwi.com', link: CODE_KIWI_LINK },
+];
 
 const icons = [
   {
@@ -42,21 +53,33 @@ const icons = [
 export default function Footer() {
   return (
     <Container>
+      <LinksWrapper>
+        {links.map(el => {
+          return (
+            <Button type="white" key={el.title}>
+              <LinkWithoutStyle href={el.link}>{el.title}</LinkWithoutStyle>
+            </Button>
+          );
+        })}
+      </LinksWrapper>
       <Separator />
-      <FooterContainer>
-        <FooterLeftContainer>
-          <a href={CODE_KIWI_LINK}>
-            <Logo src="/static/logo.png" alt="Logo" />
-          </a>
-        </FooterLeftContainer>
-        <FooterRightContainer>
-          {icons.map(icon => (
-            <a href={icon.url} key={icon.url}>
-              {icon.icon}
+      <Content>
+        <FooterContainer>
+          <FooterLeftContainer>
+            <a href={CODE_KIWI_LINK}>
+              <Logo src="/static/logo_colored.png" alt="Logo" />
             </a>
-          ))}
-        </FooterRightContainer>
-      </FooterContainer>
+          </FooterLeftContainer>
+
+          <FooterRightContainer>
+            {icons.map(icon => (
+              <a href={icon.url} key={icon.url}>
+                {icon.icon}
+              </a>
+            ))}
+          </FooterRightContainer>
+        </FooterContainer>
+      </Content>
     </Container>
   );
 }
@@ -64,6 +87,8 @@ export default function Footer() {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
+  align-items: center;
 `;
 
 const FooterContainer = styled.div`
@@ -71,6 +96,7 @@ const FooterContainer = styled.div`
   align-items: center;
   flex-direction: column;
   height: 25vh;
+
   justify-content: space-evenly;
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     flex-direction: row;
@@ -79,20 +105,26 @@ const FooterContainer = styled.div`
   }
 `;
 
+const LinksWrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 0 10px 0;
+  flex-wrap: wrap;
+`;
+
+const LinkWithoutStyle = styled.a`
+  text-decoration: none;
+  color: ${defaultTokens.colorTextButtonSecondary};
+`;
+
 const Logo = styled.img`
   height: 42px;
-  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    padding-left: 48px;
-  }
 `;
 
 const FooterLeftContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
-    width: 44vw;
-  }
 `;
 
 const FooterRightContainer = styled.div`
