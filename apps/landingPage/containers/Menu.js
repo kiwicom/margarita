@@ -14,6 +14,7 @@ export default function Menu() {
           <Logo src="/static/logo_colored.png" alt="Kiwi.com logo" />
           <MenuGroup>
             <MenuItem href="#features">Features</MenuItem>
+            <MenuItem href="#developer-experience">Dev experience</MenuItem>
             <MenuItem href="#playground">Try it out</MenuItem>
             <MenuItem href={GITHUB_LINK}>Github</MenuItem>
           </MenuGroup>
@@ -55,8 +56,8 @@ const MenuGroup = styled.div`
 `;
 
 const MenuItem = styled.a`
-  width: 100px;
   color: #000;
+  padding-left: 30px;
   text-decoration: none;
   &:hover {
     color: #555;

@@ -2,16 +2,7 @@
 
 import React from 'react';
 import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet, createGlobalStyle } from 'styled-components';
-
-const GlobalStyle = createGlobalStyle`
-  body {
-    margin: 0;
-    -webkit-font-smoothing: antialiased;
-    @import url('https://images.kiwi.com/fonts/circular-pro/style.css');
-    font-family: 'Circular Pro', sans-serif;
-  }
-`;
+import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: Function) {
@@ -44,7 +35,6 @@ export default class CustomDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <GlobalStyle />
         </body>
       </html>
     );
