@@ -32,6 +32,9 @@ const server = new ApolloServer({
   },
   playground: {
     endpoint: playgroundEndpoint,
+    settings: {
+      'editor.theme': 'light',
+    },
   },
   introspection: true,
 });
