@@ -10,9 +10,11 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import type { BaggageBundles_itinerary as BaggageBundlesType } from './__generated__/BaggageBundles_itinerary.graphql';
 import Header from './Header';
 import BaggageBundle from './BaggageBundle';
+import type { BaggageBundle_bagOption as BaggageBundleType } from './__generated__/BaggageBundle_bagOption.graphql';
 
 type Props = {|
   +itinerary: ?BaggageBundlesType,
+  +onSelectedBaggageBundle: (?BaggageBundleType) => void,
 |};
 
 type State = {
@@ -24,8 +26,9 @@ class BaggageBundles extends React.Component<Props, State> {
     selectedBagOption: 0,
   };
 
-  handleToggleCheck = (index: number) => {
+  handleToggleCheck = (index: number, bagOption: ?BaggageBundleType) => {
     this.setState({ selectedBagOption: index });
+    this.props.onSelectedBaggageBundle(bagOption);
   };
 
   render() {

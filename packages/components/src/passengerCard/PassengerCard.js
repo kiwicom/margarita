@@ -10,6 +10,8 @@ import {
   ExtendedTouchable,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { format } from 'date-fns';
+import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
@@ -42,14 +44,20 @@ class PassengerCard extends React.Component<Props> {
     name: '',
     gender: 'other',
     nationality: '',
-    dateOfBirth: '',
+    dateOfBirth: null,
     id: '',
     bags: null,
   };
 
   handleActionPress = () => {
-    if (this.props.onActionPress) {
-      this.props.onActionPress(this.props.id);
+    if (this.props.onEditPress) {
+      this.props.onEditPress(this.props.id);
+    }
+  };
+
+  handleSecondaryActionPress = () => {
+    if (this.props.onDeletePress) {
+      this.props.onDeletePress(this.props.id);
     }
   };
 
@@ -63,14 +71,16 @@ class PassengerCard extends React.Component<Props> {
       insurance,
       passengerCount,
       bags,
-      actionIconName,
-      onActionPress,
+      editIconName,
+      deleteIconName,
+      onEditPress,
+      onDeletePress,
       visaRequired,
     } = this.props;
     const newPassenger = `${passengerCount}. Passenger`;
     const title = getTitle(gender);
-    const passengerWithTitle = `${title} ${name}`;
-    const passenger = name ? passengerWithTitle : newPassenger;
+    const passengerWithTitle = `${title} ${name ?? ''}`;
+    const passenger = name !== null ? passengerWithTitle : newPassenger;
 
     return (
       <View style={styles.container}>
@@ -80,10 +90,18 @@ class PassengerCard extends React.Component<Props> {
             <Text style={styles.passengerName} size="large">
               {passenger}
             </Text>
-            {onActionPress && actionIconName && (
+            {onEditPress && editIconName && (
               <ExtendedTouchable onPress={this.handleActionPress}>
                 <Icon
-                  name={actionIconName}
+                  name={editIconName}
+                  color={defaultTokens.backgroundButtonPrimary}
+                />
+              </ExtendedTouchable>
+            )}
+            {onDeletePress && deleteIconName && (
+              <ExtendedTouchable onPress={this.handleSecondaryActionPress}>
+                <Icon
+                  name={deleteIconName}
                   color={defaultTokens.backgroundButtonPrimary}
                 />
               </ExtendedTouchable>
@@ -92,16 +110,20 @@ class PassengerCard extends React.Component<Props> {
 
           <View style={styles.containerTop}>
             <PassengerCardDetail
-              value={nationality}
+              value={nationality ?? '-'}
               label="Nationality"
               style="normal"
             />
             <PassengerCardDetail
-              value={dateOfBirth}
+              value={dateOfBirth ? format(dateOfBirth, US_DATE_FORMAT) : '-'}
               label="Date of birth"
               style="normal"
             />
-            <PassengerCardDetail value={id} label="ID" style="id_row_wrapper" />
+            <PassengerCardDetail
+              value={id ?? ''}
+              label="ID"
+              style="id_row_wrapper"
+            />
           </View>
           <Separator />
           <View style={styles.containerBottom}>
@@ -111,11 +133,11 @@ class PassengerCard extends React.Component<Props> {
               </Text>
               <View>
                 {bags &&
-                  bags.map(bag => (
+                  bags.map((bag, idx) => (
                     <BagInformation
-                      key={bag.type}
-                      count={bag.count}
-                      type={bag.type}
+                      key={`${bag.dimensions}, ${idx}`}
+                      count={bag.quantity}
+                      type={`${bag.dimensions}, ${bag.weight}`}
                     />
                   ))}
               </View>

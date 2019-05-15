@@ -1,25 +1,23 @@
 // @flow
 
 import { type IconNameType } from '@kiwicom/universal-components';
-
-export type Bag = {|
-  +count: number,
-  +type: string,
-|};
+import { type BaggageBundleType } from '@kiwicom/margarita-core';
 
 export type PassengerCardType = {|
-  +name: string,
+  +name: ?string,
   +gender: 'female' | 'male' | 'other',
-  +nationality: string,
-  +dateOfBirth: string,
-  +id: string,
+  +nationality: ?string,
+  +dateOfBirth: ?Date,
+  +id: ?string,
   +insurance?: ?string,
-  +bags: null | Array<Bag>,
+  +bags: null | Array<BaggageBundleType>,
   +passengerCount: number,
   +visaRequired?: ?boolean,
 |};
 
 export type PassengerCardActionType = {|
-  +actionIconName?: IconNameType,
-  +onActionPress?: (?string) => void,
+  +editIconName?: IconNameType,
+  +onEditPress?: (?string) => void,
+  +deleteIconName?: IconNameType,
+  +onDeletePress?: (?string) => void,
 |};
