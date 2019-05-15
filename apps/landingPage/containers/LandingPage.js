@@ -8,7 +8,7 @@ import Footer from './Footer';
 import Menu from './Menu';
 import Features from './Features';
 import Playground from './Playground';
-import DeveloperInfo from './DeveloperInfo';
+import DeveloperExperience from './DeveloperExperience';
 
 export default function LandingPage() {
   return (
@@ -16,7 +16,7 @@ export default function LandingPage() {
       <Menu />
       <Header />
       <Features />
-      <DeveloperInfo />
+      <DeveloperExperience />
       <Playground />
       <Footer />
     </Container>
