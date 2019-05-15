@@ -34,28 +34,6 @@ Object {
       onChange={[Function]}
       value={0}
     />
-    <Text
-      size="large"
-      style={
-        Object {
-          "color": "#171b1e",
-          "marginBottom": 12,
-          "marginTop": 24,
-          "paddingHorizontal": 16,
-        }
-      }
-      weight="bold"
-    >
-      Bags
-    </Text>
-    <PassengersInputsLine
-      icon="baggage-set"
-      label="Checked Bags"
-      max={2}
-      min={0}
-      onChange={[Function]}
-      value={0}
-    />
     <Component
       style={
         Object {

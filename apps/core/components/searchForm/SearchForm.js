@@ -187,7 +187,6 @@ const selectSearchContextState = ({
   tripType,
   adults,
   infants,
-  bags,
   limit,
 }: SearchContextState) => ({
   travelFrom,
@@ -199,7 +198,6 @@ const selectSearchContextState = ({
   tripType,
   adults,
   infants,
-  bags,
   limit,
 });
 

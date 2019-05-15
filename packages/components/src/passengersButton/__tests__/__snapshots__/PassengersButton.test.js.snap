@@ -50,20 +50,6 @@ Object {
       >
         4
       </Text>
-      <Icon
-        color="#7f91a8"
-        name="baggage-set"
-      />
-      <Text
-        style={
-          Object {
-            "color": "#171b1e",
-            "fontSize": 16,
-          }
-        }
-      >
-        1
-      </Text>
     </Component>
   </TouchableWithoutFeedback>,
 }

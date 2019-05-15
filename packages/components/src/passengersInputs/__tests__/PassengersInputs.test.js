@@ -7,7 +7,6 @@ import PassengersInputs from '../PassengersInputs';
 import {
   updateAdults,
   updateInfants,
-  updateBags,
   getMaxAdults,
   getMaxInfants,
   getMaxBags,
@@ -16,12 +15,10 @@ import {
 const testData0 = {
   adults: 7,
   infants: 2,
-  bags: 14,
 };
 const testData1 = {
   adults: 2,
   infants: 1,
-  bags: 1,
 };
 const onClose = jest.fn();
 const onSave = jest.fn();
@@ -50,7 +47,6 @@ it('renders', () => {
       <PassengersInputs
         adults={1}
         infants={0}
-        bags={0}
         onClosePress={jest.fn()}
         onSavePress={jest.fn()}
       />,
@@ -66,7 +62,6 @@ test('updateAdults > should increase value on increment when limit is not reache
   expect(updateAdults(testData1, 1)).toMatchObject({
     adults: 3,
     infants: 1,
-    bags: 1,
   });
 });
 
@@ -74,7 +69,6 @@ test('updateAdults > should return correct value on decrement', () => {
   expect(updateAdults(testData1, -1)).toMatchObject({
     adults: 1,
     infants: 1,
-    bags: 1,
   });
 });
 
@@ -84,14 +78,12 @@ test('updateAdults > should properly update all values on decrement when their l
       {
         adults: 4,
         infants: 4,
-        bags: 8,
       },
       -1,
     ),
   ).toMatchObject({
     adults: 3,
     infants: 3,
-    bags: 6,
   });
 });
 
@@ -101,14 +93,6 @@ test('updateInfants > should return correct value on increment', () => {
 
 test('updateInfants > should return correct value on decrement', () => {
   expect(updateInfants(testData0, -1).infants).toBe(1);
-});
-
-test('updateBags > should return correct value on increment', () => {
-  expect(updateBags(testData0, 1).bags).toBe(14);
-});
-
-test('updateBags > should return correct value on decrement', () => {
-  expect(updateBags(testData0, -1).bags).toBe(13);
 });
 
 test('getMaxAdults > should return correct max value', () => {

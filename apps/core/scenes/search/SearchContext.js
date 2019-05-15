@@ -24,7 +24,6 @@ type Props = {|
   +travelTo?: Array<Location>,
   +adults?: string,
   +infants?: string,
-  +bags?: string,
 |};
 
 type ParseFieldsParams = {|
@@ -34,7 +33,6 @@ type ParseFieldsParams = {|
   +returnDateTo?: ?string,
   +adults?: ?string,
   +infants?: ?string,
-  +bags?: ?string,
   +travelFrom?: ?string,
   +travelTo?: ?string,
 |};
@@ -46,13 +44,11 @@ type ParseFieldsReturn = {|
   +returnDateTo?: Date,
   +adults?: number,
   +infants?: number,
-  +bags?: number,
 |};
 
 export type PassengersData = {|
   adults: number,
   infants: number,
-  bags: number,
 |};
 
 export type Location = {|
@@ -129,7 +125,6 @@ const defaultState = {
   returnDateTo: defaultReturnDate,
   adults: 1,
   infants: 0,
-  bags: 0,
   actions: {
     switchFromTo: noop,
     setDepartureDate: noop,
@@ -169,7 +164,6 @@ export default class SearchContextProvider extends React.Component<
       returnDateTo,
       adults,
       infants,
-      bags,
       ...rest
     } = props;
     this.state = {
@@ -182,7 +176,6 @@ export default class SearchContextProvider extends React.Component<
         returnDateTo,
         adults,
         infants,
-        bags,
       }),
       actions: {
         switchFromTo: this.switchFromTo,
@@ -207,7 +200,6 @@ export default class SearchContextProvider extends React.Component<
       ...parseDate(params.returnDateTo, 'returnDateTo'),
       ...parseNumber(params.adults, 'adults'),
       ...parseNumber(params.infants, 'infants'),
-      ...parseNumber(params.bags, 'bags'),
     };
   };
 

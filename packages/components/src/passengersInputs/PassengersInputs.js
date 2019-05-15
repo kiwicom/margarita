@@ -11,10 +11,8 @@ import PassengersInputsLine from './PassengersInputsLine';
 import {
   updateAdults,
   updateInfants,
-  updateBags,
   getMaxAdults,
   getMaxInfants,
-  getMaxBags,
 } from './PassengersInputsHelpers';
 
 class PassengersInputs extends React.Component<Props, State> {
@@ -25,11 +23,10 @@ class PassengersInputs extends React.Component<Props, State> {
      * NOTE: Component is uncontrolled because parent form state should be updated
      * only after change is confirmed by the save button
      */
-    const { adults, infants, bags } = this.props;
+    const { infants, adults } = this.props;
     this.state = {
       adults,
       infants,
-      bags,
     };
   }
 
@@ -41,16 +38,12 @@ class PassengersInputs extends React.Component<Props, State> {
     this.setState(prevState => updateInfants(prevState, value));
   };
 
-  handleChangeBags = (value: number) => {
-    this.setState(prevState => updateBags(prevState, value));
-  };
-
   handleSavePress = () => {
     this.props.onSavePress({ ...this.state });
   };
 
   render() {
-    const { adults, infants, bags } = this.state;
+    const { adults, infants } = this.state;
     const { onClosePress } = this.props;
     return (
       <View>
@@ -73,17 +66,6 @@ class PassengersInputs extends React.Component<Props, State> {
           min={0}
           max={getMaxInfants(this.state)}
           onChange={this.handleChangeInfants}
-        />
-        <Text weight="bold" size="large" style={styles.sectionLabel}>
-          Bags
-        </Text>
-        <PassengersInputsLine
-          icon="baggage-set"
-          label="Checked Bags"
-          value={bags}
-          min={0}
-          max={getMaxBags(this.state)}
-          onChange={this.handleChangeBags}
         />
         <View style={styles.bottomButtons}>
           <View style={styles.buttonWrapper}>

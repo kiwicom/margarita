@@ -8,16 +8,10 @@ import PassengersButton from '../PassengersButton';
 
 const adults = 2;
 const infants = 2;
-const bags = 1;
 const onPress = jest.fn();
 
 const { getByType } = render(
-  <PassengersButton
-    adults={adults}
-    infants={infants}
-    bags={bags}
-    onPress={onPress}
-  />,
+  <PassengersButton adults={adults} infants={infants} onPress={onPress} />,
 );
 
 it('should execute onPress method', () => {
@@ -28,12 +22,7 @@ it('should execute onPress method', () => {
 it('renders', () => {
   expect(
     shallow(
-      <PassengersButton
-        adults={adults}
-        infants={infants}
-        bags={bags}
-        onPress={onPress}
-      />,
+      <PassengersButton adults={adults} infants={infants} onPress={onPress} />,
     ),
   ).toMatchSnapshot();
 });
