@@ -1,34 +1,28 @@
 // @flow
 
 import React from 'react';
-import { Separator } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
 
 import { BREAKPOINTS } from '../mediaQueriesConfig';
-import Highlight from '../components/Highlight';
 import AccentedText from '../components/AccentedText';
 import Content from '../components/Content';
+import Title from '../components/Title';
 
 export default function Playground() {
   return (
-    <>
-      <Separator />
-      <a name="playground" />
-      <Content id="playground">
-        <Container>
-          <AccentedText>
-            <Highlight>Try it out</Highlight> with GraphQL playground
-          </AccentedText>
+    <Content id="playground">
+      <Title>Try Margarita</Title>
+      <Container>
+        <AccentedText>See GraphQL in action</AccentedText>
 
-          <WrapperIframe>
-            <Iframe
-              title="GraphQL playground"
-              src="https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql"
-            />
-          </WrapperIframe>
-        </Container>
-      </Content>
-    </>
+        <WrapperIframe>
+          <Iframe
+            title="GraphQL playground"
+            src="https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql"
+          />
+        </WrapperIframe>
+      </Container>
+    </Content>
   );
 }
 const Container = styled.div`

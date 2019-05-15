@@ -2,7 +2,9 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
+import Scrollspy from 'react-scrollspy';
 import { GITHUB_LINK } from '@kiwicom/margarita-config';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Content from '../components/Content';
 
@@ -11,12 +13,22 @@ export default function Menu() {
     <Container>
       <Content>
         <Rows>
-          <Logo src="/static/logo_colored.png" alt="Kiwi.com logo" />
+          <a href="#">
+            <Logo src="/static/logo_colored.png" alt="Kiwi.com logo" />
+          </a>
           <MenuGroup>
-            <MenuItem href="#features">Features</MenuItem>
-            <MenuItem href="#developer-experience">Dev experience</MenuItem>
-            <MenuItem href="#playground">Try it out</MenuItem>
-            <MenuItem href={GITHUB_LINK}>Github</MenuItem>
+            <Scrollspy
+              items={['features', 'developer-experience', 'playground']}
+              currentClassName="active"
+            >
+              <MenuItem href="#features">Features</MenuItem>
+              <MenuItem href="#developer-experience">Tech</MenuItem>
+              <MenuItem href="#playground">Try Margarita</MenuItem>
+            </Scrollspy>
+            <MenuItemButton href={GITHUB_LINK}>
+              Github
+              <GithubLogo src="/static/github-black.png" alt="Github" />
+            </MenuItemButton>
           </MenuGroup>
         </Rows>
       </Content>
@@ -36,7 +48,13 @@ const Logo = styled.img`
   height: 36px;
   padding-top: 2px;
 `;
+const GithubLogo = styled.img`
+  height: 18px;
 
+  padding-left: ${defaultTokens.spaceXSmall};
+  position: relative;
+  top: 3px;
+`;
 const Container = styled.div`
   width: 100vw;
   position: fixed;
@@ -46,20 +64,33 @@ const Container = styled.div`
   height: 50px;
   justify-content: center;
   align-items: center;
-  display: flex;
+  display: none;
   -webkit-backdrop-filter: blur(10px);
+  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
+    display: flex;
+  }
 `;
 
 const MenuGroup = styled.div`
   flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
   display: flex;
 `;
 
 const MenuItem = styled.a`
   color: #000;
-  padding-left: 30px;
   text-decoration: none;
-  &:hover {
-    color: #555;
+  padding: 6px 15px;
+  font-weight: 500;
+  &.active {
+    color: ${defaultTokens.paletteProductNormal};
   }
+  &:hover {
+    color: ${defaultTokens.paletteBlueNormal};
+  }
+`;
+
+const MenuItemButton = styled(MenuItem)`
+  margin-left: 30px;
 `;

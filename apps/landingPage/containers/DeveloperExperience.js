@@ -5,10 +5,12 @@ import styled from 'styled-components';
 
 import Content from '../components/Content';
 import Highlight from '../components/Highlight';
+import Title from '../components/Title';
 
 export default function DeveloperInfo() {
   return (
     <Content id="developer-experience">
+      <Title>Developer experience</Title>
       <Items>
         <Item>
           <ImageContainer>
@@ -64,7 +66,6 @@ export default function DeveloperInfo() {
   );
 }
 const Items = styled.div`
-  margin: 60px 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
