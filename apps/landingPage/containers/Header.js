@@ -10,44 +10,9 @@ import {
 import styled from 'styled-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import LogoCard from '../components/LogoCard';
+import LogoCards from '../components/LogoCards';
 import Content from '../components/Content';
 
-const logos = [
-  {
-    icon: (
-      <img
-        src="/static/react-logo.png"
-        alt="React Native"
-        style={{ height: '48px' }}
-      />
-    ),
-    title: 'React Native',
-    text: 'for IOS, Android and web',
-  },
-  {
-    icon: (
-      <img
-        src="/static/graphql-logo.png"
-        alt="Graphql"
-        style={{ height: '48px' }}
-      />
-    ),
-    title: 'GraphQL',
-    text: 'server',
-  },
-  {
-    icon: (
-      <img
-        src="static/tequila-logo.png"
-        alt="Tequila"
-        style={{ height: '48px' }}
-      />
-    ),
-    title: 'Tequila',
-    text: 'API from Kiwi.com',
-  },
-];
 export default function Header() {
   return (
     <>
@@ -93,16 +58,7 @@ export default function Header() {
         </Content>
       </Container>
       <Content>
-        <Logos>
-          {logos.map(logo => (
-            <LogoCard
-              key={logo.title}
-              icon={logo.icon}
-              title={logo.title}
-              text={logo.text}
-            />
-          ))}
-        </Logos>
+        <LogoCards />
       </Content>
       <Separator />
     </>
@@ -137,23 +93,24 @@ const UpperHeader = styled.div`
 const WhiteText = styled.div`
   color: #fff;
 `;
+
 const Text = styled.div`
   font-size: 20px;
   margin-bottom: 35px;
 `;
+
 const Motto = styled.div`
   font-size: 35px;
   font-weight: 700;
   margin-bottom: 30px;
   white-space: pre-wrap;
-
   margin-bottom: 60px;
   color: white;
-
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
     font-size: 38px;
   }
 `;
+
 const Columns = styled.div`
   z-index: 2;
   flex-direction: row;
@@ -180,17 +137,6 @@ const ProductName = styled.span`
   background-color: rgba(255, 255, 255, 0.9);
   padding: ${defaultTokens.spaceXXSmall} ${defaultTokens.spaceXSmall};
   color: ${defaultTokens.paletteProductNormal};
-`;
-
-const Logos = styled.div`
-  display: flex;
-  flex-direction: column;
-  font-size: 2em;
-  padding: 20px 0;
-  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
-    flex-direction: row;
-    padding-right: ${phoneWidthBuffer}px;
-  }
 `;
 
 const GithubLogo = styled.img`
