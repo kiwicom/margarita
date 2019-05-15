@@ -49,6 +49,7 @@ type Props = {
   +limit: number,
   +setAlertContent: (alertContent: AlertContent | null) => void,
   +onSubmit?: SearchParameters => void,
+  +showButton: boolean,
 };
 
 class SearchForm extends React.Component<Props> {
@@ -137,13 +138,15 @@ class SearchForm extends React.Component<Props> {
           <Placepickers />
           <Datepickers />
           <View style={[styles.bottom, desktopLayout && styles.bottomDesktop]}>
-            <Button
-              onPress={this.handleSubmitPress}
-              label="Search"
-              rightIcon={
-                Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
-              }
-            />
+            {this.props.showButton && (
+              <Button
+                onPress={this.handleSubmitPress}
+                label="Search"
+                rightIcon={
+                  Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
+                }
+              />
+            )}
           </View>
         </View>
       </>

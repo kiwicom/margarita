@@ -179,7 +179,7 @@ class Results extends React.Component<Props> {
               desktopLayout && styles.desktopSearchForm,
             ]}
           >
-            <SearchForm onSubmit={noop} />
+            <SearchForm showButton={false} onSubmit={noop} />
           </View>
         ) : (
           <SearchParamsSummary
@@ -232,7 +232,7 @@ const styles = StyleSheet.create({
   },
   desktopSearchForm: {
     web: {
-      paddingHorizontal: 125,
+      paddingLeft: 125,
     },
   },
 });
