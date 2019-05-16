@@ -16,7 +16,8 @@ import {
 
 const passengerCards = [
   {
-    name: 'John Doe',
+    name: 'John',
+    lastName: 'Doe',
     gender: 'male',
     nationality: 'Russian',
     dateOfBirth: new Date('22/04/1980'),
@@ -37,7 +38,8 @@ const passengerCards = [
     visaRequired: true,
   },
   {
-    name: 'Jana Nováková',
+    name: 'Jana',
+    lastName: 'Nováková',
     gender: 'female',
     nationality: 'Czech',
     dateOfBirth: new Date('1980-06-22'),
@@ -58,7 +60,8 @@ const passengerCards = [
     visaRequired: false,
   },
   {
-    name: 'Martin Došek',
+    name: 'Martin',
+    lastName: 'Došek',
     gender: 'male',
     nationality: 'Czech',
     dateOfBirth: new Date('1984-06-12'),

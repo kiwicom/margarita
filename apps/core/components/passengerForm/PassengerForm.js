@@ -27,7 +27,9 @@ import type { PassengerForm_itinerary as PassengerFormType } from './__generated
 type Props = {|
   +itinerary: ?PassengerFormType,
   +isVisible: boolean,
+  +isEditing: boolean,
   +onRequestClose: () => void,
+  +prefillData: ?PassengerCardType,
   +onRequestSave: PassengerCardType => void,
   +setAlertContent: (alertContent: AlertContent | null) => void,
 |};
@@ -48,22 +50,42 @@ const nationalityData = [
   },
 ];
 
+const initialFormState = {
+  gender: 'male',
+  name: null,
+  lastName: null,
+  id: null,
+  nationality: null,
+  dateOfBirth: null,
+  bags: null,
+  passengerCount: 1,
+};
+
 type State = {
   ...PassengerCardType,
   lastName: ?string,
+  hasPrefilledState: boolean,
 };
 
 class PassengerForm extends React.Component<Props, State> {
   state = {
-    gender: 'male',
-    name: null,
-    lastName: null,
-    id: null,
-    nationality: null,
-    dateOfBirth: null,
-    bags: null,
-    passengerCount: 1,
+    ...initialFormState,
+    hasPrefilledState: false,
   };
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    // reset form into initial state when closing
+    if (!props.isVisible) {
+      return { ...initialFormState, hasPrefilledState: false };
+    }
+    const editModeOpened = props.isEditing && !state.hasPrefilledState;
+    // If is in edit mode preload passenger data into the form state
+    if (editModeOpened) {
+      return { ...props.prefillData, hasPrefilledState: true };
+    }
+
+    return state;
+  }
 
   handleGenderChange = (gender: any) => {
     this.setState({ gender });
@@ -104,7 +126,8 @@ class PassengerForm extends React.Component<Props, State> {
       id,
       dateOfBirth,
       gender,
-      name: `${name ?? ''} ${lastName ?? ''}`,
+      name,
+      lastName,
       bags,
       passengerCount: 1,
     };
@@ -138,12 +161,14 @@ class PassengerForm extends React.Component<Props, State> {
               label="Given names"
               autoCorrect={false}
               type="text"
+              value={this.state.name}
               formLabelContainerStyle={styles.inputLabel}
             />
             <TextInput
               onChangeText={this.handleLastNameChange}
               label="Last name"
               autoCorrect={false}
+              value={this.state.lastName}
               type="text"
               formLabelContainerStyle={styles.inputLabel}
             />
@@ -152,6 +177,7 @@ class PassengerForm extends React.Component<Props, State> {
               label="Passport or ID number"
               autoCorrect={false}
               type="text"
+              value={this.state.id}
               formLabelContainerStyle={styles.inputLabel}
             />
             <DateInput

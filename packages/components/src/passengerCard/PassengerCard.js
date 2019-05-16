@@ -12,6 +12,7 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format } from 'date-fns';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
+import { type BaggageBundleType } from '@kiwicom/margarita-core';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
@@ -42,6 +43,7 @@ class PassengerCard extends React.Component<Props> {
   static defaultProps = {
     passengerCount: 1,
     name: '',
+    lastName: '',
     gender: 'other',
     nationality: '',
     dateOfBirth: null,
@@ -61,9 +63,13 @@ class PassengerCard extends React.Component<Props> {
     }
   };
 
+  parseBagType = (bag: BaggageBundleType) =>
+    `${bag.dimensions ? `${bag.dimensions},` : ''} ${bag.weight ?? ''}`;
+
   render() {
     const {
       name,
+      lastName,
       gender,
       nationality,
       dateOfBirth,
@@ -79,7 +85,7 @@ class PassengerCard extends React.Component<Props> {
     } = this.props;
     const newPassenger = `${passengerCount}. Passenger`;
     const title = getTitle(gender);
-    const passengerWithTitle = `${title} ${name ?? ''}`;
+    const passengerWithTitle = `${title} ${name ?? ''} ${lastName ?? ''}`;
     const passenger = name !== null ? passengerWithTitle : newPassenger;
 
     return (
@@ -91,12 +97,14 @@ class PassengerCard extends React.Component<Props> {
               {passenger}
             </Text>
             {onEditPress && editIconName && (
-              <ExtendedTouchable onPress={this.handleActionPress}>
-                <Icon
-                  name={editIconName}
-                  color={defaultTokens.backgroundButtonPrimary}
-                />
-              </ExtendedTouchable>
+              <View style={styles.actionIcon}>
+                <ExtendedTouchable onPress={this.handleActionPress}>
+                  <Icon
+                    name={editIconName}
+                    color={defaultTokens.backgroundButtonPrimary}
+                  />
+                </ExtendedTouchable>
+              </View>
             )}
             {onDeletePress && deleteIconName && (
               <ExtendedTouchable onPress={this.handleSecondaryActionPress}>
@@ -135,9 +143,9 @@ class PassengerCard extends React.Component<Props> {
                 {bags &&
                   bags.map((bag, idx) => (
                     <BagInformation
-                      key={`${bag.dimensions}, ${idx}`}
+                      key={idx}
                       count={bag.quantity}
-                      type={`${bag.dimensions}, ${bag.weight}`}
+                      type={this.parseBagType(bag)}
                     />
                   ))}
               </View>
@@ -174,6 +182,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     height: 60,
+  },
+  actionIcon: {
+    paddingEnd: parseInt(defaultTokens.spaceLarge, 10),
   },
   containerBottom: {
     flexDirection: 'row',
