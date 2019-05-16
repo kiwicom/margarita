@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet } from '@kiwicom/universal-components';
+import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import type {
@@ -14,7 +14,7 @@ import AddPassengerButton from './AddPassengerButton';
 
 type Props = {|
   +onAddPassengerPress?: () => void,
-  +passengerCards: ?Array<?PassengerCardType>,
+  +passengerCards: ?Array<PassengerCardType>,
   ...PassengerCardActionType,
 |};
 
@@ -24,8 +24,10 @@ export default class PassengerCards extends React.Component<Props> {
     return (
       <PassengerCard
         key={passengerCard.id}
-        actionIconName={this.props.actionIconName}
-        onActionPress={this.props.onActionPress}
+        editIconName={this.props.editIconName}
+        onEditPress={this.props.onEditPress}
+        deleteIconName={this.props.deleteIconName}
+        onDeletePress={this.props.onDeletePress}
         {...passengerCard}
       />
     );
@@ -38,7 +40,18 @@ export default class PassengerCards extends React.Component<Props> {
     const { onAddPassengerPress, passengerCards } = this.props;
     return (
       <View style={styles.container}>
-        {passengerCards && passengerCards.map(this.renderPassengerCard)}
+        {passengerCards && passengerCards.length ? (
+          passengerCards.map(this.renderPassengerCard)
+        ) : (
+          <Text
+            align="center"
+            size="large"
+            type="info"
+            style={styles.noPassengersText}
+          >
+            There are currently no passengers
+          </Text>
+        )}
 
         {onAddPassengerPress && (
           <View style={styles.addButtonContainer}>
@@ -54,6 +67,9 @@ const styles = StyleSheet.create({
   addButtonContainer: {
     alignItems: 'center',
     marginBottom: parseFloat(defaultTokens.spaceSmall),
+  },
+  noPassengersText: {
+    padding: parseInt(defaultTokens.spaceMedium, 10),
   },
   container: {
     android: {

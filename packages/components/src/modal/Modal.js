@@ -14,6 +14,7 @@ export type Props = {|
   +children: React.Node,
   +isVisible: boolean,
   +wrapperStyle?: StylePropType,
+  +modalStyle?: StylePropType,
   +onClose?: () => void,
 |};
 
@@ -21,6 +22,7 @@ export default function Modal({
   children,
   isVisible,
   wrapperStyle,
+  modalStyle,
   onClose,
 }: Props) {
   const centerContent = Platform.OS === 'web' || Device.isTablet();
@@ -29,7 +31,7 @@ export default function Modal({
       isVisible={isVisible}
       onRequestClose={onClose}
       onBackdropPress={onClose}
-      style={[styles.modal, centerContent && styles.modalCentered]}
+      style={[styles.modal, centerContent && styles.modalCentered, modalStyle]}
     >
       <View
         style={[

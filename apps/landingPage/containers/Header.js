@@ -23,7 +23,7 @@ export default function Header() {
           </UpperHeader>
           <Columns>
             <Headline>
-              <Motto inverted={true} element="div">
+              <Motto>
                 Use <ProductName>Margarita</ProductName> and create your own
                 Kiwi.com for free
               </Motto>
@@ -38,12 +38,13 @@ export default function Header() {
                 <ButtonGroup>
                   <Button
                     circled
-                    width={140}
+                    width={120}
                     href="https://kiwicom.github.io/margarita/docs/"
                   >
                     Read more
                   </Button>
                   <ButtonLink
+                    circled
                     type="secondary"
                     href="https://github.com/kiwicom/margarita"
                   >
@@ -74,7 +75,6 @@ const Container = styled.div`
   height: ${planeImageHeightMobile}px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.75)),
     url('/static/airport.jpg') no-repeat 40% 70%;
-
   background-size: cover;
   display: flex;
   z-index: 1;
@@ -100,14 +100,20 @@ const Text = styled.div`
 `;
 
 const Motto = styled.div`
-  font-size: 35px;
   font-weight: 700;
-  margin-bottom: 30px;
   white-space: pre-wrap;
-  margin-bottom: 60px;
   color: white;
+  margin-bottom: ${defaultTokens.spaceXLarge};
+  font-size: ${defaultTokens.fontSizeHeadingTitle1};
+  @media (min-width: ${defaultTokens.widthBreakpointMediumMobile}px) {
+    font-size: 35px;
+  }
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
-    font-size: 38px;
+    margin-bottom: 60px;
+    font-size: 45px;
+  }
+  @media (min-width: ${defaultTokens.widthBreakpointLargeDesktop}px) {
+    font-size: 60px;
   }
 `;
 
@@ -127,7 +133,7 @@ const Logo = styled.img`
 const Headline = styled.div`
   margin: 0;
   padding-right: 0px;
-  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
+  @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
     padding-right: ${phoneWidthBuffer}px;
   }
 `;
@@ -155,7 +161,7 @@ const PhoneImage = styled.img`
   display: none;
   height: 500px;
   filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.5));
-  @media (min-width: ${defaultTokens.widthBreakpointTablet}px) {
+  @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
     display: block;
   }
 `;

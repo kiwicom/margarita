@@ -8,13 +8,29 @@ import PassengerCard from '../PassengerCard';
 const name = 'John Doe';
 const gender = 'male';
 const nationality = 'Russian';
-const dateOfBirth = '22/04/1980';
+const dateOfBirth = new Date('04-12-1980');
 const id = 'DF45SV9';
 const insurance = 'Travel Inusurance Name';
 const passengerCount = 1;
 const bags = [
-  { count: 2, type: '40x15x30cm, 3kg' },
-  { count: 1, type: '55x20x40cm, 8kg' },
+  {
+    quantity: 1,
+    dimensions: '11 x 32 x 70 cm',
+    weight: '10 kg',
+    price: {
+      amount: 84,
+      currency: 'EUR',
+    },
+  },
+  {
+    quantity: 2,
+    dimensions: '40 x 52 x 78 cm',
+    weight: '10 kg',
+    price: {
+      amount: 84,
+      currency: 'EUR',
+    },
+  },
 ];
 
 it('renders with passenger info', () => {

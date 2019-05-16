@@ -15,14 +15,14 @@ import { BAG_TYPE } from './BagTypes';
 type Props = {|
   +bagOption: ?BaggageBundleType,
   +bagIndex: number,
-  +onToggleCheck: number => void,
+  +onToggleCheck: (number, ?BaggageBundleType) => void,
   +selected: boolean,
 |};
 
 class BaggageBundle extends React.Component<Props> {
   handleToggleCheck = () => {
-    const { bagIndex, onToggleCheck } = this.props;
-    onToggleCheck(bagIndex);
+    const { bagIndex, onToggleCheck, bagOption } = this.props;
+    onToggleCheck(bagIndex, bagOption);
   };
 
   render() {
