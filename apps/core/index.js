@@ -26,9 +26,11 @@ export {
 } from './scenes/search/SearchContext';
 export {
   default as UserContextProvider,
+  withUserContext,
 } from './components/userContext/UserContext';
 
 // Types
 export type {
   default as BaggageBundleType,
 } from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
+export type { UserContextState } from './components/userContext/UserContext';
