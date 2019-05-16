@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { Button, Separator } from '@kiwicom/orbit-components/lib/';
+import { Separator } from '@kiwicom/orbit-components/lib/';
 import {
   Instagram,
   Linkedin,
@@ -16,20 +16,10 @@ import {
   KIWI_LINKEDIN_LINK,
   CODE_KIWI_FACEBOOK_LINK,
   CODE_KIWI_LINK,
-  GITHUB_LINK,
-  TEQUILA_LINK,
-  DOCUMENTATION_LINK,
 } from '@kiwicom/margarita-config';
 
 import Content from '../components/Content';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
-
-const links = [
-  { title: 'GitHub', link: GITHUB_LINK },
-  { title: 'Tequila', link: TEQUILA_LINK },
-  { title: 'Documentation', link: DOCUMENTATION_LINK },
-  { title: 'Code.kiwi.com', link: CODE_KIWI_LINK },
-];
 
 const icons = [
   {
@@ -53,15 +43,6 @@ const icons = [
 export default function Footer() {
   return (
     <Container>
-      <LinksWrapper>
-        {links.map(el => {
-          return (
-            <Button type="white" key={el.title}>
-              <LinkWithoutStyle href={el.link}>{el.title}</LinkWithoutStyle>
-            </Button>
-          );
-        })}
-      </LinksWrapper>
       <Separator />
       <Content>
         <FooterContainer>
@@ -89,6 +70,7 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   align-items: center;
+  margin-top: 30px;
 `;
 
 const FooterContainer = styled.div`
@@ -103,18 +85,6 @@ const FooterContainer = styled.div`
     height: 105px;
     justify-content: space-between;
   }
-`;
-
-const LinksWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  padding: 40px 0 10px 0;
-  flex-wrap: wrap;
-`;
-
-const LinkWithoutStyle = styled.a`
-  text-decoration: none;
-  color: ${defaultTokens.colorTextButtonSecondary};
 `;
 
 const Logo = styled.img`

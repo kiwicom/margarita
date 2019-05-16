@@ -7,6 +7,7 @@ import { GITHUB_LINK } from '@kiwicom/margarita-config';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import Content from '../components/Content';
+import GithubLogo from '../components/GithubLogo';
 
 export default function Menu() {
   return (
@@ -18,17 +19,18 @@ export default function Menu() {
           </a>
           <MenuGroup>
             <Scrollspy
-              items={['features', 'developer-experience', 'playground']}
+              items={['features', 'developer-experience', 'try']}
               currentClassName="active"
             >
               <MenuItem href="#features">Features</MenuItem>
-              <MenuItem href="#developer-experience">Tech</MenuItem>
-              <MenuItem href="#playground">Try Margarita</MenuItem>
+              <MenuItem href="#developer-experience">Technology</MenuItem>
+              <MenuItem href="#try">Try</MenuItem>
             </Scrollspy>
-            <MenuItemButton href={GITHUB_LINK}>
-              Github
-              <GithubLogo src="/static/github-black.png" alt="Github" />
-            </MenuItemButton>
+            <MenuItem href={GITHUB_LINK}>
+              <GithubLogoWrapper>
+                <GithubLogo />
+              </GithubLogoWrapper>
+            </MenuItem>
           </MenuGroup>
         </Rows>
       </Content>
@@ -47,13 +49,6 @@ const Logo = styled.img`
   display: block;
   height: 36px;
   padding-top: 2px;
-`;
-const GithubLogo = styled.img`
-  height: 18px;
-
-  padding-left: ${defaultTokens.spaceXSmall};
-  position: relative;
-  top: 3px;
 `;
 const Container = styled.div`
   width: 100vw;
@@ -83,6 +78,7 @@ const MenuItem = styled.a`
   text-decoration: none;
   padding: 6px 15px;
   font-weight: 500;
+
   &.active {
     color: ${defaultTokens.paletteProductNormal};
   }
@@ -91,6 +87,8 @@ const MenuItem = styled.a`
   }
 `;
 
-const MenuItemButton = styled(MenuItem)`
-  margin-left: 30px;
+const GithubLogoWrapper = styled.span`
+  padding-left: ${defaultTokens.spaceXSmall};
+  position: relative;
+  top: 3px;
 `;

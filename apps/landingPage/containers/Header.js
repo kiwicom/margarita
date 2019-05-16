@@ -12,6 +12,7 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import LogoCards from '../components/LogoCards';
 import Content from '../components/Content';
+import GithubLogo from '../components/GithubLogo';
 
 export default function Header() {
   return (
@@ -19,7 +20,9 @@ export default function Header() {
       <Container>
         <Content>
           <UpperHeader>
-            <Logo src="/static/logo_white.png" alt="kiwi.com logo" />
+            <a href="#">
+              <Logo src="/static/logo_white.png" alt="Kiwi.com logo" />
+            </a>
           </UpperHeader>
           <Columns>
             <Headline>
@@ -36,20 +39,20 @@ export default function Header() {
               </Text>
               <ButtonWrapper>
                 <ButtonGroup>
-                  <Button
-                    circled
-                    width={120}
-                    href="https://kiwicom.github.io/margarita/docs/"
-                  >
+                  <Button circled width={120} href="#features">
                     Read more
                   </Button>
                   <ButtonLink
                     circled
+                    transparent
                     type="secondary"
                     href="https://github.com/kiwicom/margarita"
+                    external
                   >
-                    <GithubLogo src="/static/github.png" alt="Github" />
                     <WhiteText>View on GitHub</WhiteText>
+                    <GithubLogoWrapper>
+                      <GithubLogo type="light" />
+                    </GithubLogoWrapper>
                   </ButtonLink>
                 </ButtonGroup>
               </ButtonWrapper>
@@ -91,7 +94,7 @@ const UpperHeader = styled.div`
 `;
 
 const WhiteText = styled.div`
-  color: #fff;
+  color: ${defaultTokens.paletteWhite};
 `;
 
 const Text = styled.div`
@@ -145,9 +148,10 @@ const ProductName = styled.span`
   color: ${defaultTokens.paletteProductNormal};
 `;
 
-const GithubLogo = styled.img`
-  height: 24px;
-  padding-right: ${defaultTokens.spaceXSmall};
+const GithubLogoWrapper = styled.div`
+  padding-left: ${defaultTokens.spaceSmall};
+  position: relative;
+  top: ${defaultTokens.spaceXXXSmall};
 `;
 
 const ButtonWrapper = styled.div`

@@ -3,7 +3,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  font-size: 27px;
+  font-size: 21px;
   font-weight: 700;
-  line-height: 50px;
+  line-height: 35px;
 `;

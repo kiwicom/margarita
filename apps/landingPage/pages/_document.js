@@ -30,7 +30,7 @@ export default class CustomDocument extends Document {
       <html>
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" type="image/png" href="/static/logo_margarita.png" />
+          <link rel="icon" type="image/png" href="/static/favicon.ico" />
         </Head>
         <body>
           <Main />
