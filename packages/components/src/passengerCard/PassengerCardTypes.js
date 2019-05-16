@@ -5,6 +5,7 @@ import { type BaggageBundleType } from '@kiwicom/margarita-core';
 
 export type PassengerCardType = {|
   +name: ?string,
+  +lastName: ?string,
   +gender: 'female' | 'male' | 'other',
   +nationality: ?string,
   +dateOfBirth: ?Date,

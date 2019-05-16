@@ -21,12 +21,14 @@ type Props = {|
 type State = {|
   +isFormVisible: boolean,
   +passengerData: Array<PassengerCardType>,
+  +currentEditID: ?string,
 |};
 
 // @TODO: This data should not be mocked in the future. Remove it.
 const defaultPassengers = [
   {
-    name: 'John Doe',
+    name: 'John',
+    lastName: 'Doe',
     gender: 'male',
     nationality: 'Russian',
     dateOfBirth: new Date('1980-06-22'),
@@ -54,7 +56,8 @@ const defaultPassengers = [
     ],
   },
   {
-    name: 'Jana Nováková',
+    name: 'Jana',
+    lastName: 'Nováková',
     gender: 'female',
     nationality: 'Czech',
     dateOfBirth: new Date('1984-06-12'),
@@ -79,37 +82,49 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   state = {
     isFormVisible: false,
     passengerData: defaultPassengers,
+    currentEditID: '',
   };
 
-  handleFormSaveRequest = passenger => {
+  validateForm = passenger => {
     const existsID: boolean = !!this.state.passengerData.find(
       el => el.id === passenger.id,
     );
-    const validateForm = () => {
-      if (!(passenger.id && passenger.name)) {
-        return 'ID and Name are mandatory';
-      } else if (existsID) {
-        return 'A passenger with the same ID has already been added.';
-      }
-      return '';
-    };
-    const errorMessage = validateForm();
+    if (!(passenger.id && passenger.name)) {
+      return 'ID and Name are mandatory';
+    }
+    if (existsID && this.state.currentEditID !== passenger.id) {
+      return 'A passenger with the same ID has already been added.';
+    }
+    return '';
+  };
+
+  getNewPassengerData = passenger => {
+    // If we are editing, replace the passenger, else add it
+    const { currentEditID, passengerData } = this.state;
+    if (currentEditID) {
+      return passengerData.map(el =>
+        el.id === currentEditID ? passenger : el,
+      );
+    }
+    return [...passengerData, passenger];
+  };
+
+  handleFormSaveRequest = passenger => {
+    const errorMessage = this.validateForm(passenger);
     if (errorMessage) {
       this.props.setAlertContent({
         message: errorMessage,
       });
     } else {
-      this.setState(state => ({
-        passengerData: [...state.passengerData, passenger],
-      }));
+      this.setState({
+        passengerData: this.getNewPassengerData(passenger),
+      });
       this.toggleModal();
     }
   };
 
   handleEditPassenger = (id: ?string) => {
-    // @TODO
-    console.log('TODO: Edit passenger', id); // eslint-disable-line no-console
-    this.setState({ isFormVisible: true });
+    this.setState({ isFormVisible: true, currentEditID: id });
   };
 
   handleDeletePassenger = (id: ?string) => {
@@ -121,11 +136,15 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   };
 
   toggleModal = () => {
+    this.setState({ currentEditID: '' });
     this.setState(state => ({ isFormVisible: !state.isFormVisible }));
   };
 
   render() {
-    const { passengerData, isFormVisible } = this.state;
+    const { passengerData, isFormVisible, currentEditID } = this.state;
+    const prefillData = currentEditID
+      ? passengerData.find(el => el.id === currentEditID)
+      : null;
     return (
       <>
         <PassengerCards
@@ -137,6 +156,8 @@ class ResultDetailPassenger extends React.Component<Props, State> {
           onAddPassengerPress={this.toggleModal}
         />
         <PassengerForm
+          isEditing={!!currentEditID}
+          prefillData={prefillData}
           isVisible={isFormVisible}
           onRequestClose={this.toggleModal}
           onRequestSave={this.handleFormSaveRequest}
