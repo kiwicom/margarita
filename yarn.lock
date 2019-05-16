@@ -19473,14 +19473,13 @@ react-relay@^4.0.0:
     nullthrows "^1.1.0"
     relay-runtime "4.0.0"
 
-react-scrollspy@^3.4.0:
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/react-scrollspy/-/react-scrollspy-3.4.0.tgz#5cf2e5b3e5de2d268a9456dfbbebed77aa6358a2"
-  integrity sha512-l7XDF6ZWuP0X+pLw+i5V8akWph/IQZ6/fnPXPN2R/xsgbXzXLtC/3URNcxj/hKIRjQpdYMrJR2VKqMkw2nnTvQ==
+react-scroll@^1.7.11:
+  version "1.7.11"
+  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.11.tgz#0018c3a141b16a2db212086133c172bea1e63c24"
+  integrity sha512-MCWtt8KWTBzBlo9oFE7xgAhGcgbslsfQAuGZAfYlBTt3Pxi2CX+kh8OoTUVAuOwNlt9XkoWcvDTWQwtHzm2uOg==
   dependencies:
-    babel-runtime "^6.26.0"
-    classnames "^2.2.5"
-    prop-types "^15.5.10"
+    lodash.throttle "^4.1.1"
+    prop-types "^15.5.8"
 
 react-split-pane@^0.1.84:
   version "0.1.87"

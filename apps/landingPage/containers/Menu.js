@@ -2,35 +2,47 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
-import Scrollspy from 'react-scrollspy';
 import { GITHUB_LINK } from '@kiwicom/margarita-config';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { Link } from 'react-scroll';
 
 import Content from '../components/Content';
 import GithubLogo from '../components/GithubLogo';
+
+const sharedLinkProps = {
+  activeClass: 'active',
+  spy: true,
+  smooth: true,
+  duration: 500,
+};
 
 export default function Menu() {
   return (
     <Container>
       <Content>
         <Rows>
-          <a href="#">
+          <Link href="#" to="header" {...sharedLinkProps}>
             <Logo src="/static/logo_colored.png" alt="Kiwi.com logo" />
-          </a>
+          </Link>
           <MenuGroup>
-            <Scrollspy
-              items={['features', 'developer-experience', 'try']}
-              currentClassName="active"
+            <MenuItem href="#features" to="features" {...sharedLinkProps}>
+              Features
+            </MenuItem>
+            <MenuItem
+              href="#developer-experience"
+              to="developer-experience"
+              {...sharedLinkProps}
             >
-              <MenuItem href="#features">Features</MenuItem>
-              <MenuItem href="#developer-experience">Technology</MenuItem>
-              <MenuItem href="#try">Try</MenuItem>
-            </Scrollspy>
-            <MenuItem href={GITHUB_LINK}>
+              Technology
+            </MenuItem>
+            <MenuItem href="#try" to="try" {...sharedLinkProps}>
+              Try
+            </MenuItem>
+            <MenuItemButton href={GITHUB_LINK}>
               <GithubLogoWrapper>
                 <GithubLogo />
               </GithubLogoWrapper>
-            </MenuItem>
+            </MenuItemButton>
           </MenuGroup>
         </Rows>
       </Content>
@@ -73,7 +85,7 @@ const MenuGroup = styled.div`
   display: flex;
 `;
 
-const MenuItem = styled.a`
+const MenuItem = styled(Link)`
   color: #000;
   text-decoration: none;
   padding: 6px 15px;
@@ -85,6 +97,10 @@ const MenuItem = styled.a`
   &:hover {
     color: ${defaultTokens.paletteBlueNormal};
   }
+`;
+
+const MenuItemButton = styled.div`
+  padding: 6px 15px;
 `;
 
 const GithubLogoWrapper = styled.span`
