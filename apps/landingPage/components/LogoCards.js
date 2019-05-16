@@ -31,6 +31,8 @@ const Container = styled.div`
   padding: 20px 0;
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
     flex-direction: row;
+  }
+  @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
     padding-right: ${phoneWidthBuffer}px;
   }
 `;
