@@ -16,7 +16,6 @@ import {
 type Props = {|
   +adults: number,
   +infants: number,
-  +bags: number,
   +setPassengerData: ($ReadOnly<PassengersData>) => void,
 |};
 
@@ -38,14 +37,13 @@ class PassengersModal extends React.Component<Props, State> {
     this.setState(state => ({ showPassengerModal: !state.showPassengerModal }));
 
   render() {
-    const { adults, infants, bags } = this.props;
+    const { adults, infants } = this.props;
     return (
       <>
         <PassengersButton
           onPress={this.togglePassengerModal}
           adults={adults}
           infants={infants}
-          bags={bags}
         />
         <Modal
           isVisible={this.state.showPassengerModal}
@@ -54,7 +52,6 @@ class PassengersModal extends React.Component<Props, State> {
           <PassengersInputs
             adults={adults}
             infants={infants}
-            bags={bags}
             onSavePress={this.handlePassengersSave}
             onClosePress={this.togglePassengerModal}
           />
@@ -67,12 +64,10 @@ class PassengersModal extends React.Component<Props, State> {
 const select = ({
   adults,
   infants,
-  bags,
   actions: { setPassengerData },
 }: SearchContextState) => ({
   adults,
   infants,
-  bags,
   setPassengerData,
 });
 

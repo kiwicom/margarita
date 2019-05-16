@@ -12,7 +12,6 @@ export const updateAdults = (prevState: State, value: number) => {
   return {
     adults,
     infants: Math.min(prevState.infants, adults),
-    bags: Math.min(prevState.bags, adults * 2),
   };
 };
 
@@ -26,12 +25,6 @@ export const updateInfants = (prevState: State, value: number) => {
         MAX_PASSENGERS - prevState.adults,
       ),
     ),
-  };
-};
-
-export const updateBags = (prevState: State, value: number) => {
-  return {
-    bags: Math.max(0, Math.min(prevState.bags + value, prevState.adults * 2)),
   };
 };
 

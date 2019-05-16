@@ -12,19 +12,12 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import Text from '../text/Text';
 import type { Props } from './PassengersButtonTypes';
 
-export default function PassengersButton({
-  onPress,
-  adults,
-  infants,
-  bags,
-}: Props) {
+export default function PassengersButton({ onPress, adults, infants }: Props) {
   return (
     <TouchableWithoutFeedback onPress={onPress}>
       <View style={styles.container}>
         <Icon color={defaultTokens.colorIconSecondary} name="passengers" />
         <Text style={styles.text}>{adults + infants}</Text>
-        <Icon color={defaultTokens.colorIconSecondary} name="baggage-set" />
-        <Text style={styles.text}>{bags}</Text>
       </View>
     </TouchableWithoutFeedback>
   );

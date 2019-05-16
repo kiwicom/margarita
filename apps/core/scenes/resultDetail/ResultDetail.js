@@ -29,7 +29,7 @@ export default class ResultDetail extends React.Component<Props> {
         variables={{
           input: {
             bookingToken,
-            bags: 0, // @TODO - use real data from search context
+            bags: 0, //  @TODO - use data from passengers forms
             passengers: { adults, infants },
           },
         }}
