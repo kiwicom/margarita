@@ -13,15 +13,21 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import HeaderWithIcon from '../headerWithIcon/HeaderWithIcon';
 
 type Props = {|
-  onChangeEmail: string => void,
-  onChangePhoneNumber: string => void,
-  onChangeCountryCode: (?string) => void,
+  +phoneCountryCode: ?number,
+  +email: ?string,
+  +phoneNumber: ?number,
+  +onChangeEmail: string => void,
+  +onChangePhoneNumber: string => void,
+  +onChangeCountryCode: (?string) => void,
 |};
 
 export default function ContactDetailsForm({
   onChangeEmail,
   onChangePhoneNumber,
   onChangeCountryCode,
+  email,
+  phoneNumber,
+  phoneCountryCode,
 }: Props) {
   const phoneCountryCodeData = [
     {
@@ -33,6 +39,7 @@ export default function ContactDetailsForm({
       value: '+421',
     },
   ];
+
   return (
     <Card>
       <HeaderWithIcon label="Contact details" iconName="contact-email" />
@@ -42,12 +49,14 @@ export default function ContactDetailsForm({
           label="E-mail"
           type="email"
           autoCorrect={false}
+          value={email}
+          disabled={!!email}
         />
       </View>
       <View style={[styles.line, styles.row]}>
         <View style={styles.countryCode}>
           <Picker
-            selectedValue={null}
+            selectedValue={phoneCountryCode}
             optionsData={phoneCountryCodeData}
             onValueChange={onChangeCountryCode}
             placeholder="Select"
@@ -63,6 +72,7 @@ export default function ContactDetailsForm({
             label="Phone number"
             autoCorrect={false}
             type="number"
+            value={phoneNumber}
           />
         </View>
       </View>

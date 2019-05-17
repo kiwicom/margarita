@@ -15,6 +15,10 @@ import {
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { formatPrice } from '@kiwicom/margarita-localization';
 
+import {
+  withUserContext,
+  type UserContextState,
+} from '../../../components/userContext/UserContext';
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
 import type { ResultDetailContent_itinerary as ResultDetailContentType } from './__generated__/ResultDetailContent_itinerary.graphql';
@@ -23,18 +27,20 @@ import ItinerarySectorDetails from '../../../components/sectorDetails/ItineraryS
 type Props = {|
   +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
+  +userEmail: ?String,
 |};
 
 type State = {|
   +email: ?string,
   +phoneNumber: ?string,
   +phoneCountryCode: ?string,
+  +phoneNumber: ?number,
 |};
 
 class ResultDetailContent extends React.Component<Props, State> {
   state = {
     email: null,
-    phoneNumber: null,
+    phoneNumber: 111000111,
     phoneCountryCode: null,
   };
 
@@ -59,12 +65,16 @@ class ResultDetailContent extends React.Component<Props, State> {
       this.props.itinerary?.price?.amount,
       this.props.itinerary?.price?.currency,
     );
+
     return (
       <>
         <ContentContainer>
           <ItinerarySectorDetails itinerary={this.props.itinerary} />
           <ResultDetailPassenger itinerary={this.props.itinerary} />
           <ContactDetailsForm
+            phoneCountryCode={this.state.phoneCountryCode}
+            phoneNumber={this.state.phoneNumber}
+            email={this.props.userEmail}
             onChangeEmail={this.handleChangeEmail}
             onChangePhoneNumber={this.handleChangePhoneNumber}
             onChangeCountryCode={this.handleChangePhoneCountryCode}
@@ -95,16 +105,23 @@ class ResultDetailContent extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(withNavigation(ResultDetailContent), {
-  itinerary: graphql`
-    fragment ResultDetailContent_itinerary on ItineraryInterface {
-      isChecked
-      price {
-        currency
-        amount
-      }
-      ...ResultDetailPassenger_itinerary
-      ...ItinerarySectorDetails_itinerary
-    }
-  `,
+const selectUserContextState = ({ userEmail }: UserContextState) => ({
+  userEmail,
 });
+
+export default createFragmentContainer(
+  withNavigation(withUserContext(selectUserContextState)(ResultDetailContent)),
+  {
+    itinerary: graphql`
+      fragment ResultDetailContent_itinerary on ItineraryInterface {
+        isChecked
+        price {
+          currency
+          amount
+        }
+        ...ResultDetailPassenger_itinerary
+        ...ItinerarySectorDetails_itinerary
+      }
+    `,
+  },
+);

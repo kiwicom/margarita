@@ -99,7 +99,7 @@ export default class UserContextProvider extends React.Component<Props, State> {
 
   signOut = async () => {
     try {
-      await firebase.auth().signOut();
+      await firebase.auth().signOut(); // @TODO refactro to GoogleLoginHelper
     } catch (e) {
       // @TODO Handle sign-in error - show notification or message
     }
