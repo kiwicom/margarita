@@ -77,7 +77,7 @@ const logos = [
   {
     icon: <LogoImage src="/static/react-logo.png" alt="React Native" />,
     title: 'React Native',
-    text: 'for IOS, Android and web',
+    text: 'for iOS, Android and web',
   },
   {
     icon: <LogoImage src="/static/graphql-logo.png" alt="Graphql" />,
