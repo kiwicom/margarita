@@ -16,6 +16,7 @@ type State = {|
   isUserSignedIn: boolean,
   userEmail: ?string,
   userDisplayName: ?string,
+  profileImage: ?string,
   +actions: {|
     +signIn: () => Promise<void> | void,
     +signOut: () => Promise<void> | void,
@@ -34,6 +35,7 @@ const defaultState = {
   isUserSignedIn: false,
   userEmail: null,
   userDisplayName: null,
+  profileImage: null,
   actions: {
     signIn: noop,
     signOut: noop,
@@ -83,6 +85,7 @@ export default class UserContextProvider extends React.Component<Props, State> {
     return {
       userEmail: authUser?.email,
       userDisplayName: authUser?.displayName,
+      profileImage: authUser?.photoURL,
     };
   };
 

@@ -8,6 +8,10 @@ import {
 } from '@kiwicom/universal-components';
 import Router from 'next/router';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import {
+  withUserContext,
+  type UserContextState,
+} from '@kiwicom/margarita-core';
 
 import NavbarLink from './NavbarLink';
 
@@ -15,7 +19,7 @@ const goToHomePage = () => {
   Router.push('/');
 };
 
-export default function Navbar() {
+function Navbar({ userDisplayName, profileImage }) {
   return (
     <View style={styles.navbar}>
       <View style={styles.actionsLeft}>
@@ -30,7 +34,19 @@ export default function Navbar() {
       </View>
       <View style={styles.actionsRight}>
         <NavbarLink label="Manage My Booking" route="/mmb" />
-        <NavbarLink label="Profile" route="/profile" />
+        {profileImage && (
+          <Image
+            style={styles.profileImage}
+            source={{ uri: profileImage }}
+            accessibilityLabel="ProfileImage"
+          />
+        )}
+        <NavbarLink
+          label={`Profile ${
+            userDisplayName ? `(Logged in as ${userDisplayName})` : ''
+          }`}
+          route="/profile"
+        />
       </View>
     </View>
   );
@@ -58,11 +74,28 @@ const styles = StyleSheet.create({
     width: 80,
     marginEnd: 20,
   },
+  profileImage: {
+    height: parseInt(defaultTokens.heightIconLarge, 10),
+    width: parseInt(defaultTokens.widthIconLarge, 10),
+    borderRadius: parseInt(defaultTokens.borderRadiusCircle, 10),
+    marginStart: 20,
+  },
   actionsLeft: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   actionsRight: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
 });
+
+const selectUserContextState = ({
+  userDisplayName,
+  profileImage,
+}: UserContextState) => ({
+  userDisplayName,
+  profileImage,
+});
+
+export default withUserContext(selectUserContextState)(Navbar);

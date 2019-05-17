@@ -1,0 +1,189 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#fff",
+      "flexDirection": "row",
+      "height": 50,
+      "justifyContent": "space-between",
+      "paddingHorizontal": 10,
+      "shadowColor": "#000",
+      "shadowOffset": Object {
+        "height": 0,
+        "width": 0,
+      },
+      "shadowOpacity": 0.25,
+      "shadowRadius": 3,
+      "zIndex": 100,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <Image
+      accessibilityComponentType="button"
+      accessibilityTraits="button"
+      accessible={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      source={
+        Object {
+          "uri": "https://go.kiwi.com/logo.jpg",
+        }
+      }
+      style={
+        Object {
+          "height": 50,
+          "marginEnd": 20,
+          "width": 80,
+        }
+      }
+    />
+    <View
+      accessibilityComponentType="button"
+      accessibilityTraits="button"
+      accessible={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginHorizontal": 12,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 0,
+            },
+            Object {
+              "fontSize": 12,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            Object {
+              "fontFamily": "Roboto",
+            },
+            Array [
+              Object {},
+              false,
+            ],
+          ]
+        }
+      >
+        Travel
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+      }
+    }
+  >
+    <View
+      accessibilityComponentType="button"
+      accessibilityTraits="button"
+      accessible={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginHorizontal": 12,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 0,
+            },
+            Object {
+              "fontSize": 12,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            Object {
+              "fontFamily": "Roboto",
+            },
+            Array [
+              Object {},
+              false,
+            ],
+          ]
+        }
+      >
+        Manage My Booking
+      </Text>
+    </View>
+    <View
+      accessibilityComponentType="button"
+      accessibilityTraits="button"
+      accessible={true}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "marginHorizontal": 12,
+        }
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "margin": 0,
+            },
+            Object {
+              "fontSize": 12,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            Object {
+              "fontFamily": "Roboto",
+            },
+            Array [
+              Object {},
+              false,
+            ],
+          ]
+        }
+      >
+        Profile 
+      </Text>
+    </View>
+  </View>
+</View>
+`;
