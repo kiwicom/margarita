@@ -17,9 +17,9 @@ export default function DeveloperInfo() {
         <CardItem>
           <ImageContainer>
             <Image
-              src="/static/icon-multi-platform.jpg"
-              srcSet={`/static/icon-multi-platform.jpg 1x,
-                /static/icon-multi-platform@2x.jpg 2x, /static/icon-multi-platform@3x.jpg 3x`}
+              src="/static/icon-multi-platform.png"
+              srcSet={`/static/icon-multi-platform.png 1x,
+                /static/icon-multi-platform@2x.png 2x, /static/icon-multi-platform@3x.png 3x`}
               alt="Multiplatform app"
             />
           </ImageContainer>
@@ -33,9 +33,9 @@ export default function DeveloperInfo() {
         <CardItem>
           <ImageContainer>
             <Image
-              src="/static/icon-modern-technologies.jpg"
-              srcSet={`/static/icon-modern-technologies.jpg 1x,
-                /static/icon-modern-technologies@2x.jpg 2x, /static/icon-modern-technologies@3x.jpg 3x`}
+              src="/static/icon-modern-technologies.png"
+              srcSet={`/static/icon-modern-technologies.png 1x,
+                /static/icon-modern-technologies@2x.png 2x, /static/icon-modern-technologies@3x.png 3x`}
               alt="React logo"
             />
           </ImageContainer>
@@ -49,9 +49,9 @@ export default function DeveloperInfo() {
         <CardItem>
           <ImageContainer>
             <Image
-              src="/static/icon-open-source.jpg"
-              srcSet={`/static/icon-open-source.jpg 1x,
-                /static/icon-open-source@2x.jpg 2x, /static/icon-open-source@3x.jpg 3x`}
+              src="/static/icon-open-source.png"
+              srcSet={`/static/icon-open-source.png 1x,
+                /static/icon-open-source@2x.png 2x, /static/icon-open-source@3x.png 3x`}
               alt="Open-source licence"
             />
           </ImageContainer>
