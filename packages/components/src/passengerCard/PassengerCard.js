@@ -12,16 +12,13 @@ import {
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { format } from 'date-fns';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
-import { type BaggageBundleType } from '@kiwicom/margarita-core';
+import type { PassengerType, BaggageBundleType } from '@kiwicom/margarita-core';
 
 import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
-import {
-  type PassengerCardType,
-  type PassengerCardActionType,
-} from './PassengerCardTypes';
+import { type PassengerCardActionType } from './PassengerCardTypes';
 
 function getTitle(gender) {
   switch (gender) {
@@ -35,7 +32,7 @@ function getTitle(gender) {
 }
 
 type Props = {|
-  ...PassengerCardType,
+  ...PassengerType,
   ...PassengerCardActionType,
 |};
 

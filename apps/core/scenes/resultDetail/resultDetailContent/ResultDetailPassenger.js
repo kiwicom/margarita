@@ -3,36 +3,40 @@
 import * as React from 'react';
 import {
   PassengerCards,
-  type PassengerCardType,
   withAlertContext,
   type AlertContent,
   type AlertContextState,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
+import {
+  withBookingContext,
+  type BookingContextState,
+  type PassengerType,
+} from '../../../components/bookingContext/BookingContext.js';
 import type { ResultDetailPassenger_itinerary as ResultDetailPassengerType } from './__generated__/ResultDetailPassenger_itinerary.graphql';
 import PassengerForm from '../../../components/passengerForm/PassengerForm';
 
 type Props = {|
   +itinerary: ?ResultDetailPassengerType,
   +setAlertContent: (alertContent: AlertContent | null) => void,
+  +passengers: Array<PassengerType>,
+  +setPassengers: (Array<PassengerType>) => void,
 |};
 
 type State = {|
   +isFormVisible: boolean,
-  +passengerData: Array<PassengerCardType>,
   +currentEditID: ?string,
 |};
 
 class ResultDetailPassenger extends React.Component<Props, State> {
   state = {
     isFormVisible: false,
-    passengerData: [],
     currentEditID: '',
   };
 
   validateForm = passenger => {
-    const existsID: boolean = !!this.state.passengerData.find(
+    const existsID: boolean = !!this.props.passengers.find(
       el => el.id === passenger.id,
     );
     if (!(passenger.id && passenger.name)) {
@@ -44,15 +48,14 @@ class ResultDetailPassenger extends React.Component<Props, State> {
     return '';
   };
 
-  getNewPassengerData = passenger => {
+  getNewPassengers = passenger => {
     // If we are editing, replace the passenger, else add it
-    const { currentEditID, passengerData } = this.state;
+    const { currentEditID } = this.state;
+    const { passengers } = this.props;
     if (currentEditID) {
-      return passengerData.map(el =>
-        el.id === currentEditID ? passenger : el,
-      );
+      return passengers.map(el => (el.id === currentEditID ? passenger : el));
     }
-    return [...passengerData, passenger];
+    return [...passengers, passenger];
   };
 
   handleFormSaveRequest = passenger => {
@@ -63,9 +66,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
         message: errorMessage,
       });
     } else {
-      this.setState({
-        passengerData: this.getNewPassengerData(passenger),
-      });
+      this.props.setPassengers(this.getNewPassengers(passenger));
       this.toggleModal();
     }
   };
@@ -75,11 +76,9 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   };
 
   handleDeletePassenger = (id: ?string) => {
-    this.setState(state => ({
-      passengerData: state.passengerData.filter(
-        passenger => passenger.id !== id,
-      ),
-    }));
+    this.props.setPassengers(
+      this.props.passengers.filter(passenger => passenger.id !== id),
+    );
   };
 
   toggleModal = () => {
@@ -88,14 +87,15 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   };
 
   render() {
-    const { passengerData, isFormVisible, currentEditID } = this.state;
+    const { isFormVisible, currentEditID } = this.state;
+    const { passengers } = this.props;
     const prefillData = currentEditID
-      ? passengerData.find(el => el.id === currentEditID)
+      ? passengers.find(el => el.id === currentEditID)
       : null;
     return (
       <>
         <PassengerCards
-          passengerCards={passengerData}
+          passengerCards={passengers}
           onEditPress={this.handleEditPassenger}
           editIconName="edit"
           deleteIconName="close"
@@ -121,8 +121,18 @@ const selectAlertContextState = ({
   setAlertContent,
 });
 
+const bookingContextState = ({
+  passengers,
+  actions: { setPassengers },
+}: BookingContextState) => ({
+  passengers,
+  setPassengers,
+});
+
 export default createFragmentContainer(
-  withAlertContext(selectAlertContextState)(ResultDetailPassenger),
+  withBookingContext(bookingContextState)(
+    withAlertContext(selectAlertContextState)(ResultDetailPassenger),
+  ),
   {
     itinerary: graphql`
       fragment ResultDetailPassenger_itinerary on ItineraryInterface {

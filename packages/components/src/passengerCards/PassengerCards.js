@@ -4,22 +4,20 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { type PassengerType } from '@kiwicom/margarita-core';
 
-import type {
-  PassengerCardType,
-  PassengerCardActionType,
-} from '../passengerCard/PassengerCardTypes';
+import type { PassengerCardActionType } from '../passengerCard/PassengerCardTypes';
 import PassengerCard from '../passengerCard/PassengerCard';
 import AddPassengerButton from './AddPassengerButton';
 
 type Props = {|
   +onAddPassengerPress?: () => void,
-  +passengerCards: ?Array<PassengerCardType>,
+  +passengerCards: ?Array<PassengerType>,
   ...PassengerCardActionType,
 |};
 
 export default class PassengerCards extends React.Component<Props> {
-  renderPassengerCard = (passengerCard: ?PassengerCardType) => {
+  renderPassengerCard = (passengerCard: ?PassengerType) => {
     if (!passengerCard) return null;
     return (
       <PassengerCard

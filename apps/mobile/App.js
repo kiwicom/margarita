@@ -9,6 +9,7 @@ import {
 import {
   SearchContextProvider,
   UserContextProvider,
+  BookingContextProvider,
 } from '@kiwicom/margarita-core';
 import { AlertContextProvider } from '@kiwicom/margarita-components';
 import { LayoutContextProvider } from '@kiwicom/margarita-device';
@@ -28,11 +29,13 @@ export default function App() {
   return (
     <LayoutContextProvider>
       <UserContextProvider>
-        <SearchContextProvider>
-          <AlertContextProvider>
-            <AppContainer />
-          </AlertContextProvider>
-        </SearchContextProvider>
+        <BookingContextProvider>
+          <SearchContextProvider>
+            <AlertContextProvider>
+              <AppContainer />
+            </AlertContextProvider>
+          </SearchContextProvider>
+        </BookingContextProvider>
       </UserContextProvider>
     </LayoutContextProvider>
   );
