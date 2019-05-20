@@ -57,8 +57,9 @@ class ResultDetailPassenger extends React.Component<Props, State> {
 
   handleFormSaveRequest = passenger => {
     const errorMessage = this.validateForm(passenger);
+    const { setAlertContent } = this.props;
     if (errorMessage) {
-      this.props.setAlertContent({
+      setAlertContent({
         message: errorMessage,
       });
     } else {
