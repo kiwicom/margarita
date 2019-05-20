@@ -12,10 +12,12 @@ export default function LogoCard() {
         <CardWrapper key={logo.title}>
           {logo.icon}
           <Column>
-            <Heading type="title2" spaceAfter="smallest">
-              {logo.title}
+            <Heading element="div" spaceAfter="smallest">
+              <Title>{logo.title}</Title>
             </Heading>
-            <Text weight="bold">{logo.text}</Text>
+            <Text element="div" weight="bold">
+              <LogoText>{logo.text}</LogoText>
+            </Text>
           </Column>
         </CardWrapper>
       ))}
@@ -54,6 +56,17 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: ${defaultTokens.spaceSmall};
+`;
+
+const Title = styled.div`
+  font-weight: 700;
+  font-size: ${defaultTokens.fontSizeHeadingTitle2};
+`;
+
+const LogoText = styled.div`
+  font-weight: 300;
+  font-size: ${defaultTokens.fontSizeTextNormal};
+  color: ${defaultTokens.colorTextSecondary};
 `;
 
 const LogoImage = styled.img`
