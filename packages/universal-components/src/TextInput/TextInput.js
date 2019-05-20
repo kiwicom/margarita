@@ -80,12 +80,18 @@ const InlineLabel = ({ children }) => (
 );
 
 class TextInput extends React.Component<Props, State> {
+  static getDerivedStateFromProps(props: Props, state: State) {
+    if (props.value !== state.value) {
+      return { value: props.value ?? '' };
+    }
+    return null;
+  }
+
   constructor(props: Props) {
     super(props);
-
     this.state = {
       focused: props.autoFocus || false,
-      value: props.value || '',
+      value: props.value ?? '',
     };
   }
 
