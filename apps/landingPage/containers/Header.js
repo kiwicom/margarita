@@ -112,11 +112,18 @@ const Motto = styled.div`
     font-size: 35px;
   }
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
-    margin-bottom: 60px;
     font-size: 45px;
+    margin-bottom: 60px;
+  }
+  @media (min-width: ${defaultTokens.widthBreakpointLargeDesktop}px) and (max-width: ${defaultTokens.widthBreakpointLargeDesktop +
+      100}px) {
+    margin-bottom: ${defaultTokens.spaceXLarge};
   }
   @media (min-width: ${defaultTokens.widthBreakpointLargeDesktop}px) {
     font-size: 60px;
+  }
+  @media (min-width: ${defaultTokens.widthBreakpointLargeDesktop + 100}px) {
+    margin-bottom: 60px;
   }
 `;
 
