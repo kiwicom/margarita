@@ -36,7 +36,7 @@ export default function Menu() {
             <MenuItem href="#try" to="try" {...Config.sharedLinkProps}>
               Try
             </MenuItem>
-            <MenuItemButton href={GITHUB_LINK}>
+            <MenuItemButton href={GITHUB_LINK} target="_blank">
               <GithubLogoWrapper>
                 <GithubLogo />
               </GithubLogoWrapper>
@@ -97,7 +97,7 @@ const MenuItem = styled(Link)`
   }
 `;
 
-const MenuItemButton = styled.div`
+const MenuItemButton = styled.a`
   padding: 6px 15px;
 `;
 
