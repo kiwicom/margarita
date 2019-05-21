@@ -72,13 +72,6 @@ class Results extends React.Component<Props> {
     });
   };
 
-  renderInner = (
-    props: ReturnResultsQueryResponse | OneWayResultsQueryResponse,
-  ) => {
-    const { searchData } = props;
-    return <ResultsList data={searchData} onBookPress={this.handleBookPress} />;
-  };
-
   parseSearchParametersByType = (type: TripTypes) => {
     const {
       travelFrom,
@@ -120,6 +113,13 @@ class Results extends React.Component<Props> {
           : {}),
       },
     };
+  };
+
+  renderInner = (
+    props: ReturnResultsQueryResponse | OneWayResultsQueryResponse,
+  ) => {
+    const { searchData } = props;
+    return <ResultsList data={searchData} onBookPress={this.handleBookPress} />;
   };
 
   render() {

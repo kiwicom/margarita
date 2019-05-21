@@ -9,6 +9,8 @@ import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './ModalTypes';
 
 export default class Modal extends React.Component<Props> {
+  modalElement: ?HTMLDivElement = null;
+
   componentDidMount() {
     if (!this.modalElement) {
       this.modalElement = document.createElement('div');
@@ -24,8 +26,6 @@ export default class Modal extends React.Component<Props> {
       document.body.removeChild(this.modalElement);
     }
   }
-
-  modalElement: ?HTMLDivElement = null;
 
   render() {
     const {

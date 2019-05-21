@@ -55,13 +55,13 @@ export default class Notification extends React.Component<Props, State> {
     rightIconName: undefined,
   };
 
-  componentWillUnmount() {
-    clearTimeout(this.hideTimeout);
-  }
-
   defferedHideAlert = undefined;
   hideTimeout: TimeoutID;
   lastCallTimestamp = null;
+
+  componentWillUnmount() {
+    clearTimeout(this.hideTimeout);
+  }
 
   internalToggleNotification(
     notificationStyle: NotificationStyleType,

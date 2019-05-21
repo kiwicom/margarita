@@ -19,6 +19,10 @@ type Props = {|
 |};
 
 export default class Features extends React.Component<Props> {
+  featuresHeight: number = 0;
+  featuresTopPosition: number = 0;
+  featuresRef: ?Element = null;
+
   componentDidUpdate() {
     const featuresPosition = this.findPosition(this.featuresRef);
     if (featuresPosition) {
@@ -29,10 +33,6 @@ export default class Features extends React.Component<Props> {
       }
     }
   }
-
-  featuresHeight: number = 0;
-  featuresTopPosition: number = 0;
-  featuresRef: ?Element = null;
 
   findPosition = (ref: ?Element) => {
     const DOMNode = ReactDOM.findDOMNode(ref);

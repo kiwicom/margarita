@@ -18,6 +18,8 @@ export default class SectorDetailsWrapper extends React.Component<
   Props,
   State,
 > {
+  spinValue: Animated.Value;
+
   constructor() {
     super();
 
@@ -28,8 +30,6 @@ export default class SectorDetailsWrapper extends React.Component<
 
     this.spinValue = new Animated.Value(0);
   }
-
-  spinValue: Animated.Value;
 
   toggleExpanded = () => {
     this.setState({ isDisabled: true }, () => {

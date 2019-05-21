@@ -23,6 +23,9 @@ export const theme = {
   },
 };
 export default class LandingPage extends React.Component<{}, State> {
+  lastScrollY = 0;
+  ticking = false;
+
   state = {
     scroll: 0,
   };
@@ -35,8 +38,6 @@ export default class LandingPage extends React.Component<{}, State> {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  lastScrollY = 0;
-  ticking = false;
   handleScroll = () => {
     this.lastScrollY = window.scrollY;
 
