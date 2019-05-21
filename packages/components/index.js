@@ -65,7 +65,6 @@ export {
   default as StopoverDuration,
 } from './src/stopoverDuration/StopoverDuration';
 export type {
-  PassengerCardType,
   PassengerCardActionType,
 } from './src/passengerCard/PassengerCardTypes';
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';

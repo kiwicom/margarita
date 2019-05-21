@@ -6,6 +6,9 @@ import {
   TableRow,
   TableRowDivider,
   ContentContainer,
+  withAlertContext,
+  type AlertContent,
+  type AlertContextState,
 } from '@kiwicom/margarita-components';
 import {
   withNavigation,
@@ -15,6 +18,11 @@ import {
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { formatPrice } from '@kiwicom/margarita-localization';
 
+import {
+  type PassengerType,
+  withBookingContext,
+  type BookingContextState,
+} from '../../../components/bookingContext/BookingContext';
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
 import type { ResultDetailContent_itinerary as ResultDetailContentType } from './__generated__/ResultDetailContent_itinerary.graphql';
@@ -23,6 +31,8 @@ import ItinerarySectorDetails from '../../../components/sectorDetails/ItineraryS
 type Props = {|
   +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
+  +passengers: Array<PassengerType>,
+  +setAlertContent: (alertContent: AlertContent | null) => void,
 |};
 
 type State = {|
@@ -51,7 +61,14 @@ class ResultDetailContent extends React.Component<Props, State> {
   };
 
   handleContinue = () => {
-    this.props.navigation.navigate(Routes.PAYMENT);
+    const { passengers, setAlertContent, navigation } = this.props;
+    if (passengers.length === 0) {
+      setAlertContent({
+        message: 'At least one passenger is required',
+      });
+    } else {
+      navigation.navigate(Routes.PAYMENT);
+    }
   };
 
   render() {
@@ -95,16 +112,32 @@ class ResultDetailContent extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(withNavigation(ResultDetailContent), {
-  itinerary: graphql`
-    fragment ResultDetailContent_itinerary on ItineraryInterface {
-      isChecked
-      price {
-        currency
-        amount
-      }
-      ...ResultDetailPassenger_itinerary
-      ...ItinerarySectorDetails_itinerary
-    }
-  `,
+const selectAlertContextState = ({
+  actions: { setAlertContent },
+}: AlertContextState) => ({
+  setAlertContent,
 });
+
+const bookingContextState = ({ passengers }: BookingContextState) => ({
+  passengers,
+});
+export default createFragmentContainer(
+  withAlertContext(selectAlertContextState)(
+    withBookingContext(bookingContextState)(
+      withNavigation(ResultDetailContent),
+    ),
+  ),
+  {
+    itinerary: graphql`
+      fragment ResultDetailContent_itinerary on ItineraryInterface {
+        isChecked
+        price {
+          currency
+          amount
+        }
+        ...ResultDetailPassenger_itinerary
+        ...ItinerarySectorDetails_itinerary
+      }
+    `,
+  },
+);
