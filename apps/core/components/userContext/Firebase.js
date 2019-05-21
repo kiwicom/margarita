@@ -2,6 +2,7 @@
 
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 import {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,

@@ -18,6 +18,7 @@ import { formatPrice } from '@kiwicom/margarita-localization';
 import {
   withUserContext,
   type UserContextState,
+  type PhoneNumber,
 } from '../../../components/userContext/UserContext';
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
@@ -27,22 +28,44 @@ import ItinerarySectorDetails from '../../../components/sectorDetails/ItineraryS
 type Props = {|
   +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
-  +userEmail: ?String,
+  +userEmail: ?string,
+  +setUserPhoneNumber: PhoneNumber => void,
+  +userId: ?string,
+  +userPhoneNumber: ?PhoneNumber,
 |};
 
 type State = {|
-  +email: ?string,
-  +phoneNumber: ?string,
-  +phoneCountryCode: ?string,
-  +phoneNumber: ?number,
+  email: ?string,
+  phoneCountryCode: ?string,
+  phoneNumber: ?string,
+  userId: ?string,
 |};
 
 class ResultDetailContent extends React.Component<Props, State> {
-  state = {
-    email: null,
-    phoneNumber: 111000111,
-    phoneCountryCode: null,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userId: props.userId ?? null,
+      email: props.userEmail ?? null,
+      phoneCountryCode: props.userPhoneNumber?.countryCode ?? null,
+      phoneNumber: props.userPhoneNumber?.number ?? null,
+    };
+  }
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    // if a user login state change
+    if (props.userId !== state.userId) {
+      return {
+        userId: props.userId,
+        email: props.userEmail,
+        phoneCountryCode: props.userPhoneNumber?.countryCode,
+        phoneNumber: props.userPhoneNumber?.number,
+      };
+    }
+
+    return null;
+  }
 
   handleChangeEmail = email => {
     this.setState({ email });
@@ -57,6 +80,10 @@ class ResultDetailContent extends React.Component<Props, State> {
   };
 
   handleContinue = () => {
+    this.props.setUserPhoneNumber({
+      countryCode: this.state.phoneCountryCode,
+      number: this.state.phoneNumber,
+    });
     this.props.navigation.navigate(Routes.PAYMENT);
   };
 
@@ -72,9 +99,10 @@ class ResultDetailContent extends React.Component<Props, State> {
           <ItinerarySectorDetails itinerary={this.props.itinerary} />
           <ResultDetailPassenger itinerary={this.props.itinerary} />
           <ContactDetailsForm
+            disableEmail={Boolean(this.props.userId)}
             phoneCountryCode={this.state.phoneCountryCode}
             phoneNumber={this.state.phoneNumber}
-            email={this.props.userEmail}
+            email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             onChangePhoneNumber={this.handleChangePhoneNumber}
             onChangeCountryCode={this.handleChangePhoneCountryCode}
@@ -105,8 +133,16 @@ class ResultDetailContent extends React.Component<Props, State> {
   }
 }
 
-const selectUserContextState = ({ userEmail }: UserContextState) => ({
+const selectUserContextState = ({
   userEmail,
+  userPhoneNumber,
+  userId,
+  actions: { setUserPhoneNumber },
+}: UserContextState) => ({
+  userEmail,
+  userPhoneNumber,
+  setUserPhoneNumber,
+  userId,
 });
 
 export default createFragmentContainer(

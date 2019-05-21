@@ -13,9 +13,10 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import HeaderWithIcon from '../headerWithIcon/HeaderWithIcon';
 
 type Props = {|
-  +phoneCountryCode: ?number,
+  +disableEmail?: boolean,
+  +phoneCountryCode: ?string,
   +email: ?string,
-  +phoneNumber: ?number,
+  +phoneNumber: ?string,
   +onChangeEmail: string => void,
   +onChangePhoneNumber: string => void,
   +onChangeCountryCode: (?string) => void,
@@ -28,6 +29,7 @@ export default function ContactDetailsForm({
   email,
   phoneNumber,
   phoneCountryCode,
+  disableEmail = false,
 }: Props) {
   const phoneCountryCodeData = [
     {
@@ -50,7 +52,7 @@ export default function ContactDetailsForm({
           type="email"
           autoCorrect={false}
           value={email}
-          disabled={!!email}
+          disabled={disableEmail}
         />
       </View>
       <View style={[styles.line, styles.row]}>
