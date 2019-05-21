@@ -55,6 +55,9 @@ export default class TagsInput extends React.Component<Props, State> {
     autoCorrect: false,
   };
 
+  scrollRef: any;
+  inputRef: any;
+
   constructor(props: Props) {
     super(props);
     this.inputRef = React.createRef();
@@ -76,9 +79,6 @@ export default class TagsInput extends React.Component<Props, State> {
     }
     return null;
   }
-
-  inputRef: any;
-  scrollRef: any;
 
   getPlaceholder = () => {
     const { tags, placeholder } = this.props;

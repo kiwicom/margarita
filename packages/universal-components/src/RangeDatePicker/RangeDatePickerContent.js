@@ -48,18 +48,6 @@ export default class RangeDatePickerContent extends React.Component<
       return acc;
     }, 0);
 
-  renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
-    return (
-      <RenderMonth
-        monthDate={item}
-        onDayPress={this.props.onDayPress}
-        selectedDates={this.props.selectedDates}
-        weekStartsOn={this.props.weekStartsOn}
-        isRangePicker={this.props.isRangePicker}
-      />
-    );
-  };
-
   keyExtractor = (item: MonthDateType, index: number) =>
     `month-${item.year}-${item.month}-${index}`;
 
@@ -81,6 +69,18 @@ export default class RangeDatePickerContent extends React.Component<
       offset,
       index,
     };
+  };
+
+  renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
+    return (
+      <RenderMonth
+        monthDate={item}
+        onDayPress={this.props.onDayPress}
+        selectedDates={this.props.selectedDates}
+        weekStartsOn={this.props.weekStartsOn}
+        isRangePicker={this.props.isRangePicker}
+      />
+    );
   };
 
   render() {
