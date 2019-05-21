@@ -74,8 +74,10 @@ export default function Try() {
       </Container>
       <Content>
         <Title>Do you like Margarita?</Title>
-        <AccentedText>
-          <Highlight>Give us a star on Github</Highlight>
+        <GithubStarWrapper>
+          <AccentedText>
+            <Highlight>Give us a star on Github</Highlight>
+          </AccentedText>
           <StarContainer>
             <iframe
               src="https://ghbtns.com/github-btn.html?user=kiwicom&repo=margarita&type=star&count=true&size=large"
@@ -85,7 +87,7 @@ export default function Try() {
               height="30px"
             />
           </StarContainer>
-        </AccentedText>
+        </GithubStarWrapper>
       </Content>
     </>
   );
@@ -103,7 +105,6 @@ const Container = styled(CardDescription)`
 `;
 
 const StarContainer = styled.div`
-  margin: 20px 0 0 30px;
   font-size: ${defaultTokens.fontSizeHeadingDisplay};
   color: ${defaultTokens.paletteInkDark};
   font-weight: bold;
@@ -111,6 +112,10 @@ const StarContainer = styled.div`
   top: 7px;
   display: inline-block;
   width: 100px;
+  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
+    margin-left: 30px;
+    top: 0;
+  }
 `;
 
 const GithubLogoWrapper = styled.div`
@@ -122,4 +127,13 @@ const GithubLogoWrapper = styled.div`
 const FixedCardDescription = styled(CardDescription)`
   min-height: 100px;
   margin-top: 20px;
+`;
+
+const GithubStarWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
