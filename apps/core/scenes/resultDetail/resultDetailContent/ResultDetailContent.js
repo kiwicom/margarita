@@ -19,6 +19,11 @@ import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 import { formatPrice } from '@kiwicom/margarita-localization';
 
 import {
+  withUserContext,
+  type UserContextState,
+  type PhoneNumber,
+} from '../../../components/userContext/UserContext';
+import {
   type PassengerType,
   withBookingContext,
   type BookingContextState,
@@ -31,22 +36,46 @@ import ItinerarySectorDetails from '../../../components/sectorDetails/ItineraryS
 type Props = {|
   +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
+  +userEmail: ?string,
+  +setUserPhoneNumber: PhoneNumber => void,
+  +userId: ?string,
+  +userPhoneNumber: ?PhoneNumber,
   +passengers: Array<PassengerType>,
   +setAlertContent: (alertContent: AlertContent | null) => void,
 |};
 
 type State = {|
-  +email: ?string,
-  +phoneNumber: ?string,
-  +phoneCountryCode: ?string,
+  email: ?string,
+  phoneCountryCode: ?string,
+  phoneNumber: ?string,
+  userId: ?string,
 |};
 
 class ResultDetailContent extends React.Component<Props, State> {
-  state = {
-    email: null,
-    phoneNumber: null,
-    phoneCountryCode: null,
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      userId: props.userId ?? null,
+      email: props.userEmail ?? null,
+      phoneCountryCode: props.userPhoneNumber?.countryCode ?? null,
+      phoneNumber: props.userPhoneNumber?.number ?? null,
+    };
+  }
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    // if a user login state change
+    if (props.userId !== state.userId) {
+      return {
+        userId: props.userId,
+        email: props.userEmail,
+        phoneCountryCode: props.userPhoneNumber?.countryCode,
+        phoneNumber: props.userPhoneNumber?.number,
+      };
+    }
+
+    return null;
+  }
 
   handleChangeEmail = email => {
     this.setState({ email });
@@ -67,6 +96,10 @@ class ResultDetailContent extends React.Component<Props, State> {
         message: 'At least one passenger is required',
       });
     } else {
+      this.props.setUserPhoneNumber({
+        countryCode: this.state.phoneCountryCode,
+        number: this.state.phoneNumber,
+      });
       navigation.navigate(Routes.PAYMENT);
     }
   };
@@ -76,12 +109,17 @@ class ResultDetailContent extends React.Component<Props, State> {
       this.props.itinerary?.price?.amount,
       this.props.itinerary?.price?.currency,
     );
+
     return (
       <>
         <ContentContainer>
           <ItinerarySectorDetails itinerary={this.props.itinerary} />
           <ResultDetailPassenger itinerary={this.props.itinerary} />
           <ContactDetailsForm
+            disableEmail={Boolean(this.props.userId)}
+            phoneCountryCode={this.state.phoneCountryCode}
+            phoneNumber={this.state.phoneNumber}
+            email={this.state.email}
             onChangeEmail={this.handleChangeEmail}
             onChangePhoneNumber={this.handleChangePhoneNumber}
             onChangeCountryCode={this.handleChangePhoneCountryCode}
@@ -112,6 +150,18 @@ class ResultDetailContent extends React.Component<Props, State> {
   }
 }
 
+const selectUserContextState = ({
+  userEmail,
+  userPhoneNumber,
+  userId,
+  actions: { setUserPhoneNumber },
+}: UserContextState) => ({
+  userEmail,
+  userPhoneNumber,
+  setUserPhoneNumber,
+  userId,
+});
+
 const selectAlertContextState = ({
   actions: { setAlertContent },
 }: AlertContextState) => ({
@@ -121,10 +171,13 @@ const selectAlertContextState = ({
 const bookingContextState = ({ passengers }: BookingContextState) => ({
   passengers,
 });
+
 export default createFragmentContainer(
-  withAlertContext(selectAlertContextState)(
-    withBookingContext(bookingContextState)(
-      withNavigation(ResultDetailContent),
+  withUserContext(selectUserContextState)(
+    withAlertContext(selectAlertContextState)(
+      withBookingContext(bookingContextState)(
+        withNavigation(ResultDetailContent),
+      ),
     ),
   ),
   {
