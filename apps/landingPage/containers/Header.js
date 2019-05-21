@@ -9,10 +9,12 @@ import {
 } from '@kiwicom/orbit-components/lib/';
 import styled from 'styled-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { Link } from 'react-scroll';
 
 import LogoCards from '../components/LogoCards';
 import Content from '../components/Content';
 import GithubLogo from '../components/GithubLogo';
+import Config from '../config';
 
 export default function Header() {
   return (
@@ -39,9 +41,16 @@ export default function Header() {
               </Text>
               <ButtonWrapper>
                 <ButtonGroup>
-                  <Button circled width={120} href="#features">
-                    Read more
-                  </Button>
+                  <LinkWithoutStyle
+                    href="#multiplatform"
+                    to="multiplatform"
+                    {...Config.sharedLinkProps}
+                  >
+                    <Button circled width={120}>
+                      Read more
+                    </Button>
+                  </LinkWithoutStyle>
+
                   <ButtonLink
                     circled
                     transparent
@@ -57,7 +66,6 @@ export default function Header() {
                 </ButtonGroup>
               </ButtonWrapper>
             </Headline>
-            <PhoneImage src="/static/search.png" alt="Booking" />
           </Columns>
         </Content>
       </Container>
@@ -72,6 +80,9 @@ export default function Header() {
 const planeImageHeightMobile = 400;
 const phoneWidthBuffer = 280;
 
+const LinkWithoutStyle = styled(Link)`
+  text-decoration: none;
+`;
 const Container = styled.div`
   width: 100vw;
   align-items: center;
@@ -83,10 +94,12 @@ const Container = styled.div`
   z-index: 1;
   flex-direction: column;
   padding: 10px 0 120px 0;
+  position: relative;
 `;
 
 const UpperHeader = styled.div`
-  z-index: 1;
+  z-index: 2;
+  position: relative;
   padding-bottom: ${defaultTokens.spaceXXLarge};
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
     padding-bottom: 70px;
@@ -143,6 +156,8 @@ const Logo = styled.img`
 const Headline = styled.div`
   margin: 0;
   padding-right: 0px;
+  position: relative;
+  z-index: 2;
   @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
     padding-right: ${phoneWidthBuffer}px;
   }
@@ -163,18 +178,6 @@ const GithubLogoWrapper = styled.div`
 
 const ButtonWrapper = styled.div`
   display: flex;
-`;
-
-const PhoneImage = styled.img`
-  position: absolute;
-  right: 0;
-  margin-top: -30px;
-  display: none;
-  height: 500px;
-  filter: drop-shadow(0px 0px 35px rgba(0, 0, 0, 0.5));
-  @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
-    display: block;
-  }
 `;
 
 const HeadlineTextWrapper = styled.p`

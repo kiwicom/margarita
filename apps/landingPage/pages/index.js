@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     -webkit-font-smoothing: antialiased;
     font-family: 'Circular Pro', 'Roboto', sans-serif;
+    scroll-snap-type: y proximity;
   }
 `;
 

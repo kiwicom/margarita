@@ -8,34 +8,32 @@ import { Link } from 'react-scroll';
 
 import Content from '../components/Content';
 import GithubLogo from '../components/GithubLogo';
-
-const sharedLinkProps = {
-  activeClass: 'active',
-  spy: true,
-  smooth: true,
-  duration: 500,
-};
+import Config from '../config';
 
 export default function Menu() {
   return (
     <Container>
       <Content>
         <Rows>
-          <Link href="#" to="header" {...sharedLinkProps}>
+          <Link href="#" to="header" {...Config.sharedLinkProps}>
             <Logo src="/static/logo_colored.png" alt="Kiwi.com logo" />
           </Link>
           <MenuGroup>
-            <MenuItem href="#features" to="features" {...sharedLinkProps}>
+            <MenuItem
+              href="#multiplatform"
+              to="multiplatform"
+              {...Config.sharedLinkProps}
+            >
               Features
             </MenuItem>
             <MenuItem
               href="#developer-experience"
               to="developer-experience"
-              {...sharedLinkProps}
+              {...Config.sharedLinkProps}
             >
               Technology
             </MenuItem>
-            <MenuItem href="#try" to="try" {...sharedLinkProps}>
+            <MenuItem href="#try" to="try" {...Config.sharedLinkProps}>
               Try
             </MenuItem>
             <MenuItemButton href={GITHUB_LINK}>
