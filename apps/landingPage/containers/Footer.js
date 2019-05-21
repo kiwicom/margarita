@@ -48,7 +48,10 @@ export default function Footer() {
         <FooterContainer>
           <FooterLeftContainer>
             <a href={CODE_KIWI_LINK}>
-              <Logo src="/static/logo_colored.svg" alt="Logo" />
+              <Logo
+                src="/static/logo_codekiwicom.svg"
+                alt="code.kiwi.com logo"
+              />
             </a>
           </FooterLeftContainer>
 
