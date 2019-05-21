@@ -14,13 +14,13 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 import {
   DateInput,
-  type PassengerCardType,
   withAlertContext,
   type AlertContent,
   type AlertContextState,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
+import { type PassengerType } from '../bookingContext/BookingContext';
 import BaggageBundles from './baggageBundles/BaggageBundles';
 import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
 
@@ -29,8 +29,8 @@ type Props = {|
   +isVisible: boolean,
   +isEditing: boolean,
   +onRequestClose: () => void,
-  +prefillData: ?PassengerCardType,
-  +onRequestSave: PassengerCardType => void,
+  +prefillData: ?PassengerType,
+  +onRequestSave: PassengerType => void,
   +setAlertContent: (alertContent: AlertContent | null) => void,
 |};
 
@@ -62,7 +62,7 @@ const initialFormState = {
 };
 
 type State = {
-  ...PassengerCardType,
+  ...PassengerType,
   lastName: ?string,
   hasPrefilledState: boolean,
 };
