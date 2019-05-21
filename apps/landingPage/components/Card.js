@@ -31,5 +31,4 @@ export const CardItem = styled.div`
 export const CardDescription = styled.div`
   font-size: 16px;
   font-weight: normal;
-  margin-top: 20px;
 `;

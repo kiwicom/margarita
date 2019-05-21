@@ -102,17 +102,13 @@ const Container = styled(CardDescription)`
   color: ${defaultTokens.paletteWhite};
 `;
 
-const Feedback = styled(CardDescription)`
+const StarContainer = styled.div`
+  margin: 20px 0 0 30px;
   font-size: ${defaultTokens.fontSizeHeadingDisplay};
   color: ${defaultTokens.paletteInkDark};
-  display: inline-block;
   font-weight: bold;
-`;
-
-const StarContainer = styled(Feedback)`
   position: relative;
   top: 7px;
-  margin-left: 30px;
   display: inline-block;
   width: 100px;
 `;
@@ -125,4 +121,5 @@ const GithubLogoWrapper = styled.div`
 
 const FixedCardDescription = styled(CardDescription)`
   min-height: 100px;
+  margin-top: 20px;
 `;

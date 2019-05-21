@@ -25,10 +25,10 @@ export default function DeveloperInfo() {
           </ImageContainer>
           <CardTitle>Real </CardTitle>
           <HighlightLeftOffset>multi-platform app </HighlightLeftOffset>
-          <CardDescription>
+          <CardDescriptionTopMargin>
             One codebase for iOS, Android and web. And with user experience like
             in native apps.
-          </CardDescription>
+          </CardDescriptionTopMargin>
         </CardItem>
         <CardItem>
           <ImageContainer>
@@ -41,10 +41,10 @@ export default function DeveloperInfo() {
           </ImageContainer>
           <CardTitle>Developed with </CardTitle>
           <HighlightLeftOffset>modern technologies</HighlightLeftOffset>
-          <CardDescription>
+          <CardDescriptionTopMargin>
             React Native and GraphQL are battle-tested modern technologies for
             the best developer experience.
-          </CardDescription>
+          </CardDescriptionTopMargin>
         </CardItem>
         <CardItem>
           <ImageContainer>
@@ -57,11 +57,11 @@ export default function DeveloperInfo() {
           </ImageContainer>
           <CardTitle>API is free and </CardTitle>
           <HighlightLeftOffset block>app is open-sourced</HighlightLeftOffset>
-          <CardDescription>
+          <CardDescriptionTopMargin>
             There are no fees. Even our API is free and bought tickets have the
             same price like on Kiwi.com. You can fork Margarita and use it for
             whatever.
-          </CardDescription>
+          </CardDescriptionTopMargin>
         </CardItem>
       </CardItems>
     </Content>
@@ -81,4 +81,9 @@ const ImageContainer = styled.div`
 const HighlightLeftOffset = styled(Highlight)`
   position: relative;
   left: -5px;
+  margin-bottom: 20px;
+`;
+
+const CardDescriptionTopMargin = styled(CardDescription)`
+  margin-top: 20px;
 `;
