@@ -29,6 +29,50 @@ export default class CustomDocument extends Document {
     return (
       <html>
         <Head>
+          <meta
+            name="msapplication-TileImage"
+            content="/images/icons/kiwicom/ms-icon-144x144.png"
+          />
+          <title>Margarita | Create your own Kiwi.com for free</title>
+          <meta
+            name="description"
+            content="Use Margarita and create your own Kiwi.com for free. We prepared everything you will need — data, web and mobile apps. All is based on modern technologies and it's open source."
+          />
+          <meta
+            name="keywords"
+            content="kiwi.com, open source, react native, multiplatform app, graphql, react native web"
+          />
+          <meta name="robots" content="index,follow" />
+          <meta property="og:url" content="https://margarita.kiwi.com" />
+          <meta property="og:site_name" content="Margarita" itemProp="name" />
+          <meta
+            property="og:title"
+            content="Margarita | Create your own Kiwi.com for free"
+          />
+          <meta
+            property="og:description"
+            content="Use Margarita and create your own Kiwi.com for free. We prepared everything you will need — data, web and mobile apps. All is based on modern technologies and it's open source."
+          />
+          <meta property="og:type" content="website" />
+          <meta
+            property="og:image"
+            content="https://margarita.kiwi.com/static/logo_margarita.png"
+            itemProp="image"
+          />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@codekiwicom" />
+          <meta
+            name="twitter:title"
+            content="Margarita | Create your own Kiwi.com for free"
+          />
+          <meta
+            name="twitter:description"
+            content="Use Margarita and create your own Kiwi.com for free. We prepared everything you will need — data, web and mobile apps. All is based on modern technologies and it's open source."
+          />
+          <meta
+            name="twitter:image"
+            content="https://margarita.kiwi.com/static/logo_margarita.png"
+          />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" type="image/png" href="/static/favicon.ico" />
           <link

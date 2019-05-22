@@ -150,6 +150,7 @@ const Feature = styled.div`
 const PhotoWrapper = styled.div`
   display: flex;
   flex-direction: row-reverse;
+  justify-content: space-between;
   transition: all 0.05s linear;
   position: relative;
 `;

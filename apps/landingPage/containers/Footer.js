@@ -57,9 +57,9 @@ export default function Footer() {
 
           <FooterRightContainer>
             {icons.map(icon => (
-              <a href={icon.url} key={icon.url}>
+              <IconLink href={icon.url} key={icon.url}>
                 {icon.icon}
-              </a>
+              </IconLink>
             ))}
           </FooterRightContainer>
         </FooterContainer>
@@ -68,6 +68,13 @@ export default function Footer() {
   );
 }
 
+const IconLink = styled.a`
+  width: ${defaultTokens.heightButtonNormal};
+  height: ${defaultTokens.heightButtonNormal};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -81,7 +88,6 @@ const FooterContainer = styled.div`
   align-items: center;
   flex-direction: column;
   height: 25vh;
-
   justify-content: space-evenly;
   @media (min-width: ${BREAKPOINTS.BIG_MOBILE}px) {
     flex-direction: row;

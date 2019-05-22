@@ -30,9 +30,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   font-size: 2em;
-  padding: 20px 0;
+  padding: 30px 0;
   @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
     flex-direction: row;
+    padding: 20px 0;
   }
   @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
     padding-right: ${phoneWidthBuffer}px;

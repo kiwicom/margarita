@@ -28,6 +28,8 @@ export const DOCUMENTATION_LINK = 'https://kiwicom.github.io/margarita/';
 export const CODE_KIWI_LINK = 'https://code.kiwi.com/';
 export const MARGARITA_LINK = 'https://kiwicom-margarita.netlify.com/';
 export const TEQUILA_LINK = 'https://tequila.kiwi.com/';
+export const JOBS_LINK =
+  'https://jobs.kiwi.com/?unonce=92b29d979c&uformid=285&s=uwpsfsearchtrg&taxo%5B0%5D%5Bname%5D=team&taxo%5B0%5D%5Bopt%5D=3&taxo%5B0%5D%5Bterm%5D=uwpqsftaxoall&cmf%5B0%5D%5Bmetakey%5D=wpcf-location&cmf%5B0%5D%5Bcompare%5D=1&cmf%5B0%5D%5Bvalue%5D=uwpqsfcmfall&cmf%5B1%5D%5Bmetakey%5D=wpcf-job-type&cmf%5B1%5D%5Bcompare%5D=1&skeyword=react';
 export const GRAPHQL_PLAYGROUND_LINK =
   'https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql';
 export const CODE_KIWI_FACEBOOK_LINK = 'https://www.facebook.com/codekiwicom';
