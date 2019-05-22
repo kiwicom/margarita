@@ -31,15 +31,15 @@ export {
 export {
   default as BookingContextProvider,
   withBookingContext,
-} from './components/bookingContext/BookingContext';
+} from './contexts/bookingContext/BookingContext';
 
 // Types
 export type {
   default as BaggageBundleType,
 } from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
 export type { UserContextState } from './contexts/userContext/UserContext';
-export type { PassengerType } from './components/bookingContext/BookingContext';
+export type { PassengerType } from './contexts/bookingContext/BookingContext';
 
 export type {
   BookingContextState,
-} from './components/bookingContext/BookingContext';
+} from './contexts/bookingContext/BookingContext';

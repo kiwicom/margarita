@@ -20,7 +20,7 @@ import {
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import { type PassengerType } from '../bookingContext/BookingContext';
+import { type PassengerType } from '../../contexts/bookingContext/BookingContext';
 import BaggageBundles from './baggageBundles/BaggageBundles';
 import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
 
