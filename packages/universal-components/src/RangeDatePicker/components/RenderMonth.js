@@ -40,13 +40,6 @@ const checkDatesForComponentUpdate = props => {
 };
 
 export default class RenderMonth extends React.Component<Props> {
-  shouldComponentUpdate(nextProps: Props) {
-    return (
-      checkDatesForComponentUpdate(nextProps) ||
-      checkDatesForComponentUpdate(this.props)
-    );
-  }
-
   getWeeks = memoize((monthDate: MonthDateType) => {
     return getMonthMatrix(
       monthDate,
@@ -54,6 +47,13 @@ export default class RenderMonth extends React.Component<Props> {
       (day, { isSameMonth }) => (isSameMonth ? new Date(day) : null),
     );
   }, isEqual);
+
+  shouldComponentUpdate(nextProps: Props) {
+    return (
+      checkDatesForComponentUpdate(nextProps) ||
+      checkDatesForComponentUpdate(this.props)
+    );
+  }
 
   render() {
     const {

@@ -36,7 +36,7 @@ export {
 // Types
 export type {
   default as BaggageBundleType,
-} from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
+} from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
 export type { UserContextState } from './components/userContext/UserContext';
 export type { PassengerType } from './components/bookingContext/BookingContext';
 

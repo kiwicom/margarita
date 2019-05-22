@@ -13,7 +13,7 @@ import {
   withBookingContext,
   type BookingContextState,
   type PassengerType,
-} from '../../../components/bookingContext/BookingContext.js';
+} from '../../../components/bookingContext/BookingContext';
 import type { ResultDetailPassenger_itinerary as ResultDetailPassengerType } from './__generated__/ResultDetailPassenger_itinerary.graphql';
 import PassengerForm from '../../../components/passengerForm/PassengerForm';
 

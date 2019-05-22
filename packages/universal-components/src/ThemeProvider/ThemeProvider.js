@@ -43,6 +43,8 @@ const { Provider, Consumer } = React.createContext<Theme>(
 );
 
 export default class ThemeProvider extends React.Component<Props> {
+  getStyles: (?Tokens) => Theme;
+
   constructor(props: Props) {
     super(props);
 
@@ -53,8 +55,6 @@ export default class ThemeProvider extends React.Component<Props> {
       });
     }, isEqual);
   }
-
-  getStyles: (?Tokens) => Theme;
 
   render() {
     return (

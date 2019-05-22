@@ -87,6 +87,8 @@ class TextInput extends React.Component<Props, State> {
     return null;
   }
 
+  myref: ?RNTextInput;
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -94,8 +96,6 @@ class TextInput extends React.Component<Props, State> {
       value: props.value ?? '',
     };
   }
-
-  myref: ?RNTextInput;
 
   setFocus = (value: boolean) => {
     this.setState({ focused: value });
