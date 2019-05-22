@@ -13,17 +13,6 @@ import qs from 'qs';
 
 type Props = {|
   +children: React.Node,
-  +dateFrom?: string,
-  +dateTo?: string,
-  +returnDateFrom?: string,
-  +returnDateTo?: string,
-  +tripType?: TripTypes,
-  +sortBy?: SortTypes,
-  +limit?: number,
-  +travelFrom?: Array<Location>,
-  +travelTo?: Array<Location>,
-  +adults?: string,
-  +infants?: string,
 |};
 
 type ParseFieldsParams = {|
@@ -126,8 +115,8 @@ const defaultState = {
   adults: 1,
   infants: 0,
   actions: {
-    switchFromTo: noop,
     setDepartureDate: noop,
+    switchFromTo: noop,
     setReturnDate: noop,
     setTripType: noop,
     setSortBy: noop,
@@ -155,28 +144,8 @@ export default class SearchContextProvider extends React.Component<
 > {
   constructor(props: Props) {
     super(props);
-
-    const {
-      children, // eslint-disable-line no-unused-vars
-      dateFrom,
-      dateTo,
-      returnDateFrom,
-      returnDateTo,
-      adults,
-      infants,
-      ...rest
-    } = props;
     this.state = {
       ...defaultState,
-      ...rest,
-      ...this.parseFields({
-        dateFrom,
-        dateTo,
-        returnDateFrom,
-        returnDateTo,
-        adults,
-        infants,
-      }),
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
