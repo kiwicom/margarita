@@ -22,7 +22,7 @@ import {
   withUserContext,
   type UserContextState,
   type PhoneNumber,
-} from '../../../components/userContext/UserContext';
+} from '../../../contexts/userContext/UserContext';
 import {
   type PassengerType,
   withBookingContext,
