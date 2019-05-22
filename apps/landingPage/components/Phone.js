@@ -43,4 +43,5 @@ const PhoneImage = styled.img`
   z-index: 100;
   width: 222px;
   height: 481px;
+  border-radius: 6px;
 `;

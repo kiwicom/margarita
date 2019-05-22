@@ -16,7 +16,12 @@ export default function Menu() {
       <Content>
         <Rows>
           <Link href="#" to="header" {...Config.sharedLinkProps}>
-            <Logo src="/static/logo_colored.svg" alt="Kiwi.com logo" />
+            <Logo
+              src="/static/logo_colored.png"
+              srcSet={`/static/logo_colored.png 1x,
+            /static/logo_colored@2x.png 2x, /static/logo_colored@3x.png 3x`}
+              alt="Kiwi.com logo"
+            />
           </Link>
           <MenuGroup>
             <MenuItem

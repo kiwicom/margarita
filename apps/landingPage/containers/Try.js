@@ -8,6 +8,7 @@ import {
   GRAPHQL_PLAYGROUND_LINK,
   TEQUILA_LINK,
   MARGARITA_LINK,
+  JOBS_LINK,
 } from '@kiwicom/margarita-config';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
@@ -74,20 +75,27 @@ export default function Try() {
       </Container>
       <Content>
         <Title>Do you like Margarita?</Title>
-        <GithubStarWrapper>
-          <AccentedText>
-            <Highlight>Give us a star on Github</Highlight>
-          </AccentedText>
-          <StarContainer>
-            <iframe
-              src="https://ghbtns.com/github-btn.html?user=kiwicom&repo=margarita&type=star&count=true&size=large"
-              frameBorder="0"
-              scrolling="0"
-              width="160px"
-              height="30px"
-            />
-          </StarContainer>
-        </GithubStarWrapper>
+        <AccentedText>
+          <Highlight>Give us a star</Highlight> on Github
+        </AccentedText>
+        <StarContainer>
+          <iframe
+            src="https://ghbtns.com/github-btn.html?user=kiwicom&repo=margarita&type=star&count=true&size=large"
+            frameBorder="0"
+            scrolling="0"
+            width="160px"
+            height="30px"
+          />
+        </StarContainer>
+        <AccentedText>
+          <Highlight>Join the team</Highlight> and help us make Margarita even
+          better
+        </AccentedText>
+        <JoinUsButtonContainer>
+          <Button circled href={JOBS_LINK} external>
+            See open positions
+          </Button>
+        </JoinUsButtonContainer>
       </Content>
     </>
   );
@@ -109,13 +117,10 @@ const StarContainer = styled.div`
   color: ${defaultTokens.paletteInkDark};
   font-weight: bold;
   position: relative;
-  top: 7px;
+  padding-top: ${defaultTokens.spaceXXSmall};
+  padding-bottom: ${defaultTokens.spaceLarge};
   display: inline-block;
   width: 100px;
-  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
-    margin-left: 30px;
-    top: 0;
-  }
 `;
 
 const GithubLogoWrapper = styled.div`
@@ -123,17 +128,11 @@ const GithubLogoWrapper = styled.div`
   position: relative;
   top: ${defaultTokens.spaceXXXSmall};
 `;
+const JoinUsButtonContainer = styled.div`
+  padding-top: ${defaultTokens.spaceMedium};
+`;
 
 const FixedCardDescription = styled(CardDescription)`
   min-height: 100px;
   margin-top: 20px;
-`;
-
-const GithubStarWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  @media (min-width: ${defaultTokens.widthBreakpointLargeMobile}px) {
-    flex-direction: row;
-    align-items: center;
-  }
 `;
