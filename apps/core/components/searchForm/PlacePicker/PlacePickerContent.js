@@ -17,7 +17,7 @@ import {
   type SearchContextState,
   type Location,
   type LocationSearchType,
-} from '../../../scenes/search/SearchContext';
+} from '../../../contexts/searchContext/SearchContext';
 import type { PlacePickerContent_locations as PlacePickerContentType } from './__generated__/PlacePickerContent_locations.graphql';
 import {
   mapOptionToLocation,

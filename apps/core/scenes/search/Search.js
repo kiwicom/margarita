@@ -15,7 +15,7 @@ import {
   withSearchContext,
   type Location,
   type SearchContextState,
-} from './SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 import SearchForm from '../../components/searchForm/SearchForm';
 
 export type SearchParameters = {|

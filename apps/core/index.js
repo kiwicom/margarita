@@ -23,7 +23,7 @@ export { default as Profile } from './scenes/profile/Profile';
 // Context
 export {
   default as SearchContextProvider,
-} from './scenes/search/SearchContext';
+} from './contexts/searchContext/SearchContext';
 export {
   default as UserContextProvider,
   withUserContext,
@@ -34,12 +34,12 @@ export {
 } from './contexts/bookingContext/BookingContext';
 
 // Types
+
+export type { UserContextState } from './contexts/userContext/UserContext';
 export type {
   default as BaggageBundleType,
 } from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
-export type { UserContextState } from './contexts/userContext/UserContext';
-export type { PassengerType } from './contexts/bookingContext/BookingContext';
-
 export type {
+  PassengerType,
   BookingContextState,
 } from './contexts/bookingContext/BookingContext';

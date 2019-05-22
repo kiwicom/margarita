@@ -34,7 +34,7 @@ import {
   withSearchContext,
   type SearchContextState,
   type Location,
-} from '../search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
 import { type SearchParameters } from '../search/Search';
 
