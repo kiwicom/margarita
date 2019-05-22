@@ -10,6 +10,7 @@ type Props = {|
   +scroll: number,
   +featuresHeight: number,
   +featuresTopPosition: number,
+  +featuresRef: ?Element,
 |};
 
 const defaultScreenShot = {
@@ -56,6 +57,7 @@ export default function FloatedPhone({
   scroll,
   featuresHeight,
   featuresTopPosition,
+  featuresRef,
 }: Props) {
   const isDimensionsDataKnown =
     featuresHeight !== 0 && featuresTopPosition !== 0;
@@ -79,10 +81,9 @@ export default function FloatedPhone({
         Config.phoneHeight -
         Config.phoneTopMargin;
   const properScreenShot = getProperScreenShot(imageIndex);
-
   return (
     <PhoneImageWrapper isFixed={isFixed}>
-      <Phone {...properScreenShot} />
+      {featuresRef !== null && <Phone {...properScreenShot} />}
     </PhoneImageWrapper>
   );
 }

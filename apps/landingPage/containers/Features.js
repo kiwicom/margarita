@@ -15,37 +15,49 @@ import FloatedPhone from '../components/FloatedPhone';
 import Config from '../config';
 
 type Props = {|
-  scroll: number,
+  +scroll: number,
 |};
 
-export default class Features extends React.Component<Props> {
-  componentDidUpdate() {
-    const featuresPosition = this.findPosition(this.featuresRef);
-    if (featuresPosition) {
-      const newFeaturesTopPosition = featuresPosition.top + this.props.scroll;
-      if (this.featuresTopPosition !== newFeaturesTopPosition) {
-        this.featuresTopPosition = newFeaturesTopPosition;
-        this.featuresHeight = featuresPosition.height;
-      }
-    }
-  }
+type State = {|
+  +featuresHeight: number,
+  +featuresTopPosition: number,
+  +featuresRef: ?Element,
+|};
 
-  featuresHeight: number = 0;
-  featuresTopPosition: number = 0;
-  featuresRef: ?Element = null;
-
-  findPosition = (ref: ?Element) => {
+export default class Features extends React.Component<Props, State> {
+  static findPosition = (ref: ?Element) => {
     const DOMNode = ReactDOM.findDOMNode(ref);
     if (DOMNode && DOMNode instanceof Element)
       return DOMNode.getBoundingClientRect();
     return null;
   };
 
+  state = {
+    featuresHeight: 0,
+    featuresTopPosition: 0,
+    featuresRef: null,
+  };
+
+  static getDerivedStateFromProps(props: Props, state: State) {
+    const featuresPosition = Features.findPosition(state.featuresRef);
+    if (featuresPosition) {
+      const newFeaturesTopPosition = featuresPosition.top + props.scroll;
+      if (state.featuresTopPosition !== newFeaturesTopPosition) {
+        return {
+          featuresTopPosition: newFeaturesTopPosition,
+          featuresHeight: featuresPosition.height,
+        };
+      }
+    }
+    return null;
+  }
+
   setRef = (ref: ?Element) => {
-    this.featuresRef = ref;
+    this.setState({ featuresRef: ref });
   };
 
   render() {
+    const { featuresHeight, featuresTopPosition, featuresRef } = this.state;
     return (
       <Content id="multiplatform" ref={this.setRef}>
         <MultiplatformWrapper>
@@ -111,8 +123,9 @@ export default class Features extends React.Component<Props> {
 
         <FloatedPhone
           scroll={this.props.scroll}
-          featuresHeight={this.featuresHeight}
-          featuresTopPosition={this.featuresTopPosition}
+          featuresHeight={featuresHeight}
+          featuresTopPosition={featuresTopPosition}
+          featuresRef={featuresRef}
         />
       </Content>
     );
