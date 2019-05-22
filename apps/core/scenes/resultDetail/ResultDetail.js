@@ -14,7 +14,9 @@ type Props = {|
 
 export default class ResultDetail extends React.Component<Props> {
   renderInner = (data: ResultDetailQueryResponse) => {
-    return <ResultDetailInner data={data} />;
+    return (
+      <ResultDetailInner bookingToken={this.props.bookingToken} data={data} />
+    );
   };
 
   render() {

@@ -66,9 +66,9 @@ class Results extends React.Component<Props> {
   handleBookPress = (bookingToken: ?string) => {
     const { adults, infants } = this.props;
     this.props.navigation.navigate(Routes.RESULT_DETAIL, {
-      adults,
-      infants,
       bookingToken,
+      infants,
+      adults,
     });
   };
 

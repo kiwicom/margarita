@@ -8,12 +8,19 @@ import {
 } from '@kiwicom/margarita-relay';
 import { IllustrationWithInformation } from '@kiwicom/margarita-components';
 
+import {
+  withBookingContext,
+  type BookingContextState,
+  type PassengerType,
+} from '../../contexts/bookingContext/BookingContext.js';
 import type { ResultDetailInner_data as ResultDetailInnerType } from './__generated__/ResultDetailInner_data.graphql';
 import ResultDetailContent from './resultDetailContent/ResultDetailContent';
 
 type Props = {|
   +data: ?ResultDetailInnerType,
   +relay: RelayRefetchProp,
+  +passengers: Array<PassengerType>,
+  +bookingToken: ?string,
 |};
 
 /**
@@ -31,12 +38,30 @@ class ResultDetailInner extends React.Component<Props> {
   }
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.data?.checkItinerary?.isChecked !==
-      prevProps.data?.checkItinerary?.isChecked
-    ) {
-      this.stopItineraryCheck();
-      this.tryStartItineraryCheck();
+    const { passengers, data, relay, bookingToken } = this.props;
+    const numPassengers = passengers.length;
+    const passengersChanged = prevProps.passengers.length !== numPassengers;
+    const checkedChanged =
+      data?.checkItinerary?.isChecked !==
+      prevProps.data?.checkItinerary?.isChecked;
+
+    if (checkedChanged || passengersChanged) {
+      if (passengersChanged) {
+        const newPassengerInput = {
+          adults: numPassengers !== 0 ? numPassengers : 1,
+          infants: 0,
+        };
+        relay.refetch({
+          input: {
+            passengers: newPassengerInput,
+            bags: 0,
+            bookingToken,
+          },
+        });
+      } else {
+        this.stopItineraryCheck();
+        this.tryStartItineraryCheck();
+      }
     }
   }
 
@@ -86,8 +111,12 @@ class ResultDetailInner extends React.Component<Props> {
   }
 }
 
+const bookingContextState = ({ passengers }: BookingContextState) => ({
+  passengers,
+});
+
 export default createRefetchContainer(
-  ResultDetailInner,
+  withBookingContext(bookingContextState)(ResultDetailInner),
   {
     data: graphql`
       fragment ResultDetailInner_data on RootQuery
