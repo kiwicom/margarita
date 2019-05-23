@@ -88,6 +88,6 @@ const logos = [
   {
     icon: <LogoImage src="static/tequila-logo.png" alt="Tequila" />,
     title: 'Tequila',
-    text: 'API from Kiwi.com',
+    text: 'travel API from Kiwi.com',
   },
 ];

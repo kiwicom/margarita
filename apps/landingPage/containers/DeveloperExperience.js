@@ -61,9 +61,9 @@ export default function DeveloperInfo() {
             <CardTitle>API is free and </CardTitle>
             <HighlightLeftOffset block>app is open-sourced</HighlightLeftOffset>
             <CardDescriptionTopMargin>
-              There are no fees. Even our API is free and bought tickets have
-              the same price like on Kiwi.com. You can fork Margarita and use it
-              for whatever.
+              There are no fees. Not only we provide you with a free API, you
+              can even collect your commission for each single booking coming
+              through your app! Fork Margarita and use it for whatever.
             </CardDescriptionTopMargin>
           </CardItem>
         </CardItems>

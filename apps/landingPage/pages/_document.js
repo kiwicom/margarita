@@ -29,10 +29,6 @@ export default class CustomDocument extends Document {
     return (
       <html>
         <Head>
-          <meta
-            name="msapplication-TileImage"
-            content="/images/icons/kiwicom/ms-icon-144x144.png"
-          />
           <title>Margarita | Create your own Kiwi.com for free</title>
           <meta
             name="description"
@@ -40,7 +36,7 @@ export default class CustomDocument extends Document {
           />
           <meta
             name="keywords"
-            content="kiwi.com, open source, react native, multiplatform app, graphql, react native web"
+            content="kiwi.com, open source, react native, multiplatform app, graphql, react native web, travel app"
           />
           <meta name="robots" content="index,follow" />
           <meta property="og:url" content="https://margarita.kiwi.com" />
@@ -56,7 +52,7 @@ export default class CustomDocument extends Document {
           <meta property="og:type" content="website" />
           <meta
             property="og:image"
-            content="https://margarita.kiwi.com/static/logo_margarita.png"
+            content="https://margarita.kiwi.com/static/preview.jpg"
             itemProp="image"
           />
           <meta name="twitter:card" content="summary_large_image" />
@@ -71,8 +67,17 @@ export default class CustomDocument extends Document {
           />
           <meta
             name="twitter:image"
-            content="https://margarita.kiwi.com/static/logo_margarita.png"
+            content="https://margarita.kiwi.com/static/preview.jpg"
           />
+          <meta name="twitter:label1" content="Multiplatform app" />
+          <meta name="twitter:data1" content="Web, iOS, Android" />
+          <meta name="twitter:label2" content="Technologies" />
+          <meta
+            name="twitter:data2"
+            content="React Native, GraphQL, Tequila API"
+          />
+          <meta name="twitter:label3" content="Open source" />
+          <meta name="twitter:data3" content="MIT license" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" type="image/png" href="/static/favicon.ico" />
           <link
