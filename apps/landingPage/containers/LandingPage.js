@@ -3,7 +3,9 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import getTokens from '@kiwicom/orbit-components/lib/getTokens';
+import ReactGA from 'react-ga';
 
+import { GOOGLE_ANALYTICS_TRACKING_ID } from '../config/GA';
 import Header from './Header';
 import Footer from './Footer';
 import Menu from './Menu';
@@ -28,6 +30,10 @@ export default class LandingPage extends React.Component<{}, State> {
   };
 
   componentDidMount() {
+    if (document.location.hostname !== 'localhost') {
+      ReactGA.initialize(GOOGLE_ANALYTICS_TRACKING_ID);
+      ReactGA.pageview('/');
+    }
     window.addEventListener('scroll', this.handleScroll);
   }
 
