@@ -50,6 +50,10 @@ export const KIWI_FACEBOOK_LINK = 'https://www.facebook.com/kiwicom247/';
 
 export const NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER = 6;
 export const SEARCH_RESULTS_LIMIT = 50;
+
+export const DEFAULT_NIGHTS_IN_DESTINATION_FROM = 3;
+export const DEFAULT_NIGHTS_IN_DESTINATION_TO = 6;
+
 export const DEFAULT_SEARCH_SORTING = 'QUALITY';
 
 // constants

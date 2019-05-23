@@ -7,6 +7,8 @@ import {
   TRIP_TYPES,
   SEARCH_RESULTS_LIMIT,
   DEFAULT_SEARCH_SORTING,
+  DEFAULT_NIGHTS_IN_DESTINATION_FROM,
+  DEFAULT_NIGHTS_IN_DESTINATION_TO,
 } from '@kiwicom/margarita-config';
 import * as DateFNS from 'date-fns';
 import qs from 'qs';
@@ -20,6 +22,8 @@ type ParseFieldsParams = {|
   +dateTo?: ?string,
   +returnDateFrom?: ?string,
   +returnDateTo?: ?string,
+  +nightsInDestinationFrom?: number,
+  +nightsInDestinationTo?: number,
   +adults?: ?string,
   +infants?: ?string,
   +travelFrom?: ?string,
@@ -31,6 +35,8 @@ type ParseFieldsReturn = {|
   +dateTo?: Date,
   +returnDateFrom?: Date,
   +returnDateTo?: Date,
+  +nightsInDestinationFrom?: number,
+  +nightsInDestinationTo?: number,
   +adults?: number,
   +infants?: number,
 |};
@@ -52,6 +58,9 @@ export type SortTypes = 'QUALITY' | 'PRICE' | 'DURATION';
 type StateParams = {|
   travelFrom: $ReadOnlyArray<Location>,
   travelTo: $ReadOnlyArray<Location>,
+  isNightsInDestinationSelected: boolean,
+  nightsInDestinationFrom: number,
+  nightsInDestinationTo: number,
   dateFrom: Date,
   sortBy: SortTypes,
   limit: number,
@@ -68,6 +77,8 @@ type State = {|
     +switchFromTo: () => void,
     +setDepartureDate: (Date, Date) => void,
     +setReturnDate: (Date, Date) => void,
+    +setNightsInDestinationSelection: boolean => void,
+    +setNightsInDestination: (number, number) => void,
     +setTripType: TripTypes => void,
     +setSortBy: SortTypes => void,
     +setPassengerData: ($ReadOnly<PassengersData>) => void,
@@ -80,8 +91,6 @@ type State = {|
 
 const defaultDepartureDate = DateFNS.addDays(new Date(), 1);
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
-const defaultSortBy = DEFAULT_SEARCH_SORTING;
-const defaultLimit = SEARCH_RESULTS_LIMIT;
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
 const defaultPlaces = {
   origin: [
@@ -106,10 +115,13 @@ const defaultState = {
   tripType: TRIP_TYPES.RETURN,
   travelFrom: defaultPlaces.origin,
   travelTo: defaultPlaces.departure,
+  isNightsInDestinationSelected: false,
+  nightsInDestinationFrom: DEFAULT_NIGHTS_IN_DESTINATION_FROM,
+  nightsInDestinationTo: DEFAULT_NIGHTS_IN_DESTINATION_TO,
   dateFrom: defaultDepartureDate,
   dateTo: defaultDepartureDate,
-  sortBy: defaultSortBy,
-  limit: defaultLimit,
+  sortBy: DEFAULT_SEARCH_SORTING,
+  limit: SEARCH_RESULTS_LIMIT,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
   adults: 1,
@@ -118,6 +130,8 @@ const defaultState = {
     setDepartureDate: noop,
     switchFromTo: noop,
     setReturnDate: noop,
+    setNightsInDestinationSelection: noop,
+    setNightsInDestination: noop,
     setTripType: noop,
     setSortBy: noop,
     setPassengerData: noop,
@@ -150,6 +164,8 @@ export default class SearchContextProvider extends React.Component<
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
         setReturnDate: this.setReturnDate,
+        setNightsInDestinationSelection: this.setNightsInDestinationSelection,
+        setNightsInDestination: this.setNightsInDestination,
         setTripType: this.setTripType,
         setSortBy: this.setSortBy,
         setPassengerData: this.setPassengerData,
@@ -169,6 +185,12 @@ export default class SearchContextProvider extends React.Component<
       ...parseDate(params.returnDateTo, 'returnDateTo'),
       ...parseNumber(params.adults, 'adults'),
       ...parseNumber(params.infants, 'infants'),
+      ...(params.nightsInDestinationFrom
+        ? { nightsInDestinationFrom: params.nightsInDestinationFrom }
+        : {}),
+      ...(params.nightsInDestinationTo
+        ? { nightsInDestinationTo: params.nightsInDestinationTo }
+        : {}),
     };
   };
 
@@ -249,6 +271,24 @@ export default class SearchContextProvider extends React.Component<
         returnDateFrom: returnDateFrom,
         returnDateTo: returnDateTo,
       };
+    });
+  };
+
+  setNightsInDestinationSelection = (
+    isNightsInDestinationSelected: boolean,
+  ) => {
+    this.setState({
+      isNightsInDestinationSelected,
+    });
+  };
+
+  setNightsInDestination = (
+    nightsInDestinationFrom: number,
+    nightsInDestinationTo: number,
+  ) => {
+    this.setState({
+      nightsInDestinationFrom: nightsInDestinationFrom,
+      nightsInDestinationTo: nightsInDestinationTo,
     });
   };
 

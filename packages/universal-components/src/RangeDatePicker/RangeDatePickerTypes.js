@@ -1,24 +1,35 @@
 // @flow
 
-import * as React from 'react';
-
 export type WeekStartsType = 0 | 1 | 2 | 3 | 4 | 5 | 6;
+
+export type ConfirmType = {|
+  +dates?: $ReadOnlyArray<Date>,
+  +isNightsInDestinationSelected?: boolean,
+  +nightsInDestination?: $ReadOnlyArray<number>,
+|};
 
 export type Props = {|
   +isVisible: boolean,
   +dates: $ReadOnlyArray<Date>,
-  +onConfirm: ($ReadOnlyArray<Date>) => void,
+  +onConfirm: ConfirmType => void,
   +onDismiss: () => void,
   +onChangeTempDates: ($ReadOnlyArray<Date>) => void,
   +isRangePicker?: boolean,
+  +isControlContainerVisible?: boolean,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStartsType,
   +label: string,
   +dateFormat: string,
-  +buttonLabels: {|
-    +cancel: React.Node,
-    +confirm: React.Node,
+  +isNightsInDestinationVisible?: boolean,
+  +nightsInDestination?: $ReadOnlyArray<number>,
+  +onNightsInDestinationChange?: ($ReadOnlyArray<number>) => void,
+  +isNightsInDestinationSelected?: boolean,
+  +onNightsInDestinationSelectionChange?: boolean => void,
+  +buttonLabels?: {|
+    +cancel: string,
+    +confirm: string,
   |},
+  +nightsInDestinationLabel?: string,
 |};
 
 export type DayItemPositionType = {| x: number, y: number, day: Date |};

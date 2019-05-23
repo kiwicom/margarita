@@ -41,6 +41,9 @@ type Props = {
   +dateTo: Date,
   +returnDateFrom: Date,
   +returnDateTo: Date,
+  +isNightsInDestinationSelected: boolean,
+  +nightsInDestinationFrom: string,
+  +nightsInDestinationTo: string,
   +tripType: string,
   +adults: number,
   +infants: number,
@@ -74,6 +77,9 @@ class SearchForm extends React.Component<Props> {
       bags,
       limit,
       onSubmit,
+      isNightsInDestinationSelected,
+      nightsInDestinationFrom,
+      nightsInDestinationTo,
     } = this.props;
     if (travelFrom == null || travelFrom.length === 0) {
       this.props.setAlertContent({
@@ -96,6 +102,8 @@ class SearchForm extends React.Component<Props> {
           dateTo,
           returnDateFrom,
           returnDateTo,
+          nightsInDestinationFrom,
+          nightsInDestinationTo,
           tripType,
           travelFrom,
           travelTo,
@@ -119,11 +127,17 @@ class SearchForm extends React.Component<Props> {
         dateFrom,
         dateTo,
         ...(tripType === TRIP_TYPES.RETURN
-          ? {
-              returnDateFrom,
-              returnDateTo,
-            }
+          ? isNightsInDestinationSelected
+            ? {
+                nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
+                nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
+              }
+            : {
+                returnDateFrom,
+                returnDateTo,
+              }
           : {}),
+
         onSubmit,
       });
     }
@@ -184,6 +198,9 @@ const selectSearchContextState = ({
   dateTo,
   returnDateFrom,
   returnDateTo,
+  isNightsInDestinationSelected,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
   tripType,
   adults,
   infants,
@@ -195,6 +212,9 @@ const selectSearchContextState = ({
   dateTo,
   returnDateFrom,
   returnDateTo,
+  isNightsInDestinationSelected,
+  nightsInDestinationFrom,
+  nightsInDestinationTo,
   tripType,
   adults,
   infants,
