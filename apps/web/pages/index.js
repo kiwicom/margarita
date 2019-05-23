@@ -14,9 +14,8 @@ type Props = {|
 |};
 
 function IndexPage({ router }: Props) {
-  function onSubmit(query) {
+  function changeUrl(query) {
     const routerConfig = '/?' + qs.stringify(query);
-
     router.push(routerConfig, routerConfig, {
       shallow: true,
     });
@@ -25,7 +24,7 @@ function IndexPage({ router }: Props) {
   return (
     <Layout>
       <View style={styles.page}>
-        <Search onSubmit={onSubmit} routerQuery={router.query} />
+        <Search onSubmit={changeUrl} routerQuery={router.query} />
       </View>
     </Layout>
   );

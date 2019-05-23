@@ -7,8 +7,8 @@ import type { OptionTypeInterface } from '../OptionPickerTypes';
 
 type Props = {|
   +option: OptionTypeInterface,
-  +onItemPress: (option: OptionTypeInterface) => void,
-  +onAddPress: (option: OptionTypeInterface) => void,
+  +onItemPress: (option: OptionTypeInterface) => void | Promise<void>,
+  +onAddPress: (option: OptionTypeInterface) => void | Promise<void>,
 |};
 
 // todo add to helpers
@@ -48,8 +48,8 @@ function RenderSubOptions({
   onItemPress,
 }: {
   options: Array<OptionTypeInterface>,
-  onAddPress: (option: OptionTypeInterface) => void,
-  onItemPress: (option: OptionTypeInterface) => void,
+  onAddPress: (option: OptionTypeInterface) => void | Promise<void>,
+  onItemPress: (option: OptionTypeInterface) => void | Promise<void>,
 }) {
   return options.map((option, index) => {
     const isLast = options.length - 1 === index;

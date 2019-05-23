@@ -25,7 +25,7 @@ type Props = {|
     +confirm: string,
   |},
   +numberOfRenderedMonths: number,
-  +onConfirm: ConfirmType => void,
+  +onConfirm: ConfirmType => void | Promise<void>,
   +onDismiss: () => void,
   +onPress: () => void,
   +style?: StylePropType,

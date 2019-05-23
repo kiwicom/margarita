@@ -13,7 +13,7 @@ import type { StylePropType } from '../PlatformStyleSheet/StyleTypes';
 
 type Props = {|
   +children: React.Node,
-  +onPress: () => void,
+  +onPress: () => void | Promise<void>,
   +disabled: boolean,
   +width?: number,
   +style?: StylePropType,
