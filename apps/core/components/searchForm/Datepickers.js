@@ -20,7 +20,7 @@ import {
 import {
   withSearchContext,
   type SearchContextState,
-} from '../../scenes/search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
 

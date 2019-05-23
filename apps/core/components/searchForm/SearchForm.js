@@ -27,7 +27,7 @@ import {
   withSearchContext,
   type SearchContextState,
   type Location,
-} from '../../scenes/search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchFormModes from './SearchFormModes';

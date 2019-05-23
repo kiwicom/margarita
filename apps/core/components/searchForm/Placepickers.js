@@ -19,7 +19,7 @@ import {
   withSearchContext,
   type SearchContextState,
   type Location,
-} from '../../scenes/search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 import PickersWrapper from './PickersWrapper';
 import PlacePicker from './PlacePicker/PlacePickerRenderer';
 import {

@@ -8,7 +8,7 @@ import { Illustration, ContentContainer } from '@kiwicom/margarita-components';
 import {
   withUserContext,
   type UserContextState,
-} from '../../components/userContext/UserContext';
+} from '../../contexts/userContext/UserContext';
 import SignOut from './SignOut';
 import SignIn from './SignIn';
 

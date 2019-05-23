@@ -20,7 +20,7 @@ import { TRIP_TYPE } from '../../scenes/search/SearchConstants';
 import {
   withSearchContext,
   type SearchContextState,
-} from '../../scenes/search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 
 type Props = {|
   +tripType: string,

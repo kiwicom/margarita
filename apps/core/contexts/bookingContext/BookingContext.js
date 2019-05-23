@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 
-import { type BaggageBundleType } from '../passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
+import { type BaggageBundleType } from '../../components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
 
 type Props = {|
   +children: React.Node,

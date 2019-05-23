@@ -10,7 +10,7 @@ import {
   withSearchContext,
   type SearchContextState,
   type SortTypes,
-} from './SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 
 type Props = {|
   +sortBy: SortTypes,

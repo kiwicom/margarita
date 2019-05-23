@@ -11,7 +11,7 @@ import {
   withSearchContext,
   type SearchContextState,
   type PassengersData,
-} from '../../scenes/search/SearchContext';
+} from '../../contexts/searchContext/SearchContext';
 
 type Props = {|
   +adults: number,

@@ -22,12 +22,12 @@ import {
   withUserContext,
   type UserContextState,
   type PhoneNumber,
-} from '../../../components/userContext/UserContext';
+} from '../../../contexts/userContext/UserContext';
 import {
   type PassengerType,
   withBookingContext,
   type BookingContextState,
-} from '../../../components/bookingContext/BookingContext';
+} from '../../../contexts/bookingContext/BookingContext';
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
 import type { ResultDetailContent_itinerary as ResultDetailContentType } from './__generated__/ResultDetailContent_itinerary.graphql';
