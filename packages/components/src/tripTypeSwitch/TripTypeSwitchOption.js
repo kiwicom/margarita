@@ -15,7 +15,7 @@ type Props = {|
   +type: TripType,
   +label: string,
   +selected: boolean,
-  +onSelect: (type: TripType) => void,
+  +onSelect: (type: TripType) => void | Promise<void>,
 |};
 
 export default class TripTypeSwitchOption extends React.Component<Props> {

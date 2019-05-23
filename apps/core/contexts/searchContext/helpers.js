@@ -11,7 +11,7 @@ const PARSER_CONFIG = {
   travelTo: 'Location',
   travelFromName: 'string',
   travelToName: 'string',
-  sort: 'string', // @TODO create sortParser
+  sortBy: 'string', // @TODO create sortParser
   limit: 'number',
   adults: 'number',
   infants: 'number',

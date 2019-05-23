@@ -30,8 +30,9 @@ import {
 type Props = {|
   +travelFrom: ?Array<Location>,
   +travelTo: ?Array<Location>,
-  +handlePlaceSwitchPress: () => void,
+  +switchFromTo: () => void,
   +layout: number,
+  +onPlaceSelect: () => void,
 |};
 
 type State = {|
@@ -58,7 +59,10 @@ class Placepickers extends React.Component<Props, State> {
     return '';
   };
 
-  onClose = () => this.setState({ isModalOpen: false });
+  onClose = () => {
+    this.setState({ isModalOpen: false });
+    this.props.onPlaceSelect();
+  };
 
   handleFromPress = () =>
     this.setState({ placeType: PLACE_TYPE.ORIGIN, isModalOpen: true });
@@ -66,9 +70,15 @@ class Placepickers extends React.Component<Props, State> {
   handleToPress = () =>
     this.setState({ placeType: PLACE_TYPE.DESTINATION, isModalOpen: true });
 
+  handlePlaceSwitchPress = async () => {
+    await this.props.switchFromTo();
+    this.props.onPlaceSelect();
+  };
+
   render() {
-    const { layout, travelFrom, travelTo, handlePlaceSwitchPress } = this.props;
+    const { layout, travelFrom, travelTo, onPlaceSelect } = this.props;
     const rowLayout = layout >= LAYOUT.largeMobile;
+
     return (
       <PickersWrapper layout={layout}>
         <TripInput
@@ -78,7 +88,7 @@ class Placepickers extends React.Component<Props, State> {
           icon={<Icon name="airplane-takeoff" />}
           value={this.getLocationsNames(travelFrom)}
         />
-        <TouchableWithoutFeedback onPress={handlePlaceSwitchPress}>
+        <TouchableWithoutFeedback onPress={this.handlePlaceSwitchPress}>
           <View
             style={[styles.placeSwitch, rowLayout && styles.rowPlaceSwitch]}
           >
@@ -95,6 +105,7 @@ class Placepickers extends React.Component<Props, State> {
           <PlacePicker
             onClose={this.onClose}
             placeType={this.state.placeType}
+            onPlaceSelect={onPlaceSelect}
           />
         </Modal>
       </PickersWrapper>
@@ -148,7 +159,7 @@ const select = ({
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
-  handlePlaceSwitchPress: switchFromTo,
+  switchFromTo,
 });
 
 export default withLayoutContext(layoutSelect)(

@@ -5,7 +5,7 @@ import { TouchableWithoutFeedback as OriginalTouchableWithoutFeedback } from 're
 import type { StylePropType } from '@kiwicom/universal-components';
 
 type Props = {|
-  +onPress: () => void,
+  +onPress: () => void | Promise<void>,
   +disabled?: boolean,
   +children: React.Node,
   +accessibilityTraits: string,

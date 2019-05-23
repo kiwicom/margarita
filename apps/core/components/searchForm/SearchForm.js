@@ -66,7 +66,7 @@ class SearchForm extends React.Component<Props> {
     return '';
   };
 
-  handleSubmitPress = () => {
+  getSearchParams = () => {
     const {
       travelFrom,
       travelTo,
@@ -74,68 +74,70 @@ class SearchForm extends React.Component<Props> {
       adults,
       infants,
       limit,
-      onSubmit,
       isNightsInDestinationSelected,
       nightsInDestinationFrom,
       nightsInDestinationTo,
     } = this.props;
 
+    const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
+    const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
+    const returnDateFrom = format(
+      this.props.returnDateFrom,
+      BASIC_ISO_DATE_FORMAT,
+    );
+    const returnDateTo = format(this.props.returnDateTo, BASIC_ISO_DATE_FORMAT);
+
+    return {
+      travelFrom: qs.stringify(travelFrom),
+      travelTo: qs.stringify(travelTo),
+      travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
+      travelToName: this.convertLocationsToParams(travelTo, 'name'),
+      sortBy: 'QUALITY',
+      limit,
+      adults,
+      infants,
+      dateFrom,
+      dateTo,
+      tripType,
+      ...(tripType === TRIP_TYPES.RETURN // @TODO refactor
+        ? isNightsInDestinationSelected
+          ? {
+              isNightsInDestinationSelected,
+              nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
+              nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
+            }
+          : {
+              returnDateFrom,
+              returnDateTo,
+            }
+        : {}),
+    };
+  };
+
+  handleSubmitPress = () => {
+    const { travelFrom } = this.props;
     if (travelFrom == null || travelFrom.length === 0) {
       this.props.setAlertContent({
         message: 'Please choose an origin place',
       });
     } else {
-      const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
-      const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
-      const returnDateFrom = format(
-        this.props.returnDateFrom,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      const returnDateTo = format(
-        this.props.returnDateTo,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      if (onSubmit != null) {
-        onSubmit({
-          dateFrom,
-          dateTo,
-          returnDateFrom,
-          returnDateTo,
-          nightsInDestinationFrom,
-          nightsInDestinationTo,
-          tripType,
-          travelFrom,
-          travelTo,
-          sort: 'QUALITY',
-          limit,
-          adults,
-          infants,
-        });
-      }
+      const searchParams = this.getSearchParams();
       this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: qs.stringify(travelFrom),
-        travelTo: qs.stringify(travelTo),
-        travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
-        travelToName: this.convertLocationsToParams(travelTo, 'name'),
-        sort: 'QUALITY',
-        limit,
-        adults,
-        infants,
-        dateFrom,
-        dateTo,
-        tripType,
-        ...(tripType === TRIP_TYPES.RETURN // @TODO refactor
-          ? isNightsInDestinationSelected
-            ? {
-                isNightsInDestinationSelected,
-                nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
-                nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
-              }
-            : {
-                returnDateFrom,
-                returnDateTo,
-              }
-          : {}),
+        ...searchParams,
+      });
+    }
+  };
+
+  handleParamsUpdate = () => {
+    const { travelFrom } = this.props;
+    if (travelFrom == null || travelFrom.length === 0) {
+      this.props.setAlertContent({
+        message: 'Please choose an origin place',
+      });
+    } else if (Platform.OS === 'web') {
+      const searchParams = this.getSearchParams();
+      this.props.navigation.navigate(Routes.RESULTS, {
+        ...searchParams,
       });
     }
   };
@@ -144,10 +146,10 @@ class SearchForm extends React.Component<Props> {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
     return (
       <>
-        <SearchFormModes />
+        <SearchFormModes onParamsUpdate={this.handleParamsUpdate} />
         <View style={desktopLayout && styles.inputsDesktop}>
-          <Placepickers />
-          <Datepickers />
+          <Placepickers onPlaceSelect={this.handleParamsUpdate} />
+          <Datepickers onDateSelect={this.handleParamsUpdate} />
           <View style={[styles.bottom, desktopLayout && styles.bottomDesktop]}>
             {this.props.showButton && (
               <Button

@@ -43,6 +43,8 @@ type Props = {|
     type: LocationSearchType,
     location: Location | Location[],
   ) => void,
+  +onPressSelect: () => void,
+  +onPlaceSelect: () => void,
 |};
 
 type State = {|
@@ -122,11 +124,13 @@ class PlacePickerContent extends React.Component<Props, State> {
     this.refetchSuggestions(text);
   };
 
-  handlePressOption = (option: OptionType) => {
-    const { setLocation, pickerType } = this.props;
+  handlePressOption = async (option: OptionType) => {
+    const { setLocation, pickerType, onPlaceSelect } = this.props;
     const location = mapOptionToLocation(option);
 
-    setLocation(pickerType, location);
+    await setLocation(pickerType, location);
+    onPlaceSelect();
+
     this.props.onClose();
   };
 
