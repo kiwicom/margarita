@@ -78,7 +78,8 @@ export default class Features extends React.Component<Props, State> {
           <MultiplatformText>
             <AccentedText big>
               <Highlight>Multi-platform travel app</Highlight> for all major
-              platforms — web, iOS and Android.
+              platforms — one code for web, iOS and Android. This is
+              revolutionary.
             </AccentedText>
           </MultiplatformText>
 
