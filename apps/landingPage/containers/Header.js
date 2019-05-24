@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { Link } from 'react-scroll';
 
+import { EventGithub, EventLandingPageReadMore } from '../config/GA';
 import LogoCards from '../components/LogoCards';
 import Content from '../components/Content';
 import GithubLogo from '../components/GithubLogo';
@@ -46,7 +47,11 @@ export default function Header() {
                     to="multiplatform"
                     {...Config.sharedLinkProps}
                   >
-                    <Button circled width={120}>
+                    <Button
+                      circled
+                      width={120}
+                      onClick={EventLandingPageReadMore}
+                    >
                       Read more
                     </Button>
                   </LinkWithoutStyle>
@@ -57,8 +62,9 @@ export default function Header() {
                     type="secondary"
                     href="https://github.com/kiwicom/margarita"
                     external
+                    onClick={EventGithub}
                   >
-                    <WhiteText>View on GitHub</WhiteText>
+                    <WhiteText>View on Github</WhiteText>
                     <GithubLogoWrapper>
                       <GithubLogo type="light" />
                     </GithubLogoWrapper>

@@ -9,10 +9,11 @@ type Props = {|
   +children: string,
   +href: string,
   +target?: string,
+  +onClick?: () => void,
 |};
-export default function Link({ children, href, target }: Props) {
+export default function Link({ children, href, target, onClick }: Props) {
   return (
-    <Text href={href} target={target ?? undefined}>
+    <Text href={href} target={target ?? undefined} onClick={onClick}>
       <Icon>
         <ChevronRight size="small" />
       </Icon>
