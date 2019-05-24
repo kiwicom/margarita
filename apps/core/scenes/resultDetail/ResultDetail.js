@@ -5,14 +5,24 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 
 import type { ResultDetailQueryResponse } from './__generated__/ResultDetailQuery.graphql';
 import ResultDetailInner from './ResultDetailInner';
+import {
+  withBookingContext,
+  type BookingContextState,
+} from '../../contexts/bookingContext/BookingContext';
 
 type Props = {|
-  +bookingToken: ?string,
-  +adults: ?number,
-  +infants: ?number,
+  +bookingToken: string,
+  +adults: number,
+  +infants: number,
+  +setContextBookingToken: string => void,
 |};
 
-export default class ResultDetail extends React.Component<Props> {
+class ResultDetail extends React.Component<Props> {
+  componentDidMount() {
+    const { bookingToken, setContextBookingToken } = this.props;
+    setContextBookingToken(bookingToken);
+  }
+
   renderInner = (data: ResultDetailQueryResponse) => {
     return <ResultDetailInner data={data} />;
   };
@@ -38,3 +48,11 @@ export default class ResultDetail extends React.Component<Props> {
     );
   }
 }
+
+const bookingContextState = ({
+  actions: { setBookingToken },
+}: BookingContextState) => ({
+  setContextBookingToken: setBookingToken,
+});
+
+export default withBookingContext(bookingContextState)(ResultDetail);
