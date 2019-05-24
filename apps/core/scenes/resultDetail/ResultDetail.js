@@ -12,40 +12,55 @@ import {
 import {
   withSearchContext,
   type SearchContextState,
+  type PassengersData,
 } from '../../contexts/searchContext/SearchContext';
 
 type Props = {|
-  +bookingToken: string,
   +adults: number,
   +infants: number,
-  +setContextBookingToken: string => void,
-  +setSearchContextPassengerData: Object => void,
-  +passengers: {
+  +bookingToken: string,
+  +bookingContext: {|
+    +bookingToken: ?string,
+    +setBookingToken: string => void,
+  |},
+  +searchContext: {|
     +adults: number,
     +infants: number,
-  },
+    +setPassengerData: PassengersData => void,
+  |},
 |};
 
 class ResultDetail extends React.Component<Props> {
   componentDidMount() {
     const {
       bookingToken,
-      setContextBookingToken,
-      setSearchContextPassengerData,
       adults,
       infants,
-      passengers,
+      searchContext,
+      bookingContext,
     } = this.props;
-    setContextBookingToken(bookingToken);
 
-    // set the SearchContext status if it is not
-    if (passengers.adults !== adults && passengers.infants !== infants) {
-      setSearchContextPassengerData({ adults, infants });
+    bookingContext.setBookingToken(bookingToken);
+
+    // set the SearchContext state if it is not
+    if (searchContext.adults !== adults && searchContext.infants !== infants) {
+      searchContext.setPassengerData({ adults, infants });
     }
   }
 
   renderInner = (data: ResultDetailQueryResponse) => {
-    return <ResultDetailInner data={data} />;
+    const { bookingContext, searchContext } = this.props;
+    const passengers = {
+      infants: searchContext.infants,
+      adults: searchContext.adults,
+    };
+    return (
+      <ResultDetailInner
+        data={data}
+        bookingToken={bookingContext.bookingToken}
+        passengers={passengers}
+      />
+    );
   };
 
   render() {
@@ -60,7 +75,7 @@ class ResultDetail extends React.Component<Props> {
         variables={{
           input: {
             bookingToken,
-            bags: 0, //  @TODO - use data from passengers forms
+            bags: 0, // @TODO from search form
             passengers: { adults, infants },
           },
         }}
@@ -72,8 +87,12 @@ class ResultDetail extends React.Component<Props> {
 
 const bookingContextState = ({
   actions: { setBookingToken },
+  bookingToken,
 }: BookingContextState) => ({
-  setContextBookingToken: setBookingToken,
+  bookingContext: {
+    bookingToken,
+    setBookingToken,
+  },
 });
 
 const selectSearchContextState = ({
@@ -81,11 +100,11 @@ const selectSearchContextState = ({
   infants,
   adults,
 }: SearchContextState) => ({
-  passengers: {
+  searchContext: {
     infants,
     adults,
+    setPassengerData,
   },
-  setSearchContextPassengerData: setPassengerData,
 });
 export default withSearchContext(selectSearchContextState)(
   withBookingContext(bookingContextState)(ResultDetail),
