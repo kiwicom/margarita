@@ -9,18 +9,39 @@ import {
   withBookingContext,
   type BookingContextState,
 } from '../../contexts/bookingContext/BookingContext';
+import {
+  withSearchContext,
+  type SearchContextState,
+} from '../../contexts/searchContext/SearchContext';
 
 type Props = {|
   +bookingToken: string,
   +adults: number,
   +infants: number,
   +setContextBookingToken: string => void,
+  +setSearchContextPassengerData: Object => void,
+  +passengers: {
+    +adults: number,
+    +infants: number,
+  },
 |};
 
 class ResultDetail extends React.Component<Props> {
   componentDidMount() {
-    const { bookingToken, setContextBookingToken } = this.props;
+    const {
+      bookingToken,
+      setContextBookingToken,
+      setSearchContextPassengerData,
+      adults,
+      infants,
+      passengers,
+    } = this.props;
     setContextBookingToken(bookingToken);
+
+    // set the SearchContext status if it is not
+    if (passengers.adults !== adults && passengers.infants !== infants) {
+      setSearchContextPassengerData({ adults, infants });
+    }
   }
 
   renderInner = (data: ResultDetailQueryResponse) => {
@@ -55,4 +76,17 @@ const bookingContextState = ({
   setContextBookingToken: setBookingToken,
 });
 
-export default withBookingContext(bookingContextState)(ResultDetail);
+const selectSearchContextState = ({
+  actions: { setPassengerData },
+  infants,
+  adults,
+}: SearchContextState) => ({
+  passengers: {
+    infants,
+    adults,
+  },
+  setSearchContextPassengerData: setPassengerData,
+});
+export default withSearchContext(selectSearchContextState)(
+  withBookingContext(bookingContextState)(ResultDetail),
+);
