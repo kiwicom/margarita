@@ -109,7 +109,7 @@ and it is then easier to test the interactions with the action logger, and play 
 git config --local commit.template commit-template.txt
 ```
 
-This will pre-fill your commit message with a [template](../../../commit-template.txt) whenever you run `git commit`, reminding you to follow the convention and to add a summary.
+This will pre-fill your commit message with a [template](https://github.com/kiwicom/margarita/blob/master/commit-template.txt) whenever you run `git commit`, reminding you to follow the convention and to add a summary.
 
 ## Updating Icons
 
