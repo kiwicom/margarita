@@ -46,7 +46,7 @@ export type ApiLocation = {|
     ...ApiLocationArea,
     +country: ?ApiLocationArea,
   },
-  +location: {|
+  +location?: {|
     +lat: number,
     +lon: number,
   |},
