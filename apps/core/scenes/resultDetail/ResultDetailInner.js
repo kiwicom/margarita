@@ -14,6 +14,8 @@ import ResultDetailContent from './resultDetailContent/ResultDetailContent';
 type Props = {|
   +data: ?ResultDetailInnerType,
   +relay: RelayRefetchProp,
+  +bookingToken: ?string,
+  +passengers: {| +infants: ?number, +adults: ?number |},
 |};
 
 /**
@@ -52,8 +54,16 @@ class ResultDetailInner extends React.Component<Props> {
       this.props.data?.checkItinerary?.isValid &&
       !this.props.data?.checkItinerary?.isChecked
     ) {
+      const param = {
+        input: {
+          bookingToken: this.props.bookingToken,
+          bags: 0, // @TODO from the search form
+          passengers: this.props.passengers,
+        },
+      };
+
       this.checkInterval = setInterval(() => {
-        this.props.relay.refetch();
+        this.props.relay.refetch(param);
       }, REFETCH_INTERVAL);
 
       this.checkTimeout = setTimeout(() => {

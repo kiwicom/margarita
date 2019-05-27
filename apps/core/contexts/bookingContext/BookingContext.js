@@ -21,17 +21,22 @@ export type PassengerType = {|
   +passengerCount: number,
   +visaRequired?: ?boolean,
 |};
+
 type State = {|
-  +passengers: Array<PassengerType>,
-  +actions: {|
-    +setPassengers: (Array<PassengerType>) => void,
+  bookingToken: ?string,
+  passengers: Array<PassengerType>,
+  actions: {|
+    setPassengers: (Array<PassengerType>) => void,
+    setBookingToken: string => void,
   |},
 |};
 
 const defaultState = {
   passengers: [],
+  bookingToken: undefined,
   actions: {
     setPassengers: noop,
+    setBookingToken: noop,
   },
 };
 
@@ -48,9 +53,14 @@ export default class BookingContextProvider extends React.Component<
       ...defaultState,
       actions: {
         setPassengers: this.setPassengers,
+        setBookingToken: this.setBookingToken,
       },
     };
   }
+
+  setBookingToken = (bookingToken: string) => {
+    this.setState({ bookingToken });
+  };
 
   setPassengers = (passengers: Array<PassengerType>) => {
     this.setState({ passengers });
