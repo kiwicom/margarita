@@ -64,7 +64,14 @@ and it is then easier to test the interactions with the action logger, and play 
   ```
 
 - **I started the web UI for the mobile storybook but no stories are displayed.**<br>
-  Make sure that the packager is running (`yarn storybook:mobile:universal-components`), and refresh the application by pressing <kbd>CMD</kbd>+<kbd>R</kbd> on iOS or by pressing <kbd>R</kbd> twice on `Android`.
+  Make sure that the packager is running (`yarn storybook:mobile:universal-components`), and refresh the application by pressing <kbd>CMD</kbd>+<kbd>R</kbd> on `iOS` or by pressing <kbd>R</kbd> twice on `Android`. If you use `Physical device`, you can refresh the application by shaking the device and pressing Reload.
+
+  ### Android physical device
+  In case refreshing of the application didn't help, try to connect your phone via USB cable with enabled debugging and run
+  ```bash
+  adb reverse tcp:7007 tcp:7007
+  ```
+  If you get permisson error check whether you correctly followed [these instructions](https://facebook.github.io/react-native/docs/running-on-device#running-your-app-on-android-devices) and that you set your USB mode to `File Transfer`. Then try refreshing the application again.
 
 - **I modified some components in `packages/universal-components` but they are not updated in Margarita.**<br>
   This is because the files which are resolved when importing anything from `@kiwicom/universal-components` come from `packages/universal-components/lib`. Run
