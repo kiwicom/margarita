@@ -19,6 +19,8 @@ type Props = {|
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStartsType,
   +isRangePicker: boolean,
+  +renderFirstMonthFrom: Date,
+  +isChoosingPastDatesEnabled: boolean,
 |};
 
 type State = {|
@@ -32,7 +34,12 @@ export default class RangeDatePickerContent extends React.Component<
   constructor(props: Props) {
     super(props);
     this.state = {
-      nextMonths: getMonths(props.numberOfRenderedMonths, props.weekStartsOn),
+      nextMonths: getMonths({
+        numberOfRenderedMonths: props.numberOfRenderedMonths,
+        weekStartsOn: props.weekStartsOn,
+        whichMonthsToRender: 'next',
+        renderFirstMonthFrom: props.renderFirstMonthFrom,
+      }),
     };
   }
 
@@ -49,13 +56,21 @@ export default class RangeDatePickerContent extends React.Component<
     }, 0);
 
   renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
+    const {
+      onDayPress,
+      selectedDates,
+      weekStartsOn,
+      isRangePicker,
+      isChoosingPastDatesEnabled,
+    } = this.props;
     return (
       <RenderMonth
         monthDate={item}
-        onDayPress={this.props.onDayPress}
-        selectedDates={this.props.selectedDates}
-        weekStartsOn={this.props.weekStartsOn}
-        isRangePicker={this.props.isRangePicker}
+        onDayPress={onDayPress}
+        selectedDates={selectedDates}
+        weekStartsOn={weekStartsOn}
+        isRangePicker={isRangePicker}
+        isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
       />
     );
   };
@@ -94,7 +109,11 @@ export default class RangeDatePickerContent extends React.Component<
               data={this.state.nextMonths}
               keyExtractor={this.keyExtractor}
               renderItem={this.renderMonthItem}
-              extraData={this.props.selectedDates}
+              extraData={[
+                this.props.selectedDates,
+                this.props.isChoosingPastDatesEnabled,
+                this.props.isRangePicker,
+              ]}
               initialNumToRender={2}
               style={styles.flatList}
               getItemLayout={this.getFlatListLayout}

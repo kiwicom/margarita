@@ -13,8 +13,6 @@ import NightsInDestination from './NightsInDestination';
 import ControlContainer from './components/ControlContainer';
 
 export default class RangeDatePicker extends React.Component<Props> {
-  // @TODO load price for days
-
   static defaultProps = {
     isNightsInDestinationVisible: false,
     isNightsInDestinationSelected: false,
@@ -52,6 +50,7 @@ export default class RangeDatePicker extends React.Component<Props> {
 
   render() {
     const {
+      isChoosingPastDatesEnabled,
       isVisible,
       label,
       buttonLabels,
@@ -65,6 +64,7 @@ export default class RangeDatePicker extends React.Component<Props> {
       nightsInDestinationLabel,
       isNightsInDestinationSelected,
       isControlContainerVisible,
+      renderFirstMonthFrom,
     } = this.props;
 
     return (
@@ -76,11 +76,13 @@ export default class RangeDatePicker extends React.Component<Props> {
         <View style={styles.content}>
           {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
             <RangeDatePickerContent
+              isChoosingPastDatesEnabled={isChoosingPastDatesEnabled ?? false}
               selectedDates={this.props.dates}
               onDayPress={this.handleChangeDate}
               numberOfRenderedMonths={numberOfRenderedMonths}
-              weekStartsOn={weekStartsOn}
+              weekStartsOn={weekStartsOn ?? 1}
               isRangePicker={isRangePicker ?? true}
+              renderFirstMonthFrom={renderFirstMonthFrom ?? new Date()}
             />
           ) : (
             <NightsInDestination

@@ -77,6 +77,11 @@ class RangeDatePickerStory extends React.Component<Props, State> {
   };
 
   render() {
+    const isChoosingPastDatesEnabled = boolean(
+      'isChoosingPastDatesEnabled',
+      false,
+      'config',
+    );
     const isRangePicker = boolean('isRangePicker', true, 'config');
     const isNightsInDestinationVisible = boolean(
       'isNightsInDestinationVisible',
@@ -104,7 +109,9 @@ class RangeDatePickerStory extends React.Component<Props, State> {
       },
       'labels',
     );
+
     const numberOfRenderedMonths = 6;
+    const renderFirstMonthFrom = new Date();
 
     return (
       <>
@@ -113,6 +120,8 @@ class RangeDatePickerStory extends React.Component<Props, State> {
           label="Open RangeDatePicker"
         />
         <RangeDatePicker
+          renderFirstMonthFrom={renderFirstMonthFrom}
+          isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
           isVisible={this.state.isVisible}
           isControlContainerVisible={isControlContainerVisible}
           dates={this.state.tempDates}
