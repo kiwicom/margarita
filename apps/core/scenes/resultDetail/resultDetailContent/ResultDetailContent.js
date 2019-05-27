@@ -22,6 +22,7 @@ import {
   withUserContext,
   type UserContextState,
   type PhoneNumber,
+  type ContactInformation,
 } from '../../../contexts/userContext/UserContext';
 import {
   type PassengerType,
@@ -37,7 +38,7 @@ type Props = {|
   +itinerary: ?ResultDetailContentType,
   +navigation: Navigation,
   +userEmail: ?string,
-  +setUserPhoneNumber: PhoneNumber => void,
+  +saveUserContactInformation: ContactInformation => void,
   +userId: ?string,
   +userPhoneNumber: ?PhoneNumber,
   +passengers: Array<PassengerType>,
@@ -52,14 +53,15 @@ type State = {|
 |};
 
 class ResultDetailContent extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
-      userId: props.userId ?? null,
-      email: props.userEmail ?? null,
-      phoneCountryCode: props.userPhoneNumber?.countryCode ?? null,
-      phoneNumber: props.userPhoneNumber?.number ?? null,
+      userId: props.userId,
+      // The ContactForm state
+      email: props.userEmail,
+      phoneCountryCode: props.userPhoneNumber?.countryCode,
+      phoneNumber: props.userPhoneNumber?.number,
     };
   }
 
@@ -89,6 +91,20 @@ class ResultDetailContent extends React.Component<Props, State> {
     this.setState({ phoneCountryCode });
   };
 
+  saveContactInformation = () => {
+    const {
+      phoneCountryCode: countryCode,
+      phoneNumber: number,
+      email,
+    } = this.state;
+
+    this.props.saveUserContactInformation({
+      countryCode,
+      number,
+      email,
+    });
+  };
+
   handleContinue = () => {
     const { passengers, setAlertContent, navigation } = this.props;
     if (passengers.length === 0) {
@@ -96,10 +112,7 @@ class ResultDetailContent extends React.Component<Props, State> {
         message: 'At least one passenger is required',
       });
     } else {
-      this.props.setUserPhoneNumber({
-        countryCode: this.state.phoneCountryCode,
-        number: this.state.phoneNumber,
-      });
+      this.saveContactInformation();
       navigation.navigate(Routes.PAYMENT);
     }
   };
@@ -154,11 +167,11 @@ const selectUserContextState = ({
   userEmail,
   userPhoneNumber,
   userId,
-  actions: { setUserPhoneNumber },
+  actions: { saveUserContactInformation },
 }: UserContextState) => ({
   userEmail,
   userPhoneNumber,
-  setUserPhoneNumber,
+  saveUserContactInformation,
   userId,
 });
 

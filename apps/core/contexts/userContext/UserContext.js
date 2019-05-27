@@ -19,6 +19,12 @@ export type PhoneNumber = {|
   +number: ?string,
 |};
 
+export type ContactInformation = {|
+  +email: ?string,
+  +countryCode: ?string,
+  +number: ?string,
+|};
+
 type Props = {|
   +children: React.Node,
 |};
@@ -34,7 +40,7 @@ type State = {|
   +actions: {|
     +signIn: () => Promise<void> | void,
     +signOut: () => Promise<void> | void,
-    +setUserPhoneNumber: PhoneNumber => Promise<void> | void,
+    +saveUserContactInformation: ContactInformation => Promise<void> | void,
   |},
 |};
 
@@ -56,7 +62,7 @@ const defaultState = {
   actions: {
     signIn: noop,
     signOut: noop,
-    setUserPhoneNumber: noop,
+    saveUserContactInformation: noop,
   },
 };
 
@@ -70,7 +76,7 @@ export default class UserContextProvider extends React.Component<Props, State> {
       actions: {
         signIn: this.signIn,
         signOut: this.signOut,
-        setUserPhoneNumber: this.setUserPhoneNumber,
+        saveUserContactInformation: this.saveUserContactInformation,
       },
     };
   }
@@ -146,9 +152,10 @@ export default class UserContextProvider extends React.Component<Props, State> {
     }
   };
 
-  setUserPhoneNumber = (phoneNumber: PhoneNumber) => {
+  saveUserContactInformation = (contact: ContactInformation) => {
     const { userId } = this.state;
     const userRef = this.getUserRef(userId);
+    const { email, ...phoneNumber } = contact;
     if (userRef) {
       try {
         userRef
@@ -159,6 +166,9 @@ export default class UserContextProvider extends React.Component<Props, State> {
       } catch {
         // @TODO Handle error - show notification or message
       }
+    } else {
+      // store a logout user contact information
+      this.setState({ userPhoneNumber: phoneNumber, userEmail: email });
     }
   };
 
