@@ -25,8 +25,8 @@ export default function sanitizeLocation(location: ApiLocation) {
     type: location.type,
     timezone: location.timezone,
     coordinates: {
-      lat: location.location.lat,
-      lng: location.location.lon,
+      lat: location.location?.lat,
+      lng: location.location?.lon,
     },
     country: {
       id: location.city?.country?.id ?? '',
