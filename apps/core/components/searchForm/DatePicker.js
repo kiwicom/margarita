@@ -131,7 +131,7 @@ class DatePicker extends React.Component<Props, State> {
           label={label}
           buttonLabels={buttonLabels}
           numberOfRenderedMonths={numberOfRenderedMonths}
-          weekStartsOn={weekStartsOn ?? 1}
+          weekStartsOn={weekStartsOn}
           dateFormat={LONG_DAY_MONTH_FORMAT}
           isNightsInDestinationVisible={isNightsInDestinationVisible}
           nightsInDestination={this.state.tempNightsInDestination}
