@@ -406,7 +406,10 @@ input ItineraryReturnInput {
   outboundDate: DateRange!
 
   """Date Range of flight back"""
-  inboundDate: DateRange!
+  inboundDate: DateRange
+
+  """Nights in destination of flight back"""
+  nightsInDestination: NightsInDestination
 }
 
 type Location {
@@ -491,6 +494,14 @@ interface MulticityInterface {
   departure: RouteStop
   arrival: RouteStop
   sectors: [Sector]
+}
+
+input NightsInDestination {
+  """Minimum nights in destination"""
+  from: Int
+
+  """Maximum nights in destination"""
+  to: Int
 }
 
 """Used for one-way type Booking and Itinerary"""

@@ -9,21 +9,45 @@ import { Modal } from '../Modal';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
+import NightsInDestination from './NightsInDestination';
 import ControlContainer from './components/ControlContainer';
 
 export default class RangeDatePicker extends React.Component<Props> {
   // @TODO load price for days
+
+  static defaultProps = {
+    isNightsInDestinationVisible: false,
+    isNightsInDestinationSelected: false,
+    isControlContainerVisible: true,
+    nightsInDestinationLabel: 'Nights in destination',
+  };
 
   handleDismiss = () => {
     this.props.onDismiss();
   };
 
   handleConfirm = () => {
-    this.props.onConfirm(this.props.dates);
+    this.props.onConfirm({
+      dates: this.props.dates,
+      isNightsInDestinationSelected: this.props.isNightsInDestinationSelected,
+      nightsInDestination: this.props.nightsInDestination,
+    });
   };
 
   handleChangeDate = (dates: $ReadOnlyArray<Date>) => {
     this.props.onChangeTempDates(dates);
+  };
+
+  handleActiveTabChange = (tabId: number) => {
+    if (this.props.onNightsInDestinationSelectionChange) {
+      this.props.onNightsInDestinationSelectionChange(tabId === 1);
+    }
+  };
+
+  handleNightsInDestinationChange = (nightsInDestination: Array<number>) => {
+    if (this.props.onNightsInDestinationChange) {
+      this.props.onNightsInDestinationChange(nightsInDestination);
+    }
   };
 
   render() {
@@ -36,6 +60,11 @@ export default class RangeDatePicker extends React.Component<Props> {
       isRangePicker,
       dates,
       dateFormat,
+      isNightsInDestinationVisible,
+      nightsInDestination,
+      nightsInDestinationLabel,
+      isNightsInDestinationSelected,
+      isControlContainerVisible,
     } = this.props;
 
     return (
@@ -45,34 +74,49 @@ export default class RangeDatePicker extends React.Component<Props> {
         onBackdropPress={this.handleDismiss}
       >
         <View style={styles.content}>
-          <RangeDatePickerContent
-            selectedDates={this.props.dates}
-            onDayPress={this.handleChangeDate}
-            numberOfRenderedMonths={numberOfRenderedMonths}
-            weekStartsOn={weekStartsOn}
-            isRangePicker={isRangePicker ?? true}
-          />
+          {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
+            <RangeDatePickerContent
+              selectedDates={this.props.dates}
+              onDayPress={this.handleChangeDate}
+              numberOfRenderedMonths={numberOfRenderedMonths}
+              weekStartsOn={weekStartsOn}
+              isRangePicker={isRangePicker ?? true}
+            />
+          ) : (
+            <NightsInDestination
+              nightsInDestination={nightsInDestination}
+              nightsInDestinationLabel={nightsInDestinationLabel}
+              onNightsInDestinationChange={this.handleNightsInDestinationChange}
+            />
+          )}
           <View style={styles.bottomContainer}>
-            <View style={[styles.controlContainer]}>
-              <ControlContainer
-                label={label}
-                dates={dates}
-                dateFormat={dateFormat}
-              />
-            </View>
+            {isControlContainerVisible && (
+              <View style={[styles.controlContainer]}>
+                <ControlContainer
+                  dates={dates}
+                  dateFormat={dateFormat}
+                  nightsInDestinationLabel={nightsInDestinationLabel}
+                  nightsInDestination={nightsInDestination}
+                  isNightsInDestinationVisible={isNightsInDestinationVisible}
+                  dateLabel={label}
+                  isNightsInDestinationSelected={isNightsInDestinationSelected}
+                  onActiveTabChange={this.handleActiveTabChange}
+                />
+              </View>
+            )}
             <View style={styles.row}>
               <View style={styles.buttonWrapper}>
                 <Button
-                  label={buttonLabels.cancel}
+                  label={buttonLabels?.cancel ?? 'Cancel'}
                   onPress={this.handleDismiss}
                   type="secondary"
-                  style={styles.closeButton}
                 />
               </View>
               <View style={styles.buttonWrapper}>
                 <Button
-                  label={buttonLabels.confirm}
+                  label={buttonLabels?.confirm ?? 'Set date'}
                   onPress={this.handleConfirm}
+                  style={styles.confirmButton}
                 />
               </View>
             </View>
@@ -93,10 +137,12 @@ const styles = StyleSheet.create({
     web: {
       marginVertical: parseFloat(defaultTokens.spaceSmall),
       maxHeight: 700,
+      minWidth: 382,
     },
   },
   controlContainer: {
     marginBottom: parseFloat(defaultTokens.spaceXSmall),
+    minHeight: 60,
   },
   bottomContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
@@ -107,7 +153,7 @@ const styles = StyleSheet.create({
   buttonWrapper: {
     flex: 1,
   },
-  closeButton: {
-    marginEnd: parseFloat(defaultTokens.spaceXSmall),
+  confirmButton: {
+    marginStart: parseFloat(defaultTokens.spaceXSmall),
   },
 });

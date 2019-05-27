@@ -18,6 +18,7 @@ import {
   CODE_KIWI_LINK,
 } from '@kiwicom/margarita-config';
 
+import { EventCodeKiwi } from '../config/GA';
 import Content from '../components/Content';
 import { BREAKPOINTS } from '../mediaQueriesConfig';
 
@@ -47,7 +48,7 @@ export default function Footer() {
       <Content>
         <FooterContainer>
           <FooterLeftContainer>
-            <a href={CODE_KIWI_LINK}>
+            <a href={CODE_KIWI_LINK} onClick={EventCodeKiwi}>
               <Logo
                 src="/static/logo_codekiwicom.svg"
                 alt="code.kiwi.com logo"

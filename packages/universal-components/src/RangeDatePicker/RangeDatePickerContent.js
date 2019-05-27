@@ -120,9 +120,6 @@ const gradientHeight = 20;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    web: {
-      minWidth: 382,
-    },
   },
   gradientOverlapContainer: {
     position: 'relative',
