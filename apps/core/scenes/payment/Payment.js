@@ -7,7 +7,11 @@ import {
   CreditCardPaymentForm,
   ContentContainer,
 } from '@kiwicom/margarita-components';
-import { withNavigation, type Navigation } from '@kiwicom/margarita-navigation';
+import {
+  withNavigation,
+  type Navigation,
+  Routes,
+} from '@kiwicom/margarita-navigation';
 
 import { PriceSummary } from '../../components/priceSummary';
 
@@ -43,7 +47,7 @@ class Payment extends React.Component<Props, State> {
   };
 
   handleReview = () => {
-    // @TODO
+    this.props.navigation.navigate(Routes.BOOKING_COMPLETED);
   };
 
   handleCreditCardNumberChange = creditCardNumber => {

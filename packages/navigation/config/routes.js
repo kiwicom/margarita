@@ -8,6 +8,7 @@ const Routes = {
   RESULTS: 'results',
   RESULT_DETAIL: 'result-detail',
   PAYMENT: 'payment',
+  BOOKING_COMPLETED: 'booking-completed',
   BOOKING_LIST: 'booking-list',
   PROFILE: 'profile',
   BOOKING_DETAIL: 'mmb/booking-detail',

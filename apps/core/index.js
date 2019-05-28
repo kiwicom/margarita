@@ -2,6 +2,9 @@
 
 export { default as ResultDetail } from './scenes/resultDetail/ResultDetail';
 export { default as Payment } from './scenes/payment/Payment';
+export {
+  default as BookingCompleted,
+} from './scenes/bookingCompleted/BookingCompleted';
 export { default as Results } from './scenes/results/Results';
 export { default as Search } from './scenes/search/Search';
 export { default as Bookings } from './scenes/bookings/Bookings';
