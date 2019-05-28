@@ -11,18 +11,18 @@ import {
   Modal,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 import {
-  DateInput,
   withAlertContext,
   type AlertContent,
   type AlertContextState,
+  DateInput,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
 import { type PassengerType } from '../../contexts/bookingContext/BookingContext';
 import BaggageBundles from './baggageBundles/BaggageBundles';
 import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
+import { type BaggageBundleType } from './baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
 
 type Props = {|
   +itinerary: ?PassengerFormType,
@@ -56,14 +56,29 @@ const initialFormState = {
   lastName: null,
   id: null,
   nationality: null,
-  dateOfBirth: null,
+  date: {
+    day: '',
+    month: '',
+    year: '',
+  },
   bags: null,
   passengerCount: 1,
 };
 
 type State = {
-  ...PassengerType,
-  lastName: ?string,
+  +name: ?string,
+  +lastName: ?string,
+  +gender: 'female' | 'male' | 'other',
+  +nationality: ?string,
+  +id: ?string,
+  +insurance?: ?string,
+  +bags: null | Array<BaggageBundleType>,
+  +visaRequired?: ?boolean,
+  date: {
+    day: string,
+    month: string,
+    year: string,
+  },
   hasPrefilledState: boolean,
 };
 
@@ -81,7 +96,10 @@ class PassengerForm extends React.Component<Props, State> {
     const editModeOpened = props.isEditing && !state.hasPrefilledState;
     // If is in edit mode preload passenger data into the form state
     if (editModeOpened) {
-      return { ...props.prefillData, hasPrefilledState: true };
+      return {
+        ...props.prefillData,
+        hasPrefilledState: true,
+      };
     }
 
     return state;
@@ -99,8 +117,16 @@ class PassengerForm extends React.Component<Props, State> {
     this.setState({ lastName });
   };
 
-  handleBirthDateChange = (dateOfBirth: ?Date) => {
-    this.setState({ dateOfBirth });
+  handleBirthDateSubmit = (dateOfBirth: string, type: string) => {
+    this.setState(state => {
+      return {
+        ...state,
+        date: {
+          ...state.date,
+          [type]: dateOfBirth,
+        },
+      };
+    });
   };
 
   handleNationalityChange = (nationality: ?string) => {
@@ -112,19 +138,11 @@ class PassengerForm extends React.Component<Props, State> {
   };
 
   handleSavePress = () => {
-    const {
-      nationality,
-      id,
-      dateOfBirth,
-      lastName,
-      name,
-      gender,
-      bags,
-    } = this.state;
+    const { nationality, id, lastName, name, gender, bags } = this.state;
     const newPassenger = {
       nationality,
       id,
-      dateOfBirth,
+      dateOfBirth: new Date(),
       gender,
       name,
       lastName,
@@ -180,15 +198,8 @@ class PassengerForm extends React.Component<Props, State> {
               formLabelContainerStyle={styles.inputLabel}
             />
             <DateInput
-              date={this.state.dateOfBirth}
-              defaultDate={new Date('1990-01-01')}
-              dateFormat={US_DATE_FORMAT}
-              onDateChange={this.handleBirthDateChange}
-              placeholder="Select"
-              label="Date of birth"
-              formLabelContainerStyle={styles.inputLabel}
-              confirmLabel="OK"
-              cancelLabel="CANCEL"
+              onDateChange={this.handleBirthDateSubmit}
+              date={this.state.date}
             />
             <Picker
               selectedValue={this.state.nationality}
