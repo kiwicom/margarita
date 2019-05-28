@@ -6,10 +6,6 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import type { ResultDetailQueryResponse } from './__generated__/ResultDetailQuery.graphql';
 import ResultDetailInner from './ResultDetailInner';
 import {
-  withBookingContext,
-  type BookingContextState,
-} from '../../contexts/bookingContext/BookingContext';
-import {
   withSearchContext,
   type SearchContextState,
   type PassengersData,

@@ -15,6 +15,7 @@ import qs from 'qs';
 
 type Props = {|
   +children: React.Node,
+  +routerQuery?: ParseFieldsParams,
 |};
 
 type ParseFieldsParams = {|
@@ -88,7 +89,6 @@ type State = {|
     +clearLocation: LocationSearchType => void,
     +addLocation: (type: LocationSearchType, location: Location) => void,
     +setLocation: (type: LocationSearchType, location: Location) => void,
-    +setStateFromQueryParams: ParseFieldsParams => void,
     +setBookingToken: string => void,
   },
 |};
@@ -144,7 +144,6 @@ const defaultState = {
     setLocation: noop,
     clearLocation: noop,
     addLocation: noop,
-    setStateFromQueryParams: noop,
     setBookingToken: noop,
   },
 };
@@ -165,8 +164,12 @@ export default class SearchContextProvider extends React.Component<
 > {
   constructor(props: Props) {
     super(props);
+
+    const { routerQuery } = props;
+
     this.state = {
       ...defaultState,
+      ...(routerQuery && this.parseFields(routerQuery)), // hydrate state from URL for the web
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
@@ -179,7 +182,6 @@ export default class SearchContextProvider extends React.Component<
         clearLocation: this.clearLocation,
         addLocation: this.addLocation,
         setLocation: this.setLocation,
-        setStateFromQueryParams: this.setStateFromQueryParams,
         setBookingToken: this.setBookingToken,
       },
     };
@@ -189,6 +191,7 @@ export default class SearchContextProvider extends React.Component<
     this.setState({ bookingToken });
   };
 
+  // @TODO moved to SerchContext helpers and write tests
   parseFields = (params: ParseFieldsParams): ParseFieldsReturn => {
     return {
       ...parseDate(params.dateFrom, 'dateFrom'),
@@ -218,6 +221,7 @@ export default class SearchContextProvider extends React.Component<
     });
   };
 
+  // @TODO moved to SerchContext helpers and write tests
   parseLocationParam = (param: ?string): $ReadOnlyArray<Location> | null => {
     if (param == null) {
       return null;
@@ -227,18 +231,6 @@ export default class SearchContextProvider extends React.Component<
       key => asObject[key],
     );
     return asLocationArray;
-  };
-
-  setStateFromQueryParams = (params: ParseFieldsParams) => {
-    const parsedParams: ParseFieldsParams = qs.parse(params);
-
-    const travelFrom = this.parseLocationParam(parsedParams.travelFrom);
-    const travelTo = this.parseLocationParam(parsedParams.travelTo);
-    this.setState({
-      ...this.parseFields(parsedParams),
-      ...(travelFrom ? { travelFrom } : {}),
-      ...(travelTo ? { travelTo } : {}),
-    });
   };
 
   setDepartureDate = (dateFrom: Date, dateTo: Date) => {
