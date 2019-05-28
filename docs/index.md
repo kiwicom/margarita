@@ -18,7 +18,7 @@ This project is a living example of a client app you could start building with T
 - 🚀 GraphQL Voyager: https://margarita-graphql-voyager.now.sh/
 
 <div align="center">
-<img src="./assets/search.png" alt="Search" title="Search" width="200"/>
-<img src="./assets/results.png" alt="Results" title="Results" width="200"/>
-<img src="./assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
+<img src="./assets/screens/search.png" alt="Search" title="Search" width="250"/>
+<img src="./assets/screens/results.png" alt="Results" title="Results" width="250"/>
+<img src="./assets/screens/mmb.png" alt="Bookings" title="Bookings" width="250"/>
 </div>
