@@ -6,10 +6,6 @@ import { QueryRenderer, graphql } from '@kiwicom/margarita-relay';
 import type { ResultDetailQueryResponse } from './__generated__/ResultDetailQuery.graphql';
 import ResultDetailInner from './ResultDetailInner';
 import {
-  withBookingContext,
-  type BookingContextState,
-} from '../../contexts/bookingContext/BookingContext';
-import {
   withSearchContext,
   type SearchContextState,
   type PassengersData,
@@ -19,11 +15,9 @@ type Props = {|
   +adults: number,
   +infants: number,
   +bookingToken: string,
-  +bookingContext: {|
+  +context: {|
     +bookingToken: ?string,
     +setBookingToken: string => void,
-  |},
-  +searchContext: {|
     +adults: number,
     +infants: number,
     +setPassengerData: PassengersData => void,
@@ -32,32 +26,26 @@ type Props = {|
 
 class ResultDetail extends React.Component<Props> {
   componentDidMount() {
-    const {
-      bookingToken,
-      adults,
-      infants,
-      searchContext,
-      bookingContext,
-    } = this.props;
+    const { bookingToken, adults, infants, context } = this.props;
 
-    bookingContext.setBookingToken(bookingToken);
+    context.setBookingToken(bookingToken);
 
     // set the SearchContext state if it is not
-    if (searchContext.adults !== adults && searchContext.infants !== infants) {
-      searchContext.setPassengerData({ adults, infants });
+    if (context.adults !== adults && context.infants !== infants) {
+      context.setPassengerData({ adults, infants });
     }
   }
 
   renderInner = (data: ResultDetailQueryResponse) => {
-    const { bookingContext, searchContext } = this.props;
+    const { context } = this.props;
     const passengers = {
-      infants: searchContext.infants,
-      adults: searchContext.adults,
+      infants: context.infants,
+      adults: context.adults,
     };
     return (
       <ResultDetailInner
         data={data}
-        bookingToken={bookingContext.bookingToken}
+        bookingToken={context.bookingToken}
         passengers={passengers}
       />
     );
@@ -85,27 +73,18 @@ class ResultDetail extends React.Component<Props> {
   }
 }
 
-const bookingContextState = ({
-  actions: { setBookingToken },
-  bookingToken,
-}: BookingContextState) => ({
-  bookingContext: {
-    bookingToken,
-    setBookingToken,
-  },
-});
-
 const selectSearchContextState = ({
-  actions: { setPassengerData },
+  actions: { setPassengerData, setBookingToken },
   infants,
   adults,
+  bookingToken,
 }: SearchContextState) => ({
-  searchContext: {
+  context: {
     infants,
     adults,
     setPassengerData,
+    setBookingToken,
+    bookingToken,
   },
 });
-export default withSearchContext(selectSearchContextState)(
-  withBookingContext(bookingContextState)(ResultDetail),
-);
+export default withSearchContext(selectSearchContextState)(ResultDetail);

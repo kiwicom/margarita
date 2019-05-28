@@ -12,13 +12,18 @@ import {
 
 export default class App extends NextApp {
   render() {
-    const { Component, pageProps } = this.props;
+    const {
+      Component,
+      pageProps,
+      router: { query: routerQuery },
+    } = this.props;
+
     return (
       <Container>
         <UserContextProvider>
           <BookingContextProvider>
             <AlertContextProvider>
-              <SearchContextProvider>
+              <SearchContextProvider routerQuery={routerQuery}>
                 <LayoutContextProvider>
                   <Component {...pageProps} />
                 </LayoutContextProvider>
