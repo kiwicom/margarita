@@ -1,33 +1,69 @@
 <div align="center">
-<img src="./docs/assets/logo.png" alt="Margarita" title="Margarita" width="300"/>
+  <a href="http://margarita.kiwi.com"><img src="./docs/assets/logo.png" alt="Margarita" title="Margarita" width="200" /></a>
 </div>
+<h1 align="center">Margarita</h1>
+<h4 align="center">Multi-platform <span title="travel">✈️</span> travel app  for iOS, Android and Web<br></h4>
 
-# Margarita
+ <p align="center">built with <strong>React Native, GraphQL and <a href="https://partners.kiwi.com/presenting-tequila-revolution-travel-industry/" target="_blank">Tequila API</a></strong></p>
 
-> Showcasing the power of [Tequila](https://partners.kiwi.com/presenting-tequila-revolution-travel-industry/)
+## Demo
 
-This project is a living example of a client app you could start building with Tequila.
+- **Web version**: https://kiwicom-margarita.netlify.com
+- Project in Expo: https://expo.io/@kiwicom-margarita-public/tequila-client
 
-- 🕸️ Web version: https://kiwicom-margarita.netlify.com
-- 🎮 GraphQL Playground https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql
-- 🚀 GraphQL Voyager: https://margarita-graphql-voyager.now.sh/
+**If you like this project**, please give us ⭐ on GitHub — it helps!
 
 <div align="center">
-<img src="./docs/assets/search.png" alt="Search" title="Search" width="200"/>
-<img src="./docs/assets/results.png" alt="Results" title="Results" width="200"/>
-<img src="./docs/assets/bookings.png" alt="Bookings" title="Bookings" width="200"/>
+  <img src="./docs/assets/screens/search.png" alt="Search" title="Search" width="250"/>
+  <img src="./docs/assets/screens/results.png" alt="Results" title="Results" width="250"/>
+  <img src="./docs/assets/screens/mmb.png" alt="Bookings" title="Bookings" width="250"/>
 </div>
 
-## 📖 Documentation
+<img src="./docs/assets/mac.png" alt="Search" title="Search" />
 
-The full documentation for **Margarita** can be found on our [website](https://kiwicom.github.io/margarita/docs/).
+## Devstack
 
-## 💻 Developing
+This project follows react-native-web philosophy of **Write Once, Render Anywhere**.
 
-- [Getting Started](https://kiwicom.github.io/margarita/docs/getting-started)
-- [Technical Overview](https://kiwicom.github.io/margarita/docs/technical-overview)
+- [React Native](https://facebook.github.io/react-native/)
+- [Expo](https://expo.io/)
+- [React Native Web](https://github.com/necolas/react-native-web)
+- [Next.js](https://nextjs.org/)
+- [Relay](http://facebook.github.io/relay/)
+- [Flow](https://flow.org/)
+
+More detailed info about our devstack can be found in [Technical Overview docs](https://kiwicom.github.io/margarita/docs/technical-overview).
+
+## App features
+
+App consists of 4 main parts which should cover whole app flow:
+
+- Search for connections
+- Booking
+- Manage my booking
+- Payments
+
+More detailed info can be found in [Features and Roadmap docs](https://kiwicom.github.io/margarita/docs/features-roadmap).
+
+## Documentation
+
+- **[Getting Started](https://kiwicom.github.io/margarita/docs/getting-started)**
+- [Tequila API](https://kiwicom.github.io/margarita/docs/tequila-api)
 - [Contributing](https://kiwicom.github.io/margarita/docs/contributing)
 
-## 📄 License
+Full documentation for **Margarita** can be found on [kiwicom.github.io](https://kiwicom.github.io/margarita/docs/).
+
+## How it works
+
+<img src="./docs/assets/schema.png" alt="Schema" title="Schema" />
+
+## Links
+
+- 🎮 [GraphQL Playground](https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql)
+- 🚀 [GraphQL Voyager](https://margarita-graphql-voyager.now.sh/)
+- 🍸 [Margarita product page](http://margarita.kiwi.com)
+- 🥝 [Open source projects at Kiwi.com](https://github.com/kiwicom/)
+
+## License
 
 The code in this project is licensed under [MIT license](LICENSE). By contributing to Margarita, you agree that your contributions will be licensed under its MIT license.
