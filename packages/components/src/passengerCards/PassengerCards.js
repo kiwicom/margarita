@@ -6,14 +6,14 @@ import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { type PassengerType } from '@kiwicom/margarita-core';
 
-import type { PassengerCardActionType } from '../passengerCard/PassengerCardTypes';
 import PassengerCard from '../passengerCard/PassengerCard';
 import AddPassengerButton from './AddPassengerButton';
 
 type Props = {|
   +onAddPassengerPress?: () => void,
+  +onEditPress?: (?string) => void,
+  +onDeletePress?: (?string) => void,
   +passengerCards: ?Array<PassengerType>,
-  ...PassengerCardActionType,
 |};
 
 export default class PassengerCards extends React.Component<Props> {
@@ -22,9 +22,7 @@ export default class PassengerCards extends React.Component<Props> {
     return (
       <PassengerCard
         key={passengerCard.id}
-        editIconName={this.props.editIconName}
         onEditPress={this.props.onEditPress}
-        deleteIconName={this.props.deleteIconName}
         onDeletePress={this.props.onDeletePress}
         {...passengerCard}
       />

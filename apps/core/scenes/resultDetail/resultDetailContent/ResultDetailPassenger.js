@@ -97,8 +97,6 @@ class ResultDetailPassenger extends React.Component<Props, State> {
         <PassengerCards
           passengerCards={passengers}
           onEditPress={this.handleEditPassenger}
-          editIconName="edit"
-          deleteIconName="close"
           onDeletePress={this.handleDeletePassenger}
           onAddPassengerPress={this.toggleModal}
         />

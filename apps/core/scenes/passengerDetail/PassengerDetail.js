@@ -104,7 +104,6 @@ export default function PassengerDetail() {
     <ScrollView>
       <PassengerCards
         passengerCards={passengerCards}
-        editIconName="edit"
         onEditPress={handleEditPassenger}
       />
       <MenuGroup title="Contact details">

@@ -67,9 +67,7 @@ export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
 export {
   default as StopoverDuration,
 } from './src/stopoverDuration/StopoverDuration';
-export type {
-  PassengerCardActionType,
-} from './src/passengerCard/PassengerCardTypes';
+
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
 export { default as DateInput } from './src/dateInput/DateInput';
 export { SortTabs } from './src/sortTabs';

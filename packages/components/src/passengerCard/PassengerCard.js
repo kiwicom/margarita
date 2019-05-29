@@ -17,12 +17,12 @@ import PassengerCardDetailItem from './PassengerCardDetailItem';
 import BagInformation from './BagInformation';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
-import { type PassengerCardActionType } from './PassengerCardTypes';
 import { getTitle } from './helpers';
 
 type Props = {|
   ...PassengerType,
-  ...PassengerCardActionType,
+  +onEditPress?: (?string) => void,
+  +onDeletePress?: (?string) => void,
 |};
 
 class PassengerCard extends React.Component<Props> {
@@ -63,8 +63,6 @@ class PassengerCard extends React.Component<Props> {
       insurance,
       passengerCount,
       bags,
-      editIconName,
-      deleteIconName,
       onEditPress,
       onDeletePress,
       visaRequired,
@@ -82,20 +80,20 @@ class PassengerCard extends React.Component<Props> {
             <Text style={styles.passengerName} size="large">
               {passenger}
             </Text>
-            {onEditPress && editIconName && (
+            {onEditPress && (
               <View style={styles.actionIcon}>
                 <ExtendedTouchable onPress={this.handleActionPress}>
                   <Icon
-                    name={editIconName}
+                    name="edit"
                     color={defaultTokens.backgroundButtonPrimary}
                   />
                 </ExtendedTouchable>
               </View>
             )}
-            {onDeletePress && deleteIconName && (
+            {onDeletePress && (
               <ExtendedTouchable onPress={this.handleSecondaryActionPress}>
                 <Icon
-                  name={deleteIconName}
+                  name="close"
                   color={defaultTokens.backgroundButtonPrimary}
                 />
               </ExtendedTouchable>
