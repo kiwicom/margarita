@@ -11,7 +11,7 @@ import PassengerAdditonalInformation from './PassengerAdditonalInformation';
 import IconButton from './IconButton';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
-import { getTitle } from './helpers';
+import { getPassengerTitle } from './helpers';
 
 type Props = {|
   passenger: ?PassengerType,
@@ -33,20 +33,18 @@ class PassengerCard extends React.Component<Props> {
     }
   };
 
-  render() {
-    const {
-      passenger,
-      passengerCount,
-      onEditPress,
-      onDeletePress,
-    } = this.props;
+  getCardTitle = () => {
+    const { passenger, passengerCount } = this.props;
+    if (passenger?.name || passenger?.lastName) {
+      const passengerTitle = getPassengerTitle(passenger?.gender);
+      return `${passengerTitle} ${passenger?.name ||
+        ''} ${passenger?.lastName || ''}`;
+    }
+    return `${passengerCount}. Passenger`;
+  };
 
-    const newPassenger = `${passengerCount}. Passenger`;
-    const title = getTitle(passenger?.gender);
-    const passengerWithTitle = `${title} ${passenger?.name ??
-      ''} ${passenger?.lastName ?? ''}`;
-    const passengerName =
-      passenger?.name !== null ? passengerWithTitle : newPassenger;
+  render() {
+    const { passenger, onEditPress, onDeletePress } = this.props;
 
     return (
       <View style={styles.container}>
@@ -54,7 +52,7 @@ class PassengerCard extends React.Component<Props> {
           <View style={styles.header}>
             <Icon name="passenger" />
             <Text style={styles.passengerName} size="large">
-              {passengerName}
+              {this.getCardTitle()}
             </Text>
             {onEditPress && (
               <IconButton iconType="edit" onPress={this.handleEditPress} />
