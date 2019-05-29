@@ -9,7 +9,7 @@
 ## Demo
 
 - **Web version**: https://kiwicom-margarita.netlify.com
-- Project in Expo: https://expo.io/@kiwicom-margarita-public/tequila-client
+- Project in Expo: https://expo.io/@kiwicom-margarita-public/margarita-mobile
 
 **If you like this project**, please give us ⭐ on GitHub — it helps!
 
