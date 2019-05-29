@@ -806,28 +806,69 @@ exports[`ItineraryCard 1`] = `
             </View>
           </View>
         </RCTScrollView>
-        <Text
+        <View
           style={
-            Array [
-              Object {
-                "margin": 0,
-              },
-              Object {
-                "fontFamily": "Roboto",
-              },
-              Array [
-                Object {
-                  "color": "#00826f",
-                  "fontSize": 16,
-                  "fontWeight": "bold",
-                },
-                undefined,
-              ],
-            ]
+            Object {
+              "alignItems": "flex-end",
+              "flexDirection": "column",
+            }
           }
         >
-          €12.20
-        </Text>
+          <Text
+            style={
+              Array [
+                Object {
+                  "margin": 0,
+                },
+                Object {
+                  "fontFamily": "Roboto",
+                },
+                Array [
+                  Object {
+                    "color": "#00826f",
+                    "fontSize": 16,
+                    "fontWeight": "bold",
+                  },
+                  undefined,
+                ],
+              ]
+            }
+          >
+            €12.20
+          </Text>
+          <View
+            style={
+              Object {
+                "flexDirection": "row",
+                "paddingTop": 8,
+              }
+            }
+          >
+            <Text
+              style={
+                Array [
+                  Object {
+                    "margin": 0,
+                  },
+                  Object {
+                    "fontSize": 12,
+                  },
+                  Object {
+                    "color": "#7f91a8",
+                  },
+                  Object {
+                    "fontFamily": "Roboto",
+                  },
+                  Object {
+                    "paddingTop": 2,
+                  },
+                ]
+              }
+            >
+              1 Adult
+            </Text>
+          </View>
+        </View>
       </View>
     </View>
   </View>

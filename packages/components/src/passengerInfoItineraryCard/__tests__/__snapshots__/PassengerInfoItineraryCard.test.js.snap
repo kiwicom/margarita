@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly with both infants and adults 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "paddingTop": 8,
+      }
+    }
+  >
+    <WithTheme
+      size="small"
+      style={
+        Object {
+          "paddingTop": 2,
+        }
+      }
+      type="secondary"
+    >
+      3 Adults
+    </WithTheme>
+    <WithTheme
+      size="small"
+      style={
+        Array [
+          Object {
+            "paddingTop": 2,
+          },
+          Object {
+            "paddingStart": 8,
+          },
+        ]
+      }
+      type="secondary"
+    >
+      2 Infants
+    </WithTheme>
+  </Component>,
+}
+`;
+
+exports[`renders with only adults 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "paddingTop": 8,
+      }
+    }
+  >
+    <WithTheme
+      size="small"
+      style={
+        Object {
+          "paddingTop": 2,
+        }
+      }
+      type="secondary"
+    >
+      1 Adult
+    </WithTheme>
+  </Component>,
+}
+`;
+
+exports[`renders with only one infant 1`] = `
+Object {
+  "output": <Component
+    style={
+      Object {
+        "flexDirection": "row",
+        "paddingTop": 8,
+      }
+    }
+  >
+    <WithTheme
+      size="small"
+      style={
+        Object {
+          "paddingTop": 2,
+        }
+      }
+      type="secondary"
+    >
+      2 Adults
+    </WithTheme>
+    <WithTheme
+      size="small"
+      style={
+        Array [
+          Object {
+            "paddingTop": 2,
+          },
+          Object {
+            "paddingStart": 8,
+          },
+        ]
+      }
+      type="secondary"
+    >
+      1 Infant
+    </WithTheme>
+  </Component>,
+}
+`;
