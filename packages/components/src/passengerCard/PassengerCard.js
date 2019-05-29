@@ -10,12 +10,11 @@ import {
   ExtendedTouchable,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { format } from 'date-fns';
-import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 import type { PassengerType, BaggageBundleType } from '@kiwicom/margarita-core';
 
-import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
+import PassengerCardDetailItem from './PassengerCardDetailItem';
+import BagInformation from './BagInformation';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
 import { type PassengerCardActionType } from './PassengerCardTypes';
@@ -102,24 +101,11 @@ class PassengerCard extends React.Component<Props> {
               </ExtendedTouchable>
             )}
           </View>
-
-          <View style={styles.containerTop}>
-            <PassengerCardDetail
-              value={nationality ?? '-'}
-              label="Nationality"
-              style="normal"
-            />
-            <PassengerCardDetail
-              value={dateOfBirth ? format(dateOfBirth, US_DATE_FORMAT) : '-'}
-              label="Date of birth"
-              style="normal"
-            />
-            <PassengerCardDetail
-              value={id ?? ''}
-              label="ID"
-              style="id_row_wrapper"
-            />
-          </View>
+          <PassengerCardDetail
+            nationality={nationality}
+            id={id}
+            dateOfBirth={dateOfBirth}
+          />
           <Separator />
           <View style={styles.containerBottom}>
             <View style={styles.bagsRowWrapper}>
@@ -138,7 +124,7 @@ class PassengerCard extends React.Component<Props> {
               </View>
             </View>
             {insurance != null && (
-              <PassengerCardDetail
+              <PassengerCardDetailItem
                 value={insurance}
                 label="Travel Insurance"
                 style="normal"
@@ -164,11 +150,6 @@ const styles = StyleSheet.create({
   },
   passengerName: {
     flex: 1,
-  },
-  containerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: 60,
   },
   actionIcon: {
     paddingEnd: parseInt(defaultTokens.spaceLarge, 10),

@@ -2,39 +2,48 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { StyleSheet, Text } from '@kiwicom/universal-components';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { format } from 'date-fns';
+import { StyleSheet } from '@kiwicom/universal-components';
+import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
+
+import PassengerCardDetailItem from './PassengerCardDetailItem';
 
 type Props = {|
-  +value: string,
-  +label: string,
-  +style: string,
+  +id: ?string,
+  +nationality: ?string,
+  +dateOfBirth: ?Date,
 |};
 
-export default function PassengerCardDetail({
-  value,
-  label,
-  style = 'normal',
-}: Props) {
+const defaultValue = '-';
+
+const PassengerCardDetail = ({ nationality, dateOfBirth, id }: Props) => {
   return (
-    <View style={style === 'normal' ? styles.rowWrapper : styles.idRowWrapper}>
-      <Text type="secondary" style={styles.textPadding}>
-        {label}
-      </Text>
-      <Text>{value}</Text>
+    <View style={styles.container}>
+      <PassengerCardDetailItem
+        value={nationality ?? defaultValue}
+        label="Nationality"
+        style="normal"
+      />
+      <PassengerCardDetailItem
+        value={dateOfBirth ? format(dateOfBirth, US_DATE_FORMAT) : defaultValue}
+        label="Date of birth"
+        style="normal"
+      />
+      <PassengerCardDetailItem
+        value={id ?? defaultValue}
+        label="ID"
+        style="id_row_wrapper"
+      />
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  rowWrapper: {
-    flexGrow: 1,
-    width: 120,
-  },
-  idRowWrapper: {
-    flexGrow: 1,
-  },
-  textPadding: {
-    paddingBottom: parseInt(defaultTokens.spaceXSmall, 10),
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    height: 60,
   },
 });
+
+export default PassengerCardDetail;

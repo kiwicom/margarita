@@ -10,7 +10,7 @@ import {
 } from '@kiwicom/universal-components';
 import {
   PassengerCards,
-  PassengerCardDetail,
+  PassengerCardDetailItem,
   ShareIcon,
 } from '@kiwicom/margarita-components';
 
@@ -110,14 +110,14 @@ export default function PassengerDetail() {
       <MenuGroup title="Contact details">
         <View>
           <MenuItemWrapper>
-            <PassengerCardDetail
+            <PassengerCardDetailItem
               value="a@a.com"
               label="E-mail"
               style="normal"
             />
           </MenuItemWrapper>
           <MenuItemWrapper>
-            <PassengerCardDetail
+            <PassengerCardDetailItem
               value="+420 776 665 544"
               label="Phone"
               style="normal"
