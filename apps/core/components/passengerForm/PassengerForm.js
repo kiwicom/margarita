@@ -129,7 +129,6 @@ class PassengerForm extends React.Component<Props, State> {
       name,
       lastName,
       bags,
-      passengerCount: 1,
     };
     this.props.onRequestSave(newPassenger);
   };

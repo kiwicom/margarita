@@ -4,7 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { Text, StyleSheet, Icon, Card } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import type { PassengerType, BaggageBundleType } from '@kiwicom/margarita-core';
+import type { PassengerType } from '@kiwicom/margarita-core';
 
 import PassengerCardDetail from './PassengerCardDetail';
 import PassengerAdditonalInformation from './PassengerAdditonalInformation';
@@ -14,54 +14,39 @@ import VisaInfo from '../visaInfo/VisaInfo';
 import { getTitle } from './helpers';
 
 type Props = {|
-  ...PassengerType,
+  passenger: ?PassengerType,
+  passengerCount: number,
   +onEditPress?: (?string) => void,
   +onDeletePress?: (?string) => void,
 |};
 
 class PassengerCard extends React.Component<Props> {
-  static defaultProps = {
-    passengerCount: 1,
-    name: '',
-    lastName: '',
-    gender: 'other',
-    nationality: '',
-    dateOfBirth: null,
-    id: '',
-    bags: null,
-  };
-
   handleEditPress = () => {
     if (this.props.onEditPress) {
-      this.props.onEditPress(this.props.id);
+      this.props.onEditPress(this.props.passenger?.id);
     }
   };
 
   handleDeletePress = () => {
     if (this.props.onDeletePress) {
-      this.props.onDeletePress(this.props.id);
+      this.props.onDeletePress(this.props.passenger?.id);
     }
   };
 
   render() {
     const {
-      name,
-      lastName,
-      gender,
-      nationality,
-      dateOfBirth,
-      id,
-      insurance,
+      passenger,
       passengerCount,
-      bags,
       onEditPress,
       onDeletePress,
-      visaRequired,
     } = this.props;
+
     const newPassenger = `${passengerCount}. Passenger`;
-    const title = getTitle(gender);
-    const passengerWithTitle = `${title} ${name ?? ''} ${lastName ?? ''}`;
-    const passenger = name !== null ? passengerWithTitle : newPassenger;
+    const title = getTitle(passenger?.gender);
+    const passengerWithTitle = `${title} ${passenger?.name ??
+      ''} ${passenger?.lastName ?? ''}`;
+    const passengerName =
+      passenger?.name !== null ? passengerWithTitle : newPassenger;
 
     return (
       <View style={styles.container}>
@@ -69,7 +54,7 @@ class PassengerCard extends React.Component<Props> {
           <View style={styles.header}>
             <Icon name="passenger" />
             <Text style={styles.passengerName} size="large">
-              {passenger}
+              {passengerName}
             </Text>
             {onEditPress && (
               <IconButton iconType="edit" onPress={this.handleEditPress} />
@@ -79,14 +64,19 @@ class PassengerCard extends React.Component<Props> {
             )}
           </View>
           <PassengerCardDetail
-            nationality={nationality}
-            id={id}
-            dateOfBirth={dateOfBirth}
+            nationality={passenger?.nationality}
+            id={passenger?.id}
+            dateOfBirth={passenger?.dateOfBirth}
           />
           <Separator />
-          <PassengerAdditonalInformation bags={bags} insurance={insurance} />
+          <PassengerAdditonalInformation
+            bags={passenger?.bags}
+            insurance={passenger?.insurance}
+          />
         </Card>
-        {visaRequired != null && <VisaInfo visaRequired={visaRequired} />}
+        {passenger?.visaRequired != null && (
+          <VisaInfo visaRequired={passenger?.visaRequired} />
+        )}
       </View>
     );
   }

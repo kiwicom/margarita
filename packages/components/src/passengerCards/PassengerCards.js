@@ -17,14 +17,15 @@ type Props = {|
 |};
 
 export default class PassengerCards extends React.Component<Props> {
-  renderPassengerCard = (passengerCard: ?PassengerType) => {
+  renderPassengerCard = (passengerCard: ?PassengerType, index: number) => {
     if (!passengerCard) return null;
     return (
       <PassengerCard
+        passengerCount={index + 1}
         key={passengerCard.id}
         onEditPress={this.props.onEditPress}
         onDeletePress={this.props.onDeletePress}
-        {...passengerCard}
+        passenger={passengerCard}
       />
     );
   };
@@ -34,6 +35,7 @@ export default class PassengerCards extends React.Component<Props> {
   // @TODO button should be rounded
   render() {
     const { onAddPassengerPress, passengerCards } = this.props;
+
     return (
       <View style={styles.container}>
         {passengerCards && passengerCards.length ? (

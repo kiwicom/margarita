@@ -18,7 +18,6 @@ export type PassengerType = {|
   +id: ?string,
   +insurance?: ?string,
   +bags: null | Array<BaggageBundleType>,
-  +passengerCount: number,
   +visaRequired?: ?boolean,
 |};
 
