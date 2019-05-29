@@ -2,19 +2,13 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import {
-  Text,
-  StyleSheet,
-  Icon,
-  Card,
-  ExtendedTouchable,
-} from '@kiwicom/universal-components';
+import { Text, StyleSheet, Icon, Card } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import type { PassengerType, BaggageBundleType } from '@kiwicom/margarita-core';
 
 import PassengerCardDetail from './PassengerCardDetail';
-import PassengerCardDetailItem from './PassengerCardDetailItem';
-import BagInformation from './BagInformation';
+import PassengerAdditonalInformation from './PassengerAdditonalInformation';
+import IconButton from './IconButton';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
 import { getTitle } from './helpers';
@@ -37,20 +31,17 @@ class PassengerCard extends React.Component<Props> {
     bags: null,
   };
 
-  handleActionPress = () => {
+  handleEditPress = () => {
     if (this.props.onEditPress) {
       this.props.onEditPress(this.props.id);
     }
   };
 
-  handleSecondaryActionPress = () => {
+  handleDeletePress = () => {
     if (this.props.onDeletePress) {
       this.props.onDeletePress(this.props.id);
     }
   };
-
-  parseBagType = (bag: BaggageBundleType) =>
-    `${bag.dimensions ? `${bag.dimensions},` : ''} ${bag.weight ?? ''}`;
 
   render() {
     const {
@@ -75,28 +66,16 @@ class PassengerCard extends React.Component<Props> {
     return (
       <View style={styles.container}>
         <Card>
-          <View style={styles.containerName}>
+          <View style={styles.header}>
             <Icon name="passenger" />
             <Text style={styles.passengerName} size="large">
               {passenger}
             </Text>
             {onEditPress && (
-              <View style={styles.actionIcon}>
-                <ExtendedTouchable onPress={this.handleActionPress}>
-                  <Icon
-                    name="edit"
-                    color={defaultTokens.backgroundButtonPrimary}
-                  />
-                </ExtendedTouchable>
-              </View>
+              <IconButton iconType="edit" onPress={this.handleEditPress} />
             )}
             {onDeletePress && (
-              <ExtendedTouchable onPress={this.handleSecondaryActionPress}>
-                <Icon
-                  name="close"
-                  color={defaultTokens.backgroundButtonPrimary}
-                />
-              </ExtendedTouchable>
+              <IconButton iconType="close" onPress={this.handleDeletePress} />
             )}
           </View>
           <PassengerCardDetail
@@ -105,30 +84,7 @@ class PassengerCard extends React.Component<Props> {
             dateOfBirth={dateOfBirth}
           />
           <Separator />
-          <View style={styles.containerBottom}>
-            <View style={styles.bagsRowWrapper}>
-              <Text type="secondary" style={styles.textPadding}>
-                Bags
-              </Text>
-              <View>
-                {bags &&
-                  bags.map((bag, idx) => (
-                    <BagInformation
-                      key={idx}
-                      count={bag.quantity}
-                      type={this.parseBagType(bag)}
-                    />
-                  ))}
-              </View>
-            </View>
-            {insurance != null && (
-              <PassengerCardDetailItem
-                value={insurance}
-                label="Travel Insurance"
-                style="normal"
-              />
-            )}
-          </View>
+          <PassengerAdditonalInformation bags={bags} insurance={insurance} />
         </Card>
         {visaRequired != null && <VisaInfo visaRequired={visaRequired} />}
       </View>
@@ -140,7 +96,7 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: parseInt(defaultTokens.spaceSmall, 10),
   },
-  containerName: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: parseInt(defaultTokens.spaceSmall, 10),
@@ -148,21 +104,6 @@ const styles = StyleSheet.create({
   },
   passengerName: {
     flex: 1,
-  },
-  actionIcon: {
-    paddingEnd: parseInt(defaultTokens.spaceLarge, 10),
-  },
-  containerBottom: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 12,
-    height: 120,
-  },
-  bagsRowWrapper: {
-    flexGrow: 3,
-  },
-  textPadding: {
-    paddingBottom: parseInt(defaultTokens.spaceXSmall, 10),
   },
 });
 
