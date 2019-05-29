@@ -1,12 +1,15 @@
 {
   "expo": {
-    "name": "tequila-client",
+    "name": "margarita-mobile",
     "entryPoint": "./apps/mobile/index.js",
-    "description": "This project is really great.",
-    "slug": "tequila-client",
+    "description": "Margarita is an open-source, multi-platform travel app for all major platforms — one code for web, iOS and Android. More information on https://margarita.kiwi.com/",
+    "slug": "margarita-mobile",
     "privacy": "public",
     "sdkVersion": "32.0.0",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,7 +21,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     }
