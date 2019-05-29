@@ -19,17 +19,7 @@ import PassengerCardDetail from './PassengerCardDetail';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
 import { type PassengerCardActionType } from './PassengerCardTypes';
-
-function getTitle(gender) {
-  switch (gender) {
-    case 'male':
-      return 'Mr.';
-    case 'female':
-      return 'Ms.';
-    default:
-      return '';
-  }
-}
+import { getTitle } from './helpers';
 
 type Props = {|
   ...PassengerType,
