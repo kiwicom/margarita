@@ -6,27 +6,26 @@ import { StyleSheet, Text } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { type PassengerType } from '@kiwicom/margarita-core';
 
-import type { PassengerCardActionType } from '../passengerCard/PassengerCardTypes';
 import PassengerCard from '../passengerCard/PassengerCard';
 import AddPassengerButton from './AddPassengerButton';
 
 type Props = {|
   +onAddPassengerPress?: () => void,
+  +onEditPress?: (?string) => void,
+  +onDeletePress?: (?string) => void,
   +passengerCards: ?Array<PassengerType>,
-  ...PassengerCardActionType,
 |};
 
 export default class PassengerCards extends React.Component<Props> {
-  renderPassengerCard = (passengerCard: ?PassengerType) => {
+  renderPassengerCard = (passengerCard: ?PassengerType, index: number) => {
     if (!passengerCard) return null;
     return (
       <PassengerCard
+        passengerIndex={index + 1}
         key={passengerCard.id}
-        editIconName={this.props.editIconName}
         onEditPress={this.props.onEditPress}
-        deleteIconName={this.props.deleteIconName}
         onDeletePress={this.props.onDeletePress}
-        {...passengerCard}
+        passenger={passengerCard}
       />
     );
   };
@@ -36,6 +35,7 @@ export default class PassengerCards extends React.Component<Props> {
   // @TODO button should be rounded
   render() {
     const { onAddPassengerPress, passengerCards } = this.props;
+
     return (
       <View style={styles.container}>
         {passengerCards && passengerCards.length ? (

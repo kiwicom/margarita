@@ -31,65 +31,12 @@ Object {
             }
           }
         >
-            
+          0. Passenger
         </WithTheme>
       </Component>
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "height": 60,
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <PassengerCardDetail
-          label="Nationality"
-          style="normal"
-          value=""
-        />
-        <PassengerCardDetail
-          label="Date of birth"
-          style="normal"
-          value="-"
-        />
-        <PassengerCardDetail
-          label="ID"
-          style="id_row_wrapper"
-          value=""
-        />
-      </Component>
+      <PassengerCardDetail />
       <Separator />
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "height": 120,
-            "justifyContent": "space-between",
-            "paddingTop": 12,
-          }
-        }
-      >
-        <Component
-          style={
-            Object {
-              "flexGrow": 3,
-            }
-          }
-        >
-          <WithTheme
-            style={
-              Object {
-                "paddingBottom": 8,
-              }
-            }
-            type="secondary"
-          >
-            Bags
-          </WithTheme>
-          <Component />
-        </Component>
-      </Component>
+      <PassengerAdditonalInformation />
     </Card>
   </Component>,
 }
@@ -126,79 +73,40 @@ Object {
             }
           }
         >
-          Mr. John Doe 
+          Mr. John Doe
         </WithTheme>
       </Component>
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "height": 60,
-            "justifyContent": "space-between",
-          }
-        }
-      >
-        <PassengerCardDetail
-          label="Nationality"
-          style="normal"
-          value="Russian"
-        />
-        <PassengerCardDetail
-          label="Date of birth"
-          style="normal"
-          value="04/12/1980"
-        />
-        <PassengerCardDetail
-          label="ID"
-          style="id_row_wrapper"
-          value="DF45SV9"
-        />
-      </Component>
+      <PassengerCardDetail
+        dateOfBirth={1980-04-12T00:00:00.000Z}
+        id="DF45SV9"
+        nationality="Russian"
+      />
       <Separator />
-      <Component
-        style={
-          Object {
-            "flexDirection": "row",
-            "height": 120,
-            "justifyContent": "space-between",
-            "paddingTop": 12,
-          }
-        }
-      >
-        <Component
-          style={
+      <PassengerAdditonalInformation
+        bags={
+          Array [
             Object {
-              "flexGrow": 3,
-            }
-          }
-        >
-          <WithTheme
-            style={
-              Object {
-                "paddingBottom": 8,
-              }
-            }
-            type="secondary"
-          >
-            Bags
-          </WithTheme>
-          <Component>
-            <BagInformation
-              count={1}
-              type="11 x 32 x 70 cm, 10 kg"
-            />
-            <BagInformation
-              count={2}
-              type="40 x 52 x 78 cm, 10 kg"
-            />
-          </Component>
-        </Component>
-        <PassengerCardDetail
-          label="Travel Insurance"
-          style="normal"
-          value="Travel Inusurance Name"
-        />
-      </Component>
+              "dimensions": "11 x 32 x 70 cm",
+              "price": Object {
+                "amount": 84,
+                "currency": "EUR",
+              },
+              "quantity": 1,
+              "weight": "10 kg",
+            },
+            Object {
+              "dimensions": "40 x 52 x 78 cm",
+              "price": Object {
+                "amount": 84,
+                "currency": "EUR",
+              },
+              "quantity": 2,
+              "weight": "10 kg",
+            },
+          ]
+        }
+        insurance="Travel Inusurance Name"
+      />
     </Card>
   </Component>,
 }
