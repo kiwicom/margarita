@@ -16,10 +16,10 @@ import {
 } from '@kiwicom/margarita-device';
 
 import {
-  withSearchContext,
   type SearchContextState,
+  withSearchContext,
   type Location,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import PickersWrapper from './PickersWrapper';
 import PlacePicker from './PlacePicker/PlacePickerRenderer';
 import {

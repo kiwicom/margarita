@@ -17,7 +17,7 @@ import { ItineraryTypeRenderer } from '@kiwicom/margarita-components';
 import {
   withSearchContext,
   type SearchContextState,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import ItineraryCardWrapper from './ItineraryCardWrapper';
 import ItineraryDetail from './itineraryDetail/ItineraryDetail';
 import type { ItineraryCard_data as ItineraryCardType } from './__generated__/ItineraryCard_data.graphql';

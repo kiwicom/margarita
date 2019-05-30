@@ -7,20 +7,20 @@ import {
   type StylePropType,
   type IconNameType,
 } from '@kiwicom/universal-components';
-import { type TripTypes } from '@kiwicom/margarita-config';
+import { type TripType } from '@kiwicom/margarita-config';
 
 import TripTypeSwitchOption from './TripTypeSwitchOption';
 
 type Props = {|
   +style?: StylePropType,
   +optionsData: {
-    [TripTypes]: {|
+    [TripType]: {|
       +icon: IconNameType,
       +label: string,
     |},
   },
   +selectedType: string,
-  +onSelect: (type: TripTypes) => void,
+  +onSelect: (type: TripType) => void,
 |};
 
 export default function TripTypeSwitch({
