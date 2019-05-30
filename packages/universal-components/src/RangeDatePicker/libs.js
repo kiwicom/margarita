@@ -7,6 +7,7 @@ import {
   getYear,
   eachDayOfInterval,
   endOfMonth,
+  isSameYear,
   isSameMonth,
   startOfMonth,
   eachWeekOfInterval,
@@ -18,8 +19,11 @@ import {
   addWeeks,
   isSameDay,
   getWeeksInMonth,
+  differenceInDays,
+  lastDayOfMonth,
 } from 'date-fns';
 import isEqual from 'react-fast-compare';
+import { sortWith, ascend, prop, unnest } from 'ramda';
 
 import type {
   AnotatedMonthType,
@@ -32,7 +36,7 @@ import type {
 import type { OnDragEvent } from '../types';
 
 const minimalNumberOfLinesInMonth = 4;
-export const spaceBetweenMonths = 60;
+export const spaceBetweenMonths = 55;
 const touchBufferRatio = 0.5;
 
 type SetProperDateIntervalArguments = {|
@@ -96,6 +100,28 @@ export const getMonths = (
 export const isDayInPast = (checkedDay: ?Date) =>
   checkedDay && isBefore(checkedDay, new Date());
 
+export const checkIfMoveIsCorrectInNeighbourhood = ({
+  neighbourhood,
+  startDay,
+  direction,
+  steps,
+}: {
+  neighbourhood: Array<AnotatedMonthType>,
+  startDay: Date,
+  direction: 'next' | 'prev',
+  steps: number,
+}) => {
+  const neighbourhoodSortedByDate = sortWith([
+    ascend(prop('year')),
+    ascend(prop('month')),
+  ])(neighbourhood);
+  const allDays = neighbourhoodSortedByDate.reduce((acc, current) => {
+    return [...acc, ...unnest(current.weeks)];
+  }, []);
+  const startDayIndex = allDays.indexOf(startDay);
+  return allDays[startDayIndex + steps * (direction === 'prev' ? -1 : 1)];
+};
+
 export const generateNeighbourhood = (
   grabbedStartDay: Date,
   fingerRelativePosition: { x: number, y: number },
@@ -132,6 +158,22 @@ export const howManyMonthsToRender = (
   return Math.ceil(months) + 1;
 };
 
+export const restOfMonthHeightInVerticalDirection = ({
+  month,
+  dayItemSize,
+  isDraggingUp,
+  weekIndex,
+}: {
+  month: AnotatedMonthType,
+  dayItemSize: DayItemSizeType,
+  isDraggingUp: boolean,
+  weekIndex: number,
+}) =>
+  isDraggingUp
+    ? weekIndex * dayItemSize.height + getTouchBuffer(dayItemSize.height)
+    : (month.weeks.length - weekIndex - 1) * dayItemSize.height +
+      getTouchBuffer(dayItemSize.height);
+
 export const getNumberOfMonthsCrossedByFinger = (
   fingerRelativePosition: { x: number, y: number },
   months: Array<AnotatedMonthType>,
@@ -142,18 +184,24 @@ export const getNumberOfMonthsCrossedByFinger = (
   const touchBuffer = getTouchBuffer(dayItemSize.height);
   const isDraggingUp = fingerRelativePosition.y < 0;
   const properSign = isDraggingUp ? -1 : 1;
-  const fingerYPositionWithoutCurrentMonth = isDraggingUp
-    ? Math.abs(fingerRelativePosition.y) - weekIndex * dayItemSize.height
-    : Math.abs(fingerRelativePosition.y) -
-      (months[monthIndex].weeks.length - weekIndex - 1) * dayItemSize.height;
+  const fingerYPositionWithoutCurrentMonth =
+    Math.abs(fingerRelativePosition.y) -
+    restOfMonthHeightInVerticalDirection({
+      month: months[monthIndex],
+      dayItemSize,
+      isDraggingUp,
+      weekIndex,
+    });
 
+  // @TODO je touchBuffer třeba?
   const isShiftOnlyInsideOfCurrentMonth =
     fingerYPositionWithoutCurrentMonth < spaceBetweenMonths + touchBuffer;
 
   if (isShiftOnlyInsideOfCurrentMonth) {
+    console.log('tady');
     return 0;
   }
-  // @TODO Optimise case when user is dragging between borders of the particular months. It should mark only the first/last day of the month.
+  // @TODO end
 
   const monthSpacesOrder = isDraggingUp
     ? months.slice(0, monthIndex).reverse()
@@ -211,6 +259,36 @@ export const setProperDateInterval = ({
   return [newDateWithXYShift, selectedDates[0]];
 };
 
+export const fingerYPositionInSpaceBetweenMonths = ({
+  fingerRelativePosition,
+  month,
+  dayItemSize,
+  isDraggingUp,
+  weekIndex,
+}: {
+  fingerRelativePosition: { x: number, y: number },
+  month: AnotatedMonthType,
+  dayItemSize: DayItemSizeType,
+  isDraggingUp: boolean,
+  weekIndex: number,
+}) => {
+  const touchBuffer = getTouchBuffer(dayItemSize.height);
+  const fingerYPositionWithoutCurrentMonth =
+    Math.abs(fingerRelativePosition.y) -
+    restOfMonthHeightInVerticalDirection({
+      month,
+      dayItemSize,
+      isDraggingUp,
+      weekIndex,
+    });
+  if (
+    fingerYPositionWithoutCurrentMonth > 0 &&
+    fingerYPositionWithoutCurrentMonth < spaceBetweenMonths + touchBuffer
+  ) {
+    return fingerYPositionWithoutCurrentMonth;
+  }
+  return false;
+};
 export const findRelatedItem = (
   event: OnDragEvent,
   config: FindRelatedItemConfigType,
@@ -241,6 +319,15 @@ export const findRelatedItem = (
     month.weeks.map((week, weekIndex) => {
       week.map(controlledDay => {
         if (controlledDay && isSameDay(controlledDay, grabbedStartDay)) {
+          // console.log(
+          //   getNumberOfMonthsCrossedByFinger(
+          //     fingerRelativePosition,
+          //     neigbourhoodMatrix,
+          //     monthIndex,
+          //     weekIndex,
+          //     dayItemSize,
+          //   ),
+          // );
           const monthSpaces =
             getNumberOfMonthsCrossedByFinger(
               fingerRelativePosition,
@@ -251,6 +338,17 @@ export const findRelatedItem = (
             ) *
             (spaceBetweenMonths + touchBuffer);
 
+          // console.log('monthSpaces', monthSpaces);
+
+          const isDraggingUp = fingerRelativePosition.y < 0;
+          const yPositionBetweenMonths = fingerYPositionInSpaceBetweenMonths({
+            month,
+            dayItemSize,
+            isDraggingUp,
+            weekIndex,
+            fingerRelativePosition,
+          });
+
           const shift = {
             x: Math.floor(
               fingerRelativePosition.x / dayItemSize.width + touchBufferRatio,
@@ -260,8 +358,49 @@ export const findRelatedItem = (
                 touchBufferRatio,
             ),
           };
+          // console.log(
+          //   fingerRelativePosition.y,
+          //   monthSpaces,
+          //   dayItemSize.height,
+          // );
+
           const newDateWithXShift = addDays(grabbedStartDay, shift.x);
-          const newDateWithXYShift = addWeeks(newDateWithXShift, shift.y);
+          let newDateWithXYShift = addWeeks(newDateWithXShift, shift.y);
+
+          const steppedDays = differenceInDays(
+            newDateWithXYShift,
+            controlledDay,
+          );
+          if (yPositionBetweenMonths) {
+            if (getMonth(newDateWithXYShift) > month.month) {
+              newDateWithXYShift = lastDayOfMonth(controlledDay);
+            }
+            if (getMonth(newDateWithXYShift) < month.month) {
+              console.log(
+                month.year,
+                month.month,
+                new Date(month.year, month.month, 0),
+              );
+              newDateWithXYShift = new Date(month.year, month.month, 1);
+            }
+            console.log('----');
+          }
+
+          const isMoveCorrect = checkIfMoveIsCorrectInNeighbourhood({
+            neighbourhood: neigbourhoodMatrix,
+            startDay: controlledDay,
+            direction: isDraggingUp ? 'prev' : 'next',
+            steps: steppedDays,
+          });
+
+          if (!isMoveCorrect) {
+            console.log('||||');
+            if (isDraggingUp) {
+              newDateWithXYShift = new Date(month.year, month.month, 1);
+            } else {
+              newDateWithXYShift = lastDayOfMonth(controlledDay);
+            }
+          }
 
           if (
             isSameDay(newDateWithXYShift, selectedDates[0]) &&
