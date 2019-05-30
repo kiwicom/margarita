@@ -21,7 +21,7 @@ export default class PassengerCards extends React.Component<Props> {
     if (!passengerCard) return null;
     return (
       <PassengerCard
-        passengerCount={index + 1}
+        passengerIndex={index + 1}
         key={passengerCard.id}
         onEditPress={this.props.onEditPress}
         onDeletePress={this.props.onDeletePress}

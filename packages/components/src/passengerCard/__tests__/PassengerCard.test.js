@@ -35,14 +35,14 @@ const mockedPassenger = {
   ],
 };
 
-const passengerCount = 1;
+const passengerIndex = 1;
 
 it('renders with passenger info', () => {
   expect(
     shallow(
       <PassengerCard
         passenger={mockedPassenger}
-        passengerCount={passengerCount}
+        passengerIndex={passengerIndex}
       />,
     ),
   ).toMatchSnapshot();
@@ -50,6 +50,6 @@ it('renders with passenger info', () => {
 
 it('renders blank', () => {
   expect(
-    shallow(<PassengerCard passengerCount={0} passenger={null} />),
+    shallow(<PassengerCard passengerIndex={0} passenger={null} />),
   ).toMatchSnapshot();
 });

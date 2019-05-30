@@ -15,7 +15,7 @@ import { getPassengerTitle } from './helpers';
 
 type Props = {|
   passenger: ?PassengerType,
-  passengerCount: number,
+  +passengerIndex: number,
   +onEditPress?: (?string) => void,
   +onDeletePress?: (?string) => void,
 |};
@@ -34,13 +34,13 @@ class PassengerCard extends React.Component<Props> {
   };
 
   getCardTitle = () => {
-    const { passenger, passengerCount } = this.props;
+    const { passenger, passengerIndex } = this.props;
     if (passenger?.name || passenger?.lastName) {
       const passengerTitle = getPassengerTitle(passenger?.gender);
       return `${passengerTitle} ${passenger?.name ||
         ''} ${passenger?.lastName || ''}`;
     }
-    return `${passengerCount}. Passenger`;
+    return `${passengerIndex}. Passenger`;
   };
 
   render() {
