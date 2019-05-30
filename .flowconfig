@@ -62,6 +62,20 @@
 <PROJECT_ROOT>/node_modules/react-native/Libraries/YellowBox/UI/YellowBoxList.js
 <PROJECT_ROOT>/node_modules/react-native/Libraries/Image/Image.ios.js
 <PROJECT_ROOT>/node_modules/react-native/Libraries/Lists/VirtualizedSectionList.js
+<PROJECT_ROOT>/node_modules/react-native/Libraries/Animated/src/AnimatedEvent.js
+
+.+/node_modules/graphql-iso-date/dist/date/index.js
+.+/node_modules/graphql-iso-date/dist/dateTime/index.js
+.+/node_modules/graphql-iso-date/dist/time/index.js
+
+; @kiwicom/orbit-components uses old Flow version:
+; https://github.com/kiwicom/orbit-components/issues/1010
+.+/node_modules/@kiwicom/orbit-components/lib/index.js
+ .+/node_modules/@kiwicom/orbit-components/lib/getTokens.js
+
+
+
+
 
 [libs]
 node_modules/react-native/Libraries/react-native/react-native-interface.js
@@ -114,4 +128,4 @@ unsafe-getters-setters
 sketchy-null
 
 [version]
-^0.94.0
+^0.98.0
