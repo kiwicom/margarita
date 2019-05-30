@@ -58,4 +58,4 @@ export const DEFAULT_SEARCH_SORTING = 'QUALITY';
 
 // constants
 export { TRIP_TYPES } from './constants/TripTypes';
-export type { TripTypes } from './constants/TripTypes';
+export type { TripType } from './constants/TripTypes';

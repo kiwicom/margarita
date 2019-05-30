@@ -3,7 +3,7 @@
 import { differenceInMinutes, fromISO } from '@kiwicom/margarita-utils';
 import { head, last } from 'ramda';
 import { fromGlobalId } from '@kiwicom/graphql-global-id';
-import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
+import { TRIP_TYPES, type TripType } from '@kiwicom/margarita-config';
 
 import type {
   ApiRouteItem,
@@ -55,7 +55,7 @@ export const getItineraryDeparture = (sectors: ?Array<Sector>): ?RouteStop => {
 };
 
 export const getItineraryArrival = (
-  tripType: ?TripTypes,
+  tripType: ?TripType,
   sectors: ?Array<Sector>,
 ): ?RouteStop => {
   return tripType === TRIP_TYPES.RETURN

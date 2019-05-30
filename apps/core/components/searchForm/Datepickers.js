@@ -14,13 +14,13 @@ import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
-  type TripTypes,
+  type TripType,
 } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,
   type SearchContextState,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
 import { type ConfirmType } from './DatePickerTypes';
@@ -38,7 +38,7 @@ type Props = {|
   +setReturnDate: (Date, Date) => void,
   +setNightsInDestination: (number, number) => void,
   +setNightsInDestinationSelection: boolean => void,
-  +setTripType: TripTypes => void,
+  +setTripType: TripType => void,
   +layout: number,
 |};
 
