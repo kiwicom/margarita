@@ -3,6 +3,13 @@ title: GraphQL Server
 sidebar_label: GraphQL Server
 ---
 
+## Explore deployed version
+
+- 🎮 [GraphQL Playground](https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql)
+- 🚀 [GraphQL Voyager](https://margarita-graphql-voyager.now.sh/)
+
+## Running server locally
+
 _Check the [instructions](../../getting-started) to have the project correctly set up first_.
 
 From the root of `margarita`, run
