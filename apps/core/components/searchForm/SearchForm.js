@@ -24,10 +24,10 @@ import {
 } from '@kiwicom/margarita-components';
 
 import {
-  withSearchContext,
   type SearchContextState,
+  withSearchContext,
   type Location,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchFormModes from './SearchFormModes';

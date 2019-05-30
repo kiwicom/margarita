@@ -9,7 +9,7 @@ import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
-  type TripTypes,
+  type TripType,
   BASIC_ISO_DATE_FORMAT,
 } from '@kiwicom/margarita-config';
 import {
@@ -32,9 +32,9 @@ import OneWayResultsQuery from './OneWayResultsQuery';
 import ReturnResultsQuery from './ReturnResultsQuery';
 import {
   withSearchContext,
-  type SearchContextState,
   type Location,
-} from '../../contexts/searchContext/SearchContext';
+  type SearchContextState,
+} from '../../contexts/searchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
 
 type Props = {|
@@ -74,7 +74,7 @@ class Results extends React.Component<Props> {
     return <ResultsList data={searchData} onBookPress={this.handleBookPress} />;
   };
 
-  parseSearchParametersByType = (type: TripTypes) => {
+  parseSearchParametersByType = (type: TripType) => {
     const {
       travelFrom,
       travelTo,
@@ -160,7 +160,7 @@ class Results extends React.Component<Props> {
       )}`;
     };
 
-    const tripType: TripTypes = returnDateFrom
+    const tripType: TripType = returnDateFrom
       ? TRIP_TYPES.RETURN
       : TRIP_TYPES.ONEWAY;
     const QueryComponent =

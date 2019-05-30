@@ -8,13 +8,13 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import {
   withSearchContext,
+  type SortType,
   type SearchContextState,
-  type SortTypes,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 
 type Props = {|
-  +sortBy: SortTypes,
-  +setSortBy: SortTypes => void,
+  +sortBy: SortType,
+  +setSortBy: SortType => void,
 |};
 
 const priceDurationParams = {

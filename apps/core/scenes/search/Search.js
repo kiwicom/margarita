@@ -11,7 +11,7 @@ import {
   type LayoutContextState,
 } from '@kiwicom/margarita-device';
 
-import type { Location } from '../../contexts/searchContext/SearchContext';
+import type { Location } from '../../contexts/searchContext';
 import SearchForm from '../../components/searchForm/SearchForm';
 
 export type SearchParameters = {|

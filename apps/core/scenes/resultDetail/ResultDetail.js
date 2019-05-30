@@ -7,9 +7,9 @@ import type { ResultDetailQueryResponse } from './__generated__/ResultDetailQuer
 import ResultDetailInner from './ResultDetailInner';
 import {
   withSearchContext,
+  type Passengers,
   type SearchContextState,
-  type PassengersData,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 
 type Props = {|
   +adults: number,
@@ -20,7 +20,7 @@ type Props = {|
     +setBookingToken: string => void,
     +adults: number,
     +infants: number,
-    +setPassengerData: PassengersData => void,
+    +setPassengerData: Passengers => void,
   |},
 |};
 

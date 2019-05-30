@@ -8,7 +8,7 @@ import {
   StyleSheet,
   AdaptableBadge,
 } from '@kiwicom/universal-components';
-import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
+import { TRIP_TYPES, type TripType } from '@kiwicom/margarita-config';
 
 import AlphaToWhite from './assets/alpha-to-white-horizontal.png';
 import Text from '../text/Text';
@@ -19,7 +19,7 @@ type Trip = {|
 |};
 
 type Props = {|
-  +tripType?: TripTypes,
+  +tripType?: TripType,
   +arrival?: Trip,
   +departure?: Trip,
 |};
