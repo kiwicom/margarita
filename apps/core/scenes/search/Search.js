@@ -25,7 +25,6 @@ export type SearchParameters = {|
   +sort: string,
   +adults: number,
   +infants: number,
-  +bags: number,
   +limit: number,
   +nightsInDestinationFrom: string,
   +nightsInDestinationTo: string,
