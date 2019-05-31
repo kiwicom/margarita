@@ -1,6 +1,8 @@
 // @flow
 
 import * as React from 'react';
+import * as DateFNS from 'date-fns';
+import { Platform } from 'react-native';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 import {
   type TripType,
@@ -10,14 +12,12 @@ import {
   DEFAULT_NIGHTS_IN_DESTINATION_FROM,
   DEFAULT_NIGHTS_IN_DESTINATION_TO,
 } from '@kiwicom/margarita-config';
-import * as DateFNS from 'date-fns';
-import qs from 'qs';
 
+import { parseURLqueryToState } from './helpers';
 import type {
   Location,
   LocationSearchType,
   ParseFieldsParams,
-  ParseFieldsReturn,
   Passengers,
   SortType,
   SearchContextState,
@@ -87,26 +87,23 @@ const defaultState = {
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
 
-const parseDate = (date: ?string, key: string) => {
-  return date ? { [key]: new Date(date) } : {};
-};
+class SearchContextProvider extends React.Component<Props, State> {
+  static getDefaultState(routerQuery?: ParseFieldsParams) {
+    // hydrate state from URL
+    if (Platform.OS === 'web' && routerQuery) {
+      return {
+        ...defaultState,
+        ...parseURLqueryToState(routerQuery),
+      };
+    }
+    return defaultState;
+  }
 
-const parseNumber = (value: ?string, key: string) => {
-  return value ? { [key]: parseInt(value, 10) } : {};
-};
-
-export default class SearchContextProvider extends React.Component<
-  Props,
-  State,
-> {
   constructor(props: Props) {
     super(props);
 
-    const { routerQuery } = props;
-
     this.state = {
-      ...defaultState,
-      ...(routerQuery && this.parseFields(routerQuery)), // hydrate state from URL for the web
+      ...SearchContextProvider.getDefaultState(props.routerQuery),
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
@@ -128,25 +125,6 @@ export default class SearchContextProvider extends React.Component<
     this.setState({ bookingToken });
   };
 
-  // @TODO moved to SerchContext helpers and write tests
-  parseFields = (params: ParseFieldsParams): ParseFieldsReturn => {
-    return {
-      ...parseDate(params.dateFrom, 'dateFrom'),
-      ...parseDate(params.dateTo, 'dateTo'),
-      ...parseDate(params.returnDateFrom, 'returnDateFrom'),
-      ...parseDate(params.returnDateTo, 'returnDateTo'),
-      ...parseNumber(params.adults, 'adults'),
-      ...parseNumber(params.infants, 'infants'),
-      ...(params.nightsInDestinationFrom
-        ? { nightsInDestinationFrom: params.nightsInDestinationFrom }
-        : {}),
-      ...(params.nightsInDestinationTo
-        ? { nightsInDestinationTo: params.nightsInDestinationTo }
-        : {}),
-      ...(params.bookingToken ? { bookingToken: params.bookingToken } : {}),
-    };
-  };
-
   switchFromTo = () => {
     this.setState(state => {
       const from = state.travelFrom;
@@ -156,18 +134,6 @@ export default class SearchContextProvider extends React.Component<
         travelTo: from,
       };
     });
-  };
-
-  // @TODO moved to SerchContext helpers and write tests
-  parseLocationParam = (param: ?string): $ReadOnlyArray<Location> | null => {
-    if (param == null) {
-      return null;
-    }
-    const asObject: {| [key: string]: Location |} = qs.parse(param);
-    const asLocationArray: $ReadOnlyArray<Location> = Object.keys(asObject).map(
-      key => asObject[key],
-    );
-    return asLocationArray;
   };
 
   setDepartureDate = (dateFrom: Date, dateTo: Date) => {
@@ -253,3 +219,5 @@ export default class SearchContextProvider extends React.Component<
 
 export const withSearchContext = (select: State => Object) =>
   withContext<State>(select, Consumer);
+
+export default SearchContextProvider;

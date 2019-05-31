@@ -47,7 +47,6 @@ type Props = {
   +tripType: string,
   +adults: number,
   +infants: number,
-  +bags: number,
   +layout: number,
   +limit: number,
   +setAlertContent: (alertContent: AlertContent | null) => void,
@@ -74,7 +73,6 @@ class SearchForm extends React.Component<Props> {
       tripType,
       adults,
       infants,
-      bags,
       limit,
       onSubmit,
       isNightsInDestinationSelected,
@@ -111,7 +109,6 @@ class SearchForm extends React.Component<Props> {
           limit,
           adults,
           infants,
-          bags,
         });
       }
       this.props.navigation.navigate(Routes.RESULTS, {
@@ -123,7 +120,6 @@ class SearchForm extends React.Component<Props> {
         limit,
         adults,
         infants,
-        bags,
         dateFrom,
         dateTo,
         ...(tripType === TRIP_TYPES.RETURN
@@ -137,8 +133,6 @@ class SearchForm extends React.Component<Props> {
                 returnDateTo,
               }
           : {}),
-
-        onSubmit,
       });
     }
   };
