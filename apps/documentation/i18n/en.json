@@ -29,9 +29,9 @@
         "title": "Where can I see the web and mobile demos?",
         "sidebar_label": "Web and Mobile demos"
       },
-      "features-roadmap": {
-        "title": "Supported features and Roadmap",
-        "sidebar_label": "Features and Roadmap"
+      "features": {
+        "title": "Supported features",
+        "sidebar_label": "Features"
       },
       "folder-structure": {
         "title": "Folder Structure",
