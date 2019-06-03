@@ -3,6 +3,7 @@
 import * as React from 'react';
 import ReactModal from 'react-native-modal';
 
+import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './ModalTypes';
 
 /**
@@ -18,6 +19,7 @@ function Modal(props: Props) {
       useNativeDriver
       hideModalContentWhileAnimating // this is workaround for `useNativeDriver` property (see: https://github.com/react-native-community/react-native-modal#the-modal-flashes-in-a-weird-way-when-animating)
       {...props}
+      style={[styles.modal, props.style]}
     />
   );
 }
@@ -25,5 +27,11 @@ function Modal(props: Props) {
 Modal.defaultProps = {
   backdropOpacity: 0.5,
 };
+
+const styles = StyleSheet.create({
+  modal: {
+    margin: 0,
+  },
+});
 
 export default Modal;
