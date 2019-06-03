@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Button } from '../Button';
@@ -73,7 +73,7 @@ export default class RangeDatePicker extends React.Component<Props> {
         onRequestClose={this.handleDismiss}
         onBackdropPress={this.handleDismiss}
       >
-        <View style={styles.content}>
+        <SafeAreaView style={styles.content}>
           {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
             <RangeDatePickerContent
               isChoosingPastDatesEnabled={isChoosingPastDatesEnabled ?? false}
@@ -123,7 +123,7 @@ export default class RangeDatePicker extends React.Component<Props> {
               </View>
             </View>
           </View>
-        </View>
+        </SafeAreaView>
       </Modal>
     );
   }
@@ -154,6 +154,10 @@ const styles = StyleSheet.create({
   },
   buttonWrapper: {
     flex: 1,
+    ios: {
+      // @TODO bottom margin needs to be currently set for iOS because of the persisting bug related to `SafeAreaView` and `Modal` on iPhone X https://github.com/facebook/react-native/issues/18177
+      marginBottom: parseFloat(defaultTokens.spaceMedium),
+    },
   },
   confirmButton: {
     marginStart: parseFloat(defaultTokens.spaceXSmall),
