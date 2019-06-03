@@ -24,17 +24,10 @@ export {
 export { default as Profile } from './scenes/profile/Profile';
 
 // Context
-export {
-  default as SearchContextProvider,
-} from './contexts/searchContext/SearchContext';
-export {
-  default as UserContextProvider,
-  withUserContext,
-} from './contexts/userContext/UserContext';
-export {
-  default as BookingContextProvider,
-  withBookingContext,
-} from './contexts/bookingContext/BookingContext';
+export { SearchContextConsumer } from './contexts/searchContext/SearchContext';
+export { withUserContext } from './contexts/userContext/UserContext';
+export { withBookingContext } from './contexts/bookingContext/BookingContext';
+export { default as ContextComposition } from './contexts/ContextComposition';
 
 // Types
 

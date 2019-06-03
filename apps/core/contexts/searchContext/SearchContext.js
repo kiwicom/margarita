@@ -220,4 +220,5 @@ class SearchContextProvider extends React.Component<Props, State> {
 export const withSearchContext = (select: State => Object) =>
   withContext<State>(select, Consumer);
 
+export const SearchContextConsumer = Consumer;
 export default SearchContextProvider;

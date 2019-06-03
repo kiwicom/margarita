@@ -2,13 +2,8 @@
 
 import * as React from 'react';
 import { default as NextApp, Container } from 'next/app';
-import { LayoutContextProvider } from '@kiwicom/margarita-device';
-import { Alert, AlertContextProvider } from '@kiwicom/margarita-components';
-import {
-  UserContextProvider,
-  SearchContextProvider,
-  BookingContextProvider,
-} from '@kiwicom/margarita-core';
+import { Alert } from '@kiwicom/margarita-components';
+import { ContextComposition } from '@kiwicom/margarita-core';
 
 export default class App extends NextApp {
   render() {
@@ -20,18 +15,10 @@ export default class App extends NextApp {
 
     return (
       <Container>
-        <UserContextProvider>
-          <BookingContextProvider>
-            <AlertContextProvider>
-              <SearchContextProvider routerQuery={routerQuery}>
-                <LayoutContextProvider>
-                  <Component {...pageProps} />
-                </LayoutContextProvider>
-                <Alert />
-              </SearchContextProvider>
-            </AlertContextProvider>
-          </BookingContextProvider>
-        </UserContextProvider>
+        <ContextComposition routerQuery={routerQuery}>
+          <Component {...pageProps} />
+          <Alert />
+        </ContextComposition>
       </Container>
     );
   }

@@ -4,9 +4,11 @@ import * as React from 'react';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 
 import { type BaggageBundleType } from '../../components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
+import { createPassengers } from './helpers';
 
 type Props = {|
   +children: React.Node,
+  +passengersCount: number,
 |};
 
 export type PassengerType = {|
@@ -41,11 +43,18 @@ export default class BookingContextProvider extends React.Component<
   Props,
   State,
 > {
+  static getDerivedStateFromProps(props: Props, state: State) {
+    if (props.passengersCount !== state.passengers.length) {
+      return { passengers: createPassengers(props.passengersCount) };
+    }
+    return null;
+  }
+
   constructor(props: Props) {
     super(props);
 
     this.state = {
-      ...defaultState,
+      passengers: createPassengers(props.passengersCount),
       actions: {
         setPassengers: this.setPassengers,
       },

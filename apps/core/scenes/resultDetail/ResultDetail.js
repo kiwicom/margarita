@@ -51,7 +51,7 @@ class ResultDetail extends React.Component<Props> {
         variables={{
           input: {
             bookingToken,
-            bags: 0, // @TODO from search form
+            bags: 0, // @TODO from passengers form
             passengers: { adults, infants },
           },
         }}
