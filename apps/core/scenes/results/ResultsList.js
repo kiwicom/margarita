@@ -12,7 +12,7 @@ import EmptyResults from './EmptyResults';
 
 type Props = {|
   +data: ?ResultsListType,
-  +onBookPress: (?string) => void,
+  +onBookPress: string => void,
 |};
 
 type ResultItemType = {|
