@@ -22,7 +22,10 @@ type State = {|
   +featuresHeight: number,
   +featuresTopPosition: number,
   +featuresRef: ?Element,
+  +scrolledOnFeature: ?number,
 |};
+
+const buffer = 150;
 
 export default class Features extends React.Component<Props, State> {
   static findPosition = (ref: ?Element) => {
@@ -36,6 +39,7 @@ export default class Features extends React.Component<Props, State> {
     featuresHeight: 0,
     featuresTopPosition: 0,
     featuresRef: null,
+    scrolledOnFeature: null,
   };
 
   static getDerivedStateFromProps(props: Props, state: State) {
@@ -57,7 +61,49 @@ export default class Features extends React.Component<Props, State> {
   };
 
   render() {
-    const { featuresHeight, featuresTopPosition, featuresRef } = this.state;
+    const {
+      featuresRef,
+      featuresTopPosition,
+      featuresHeight,
+      scrolledOnFeature,
+    } = this.state;
+    const { scroll } = this.props;
+    const {
+      searchScreen,
+      bookingScreen,
+      mmbScreen,
+      paymentsScreen,
+    } = Config.featuresOrderIndexes;
+
+    const isDimensionsDataKnown = featuresHeight && featuresTopPosition;
+
+    const isFixed =
+      featuresTopPosition === 0 ||
+      featuresHeight === 0 ||
+      scroll <
+        featuresTopPosition +
+          featuresHeight -
+          Config.phoneHeight -
+          Config.phoneTopMargin;
+
+    const newScrollOnFeature = isDimensionsDataKnown
+      ? Math.floor(
+          (featuresTopPosition +
+            featuresHeight -
+            scroll -
+            Config.phoneHeight -
+            Config.featuresMarginBottom +
+            buffer) /
+            Config.featureHeight,
+        )
+      : null;
+    if (scrolledOnFeature !== newScrollOnFeature) {
+      this.setState({ scrolledOnFeature: newScrollOnFeature });
+    }
+    const isSearchScreenActive = searchScreen === scrolledOnFeature;
+    const isBookingScreenActive = bookingScreen === scrolledOnFeature;
+    const isMmbScreenActive = mmbScreen === scrolledOnFeature;
+    const isPaymentsScreenActive = paymentsScreen === scrolledOnFeature;
     return (
       <Content id="multiplatform" ref={this.setRef}>
         <MultiplatformWrapper>
@@ -94,44 +140,51 @@ export default class Features extends React.Component<Props, State> {
         <FeaturesContainer id="features">
           <Title>App features</Title>
           <Feature>
-            <AccentedText big>
+            <AccentedZoomedText big isDisabled={!isSearchScreenActive}>
               <Highlight>Search for flights.</Highlight> Get an access to the
               database of 15 billion connections virtually interlined by
               Kiwi.com
-            </AccentedText>
+            </AccentedZoomedText>
           </Feature>
           <Feature>
-            <AccentedText big>
+            <AccentedZoomedText big isDisabled={!isBookingScreenActive}>
               <Highlight>Booking.</Highlight> Use our powerful infrastructure to
               book the trips and gain your commission - the best one in the
               industry.
-            </AccentedText>
+            </AccentedZoomedText>
           </Feature>
           <Feature>
-            <AccentedText big>
+            <AccentedZoomedText big isDisabled={!isMmbScreenActive}>
               <Highlight>Manage my booking</Highlight> allows your customers to
               modify the trip, edit passenger’s details or purchase additional
               services.
-            </AccentedText>
+            </AccentedZoomedText>
           </Feature>
           <Feature>
-            <AccentedText big>
+            <AccentedZoomedText big isDisabled={!isPaymentsScreenActive}>
               <Highlight>Payments</Highlight> allow your users to pay instantly
               for their bookings, right within your app.
-            </AccentedText>
+            </AccentedZoomedText>
           </Feature>
         </FeaturesContainer>
 
-        <FloatedPhone
-          scroll={this.props.scroll}
-          featuresHeight={featuresHeight}
-          featuresTopPosition={featuresTopPosition}
-          featuresRef={featuresRef}
-        />
+        {featuresRef !== null && (
+          <FloatedPhone
+            isFixed={isFixed}
+            scrolledOnFeature={scrolledOnFeature}
+          />
+        )}
       </Content>
     );
   }
 }
+
+const AccentedZoomedText = styled(AccentedText)`
+  @media (min-width: ${defaultTokens.widthBreakpointDesktop}px) {
+    transition: all 0.3s ease;
+    ${({ isDisabled }) => (isDisabled ? null : 'transform: scale(1.05, 1.05);')}
+  }
+`;
 
 const MultiplatformWrapper = styled.div`
   padding-top: 100px;
