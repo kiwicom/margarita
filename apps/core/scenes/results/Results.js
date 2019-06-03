@@ -55,11 +55,13 @@ type Props = {|
   +nightsInDestinationFrom: string,
   +nightsInDestinationTo: string,
   +isNightsInDestinationSelected: boolean,
+  +setBookingToken: string => void,
 |};
 
 class Results extends React.Component<Props> {
-  handleBookPress = (bookingToken: ?string) => {
+  handleBookPress = (bookingToken: string) => {
     const { adults, infants } = this.props;
+    this.props.setBookingToken(bookingToken);
     this.props.navigation.navigate(Routes.RESULT_DETAIL, {
       adults,
       infants,
@@ -256,6 +258,7 @@ const select = ({
   nightsInDestinationFrom,
   nightsInDestinationTo,
   isNightsInDestinationSelected,
+  actions: { setBookingToken },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -271,6 +274,7 @@ const select = ({
   nightsInDestinationFrom,
   nightsInDestinationTo,
   isNightsInDestinationSelected,
+  setBookingToken,
 });
 
 const layoutSelect = ({ layout }: LayoutContextState) => ({

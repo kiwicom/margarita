@@ -19,6 +19,7 @@ const PARSER_CONFIG = {
   dateTo: 'Date',
   returnDateFrom: 'Date',
   returnDateTo: 'Date',
+  bookingToken: 'string',
 };
 
 export function parseURLqueryToState(query: Object) {

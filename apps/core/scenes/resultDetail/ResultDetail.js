@@ -12,12 +12,8 @@ import {
 } from '../../contexts/searchContext';
 
 type Props = {|
-  +adults: number,
-  +infants: number,
-  +bookingToken: string,
   +context: {|
     +bookingToken: ?string,
-    +setBookingToken: string => void,
     +adults: number,
     +infants: number,
     +setPassengerData: Passengers => void,
@@ -25,17 +21,6 @@ type Props = {|
 |};
 
 class ResultDetail extends React.Component<Props> {
-  componentDidMount() {
-    const { bookingToken, adults, infants, context } = this.props;
-
-    context.setBookingToken(bookingToken);
-
-    // set the SearchContext state if it is not
-    if (context.adults !== adults && context.infants !== infants) {
-      context.setPassengerData({ adults, infants });
-    }
-  }
-
   renderInner = (data: ResultDetailQueryResponse) => {
     const { context } = this.props;
     const passengers = {
@@ -52,7 +37,10 @@ class ResultDetail extends React.Component<Props> {
   };
 
   render() {
-    const { bookingToken, adults, infants } = this.props;
+    const {
+      context: { bookingToken, adults, infants },
+    } = this.props;
+
     return (
       <QueryRenderer
         query={graphql`
@@ -74,7 +62,7 @@ class ResultDetail extends React.Component<Props> {
 }
 
 const selectSearchContextState = ({
-  actions: { setPassengerData, setBookingToken },
+  actions: { setPassengerData },
   infants,
   adults,
   bookingToken,
@@ -83,7 +71,6 @@ const selectSearchContextState = ({
     infants,
     adults,
     setPassengerData,
-    setBookingToken,
     bookingToken,
   },
 });
