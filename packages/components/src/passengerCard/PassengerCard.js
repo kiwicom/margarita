@@ -63,7 +63,7 @@ class PassengerCard extends React.Component<Props> {
           </View>
           <PassengerCardDetail
             nationality={passenger?.nationality}
-            id={passenger?.id}
+            cardId={passenger?.id}
             dateOfBirth={passenger?.dateOfBirth}
           />
           <Separator />
