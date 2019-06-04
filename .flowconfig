@@ -53,6 +53,7 @@
 [untyped]
 ; Be careful - do not add 'StyleSheet' here
 <PROJECT_ROOT>/node_modules/graphql/.*
+<PROJECT_ROOT>/node_modules/react-native-paper/.*
 <PROJECT_ROOT>/node_modules/react-native/Libraries/StyleSheet/StyleSheetValidation.js
 <PROJECT_ROOT>/node_modules/react-native/Libraries/StyleSheet/processTransform.js
 <PROJECT_ROOT>/node_modules/react-native/Libraries/Text/.*

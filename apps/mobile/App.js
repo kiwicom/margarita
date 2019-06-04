@@ -13,6 +13,7 @@ import {
 } from '@kiwicom/margarita-core';
 import { AlertContextProvider } from '@kiwicom/margarita-components';
 import { LayoutContextProvider } from '@kiwicom/margarita-device';
+import { Portal } from 'react-native-paper';
 
 import TabNavigator from './src/navigation/TabNavigator';
 
@@ -32,7 +33,9 @@ export default function App() {
         <BookingContextProvider>
           <SearchContextProvider>
             <AlertContextProvider>
-              <AppContainer />
+              <Portal.Host>
+                <AppContainer />
+              </Portal.Host>
             </AlertContextProvider>
           </SearchContextProvider>
         </BookingContextProvider>
