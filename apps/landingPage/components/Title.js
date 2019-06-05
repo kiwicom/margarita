@@ -4,10 +4,9 @@ import styled from 'styled-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 export default styled.div`
-  font-size: 50px;
+  font-size: 53px;
   color: ${({ light }) =>
     light ? defaultTokens.paletteWhite : defaultTokens.paletteInkDark};
-  display: inline-block;
-  padding: 50px 0 30px 0;
+  padding: 60px 0 20px 0;
   font-weight: bold;
 `;
