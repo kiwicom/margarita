@@ -23,7 +23,7 @@
 
 ## Devstack
 
-This project follows react-native-web philosophy of **Write Once, Render Anywhere**.
+This project follows the react-native-web philosophy of **Write Once, Render Anywhere**.
 
 - [React Native](https://facebook.github.io/react-native/)
 - [Expo](https://expo.io/)
@@ -36,14 +36,14 @@ More detailed info about our devstack can be found in [Technical Overview docs](
 
 ## App features
 
-App consists of 4 main parts which should cover whole app flow:
+The app consists of 4 main parts which should cover the whole searching and booking flow:
 
 - Search for connections
 - Booking
 - Manage my booking
 - Payments
 
-More detailed info can be found in [Features and Roadmap docs](https://kiwicom.github.io/margarita/docs/features-roadmap).
+More detailed info can be found in the [Features docs](https://kiwicom.github.io/margarita/docs/features).
 
 ## Documentation
 
@@ -61,6 +61,7 @@ Full documentation for **Margarita** can be found on [kiwicom.github.io](https:/
 
 - 🎮 [GraphQL Playground](https://p2kwd3i3a8.execute-api.eu-central-1.amazonaws.com/staging/graphql)
 - 🚀 [GraphQL Voyager](https://margarita-graphql-voyager.now.sh/)
+- 📘 [Storybook for Universal components](https://kiwicom-universal-components.netlify.com)
 - 🍸 [Margarita product page](http://margarita.kiwi.com)
 - 🥝 [Open source projects at Kiwi.com](https://github.com/kiwicom/)
 
