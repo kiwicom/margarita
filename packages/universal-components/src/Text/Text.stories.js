@@ -39,6 +39,124 @@ storiesOf('Text', module)
       <Text type="critical">{customText}</Text>
     </React.Fragment>
   ))
+  .add('Accessibility features', () => (
+    <React.Fragment>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 1"
+        accessibilityRole="header"
+        ariaLevel="1"
+      >
+        Header Level 1
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 2"
+        accessibilityRole="header"
+        ariaLevel="2"
+      >
+        Header Level 2
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 3"
+        accessibilityRole="header"
+        ariaLevel="3"
+      >
+        Header Level 3
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 4"
+        accessibilityRole="header"
+        ariaLevel="4"
+      >
+        Header Level 4
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 5"
+        accessibilityRole="header"
+        ariaLevel="5"
+      >
+        Header Level 5
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header Level 6"
+        accessibilityRole="header"
+        ariaLevel="6"
+      >
+        Header Level 6
+      </Text>
+      <Text accessible={true} accessibilityLabel="Normal text">
+        Normal text
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Header"
+        accessibilityRole="header"
+      >
+        Header
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Link"
+        accessibilityRole="link"
+      >
+        Link
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Button"
+        accessibilityRole="button"
+      >
+        Button
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="None"
+        accessibilityRole="none"
+      >
+        None
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Selected"
+        accessibilityStates={['selected']}
+      >
+        State Selected
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Disabled"
+        accessibilityStates={['disabled']}
+      >
+        State Disabled
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Checked"
+        accessibilityStates={['checked']}
+      >
+        State Checked
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Busy"
+        accessibilityStates={['busy']}
+      >
+        State Busy
+      </Text>
+      <Text
+        accessible={true}
+        accessibilityLabel="Expanded"
+        accessibilityStates={['expanded']}
+      >
+        State Expanded
+      </Text>
+    </React.Fragment>
+  ))
   .add('Playground', () => {
     const type = select(
       'Type',
@@ -63,6 +181,17 @@ storiesOf('Text', module)
     );
     const uppercase = boolean('Uppercase', false);
     const italic = boolean('Italic', false);
+    const accessible = boolean('Accessible', false);
+    const accessibilityRole = select(
+      'Accessibility Role',
+      [null, 'button', 'header', 'label', 'link', 'listitem', 'none'],
+      null,
+    );
+    const ariaLevel = select(
+      'Accessibility level',
+      [null, '1', '2', '3', '4', '5', '6'],
+      null,
+    );
 
     return (
       <Text
@@ -72,6 +201,9 @@ storiesOf('Text', module)
         align={align}
         uppercase={uppercase}
         italic={italic}
+        accessible={accessible}
+        accessibilityRole={accessibilityRole}
+        ariaLevel={ariaLevel}
       >
         {customText}
       </Text>

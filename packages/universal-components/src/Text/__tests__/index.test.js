@@ -30,4 +30,26 @@ describe('Text', () => {
 
     expect(snapshotDiff(base, extend)).toMatchSnapshot();
   });
+
+  it('should match snapshot diff - Accessible features', () => {
+    const extend = render(
+      <Text
+        italic
+        uppercase
+        align="center"
+        type="secondary"
+        weight="bold"
+        size="large"
+        accessible={true}
+        accessibilityLabel={children}
+        accessibilityRole="header"
+        ariaLevel="1"
+      >
+        {children}
+      </Text>,
+    );
+    const base = render(<Text>{children}</Text>);
+
+    expect(snapshotDiff(base, extend)).toMatchSnapshot();
+  });
 });

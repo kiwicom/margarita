@@ -5,6 +5,13 @@ import * as React from 'react';
 import { type StylePropType } from '../PlatformStyleSheet/StyleTypes';
 import { type Theme } from '../ThemeProvider';
 
+type AccessibilityStates =
+  | 'selected'
+  | 'disabled'
+  | 'checked'
+  | 'busy'
+  | 'expanded';
+
 export type TextType = {|
   align?: 'left' | 'right' | 'center' | 'justify',
   +children: ?React.Node,
@@ -27,4 +34,9 @@ export type TextType = {|
   +weight?: 'normal' | 'bold',
   +expo?: boolean,
   +theme: Theme,
+  accessible?: boolean,
+  accessibilityLabel?: string,
+  accessibilityRole?: 'button' | 'header' | 'link' | 'listitem' | 'none',
+  accessibilityStates?: Array<AccessibilityStates>,
+  ariaLevel?: number,
 |};
