@@ -1,5 +1,45 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Text should match snapshot diff - Accessible features 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -1,10 +1,32 @@
+  <Text
++   accessibilityLabel=\\"Lorem ipsum\\"
++   accessibilityRole=\\"header\\"
++   accessible={true}
++   aria-level=\\"1\\"
+    style={
+      Array [
+        Object {
+          \\"margin\\": 0,
++       },
++       Object {
++         \\"fontStyle\\": \\"italic\\",
++       },
++       Object {
++         \\"textTransform\\": \\"uppercase\\",
++       },
++       Object {
++         \\"fontWeight\\": \\"700\\",
++       },
++       Object {
++         \\"fontSize\\": 16,
++       },
++       Object {
++         \\"color\\": \\"#7f91a8\\",
++       },
++       Object {
++         \\"textAlign\\": \\"center\\",
+        },
+        Object {
+          \\"fontFamily\\": \\"Roboto\\",
+        },
+      ]"
+`;
+
 exports[`Text should match snapshot diff 1`] = `
 "Snapshot Diff:
 - First value
