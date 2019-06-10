@@ -18,6 +18,15 @@ import {
   DateInput,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
+import {
+  getYear,
+  setYear,
+  setMonth,
+  getDaysInMonth,
+  setDate,
+  getDate,
+  getMonth,
+} from 'date-fns';
 
 import { type PassengerType } from '../../contexts/bookingContext/BookingContext';
 import BaggageBundles from './baggageBundles/BaggageBundles';
@@ -50,6 +59,8 @@ const nationalityData = [
   },
 ];
 
+const maxAge = 110;
+
 const initialFormState = {
   gender: 'male',
   name: null,
@@ -59,6 +70,10 @@ const initialFormState = {
   date: {
     day: '',
     month: '',
+    year: '',
+  },
+  inputErrors: {
+    day: '',
     year: '',
   },
   bags: null,
@@ -79,6 +94,10 @@ type State = {
     month: string,
     year: string,
   },
+  inputErrors: {
+    day: string,
+    year: string,
+  },
   hasPrefilledState: boolean,
 };
 
@@ -96,10 +115,19 @@ class PassengerForm extends React.Component<Props, State> {
     const editModeOpened = props.isEditing && !state.hasPrefilledState;
     // If is in edit mode preload passenger data into the form state
     if (editModeOpened) {
-      return {
-        ...props.prefillData,
-        hasPrefilledState: true,
-      };
+      if (props.prefillData && props.prefillData.dateOfBirth) {
+        const { dateOfBirth } = props.prefillData;
+        const date = {
+          day: String(getDate(dateOfBirth)),
+          month: String(getMonth(dateOfBirth)),
+          year: String(getYear(dateOfBirth)),
+        };
+        return {
+          ...props.prefillData,
+          hasPrefilledState: true,
+          date,
+        };
+      }
     }
 
     return state;
@@ -129,6 +157,76 @@ class PassengerForm extends React.Component<Props, State> {
     });
   };
 
+  validateYear = (year: number): boolean => {
+    return year > getYear(new Date()) - maxAge && year <= getYear(new Date());
+  };
+
+  handleInvalidDate = (timePeriod, message) => {
+    this.setState(state => {
+      return {
+        ...state,
+        inputErrors: {
+          ...state.inputErrors,
+          [timePeriod]: message,
+        },
+      };
+    });
+  };
+
+  handleDateValidation = () => {
+    const day = parseInt(this.state.date.day, 10);
+    const month = parseInt(this.state.date.month, 10);
+    const year = parseInt(this.state.date.year, 10);
+
+    let date = new Date();
+
+    if (!day) {
+      this.handleInvalidDate('day', 'Please fill in the field');
+    } else {
+      this.resetError('day');
+    }
+    if (!year) {
+      this.handleInvalidDate('year', 'Please fill in the field');
+      return false;
+    }
+    this.resetError('year');
+
+    const isYearValid = this.validateYear(year);
+    if (!isYearValid) {
+      this.handleInvalidDate('year', 'Please input valid year');
+      return false;
+    }
+    this.resetError('year');
+    date = setYear(date, year);
+
+    if (month) {
+      date = setMonth(date, month);
+    } else {
+      return false;
+    }
+    const daysInMonth = getDaysInMonth(date);
+    if (day > 0 && day <= daysInMonth) {
+      date = setDate(date, day);
+      this.resetError('day');
+    } else {
+      this.handleInvalidDate('day', 'Please input valid day');
+      return false;
+    }
+    return date;
+  };
+
+  resetError = timePeriod => {
+    this.setState(state => {
+      return {
+        ...state,
+        inputErrors: {
+          ...state.inputErrors,
+          [timePeriod]: '',
+        },
+      };
+    });
+  };
+
   handleNationalityChange = (nationality: ?string) => {
     this.setState({ nationality });
   };
@@ -138,17 +236,20 @@ class PassengerForm extends React.Component<Props, State> {
   };
 
   handleSavePress = () => {
-    const { nationality, id, lastName, name, gender, bags } = this.state;
-    const newPassenger = {
-      nationality,
-      id,
-      dateOfBirth: new Date(),
-      gender,
-      name,
-      lastName,
-      bags,
-    };
-    this.props.onRequestSave(newPassenger);
+    const dateOfBirth = this.handleDateValidation();
+    if (dateOfBirth) {
+      const { nationality, id, lastName, name, gender, bags } = this.state;
+      const newPassenger = {
+        nationality,
+        id,
+        dateOfBirth,
+        gender,
+        name,
+        lastName,
+        bags,
+      };
+      this.props.onRequestSave(newPassenger);
+    }
   };
 
   requestClose = () => {
@@ -200,6 +301,7 @@ class PassengerForm extends React.Component<Props, State> {
             <DateInput
               onDateChange={this.handleBirthDateSubmit}
               date={this.state.date}
+              errors={this.state.inputErrors}
             />
             <Picker
               selectedValue={this.state.nationality}

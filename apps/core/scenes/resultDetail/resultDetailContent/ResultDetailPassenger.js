@@ -69,6 +69,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
       this.props.setPassengers(this.getNewPassengers(passenger));
       this.toggleModal();
     }
+    return errorMessage;
   };
 
   handleEditPassenger = (id: ?string) => {

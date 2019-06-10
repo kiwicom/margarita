@@ -18,6 +18,10 @@ type Props = {|
     +month: string,
     +year: string,
   },
+  +errors: {
+    +day: string,
+    +year: string,
+  },
 |};
 
 type Month = {|
@@ -61,6 +65,7 @@ class DateInput extends React.Component<Props> {
               autoCorrect={false}
               value={this.props.date.day}
               type="number"
+              error={this.props.errors.day}
             />
           </View>
           <View style={styles.monthPickerWrapper}>
@@ -79,6 +84,7 @@ class DateInput extends React.Component<Props> {
               value={this.props.date.year}
               placeholder="YYYY"
               type="number"
+              error={this.props.errors.year}
             />
           </View>
         </View>
