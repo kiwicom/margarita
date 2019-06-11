@@ -79,6 +79,7 @@ class SearchForm extends React.Component<Props> {
       nightsInDestinationFrom,
       nightsInDestinationTo,
     } = this.props;
+
     if (travelFrom == null || travelFrom.length === 0) {
       this.props.setAlertContent({
         message: 'Please choose an origin place',
@@ -122,7 +123,8 @@ class SearchForm extends React.Component<Props> {
         infants,
         dateFrom,
         dateTo,
-        ...(tripType === TRIP_TYPES.RETURN
+        tripType,
+        ...(tripType === TRIP_TYPES.RETURN // @TODO refactor
           ? isNightsInDestinationSelected
             ? {
                 nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),

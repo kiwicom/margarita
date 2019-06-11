@@ -20,6 +20,7 @@ const PARSER_CONFIG = {
   returnDateFrom: 'Date',
   returnDateTo: 'Date',
   bookingToken: 'string',
+  tripType: 'string',
 };
 
 export function parseURLqueryToState(query: Object) {
