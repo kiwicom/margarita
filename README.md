@@ -6,7 +6,7 @@
 
  <p align="center">built with <strong>React Native, GraphQL and <a href="https://partners.kiwi.com/presenting-tequila-revolution-travel-industry/" target="_blank">Tequila API</a></strong></p>
 
-## Demo
+## Demo FROM NEW NETLIFY ACCOUNT
 
 - **Web version**: https://kiwicom-margarita.netlify.com
 - Project in Expo: https://expo.io/@kiwicom-margarita-public/margarita-mobile
