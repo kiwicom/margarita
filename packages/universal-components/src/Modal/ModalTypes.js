@@ -19,4 +19,5 @@ export type Props = {|
   +backdropColor?: string,
   +backdropOpacity?: number,
   +onBackdropPress?: () => void,
+  +coverScreen?: boolean,
 |};
