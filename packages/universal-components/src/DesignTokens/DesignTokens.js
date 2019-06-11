@@ -2,7 +2,7 @@
 
 const designTokens = {
   widthScreenNormal: 720,
-  heightStatusBar: 20,
+  heightStatusBar: 24,
   paletteBlueDark: '#2e353b',
   borderColorInkLight: '#d2d9e0',
   borderColorInkNormal: '#57626c',
