@@ -4,7 +4,7 @@ import qs from 'qs';
 
 import type { Location } from './SearchContextTypes';
 
-type ParserType = 'Location' | 'Date' | 'number' | 'string';
+type ParserType = 'Location' | 'Date' | 'number' | 'string' | 'boolean';
 
 const PARSER_CONFIG = {
   travelFrom: 'Location',
@@ -23,6 +23,7 @@ const PARSER_CONFIG = {
   tripType: 'string',
   nightsInDestinationFrom: 'number',
   nightsInDestinationTo: 'number',
+  isNightsInDestinationSelected: 'boolean',
 };
 
 export function parseURLqueryToState(query: Object) {
@@ -55,6 +56,9 @@ function getParser(parserType: ParserType) {
     case 'number': {
       return numberParser;
     }
+    case 'boolean': {
+      return booleanParser;
+    }
     default: {
       return (value: any) => value;
     }
@@ -83,4 +87,9 @@ function numberParser(number: number | string) {
 function stringParser(string: string) {
   // @TODO input validation
   return string;
+}
+
+function booleanParser(boolean: boolean) {
+  // @TODO input validation
+  return boolean;
 }

@@ -127,6 +127,7 @@ class SearchForm extends React.Component<Props> {
         ...(tripType === TRIP_TYPES.RETURN // @TODO refactor
           ? isNightsInDestinationSelected
             ? {
+                isNightsInDestinationSelected,
                 nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
                 nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
               }
