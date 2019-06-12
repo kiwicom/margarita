@@ -2,12 +2,13 @@
 
 export default [
   {
+    id: 'id-1',
     name: 'John',
     lastName: 'Doe',
     gender: 'male',
     nationality: 'Russian',
     dateOfBirth: new Date('1980-04-22'),
-    id: 'DF45SV8',
+    passportId: 'DF45SV8',
     insurance: 'Travel Insurance Name',
     bags: [
       {
@@ -23,12 +24,13 @@ export default [
     visaRequired: true,
   },
   {
+    id: 'id-2',
     name: 'Jana',
     lastName: 'Nováková',
     gender: 'female',
     nationality: 'Czech',
     dateOfBirth: new Date('1980-06-22'),
-    id: 'DF45SV9',
+    passportId: 'DF45SV9',
     insurance: 'Travel Insurance Name',
     bags: [
       {
@@ -44,12 +46,13 @@ export default [
     visaRequired: false,
   },
   {
+    id: 'id-3',
     name: 'Martin',
     lastName: 'Došek',
     gender: 'male',
     nationality: 'Czech',
     dateOfBirth: new Date('1984-06-12'),
-    id: 'DF45SV3',
+    passportId: 'DF45SV3',
     insurance: 'Travel Insurance Name',
     bags: [
       {

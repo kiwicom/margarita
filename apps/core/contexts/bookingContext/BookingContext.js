@@ -10,12 +10,13 @@ type Props = {|
 |};
 
 export type PassengerType = {|
-  +name: ?string,
+  +id: string,
+  +name: ?string, // @TODO rename to firstName
   +lastName: ?string,
   +gender: 'female' | 'male' | 'other',
   +nationality: ?string,
   +dateOfBirth: ?Date,
-  +id: ?string,
+  +passportId: ?string,
   +insurance?: ?string,
   +bags: null | Array<BaggageBundleType>,
   +visaRequired?: ?boolean,

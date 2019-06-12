@@ -32,16 +32,18 @@ type State = {|
 class ResultDetailPassenger extends React.Component<Props, State> {
   state = {
     isFormVisible: false,
-    currentEditID: '',
+    currentEditID: null,
   };
 
   validateForm = passenger => {
-    const existsID: boolean = !!this.props.passengers.find(
-      el => el.id === passenger.id,
-    );
-    if (!(passenger.id && passenger.name)) {
+    if (!(passenger.passportId && passenger.name)) {
       return 'ID and Name are mandatory';
     }
+
+    const existsID = !!this.props.passengers.find(
+      el => el.passportId === passenger.passportId,
+    );
+
     if (existsID && this.state.currentEditID !== passenger.id) {
       return 'A passenger with the same ID has already been added.';
     }
@@ -60,6 +62,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
 
   handleFormSaveRequest = passenger => {
     const errorMessage = this.validateForm(passenger);
+
     const { setAlertContent } = this.props;
     if (errorMessage) {
       setAlertContent({
@@ -69,7 +72,6 @@ class ResultDetailPassenger extends React.Component<Props, State> {
       this.props.setPassengers(this.getNewPassengers(passenger));
       this.toggleModal();
     }
-    return errorMessage;
   };
 
   handleEditPassenger = (id: ?string) => {
@@ -83,7 +85,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   };
 
   toggleModal = () => {
-    this.setState({ currentEditID: '' });
+    this.setState({ currentEditID: null });
     this.setState(state => ({ isFormVisible: !state.isFormVisible }));
   };
 

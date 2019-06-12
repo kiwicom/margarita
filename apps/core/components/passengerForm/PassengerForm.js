@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
+import uuidv4 from 'uuid/v4';
 import {
   StyleSheet,
   SegmentedButton,
@@ -62,10 +63,11 @@ const nationalityData = [
 const maxAge = 110;
 
 const initialFormState = {
+  id: null,
   gender: 'male',
   name: null,
   lastName: null,
-  id: null,
+  passportId: null,
   nationality: null,
   date: {
     day: '',
@@ -81,11 +83,12 @@ const initialFormState = {
 };
 
 type State = {
+  +id: ?string,
   +name: ?string,
   +lastName: ?string,
   +gender: 'female' | 'male' | 'other',
   +nationality: ?string,
-  +id: ?string,
+  +passportId: ?string,
   +insurance?: ?string,
   +bags: null | Array<BaggageBundleType>,
   +visaRequired?: ?boolean,
@@ -231,22 +234,32 @@ class PassengerForm extends React.Component<Props, State> {
     this.setState({ nationality });
   };
 
-  handleIdChange = (id: ?string) => {
-    this.setState({ id });
+  handlePassportIdChange = (passportId: ?string) => {
+    this.setState({ passportId });
   };
 
   handleSavePress = () => {
     const dateOfBirth = this.handleDateValidation();
     if (dateOfBirth) {
-      const { nationality, id, lastName, name, gender, bags } = this.state;
+      const {
+        nationality,
+        passportId,
+        lastName,
+        name,
+        gender,
+        bags,
+        id,
+      } = this.state;
+
       const newPassenger = {
         nationality,
-        id,
+        passportId,
         dateOfBirth,
         gender,
         name,
         lastName,
         bags,
+        id: id || uuidv4(),
       };
       this.props.onRequestSave(newPassenger);
     }
@@ -291,11 +304,11 @@ class PassengerForm extends React.Component<Props, State> {
               formLabelContainerStyle={styles.inputLabel}
             />
             <TextInput
-              onChangeText={this.handleIdChange}
+              onChangeText={this.handlePassportIdChange}
               label="Passport or ID number"
               autoCorrect={false}
               type="text"
-              value={this.state.id}
+              value={this.state.passportId}
               formLabelContainerStyle={styles.inputLabel}
             />
             <DateInput

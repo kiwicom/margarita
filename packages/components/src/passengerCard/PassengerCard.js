@@ -14,7 +14,7 @@ import VisaInfo from '../visaInfo/VisaInfo';
 import { getPassengerTitle } from './helpers';
 
 type Props = {|
-  passenger: ?PassengerType,
+  +passenger: ?PassengerType,
   +passengerIndex: number,
   +onEditPress?: (?string) => void,
   +onDeletePress?: (?string) => void,
@@ -63,7 +63,7 @@ class PassengerCard extends React.Component<Props> {
           </View>
           <PassengerCardDetail
             nationality={passenger?.nationality}
-            id={passenger?.id}
+            passportId={passenger?.passportId}
             dateOfBirth={passenger?.dateOfBirth}
           />
           <Separator />
