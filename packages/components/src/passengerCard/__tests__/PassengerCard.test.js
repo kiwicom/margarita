@@ -6,12 +6,13 @@ import { shallow } from 'react-native-testing-library';
 import PassengerCard from '../PassengerCard';
 
 const mockedPassenger = {
+  id: 'id',
   name: 'John',
   lastName: 'Doe',
   gender: 'male',
   nationality: 'Russian',
   dateOfBirth: new Date('04-12-1980'),
-  id: 'DF45SV9',
+  passportId: 'DF45SV9',
   insurance: 'Travel Inusurance Name',
   bags: [
     {

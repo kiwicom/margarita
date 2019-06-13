@@ -78,8 +78,8 @@ Object {
       </Component>
       <PassengerCardDetail
         dateOfBirth={1980-04-12T00:00:00.000Z}
-        id="DF45SV9"
         nationality="Russian"
+        passportId="DF45SV9"
       />
       <Separator />
       <PassengerAdditonalInformation

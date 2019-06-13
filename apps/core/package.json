@@ -17,7 +17,8 @@
     "firebase": "^5.9.1",
     "geolib": "^2.0.24",
     "memoize-one": "^5.0.0",
-    "qs": "^6.7.0"
+    "qs": "^6.7.0",
+    "uuid": "^3.3.2"
   },
   "peerDependencies": {
     "@kiwicom/relay": "",

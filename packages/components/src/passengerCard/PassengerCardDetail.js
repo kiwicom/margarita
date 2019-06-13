@@ -9,14 +9,18 @@ import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 import PassengerCardDetailItem from './PassengerCardDetailItem';
 
 type Props = {|
-  +id: ?string,
+  +passportId: ?string,
   +nationality: ?string,
   +dateOfBirth: ?Date,
 |};
 
 const defaultValue = '-';
 
-const PassengerCardDetail = ({ nationality, dateOfBirth, id }: Props) => {
+const PassengerCardDetail = ({
+  nationality,
+  dateOfBirth,
+  passportId,
+}: Props) => {
   return (
     <View style={styles.container}>
       <PassengerCardDetailItem
@@ -30,8 +34,8 @@ const PassengerCardDetail = ({ nationality, dateOfBirth, id }: Props) => {
         style="normal"
       />
       <PassengerCardDetailItem
-        value={id ?? defaultValue}
-        label="ID"
+        value={passportId ?? defaultValue}
+        label="Passport or ID number"
         style="id_row_wrapper"
       />
     </View>
