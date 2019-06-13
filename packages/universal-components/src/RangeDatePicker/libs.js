@@ -232,6 +232,7 @@ export const findRelatedItem = (
     grabbedSide,
     weekStartsOn,
     isChoosingPastDatesEnabled,
+    renderedCalendarRange,
   } = config;
 
   const touchBuffer = getTouchBuffer(dayItemSize.height);
@@ -286,12 +287,20 @@ export const findRelatedItem = (
             grabbedStartDay,
             selectedDates,
           });
+          const isNotIdenticalDateInterval = !isEqual(
+            selectedDates,
+            newSelectedDate,
+          );
+          const isNotInPast =
+            !isDayInPast(newDateWithXYShift) || isChoosingPastDatesEnabled;
+          const isNotOutOfRenderedRange =
+            !isBefore(newDateWithXYShift, renderedCalendarRange[0]) &&
+            !isAfter(newDateWithXYShift, renderedCalendarRange[1]);
 
           if (
-            !isEqual(selectedDates, newSelectedDate) &&
-            (!isDayInPast(newDateWithXYShift) || isChoosingPastDatesEnabled) &&
-            (isBefore(newSelectedDate[0], newSelectedDate[1]) ||
-              isSameDay(newSelectedDate[0], newSelectedDate[1]))
+            isNotIdenticalDateInterval &&
+            isNotInPast &&
+            isNotOutOfRenderedRange
           ) {
             callback(newSelectedDate);
           }
