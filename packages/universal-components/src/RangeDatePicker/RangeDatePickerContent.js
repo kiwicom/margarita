@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { View, FlatList, Image } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { isSameMonth, isSameYear } from 'date-fns';
+import { isSameMonth, isSameYear, lastDayOfMonth } from 'date-fns';
 
 import { designTokens } from '../DesignTokens';
 import { StyleSheet } from '../PlatformStyleSheet';
@@ -55,6 +55,15 @@ export default class RangeDatePickerContent extends React.Component<
       return acc;
     }, 0);
 
+  getRenderedCalendarRange = () => {
+    const firstMonth = this.state.nextMonths[0];
+    const lastMonth = this.state.nextMonths[this.state.nextMonths.length - 1];
+    return [
+      new Date(firstMonth.year, firstMonth.month),
+      lastDayOfMonth(new Date(lastMonth.year, lastMonth.month)),
+    ];
+  };
+
   renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
     const {
       onDayPress,
@@ -65,6 +74,7 @@ export default class RangeDatePickerContent extends React.Component<
     } = this.props;
     return (
       <RenderMonth
+        renderedCalendarRange={this.getRenderedCalendarRange()}
         monthDate={item}
         onDayPress={onDayPress}
         selectedDates={selectedDates}

@@ -15,6 +15,7 @@ type Props = {|
   +isRangePicker: boolean,
   +weekStartsOn: WeekStartsType,
   +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 export default function RenderWeek({
@@ -25,6 +26,7 @@ export default function RenderWeek({
   isRangePicker,
   weekStartsOn,
   isChoosingPastDatesEnabled,
+  renderedCalendarRange,
 }: Props) {
   return (
     <View style={styles.row}>
@@ -38,6 +40,7 @@ export default function RenderWeek({
             isRangePicker={isRangePicker}
             weekStartsOn={weekStartsOn}
             isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+            renderedCalendarRange={renderedCalendarRange}
           />
         );
       })}

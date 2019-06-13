@@ -22,6 +22,7 @@ type Props = {|
   +weekStartsOn: WeekStartsType,
   +isRangePicker: boolean,
   +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 const checkDatesForComponentUpdate = props => {
@@ -66,6 +67,7 @@ export default class RenderMonth extends React.Component<Props> {
       isRangePicker,
       weekStartsOn,
       isChoosingPastDatesEnabled,
+      renderedCalendarRange,
     } = this.props;
     const keyPrefix = `${this.props.monthDate.year}-${
       this.props.monthDate.month
@@ -89,6 +91,7 @@ export default class RenderMonth extends React.Component<Props> {
             isRangePicker={isRangePicker}
             weekStartsOn={weekStartsOn}
             isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+            renderedCalendarRange={renderedCalendarRange}
           />
         ))}
       </View>

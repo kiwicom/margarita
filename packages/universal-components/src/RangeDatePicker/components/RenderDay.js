@@ -11,6 +11,7 @@ import {
   isSameDay,
   endOfDay,
   startOfDay,
+  isBefore,
 } from 'date-fns';
 
 import type { OnLayout, OnDragEvent } from '../../types';
@@ -35,6 +36,7 @@ type Props = {|
   +isRangePicker: boolean,
   +weekStartsOn: WeekStartsType,
   +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 type State = {|
@@ -102,6 +104,7 @@ export default class RenderDay extends React.Component<Props, State> {
           grabbedSide,
           weekStartsOn: this.props.weekStartsOn,
           isChoosingPastDatesEnabled,
+          renderedCalendarRange: this.props.renderedCalendarRange,
         },
         newSelectedDate => {
           if (this.props.onPress) {
@@ -130,12 +133,18 @@ export default class RenderDay extends React.Component<Props, State> {
       selectedDates,
       isRangePicker,
       isChoosingPastDatesEnabled,
+      renderedCalendarRange,
     } = this.props;
     const isFieldEmpty = day == null;
     const isStartOfSelectedDates = day && isSameDay(selectedDates[0], day);
     const isEndOfSelectedDates = day && isSameDay(selectedDates[1], day);
-    const isPossibleToChangeDateThisDirection =
-      (day && !this.isDayInPastActive(subDays(day, 1))) ||
+    const isPossibleToChangeDateBackDirection =
+      (day &&
+        !this.isDayInPastActive(subDays(day, 1)) &&
+        isBefore(renderedCalendarRange[0], day)) ||
+      !isSameDay(selectedDates[0], selectedDates[1]);
+    const isPossibleToChangeDateForwardDirection =
+      (day && isBefore(day, renderedCalendarRange[1])) ||
       !isSameDay(selectedDates[0], selectedDates[1]);
     const isDaySelected =
       day &&
@@ -147,15 +156,20 @@ export default class RenderDay extends React.Component<Props, State> {
 
     const isLeftArrowRendered =
       isStartOfSelectedDates &&
-      isPossibleToChangeDateThisDirection &&
+      isPossibleToChangeDateBackDirection &&
       isRangePicker;
-    const isRightArrowRendered = isEndOfSelectedDates && isRangePicker;
+    const isRightArrowRendered =
+      isEndOfSelectedDates &&
+      isPossibleToChangeDateForwardDirection &&
+      isRangePicker;
     const isLeftDraggableItemRendered =
       isRangePicker &&
-      isPossibleToChangeDateThisDirection &&
+      isPossibleToChangeDateBackDirection &&
       (isStartOfSelectedDates || this.state.isDragging);
     const isRightDraggableItemRendered =
-      isRangePicker && (isEndOfSelectedDates || this.state.isDragging);
+      isRangePicker &&
+      isPossibleToChangeDateForwardDirection &&
+      (isEndOfSelectedDates || this.state.isDragging);
 
     return (
       <View

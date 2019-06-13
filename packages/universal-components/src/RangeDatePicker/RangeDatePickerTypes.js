@@ -62,6 +62,7 @@ export type FindRelatedItemConfigType = {|
   +grabbedSide: GrabbedSideType,
   +weekStartsOn: WeekStartsType,
   +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 export type XY = {
