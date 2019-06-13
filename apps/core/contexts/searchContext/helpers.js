@@ -1,6 +1,7 @@
 // @flow
 
 import qs from 'qs';
+import { generateId } from '@kiwicom/margarita-utils';
 
 import type { Location } from './SearchContextTypes';
 
@@ -90,6 +91,35 @@ function stringParser(string: string) {
 }
 
 function booleanParser(boolean: boolean) {
-  // @TODO input validation
-  return boolean;
+    // @TODO input validation
+    return boolean;
+}
+
+function createPassneger(type: 'adult' | 'infant') {
+  return Object.freeze({
+    id: generateId(),
+    type,
+    name: null,
+    lastName: null,
+    bags: null,
+    passportId: null,
+    dateOfBirth: null,
+  });
+}
+
+// TODO flow types
+export function createPassengersStateMiddleware(state) {
+  const passengers = ['adults', 'infants'].reduce((acc, type, index) => {
+    const singularType = type.slice(0, -1); // adult, infant
+
+    const temp = Array.from({ length: state[type] });
+    const newPassengers = temp.map(() => {
+      const passenger = createPassneger(singularType);
+      return passenger;
+    });
+
+    return [...acc, ...newPassengers];
+  }, []);
+
+  return { ...state, passengers };
 }

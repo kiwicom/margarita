@@ -1,31 +1,40 @@
 // @flow
 
-import qs from 'qs';
+import qs from "qs";
 
-import { parseURLqueryToState, locationParser } from '../helpers';
+jest.mock("uuid/v4", () => {
+  let value = 0;
+  return () => value++;
+});
 
-describe('locationParser', () => {
+import {
+  parseURLqueryToState,
+  locationParser,
+  createPassengersStateMiddleware
+} from "../helpers";
+
+describe("locationParser", () => {
   const locations = {
     prague: {
-      id: 'TG9jYXRpb246cHJhZ3VlX2N6',
-      locationId: 'prague_cz',
-      name: 'Prague',
-      type: 'destination',
+      id: "TG9jYXRpb246cHJhZ3VlX2N6",
+      locationId: "prague_cz",
+      name: "Prague",
+      type: "destination"
     },
     oslo: {
-      id: 'TG9jYXRpb246b3Nsb19ubw==',
-      locationId: 'oslo_no',
-      name: 'Oslo',
-      type: 'destination',
-    },
+      id: "TG9jYXRpb246b3Nsb19ubw==",
+      locationId: "oslo_no",
+      name: "Oslo",
+      type: "destination"
+    }
   };
 
-  test('parse query string into locations', () => {
+  test("parse query string into locations", () => {
     const result = locationParser(qs.parse([locations.prague, locations.oslo]));
     expect(result).toEqual([locations.prague, locations.oslo]);
   });
 
-  test('parse query string into location', () => {
+  test("parse query string into location", () => {
     const queryString = qs.parse([locations.prague]);
     const result = locationParser(queryString);
 
@@ -35,7 +44,7 @@ describe('locationParser', () => {
 
 const urlQuery = {
   travelFrom:
-    '0%5Bid%5D=TG9jYXRpb246cHJhZ3VlX2N6&0%5BlocationId%5D=prague_cz&0%5Bname%5D=Prague&0%5Btype%5D=destination',
+    "0%5Bid%5D=TG9jYXRpb246cHJhZ3VlX2N6&0%5BlocationId%5D=prague_cz&0%5Bname%5D=Prague&0%5Btype%5D=destination",
   travelTo:
     '0%5Bid%5D=TG9jYXRpb246b3Nsb19ubw%3D%3D&0%5BlocationId%5D=oslo_no&0%5Bname%5D=Oslo&0%5Btype%5D=destination',
   travelFromName: 'Prague',
@@ -51,9 +60,9 @@ const urlQuery = {
   invalid: '', // nema co robit v url
 };
 
-describe('parseURLqueryToState', () => {
-  jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-  it('parse query to context state and filter invalid parameters', () => {
+describe("parseURLqueryToState", () => {
+  jest.spyOn(global.console, "warn").mockImplementation(() => {});
+  it("parse query to context state and filter invalid parameters", () => {
     expect(parseURLqueryToState(urlQuery)).toMatchInlineSnapshot(`
     Object {
       "adults": 2,
@@ -87,7 +96,46 @@ describe('parseURLqueryToState', () => {
 
     /* eslint-disable-next-line no-console */
     expect(console.warn).toBeCalledWith(
-      'Unexpected URL parameter "invalid" have been detected',
+      'Unexpected URL parameter "invalid" have been detected'
     );
   });
+});
+
+test("createPassengersStateMiddleware", () => {
+  const results = createPassengersStateMiddleware({ adults: 1, infants: 2 });
+  expect(results).toMatchInlineSnapshot(`
+    Object {
+      "adults": 1,
+      "infants": 2,
+      "passengers": Array [
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "id": 0,
+          "lastName": null,
+          "name": null,
+          "passportId": null,
+          "type": "adult",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "id": 1,
+          "lastName": null,
+          "name": null,
+          "passportId": null,
+          "type": "infant",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "id": 2,
+          "lastName": null,
+          "name": null,
+          "passportId": null,
+          "type": "infant",
+        },
+      ],
+    }
+  `);
 });
