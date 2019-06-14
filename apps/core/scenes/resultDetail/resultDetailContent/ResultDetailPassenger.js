@@ -9,19 +9,16 @@ import {
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import {
-  withBookingContext,
-  type BookingContextState,
-  type PassengerType,
-} from '../../../contexts/bookingContext/BookingContext.js';
+import { withSearchContext } from '../../../contexts/searchContext/SearchContext';
+import type { PassengerType } from '../../../contexts/searchContext/SearchContextTypes';
 import type { ResultDetailPassenger_itinerary as ResultDetailPassengerType } from './__generated__/ResultDetailPassenger_itinerary.graphql';
 import PassengerForm from '../../../components/passengerForm/PassengerForm';
 
 type Props = {|
   +itinerary: ?ResultDetailPassengerType,
   +setAlertContent: (alertContent: AlertContent | null) => void,
-  +passengers: Array<PassengerType>,
   +setPassengers: (Array<PassengerType>) => void,
+  +passengers: PassengerType[],
 |};
 
 type State = {|
@@ -122,16 +119,13 @@ const selectAlertContextState = ({
   setAlertContent,
 });
 
-const bookingContextState = ({
-  passengers,
-  actions: { setPassengers },
-}: BookingContextState) => ({
+const selectSearchContext = ({ passengers, actions: { setPassengers } }) => ({
   passengers,
   setPassengers,
 });
 
 export default createFragmentContainer(
-  withBookingContext(bookingContextState)(
+  withSearchContext(selectSearchContext)(
     withAlertContext(selectAlertContextState)(ResultDetailPassenger),
   ),
   {

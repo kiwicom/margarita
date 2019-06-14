@@ -31,10 +31,6 @@ export {
   default as UserContextProvider,
   withUserContext,
 } from './contexts/userContext/UserContext';
-export {
-  default as BookingContextProvider,
-  withBookingContext,
-} from './contexts/bookingContext/BookingContext';
 
 // Types
 
@@ -44,5 +40,4 @@ export type {
 } from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
 export type {
   PassengerType,
-  BookingContextState,
-} from './contexts/bookingContext/BookingContext';
+} from './contexts/searchContext/SearchContextTypes';
