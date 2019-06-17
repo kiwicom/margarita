@@ -18,9 +18,15 @@ type Props = {|
   +onDismiss?: () => void,
 |};
 export default class NotificationExample extends React.Component<Props> {
+  notification: ?Notification;
+
   componentDidMount() {
     this.renderNotification();
   }
+
+  refToNotification = (ref: ?Notification) => {
+    this.notification = ref;
+  };
 
   renderNotification = () => {
     const { notificationStyle, title, message, rightIconName } = this.props;
@@ -33,12 +39,6 @@ export default class NotificationExample extends React.Component<Props> {
       );
     }
   };
-
-  refToNotification = (ref: ?Notification) => {
-    this.notification = ref;
-  };
-
-  notification: ?Notification;
 
   render() {
     const { notificationType, onDismiss } = this.props;

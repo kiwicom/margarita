@@ -18,6 +18,11 @@ type Props = {
 };
 
 export default class DraggableItem extends React.Component<Props> {
+  lastOffset: XY;
+  translateY: Animated.Value;
+  translateX: Animated.Value;
+  onGestureEvent: OnDragEvent;
+
   constructor(props: Props) {
     super(props);
     this.translateX = new Animated.Value(0);
@@ -38,11 +43,6 @@ export default class DraggableItem extends React.Component<Props> {
       },
     );
   }
-
-  lastOffset: XY;
-  translateY: Animated.Value;
-  translateX: Animated.Value;
-  onGestureEvent: OnDragEvent;
 
   onDrag = (event: OnDragEvent) => {
     this.props.onDrag(

@@ -48,6 +48,20 @@ const boxShadow = isFocus => {
 };
 
 export default class TagsInput extends React.Component<Props, State> {
+  static getDerivedStateFromProps(props: Props, state: State) {
+    // if the "props.value" has changed update state
+    const { value } = props;
+    if (typeof value === 'string' && value !== state.value) {
+      return {
+        value,
+      };
+    }
+    return null;
+  }
+
+  inputRef: any;
+  scrollRef: any;
+
   static defaultProps = {
     fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
     tags: [],
@@ -65,20 +79,6 @@ export default class TagsInput extends React.Component<Props, State> {
       isFocus: props.autoFocus,
     };
   }
-
-  static getDerivedStateFromProps(props: Props, state: State) {
-    // if the "props.value" has changed update state
-    const { value } = props;
-    if (typeof value === 'string' && value !== state.value) {
-      return {
-        value,
-      };
-    }
-    return null;
-  }
-
-  inputRef: any;
-  scrollRef: any;
 
   getPlaceholder = () => {
     const { tags, placeholder } = this.props;

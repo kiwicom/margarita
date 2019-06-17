@@ -72,6 +72,12 @@ class PlacePickerContent extends React.Component<Props, State> {
     isLoading: false,
   };
 
+  refetchSuggestions = debounce((text: string) => {
+    this.props.relay.refetch({ input: { term: text } }, null, () => {
+      this.setState({ isLoading: false });
+    });
+  }, DEBOUNCE_TIME);
+
   getSelectedOptions = () => {
     const { pickerType } = this.props;
     const selectedLocations = this.props[pickerType];
@@ -110,12 +116,6 @@ class PlacePickerContent extends React.Component<Props, State> {
 
     this.setState({ searchText: '' });
   };
-
-  refetchSuggestions = debounce((text: string) => {
-    this.props.relay.refetch({ input: { term: text } }, null, () => {
-      this.setState({ isLoading: false });
-    });
-  }, DEBOUNCE_TIME);
 
   handleChangeText = (text: string) => {
     this.setState({ searchText: text, isLoading: true });

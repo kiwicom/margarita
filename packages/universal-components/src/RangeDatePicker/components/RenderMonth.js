@@ -42,6 +42,14 @@ const checkDatesForComponentUpdate = props => {
 };
 
 export default class RenderMonth extends React.Component<Props> {
+  getWeeks = memoize((monthDate: MonthDateType) => {
+    return getMonthMatrix(
+      monthDate,
+      this.props.weekStartsOn,
+      (day, { isSameMonth }) => (isSameMonth ? new Date(day) : null),
+    );
+  }, isEqual);
+
   shouldComponentUpdate(nextProps: Props) {
     return (
       checkDatesForComponentUpdate(nextProps) ||
@@ -50,14 +58,6 @@ export default class RenderMonth extends React.Component<Props> {
         nextProps.isChoosingPastDatesEnabled
     );
   }
-
-  getWeeks = memoize((monthDate: MonthDateType) => {
-    return getMonthMatrix(
-      monthDate,
-      this.props.weekStartsOn,
-      (day, { isSameMonth }) => (isSameMonth ? new Date(day) : null),
-    );
-  }, isEqual);
 
   render() {
     const {
@@ -69,9 +69,7 @@ export default class RenderMonth extends React.Component<Props> {
       isChoosingPastDatesEnabled,
       renderedCalendarRange,
     } = this.props;
-    const keyPrefix = `${this.props.monthDate.year}-${
-      this.props.monthDate.month
-    }`;
+    const keyPrefix = `${this.props.monthDate.year}-${this.props.monthDate.month}`;
     const weeks = this.getWeeks(this.props.monthDate);
     return (
       <View>

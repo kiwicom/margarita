@@ -20,6 +20,13 @@ export default class OptionList extends React.Component<Props> {
     return areSelectedOptionsChanged(options, nextProps.options);
   }
 
+  keyExtractor = (item: OptionTypeInterface) => {
+    if (typeof item.id === 'number') {
+      return item.id.toString();
+    }
+    return item.id;
+  };
+
   renderOption = ({ item }: { item: OptionTypeInterface }) => {
     const { onItemPress, onAddPress } = this.props;
     return (
@@ -30,13 +37,6 @@ export default class OptionList extends React.Component<Props> {
         onAddPress={onAddPress}
       />
     );
-  };
-
-  keyExtractor = (item: OptionTypeInterface) => {
-    if (typeof item.id === 'number') {
-      return item.id.toString();
-    }
-    return item.id;
   };
 
   render() {

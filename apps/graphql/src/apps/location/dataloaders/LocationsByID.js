@@ -13,13 +13,12 @@ export type LocationInputID = {|
 
 const fetchLocations = async (params: $ReadOnlyArray<LocationInputID>) => {
   const results = await fetch(
-    `/locations/id?limit=${params.length}&` +
-      params
-        .map((param: LocationInputID) => {
-          const code = param.code ?? '';
-          return `id=${code}`;
-        })
-        .join('&'),
+    `/locations/id?limit=${params.length}&${params
+      .map((param: LocationInputID) => {
+        const code = param.code ?? '';
+        return `id=${code}`;
+      })
+      .join('&')}`,
   );
   return results.locations.map(location => sanitizeLocation(location));
 };

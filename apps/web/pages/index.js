@@ -15,7 +15,7 @@ type Props = {|
 
 function IndexPage({ router }: Props) {
   function onSubmit(query) {
-    const routerConfig = '/?' + qs.stringify(query);
+    const routerConfig = `/?${qs.stringify(query)}`;
 
     router.push(routerConfig, routerConfig, {
       shallow: true,

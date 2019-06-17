@@ -17,9 +17,7 @@ const ChildrenWrapper = styled(ScrollView)({
   paddingTop: defaultTokens.spaceXSmall,
   paddingLeft: '5%',
   paddingRight: '5%',
-  [`@media (min-width: ${LAYOUT.largeMobile}px) and (max-width: ${
-    LAYOUT.tablet
-  }px)`]: {
+  [`@media (min-width: ${LAYOUT.largeMobile}px) and (max-width: ${LAYOUT.tablet}px)`]: {
     paddingLeft: '15%',
     paddingRight: '15%',
   },

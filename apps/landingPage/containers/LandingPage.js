@@ -25,10 +25,13 @@ export const theme = {
       "'Circular Pro', -apple-system, '.SFNSText-Regular', 'San Francisco', 'Segoe UI', 'Helvetica Neue', 'Lucida Grande', sans-serif",
   },
 };
-export default class LandingPage extends React.Component<{}, State> {
+export default class LandingPage extends React.Component<{||}, State> {
   state = {
     scroll: 0,
   };
+
+  ticking = false;
+  lastScrollY = 0;
 
   componentDidMount() {
     if (document.location.hostname !== 'localhost') {
@@ -42,8 +45,6 @@ export default class LandingPage extends React.Component<{}, State> {
     window.removeEventListener('scroll', this.handleScroll);
   }
 
-  lastScrollY = 0;
-  ticking = false;
   handleScroll = () => {
     this.lastScrollY = window.scrollY;
 

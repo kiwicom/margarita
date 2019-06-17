@@ -28,6 +28,9 @@ const REFETCH_INTERVAL = 5 * 1000;
 const REFETCH_TIMEOUT = 30 * 60 * 1000;
 
 class ResultDetailInner extends React.Component<Props> {
+  checkInterval: IntervalID;
+  checkTimeout: TimeoutID;
+
   componentDidMount() {
     this.tryStartItineraryCheck();
   }
@@ -45,9 +48,6 @@ class ResultDetailInner extends React.Component<Props> {
   componentWillUnmount() {
     this.stopItineraryCheck();
   }
-
-  checkInterval: IntervalID;
-  checkTimeout: TimeoutID;
 
   tryStartItineraryCheck = () => {
     if (

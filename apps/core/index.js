@@ -41,7 +41,7 @@ export {
 export type { UserContextState } from './contexts/userContext/UserContext';
 export type {
   default as BaggageBundleType,
-} from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql.js';
+} from './components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
 export type {
   PassengerType,
   BookingContextState,

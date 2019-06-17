@@ -31,12 +31,10 @@ type Month = {|
 
 class DateInput extends React.Component<Props> {
   getMonthOptions = () => {
-    return [...Array(12).keys()].map<Month>(
-      (currentMonth: number): Month => ({
-        value: String(currentMonth),
-        label: format(setMonth(new Date(), currentMonth), 'MMMM'),
-      }),
-    );
+    return [...Array(12).keys()].map<Month>((currentMonth: number): Month => ({
+      value: String(currentMonth),
+      label: format(setMonth(new Date(), currentMonth), 'MMMM'),
+    }));
   };
 
   handleDayChange = (day: string) => {

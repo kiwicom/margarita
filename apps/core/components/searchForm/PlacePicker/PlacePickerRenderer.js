@@ -18,17 +18,6 @@ type Props = {|
 |};
 
 export default class PlacePickerRenderer extends React.Component<Props> {
-  renderInner = (data: PlacePickerRendererQueryResponse) => {
-    const { placeType, onClose } = this.props;
-    return (
-      <PlacePickerContent
-        pickerType={this.getPickerType(placeType)}
-        locations={data}
-        onClose={onClose}
-      />
-    );
-  };
-
   getPickerType = (placeType: PlaceType) => {
     switch (placeType) {
       case PLACE_TYPE.DESTINATION:
@@ -38,6 +27,17 @@ export default class PlacePickerRenderer extends React.Component<Props> {
       default:
         return null;
     }
+  };
+
+  renderInner = (data: PlacePickerRendererQueryResponse) => {
+    const { placeType, onClose } = this.props;
+    return (
+      <PlacePickerContent
+        pickerType={this.getPickerType(placeType)}
+        locations={data}
+        onClose={onClose}
+      />
+    );
   };
 
   render() {

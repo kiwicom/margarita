@@ -16,7 +16,7 @@ export {
 export { SearchParamsSummary } from './src/searchParamsSummary';
 export {
   default as PassengerInfoItineraryCard,
-} from './src/passengerInfoItineraryCard/PassengerInfoItineraryCard.js';
+} from './src/passengerInfoItineraryCard/PassengerInfoItineraryCard';
 export {
   TimelineInformation,
   TimelineDate,

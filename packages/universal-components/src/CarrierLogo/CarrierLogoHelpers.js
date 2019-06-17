@@ -18,9 +18,7 @@ export const getCarrierImageUri = (
   }
 
   if (carrierData.code) {
-    return `${BASE_URL}/airlines/${urlSize}/${
-      carrierData.code
-    }.png?default=${type}.png`;
+    return `${BASE_URL}/airlines/${urlSize}/${carrierData.code}.png?default=${type}.png`;
   }
   return `${BASE_URL}/airlines/${urlSize}x${urlSize}/${type}.png`;
 };

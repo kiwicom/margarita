@@ -64,27 +64,6 @@ export default class RangeDatePickerContent extends React.Component<
     ];
   };
 
-  renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
-    const {
-      onDayPress,
-      selectedDates,
-      weekStartsOn,
-      isRangePicker,
-      isChoosingPastDatesEnabled,
-    } = this.props;
-    return (
-      <RenderMonth
-        renderedCalendarRange={this.getRenderedCalendarRange()}
-        monthDate={item}
-        onDayPress={onDayPress}
-        selectedDates={selectedDates}
-        weekStartsOn={weekStartsOn}
-        isRangePicker={isRangePicker}
-        isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
-      />
-    );
-  };
-
   keyExtractor = (item: MonthDateType, index: number) =>
     `month-${item.year}-${item.month}-${index}`;
 
@@ -106,6 +85,27 @@ export default class RangeDatePickerContent extends React.Component<
       offset,
       index,
     };
+  };
+
+  renderMonthItem = ({ item }: {| +item: MonthDateType |}) => {
+    const {
+      onDayPress,
+      selectedDates,
+      weekStartsOn,
+      isRangePicker,
+      isChoosingPastDatesEnabled,
+    } = this.props;
+    return (
+      <RenderMonth
+        renderedCalendarRange={this.getRenderedCalendarRange()}
+        monthDate={item}
+        onDayPress={onDayPress}
+        selectedDates={selectedDates}
+        weekStartsOn={weekStartsOn}
+        isRangePicker={isRangePicker}
+        isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+      />
+    );
   };
 
   render() {

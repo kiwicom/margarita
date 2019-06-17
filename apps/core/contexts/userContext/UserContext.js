@@ -69,6 +69,8 @@ const defaultState = {
 const { Provider, Consumer } = React.createContext<State>(defaultState);
 
 export default class UserContextProvider extends React.Component<Props, State> {
+  firebaseListener: () => void;
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -111,8 +113,6 @@ export default class UserContextProvider extends React.Component<Props, State> {
       this.firebaseListener();
     }
   }
-
-  firebaseListener: () => void;
 
   getUserRef = (userId: ?string) => {
     return userId && firebase.database().ref(`users/${userId}`);
