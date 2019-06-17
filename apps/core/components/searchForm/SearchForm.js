@@ -134,11 +134,9 @@ class SearchForm extends React.Component<Props> {
       this.props.setAlertContent({
         message: 'Please choose an origin place',
       });
-    } else if (Platform.OS === 'web') {
+    } else {
       const searchParams = this.getSearchParams();
-      this.props.navigation.navigate(Routes.RESULTS, {
-        ...searchParams,
-      });
+      if (this.props.onSubmit) this.props.onSubmit(searchParams);
     }
   };
 
