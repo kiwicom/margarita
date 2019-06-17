@@ -15,10 +15,9 @@ import { MAX_YEAR_LENGTH, MAX_DAY_LENGTH } from '@kiwicom/margarita-config';
 import { composeDateFromStrings } from './helpers';
 
 type Props = {|
-  +onDateChange: Date => void,
+  +onDateChange: (?Date) => void,
   +date: ?Date,
   +isEditModeEnabled: boolean,
-  +isDateRequested: boolean,
 |};
 
 type Month = {|
@@ -52,7 +51,6 @@ export default class DateInput extends React.Component<Props, State> {
 
   static getDerivedStateFromProps(props: Props, state: State) {
     const { date, isEditModeEnabled } = props;
-
     if (!isEditModeEnabled) {
       return state;
     }
@@ -67,13 +65,15 @@ export default class DateInput extends React.Component<Props, State> {
     return state;
   }
 
-  componentDidUpdate(prevProps: Props) {
-    const { isDateRequested, onDateChange } = this.props;
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    const { onDateChange } = this.props;
     const { day, month, year } = this.state;
-    if (isDateRequested !== prevProps.isDateRequested && isDateRequested) {
-      if (day !== '' && year !== '') {
+    if (day !== prevState.day || year !== prevState.year) {
+      if (day.length === MAX_DAY_LENGTH && year.length === MAX_YEAR_LENGTH) {
         const composedDate = composeDateFromStrings(day, month, year);
         if (composedDate) onDateChange(composedDate);
+      } else {
+        onDateChange(null);
       }
     }
   }
