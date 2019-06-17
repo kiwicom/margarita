@@ -13,7 +13,7 @@ export type Props = {|
   +isChoosingPastDatesEnabled?: boolean,
   +isVisible: boolean,
   +dates: $ReadOnlyArray<Date>,
-  +onConfirm: ConfirmType => void,
+  +onConfirm: ConfirmType => void | Promise<void>,
   +onDismiss: () => void,
   +onChangeTempDates: ($ReadOnlyArray<Date>) => void,
   +isRangePicker?: boolean,

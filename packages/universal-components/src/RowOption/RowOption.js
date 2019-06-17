@@ -16,8 +16,8 @@ type Props = {|
   +header: string | React.Node,
   +subheader: ?(string | React.Node),
   +info?: string | React.Node,
-  +onItemPress: () => void,
-  +onAddPress: () => void,
+  +onItemPress: () => void | Promise<void>,
+  +onAddPress: () => void | Promise<void>,
 |};
 
 export default function RowOption({

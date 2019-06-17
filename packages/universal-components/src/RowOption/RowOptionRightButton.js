@@ -8,7 +8,7 @@ import { Touchable } from '../Touchable';
 import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
-  +onAddPress: () => void,
+  +onAddPress: () => void | Promise<void>,
 |};
 
 export default function RowOptionContainer({ onAddPress }: Props) {

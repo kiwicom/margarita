@@ -12,8 +12,8 @@ import OptionList from './components/OptionList';
 type Props = {|
   +onChangeText: string => void,
   +onClearPress: () => void,
-  +onPressAdd: OptionTypeInterface => void,
-  +onPressItem: OptionTypeInterface => void,
+  +onPressAdd: OptionTypeInterface => void | Promise<void>,
+  +onPressItem: OptionTypeInterface => void | Promise<void>,
   +text?: string,
   +label?: string,
   +onKeyPress?: Event => void,

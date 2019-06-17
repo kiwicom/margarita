@@ -22,7 +22,6 @@ import {
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
-import { noop } from '@kiwicom/margarita-utils';
 
 import SearchForm from '../../components/searchForm/SearchForm';
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
@@ -36,6 +35,7 @@ import {
   type SearchContextState,
 } from '../../contexts/searchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
+import { type SearchParameters } from '../search/Search';
 
 type Props = {|
   +navigation: Navigation,
@@ -56,6 +56,7 @@ type Props = {|
   +nightsInDestinationTo: string,
   +isNightsInDestinationSelected: boolean,
   +setBookingToken: string => void,
+  +onSubmit: SearchParameters => void,
 |};
 
 class Results extends React.Component<Props> {
@@ -137,6 +138,7 @@ class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      onSubmit,
     } = this.props;
     const getFormattedDate = (dates: $ReadOnlyArray<Date>) => {
       const stringDates: $ReadOnlyArray<string> = dates.map(date =>
@@ -185,7 +187,7 @@ class Results extends React.Component<Props> {
               desktopLayout && styles.desktopSearchForm,
             ]}
           >
-            <SearchForm showButton={false} onSubmit={noop} />
+            <SearchForm showButton={false} onSubmit={onSubmit} />
           </View>
         ) : (
           <SearchParamsSummary

@@ -4,7 +4,7 @@ export type Props = {|
   +adults: number,
   +infants: number,
   +onClosePress: () => void,
-  +onSavePress: (passengersData: State) => void,
+  +onSavePress: (passengersData: State) => void | Promise<void>,
 |};
 
 export type State = {|

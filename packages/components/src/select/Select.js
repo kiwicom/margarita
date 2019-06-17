@@ -19,7 +19,7 @@ type Props = {|
     |},
   },
   +selectedType: string,
-  +onSelect: (id: string) => void,
+  +onSelect: (id: string) => void | Promise<void>,
   +onClosePress: () => void,
 |};
 

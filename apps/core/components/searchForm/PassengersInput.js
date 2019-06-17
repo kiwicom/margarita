@@ -17,6 +17,7 @@ type Props = {|
   +adults: number,
   +infants: number,
   +setPassengerData: ($ReadOnly<Passengers>) => void,
+  +onParamsUpdate: () => void,
 |};
 
 type State = {|
@@ -28,8 +29,9 @@ class PassengersModal extends React.Component<Props, State> {
     showPassengerModal: false,
   };
 
-  handlePassengersSave = (passengersData: $ReadOnly<Passengers>) => {
-    this.props.setPassengerData(passengersData);
+  handlePassengersSave = async (passengersData: $ReadOnly<Passengers>) => {
+    await this.props.setPassengerData(passengersData);
+    this.props.onParamsUpdate();
     this.togglePassengerModal();
   };
 

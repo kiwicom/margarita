@@ -22,12 +22,15 @@ export type SearchParameters = {|
   +tripType: string,
   +travelFrom: ?$ReadOnlyArray<Location>,
   +travelTo: ?$ReadOnlyArray<Location>,
-  +sort: string,
+  +sortBy: string,
   +adults: number,
   +infants: number,
   +limit: number,
-  +nightsInDestinationFrom: string,
-  +nightsInDestinationTo: string,
+  +nightsInDestinationFrom: string | number,
+  +nightsInDestinationTo: string | number,
+  +isNightsInDestinationSelected: boolean,
+  +travelToName: string,
+  +travelFromName: string,
 |};
 
 type Props = {|
