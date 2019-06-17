@@ -17,9 +17,36 @@ type Props = {
   +grabbedSide: GrabbedSideType,
   +dayItemSize: DayItemSizeType,
   +isChoosingPastDatesEnabled: boolean,
+  +isDragging: boolean,
 };
 
 export default class DraggableItem extends React.Component<Props> {
+  componentDidMount() {
+    window.document.body.addEventListener(
+      'touchmove',
+      this.handlePreventTouchmoveWhenPanning,
+      {
+        passive: false,
+      },
+    );
+  }
+
+  componentWillUnmount() {
+    window.document.body.removeEventListener(
+      'touchmove',
+      this.handlePreventTouchmoveWhenPanning,
+      {
+        passive: false,
+      },
+    );
+  }
+
+  handlePreventTouchmoveWhenPanning = (event: SyntheticEvent<any>) => {
+    if (this.props.isDragging) {
+      event.preventDefault();
+    }
+  };
+
   handleDrag = (event: Event, data: DraggableData) => {
     this.props.onDrag(
       {

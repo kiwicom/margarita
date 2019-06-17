@@ -171,6 +171,13 @@ export default class RenderDay extends React.Component<Props, State> {
       isPossibleToChangeDateForwardDirection &&
       (isEndOfSelectedDates || this.state.isDragging);
 
+    const commonPropsForDraggableItems = {
+      onDrag: this.onDrag,
+      onDrop: this.onDrop,
+      dayItemSize: RenderDay.dayItemSize,
+      isChoosingPastDatesEnabled: isChoosingPastDatesEnabled,
+      isDragging: this.state.isDragging,
+    };
     return (
       <View
         style={[styles.container, isDaySelected && styles.onTheTop]}
@@ -179,12 +186,9 @@ export default class RenderDay extends React.Component<Props, State> {
         <View>
           {isLeftDraggableItemRendered && (
             <DraggableItem
-              onDrag={this.onDrag}
-              onDrop={this.onDrop}
               onPress={onArrowPress(this.onLeftPress)}
               grabbedSide="left"
-              dayItemSize={RenderDay.dayItemSize}
-              isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+              {...commonPropsForDraggableItems}
             />
           )}
 
@@ -237,12 +241,9 @@ export default class RenderDay extends React.Component<Props, State> {
           </Touchable>
           {isRightDraggableItemRendered && (
             <DraggableItem
-              onDrag={this.onDrag}
-              onDrop={this.onDrop}
               onPress={onArrowPress(this.onRightPress)}
               grabbedSide="right"
-              dayItemSize={RenderDay.dayItemSize}
-              isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+              {...commonPropsForDraggableItems}
             />
           )}
         </View>
