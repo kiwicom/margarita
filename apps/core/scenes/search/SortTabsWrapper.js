@@ -4,7 +4,6 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { SortTabs } from '@kiwicom/margarita-components';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import {
   withSearchContext,
@@ -64,8 +63,6 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       width: '100%',
       maxWidth: designTokens.widthScreenNormal,
-      marginTop: parseInt(defaultTokens.spaceMedium, 10),
-      borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
     },
   },
 });

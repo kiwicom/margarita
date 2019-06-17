@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { OptionPicker, StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   graphql,
   createRefetchContainer,
@@ -184,6 +185,7 @@ class PlacePickerContent extends React.Component<Props, State> {
           options={filterOptions(options, selectedOptions)}
           selected={selectedOptions}
           onKeyPress={this.handlePressKey}
+          isLoading={isLoading}
         />
         {isNotFound && <NotFound />}
       </View>
@@ -205,8 +207,8 @@ const select = ({
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: '65%',
-    margin: 15,
+    marginVertical: parseFloat(defaultTokens.spaceSmall),
+    minHeight: 500,
   },
 });
 
