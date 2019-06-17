@@ -2,7 +2,7 @@
 
 type Gender = 'female' | 'male' | 'other';
 
-export function getPassengerTitle(gender?: Gender) {
+export function getPassengerTitle(gender?: ?Gender) {
   switch (gender) {
     case 'male':
       return 'Mr.';

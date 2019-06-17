@@ -1,8 +1,9 @@
 // @flow
 
 import qs from 'qs';
+import { generateId } from '@kiwicom/margarita-utils';
 
-import type { Location } from './SearchContextTypes';
+import type { Location, PassengerType } from './SearchContextTypes';
 
 type ParserType = 'Location' | 'Date' | 'number' | 'string' | 'boolean';
 
@@ -26,6 +27,7 @@ const PARSER_CONFIG = {
   isNightsInDestinationSelected: 'boolean',
 };
 
+// @TODO improve flow
 export function parseURLqueryToState(query: Object) {
   const queryKeys = Object.keys(query);
 
@@ -92,4 +94,49 @@ function stringParser(string: string) {
 function booleanParser(boolean: boolean) {
   // @TODO input validation
   return boolean;
+}
+
+function createPassenger(type: 'adult' | 'infant'): PassengerType {
+  return Object.freeze({
+    id: generateId(),
+    type,
+    name: null,
+    lastName: null,
+    bags: null,
+    passportId: null,
+    dateOfBirth: null,
+    gender: null,
+    nationality: null,
+  });
+}
+
+type PassengersCount = {|
+  +adults?: number,
+  +infants?: number,
+|};
+
+export function createPassengers(
+  passengersCount: PassengersCount,
+): PassengerType[] {
+  return ['adults', 'infants'].reduce((acc, type) => {
+    // $FlowFixMe - flow doesn't know to recognize that the type is an enum (adult | infant)
+    const singularType: 'infant' | 'adult' = type.slice(0, -1);
+
+    const temp = Array.from({ length: passengersCount[type] || 0 });
+    const newPassengers = temp.map(() => {
+      const passenger = createPassenger(singularType);
+      return passenger;
+    });
+
+    return [...acc, ...newPassengers];
+  }, []);
+}
+
+// @TODO improve flow
+export function createPassengersStateMiddleware(state: Object) {
+  const { adults, infants } = state;
+  if (Number.isInteger(adults)) {
+    return { ...state, passengers: createPassengers({ adults, infants }) };
+  }
+  return state;
 }

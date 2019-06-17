@@ -2,6 +2,8 @@
 
 import { type TripType } from '@kiwicom/margarita-config';
 
+import { type BaggageBundleType } from '../../components/passengerForm/baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
+
 export type Passengers = {|
   +adults: number,
   +infants: number,
@@ -64,6 +66,7 @@ export type StateParams = {|
   bookingToken: ?string,
   tripType: TripType,
   ...Passengers,
+  passengers: PassengerType[],
 |};
 
 export type StateActions = {|
@@ -79,4 +82,19 @@ export type StateActions = {|
   +addLocation: (type: LocationSearchType, location: Location) => void,
   +setLocation: (type: LocationSearchType, location: Location) => void,
   +setBookingToken: string => void,
+  +setPassengers: (PassengerType[]) => void,
+|};
+
+export type PassengerType = {|
+  +id: string,
+  +name: ?string, // @TODO rename to firstName
+  +lastName: ?string,
+  +gender: ?('female' | 'male' | 'other'),
+  +nationality: ?string,
+  +dateOfBirth: ?Date,
+  +passportId: ?string,
+  +bags: null | Array<BaggageBundleType>,
+  +type?: ?('adult' | 'infant'),
+  +insurance?: ?string,
+  +visaRequired?: ?boolean,
 |};

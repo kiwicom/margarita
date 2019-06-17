@@ -6,7 +6,8 @@
   "dependencies": {
     "@kiwicom/margarita-config": "^0",
     "lodash.debounce": "^4.0.8",
-    "react-fast-compare": "^2.0.4"
+    "react-fast-compare": "^2.0.4",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "fast-check": "^1.12.0"

@@ -35,17 +35,19 @@ class PassengerCard extends React.Component<Props> {
 
   getCardTitle = () => {
     const { passenger, passengerIndex } = this.props;
+
+    const passengerType = passenger?.type === 'infant' ? ' (infant)' : '';
+
     if (passenger?.name || passenger?.lastName) {
       const passengerTitle = getPassengerTitle(passenger?.gender);
       return `${passengerTitle} ${passenger?.name ||
-        ''} ${passenger?.lastName || ''}`;
+        ''} ${passenger?.lastName || ''}${passengerType}`;
     }
-    return `${passengerIndex}. Passenger`;
+    return `${passengerIndex}. Passenger${passengerType}`;
   };
 
   render() {
     const { passenger, onEditPress, onDeletePress } = this.props;
-
     return (
       <View style={styles.container}>
         <Card>

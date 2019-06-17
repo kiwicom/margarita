@@ -2,7 +2,16 @@
 
 import qs from 'qs';
 
-import { parseURLqueryToState, locationParser } from '../helpers';
+jest.mock('uuid/v4', () => {
+  let value = 0;
+  return () => value++;
+});
+
+import {
+  parseURLqueryToState,
+  locationParser,
+  createPassengersStateMiddleware,
+} from '../helpers';
 
 describe('locationParser', () => {
   const locations = {
@@ -90,4 +99,49 @@ describe('parseURLqueryToState', () => {
       'Unexpected URL parameter "invalid" have been detected',
     );
   });
+});
+
+test('createPassengersStateMiddleware', () => {
+  const results = createPassengersStateMiddleware({ adults: 1, infants: 2 });
+  expect(results).toMatchInlineSnapshot(`
+    Object {
+      "adults": 1,
+      "infants": 2,
+      "passengers": Array [
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 0,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "adult",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 1,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "infant",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 2,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "infant",
+        },
+      ],
+    }
+  `);
 });
