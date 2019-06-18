@@ -32,16 +32,22 @@ class ResultDetailPassenger extends React.Component<Props, State> {
     currentEditID: null,
   };
 
-  validateForm = passenger => {
-    if (!(passenger.passportId && passenger.name)) {
+  validateForm = validatingPassenger => {
+    if (!(validatingPassenger.passportId && validatingPassenger.name)) {
       return 'ID and Name are mandatory';
     }
 
-    const existsID = !!this.props.passengers.find(
-      el => el.passportId === passenger.passportId,
-    );
+    const existsID = this.props.passengers.reduce((reduction, passenger) => {
+      if (
+        passenger.passportId === validatingPassenger.passportId &&
+        passenger.id !== validatingPassenger.id
+      ) {
+        return true;
+      }
+      return reduction;
+    }, false);
 
-    if (existsID && this.state.currentEditID !== passenger.id) {
+    if (existsID) {
       return 'A passenger with the same ID has already been added.';
     }
     return '';
