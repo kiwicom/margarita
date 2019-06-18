@@ -55,6 +55,7 @@ type Props = {|
   +nightsInDestinationFrom: string,
   +nightsInDestinationTo: string,
   +isNightsInDestinationSelected: boolean,
+  +tripType: TripType,
   +setBookingToken: string => void,
   +onSubmit: SearchParameters => void,
 |};
@@ -139,6 +140,7 @@ class Results extends React.Component<Props> {
       returnDateFrom,
       returnDateTo,
       onSubmit,
+      tripType,
     } = this.props;
     const getFormattedDate = (dates: $ReadOnlyArray<Date>) => {
       const stringDates: $ReadOnlyArray<string> = dates.map(date =>
@@ -164,9 +166,6 @@ class Results extends React.Component<Props> {
       )}`;
     };
 
-    const tripType: TripType = returnDateFrom
-      ? TRIP_TYPES.RETURN
-      : TRIP_TYPES.ONEWAY;
     const QueryComponent =
       tripType === TRIP_TYPES.RETURN ? ReturnResultsQuery : OneWayResultsQuery;
     const props = {
