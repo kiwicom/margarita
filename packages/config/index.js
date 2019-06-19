@@ -56,6 +56,10 @@ export const DEFAULT_NIGHTS_IN_DESTINATION_TO = 6;
 
 export const DEFAULT_SEARCH_SORTING = 'QUALITY';
 
+export const MAX_AGE = 110;
+export const MAX_DAY_LENGTH = 2;
+export const MAX_YEAR_LENGTH = 4;
+
 // constants
 export { TRIP_TYPES } from './constants/TripTypes';
 export type { TripType } from './constants/TripTypes';
