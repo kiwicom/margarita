@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { format, setMonth } from 'date-fns';
 import { View } from 'react-native';
 import {
   StyleSheet,
@@ -10,18 +9,16 @@ import {
   Text,
   TextInput,
 } from '@kiwicom/universal-components';
+import { setMonth, getDate, getMonth, getYear, format } from 'date-fns';
+import { MAX_YEAR_LENGTH, MAX_DAY_LENGTH } from '@kiwicom/margarita-config';
+
+import { composeDateFromStrings } from './helpers';
 
 type Props = {|
-  +onDateChange: (string, string) => void,
-  +date: {
-    +day: string,
-    +month: string,
-    +year: string,
-  },
-  +errors: {
-    +day: string,
-    +year: string,
-  },
+  +onDateChange: Date => void,
+  +date: ?Date,
+  +isEditModeEnabled: boolean,
+  +isDateRequested: boolean,
 |};
 
 type Month = {|
@@ -29,31 +26,74 @@ type Month = {|
   label: string,
 |};
 
-class DateInput extends React.Component<Props> {
-  getMonthOptions = () => {
-    return [...Array(12).keys()].map<Month>(
-      (currentMonth: number): Month => ({
-        value: String(currentMonth),
-        label: format(setMonth(new Date(), currentMonth), 'MMMM'),
-      }),
-    );
+type State = {|
+  day: string,
+  month: string,
+  year: string,
+  hasPrefilledState: boolean,
+|};
+
+const getMonthOptions = () => {
+  return [...Array(12).keys()].map<Month>(
+    (currentMonth: number): Month => ({
+      value: String(currentMonth),
+      label: format(setMonth(new Date(), currentMonth), 'MMMM'),
+    }),
+  );
+};
+
+export default class DateInput extends React.Component<Props, State> {
+  state = {
+    day: '',
+    month: '0',
+    year: '',
+    hasPrefilledState: false,
   };
 
-  handleDayChange = (day: string) => {
-    this.props.onDateChange(day, 'day');
+  static getDerivedStateFromProps(props: Props, state: State) {
+    const { date, isEditModeEnabled } = props;
+
+    if (!isEditModeEnabled) {
+      return state;
+    }
+    if (isEditModeEnabled && date && !state.hasPrefilledState) {
+      return {
+        day: String(getDate(date)),
+        month: String(getMonth(date)),
+        year: String(getYear(date)),
+        hasPrefilledState: true,
+      };
+    }
+    return state;
+  }
+
+  componentDidUpdate(prevProps: Props) {
+    const { isDateRequested, onDateChange } = this.props;
+    const { day, month, year } = this.state;
+    if (isDateRequested !== prevProps.isDateRequested && isDateRequested) {
+      if (day !== '' && year !== '') {
+        const composedDate = composeDateFromStrings(day, month, year);
+        if (composedDate) onDateChange(composedDate);
+      }
+    }
+  }
+
+  handleDayChange = (input: string) => {
+    const day = input.slice(0, MAX_DAY_LENGTH);
+    this.setState({ day });
   };
 
   handleMonthChange = (month: ?string) => {
-    if (month) {
-      this.props.onDateChange(month, 'month');
-    }
+    if (month) this.setState({ month });
   };
 
-  handleYearChange = (year: string) => {
-    this.props.onDateChange(year, 'year');
+  handleYearChange = (input: string) => {
+    const year = input.slice(0, MAX_YEAR_LENGTH);
+    this.setState({ year });
   };
 
   render() {
+    const { day, month, year } = this.state;
     return (
       <View style={styles.container}>
         <Text style={styles.text}>Date of birth</Text>
@@ -63,15 +103,14 @@ class DateInput extends React.Component<Props> {
               onChangeText={this.handleDayChange}
               placeholder="DD"
               autoCorrect={false}
-              value={this.props.date.day}
+              value={day}
               type="number"
-              error={this.props.errors.day}
             />
           </View>
           <View style={styles.monthPickerWrapper}>
             <Picker
-              selectedValue={this.props.date.month}
-              optionsData={this.getMonthOptions()}
+              selectedValue={month}
+              optionsData={getMonthOptions()}
               onValueChange={this.handleMonthChange}
               placeholder="Month"
               confirmLabel="OK"
@@ -81,10 +120,9 @@ class DateInput extends React.Component<Props> {
             <TextInput
               onChangeText={this.handleYearChange}
               autoCorrect={false}
-              value={this.props.date.year}
+              value={year}
               placeholder="YYYY"
               type="number"
-              error={this.props.errors.year}
             />
           </View>
         </View>
@@ -92,8 +130,6 @@ class DateInput extends React.Component<Props> {
     );
   }
 }
-
-export default DateInput;
 
 const styles = StyleSheet.create({
   container: {

@@ -8,6 +8,8 @@ import {
   type AlertContextState,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
+import { isValid, isWithinInterval, subYears } from 'date-fns';
+import { MAX_AGE } from '@kiwicom/margarita-config';
 
 import { withSearchContext } from '../../../contexts/searchContext/SearchContext';
 import type { PassengerType } from '../../../contexts/searchContext/SearchContextTypes';
@@ -35,6 +37,18 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   validateForm = validatingPassenger => {
     if (!(validatingPassenger.passportId && validatingPassenger.name)) {
       return 'ID and Name are mandatory';
+    }
+
+    if (
+      !(
+        isValid(validatingPassenger.dateOfBirth) &&
+        isWithinInterval(validatingPassenger.dateOfBirth, {
+          start: subYears(new Date(), MAX_AGE),
+          end: new Date(),
+        })
+      )
+    ) {
+      return 'Please enter valid date';
     }
 
     const existsID = this.props.passengers.reduce((reduction, passenger) => {
