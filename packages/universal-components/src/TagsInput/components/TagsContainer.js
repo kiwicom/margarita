@@ -57,5 +57,7 @@ const styles = StyleSheet.create({
   tag: {
     marginHorizontal: 2,
     alignSelf: 'center',
+    paddingHorizontal: 7,
+    paddingVertical: 4,
   },
 });
