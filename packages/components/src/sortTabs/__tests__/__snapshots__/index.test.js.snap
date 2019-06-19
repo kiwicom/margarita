@@ -4,7 +4,6 @@ exports[`SortTabs renders correctly 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#e8edf1",
       "flexDirection": "column",
     }
   }
@@ -22,7 +21,7 @@ exports[`SortTabs renders correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -36,7 +35,6 @@ exports[`SortTabs renders correctly 1`] = `
           "borderStartColor": "#00a991",
           "borderStartWidth": 4,
         },
-        false,
       ]
     }
   >
@@ -67,13 +65,13 @@ exports[`SortTabs renders correctly 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
               Object {
                 "color": "#00a991",
               },
+              false,
             ],
           ]
         }
@@ -110,13 +108,13 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#171b1e",
                   "fontSize": 12,
                   "fontWeight": "500",
                 },
                 Object {
                   "color": "#00a991",
                 },
+                false,
               ],
             ]
           }
@@ -140,7 +138,6 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#7f91a8",
                   "fontSize": 12,
                   "fontWeight": "normal",
                 },
@@ -150,6 +147,7 @@ exports[`SortTabs renders correctly 1`] = `
                 Object {
                   "color": "#00a991",
                 },
+                false,
               ],
             ]
           }
@@ -201,7 +199,7 @@ exports[`SortTabs renders correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -210,7 +208,6 @@ exports[`SortTabs renders correctly 1`] = `
         Object {
           "height": 40,
         },
-        false,
         false,
       ]
     }
@@ -242,10 +239,10 @@ exports[`SortTabs renders correctly 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
+              false,
               false,
             ],
           ]
@@ -283,10 +280,10 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#171b1e",
                   "fontSize": 12,
                   "fontWeight": "500",
                 },
+                false,
                 false,
               ],
             ]
@@ -311,13 +308,13 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#7f91a8",
                   "fontSize": 12,
                   "fontWeight": "normal",
                 },
                 Object {
                   "marginStart": 8,
                 },
+                false,
                 false,
               ],
             ]
@@ -370,7 +367,7 @@ exports[`SortTabs renders correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -379,7 +376,6 @@ exports[`SortTabs renders correctly 1`] = `
         Object {
           "height": 40,
         },
-        false,
         false,
       ]
     }
@@ -411,10 +407,10 @@ exports[`SortTabs renders correctly 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
+              false,
               false,
             ],
           ]
@@ -452,10 +448,10 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#171b1e",
                   "fontSize": 12,
                   "fontWeight": "500",
                 },
+                false,
                 false,
               ],
             ]
@@ -480,13 +476,13 @@ exports[`SortTabs renders correctly 1`] = `
               },
               Array [
                 Object {
-                  "color": "#7f91a8",
                   "fontSize": 12,
                   "fontWeight": "normal",
                 },
                 Object {
                   "marginStart": 8,
                 },
+                false,
                 false,
               ],
             ]
@@ -533,7 +529,6 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#e8edf1",
       "flexDirection": "column",
     }
   }
@@ -551,7 +546,7 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -565,7 +560,6 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
           "borderStartColor": "#00a991",
           "borderStartWidth": 4,
         },
-        false,
       ]
     }
   >
@@ -596,13 +590,13 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
               Object {
                 "color": "#00a991",
               },
+              false,
             ],
           ]
         }
@@ -668,7 +662,7 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -677,7 +671,6 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         Object {
           "height": 40,
         },
-        false,
         false,
       ]
     }
@@ -709,10 +702,10 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
+              false,
               false,
             ],
           ]
@@ -779,7 +772,7 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#fff",
+          "borderTopColor": "transparent",
           "flexDirection": "row-reverse",
           "justifyContent": "flex-start",
           "overflow": "hidden",
@@ -788,7 +781,6 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         Object {
           "height": 40,
         },
-        false,
         false,
       ]
     }
@@ -820,10 +812,10 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
             },
             Array [
               Object {
-                "color": "#171b1e",
                 "fontSize": 12,
                 "fontWeight": "500",
               },
+              false,
               false,
             ],
           ]

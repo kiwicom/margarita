@@ -4,6 +4,7 @@ import * as React from 'react';
 import { View } from 'react-native';
 import { SortTabs } from '@kiwicom/margarita-components';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import {
   withSearchContext,
@@ -39,18 +40,30 @@ class SortTabsWrapper extends React.Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <SortTabs
-          priceDurationParams={priceDurationParams}
-          selectedValue={this.props.sortBy}
-          onValueChange={this.onValueChange}
-        />
-      </View>
+      <>
+        <View style={styles.container}>
+          <SortTabs
+            priceDurationParams={priceDurationParams}
+            selectedValue={this.props.sortBy}
+            onValueChange={this.onValueChange}
+          />
+        </View>
+        <View style={styles.border} />
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  border: {
+    web: {
+      height: 1,
+      borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
+      borderBottomColor: defaultTokens.borderColorCard,
+      position: 'relative',
+      zIndex: -1,
+    },
+  },
   container: {
     padding: 0,
     ios: {
