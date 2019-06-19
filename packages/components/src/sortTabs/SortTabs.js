@@ -78,18 +78,11 @@ const SortTabs = ({
 
 const styles = StyleSheet.create({
   containerDesktop: {
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
     flexDirection: 'row',
-    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
-    paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
   },
   containerMobile: {
     backgroundColor: defaultTokens.backgroundButtonSecondary,
     flexDirection: 'column',
-    paddingTop: 1,
-    paddingBottom: 1,
   },
 });
 

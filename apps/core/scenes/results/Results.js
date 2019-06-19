@@ -176,7 +176,6 @@ class Results extends React.Component<Props> {
     };
     const isWeb = Platform.OS === 'web';
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
-    const mobileWebLayout = isWeb && this.props.layout < LAYOUT.largeMobile;
     return (
       <SafeAreaView style={styles.container}>
         {isWeb ? (
@@ -203,14 +202,8 @@ class Results extends React.Component<Props> {
             }}
           />
         )}
-
-        <View
-          style={[
-            styles.resultContainer,
-            !mobileWebLayout && styles.flexContainer,
-          ]}
-        >
-          <SortTabsWrapper />
+        <SortTabsWrapper />
+        <View style={styles.resultContainer}>
           <QueryComponent {...props} />
         </View>
       </SafeAreaView>
@@ -221,8 +214,8 @@ class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   resultContainer: {
     backgroundColor: defaultTokens.backgroundBody,
-  },
-  flexContainer: {
+    borderTopWidth: 1,
+    borderTopColor: defaultTokens.borderColorCard,
     flex: 1,
   },
   container: {

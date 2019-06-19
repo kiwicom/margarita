@@ -20,17 +20,19 @@ type Props = {|
 export default class QueryRenderer extends React.Component<Props> {
   onSystemError = ({ error }: { error: Error, retry: ?() => void }) => {
     return (
-      <IllustrationWithInformation
-        illustrationName="Error"
-        text="Something went wrong"
-        description={error.message}
-      />
+      <View style={styles.unloadedContainer}>
+        <IllustrationWithInformation
+          illustrationName="Error"
+          text="Something went wrong"
+          description={error.message}
+        />
+      </View>
     );
   };
 
   onLoading = () => {
     return (
-      <View style={styles.container}>
+      <View style={styles.unloadedContainer}>
         <Loader size="large" />
       </View>
     );
@@ -51,9 +53,10 @@ export default class QueryRenderer extends React.Component<Props> {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    flexGrow: 1,
+  unloadedContainer: {
     justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    flexGrow: 1,
   },
 });
