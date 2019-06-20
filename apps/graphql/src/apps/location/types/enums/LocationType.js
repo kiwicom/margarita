@@ -35,5 +35,8 @@ export default new GraphQLEnumType({
     SPECIAL: {
       value: 'special',
     },
+    TOURIST_REGION: {
+      value: 'tourist_region',
+    },
   },
 });
