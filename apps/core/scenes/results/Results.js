@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { SafeAreaView, View, Platform } from 'react-native';
+import { SafeAreaView, View, Platform, Image } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
@@ -36,6 +36,7 @@ import {
 } from '../../contexts/searchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
 import { type SearchParameters } from '../search/Search';
+import AlphaGradient from './assets/alpha-to-white-vertical.png';
 
 type Props = {|
   +navigation: Navigation,
@@ -203,6 +204,13 @@ class Results extends React.Component<Props> {
           />
         )}
         <SortTabsWrapper />
+        <View style={styles.gradientOverlapContainer}>
+          <Image
+            source={AlphaGradient}
+            style={styles.gradientOverlapImage}
+            resizeMode="stretch"
+          />
+        </View>
         <View style={styles.resultContainer}>
           <QueryComponent {...props} />
         </View>
@@ -211,11 +219,19 @@ class Results extends React.Component<Props> {
   }
 }
 
+const gradientHeight = 20;
 const styles = StyleSheet.create({
+  gradientOverlapContainer: {
+    position: 'relative',
+    zIndex: parseFloat(defaultTokens.zIndexDefault),
+    marginBottom: -gradientHeight,
+  },
+  gradientOverlapImage: {
+    height: gradientHeight,
+    width: '100%',
+  },
   resultContainer: {
     backgroundColor: defaultTokens.backgroundBody,
-    borderTopWidth: 1,
-    borderTopColor: defaultTokens.borderColorCard,
     flex: 1,
   },
   container: {
