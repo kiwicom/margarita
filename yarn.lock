@@ -2567,10 +2567,10 @@
   dependencies:
     "@kiwicom/js" "^0.8.0"
 
-"@kiwicom/graphql-utils@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.7.0.tgz#6de66e81f02cc6e2b077cfc7ae74e866bfd17bfa"
-  integrity sha512-/zKqQiJB5Ta2BQmnJAWQpG0SZ/N1/v8psDtynjxaTM2JjUeENjdZ2G2haTD9+5j4To20CIlhl9UnMaBmoHetlA==
+"@kiwicom/graphql-utils@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@kiwicom/graphql-utils/-/graphql-utils-0.8.0.tgz#8ba972e790821cc585bbaca73a3b632446b1a0a6"
+  integrity sha512-WNs2AzhLVtWnFzW9Yj/rDHs2iUXK4XHvlOMzj5FPrnOiNaXx6hj4ePH14qFkjiGCsrOhi13dLP3w46JA7MANTQ==
   dependencies:
     dataloader "^1.4.0"
     graphql-relay "^0.6.0"
