@@ -24,11 +24,8 @@ import {
   type PhoneNumber,
   type ContactInformation,
 } from '../../../contexts/userContext/UserContext';
-import {
-  type PassengerType,
-  withBookingContext,
-  type BookingContextState,
-} from '../../../contexts/bookingContext/BookingContext';
+import { withSearchContext } from '../../../contexts/searchContext/SearchContext';
+import type { PassengerType } from '../../../contexts/searchContext/SearchContextTypes';
 import { PriceSummary } from '../../../components/priceSummary';
 import ResultDetailPassenger from './ResultDetailPassenger';
 import type { ResultDetailContent_itinerary as ResultDetailContentType } from './__generated__/ResultDetailContent_itinerary.graphql';
@@ -181,14 +178,14 @@ const selectAlertContextState = ({
   setAlertContent,
 });
 
-const bookingContextState = ({ passengers }: BookingContextState) => ({
+const searchContextState = ({ passengers }) => ({
   passengers,
 });
 
 export default createFragmentContainer(
   withUserContext(selectUserContextState)(
     withAlertContext(selectAlertContextState)(
-      withBookingContext(bookingContextState)(
+      withSearchContext(searchContextState)(
         withNavigation(ResultDetailContent),
       ),
     ),

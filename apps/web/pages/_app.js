@@ -7,7 +7,6 @@ import { Alert, AlertContextProvider } from '@kiwicom/margarita-components';
 import {
   UserContextProvider,
   SearchContextProvider,
-  BookingContextProvider,
 } from '@kiwicom/margarita-core';
 
 export default class App extends NextApp {
@@ -21,16 +20,14 @@ export default class App extends NextApp {
     return (
       <Container>
         <UserContextProvider>
-          <BookingContextProvider>
-            <AlertContextProvider>
-              <SearchContextProvider routerQuery={routerQuery}>
-                <LayoutContextProvider>
-                  <Component {...pageProps} />
-                </LayoutContextProvider>
-                <Alert />
-              </SearchContextProvider>
-            </AlertContextProvider>
-          </BookingContextProvider>
+          <AlertContextProvider>
+            <SearchContextProvider routerQuery={routerQuery}>
+              <LayoutContextProvider>
+                <Component {...pageProps} />
+              </LayoutContextProvider>
+              <Alert />
+            </SearchContextProvider>
+          </AlertContextProvider>
         </UserContextProvider>
       </Container>
     );

@@ -20,7 +20,7 @@ type Props = {|
     |},
   },
   +selectedType: string,
-  +onSelect: (type: TripType) => void,
+  +onSelect: (type: TripType) => void | Promise<void>,
 |};
 
 export default function TripTypeSwitch({

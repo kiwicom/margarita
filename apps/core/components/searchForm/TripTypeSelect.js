@@ -26,6 +26,7 @@ type Props = {|
   +tripType: string,
   +layout: number,
   +setTripType: string => void,
+  +onParamsUpdate: () => void,
 |};
 
 type State = {|
@@ -37,9 +38,10 @@ class TripTypeSelect extends React.Component<Props, State> {
     showTripTypeModal: false,
   };
 
-  handleTripTypeSelect = (type: string) => {
+  handleTripTypeSelect = async (type: string) => {
     if (type === TRIP_TYPES.RETURN || type === TRIP_TYPES.ONEWAY) {
-      this.props.setTripType(type);
+      await this.props.setTripType(type);
+      this.props.onParamsUpdate();
     }
   };
 

@@ -2,7 +2,16 @@
 
 import qs from 'qs';
 
-import { parseURLqueryToState, locationParser } from '../helpers';
+jest.mock('uuid/v4', () => {
+  let value = 0;
+  return () => value++;
+});
+
+import {
+  parseURLqueryToState,
+  locationParser,
+  createPassengersStateMiddleware,
+} from '../helpers';
 
 describe('locationParser', () => {
   const locations = {
@@ -40,7 +49,7 @@ const urlQuery = {
     '0%5Bid%5D=TG9jYXRpb246b3Nsb19ubw%3D%3D&0%5BlocationId%5D=oslo_no&0%5Bname%5D=Oslo&0%5Btype%5D=destination',
   travelFromName: 'Prague',
   travelToName: 'Oslo',
-  sort: 'QUALITY',
+  sortBy: 'QUALITY',
   limit: '50',
   adults: '2',
   infants: '1',
@@ -63,7 +72,7 @@ describe('parseURLqueryToState', () => {
       "limit": 50,
       "returnDateFrom": 2019-06-03T00:00:00.000Z,
       "returnDateTo": 2019-06-03T00:00:00.000Z,
-      "sort": "QUALITY",
+      "sortBy": "QUALITY",
       "travelFrom": Array [
         Object {
           "id": "TG9jYXRpb246cHJhZ3VlX2N6",
@@ -90,4 +99,49 @@ describe('parseURLqueryToState', () => {
       'Unexpected URL parameter "invalid" have been detected',
     );
   });
+});
+
+test('createPassengersStateMiddleware', () => {
+  const results = createPassengersStateMiddleware({ adults: 1, infants: 2 });
+  expect(results).toMatchInlineSnapshot(`
+    Object {
+      "adults": 1,
+      "infants": 2,
+      "passengers": Array [
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 0,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "adult",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 1,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "infant",
+        },
+        Object {
+          "bags": null,
+          "dateOfBirth": null,
+          "gender": null,
+          "id": 2,
+          "lastName": null,
+          "name": null,
+          "nationality": null,
+          "passportId": null,
+          "type": "infant",
+        },
+      ],
+    }
+  `);
 });

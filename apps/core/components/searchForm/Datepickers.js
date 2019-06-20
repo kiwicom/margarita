@@ -40,6 +40,7 @@ type Props = {|
   +setNightsInDestinationSelection: boolean => void,
   +setTripType: TripType => void,
   +layout: number,
+  +onDateSelect: () => void,
 |};
 
 type State = {|
@@ -72,7 +73,7 @@ class Datepickers extends React.Component<Props, State> {
     });
   };
 
-  handleDateChange = ({
+  handleDateChange = async ({
     dates,
     isNightsInDestinationSelected,
     nightsInDestination,
@@ -87,23 +88,23 @@ class Datepickers extends React.Component<Props, State> {
     } = this.props;
 
     if (this.state.isDepartureDatePickerVisible && dates) {
-      setDepartureDate(...dates);
+      await setDepartureDate(...dates);
     }
     if (
       this.state.isArrivalDatePickerVisible &&
       isNightsInDestinationSelected != null
     ) {
-      setNightsInDestinationSelection(isNightsInDestinationSelected);
-
+      await setNightsInDestinationSelection(isNightsInDestinationSelected);
       if (!isNightsInDestinationSelected && dates) {
-        setReturnDate(...dates);
+        await setReturnDate(...dates);
       } else if (nightsInDestination) {
-        setNightsInDestination(...nightsInDestination);
+        await setNightsInDestination(...nightsInDestination);
       }
       if (tripType === TRIP_TYPES.ONEWAY) {
-        setTripType(TRIP_TYPES.RETURN);
+        await setTripType(TRIP_TYPES.RETURN);
       }
     }
+    this.props.onDateSelect();
     this.handleDatePickerDismiss();
   };
 

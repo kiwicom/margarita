@@ -18,7 +18,7 @@ type OptionProps = {|
   +label: string,
   +selected?: boolean,
   +underline?: boolean,
-  +onSelect: (id: string) => void,
+  +onSelect: (id: string) => void | Promise<void>,
 |};
 
 class SelectOption extends React.Component<OptionProps> {

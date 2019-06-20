@@ -22,7 +22,6 @@ import {
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
-import { noop } from '@kiwicom/margarita-utils';
 
 import SearchForm from '../../components/searchForm/SearchForm';
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
@@ -36,6 +35,7 @@ import {
   type SearchContextState,
 } from '../../contexts/searchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
+import { type SearchParameters } from '../search/Search';
 
 type Props = {|
   +navigation: Navigation,
@@ -55,7 +55,9 @@ type Props = {|
   +nightsInDestinationFrom: string,
   +nightsInDestinationTo: string,
   +isNightsInDestinationSelected: boolean,
+  +tripType: TripType,
   +setBookingToken: string => void,
+  +onSubmit: SearchParameters => void,
 |};
 
 class Results extends React.Component<Props> {
@@ -137,6 +139,8 @@ class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      onSubmit,
+      tripType,
     } = this.props;
     const getFormattedDate = (dates: $ReadOnlyArray<Date>) => {
       const stringDates: $ReadOnlyArray<string> = dates.map(date =>
@@ -162,9 +166,6 @@ class Results extends React.Component<Props> {
       )}`;
     };
 
-    const tripType: TripType = returnDateFrom
-      ? TRIP_TYPES.RETURN
-      : TRIP_TYPES.ONEWAY;
     const QueryComponent =
       tripType === TRIP_TYPES.RETURN ? ReturnResultsQuery : OneWayResultsQuery;
     const props = {
@@ -175,7 +176,6 @@ class Results extends React.Component<Props> {
     };
     const isWeb = Platform.OS === 'web';
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
-    const mobileWebLayout = isWeb && this.props.layout < LAYOUT.largeMobile;
     return (
       <SafeAreaView style={styles.container}>
         {isWeb ? (
@@ -185,7 +185,7 @@ class Results extends React.Component<Props> {
               desktopLayout && styles.desktopSearchForm,
             ]}
           >
-            <SearchForm showButton={false} onSubmit={noop} />
+            <SearchForm showButton={false} onSubmit={onSubmit} />
           </View>
         ) : (
           <SearchParamsSummary
@@ -202,14 +202,8 @@ class Results extends React.Component<Props> {
             }}
           />
         )}
-
-        <View
-          style={[
-            styles.resultContainer,
-            !mobileWebLayout && styles.flexContainer,
-          ]}
-        >
-          <SortTabsWrapper />
+        <SortTabsWrapper />
+        <View style={styles.resultContainer}>
           <QueryComponent {...props} />
         </View>
       </SafeAreaView>
@@ -220,8 +214,8 @@ class Results extends React.Component<Props> {
 const styles = StyleSheet.create({
   resultContainer: {
     backgroundColor: defaultTokens.backgroundBody,
-  },
-  flexContainer: {
+    borderTopWidth: 1,
+    borderTopColor: defaultTokens.borderColorCard,
     flex: 1,
   },
   container: {

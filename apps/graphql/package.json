@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "@kiwicom/fetch": "^2.2.0",
+    "@kiwicom/fetch": "^2.4.3",
     "@kiwicom/graphql-global-id": "^0.10.0",
     "@kiwicom/graphql-utils": "^0.8.0",
     "@kiwicom/margarita-config": "^0",

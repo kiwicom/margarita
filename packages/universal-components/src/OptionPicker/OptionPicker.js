@@ -8,18 +8,20 @@ import type { OptionTypeInterface } from './OptionPickerTypes';
 import { StyleSheet } from '../PlatformStyleSheet';
 import { TagsInput } from '../TagsInput';
 import OptionList from './components/OptionList';
+import Loader from '../Loader/Loader';
 
 type Props = {|
   +onChangeText: string => void,
   +onClearPress: () => void,
-  +onPressAdd: OptionTypeInterface => void,
-  +onPressItem: OptionTypeInterface => void,
+  +onPressAdd: OptionTypeInterface => void | Promise<void>,
+  +onPressItem: OptionTypeInterface => void | Promise<void>,
   +text?: string,
   +label?: string,
   +onKeyPress?: Event => void,
   +options?: Array<OptionTypeInterface>,
   +placeholder?: string,
   +selected?: ?Array<OptionTypeInterface>,
+  +isLoading?: boolean,
 |};
 
 type Event = { nativeEvent: { key: string } };
@@ -36,12 +38,13 @@ export default function OptionPicker(props: Props) {
     onKeyPress,
     onPressItem,
     onPressAdd,
+    isLoading,
   } = props;
 
   const tags = selected ? selected.map(option => option.label) : [];
 
   return (
-    <View>
+    <View style={styles.container}>
       <View style={styles.inputWrapper}>
         <TagsInput
           autoFocus
@@ -54,13 +57,17 @@ export default function OptionPicker(props: Props) {
           placeholder={placeholder}
         />
       </View>
-      {options && (
+      {isLoading ? (
+        <View style={styles.loadingContainer}>
+          <Loader size="large" />
+        </View>
+      ) : options ? (
         <OptionList
           onItemPress={onPressItem}
           onAddPress={onPressAdd}
           options={options}
         />
-      )}
+      ) : null}
     </View>
   );
 }
@@ -71,8 +78,15 @@ const commonStyles = {
 };
 
 const styles = StyleSheet.create({
+  container: { flex: 1 },
+  loadingContainer: {
+    margin: 10,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   inputWrapper: {
-    padding: 5,
+    marginHorizontal: parseFloat(defaultTokens.spaceSmall),
     ios: {
       ...commonStyles,
     },

@@ -4,13 +4,13 @@ import * as React from 'react';
 import { View, SafeAreaView, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Button } from '../Button';
 import Modal from './components/Modal';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
 import NightsInDestination from './NightsInDestination';
 import ControlContainer from './components/ControlContainer';
+import { ModalButtons } from '../ModalButtons';
 
 export default class RangeDatePicker extends React.Component<Props> {
   static defaultProps = {
@@ -18,6 +18,13 @@ export default class RangeDatePicker extends React.Component<Props> {
     isNightsInDestinationSelected: false,
     isControlContainerVisible: true,
     nightsInDestinationLabel: 'Nights in destination',
+    buttonLabels: {
+      confirm: 'Set date',
+    },
+    renderFirstMonthFrom: new Date(),
+    weekStartsOn: 1,
+    isRangePicker: true,
+    isChoosingPastDatesEnabled: false,
   };
 
   handleDismiss = () => {
@@ -80,13 +87,13 @@ export default class RangeDatePicker extends React.Component<Props> {
           <SafeAreaView style={styles.content}>
             {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
               <RangeDatePickerContent
-                isChoosingPastDatesEnabled={isChoosingPastDatesEnabled ?? false}
+                isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
                 selectedDates={this.props.dates}
                 onDayPress={this.handleChangeDate}
                 numberOfRenderedMonths={numberOfRenderedMonths}
-                weekStartsOn={weekStartsOn ?? 1}
-                isRangePicker={isRangePicker ?? true}
-                renderFirstMonthFrom={renderFirstMonthFrom ?? new Date()}
+                weekStartsOn={weekStartsOn}
+                isRangePicker={isRangePicker}
+                renderFirstMonthFrom={renderFirstMonthFrom}
               />
             ) : (
               <NightsInDestination
@@ -114,22 +121,12 @@ export default class RangeDatePicker extends React.Component<Props> {
                   />
                 </View>
               )}
-              <View style={styles.row}>
-                <View style={styles.buttonWrapper}>
-                  <Button
-                    label={buttonLabels?.cancel ?? 'Cancel'}
-                    onPress={this.handleDismiss}
-                    type="secondary"
-                  />
-                </View>
-                <View style={styles.buttonWrapper}>
-                  <Button
-                    label={buttonLabels?.confirm ?? 'Set date'}
-                    onPress={this.handleConfirm}
-                    style={styles.confirmButton}
-                  />
-                </View>
-              </View>
+              <ModalButtons
+                labelConfirm={buttonLabels.confirm}
+                labelCancel={buttonLabels.cancel}
+                onConfirmPress={this.handleConfirm}
+                onCancelPress={this.handleDismiss}
+              />
             </View>
           </SafeAreaView>
         </Modal>
@@ -157,18 +154,5 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  buttonWrapper: {
-    flex: 1,
-    ios: {
-      // @TODO bottom margin needs to be currently set for iOS because of the persisting bug related to `SafeAreaView` and `Modal` on iPhone X https://github.com/facebook/react-native/issues/18177
-      marginBottom: parseFloat(defaultTokens.spaceMedium),
-    },
-  },
-  confirmButton: {
-    marginStart: parseFloat(defaultTokens.spaceXSmall),
   },
 });

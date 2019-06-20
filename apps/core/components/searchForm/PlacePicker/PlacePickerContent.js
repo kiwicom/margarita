@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { OptionPicker, StyleSheet } from '@kiwicom/universal-components';
+import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   graphql,
   createRefetchContainer,
@@ -43,6 +44,8 @@ type Props = {|
     type: LocationSearchType,
     location: Location | Location[],
   ) => void,
+  +onPressSelect: () => void,
+  +onPlaceSelect: () => void,
 |};
 
 type State = {|
@@ -122,11 +125,13 @@ class PlacePickerContent extends React.Component<Props, State> {
     this.refetchSuggestions(text);
   };
 
-  handlePressOption = (option: OptionType) => {
-    const { setLocation, pickerType } = this.props;
+  handlePressOption = async (option: OptionType) => {
+    const { setLocation, pickerType, onPlaceSelect } = this.props;
     const location = mapOptionToLocation(option);
 
-    setLocation(pickerType, location);
+    await setLocation(pickerType, location);
+    onPlaceSelect();
+
     this.props.onClose();
   };
 
@@ -180,6 +185,7 @@ class PlacePickerContent extends React.Component<Props, State> {
           options={filterOptions(options, selectedOptions)}
           selected={selectedOptions}
           onKeyPress={this.handlePressKey}
+          isLoading={isLoading}
         />
         {isNotFound && <NotFound />}
       </View>
@@ -201,8 +207,8 @@ const select = ({
 
 const styles = StyleSheet.create({
   wrapper: {
-    height: '65%',
-    margin: 15,
+    marginVertical: parseFloat(defaultTokens.spaceSmall),
+    minHeight: 500,
   },
 });
 

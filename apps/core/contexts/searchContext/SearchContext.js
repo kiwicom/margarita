@@ -13,7 +13,11 @@ import {
   DEFAULT_NIGHTS_IN_DESTINATION_TO,
 } from '@kiwicom/margarita-config';
 
-import { parseURLqueryToState } from './helpers';
+import {
+  parseURLqueryToState,
+  createPassengersStateMiddleware,
+  createPassengers,
+} from './helpers';
 import type {
   Location,
   LocationSearchType,
@@ -21,6 +25,7 @@ import type {
   Passengers,
   SortType,
   SearchContextState,
+  PassengerType,
 } from './SearchContextTypes';
 
 type Props = {|
@@ -69,6 +74,7 @@ const defaultState = {
   bookingToken: null,
   adults: 1,
   infants: 0,
+  passengers: [], // TODO should be at least one passenger
   actions: {
     setDepartureDate: noop,
     switchFromTo: noop,
@@ -82,6 +88,7 @@ const defaultState = {
     clearLocation: noop,
     addLocation: noop,
     setBookingToken: noop,
+    setPassengers: noop,
   },
 };
 
@@ -91,9 +98,12 @@ class SearchContextProvider extends React.Component<Props, State> {
   static getDefaultState(routerQuery?: ParseFieldsParams) {
     // hydrate state from URL
     if (Platform.OS === 'web' && routerQuery) {
+      const derivedStateFromURL = createPassengersStateMiddleware(
+        parseURLqueryToState(routerQuery),
+      );
       return {
         ...defaultState,
-        ...parseURLqueryToState(routerQuery),
+        ...derivedStateFromURL,
       };
     }
     return defaultState;
@@ -117,6 +127,7 @@ class SearchContextProvider extends React.Component<Props, State> {
         addLocation: this.addLocation,
         setLocation: this.setLocation,
         setBookingToken: this.setBookingToken,
+        setPassengers: this.setPassengers,
       },
     };
   }
@@ -209,7 +220,14 @@ class SearchContextProvider extends React.Component<Props, State> {
   };
 
   setPassengerData = (passengerData: $ReadOnly<Passengers>) => {
-    this.setState(passengerData);
+    this.setState({
+      passengers: createPassengers(passengerData),
+      ...passengerData,
+    });
+  };
+
+  setPassengers = (passengers: PassengerType[]) => {
+    this.setState({ passengers });
   };
 
   render() {

@@ -6,8 +6,6 @@ exports[`SortTabs renders correctly 1`] = `
     Object {
       "backgroundColor": "#e8edf1",
       "flexDirection": "column",
-      "paddingBottom": 1,
-      "paddingTop": 1,
     }
   }
 >
@@ -25,16 +23,14 @@ exports[`SortTabs renders correctly 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
         Object {
           "height": 40,
         },
-        false,
-        false,
         Object {
           "backgroundColor": "#fff",
           "borderStartColor": "#00a991",
@@ -46,10 +42,14 @@ exports[`SortTabs renders correctly 1`] = `
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -108,11 +108,16 @@ exports[`SortTabs renders correctly 1`] = `
               Object {
                 "fontFamily": "Roboto",
               },
-              Object {
-                "color": "#171b1e",
-                "fontSize": 12,
-                "fontWeight": "500",
-              },
+              Array [
+                Object {
+                  "color": "#171b1e",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                },
+                Object {
+                  "color": "#00a991",
+                },
+              ],
             ]
           }
         >
@@ -140,7 +145,10 @@ exports[`SortTabs renders correctly 1`] = `
                   "fontWeight": "normal",
                 },
                 Object {
-                  "marginStart": 12,
+                  "marginStart": 8,
+                },
+                Object {
+                  "color": "#00a991",
                 },
               ],
             ]
@@ -150,27 +158,35 @@ exports[`SortTabs renders correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#00a991",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#00a991",
+            },
+            undefined,
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
   </View>
   <View
     accessibilityComponentType="button"
@@ -186,8 +202,8 @@ exports[`SortTabs renders correctly 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
@@ -196,17 +212,19 @@ exports[`SortTabs renders correctly 1`] = `
         },
         false,
         false,
-        false,
-        false,
       ]
     }
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -263,11 +281,14 @@ exports[`SortTabs renders correctly 1`] = `
               Object {
                 "fontFamily": "Roboto",
               },
-              Object {
-                "color": "#171b1e",
-                "fontSize": 12,
-                "fontWeight": "500",
-              },
+              Array [
+                Object {
+                  "color": "#171b1e",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                },
+                false,
+              ],
             ]
           }
         >
@@ -295,8 +316,9 @@ exports[`SortTabs renders correctly 1`] = `
                   "fontWeight": "normal",
                 },
                 Object {
-                  "marginStart": 12,
+                  "marginStart": 8,
                 },
+                false,
               ],
             ]
           }
@@ -305,27 +327,35 @@ exports[`SortTabs renders correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#46515e",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      @
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            undefined,
+          ]
+        }
+      >
+        @
+      </Text>
+    </View>
   </View>
   <View
     accessibilityComponentType="button"
@@ -341,8 +371,8 @@ exports[`SortTabs renders correctly 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
@@ -351,17 +381,19 @@ exports[`SortTabs renders correctly 1`] = `
         },
         false,
         false,
-        false,
-        false,
       ]
     }
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -418,11 +450,14 @@ exports[`SortTabs renders correctly 1`] = `
               Object {
                 "fontFamily": "Roboto",
               },
-              Object {
-                "color": "#171b1e",
-                "fontSize": 12,
-                "fontWeight": "500",
-              },
+              Array [
+                Object {
+                  "color": "#171b1e",
+                  "fontSize": 12,
+                  "fontWeight": "500",
+                },
+                false,
+              ],
             ]
           }
         >
@@ -450,8 +485,9 @@ exports[`SortTabs renders correctly 1`] = `
                   "fontWeight": "normal",
                 },
                 Object {
-                  "marginStart": 12,
+                  "marginStart": 8,
                 },
+                false,
               ],
             ]
           }
@@ -460,27 +496,35 @@ exports[`SortTabs renders correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#46515e",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      e
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            undefined,
+          ]
+        }
+      >
+        e
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -491,8 +535,6 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
     Object {
       "backgroundColor": "#e8edf1",
       "flexDirection": "column",
-      "paddingBottom": 1,
-      "paddingTop": 1,
     }
   }
 >
@@ -510,16 +552,14 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
         Object {
           "height": 40,
         },
-        false,
-        false,
         Object {
           "backgroundColor": "#fff",
           "borderStartColor": "#00a991",
@@ -531,10 +571,14 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -581,27 +625,35 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         }
       />
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#00a991",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#00a991",
+            },
+            undefined,
+          ]
+        }
+      >
+        
+      </Text>
+    </View>
   </View>
   <View
     accessibilityComponentType="button"
@@ -617,8 +669,8 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
@@ -627,17 +679,19 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         },
         false,
         false,
-        false,
-        false,
       ]
     }
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -682,27 +736,35 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         }
       />
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#46515e",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      @
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            undefined,
+          ]
+        }
+      >
+        @
+      </Text>
+    </View>
   </View>
   <View
     accessibilityComponentType="button"
@@ -718,8 +780,8 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
       Array [
         Object {
           "backgroundColor": "#fff",
-          "flexDirection": "row",
-          "justifyContent": "space-between",
+          "flexDirection": "row-reverse",
+          "justifyContent": "flex-start",
           "overflow": "hidden",
           "padding": 12,
         },
@@ -728,17 +790,19 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         },
         false,
         false,
-        false,
-        false,
       ]
     }
   >
     <View
       style={
-        Object {
-          "flex": 1,
-          "flexDirection": "row",
-        }
+        Array [
+          Object {
+            "flex": 1,
+          },
+          Object {
+            "flexDirection": "row",
+          },
+        ]
       }
     >
       <Text
@@ -783,27 +847,35 @@ exports[`SortTabs renders correctly with no parameters 1`] = `
         }
       />
     </View>
-    <Text
+    <View
       style={
-        Array [
-          Object {
-            "fontFamily": "orbit-icons",
-          },
-          Object {
-            "fontSize": 16,
-            "height": 16,
-            "lineHeight": 16,
-            "width": 16,
-          },
-          Object {
-            "color": "#46515e",
-          },
-          undefined,
-        ]
+        Object {
+          "paddingEnd": 12,
+        }
       }
     >
-      e
-    </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "fontFamily": "orbit-icons",
+            },
+            Object {
+              "fontSize": 16,
+              "height": 16,
+              "lineHeight": 16,
+              "width": 16,
+            },
+            Object {
+              "color": "#46515e",
+            },
+            undefined,
+          ]
+        }
+      >
+        e
+      </Text>
+    </View>
   </View>
 </View>
 `;

@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
-import uuidv4 from 'uuid/v4';
+import { generateId } from '@kiwicom/margarita-utils';
 import {
   StyleSheet,
   SegmentedButton,
@@ -29,7 +29,7 @@ import {
   getMonth,
 } from 'date-fns';
 
-import { type PassengerType } from '../../contexts/bookingContext/BookingContext';
+import { type PassengerType } from '../../contexts/searchContext/SearchContextTypes';
 import BaggageBundles from './baggageBundles/BaggageBundles';
 import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
 import { type BaggageBundleType } from './baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
@@ -259,7 +259,8 @@ class PassengerForm extends React.Component<Props, State> {
         name,
         lastName,
         bags,
-        id: id || uuidv4(),
+        id: id || generateId(),
+        type: 'adult', // @TODO get type base on dateOfBirth
       };
       this.props.onRequestSave(newPassenger);
     }
@@ -289,7 +290,7 @@ class PassengerForm extends React.Component<Props, State> {
             />
             <TextInput
               onChangeText={this.handleNameChange}
-              label="Given names"
+              label="First name"
               autoCorrect={false}
               type="text"
               value={this.state.name}
