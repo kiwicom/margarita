@@ -63,12 +63,15 @@ class SortTab extends React.Component<Props> {
               (mobileLayout
                 ? styles.containerActiveMobile
                 : styles.containerActiveWeb),
-            isHovered && styles.containerHovered,
           ]}
         >
           <View style={[styles.rowContainer, mobileLayout && styles.row]}>
             <Text
-              style={[styles.label, isActive && styles.labelActive]}
+              style={[
+                styles.label,
+                isActive && styles.labelActive,
+                isHovered && styles.containerHovered,
+              ]}
               align="left"
               numberOfLines={1}
             >
@@ -82,7 +85,11 @@ class SortTab extends React.Component<Props> {
             >
               {price || currency ? (
                 <Text
-                  style={[styles.label, isActive && styles.labelActive]}
+                  style={[
+                    styles.label,
+                    isActive && styles.labelActive,
+                    isHovered && styles.containerHovered,
+                  ]}
                   align="left"
                   numberOfLines={1}
                 >
@@ -95,6 +102,7 @@ class SortTab extends React.Component<Props> {
                     styles.durationLabel,
                     (price || currency) && styles.marginStartLabel,
                     isActive && styles.labelActive,
+                    isHovered && styles.containerHovered,
                   ]}
                   align="left"
                   numberOfLines={1}
@@ -109,7 +117,7 @@ class SortTab extends React.Component<Props> {
               size="small"
               name={icon}
               color={
-                isActive
+                isActive || isHovered
                   ? defaultTokens.paletteProductNormal
                   : defaultTokens.colorIconPrimary
               }
@@ -132,12 +140,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     justifyContent: 'flex-start',
     padding: parseInt(defaultTokens.spaceSmall, 10),
-    backgroundColor: defaultTokens.paletteWhite,
+    borderTopColor: 'transparent',
     overflow: 'hidden',
     web: {
+      borderTopWidth: 3,
       userSelect: 'none',
-      flex: 1,
       height: containerHeight.web,
+      paddingHorizontal: parseFloat(defaultTokens.spaceLarge),
     },
   },
   heightMobile: {
@@ -159,9 +168,8 @@ const styles = StyleSheet.create({
   },
 
   containerActiveWeb: {
-    backgroundColor: defaultTokens.paletteWhite,
-    borderBottomWidth: 3,
-    borderBottomColor: defaultTokens.paletteProductNormal,
+    backgroundColor: defaultTokens.backgroundBody,
+    borderTopColor: defaultTokens.paletteProductNormal,
   },
   containerActiveMobile: {
     backgroundColor: defaultTokens.paletteWhite,
@@ -169,7 +177,7 @@ const styles = StyleSheet.create({
     borderStartColor: defaultTokens.paletteProductNormal,
   },
   containerHovered: {
-    backgroundColor: defaultTokens.paletteWhiteHover,
+    color: defaultTokens.paletteProductNormal,
   },
   priceDurationContainerWeb: {
     paddingTop: parseInt(defaultTokens.paddingTag, 10),
@@ -177,7 +185,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   durationLabel: {
-    color: defaultTokens.paletteInkLight,
     fontWeight: 'normal',
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
@@ -185,7 +192,6 @@ const styles = StyleSheet.create({
     marginStart: parseInt(defaultTokens.spaceXSmall, 10),
   },
   label: {
-    color: defaultTokens.paletteInkDark,
     fontWeight: designTokens.fontWeightMedium,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
