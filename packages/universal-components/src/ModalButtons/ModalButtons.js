@@ -8,7 +8,7 @@ import { Button } from '../Button';
 import { StyleSheet } from '../PlatformStyleSheet';
 
 type Props = {|
-  +onConfirmPress: () => void,
+  +onConfirmPress: () => any,
   +onCancelPress: () => void,
   +labelConfirm: string,
   +labelCancel: string,
