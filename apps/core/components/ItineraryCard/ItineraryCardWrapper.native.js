@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View } from 'react-native';
 import { StyleSheet, LocalizedPrice } from '@kiwicom/universal-components';
+import { PassengerInfoItineraryCard } from '@kiwicom/margarita-components';
 
 import ItineraryCardRow from './ItineraryCardRow';
 import BadgesContainer from './BadgesContainer';
@@ -12,11 +13,15 @@ type Props = {|
   +localizedPrice: string,
   +children: React.Node,
   +detailOpened?: boolean,
+  +infants: number,
+  +adults: number,
 |};
 
 export default function ItineraryCardWrapper({
   localizedPrice,
   children,
+  infants,
+  adults,
 }: Props) {
   // @TODO use real badges
   const badges = [
@@ -38,7 +43,10 @@ export default function ItineraryCardWrapper({
       <HorizontalDash />
       <ItineraryCardRow style={styles.footer}>
         <BadgesContainer badges={badges} />
-        <LocalizedPrice localizedPrice={localizedPrice} />
+        <View style={styles.pricePassengerContainer}>
+          <LocalizedPrice localizedPrice={localizedPrice} />
+          <PassengerInfoItineraryCard infants={infants} adults={adults} />
+        </View>
       </ItineraryCardRow>
     </View>
   );
@@ -50,5 +58,9 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     marginBottom: 5,
     marginTop: 2,
+  },
+  pricePassengerContainer: {
+    flexDirection: 'column',
+    alignItems: 'flex-end',
   },
 });

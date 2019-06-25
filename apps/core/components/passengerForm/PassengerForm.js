@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import { View, ScrollView } from 'react-native';
+import { generateId } from '@kiwicom/margarita-utils';
 import {
   StyleSheet,
   SegmentedButton,
@@ -11,18 +12,27 @@ import {
   Modal,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
 import {
-  DateInput,
   withAlertContext,
   type AlertContent,
   type AlertContextState,
+  DateInput,
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
+import {
+  getYear,
+  setYear,
+  setMonth,
+  getDaysInMonth,
+  setDate,
+  getDate,
+  getMonth,
+} from 'date-fns';
 
-import { type PassengerType } from '../../contexts/bookingContext/BookingContext';
+import { type PassengerType } from '../../contexts/searchContext/SearchContextTypes';
 import BaggageBundles from './baggageBundles/BaggageBundles';
 import type { PassengerForm_itinerary as PassengerFormType } from './__generated__/PassengerForm_itinerary.graphql';
+import { type BaggageBundleType } from './baggageBundles/__generated__/BaggageBundle_bagOption.graphql';
 
 type Props = {|
   +itinerary: ?PassengerFormType,
@@ -50,20 +60,47 @@ const nationalityData = [
   },
 ];
 
+const maxAge = 110;
+
 const initialFormState = {
+  id: null,
   gender: 'male',
   name: null,
   lastName: null,
-  id: null,
+  passportId: null,
   nationality: null,
-  dateOfBirth: null,
+  date: {
+    day: '',
+    month: '',
+    year: '',
+  },
+  inputErrors: {
+    day: '',
+    year: '',
+  },
   bags: null,
   passengerCount: 1,
 };
 
 type State = {
-  ...PassengerType,
-  lastName: ?string,
+  +id: ?string,
+  +name: ?string,
+  +lastName: ?string,
+  +gender: 'female' | 'male' | 'other',
+  +nationality: ?string,
+  +passportId: ?string,
+  +insurance?: ?string,
+  +bags: null | Array<BaggageBundleType>,
+  +visaRequired?: ?boolean,
+  date: {
+    day: string,
+    month: string,
+    year: string,
+  },
+  inputErrors: {
+    day: string,
+    year: string,
+  },
   hasPrefilledState: boolean,
 };
 
@@ -81,7 +118,19 @@ class PassengerForm extends React.Component<Props, State> {
     const editModeOpened = props.isEditing && !state.hasPrefilledState;
     // If is in edit mode preload passenger data into the form state
     if (editModeOpened) {
-      return { ...props.prefillData, hasPrefilledState: true };
+      if (props.prefillData && props.prefillData.dateOfBirth) {
+        const { dateOfBirth } = props.prefillData;
+        const date = {
+          day: String(getDate(dateOfBirth)),
+          month: String(getMonth(dateOfBirth)),
+          year: String(getYear(dateOfBirth)),
+        };
+        return {
+          ...props.prefillData,
+          hasPrefilledState: true,
+          date,
+        };
+      }
     }
 
     return state;
@@ -99,39 +148,122 @@ class PassengerForm extends React.Component<Props, State> {
     this.setState({ lastName });
   };
 
-  handleBirthDateChange = (dateOfBirth: ?Date) => {
-    this.setState({ dateOfBirth });
+  handleBirthDateSubmit = (dateOfBirth: string, type: string) => {
+    this.setState(state => {
+      return {
+        ...state,
+        date: {
+          ...state.date,
+          [type]: dateOfBirth,
+        },
+      };
+    });
+  };
+
+  validateYear = (year: number): boolean => {
+    return year > getYear(new Date()) - maxAge && year <= getYear(new Date());
+  };
+
+  handleInvalidDate = (timePeriod, message) => {
+    this.setState(state => {
+      return {
+        ...state,
+        inputErrors: {
+          ...state.inputErrors,
+          [timePeriod]: message,
+        },
+      };
+    });
+  };
+
+  handleDateValidation = () => {
+    const day = parseInt(this.state.date.day, 10);
+    const month = parseInt(this.state.date.month, 10);
+    const year = parseInt(this.state.date.year, 10);
+
+    let date = new Date();
+
+    if (!day) {
+      this.handleInvalidDate('day', 'Please fill in the field');
+    } else {
+      this.resetError('day');
+    }
+    if (!year) {
+      this.handleInvalidDate('year', 'Please fill in the field');
+      return false;
+    }
+    this.resetError('year');
+
+    const isYearValid = this.validateYear(year);
+    if (!isYearValid) {
+      this.handleInvalidDate('year', 'Please input valid year');
+      return false;
+    }
+    this.resetError('year');
+    date = setYear(date, year);
+
+    if (month) {
+      date = setMonth(date, month);
+    } else {
+      return false;
+    }
+    const daysInMonth = getDaysInMonth(date);
+    if (day > 0 && day <= daysInMonth) {
+      date = setDate(date, day);
+      this.resetError('day');
+    } else {
+      this.handleInvalidDate('day', 'Please input valid day');
+      return false;
+    }
+    return date;
+  };
+
+  resetError = timePeriod => {
+    this.setState(state => {
+      return {
+        ...state,
+        inputErrors: {
+          ...state.inputErrors,
+          [timePeriod]: '',
+        },
+      };
+    });
   };
 
   handleNationalityChange = (nationality: ?string) => {
     this.setState({ nationality });
   };
 
-  handleIdChange = (id: ?string) => {
-    this.setState({ id });
+  handlePassportIdChange = (passportId: ?string) => {
+    this.setState({ passportId });
   };
 
   handleSavePress = () => {
-    const {
-      nationality,
-      id,
-      dateOfBirth,
-      lastName,
-      name,
-      gender,
-      bags,
-    } = this.state;
-    const newPassenger = {
-      nationality,
-      id,
-      dateOfBirth,
-      gender,
-      name,
-      lastName,
-      bags,
-      passengerCount: 1,
-    };
-    this.props.onRequestSave(newPassenger);
+    const dateOfBirth = this.handleDateValidation();
+    if (dateOfBirth) {
+      const {
+        nationality,
+        passportId,
+        lastName,
+        name,
+        gender,
+        bags,
+        id,
+      } = this.state;
+
+      const newPassenger = {
+        nationality,
+        passportId,
+        dateOfBirth,
+        gender,
+        name,
+        lastName,
+        bags,
+        id: id || generateId(),
+        type: 'adult', // @TODO get type base on dateOfBirth
+      };
+      this.props.onRequestSave(newPassenger);
+    }
   };
 
   requestClose = () => {
@@ -158,7 +290,7 @@ class PassengerForm extends React.Component<Props, State> {
             />
             <TextInput
               onChangeText={this.handleNameChange}
-              label="Given names"
+              label="First name"
               autoCorrect={false}
               type="text"
               value={this.state.name}
@@ -173,23 +305,17 @@ class PassengerForm extends React.Component<Props, State> {
               formLabelContainerStyle={styles.inputLabel}
             />
             <TextInput
-              onChangeText={this.handleIdChange}
+              onChangeText={this.handlePassportIdChange}
               label="Passport or ID number"
               autoCorrect={false}
               type="text"
-              value={this.state.id}
+              value={this.state.passportId}
               formLabelContainerStyle={styles.inputLabel}
             />
             <DateInput
-              date={this.state.dateOfBirth}
-              defaultDate={new Date('1990-01-01')}
-              dateFormat={US_DATE_FORMAT}
-              onDateChange={this.handleBirthDateChange}
-              placeholder="Select"
-              label="Date of birth"
-              formLabelContainerStyle={styles.inputLabel}
-              confirmLabel="OK"
-              cancelLabel="CANCEL"
+              onDateChange={this.handleBirthDateSubmit}
+              date={this.state.date}
+              errors={this.state.inputErrors}
             />
             <Picker
               selectedValue={this.state.nationality}
@@ -262,8 +388,8 @@ const styles = StyleSheet.create({
     bottom: 0,
     flexDirection: 'row',
     backgroundColor: defaultTokens.paletteWhite,
-    borderColor: defaultTokens.borderColorTableCell,
     borderTopWidth: parseInt(defaultTokens.borderWidthCard, 10),
+    borderColor: defaultTokens.borderColorTableCell,
     borderStartWidth: parseInt(defaultTokens.borderWidthCard, 10),
     borderEndWidth: parseInt(defaultTokens.borderWidthCard, 10),
     borderTopStartRadius: parseInt(defaultTokens.borderRadiusBadge, 10),

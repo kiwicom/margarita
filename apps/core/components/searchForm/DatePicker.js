@@ -25,7 +25,7 @@ type Props = {|
     +confirm: string,
   |},
   +numberOfRenderedMonths: number,
-  +onConfirm: ConfirmType => void,
+  +onConfirm: ConfirmType => void | Promise<void>,
   +onDismiss: () => void,
   +onPress: () => void,
   +style?: StylePropType,
@@ -131,7 +131,7 @@ class DatePicker extends React.Component<Props, State> {
           label={label}
           buttonLabels={buttonLabels}
           numberOfRenderedMonths={numberOfRenderedMonths}
-          weekStartsOn={weekStartsOn ?? 1}
+          weekStartsOn={weekStartsOn}
           dateFormat={LONG_DAY_MONTH_FORMAT}
           isNightsInDestinationVisible={isNightsInDestinationVisible}
           nightsInDestination={this.state.tempNightsInDestination}

@@ -14,13 +14,13 @@ import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
   NUMBER_OF_RENDERED_MONTHS_IN_DATE_PICKER,
-  type TripTypes,
+  type TripType,
 } from '@kiwicom/margarita-config';
 
 import {
   withSearchContext,
   type SearchContextState,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
 import { type ConfirmType } from './DatePickerTypes';
@@ -38,8 +38,9 @@ type Props = {|
   +setReturnDate: (Date, Date) => void,
   +setNightsInDestination: (number, number) => void,
   +setNightsInDestinationSelection: boolean => void,
-  +setTripType: TripTypes => void,
+  +setTripType: TripType => void,
   +layout: number,
+  +onDateSelect: () => void,
 |};
 
 type State = {|
@@ -72,7 +73,7 @@ class Datepickers extends React.Component<Props, State> {
     });
   };
 
-  handleDateChange = ({
+  handleDateChange = async ({
     dates,
     isNightsInDestinationSelected,
     nightsInDestination,
@@ -87,23 +88,23 @@ class Datepickers extends React.Component<Props, State> {
     } = this.props;
 
     if (this.state.isDepartureDatePickerVisible && dates) {
-      setDepartureDate(...dates);
+      await setDepartureDate(...dates);
     }
     if (
       this.state.isArrivalDatePickerVisible &&
       isNightsInDestinationSelected != null
     ) {
-      setNightsInDestinationSelection(isNightsInDestinationSelected);
-
+      await setNightsInDestinationSelection(isNightsInDestinationSelected);
       if (!isNightsInDestinationSelected && dates) {
-        setReturnDate(...dates);
+        await setReturnDate(...dates);
       } else if (nightsInDestination) {
-        setNightsInDestination(...nightsInDestination);
+        await setNightsInDestination(...nightsInDestination);
       }
       if (tripType === TRIP_TYPES.ONEWAY) {
-        setTripType(TRIP_TYPES.RETURN);
+        await setTripType(TRIP_TYPES.RETURN);
       }
     }
+    this.props.onDateSelect();
     this.handleDatePickerDismiss();
   };
 

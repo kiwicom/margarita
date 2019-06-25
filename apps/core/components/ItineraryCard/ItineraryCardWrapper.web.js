@@ -10,6 +10,7 @@ import {
   Button,
   designTokens,
 } from '@kiwicom/universal-components';
+import { PassengerInfoItineraryCard } from '@kiwicom/margarita-components';
 import { noop } from '@kiwicom/margarita-utils';
 import {
   withLayoutContext,
@@ -22,6 +23,8 @@ type Props = {|
   +children: React.Node,
   +detailOpened?: boolean,
   +layout: number,
+  +infants: number,
+  +adults: number,
 |};
 
 const ItineraryCardWrapper = ({
@@ -29,6 +32,8 @@ const ItineraryCardWrapper = ({
   children,
   detailOpened,
   layout,
+  infants,
+  adults,
 }: Props) => {
   const mobileLayout = layout < LAYOUT.largeMobile;
   const chevronIconName = detailOpened ? 'chevron-up' : 'chevron-down';
@@ -39,6 +44,7 @@ const ItineraryCardWrapper = ({
         {!mobileLayout && (
           <View style={styles.price}>
             <LocalizedPrice localizedPrice={localizedPrice} />
+            <PassengerInfoItineraryCard infants={infants} adults={adults} />
           </View>
         )}
         <View style={styles.sectors}>{children}</View>
@@ -52,6 +58,7 @@ const ItineraryCardWrapper = ({
       {mobileLayout && (
         <View style={styles.footer}>
           <LocalizedPrice localizedPrice={localizedPrice} />
+          <PassengerInfoItineraryCard infants={infants} adults={adults} />
           <Button
             label={detailOpened ? 'Hide' : 'Show Detail'}
             type="secondary"

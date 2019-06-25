@@ -24,10 +24,10 @@ import {
 } from '@kiwicom/margarita-components';
 
 import {
-  withSearchContext,
   type SearchContextState,
+  withSearchContext,
   type Location,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 import Placepickers from './Placepickers';
 import Datepickers from './Datepickers';
 import SearchFormModes from './SearchFormModes';
@@ -47,7 +47,6 @@ type Props = {
   +tripType: string,
   +adults: number,
   +infants: number,
-  +bags: number,
   +layout: number,
   +limit: number,
   +setAlertContent: (alertContent: AlertContent | null) => void,
@@ -67,79 +66,77 @@ class SearchForm extends React.Component<Props> {
     return '';
   };
 
-  handleSubmitPress = () => {
+  getSearchParams = () => {
     const {
       travelFrom,
       travelTo,
       tripType,
       adults,
       infants,
-      bags,
       limit,
-      onSubmit,
       isNightsInDestinationSelected,
       nightsInDestinationFrom,
       nightsInDestinationTo,
     } = this.props;
+
+    const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
+    const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
+    const returnDateFrom = format(
+      this.props.returnDateFrom,
+      BASIC_ISO_DATE_FORMAT,
+    );
+    const returnDateTo = format(this.props.returnDateTo, BASIC_ISO_DATE_FORMAT);
+
+    return {
+      travelFrom: qs.stringify(travelFrom),
+      travelTo: qs.stringify(travelTo),
+      travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
+      travelToName: this.convertLocationsToParams(travelTo, 'name'),
+      sortBy: 'QUALITY',
+      limit,
+      adults,
+      infants,
+      dateFrom,
+      dateTo,
+      tripType,
+      ...(tripType === TRIP_TYPES.RETURN // @TODO refactor
+        ? isNightsInDestinationSelected
+          ? {
+              isNightsInDestinationSelected,
+              nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
+              nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
+            }
+          : {
+              returnDateFrom,
+              returnDateTo,
+            }
+        : {}),
+    };
+  };
+
+  handleSubmitPress = () => {
+    const { travelFrom } = this.props;
     if (travelFrom == null || travelFrom.length === 0) {
       this.props.setAlertContent({
         message: 'Please choose an origin place',
       });
     } else {
-      const dateFrom = format(this.props.dateFrom, BASIC_ISO_DATE_FORMAT);
-      const dateTo = format(this.props.dateTo, BASIC_ISO_DATE_FORMAT);
-      const returnDateFrom = format(
-        this.props.returnDateFrom,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      const returnDateTo = format(
-        this.props.returnDateTo,
-        BASIC_ISO_DATE_FORMAT,
-      );
-      if (onSubmit != null) {
-        onSubmit({
-          dateFrom,
-          dateTo,
-          returnDateFrom,
-          returnDateTo,
-          nightsInDestinationFrom,
-          nightsInDestinationTo,
-          tripType,
-          travelFrom,
-          travelTo,
-          sort: 'QUALITY',
-          limit,
-          adults,
-          infants,
-          bags,
-        });
-      }
+      const searchParams = this.getSearchParams();
       this.props.navigation.navigate(Routes.RESULTS, {
-        travelFrom: qs.stringify(travelFrom),
-        travelTo: qs.stringify(travelTo),
-        travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
-        travelToName: this.convertLocationsToParams(travelTo, 'name'),
-        sort: 'QUALITY',
-        limit,
-        adults,
-        infants,
-        bags,
-        dateFrom,
-        dateTo,
-        ...(tripType === TRIP_TYPES.RETURN
-          ? isNightsInDestinationSelected
-            ? {
-                nightsInDestinationFrom: parseInt(nightsInDestinationFrom, 10),
-                nightsInDestinationTo: parseInt(nightsInDestinationTo, 10),
-              }
-            : {
-                returnDateFrom,
-                returnDateTo,
-              }
-          : {}),
-
-        onSubmit,
+        ...searchParams,
       });
+    }
+  };
+
+  handleParamsUpdate = () => {
+    const { travelFrom } = this.props;
+    if (travelFrom == null || travelFrom.length === 0) {
+      this.props.setAlertContent({
+        message: 'Please choose an origin place',
+      });
+    } else {
+      const searchParams = this.getSearchParams();
+      if (this.props.onSubmit) this.props.onSubmit(searchParams);
     }
   };
 
@@ -147,10 +144,10 @@ class SearchForm extends React.Component<Props> {
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
     return (
       <>
-        <SearchFormModes />
+        <SearchFormModes onParamsUpdate={this.handleParamsUpdate} />
         <View style={desktopLayout && styles.inputsDesktop}>
-          <Placepickers />
-          <Datepickers />
+          <Placepickers onPlaceSelect={this.handleParamsUpdate} />
+          <Datepickers onDateSelect={this.handleParamsUpdate} />
           <View style={[styles.bottom, desktopLayout && styles.bottomDesktop]}>
             {this.props.showButton && (
               <Button

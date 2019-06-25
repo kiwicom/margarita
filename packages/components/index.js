@@ -15,6 +15,9 @@ export {
 } from './src/passengersInputs/PassengersInputs';
 export { SearchParamsSummary } from './src/searchParamsSummary';
 export {
+  default as PassengerInfoItineraryCard,
+} from './src/passengerInfoItineraryCard/PassengerInfoItineraryCard.js';
+export {
   TimelineInformation,
   TimelineDate,
   TimelineDifferentAirport,
@@ -31,8 +34,8 @@ export {
 } from './src/illustrationWithInformation/IllustrationWithInformation';
 export { default as PassengerCard } from './src/passengerCard/PassengerCard';
 export {
-  default as PassengerCardDetail,
-} from './src/passengerCard/PassengerCardDetail';
+  default as PassengerCardDetailItem,
+} from './src/passengerCard/PassengerCardDetailItem';
 export { default as PassengerCards } from './src/passengerCards/PassengerCards';
 export { default as Separator } from './src/separator/Separator';
 export { default as ShareIcon } from './src/shareIcon/ShareIcon';
@@ -64,9 +67,7 @@ export type { AlertContextState, AlertContent } from './src/alert/AlertContext';
 export {
   default as StopoverDuration,
 } from './src/stopoverDuration/StopoverDuration';
-export type {
-  PassengerCardActionType,
-} from './src/passengerCard/PassengerCardTypes';
+
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
 export { default as DateInput } from './src/dateInput/DateInput';
 export { SortTabs } from './src/sortTabs';

@@ -1,5 +1,5 @@
-// flow-typed signature: 39ce4846a62b88b72c4e6e20fa13fe8c
-// flow-typed version: 790e6eabe1/ramda_v0.26.x/flow_>=v0.76.x
+// flow-typed signature: 369d0b55c493decfd4deacaadaba2877
+// flow-typed version: 36a16cbe25/ramda_v0.26.x/flow_>=v0.76.x
 
 /* eslint-disable no-unused-vars, no-redeclare */
 
@@ -315,48 +315,42 @@ declare module ramda {
     ) => () => R);
 
   declare var pipe: {
-    <A, B, C, D, E, F, G>(ab: UnaryFn<A, B>, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): UnaryFn<A, G>,
-    <A0, A1, B, C, D, E, F, G>(ab: (A0, A1) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): (A0, A1) => G,
-    <A0, A1, A2, B, C, D, E, F, G>(ab: (A0, A1, A2) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): (A0, A1, A2) => G,
-    <A0, A1, A2, A3, B, C, D, E, F, G>(ab: (A0, A1, A2, A3) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): (A0, A1, A2, A3) => G,
-    <A0, A1, A2, A3, A4, B, C, D, E, F, G>(ab: (A0, A1, A2, A3, A4) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): (A0, A1, A2, A3, A4) => G,
-    <A0, A1, A2, A3, A4, A5, B, C, D, E, F, G>(ab: (A0, A1, A2, A3, A4, A5) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>, fg: UnaryFn<F, G>): (A0, A1, A2, A3, A4, A5) => G,
+    <Args, Return, B, C, D, E, F>(
+      ab: (...a: Args) => B,
+      bc: UnaryFn<B, C>,
+      cd: UnaryFn<C, D>,
+      de: UnaryFn<D, E>,
+      ef: UnaryFn<E, F>,
+      fg: UnaryFn<F, Return>,
+    ): (...a: Args) => Return,
 
-    <A, B, C, D, E, F>(ab: UnaryFn<A, B>, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): UnaryFn<A, F>,
-    <A0, A1, B, C, D, E, F>(ab: (A0, A1) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): (A0, A1) => F,
-    <A0, A1, A2, B, C, D, E, F>(ab: (A0, A1, A2) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): (A0, A1, A2) => F,
-    <A0, A1, A2, A3, B, C, D, E, F>(ab: (A0, A1, A2, A3) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): (A0, A1, A2, A3) => F,
-    <A0, A1, A2, A3, A4, B, C, D, E, F>(ab: (A0, A1, A2, A3, A4) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): (A0, A1, A2, A3, A4) => F,
-    <A0, A1, A2, A3, A4, A5, B, C, D, E, F>(ab: (A0, A1, A2, A3, A4, A5) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>, ef: UnaryFn<E, F>): (A0, A1, A2, A3, A4, A5) => F,
+    <Args, Return, B, C, D, E,>(
+      ab: (...a: Args) => B,
+      bc: UnaryFn<B, C>,
+      cd: UnaryFn<C, D>,
+      de: UnaryFn<D, E>,
+      ef: UnaryFn<E, Return>,
+    ): (...a: Args) => Return,
 
-    <A, B, C, D, E>(ab: UnaryFn<A, B>, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): UnaryFn<A, E>,
-    <A0, A1, B, C, D, E>(ab: (A0, A1) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): (A0, A1) => E,
-    <A0, A1, A2, B, C, D, E>(ab: (A0, A1, A2) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): (A0, A1, A2) => E,
-    <A0, A1, A2, A3, B, C, D, E>(ab: (A0, A1, A2, A3) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): (A0, A1, A2, A3) => E,
-    <A0, A1, A2, A3, A4, B, C, D, E>(ab: (A0, A1, A2, A3, A4) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): (A0, A1, A2, A3, A4) => E,
-    <A0, A1, A2, A3, A4, A5, B, C, D, E>(ab: (A0, A1, A2, A3, A4, A5) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>, de: UnaryFn<D, E>): (A0, A1, A2, A3, A4, A5) => E,
+    <Args, Return, B, C, D,>(
+      ab: (...a: Args) => B,
+      bc: UnaryFn<B, C>,
+      cd: UnaryFn<C, D>,
+      de: UnaryFn<D, Return>,
+    ): (...a: Args) => Return,
 
-    <A, B, C, D>(ab: UnaryFn<A, B>, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): UnaryFn<A, D>,
-    <A0, A1, B, C, D>(ab: (A0, A1) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): (A0, A1) => D,
-    <A0, A1, A2, B, C, D>(ab: (A0, A1, A2) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): (A0, A1, A2) => D,
-    <A0, A1, A2, A3, B, C, D>(ab: (A0, A1, A2, A3) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): (A0, A1, A2, A3) => D,
-    <A0, A1, A2, A3, A4, B, C, D>(ab: (A0, A1, A2, A3, A4) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): (A0, A1, A2, A3, A4) => D,
-    <A0, A1, A2, A3, A4, A5, B, C, D>(ab: (A0, A1, A2, A3, A4, A5) => B, bc: UnaryFn<B, C>, cd: UnaryFn<C, D>): (A0, A1, A2, A3, A4, A5) => D,
+    <Args, Return, B, C,>(
+      ab: (...a: Args) => B,
+      bc: UnaryFn<B, C>,
+      cd: UnaryFn<C, Return>,
+    ): (...a: Args) => Return,
 
-    <A, B, C>(ab: UnaryFn<A, B>, bc: UnaryFn<B, C>): UnaryFn<A, C>,
-    <A0, A1, B, C>(ab: (A0, A1) => B, bc: UnaryFn<B, C>): (A0, A1) => C,
-    <A0, A1, A2, B, C>(ab: (A0, A1, A2) => B, bc: UnaryFn<B, C>): (A0, A1, A2) => C,
-    <A0, A1, A2, A3, B, C>(ab: (A0, A1, A2, A3) => B, bc: UnaryFn<B, C>): (A0, A1, A2, A3) => C,
-    <A0, A1, A2, A3, A4, B, C>(ab: (A0, A1, A2, A3, A4) => B, bc: UnaryFn<B, C>): (A0, A1, A2, A3, A4) => C,
-    <A0, A1, A2, A3, A4, A5, B, C>(ab: (A0, A1, A2, A3, A4, A5) => B, bc: UnaryFn<B, C>): (A0, A1, A2, A3, A4, A5) => C,
-
+    <Args, Return, B,>(
+      ab: (...a: Args) => B,
+      bc: UnaryFn<B, Return>,
+    ): (...a: Args) => Return,
 
     <A, B>(ab: UnaryFn<A, B>): UnaryFn<A, B>,
-    <A0, A1, B>(ab: (A0, A1) => B): (A0, A1) => B,
-    <A0, A1, A2, B>(ab: (A0, A1, A2) => B): (A0, A1, A2) => B,
-    <A0, A1, A2, A3, B>(ab: (A0, A1, A2, A3) => B): (A0, A1, A2, A3) => B,
-    <A0, A1, A2, A3, A4, B>(ab: (A0, A1, A2, A3, A4) => B): (A0, A1, A2, A3, A4) => B,
-    <A0, A1, A2, A3, A4, A5, B>(ab: (A0, A1, A2, A3, A4, A5) => B): (A0, A1, A2, A3, A4, A5) => B,
   };
 
   declare type Pipe = typeof pipe;
@@ -492,7 +486,11 @@ declare module ramda {
   declare var multiply: CurriedFunction2<number, number, number>;
   declare var negate: UnaryFn<number, number>;
   declare var product: UnaryFn<Array<number>, number>;
-  declare var subtract: CurriedFunction2<number, number, number>;
+  declare var subtract:
+    & CurriedFunction2<number, number, number>
+    & CurriedFunction2<Date, Date, number>
+    & CurriedFunction2<Date, number, number>
+    & CurriedFunction2<number, Date, number>;
   declare var sum: UnaryFn<Array<number>, number>;
 
   // Filter
@@ -648,7 +646,7 @@ declare module ramda {
     fn: BinaryPredicateFn<T>,
   ): (xs: V) => Array<V>;
 
-  declare function head<T, V: Array<T> | $ReadOnlyArray<T>>(xs: V): ?T;
+  declare function head<T, V: Array<T>>(xs: V): ?$ElementType<V, 0>;
   declare function head<T, V: string>(xs: V): V;
 
   declare function into<I, T, A: Array<T>, R: Array<*> | string | Object>(
@@ -820,14 +818,20 @@ declare module ramda {
 
   declare function pluck<
     V,
-    K: string | number,
-    T: Array<Array<V> | { [key: string]: V }>
-  >(k: K, xs: T): Array<V>;
+    K: $Keys<V>,
+  >(key: K, list: V[]): Array<$ElementType<V, K>>;
   declare function pluck<
     V,
-    K: string | number,
-    T: Array<Array<V> | { [key: string]: V }>
-  >(k: K): (xs: T) => Array<V>;
+    K: $Keys<V>,
+  >(key: K): (list: V[]) => Array<$ElementType<V, K>>;
+  declare function pluck<
+    T,
+    V: T[],
+  >(key: number, list: V[]): Array<$ElementType<V, number>>;
+  declare function pluck<
+    T,
+    V: T[],
+  >(key: number): (list: V[]) => Array<$ElementType<V, number>>;
 
   declare var range: CurriedFunction2<number, number, Array<number>>;
 
@@ -1304,8 +1308,8 @@ declare module ramda {
       val: T,
       ...args: Array<void>
     ): (src: S) => ({ [k: string]: T } & S),
-    <T, S: Object, K: $Subtype<$Keys<S>>> (key: K, val: T, src: S):      ({ [k: string]: T } & S),
-    <T, S: Object>                        (key: string, val: T, src: S): ({ [k: string]: T, ...$Exact<S> })
+    <T, S: Object, K: $Keys<S>> (key: K, val: T, src: S):      ({ [k: string]: T } & S),
+    <T, S: Object>              (key: string, val: T, src: S): ({ [k: string]: T, ...$Exact<S> })
   };
 
   declare function assocPath<T: string | number, S, V>(
@@ -1514,13 +1518,13 @@ declare module ramda {
     o: ?A
   ): V | T;
 
-  declare function pick<A>(
-    keys: Array<string>,
-  ): (val: { [key: string]: A }) => { [key: string]: A };
-  declare function pick<A>(
-    keys: Array<string>,
-    val: { [key: string]: A }
-  ): { [key: string]: A };
+  declare function pick<O, K: $ReadOnlyArray<$Keys<O>>>(
+    keys: K,
+  ): (val: O) => O;
+  declare function pick<O, K: $ReadOnlyArray<$Keys<O>>>(
+    keys: K,
+    val: O
+  ): O;
 
   declare function pickAll<A>(
     keys: Array<string>,
@@ -1884,8 +1888,8 @@ declare module ramda {
     fns: Array<(...args: Array<T>) => boolean>
   ): (...args: Array<T>) => boolean;
 
-  declare function and(x: boolean): (y: boolean) => boolean;
-  declare function and(x: boolean, y: boolean): boolean;
+  declare function and<X, Y>(x: X): (y: Y) => X | Y;
+  declare function and<X, Y>(x: X, y: Y): X | Y;
 
   declare function anyPass<T>(
     fns: Array<(...args: Array<T>) => boolean>
@@ -1918,27 +1922,27 @@ declare module ramda {
     y: (...args: Array<any>) => *
   ): (...args: Array<any>) => *;
 
-  declare function ifElse<A, B, C>(
-    cond: (...args: Array<A>) => boolean,
+  declare function ifElse<Args, B, C>(
+    cond: (...args: Args) => boolean
   ): ((
-    f1: (...args: Array<A>) => B,
-  ) => (f2: (...args: Array<A>) => C) => (...args: Array<A>) => B | C) &
+    f1: (...args: Args) => B
+  ) => (f2: (...args: Args) => C) => (...args: Args) => B | C) &
     ((
-      f1: (...args: Array<A>) => B,
-      f2: (...args: Array<A>) => C
-    ) => (...args: Array<A>) => B | C);
-  declare function ifElse<A, B, C>(
-    cond: (...args: Array<any>) => boolean,
-    f1: (...args: Array<any>) => B,
-    f2: (...args: Array<any>) => C
-  ): (...args: Array<A>) => B | C;
+      f1: (...args: Args) => B,
+      f2: (...args: Args) => C
+    ) => (...args: Args) => B | C);
+  declare function ifElse<Args, B, C>(
+    cond: (...args: Args) => boolean,
+    f1: (...args: Args) => B,
+    f2: (...args: Args) => C
+  ): (...args: Args) => B | C;
 
   declare function isEmpty(x: ?Array<any> | Object | string): boolean;
 
   declare function not(x: boolean): boolean;
 
-  declare function or(x: boolean, y: boolean): boolean;
-  declare function or(x: boolean): (y: boolean) => boolean;
+  declare function or<X, Y>(x: X): (y: Y) => X | Y;
+  declare function or<X, Y>(x: X, y: Y): X | Y;
 
   declare var pathSatisfies: CurriedFunction3<
     UnaryPredicateFn<any>,
@@ -1948,18 +1952,18 @@ declare module ramda {
   >;
 
   declare function propSatisfies<T>(
-    cond: (x: T) => boolean,
-    prop: string,
-    o: NestedObject<T>
+    cond: (x: $Values<T>) => boolean,
+    prop: $Keys<T>,
+    o: T
   ): boolean;
   declare function propSatisfies<T>(
-    cond: (x: T) => boolean,
-    prop: string,
-  ): (o: NestedObject<T>) => boolean;
+    cond: (x: $Values<T>) => boolean,
+    prop: $Keys<T>,
+  ): (o: T) => boolean;
   declare function propSatisfies<T>(
-    cond: (x: T) => boolean,
-  ): ((prop: string) => (o: NestedObject<T>) => boolean) &
-    ((prop: string, o: NestedObject<T>) => boolean);
+    cond: (x: $Values<T>) => boolean,
+  ): ((prop:  $Keys<T>) => (o: T) => boolean) &
+    ((prop:  $Keys<T>, o: T) => boolean);
 
   declare function unless<T, V, S>(
     pred: UnaryPredicateFn<T>,

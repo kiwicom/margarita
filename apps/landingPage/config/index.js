@@ -13,4 +13,10 @@ export default {
     smooth: true,
     duration: 500,
   },
+  featuresOrderIndexes: {
+    searchScreen: 3,
+    bookingScreen: 2,
+    mmbScreen: 1,
+    paymentsScreen: 0,
+  },
 };

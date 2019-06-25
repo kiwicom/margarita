@@ -9,12 +9,14 @@ export type ConfirmType = {|
 |};
 
 export type Props = {|
+  +renderFirstMonthFrom: Date,
+  +isChoosingPastDatesEnabled: boolean,
   +isVisible: boolean,
   +dates: $ReadOnlyArray<Date>,
-  +onConfirm: ConfirmType => void,
+  +onConfirm: ConfirmType => void | Promise<void>,
   +onDismiss: () => void,
   +onChangeTempDates: ($ReadOnlyArray<Date>) => void,
-  +isRangePicker?: boolean,
+  +isRangePicker: boolean,
   +isControlContainerVisible?: boolean,
   +numberOfRenderedMonths: number,
   +weekStartsOn: WeekStartsType,
@@ -25,7 +27,7 @@ export type Props = {|
   +onNightsInDestinationChange?: ($ReadOnlyArray<number>) => void,
   +isNightsInDestinationSelected?: boolean,
   +onNightsInDestinationSelectionChange?: boolean => void,
-  +buttonLabels?: {|
+  +buttonLabels: {|
     +cancel: string,
     +confirm: string,
   |},
@@ -59,6 +61,8 @@ export type FindRelatedItemConfigType = {|
   +dayItemSize: DayItemSizeType,
   +grabbedSide: GrabbedSideType,
   +weekStartsOn: WeekStartsType,
+  +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 export type XY = {

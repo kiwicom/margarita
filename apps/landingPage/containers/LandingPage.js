@@ -11,7 +11,8 @@ import Footer from './Footer';
 import Menu from './Menu';
 import Features from './Features';
 import Try from './Try';
-import DeveloperExperience from './DeveloperExperience';
+import Technology from './Technology';
+import SupportUs from './SupportUs';
 
 type State = {|
   scroll: number,
@@ -64,8 +65,9 @@ export default class LandingPage extends React.Component<{}, State> {
           <Menu />
           <Header />
           <Features scroll={this.state.scroll} />
-          <DeveloperExperience />
+          <Technology />
           <Try />
+          <SupportUs />
           <Footer />
         </Container>
       </ThemeProvider>

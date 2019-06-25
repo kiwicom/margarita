@@ -2,161 +2,81 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import {
-  Text,
-  StyleSheet,
-  Icon,
-  Card,
-  ExtendedTouchable,
-} from '@kiwicom/universal-components';
+import { Text, StyleSheet, Icon, Card } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
-import { format } from 'date-fns';
-import { US_DATE_FORMAT } from '@kiwicom/margarita-config';
-import type { PassengerType, BaggageBundleType } from '@kiwicom/margarita-core';
+import type { PassengerType } from '@kiwicom/margarita-core';
 
-import BagInformation from './BagInformation';
 import PassengerCardDetail from './PassengerCardDetail';
+import PassengerAdditonalInformation from './PassengerAdditonalInformation';
+import IconButton from './IconButton';
 import Separator from '../separator/Separator';
 import VisaInfo from '../visaInfo/VisaInfo';
-import { type PassengerCardActionType } from './PassengerCardTypes';
-
-function getTitle(gender) {
-  switch (gender) {
-    case 'male':
-      return 'Mr.';
-    case 'female':
-      return 'Ms.';
-    default:
-      return '';
-  }
-}
+import { getPassengerTitle } from './helpers';
 
 type Props = {|
-  ...PassengerType,
-  ...PassengerCardActionType,
+  +passenger: ?PassengerType,
+  +passengerIndex: number,
+  +onEditPress?: (?string) => void,
+  +onDeletePress?: (?string) => void,
 |};
 
 class PassengerCard extends React.Component<Props> {
-  static defaultProps = {
-    passengerCount: 1,
-    name: '',
-    lastName: '',
-    gender: 'other',
-    nationality: '',
-    dateOfBirth: null,
-    id: '',
-    bags: null,
-  };
-
-  handleActionPress = () => {
+  handleEditPress = () => {
     if (this.props.onEditPress) {
-      this.props.onEditPress(this.props.id);
+      this.props.onEditPress(this.props.passenger?.id);
     }
   };
 
-  handleSecondaryActionPress = () => {
+  handleDeletePress = () => {
     if (this.props.onDeletePress) {
-      this.props.onDeletePress(this.props.id);
+      this.props.onDeletePress(this.props.passenger?.id);
     }
   };
 
-  parseBagType = (bag: BaggageBundleType) =>
-    `${bag.dimensions ? `${bag.dimensions},` : ''} ${bag.weight ?? ''}`;
+  getCardTitle = () => {
+    const { passenger, passengerIndex } = this.props;
+
+    const passengerType = passenger?.type === 'infant' ? ' (infant)' : '';
+
+    if (passenger?.name || passenger?.lastName) {
+      const passengerTitle = getPassengerTitle(passenger?.gender);
+      return `${passengerTitle} ${passenger?.name ||
+        ''} ${passenger?.lastName || ''}${passengerType}`;
+    }
+    return `${passengerIndex}. Passenger${passengerType}`;
+  };
 
   render() {
-    const {
-      name,
-      lastName,
-      gender,
-      nationality,
-      dateOfBirth,
-      id,
-      insurance,
-      passengerCount,
-      bags,
-      editIconName,
-      deleteIconName,
-      onEditPress,
-      onDeletePress,
-      visaRequired,
-    } = this.props;
-    const newPassenger = `${passengerCount}. Passenger`;
-    const title = getTitle(gender);
-    const passengerWithTitle = `${title} ${name ?? ''} ${lastName ?? ''}`;
-    const passenger = name !== null ? passengerWithTitle : newPassenger;
-
+    const { passenger, onEditPress, onDeletePress } = this.props;
     return (
       <View style={styles.container}>
         <Card>
-          <View style={styles.containerName}>
+          <View style={styles.header}>
             <Icon name="passenger" />
             <Text style={styles.passengerName} size="large">
-              {passenger}
+              {this.getCardTitle()}
             </Text>
-            {onEditPress && editIconName && (
-              <View style={styles.actionIcon}>
-                <ExtendedTouchable onPress={this.handleActionPress}>
-                  <Icon
-                    name={editIconName}
-                    color={defaultTokens.backgroundButtonPrimary}
-                  />
-                </ExtendedTouchable>
-              </View>
+            {onEditPress && (
+              <IconButton iconType="edit" onPress={this.handleEditPress} />
             )}
-            {onDeletePress && deleteIconName && (
-              <ExtendedTouchable onPress={this.handleSecondaryActionPress}>
-                <Icon
-                  name={deleteIconName}
-                  color={defaultTokens.backgroundButtonPrimary}
-                />
-              </ExtendedTouchable>
+            {onDeletePress && (
+              <IconButton iconType="close" onPress={this.handleDeletePress} />
             )}
           </View>
-
-          <View style={styles.containerTop}>
-            <PassengerCardDetail
-              value={nationality ?? '-'}
-              label="Nationality"
-              style="normal"
-            />
-            <PassengerCardDetail
-              value={dateOfBirth ? format(dateOfBirth, US_DATE_FORMAT) : '-'}
-              label="Date of birth"
-              style="normal"
-            />
-            <PassengerCardDetail
-              value={id ?? ''}
-              label="ID"
-              style="id_row_wrapper"
-            />
-          </View>
+          <PassengerCardDetail
+            nationality={passenger?.nationality}
+            passportId={passenger?.passportId}
+            dateOfBirth={passenger?.dateOfBirth}
+          />
           <Separator />
-          <View style={styles.containerBottom}>
-            <View style={styles.bagsRowWrapper}>
-              <Text type="secondary" style={styles.textPadding}>
-                Bags
-              </Text>
-              <View>
-                {bags &&
-                  bags.map((bag, idx) => (
-                    <BagInformation
-                      key={idx}
-                      count={bag.quantity}
-                      type={this.parseBagType(bag)}
-                    />
-                  ))}
-              </View>
-            </View>
-            {insurance != null && (
-              <PassengerCardDetail
-                value={insurance}
-                label="Travel Insurance"
-                style="normal"
-              />
-            )}
-          </View>
+          <PassengerAdditonalInformation
+            bags={passenger?.bags}
+            insurance={passenger?.insurance}
+          />
         </Card>
-        {visaRequired != null && <VisaInfo visaRequired={visaRequired} />}
+        {passenger?.visaRequired != null && (
+          <VisaInfo visaRequired={passenger?.visaRequired} />
+        )}
       </View>
     );
   }
@@ -166,7 +86,7 @@ const styles = StyleSheet.create({
   container: {
     marginBottom: parseInt(defaultTokens.spaceSmall, 10),
   },
-  containerName: {
+  header: {
     flexDirection: 'row',
     alignItems: 'center',
     paddingTop: parseInt(defaultTokens.spaceSmall, 10),
@@ -174,26 +94,6 @@ const styles = StyleSheet.create({
   },
   passengerName: {
     flex: 1,
-  },
-  containerTop: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    height: 60,
-  },
-  actionIcon: {
-    paddingEnd: parseInt(defaultTokens.spaceLarge, 10),
-  },
-  containerBottom: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingTop: 12,
-    height: 120,
-  },
-  bagsRowWrapper: {
-    flexGrow: 3,
-  },
-  textPadding: {
-    paddingBottom: parseInt(defaultTokens.spaceXSmall, 10),
   },
 });
 

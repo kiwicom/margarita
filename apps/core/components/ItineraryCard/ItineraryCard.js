@@ -14,6 +14,10 @@ import {
 } from '@kiwicom/universal-components';
 import { ItineraryTypeRenderer } from '@kiwicom/margarita-components';
 
+import {
+  withSearchContext,
+  type SearchContextState,
+} from '../../contexts/searchContext';
 import ItineraryCardWrapper from './ItineraryCardWrapper';
 import ItineraryDetail from './itineraryDetail/ItineraryDetail';
 import type { ItineraryCard_data as ItineraryCardType } from './__generated__/ItineraryCard_data.graphql';
@@ -24,6 +28,8 @@ type Props = {|
   +data: ItineraryCardType,
   +onBookPress: (?string) => void,
   +isHovered: boolean,
+  +adults: number,
+  +infants: number,
   +onMouseLeave: () => void,
   +onMouseEnter: () => void,
 |};
@@ -49,7 +55,14 @@ class ItineraryCard extends React.Component<Props, State> {
 
   render() {
     const { detailOpened } = this.state;
-    const { data, onBookPress, isHovered, ...rest } = this.props;
+    const {
+      data,
+      onBookPress,
+      infants,
+      adults,
+      isHovered,
+      ...rest
+    } = this.props;
     if (data == null) {
       return null;
     }
@@ -71,6 +84,8 @@ class ItineraryCard extends React.Component<Props, State> {
             <ItineraryCardWrapper
               localizedPrice={localizedPrice}
               detailOpened={detailOpened}
+              infants={infants}
+              adults={adults}
             >
               <ItineraryTypeRenderer
                 typename={typename}
@@ -93,24 +108,32 @@ class ItineraryCard extends React.Component<Props, State> {
   }
 }
 
-export default createFragmentContainer(withHover(ItineraryCard), {
-  data: graphql`
-    fragment ItineraryCard_data on ItineraryInterface {
-      __typename
-      ... on ItineraryOneWay {
-        ...TripSectorOneWay_itinerary
-      }
-      ... on ItineraryReturn {
-        ...TripSectorReturn_itinerary
-      }
-      price {
-        currency
-        amount
-      }
-      ...ItineraryDetail_data
-    }
-  `,
+const selectSearchContext = ({ infants, adults }: SearchContextState) => ({
+  infants,
+  adults,
 });
+
+export default createFragmentContainer(
+  withSearchContext(selectSearchContext)(withHover(ItineraryCard)),
+  {
+    data: graphql`
+      fragment ItineraryCard_data on ItineraryInterface {
+        __typename
+        ... on ItineraryOneWay {
+          ...TripSectorOneWay_itinerary
+        }
+        ... on ItineraryReturn {
+          ...TripSectorReturn_itinerary
+        }
+        price {
+          currency
+          amount
+        }
+        ...ItineraryDetail_data
+      }
+    `,
+  },
+);
 
 const styles = StyleSheet.create({
   container: {

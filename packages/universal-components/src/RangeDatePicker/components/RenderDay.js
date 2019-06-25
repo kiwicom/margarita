@@ -11,6 +11,7 @@ import {
   isSameDay,
   endOfDay,
   startOfDay,
+  isBefore,
 } from 'date-fns';
 
 import type { OnLayout, OnDragEvent } from '../../types';
@@ -34,6 +35,8 @@ type Props = {|
   +selectedDates: $ReadOnlyArray<Date>,
   +isRangePicker: boolean,
   +weekStartsOn: WeekStartsType,
+  +isChoosingPastDatesEnabled: boolean,
+  +renderedCalendarRange: Array<Date>,
 |};
 
 type State = {|
@@ -56,6 +59,9 @@ export default class RenderDay extends React.Component<Props, State> {
 
   state = { isDragging: undefined };
 
+  isDayInPastActive = (day: ?Date) =>
+    isDayInPast(day) && !this.props.isChoosingPastDatesEnabled;
+
   handlePress = () => {
     if (this.props.onPress && this.props.day) {
       this.props.onPress([this.props.day, this.props.day]);
@@ -65,7 +71,7 @@ export default class RenderDay extends React.Component<Props, State> {
   onLeftPress = () => {
     if (this.props.day) {
       const dayBefore = subDays(this.props.day, 1);
-      if (!isDayInPast(dayBefore) && this.props.onPress) {
+      if (!this.isDayInPastActive(dayBefore) && this.props.onPress) {
         this.props.onPress([dayBefore, this.props.selectedDates[1]]);
       }
     }
@@ -80,7 +86,11 @@ export default class RenderDay extends React.Component<Props, State> {
     }
   };
 
-  onDrag = (event: OnDragEvent, grabbedSide: GrabbedSideType) => {
+  onDrag = (
+    event: OnDragEvent,
+    grabbedSide: GrabbedSideType,
+    isChoosingPastDatesEnabled: boolean,
+  ) => {
     if (!this.state.isDragging) {
       this.setState({ isDragging: true });
     }
@@ -91,8 +101,10 @@ export default class RenderDay extends React.Component<Props, State> {
           grabbedStartDay: this.props.day,
           selectedDates: this.props.selectedDates,
           dayItemSize: RenderDay.dayItemSize,
-          grabbedSide: grabbedSide,
+          grabbedSide,
           weekStartsOn: this.props.weekStartsOn,
+          isChoosingPastDatesEnabled,
+          renderedCalendarRange: this.props.renderedCalendarRange,
         },
         newSelectedDate => {
           if (this.props.onPress) {
@@ -115,12 +127,24 @@ export default class RenderDay extends React.Component<Props, State> {
   };
 
   render() {
-    const { day, price, selectedDates, isRangePicker } = this.props;
+    const {
+      day,
+      price,
+      selectedDates,
+      isRangePicker,
+      isChoosingPastDatesEnabled,
+      renderedCalendarRange,
+    } = this.props;
     const isFieldEmpty = day == null;
     const isStartOfSelectedDates = day && isSameDay(selectedDates[0], day);
     const isEndOfSelectedDates = day && isSameDay(selectedDates[1], day);
-    const isPossibleToChangeDateThisDirection =
-      (day && !isDayInPast(subDays(day, 1))) ||
+    const isPossibleToChangeDateBackDirection =
+      (day &&
+        !this.isDayInPastActive(subDays(day, 1)) &&
+        isBefore(renderedCalendarRange[0], day)) ||
+      !isSameDay(selectedDates[0], selectedDates[1]);
+    const isPossibleToChangeDateForwardDirection =
+      (day && isBefore(day, renderedCalendarRange[1])) ||
       !isSameDay(selectedDates[0], selectedDates[1]);
     const isDaySelected =
       day &&
@@ -132,16 +156,28 @@ export default class RenderDay extends React.Component<Props, State> {
 
     const isLeftArrowRendered =
       isStartOfSelectedDates &&
-      isPossibleToChangeDateThisDirection &&
+      isPossibleToChangeDateBackDirection &&
       isRangePicker;
-    const isRightArrowRendered = isEndOfSelectedDates && isRangePicker;
+    const isRightArrowRendered =
+      isEndOfSelectedDates &&
+      isPossibleToChangeDateForwardDirection &&
+      isRangePicker;
     const isLeftDraggableItemRendered =
       isRangePicker &&
-      isPossibleToChangeDateThisDirection &&
+      isPossibleToChangeDateBackDirection &&
       (isStartOfSelectedDates || this.state.isDragging);
     const isRightDraggableItemRendered =
-      isRangePicker && (isEndOfSelectedDates || this.state.isDragging);
+      isRangePicker &&
+      isPossibleToChangeDateForwardDirection &&
+      (isEndOfSelectedDates || this.state.isDragging);
 
+    const commonPropsForDraggableItems = {
+      onDrag: this.onDrag,
+      onDrop: this.onDrop,
+      dayItemSize: RenderDay.dayItemSize,
+      isChoosingPastDatesEnabled: isChoosingPastDatesEnabled,
+      isDragging: this.state.isDragging,
+    };
     return (
       <View
         style={[styles.container, isDaySelected && styles.onTheTop]}
@@ -150,17 +186,15 @@ export default class RenderDay extends React.Component<Props, State> {
         <View>
           {isLeftDraggableItemRendered && (
             <DraggableItem
-              onDrag={this.onDrag}
-              onDrop={this.onDrop}
               onPress={onArrowPress(this.onLeftPress)}
               grabbedSide="left"
-              dayItemSize={RenderDay.dayItemSize}
+              {...commonPropsForDraggableItems}
             />
           )}
 
           <Touchable
             onPress={this.handlePress}
-            disabled={isDayInPast(day) || isFieldEmpty}
+            disabled={this.isDayInPastActive(day) || isFieldEmpty}
             style={styles.dayTouchableContainer}
           >
             <>
@@ -187,7 +221,7 @@ export default class RenderDay extends React.Component<Props, State> {
                       style={[
                         styles.day,
                         isDaySelected && styles.selectedDatesText,
-                        isDayInPast(day) && styles.dayInPast,
+                        this.isDayInPastActive(day) && styles.dayInPast,
                       ]}
                     >
                       {day && format(day, 'd')}
@@ -207,11 +241,9 @@ export default class RenderDay extends React.Component<Props, State> {
           </Touchable>
           {isRightDraggableItemRendered && (
             <DraggableItem
-              onDrag={this.onDrag}
-              onDrop={this.onDrop}
               onPress={onArrowPress(this.onRightPress)}
               grabbedSide="right"
-              dayItemSize={RenderDay.dayItemSize}
+              {...commonPropsForDraggableItems}
             />
           )}
         </View>

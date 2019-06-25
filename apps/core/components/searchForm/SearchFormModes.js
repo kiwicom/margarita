@@ -8,12 +8,16 @@ import { StyleSheet } from '@kiwicom/universal-components';
 import TripTypeSelect from './TripTypeSelect';
 import PassengersInput from './PassengersInput';
 
-const SearchFormModes = () => {
+type Props = {|
+  +onParamsUpdate: () => void,
+|};
+
+const SearchFormModes = ({ onParamsUpdate }: Props) => {
   return (
     <View style={styles.container}>
-      <TripTypeSelect />
+      <TripTypeSelect onParamsUpdate={onParamsUpdate} />
       <View style={styles.hSpacer} />
-      <PassengersInput />
+      <PassengersInput onParamsUpdate={onParamsUpdate} />
     </View>
   );
 };

@@ -9,10 +9,10 @@ import {
 import {
   SearchContextProvider,
   UserContextProvider,
-  BookingContextProvider,
 } from '@kiwicom/margarita-core';
 import { AlertContextProvider } from '@kiwicom/margarita-components';
 import { LayoutContextProvider } from '@kiwicom/margarita-device';
+import { Portal } from 'react-native-paper';
 
 import TabNavigator from './src/navigation/TabNavigator';
 
@@ -29,13 +29,13 @@ export default function App() {
   return (
     <LayoutContextProvider>
       <UserContextProvider>
-        <BookingContextProvider>
-          <SearchContextProvider>
-            <AlertContextProvider>
+        <SearchContextProvider>
+          <AlertContextProvider>
+            <Portal.Host>
               <AppContainer />
-            </AlertContextProvider>
-          </SearchContextProvider>
-        </BookingContextProvider>
+            </Portal.Host>
+          </AlertContextProvider>
+        </SearchContextProvider>
       </UserContextProvider>
     </LayoutContextProvider>
   );

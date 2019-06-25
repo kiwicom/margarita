@@ -4,6 +4,7 @@ export { default as SearchScreen } from './SearchScreen';
 export { default as ResultDetailScreen } from './ResultDetailScreen';
 export { default as ResultsScreen } from './ResultsScreen';
 export { default as PaymentScreen } from './PaymentScreen';
+export { default as BookingCompletedScreen } from './BookingCompletedScreen';
 export { default as BookingsListScreen } from './BookingsListScreen';
 export { default as BookingDetailScreen } from './BookingDetailScreen';
 export { default as ShareBookingScreen } from './ShareBookingScreen';

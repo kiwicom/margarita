@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import { View, Platform } from 'react-native';
-import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import { StyleSheet } from '@kiwicom/universal-components';
 import {
   withLayoutContext,
@@ -78,18 +77,12 @@ const SortTabs = ({
 
 const styles = StyleSheet.create({
   containerDesktop: {
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
     flexDirection: 'row',
-    borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
-    paddingHorizontal: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingTop: parseInt(defaultTokens.spaceXXXSmall, 10),
-    paddingBottom: parseInt(defaultTokens.spaceXXXSmall, 10),
+    position: 'relative',
+    top: 1,
   },
   containerMobile: {
-    backgroundColor: defaultTokens.backgroundButtonSecondary,
     flexDirection: 'column',
-    paddingTop: 1,
-    paddingBottom: 1,
   },
 });
 

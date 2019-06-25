@@ -71,18 +71,18 @@ describe('RangeDatePicker ', () => {
   });
 
   it('getMonths should get array of info about previous or next months', () => {
-    const prevMonths = getMonths(
-      4,
-      weekStartsOnMonday,
-      'prev',
-      new Date(2019, 4, 1),
-    );
-    const nextMonths = getMonths(
-      2,
-      weekStartsOnSunday,
-      undefined,
-      new Date(2019, 2, 1),
-    );
+    const prevMonths = getMonths({
+      numberOfRenderedMonths: 4,
+      weekStartsOn: weekStartsOnMonday,
+      whichMonthsToRender: 'prev',
+      renderFirstMonthFrom: new Date(2019, 4, 1),
+    });
+    const nextMonths = getMonths({
+      numberOfRenderedMonths: 2,
+      weekStartsOn: weekStartsOnSunday,
+      whichMonthsToRender: undefined,
+      renderFirstMonthFrom: new Date(2019, 2, 1),
+    });
     expect(prevMonths).toMatchObject([
       {
         month: 1,

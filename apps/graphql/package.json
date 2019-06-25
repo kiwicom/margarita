@@ -5,9 +5,9 @@
   "main": "index.js",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
-    "@kiwicom/fetch": "^2.2.0",
+    "@kiwicom/fetch": "^2.4.3",
     "@kiwicom/graphql-global-id": "^0.10.0",
-    "@kiwicom/graphql-utils": "^0.7.0",
+    "@kiwicom/graphql-utils": "^0.8.0",
     "@kiwicom/margarita-config": "^0",
     "@kiwicom/margarita-utils": "^0",
     "@kiwicom/test-utils": "^0.9.0",
@@ -42,8 +42,8 @@
     "flow-aws-lambda": "https://github.com/yarax/flow-aws-lambda#407f59f87889345a77b642fbeac91ff5f89865a1",
     "nodemon": "^1.18.7",
     "serverless": "^1.41.1",
-    "serverless-dotenv-plugin": "^2.1.1",
     "serverless-content-encoding": "^1.1.0",
+    "serverless-dotenv-plugin": "^2.1.1",
     "utf-8-validate": "^5.0.2",
     "webpack-cli": "^3.2.3"
   },

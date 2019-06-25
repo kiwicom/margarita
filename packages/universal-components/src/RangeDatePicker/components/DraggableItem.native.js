@@ -11,9 +11,10 @@ import type { GrabbedSideType, XY } from '../RangeDatePickerTypes';
 import type { OnDragEvent, OnDropEvent } from '../../types';
 
 type Props = {
-  +onDrag: (OnDragEvent, GrabbedSideType) => void,
+  +onDrag: (OnDragEvent, GrabbedSideType, boolean) => void,
   +onDrop: () => void,
   +grabbedSide: GrabbedSideType,
+  +isChoosingPastDatesEnabled: boolean,
 };
 
 export default class DraggableItem extends React.Component<Props> {
@@ -44,7 +45,11 @@ export default class DraggableItem extends React.Component<Props> {
   onGestureEvent: OnDragEvent;
 
   onDrag = (event: OnDragEvent) => {
-    this.props.onDrag(event, this.props.grabbedSide);
+    this.props.onDrag(
+      event,
+      this.props.grabbedSide,
+      this.props.isChoosingPastDatesEnabled,
+    );
   };
 
   onHandlerStateChange = (event: OnDropEvent) => {

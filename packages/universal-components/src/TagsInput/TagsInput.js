@@ -192,6 +192,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: 9,
     paddingHorizontal: 8,
+    borderRadius: 3,
   },
   fieldContainer: {
     flexDirection: 'row',

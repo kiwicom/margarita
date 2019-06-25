@@ -1,25 +1,30 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { View, SafeAreaView, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Button } from '../Button';
-import { Modal } from '../Modal';
+import Modal from './components/Modal';
 import { StyleSheet } from '../PlatformStyleSheet';
 import type { Props } from './RangeDatePickerTypes';
 import RangeDatePickerContent from './RangeDatePickerContent';
 import NightsInDestination from './NightsInDestination';
 import ControlContainer from './components/ControlContainer';
+import { ModalButtons } from '../ModalButtons';
 
 export default class RangeDatePicker extends React.Component<Props> {
-  // @TODO load price for days
-
   static defaultProps = {
     isNightsInDestinationVisible: false,
     isNightsInDestinationSelected: false,
     isControlContainerVisible: true,
     nightsInDestinationLabel: 'Nights in destination',
+    buttonLabels: {
+      confirm: 'Set date',
+    },
+    renderFirstMonthFrom: new Date(),
+    weekStartsOn: 1,
+    isRangePicker: true,
+    isChoosingPastDatesEnabled: false,
   };
 
   handleDismiss = () => {
@@ -52,6 +57,7 @@ export default class RangeDatePicker extends React.Component<Props> {
 
   render() {
     const {
+      isChoosingPastDatesEnabled,
       isVisible,
       label,
       buttonLabels,
@@ -65,64 +71,66 @@ export default class RangeDatePicker extends React.Component<Props> {
       nightsInDestinationLabel,
       isNightsInDestinationSelected,
       isControlContainerVisible,
+      renderFirstMonthFrom,
     } = this.props;
 
+    // We have to use JS-based modal on Android (coverScreen = false), because gestures are not working in native Modal https://github.com/kmagiera/react-native-gesture-handler/issues/139
+
     return (
-      <Modal
-        isVisible={isVisible}
-        onRequestClose={this.handleDismiss}
-        onBackdropPress={this.handleDismiss}
-      >
-        <View style={styles.content}>
-          {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
-            <RangeDatePickerContent
-              selectedDates={this.props.dates}
-              onDayPress={this.handleChangeDate}
-              numberOfRenderedMonths={numberOfRenderedMonths}
-              weekStartsOn={weekStartsOn}
-              isRangePicker={isRangePicker ?? true}
-            />
-          ) : (
-            <NightsInDestination
-              nightsInDestination={nightsInDestination}
-              nightsInDestinationLabel={nightsInDestinationLabel}
-              onNightsInDestinationChange={this.handleNightsInDestinationChange}
-            />
-          )}
-          <View style={styles.bottomContainer}>
-            {isControlContainerVisible && (
-              <View style={[styles.controlContainer]}>
-                <ControlContainer
-                  dates={dates}
-                  dateFormat={dateFormat}
-                  nightsInDestinationLabel={nightsInDestinationLabel}
-                  nightsInDestination={nightsInDestination}
-                  isNightsInDestinationVisible={isNightsInDestinationVisible}
-                  dateLabel={label}
-                  isNightsInDestinationSelected={isNightsInDestinationSelected}
-                  onActiveTabChange={this.handleActiveTabChange}
-                />
-              </View>
+      isVisible && (
+        <Modal
+          isVisible={isVisible}
+          onRequestClose={this.handleDismiss}
+          onBackdropPress={this.handleDismiss}
+          coverScreen={Platform.OS !== 'android'}
+        >
+          <SafeAreaView style={styles.content}>
+            {!isNightsInDestinationSelected || !isNightsInDestinationVisible ? (
+              <RangeDatePickerContent
+                isChoosingPastDatesEnabled={isChoosingPastDatesEnabled}
+                selectedDates={this.props.dates}
+                onDayPress={this.handleChangeDate}
+                numberOfRenderedMonths={numberOfRenderedMonths}
+                weekStartsOn={weekStartsOn}
+                isRangePicker={isRangePicker}
+                renderFirstMonthFrom={renderFirstMonthFrom}
+              />
+            ) : (
+              <NightsInDestination
+                nightsInDestination={nightsInDestination}
+                nightsInDestinationLabel={nightsInDestinationLabel}
+                onNightsInDestinationChange={
+                  this.handleNightsInDestinationChange
+                }
+              />
             )}
-            <View style={styles.row}>
-              <View style={styles.buttonWrapper}>
-                <Button
-                  label={buttonLabels?.cancel ?? 'Cancel'}
-                  onPress={this.handleDismiss}
-                  type="secondary"
-                />
-              </View>
-              <View style={styles.buttonWrapper}>
-                <Button
-                  label={buttonLabels?.confirm ?? 'Set date'}
-                  onPress={this.handleConfirm}
-                  style={styles.confirmButton}
-                />
-              </View>
+            <View style={styles.bottomContainer}>
+              {isControlContainerVisible && (
+                <View style={[styles.controlContainer]}>
+                  <ControlContainer
+                    dates={dates}
+                    dateFormat={dateFormat}
+                    nightsInDestinationLabel={nightsInDestinationLabel}
+                    nightsInDestination={nightsInDestination}
+                    isNightsInDestinationVisible={isNightsInDestinationVisible}
+                    dateLabel={label}
+                    isNightsInDestinationSelected={
+                      isNightsInDestinationSelected
+                    }
+                    onActiveTabChange={this.handleActiveTabChange}
+                  />
+                </View>
+              )}
+              <ModalButtons
+                labelConfirm={buttonLabels.confirm}
+                labelCancel={buttonLabels.cancel}
+                onConfirmPress={this.handleConfirm}
+                onCancelPress={this.handleDismiss}
+              />
             </View>
-          </View>
-        </View>
-      </Modal>
+          </SafeAreaView>
+        </Modal>
+      )
     );
   }
 }
@@ -146,14 +154,5 @@ const styles = StyleSheet.create({
   },
   bottomContainer: {
     margin: parseFloat(defaultTokens.spaceXSmall),
-  },
-  row: {
-    flexDirection: 'row',
-  },
-  buttonWrapper: {
-    flex: 1,
-  },
-  confirmButton: {
-    marginStart: parseFloat(defaultTokens.spaceXSmall),
   },
 });

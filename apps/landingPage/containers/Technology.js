@@ -5,14 +5,13 @@ import styled from 'styled-components';
 import { Separator } from '@kiwicom/orbit-components/lib/';
 
 import Content from '../components/Content';
-import Highlight from '../components/Highlight';
 import AccentedText from '../components/AccentedText';
 import { CardItems, CardItem, CardDescription } from '../components/Card';
 import Title from '../components/Title';
 
-export default function DeveloperInfo() {
+export default function Technology() {
   return (
-    <CenteredContainer id="developer-experience">
+    <ContentWrapper id="developer-experience">
       <Separator />
       <Content>
         <Title>Technology</Title>
@@ -26,8 +25,11 @@ export default function DeveloperInfo() {
                 alt="Multiplatform app"
               />
             </ImageContainer>
-            <CardTitle>Real </CardTitle>
-            <HighlightLeftOffset>multi-platform app </HighlightLeftOffset>
+            <CardTitle>
+              Real
+              <br />
+              multi-platform app
+            </CardTitle>
             <CardDescriptionTopMargin>
               One codebase for iOS, Android and web. And with user experience
               like in native apps.
@@ -42,8 +44,11 @@ export default function DeveloperInfo() {
                 alt="React logo"
               />
             </ImageContainer>
-            <CardTitle>Developed with </CardTitle>
-            <HighlightLeftOffset>modern technologies</HighlightLeftOffset>
+            <CardTitle>
+              Developed with
+              <br />
+              modern technologies
+            </CardTitle>
             <CardDescriptionTopMargin>
               React Native and GraphQL are battle-tested modern technologies for
               the best developer experience.
@@ -58,8 +63,11 @@ export default function DeveloperInfo() {
                 alt="Open-source licence"
               />
             </ImageContainer>
-            <CardTitle>API is free and </CardTitle>
-            <HighlightLeftOffset block>app is open-sourced</HighlightLeftOffset>
+            <CardTitle>
+              API is free and
+              <br />
+              app is open-sourced
+            </CardTitle>
             <CardDescriptionTopMargin>
               There are no fees. Not only we provide you with a free API, you
               can even collect your commission for each single booking coming
@@ -68,7 +76,7 @@ export default function DeveloperInfo() {
           </CardItem>
         </CardItems>
       </Content>
-    </CenteredContainer>
+    </ContentWrapper>
   );
 }
 const CardTitle = styled(AccentedText)`
@@ -77,7 +85,7 @@ const CardTitle = styled(AccentedText)`
 const Image = styled.img`
   width: 120px;
 `;
-const CenteredContainer = styled.div`
+const ContentWrapper = styled.div`
   padding-top: 30px;
   display: flex;
   align-items: center;
@@ -87,11 +95,6 @@ const ImageContainer = styled.div`
   height: 120px;
   display: flex;
   align-items: center;
-`;
-const HighlightLeftOffset = styled(Highlight)`
-  position: relative;
-  left: -5px;
-  margin-bottom: 20px;
 `;
 
 const CardDescriptionTopMargin = styled(CardDescription)`

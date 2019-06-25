@@ -8,15 +8,16 @@ import {
 } from '@kiwicom/margarita-components';
 
 import {
-  withSearchContext,
   type SearchContextState,
-  type PassengersData,
-} from '../../contexts/searchContext/SearchContext';
+  withSearchContext,
+  type Passengers,
+} from '../../contexts/searchContext';
 
 type Props = {|
   +adults: number,
   +infants: number,
-  +setPassengerData: ($ReadOnly<PassengersData>) => void,
+  +setPassengerData: ($ReadOnly<Passengers>) => void,
+  +onParamsUpdate: () => void,
 |};
 
 type State = {|
@@ -28,8 +29,9 @@ class PassengersModal extends React.Component<Props, State> {
     showPassengerModal: false,
   };
 
-  handlePassengersSave = (passengersData: $ReadOnly<PassengersData>) => {
-    this.props.setPassengerData(passengersData);
+  handlePassengersSave = async (passengersData: $ReadOnly<Passengers>) => {
+    await this.props.setPassengerData(passengersData);
+    this.props.onParamsUpdate();
     this.togglePassengerModal();
   };
 

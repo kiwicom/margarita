@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { SafeAreaView, View, Platform } from 'react-native';
+import { SafeAreaView, View, Platform, Image } from 'react-native';
 import { StyleSheet, designTokens } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import * as DateFNS from 'date-fns';
@@ -9,7 +9,7 @@ import { SearchParamsSummary } from '@kiwicom/margarita-components';
 import {
   LONG_DAY_MONTH_FORMAT,
   TRIP_TYPES,
-  type TripTypes,
+  type TripType,
   BASIC_ISO_DATE_FORMAT,
 } from '@kiwicom/margarita-config';
 import {
@@ -22,7 +22,6 @@ import {
   Routes,
   type Navigation,
 } from '@kiwicom/margarita-navigation';
-import { noop } from '@kiwicom/margarita-utils';
 
 import SearchForm from '../../components/searchForm/SearchForm';
 import type { ReturnResultsQueryResponse } from './__generated__/ReturnResultsQuery.graphql';
@@ -32,11 +31,12 @@ import OneWayResultsQuery from './OneWayResultsQuery';
 import ReturnResultsQuery from './ReturnResultsQuery';
 import {
   withSearchContext,
-  type SearchContextState,
   type Location,
-} from '../../contexts/searchContext/SearchContext';
+  type SearchContextState,
+} from '../../contexts/searchContext';
 import SortTabsWrapper from '../search/SortTabsWrapper';
 import { type SearchParameters } from '../search/Search';
+import AlphaGradient from './assets/alpha-to-white-vertical.png';
 
 type Props = {|
   +navigation: Navigation,
@@ -56,18 +56,15 @@ type Props = {|
   +nightsInDestinationFrom: string,
   +nightsInDestinationTo: string,
   +isNightsInDestinationSelected: boolean,
-  +routerQuery: SearchParameters,
-  +setStateFromQueryParams: SearchParameters => void,
+  +tripType: TripType,
+  +setBookingToken: string => void,
+  +onSubmit: SearchParameters => void,
 |};
 
 class Results extends React.Component<Props> {
-  componentDidMount() {
-    const { setStateFromQueryParams, routerQuery } = this.props;
-    setStateFromQueryParams(routerQuery);
-  }
-
-  handleBookPress = (bookingToken: ?string) => {
+  handleBookPress = (bookingToken: string) => {
     const { adults, infants } = this.props;
+    this.props.setBookingToken(bookingToken);
     this.props.navigation.navigate(Routes.RESULT_DETAIL, {
       adults,
       infants,
@@ -82,7 +79,7 @@ class Results extends React.Component<Props> {
     return <ResultsList data={searchData} onBookPress={this.handleBookPress} />;
   };
 
-  parseSearchParametersByType = (type: TripTypes) => {
+  parseSearchParametersByType = (type: TripType) => {
     const {
       travelFrom,
       travelTo,
@@ -143,6 +140,8 @@ class Results extends React.Component<Props> {
       dateTo,
       returnDateFrom,
       returnDateTo,
+      onSubmit,
+      tripType,
     } = this.props;
     const getFormattedDate = (dates: $ReadOnlyArray<Date>) => {
       const stringDates: $ReadOnlyArray<string> = dates.map(date =>
@@ -168,9 +167,6 @@ class Results extends React.Component<Props> {
       )}`;
     };
 
-    const tripType: TripTypes = returnDateFrom
-      ? TRIP_TYPES.RETURN
-      : TRIP_TYPES.ONEWAY;
     const QueryComponent =
       tripType === TRIP_TYPES.RETURN ? ReturnResultsQuery : OneWayResultsQuery;
     const props = {
@@ -181,7 +177,6 @@ class Results extends React.Component<Props> {
     };
     const isWeb = Platform.OS === 'web';
     const desktopLayout = this.props.layout >= LAYOUT.desktop;
-    const mobileWebLayout = isWeb && this.props.layout < LAYOUT.largeMobile;
     return (
       <SafeAreaView style={styles.container}>
         {isWeb ? (
@@ -191,7 +186,7 @@ class Results extends React.Component<Props> {
               desktopLayout && styles.desktopSearchForm,
             ]}
           >
-            <SearchForm showButton={false} onSubmit={noop} />
+            <SearchForm showButton={false} onSubmit={onSubmit} />
           </View>
         ) : (
           <SearchParamsSummary
@@ -208,14 +203,15 @@ class Results extends React.Component<Props> {
             }}
           />
         )}
-
-        <View
-          style={[
-            styles.resultContainer,
-            !mobileWebLayout && styles.flexContainer,
-          ]}
-        >
-          <SortTabsWrapper />
+        <SortTabsWrapper />
+        <View style={styles.gradientOverlapContainer}>
+          <Image
+            source={AlphaGradient}
+            style={styles.gradientOverlapImage}
+            resizeMode="stretch"
+          />
+        </View>
+        <View style={styles.resultContainer}>
           <QueryComponent {...props} />
         </View>
       </SafeAreaView>
@@ -223,11 +219,19 @@ class Results extends React.Component<Props> {
   }
 }
 
+const gradientHeight = 20;
 const styles = StyleSheet.create({
+  gradientOverlapContainer: {
+    position: 'relative',
+    zIndex: parseFloat(defaultTokens.zIndexDefault),
+    marginBottom: -gradientHeight,
+  },
+  gradientOverlapImage: {
+    height: gradientHeight,
+    width: '100%',
+  },
   resultContainer: {
     backgroundColor: defaultTokens.backgroundBody,
-  },
-  flexContainer: {
     flex: 1,
   },
   container: {
@@ -264,7 +268,7 @@ const select = ({
   nightsInDestinationFrom,
   nightsInDestinationTo,
   isNightsInDestinationSelected,
-  actions: { setStateFromQueryParams },
+  actions: { setBookingToken },
 }: SearchContextState) => ({
   travelFrom,
   travelTo,
@@ -280,7 +284,7 @@ const select = ({
   nightsInDestinationFrom,
   nightsInDestinationTo,
   isNightsInDestinationSelected,
-  setStateFromQueryParams,
+  setBookingToken,
 });
 
 const layoutSelect = ({ layout }: LayoutContextState) => ({

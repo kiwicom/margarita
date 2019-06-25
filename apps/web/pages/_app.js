@@ -7,25 +7,27 @@ import { Alert, AlertContextProvider } from '@kiwicom/margarita-components';
 import {
   UserContextProvider,
   SearchContextProvider,
-  BookingContextProvider,
 } from '@kiwicom/margarita-core';
 
 export default class App extends NextApp {
   render() {
-    const { Component, pageProps } = this.props;
+    const {
+      Component,
+      pageProps,
+      router: { query: routerQuery },
+    } = this.props;
+
     return (
       <Container>
         <UserContextProvider>
-          <BookingContextProvider>
-            <AlertContextProvider>
-              <SearchContextProvider>
-                <LayoutContextProvider>
-                  <Component {...pageProps} />
-                </LayoutContextProvider>
-                <Alert />
-              </SearchContextProvider>
-            </AlertContextProvider>
-          </BookingContextProvider>
+          <AlertContextProvider>
+            <SearchContextProvider routerQuery={routerQuery}>
+              <LayoutContextProvider>
+                <Component {...pageProps} />
+              </LayoutContextProvider>
+              <Alert />
+            </SearchContextProvider>
+          </AlertContextProvider>
         </UserContextProvider>
       </Container>
     );

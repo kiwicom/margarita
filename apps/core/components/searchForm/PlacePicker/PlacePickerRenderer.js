@@ -15,16 +15,18 @@ import {
 type Props = {|
   +placeType: PlaceType,
   +onClose: () => void,
+  +onPlaceSelect: () => void,
 |};
 
 export default class PlacePickerRenderer extends React.Component<Props> {
   renderInner = (data: PlacePickerRendererQueryResponse) => {
-    const { placeType, onClose } = this.props;
+    const { placeType, onClose, onPlaceSelect } = this.props;
     return (
       <PlacePickerContent
         pickerType={this.getPickerType(placeType)}
         locations={data}
         onClose={onClose}
+        onPlaceSelect={onPlaceSelect}
       />
     );
   };

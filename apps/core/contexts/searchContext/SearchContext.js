@@ -1,96 +1,43 @@
 // @flow
 
 import * as React from 'react';
+import * as DateFNS from 'date-fns';
+import { Platform } from 'react-native';
 import { withContext, noop } from '@kiwicom/margarita-utils';
 import {
-  type TripTypes,
+  type TripType,
   TRIP_TYPES,
   SEARCH_RESULTS_LIMIT,
   DEFAULT_SEARCH_SORTING,
   DEFAULT_NIGHTS_IN_DESTINATION_FROM,
   DEFAULT_NIGHTS_IN_DESTINATION_TO,
 } from '@kiwicom/margarita-config';
-import * as DateFNS from 'date-fns';
-import qs from 'qs';
+
+import {
+  parseURLqueryToState,
+  createPassengersStateMiddleware,
+  createPassengers,
+} from './helpers';
+import type {
+  Location,
+  LocationSearchType,
+  ParseFieldsParams,
+  Passengers,
+  SortType,
+  SearchContextState,
+  PassengerType,
+} from './SearchContextTypes';
 
 type Props = {|
   +children: React.Node,
+  +routerQuery?: ParseFieldsParams,
 |};
 
-type ParseFieldsParams = {|
-  +dateFrom?: ?string,
-  +dateTo?: ?string,
-  +returnDateFrom?: ?string,
-  +returnDateTo?: ?string,
-  +nightsInDestinationFrom?: number,
-  +nightsInDestinationTo?: number,
-  +adults?: ?string,
-  +infants?: ?string,
-  +travelFrom?: ?string,
-  +travelTo?: ?string,
-|};
-
-type ParseFieldsReturn = {|
-  +dateFrom?: Date,
-  +dateTo?: Date,
-  +returnDateFrom?: Date,
-  +returnDateTo?: Date,
-  +nightsInDestinationFrom?: number,
-  +nightsInDestinationTo?: number,
-  +adults?: number,
-  +infants?: number,
-|};
-
-export type PassengersData = {|
-  adults: number,
-  infants: number,
-|};
-
-export type Location = {|
-  +id: ?string | number,
-  +locationId: ?string,
-  +name: ?string,
-  +type: ?string,
-|};
-
-export type LocationSearchType = 'travelTo' | 'travelFrom';
-export type SortTypes = 'QUALITY' | 'PRICE' | 'DURATION';
-type StateParams = {|
-  travelFrom: $ReadOnlyArray<Location>,
-  travelTo: $ReadOnlyArray<Location>,
-  isNightsInDestinationSelected: boolean,
-  nightsInDestinationFrom: number,
-  nightsInDestinationTo: number,
-  dateFrom: Date,
-  sortBy: SortTypes,
-  limit: number,
-  dateTo: Date,
-  returnDateFrom: Date,
-  returnDateTo: Date,
-  ...PassengersData,
-|};
-
-type State = {|
-  tripType: TripTypes,
-  ...StateParams,
-  +actions: {
-    +switchFromTo: () => void,
-    +setDepartureDate: (Date, Date) => void,
-    +setReturnDate: (Date, Date) => void,
-    +setNightsInDestinationSelection: boolean => void,
-    +setNightsInDestination: (number, number) => void,
-    +setTripType: TripTypes => void,
-    +setSortBy: SortTypes => void,
-    +setPassengerData: ($ReadOnly<PassengersData>) => void,
-    +clearLocation: LocationSearchType => void,
-    +addLocation: (type: LocationSearchType, location: Location) => void,
-    +setLocation: (type: LocationSearchType, location: Location) => void,
-    +setStateFromQueryParams: Object => void,
-  },
-|};
+export type State = SearchContextState;
 
 const defaultDepartureDate = DateFNS.addDays(new Date(), 1);
 const defaultReturnDate = DateFNS.addDays(defaultDepartureDate, 2);
+
 // TODO Temporary values for better development experiences, It should be replaced with nearest place suggestion.
 const defaultPlaces = {
   origin: [
@@ -124,8 +71,10 @@ const defaultState = {
   limit: SEARCH_RESULTS_LIMIT,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
+  bookingToken: null,
   adults: 1,
   infants: 0,
+  passengers: [], // TODO should be at least one passenger
   actions: {
     setDepartureDate: noop,
     switchFromTo: noop,
@@ -138,28 +87,33 @@ const defaultState = {
     setLocation: noop,
     clearLocation: noop,
     addLocation: noop,
-    setStateFromQueryParams: noop,
+    setBookingToken: noop,
+    setPassengers: noop,
   },
 };
 
 const { Provider, Consumer } = React.createContext<State>(defaultState);
 
-const parseDate = (date: ?string, key: string) => {
-  return date ? { [key]: new Date(date) } : {};
-};
+class SearchContextProvider extends React.Component<Props, State> {
+  static getDefaultState(routerQuery?: ParseFieldsParams) {
+    // hydrate state from URL
+    if (Platform.OS === 'web' && routerQuery) {
+      const derivedStateFromURL = createPassengersStateMiddleware(
+        parseURLqueryToState(routerQuery),
+      );
+      return {
+        ...defaultState,
+        ...derivedStateFromURL,
+      };
+    }
+    return defaultState;
+  }
 
-const parseNumber = (value: ?string, key: string) => {
-  return value ? { [key]: parseInt(value, 10) } : {};
-};
-
-export default class SearchContextProvider extends React.Component<
-  Props,
-  State,
-> {
   constructor(props: Props) {
     super(props);
+
     this.state = {
-      ...defaultState,
+      ...SearchContextProvider.getDefaultState(props.routerQuery),
       actions: {
         switchFromTo: this.switchFromTo,
         setDepartureDate: this.setDepartureDate,
@@ -172,26 +126,14 @@ export default class SearchContextProvider extends React.Component<
         clearLocation: this.clearLocation,
         addLocation: this.addLocation,
         setLocation: this.setLocation,
-        setStateFromQueryParams: this.setStateFromQueryParams,
+        setBookingToken: this.setBookingToken,
+        setPassengers: this.setPassengers,
       },
     };
   }
 
-  parseFields = (params: ParseFieldsParams): ParseFieldsReturn => {
-    return {
-      ...parseDate(params.dateFrom, 'dateFrom'),
-      ...parseDate(params.dateTo, 'dateTo'),
-      ...parseDate(params.returnDateFrom, 'returnDateFrom'),
-      ...parseDate(params.returnDateTo, 'returnDateTo'),
-      ...parseNumber(params.adults, 'adults'),
-      ...parseNumber(params.infants, 'infants'),
-      ...(params.nightsInDestinationFrom
-        ? { nightsInDestinationFrom: params.nightsInDestinationFrom }
-        : {}),
-      ...(params.nightsInDestinationTo
-        ? { nightsInDestinationTo: params.nightsInDestinationTo }
-        : {}),
-    };
+  setBookingToken = (bookingToken: string) => {
+    this.setState({ bookingToken });
   };
 
   switchFromTo = () => {
@@ -202,29 +144,6 @@ export default class SearchContextProvider extends React.Component<
         travelFrom: to,
         travelTo: from,
       };
-    });
-  };
-
-  parseLocationParam = (param: ?string): $ReadOnlyArray<Location> | null => {
-    if (param == null) {
-      return null;
-    }
-    const asObject: {| [key: string]: Location |} = qs.parse(param);
-    const asLocationArray: $ReadOnlyArray<Location> = Object.keys(asObject).map(
-      key => asObject[key],
-    );
-    return asLocationArray;
-  };
-
-  setStateFromQueryParams = (params: ParseFieldsParams) => {
-    const parsedParams: ParseFieldsParams = qs.parse(params);
-
-    const travelFrom = this.parseLocationParam(parsedParams.travelFrom);
-    const travelTo = this.parseLocationParam(parsedParams.travelTo);
-    this.setState({
-      ...this.parseFields(parsedParams),
-      ...(travelFrom ? { travelFrom } : {}),
-      ...(travelTo ? { travelTo } : {}),
     });
   };
 
@@ -292,16 +211,23 @@ export default class SearchContextProvider extends React.Component<
     });
   };
 
-  setTripType = (tripType: TripTypes) => {
+  setTripType = (tripType: TripType) => {
     this.setState({ tripType });
   };
 
-  setSortBy = (sortBy: SortTypes) => {
+  setSortBy = (sortBy: SortType) => {
     this.setState({ sortBy });
   };
 
-  setPassengerData = (passengerData: $ReadOnly<PassengersData>) => {
-    this.setState(passengerData);
+  setPassengerData = (passengerData: $ReadOnly<Passengers>) => {
+    this.setState({
+      passengers: createPassengers(passengerData),
+      ...passengerData,
+    });
+  };
+
+  setPassengers = (passengers: PassengerType[]) => {
+    this.setState({ passengers });
   };
 
   render() {
@@ -312,4 +238,4 @@ export default class SearchContextProvider extends React.Component<
 export const withSearchContext = (select: State => Object) =>
   withContext<State>(select, Consumer);
 
-export type SearchContextState = State;
+export default SearchContextProvider;

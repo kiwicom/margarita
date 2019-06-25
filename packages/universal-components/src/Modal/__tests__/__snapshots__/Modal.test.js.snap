@@ -6,7 +6,10 @@ exports[`Modal - native should match snapshot 1`] = `
   hardwareAccelerated={false}
   hideModalContentWhileAnimating={true}
   onModalHide={[Function]}
+  onModalWillHide={[Function]}
+  onModalWillShow={[Function]}
   onRequestClose={[Function]}
+  scrollHorizontal={false}
   scrollOffset={0}
   scrollOffsetMax={0}
   scrollTo={null}
@@ -45,7 +48,10 @@ exports[`Modal - native should match snapshot 1`] = `
   <View
     hideModalContentWhileAnimating={true}
     onModalHide={[Function]}
+    onModalWillHide={[Function]}
+    onModalWillShow={[Function]}
     pointerEvents="box-none"
+    scrollHorizontal={false}
     scrollOffset={0}
     scrollOffsetMax={0}
     scrollTo={null}
@@ -53,7 +59,7 @@ exports[`Modal - native should match snapshot 1`] = `
       Object {
         "flex": 1,
         "justifyContent": "center",
-        "margin": 37.5,
+        "margin": 0,
         "transform": Array [
           Object {
             "translateY": 0,

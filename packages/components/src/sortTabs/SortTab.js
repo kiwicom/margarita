@@ -38,8 +38,6 @@ class SortTab extends React.Component<Props> {
   render() {
     const {
       label,
-      isFirst,
-      isLast,
       isActive,
       icon,
       additionalInfo,
@@ -61,18 +59,19 @@ class SortTab extends React.Component<Props> {
           style={[
             styles.container,
             mobileLayout ? styles.heightMobile : styles.heightWeb,
-            isFirst && !mobileLayout && styles.containerFirst,
-            isLast && !mobileLayout && styles.containerLast,
             isActive &&
               (mobileLayout
                 ? styles.containerActiveMobile
                 : styles.containerActiveWeb),
-            isHovered && styles.containerHovered,
           ]}
         >
-          <View style={mobileLayout && styles.rowContainer}>
+          <View style={[styles.rowContainer, mobileLayout && styles.row]}>
             <Text
-              style={[styles.label, isActive && styles.labelActive]}
+              style={[
+                styles.label,
+                isActive && styles.labelActive,
+                isHovered && styles.containerHovered,
+              ]}
               align="left"
               numberOfLines={1}
             >
@@ -85,7 +84,15 @@ class SortTab extends React.Component<Props> {
               ]}
             >
               {price || currency ? (
-                <Text style={styles.label} align="left" numberOfLines={1}>
+                <Text
+                  style={[
+                    styles.label,
+                    isActive && styles.labelActive,
+                    isHovered && styles.containerHovered,
+                  ]}
+                  align="left"
+                  numberOfLines={1}
+                >
                   {price} {currency}
                 </Text>
               ) : null}
@@ -94,6 +101,8 @@ class SortTab extends React.Component<Props> {
                   style={[
                     styles.durationLabel,
                     (price || currency) && styles.marginStartLabel,
+                    isActive && styles.labelActive,
+                    isHovered && styles.containerHovered,
                   ]}
                   align="left"
                   numberOfLines={1}
@@ -103,15 +112,17 @@ class SortTab extends React.Component<Props> {
               ) : null}
             </View>
           </View>
-          <Icon
-            size="small"
-            name={icon}
-            color={
-              isActive
-                ? defaultTokens.paletteProductNormal
-                : defaultTokens.colorIconPrimary
-            }
-          />
+          <View style={styles.iconContainer}>
+            <Icon
+              size="small"
+              name={icon}
+              color={
+                isActive || isHovered
+                  ? defaultTokens.paletteProductNormal
+                  : defaultTokens.colorIconPrimary
+              }
+            />
+          </View>
         </View>
       </TouchableWithoutFeedback>
     );
@@ -120,22 +131,22 @@ class SortTab extends React.Component<Props> {
 
 export default withHover(SortTab);
 
-const borderRadius = parseInt(defaultTokens.borderRadiusSmall, 10);
 const containerHeight = {
-  web: 75,
+  web: 60,
   mobile: 40,
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: 'row-reverse',
+    justifyContent: 'flex-start',
     padding: parseInt(defaultTokens.spaceSmall, 10),
-    backgroundColor: defaultTokens.paletteWhite,
+    borderTopColor: 'transparent',
     overflow: 'hidden',
     web: {
+      borderTopWidth: 3,
       userSelect: 'none',
-      flex: 1,
       height: containerHeight.web,
+      paddingHorizontal: parseFloat(defaultTokens.spaceLarge),
     },
   },
   heightMobile: {
@@ -143,28 +154,22 @@ const styles = StyleSheet.create({
   },
   heightWeb: {
     height: containerHeight.web,
+    paddingBottom: 3,
   },
   rowContainer: {
-    flexDirection: 'row',
     flex: 1,
+  },
+  row: {
+    flexDirection: 'row',
   },
   priceDurationContainerMobile: {
     paddingTop: 0,
     paddingHorizontal: parseInt(defaultTokens.spaceMedium, 10),
   },
-  containerFirst: {
-    borderTopStartRadius: borderRadius,
-    borderBottomStartRadius: borderRadius,
-  },
-  containerLast: {
-    borderTopEndRadius: borderRadius,
-    borderBottomEndRadius: borderRadius,
-    marginEnd: 0,
-  },
+
   containerActiveWeb: {
-    backgroundColor: defaultTokens.paletteWhite,
-    borderBottomWidth: 2,
-    borderBottomColor: defaultTokens.paletteProductNormal,
+    backgroundColor: defaultTokens.backgroundBody,
+    borderTopColor: defaultTokens.paletteProductNormal,
   },
   containerActiveMobile: {
     backgroundColor: defaultTokens.paletteWhite,
@@ -172,7 +177,7 @@ const styles = StyleSheet.create({
     borderStartColor: defaultTokens.paletteProductNormal,
   },
   containerHovered: {
-    backgroundColor: defaultTokens.paletteWhiteHover,
+    color: defaultTokens.paletteProductNormal,
   },
   priceDurationContainerWeb: {
     paddingTop: parseInt(defaultTokens.paddingTag, 10),
@@ -180,19 +185,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   durationLabel: {
-    color: defaultTokens.paletteInkLight,
     fontWeight: 'normal',
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
   marginStartLabel: {
-    marginStart: parseInt(defaultTokens.spaceSmall, 10),
+    marginStart: parseInt(defaultTokens.spaceXSmall, 10),
   },
   label: {
-    color: defaultTokens.paletteInkDark,
     fontWeight: designTokens.fontWeightMedium,
     fontSize: parseInt(defaultTokens.fontSizeTextSmall, 10),
   },
   labelActive: {
     color: defaultTokens.paletteProductNormal,
+  },
+  iconContainer: {
+    paddingEnd: parseInt(defaultTokens.spaceSmall, 10),
   },
 });

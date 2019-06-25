@@ -40,6 +40,7 @@ export { Picker } from './Picker';
 export { PickerButton } from './PickerButton';
 export { TouchableWithoutFeedback } from './TouchableWithoutFeedback';
 export { ExtendedTouchable } from './ExtendedTouchable';
+export { ModalButtons } from './ModalButtons';
 
 /* Utils */
 export { StyleSheet } from './PlatformStyleSheet';

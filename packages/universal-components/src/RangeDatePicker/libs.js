@@ -74,24 +74,31 @@ export const getMonthMatrix = (
   );
 };
 
-export const getMonths = (
-  numberOfMonths: number,
+export const getMonths = ({
+  numberOfRenderedMonths,
+  weekStartsOn,
+  whichMonthsToRender = 'next',
+  renderFirstMonthFrom = new Date(),
+}: {
+  numberOfRenderedMonths: number,
   weekStartsOn: WeekStartsType,
-  whichMonthsToRender: 'prev' | 'next' = 'next',
-  startDate: Date = new Date(),
-): Array<MonthDateType> =>
-  new Array(Math.abs(numberOfMonths)).fill(undefined).map((_, index) => {
-    const newMonth =
-      whichMonthsToRender === 'prev'
-        ? subMonths(startDate, numberOfMonths - 1 - index)
-        : addMonths(startDate, index);
+  whichMonthsToRender?: 'prev' | 'next',
+  renderFirstMonthFrom: Date,
+}): Array<MonthDateType> =>
+  new Array(Math.abs(numberOfRenderedMonths))
+    .fill(undefined)
+    .map((_, index) => {
+      const newMonth =
+        whichMonthsToRender === 'prev'
+          ? subMonths(renderFirstMonthFrom, numberOfRenderedMonths - 1 - index)
+          : addMonths(renderFirstMonthFrom, index);
 
-    return {
-      month: getMonth(newMonth),
-      year: getYear(newMonth),
-      numberOfWeeks: getWeeksInMonth(newMonth, { weekStartsOn: weekStartsOn }),
-    };
-  });
+      return {
+        month: getMonth(newMonth),
+        year: getYear(newMonth),
+        numberOfWeeks: getWeeksInMonth(newMonth, { weekStartsOn }),
+      };
+    });
 
 export const isDayInPast = (checkedDay: ?Date) =>
   checkedDay && isBefore(checkedDay, new Date());
@@ -104,13 +111,15 @@ export const generateNeighbourhood = (
 ) => {
   // @TODO Optimise this function to not generate neighbourhood every time
   const isDraggingUp = fingerRelativePosition.y < 0;
-  const whichMonthsToRender = isDraggingUp ? 'prev' : 'next';
-  const neighbourhood = getMonths(
-    howManyMonthsToRender(fingerRelativePosition.y, dayItemSize),
+  const neighbourhood = getMonths({
+    numberOfRenderedMonths: howManyMonthsToRender(
+      fingerRelativePosition.y,
+      dayItemSize,
+    ),
     weekStartsOn,
-    whichMonthsToRender,
-    grabbedStartDay,
-  ).map<AnotatedMonthType>(item => ({
+    whichMonthsToRender: isDraggingUp ? 'prev' : 'next',
+    renderFirstMonthFrom: grabbedStartDay,
+  }).map<AnotatedMonthType>(item => ({
     year: item.year,
     month: item.month,
     numberOfWeeks: item.numberOfWeeks,
@@ -222,6 +231,8 @@ export const findRelatedItem = (
     dayItemSize,
     grabbedSide,
     weekStartsOn,
+    isChoosingPastDatesEnabled,
+    renderedCalendarRange,
   } = config;
 
   const touchBuffer = getTouchBuffer(dayItemSize.height);
@@ -276,12 +287,20 @@ export const findRelatedItem = (
             grabbedStartDay,
             selectedDates,
           });
+          const isNotIdenticalDateInterval = !isEqual(
+            selectedDates,
+            newSelectedDate,
+          );
+          const isNotInPast =
+            !isDayInPast(newDateWithXYShift) || isChoosingPastDatesEnabled;
+          const isNotOutOfRenderedRange =
+            !isBefore(newDateWithXYShift, renderedCalendarRange[0]) &&
+            !isAfter(newDateWithXYShift, renderedCalendarRange[1]);
 
           if (
-            !isEqual(selectedDates, newSelectedDate) &&
-            !isDayInPast(newDateWithXYShift) &&
-            (isBefore(newSelectedDate[0], newSelectedDate[1]) ||
-              isSameDay(newSelectedDate[0], newSelectedDate[1]))
+            isNotIdenticalDateInterval &&
+            isNotInPast &&
+            isNotOutOfRenderedRange
           ) {
             callback(newSelectedDate);
           }

@@ -8,13 +8,13 @@ import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import {
   withSearchContext,
+  type SortType,
   type SearchContextState,
-  type SortTypes,
-} from '../../contexts/searchContext/SearchContext';
+} from '../../contexts/searchContext';
 
 type Props = {|
-  +sortBy: SortTypes,
-  +setSortBy: SortTypes => void,
+  +sortBy: SortType,
+  +setSortBy: SortType => void,
 |};
 
 const priceDurationParams = {
@@ -40,18 +40,30 @@ class SortTabsWrapper extends React.Component<Props> {
 
   render() {
     return (
-      <View style={styles.container}>
-        <SortTabs
-          priceDurationParams={priceDurationParams}
-          selectedValue={this.props.sortBy}
-          onValueChange={this.onValueChange}
-        />
-      </View>
+      <>
+        <View style={styles.container}>
+          <SortTabs
+            priceDurationParams={priceDurationParams}
+            selectedValue={this.props.sortBy}
+            onValueChange={this.onValueChange}
+          />
+        </View>
+        <View style={styles.border} />
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  border: {
+    web: {
+      height: 1,
+      borderBottomWidth: parseFloat(defaultTokens.borderWidthCard),
+      borderBottomColor: defaultTokens.borderColorCard,
+      position: 'relative',
+      zIndex: -1,
+    },
+  },
   container: {
     padding: 0,
     ios: {
@@ -64,8 +76,6 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       width: '100%',
       maxWidth: designTokens.widthScreenNormal,
-      marginTop: parseInt(defaultTokens.spaceMedium, 10),
-      borderRadius: parseInt(defaultTokens.borderRadiusNormal, 10),
     },
   },
 });

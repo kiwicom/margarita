@@ -1,7 +1,7 @@
 // @flow
 
 import { head, last } from 'ramda';
-import { TRIP_TYPES, type TripTypes } from '@kiwicom/margarita-config';
+import { TRIP_TYPES, type TripType } from '@kiwicom/margarita-config';
 import { differenceInMinutes, fromISO } from '@kiwicom/margarita-utils';
 
 import type { ItineraryApiSegment, HoldBagProps } from '../Itinerary';
@@ -115,7 +115,7 @@ export const getItineraryId = (
   return segments ? segments.map(segment => segment.id).join('|') : '';
 };
 
-export const getItineraryType = (sectors: ?Array<Sector>): ?TripTypes => {
+export const getItineraryType = (sectors: ?Array<Sector>): ?TripType => {
   if (sectors == null) {
     return null;
   }

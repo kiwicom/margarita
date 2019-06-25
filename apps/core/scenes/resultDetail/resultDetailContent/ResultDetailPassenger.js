@@ -9,19 +9,16 @@ import {
 } from '@kiwicom/margarita-components';
 import { createFragmentContainer, graphql } from '@kiwicom/margarita-relay';
 
-import {
-  withBookingContext,
-  type BookingContextState,
-  type PassengerType,
-} from '../../../contexts/bookingContext/BookingContext.js';
+import { withSearchContext } from '../../../contexts/searchContext/SearchContext';
+import type { PassengerType } from '../../../contexts/searchContext/SearchContextTypes';
 import type { ResultDetailPassenger_itinerary as ResultDetailPassengerType } from './__generated__/ResultDetailPassenger_itinerary.graphql';
 import PassengerForm from '../../../components/passengerForm/PassengerForm';
 
 type Props = {|
   +itinerary: ?ResultDetailPassengerType,
   +setAlertContent: (alertContent: AlertContent | null) => void,
-  +passengers: Array<PassengerType>,
   +setPassengers: (Array<PassengerType>) => void,
+  +passengers: PassengerType[],
 |};
 
 type State = {|
@@ -32,17 +29,25 @@ type State = {|
 class ResultDetailPassenger extends React.Component<Props, State> {
   state = {
     isFormVisible: false,
-    currentEditID: '',
+    currentEditID: null,
   };
 
-  validateForm = passenger => {
-    const existsID: boolean = !!this.props.passengers.find(
-      el => el.id === passenger.id,
-    );
-    if (!(passenger.id && passenger.name)) {
+  validateForm = validatingPassenger => {
+    if (!(validatingPassenger.passportId && validatingPassenger.name)) {
       return 'ID and Name are mandatory';
     }
-    if (existsID && this.state.currentEditID !== passenger.id) {
+
+    const existsID = this.props.passengers.reduce((reduction, passenger) => {
+      if (
+        passenger.passportId === validatingPassenger.passportId &&
+        passenger.id !== validatingPassenger.id
+      ) {
+        return true;
+      }
+      return reduction;
+    }, false);
+
+    if (existsID) {
       return 'A passenger with the same ID has already been added.';
     }
     return '';
@@ -60,6 +65,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
 
   handleFormSaveRequest = passenger => {
     const errorMessage = this.validateForm(passenger);
+
     const { setAlertContent } = this.props;
     if (errorMessage) {
       setAlertContent({
@@ -82,7 +88,7 @@ class ResultDetailPassenger extends React.Component<Props, State> {
   };
 
   toggleModal = () => {
-    this.setState({ currentEditID: '' });
+    this.setState({ currentEditID: null });
     this.setState(state => ({ isFormVisible: !state.isFormVisible }));
   };
 
@@ -97,8 +103,6 @@ class ResultDetailPassenger extends React.Component<Props, State> {
         <PassengerCards
           passengerCards={passengers}
           onEditPress={this.handleEditPassenger}
-          editIconName="edit"
-          deleteIconName="close"
           onDeletePress={this.handleDeletePassenger}
           onAddPassengerPress={this.toggleModal}
         />
@@ -121,16 +125,13 @@ const selectAlertContextState = ({
   setAlertContent,
 });
 
-const bookingContextState = ({
-  passengers,
-  actions: { setPassengers },
-}: BookingContextState) => ({
+const selectSearchContext = ({ passengers, actions: { setPassengers } }) => ({
   passengers,
   setPassengers,
 });
 
 export default createFragmentContainer(
-  withBookingContext(bookingContextState)(
+  withSearchContext(selectSearchContext)(
     withAlertContext(selectAlertContextState)(ResultDetailPassenger),
   ),
   {
