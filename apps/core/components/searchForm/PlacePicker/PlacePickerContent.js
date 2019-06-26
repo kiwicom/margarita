@@ -2,7 +2,11 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { OptionPicker, StyleSheet } from '@kiwicom/universal-components';
+import {
+  OptionPicker,
+  StyleSheet,
+  ModalButtons,
+} from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 import {
   graphql,
@@ -46,11 +50,16 @@ type Props = {|
   ) => void,
   +onPressSelect: () => void,
   +onPlaceSelect: () => void,
+  +buttonLabels: {|
+    +cancel?: string,
+    +confirm?: string,
+  |},
 |};
 
 type State = {|
   searchText: string,
   isLoading: boolean,
+  tempLocations: Array<Location>,
 |};
 
 export function mapLocationToOption(location: Location) {
@@ -70,15 +79,24 @@ function mapLocationsToOption(locations: ?Array<Location>) {
 }
 
 class PlacePickerContent extends React.Component<Props, State> {
-  state = {
-    searchText: '',
-    isLoading: false,
+  static defaultProps = {
+    buttonLabels: {
+      confirm: 'Choose',
+    },
   };
 
-  getSelectedOptions = () => {
-    const { pickerType } = this.props;
-    const selectedLocations = this.props[pickerType];
+  constructor(props: Props) {
+    super(props);
+    const selectedLocations = props[props.pickerType];
+    this.state = {
+      tempLocations: selectedLocations ?? [],
+      searchText: '',
+      isLoading: false,
+    };
+  }
 
+  getSelectedOptions = () => {
+    const selectedLocations = this.state.tempLocations;
     if (selectedLocations) {
       return mapLocationsToOption(selectedLocations);
     }
@@ -106,12 +124,11 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   addLocationToSearch = (option: OptionType) => {
-    const { addLocation, pickerType } = this.props;
     const location = mapOptionToLocation(option);
-
-    addLocation(pickerType, location);
-
-    this.setState({ searchText: '' });
+    this.setState(state => ({
+      searchText: '',
+      tempLocations: [...state.tempLocations, location],
+    }));
   };
 
   refetchSuggestions = debounce((text: string) => {
@@ -128,17 +145,22 @@ class PlacePickerContent extends React.Component<Props, State> {
   handlePressOption = async (option: OptionType) => {
     const { setLocation, pickerType, onPlaceSelect } = this.props;
     const location = mapOptionToLocation(option);
-
     await setLocation(pickerType, location);
+
+    this.setState({
+      tempLocations: [location],
+    });
+
     onPlaceSelect();
 
     this.props.onClose();
   };
 
   handleClearSearch = () => {
-    const { clearLocation, pickerType } = this.props;
-    this.setState({ searchText: '' });
-    clearLocation(pickerType);
+    this.setState({
+      searchText: '',
+      tempLocations: [],
+    });
   };
 
   handlePressKey = event => {
@@ -151,7 +173,7 @@ class PlacePickerContent extends React.Component<Props, State> {
   };
 
   handleBackspacePress = () => {
-    const { setLocation, pickerType } = this.props;
+    const { pickerType } = this.props;
 
     // check if searchText exist
     const searchTextExist = this.state.searchText.length > 0;
@@ -161,9 +183,24 @@ class PlacePickerContent extends React.Component<Props, State> {
       const locations = this.props[pickerType];
 
       if (locations && locations.length !== 0) {
-        setLocation(pickerType, [...locations.slice(0, locations.length - 1)]);
+        this.setState(state => ({
+          tempLocations: state.tempLocations.slice(0, -1),
+        }));
       }
     }
+  };
+
+  handleConfirm = async () => {
+    const { setLocation, pickerType, onPlaceSelect } = this.props;
+
+    await setLocation(pickerType, this.state.tempLocations);
+    onPlaceSelect();
+
+    this.props.onClose();
+  };
+
+  handleDismiss = () => {
+    this.props.onClose();
   };
 
   render() {
@@ -188,6 +225,11 @@ class PlacePickerContent extends React.Component<Props, State> {
           isLoading={isLoading}
         />
         {isNotFound && <NotFound />}
+        <ModalButtons
+          labelConfirm={this.props.buttonLabels.confirm}
+          onConfirmPress={this.handleConfirm}
+          onCancelPress={this.handleDismiss}
+        />
       </View>
     );
   }
@@ -207,7 +249,7 @@ const select = ({
 
 const styles = StyleSheet.create({
   wrapper: {
-    marginVertical: parseFloat(defaultTokens.spaceSmall),
+    margin: parseFloat(defaultTokens.spaceXSmall),
     minHeight: 500,
   },
 });

@@ -55,9 +55,9 @@ export default class TagsContainer extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   tag: {
-    marginHorizontal: 2,
+    marginHorizontal: 3,
     alignSelf: 'center',
-    paddingHorizontal: 7,
-    paddingVertical: 4,
+    paddingHorizontal: 9,
+    paddingVertical: 6,
   },
 });

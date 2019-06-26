@@ -16,6 +16,7 @@ export type Props = {|
   +wrapperStyle?: StylePropType,
   +modalStyle?: StylePropType,
   +onClose?: () => void,
+  +isClosingOnBackdropPress: boolean,
 |};
 
 export default function Modal({
@@ -24,13 +25,14 @@ export default function Modal({
   wrapperStyle,
   modalStyle,
   onClose,
+  isClosingOnBackdropPress,
 }: Props) {
   const centerContent = Platform.OS === 'web' || Device.isTablet();
   return (
     <UCModal
       isVisible={isVisible}
       onRequestClose={onClose}
-      onBackdropPress={onClose}
+      onBackdropPress={isClosingOnBackdropPress ? onClose : undefined}
       style={[styles.modal, centerContent && styles.modalCentered, modalStyle]}
     >
       <View
@@ -45,6 +47,10 @@ export default function Modal({
     </UCModal>
   );
 }
+
+Modal.defaultProps = {
+  isClosingOnBackdropPress: true,
+};
 
 const styles = StyleSheet.create({
   modal: {

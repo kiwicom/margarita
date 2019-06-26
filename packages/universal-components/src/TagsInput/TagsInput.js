@@ -186,12 +186,14 @@ export default class TagsInput extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,
+    paddingVertical: 12,
   },
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 9,
-    paddingHorizontal: 8,
+    paddingTop: 1,
+    paddingBottom: 2,
+    paddingHorizontal: 10,
     borderRadius: 3,
   },
   fieldContainer: {

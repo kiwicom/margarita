@@ -86,7 +86,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   inputWrapper: {
-    marginHorizontal: parseFloat(defaultTokens.spaceSmall),
     ios: {
       ...commonStyles,
     },

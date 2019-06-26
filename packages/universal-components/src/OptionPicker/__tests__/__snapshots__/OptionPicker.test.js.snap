@@ -13,7 +13,6 @@ exports[`OptionPicker render 1`] = `
       Object {
         "borderBottomColor": "#bac7d5",
         "borderBottomWidth": 1,
-        "marginHorizontal": 12,
       }
     }
   >
