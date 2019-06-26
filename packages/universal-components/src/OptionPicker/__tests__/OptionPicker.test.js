@@ -6,7 +6,7 @@ import { shallow, render, fireEvent } from 'react-native-testing-library';
 
 import OptionPicker from '../OptionPicker';
 import options, { Prague, Berlin } from '../mocks/places';
-import { Badge } from '../../Badge';
+import Tag from '../../TagsInput/components/Tag';
 
 jest.mock('NativeAnimatedHelper');
 
@@ -26,7 +26,6 @@ describe('OptionPicker', () => {
     getByProps,
     getByTestId,
     getAllByType,
-    getByPlaceholder,
     getByType,
   } = render(
     <OptionPicker
@@ -57,11 +56,7 @@ describe('OptionPicker', () => {
       }),
     ).toBeDefined();
     expect(getByText(label)).toBeDefined();
-    expect(getAllByType(Badge)).toHaveLength(1);
-  });
-
-  test('should not display placeholder', () => {
-    expect(() => getByPlaceholder(placeholder)).toThrow('No instances found');
+    expect(getAllByType(Tag)).toHaveLength(1);
   });
 
   test('call the onPressItem callback', () => {

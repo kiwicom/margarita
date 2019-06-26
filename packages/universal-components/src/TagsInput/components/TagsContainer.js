@@ -3,18 +3,18 @@
 import * as React from 'react';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
-import { Badge } from '../../Badge';
+import Tag from './Tag';
 import { StyleSheet } from '../../PlatformStyleSheet';
 
 type Props = {|
   +tags: string[],
   +fontSize: number,
+  +onDeletePress?: number => void,
 |};
 
 export default class TagsContainer extends React.Component<Props> {
   static defaultProps = {
     tags: [],
-    fontSize: parseFloat(defaultTokens.fontSizeTextLarge),
   };
 
   shouldComponentUpdate(nextProps: Props) {
@@ -30,23 +30,24 @@ export default class TagsContainer extends React.Component<Props> {
   }
 
   render() {
-    const { tags, fontSize } = this.props;
+    const { tags, fontSize, onDeletePress } = this.props;
     if (tags.length < 1) {
       return null;
     }
 
     return (
       <>
-        {tags.map(tag => (
-          <Badge
-            fontSize={fontSize}
-            type="info"
+        {tags.map((tag, index) => (
+          <Tag
             key={tag}
+            fontSize={fontSize}
+            index={index}
             testID={`input-tag-${tag}`}
             style={styles.tag}
+            onDeletePress={onDeletePress}
           >
             {tag}
-          </Badge>
+          </Tag>
         ))}
       </>
     );
@@ -55,9 +56,8 @@ export default class TagsContainer extends React.Component<Props> {
 
 const styles = StyleSheet.create({
   tag: {
-    marginHorizontal: 3,
     alignSelf: 'center',
-    paddingHorizontal: 9,
-    paddingVertical: 6,
+    marginVertical: defaultTokens.spaceXXXSmall,
+    marginEnd: defaultTokens.spaceXXSmall,
   },
 });
