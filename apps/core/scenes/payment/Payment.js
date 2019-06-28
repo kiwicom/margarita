@@ -6,6 +6,7 @@ import {
   TableRowDivider,
   CreditCardPaymentForm,
   ContentContainer,
+  Notification,
 } from '@kiwicom/margarita-components';
 import {
   withNavigation,
@@ -92,6 +93,7 @@ class Payment extends React.Component<Props, State> {
     return (
       <>
         <ContentContainer>
+          <Notification message="Please don't provide real card information, this is just an experimental application!" />
           <CreditCardPaymentForm
             cardholdersName={cardholdersName}
             creditCardNumber={creditCardNumber}
