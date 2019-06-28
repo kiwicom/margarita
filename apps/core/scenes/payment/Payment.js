@@ -58,8 +58,8 @@ class Payment extends React.Component<Props, State> {
     this.setState({ monthOfExpiry });
   };
 
-  handleYearOfExpiryChange = monthOfExpiry => {
-    this.setState({ monthOfExpiry });
+  handleYearOfExpiryChange = yearOfExpiry => {
+    this.setState({ yearOfExpiry });
   };
 
   handleSecurityCodeChange = securityCode => {
