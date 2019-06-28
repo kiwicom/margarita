@@ -74,7 +74,7 @@ const defaultState = {
   bookingToken: null,
   adults: 1,
   infants: 0,
-  passengers: [], // TODO should be at least one passenger
+  passengers: createPassengers({ adults: 1, infants: 0 }),
   actions: {
     setDepartureDate: noop,
     switchFromTo: noop,
