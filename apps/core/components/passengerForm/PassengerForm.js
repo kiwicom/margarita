@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Platform } from 'react-native';
 import { generateId } from '@kiwicom/margarita-utils';
 import {
   StyleSheet,
@@ -61,7 +61,6 @@ const initialFormState = {
   dateOfBirth: null,
   bags: null,
   passengerCount: 1,
-  isDateRequested: false,
 };
 
 type State = {
@@ -75,7 +74,6 @@ type State = {
   +bags: null | Array<BaggageBundleType>,
   +visaRequired?: ?boolean,
   +dateOfBirth: ?Date,
-  +isDateRequested: boolean,
   hasPrefilledState: boolean,
 };
 
@@ -86,30 +84,28 @@ class PassengerForm extends React.Component<Props, State> {
   };
 
   static getDerivedStateFromProps(props: Props, state: State) {
+    const { prefillData, isVisible, isEditing } = props;
+    const { hasPrefilledState } = state;
     // reset form into initial state when closing
-    if (!props.isVisible) {
+    if (!isVisible) {
       return { ...initialFormState, hasPrefilledState: false };
     }
-    const editModeOpened = props.isEditing && !state.hasPrefilledState;
+    const editModeOpened = isEditing && !hasPrefilledState;
     // If is in edit mode preload passenger data into the form state
     if (editModeOpened) {
-      if (props.prefillData) {
+      if (prefillData) {
+        const dateOfBirth =
+          Platform.OS === 'ios' && !prefillData.dateOfBirth
+            ? new Date()
+            : prefillData.dateOfBirth;
         return {
-          ...props.prefillData,
+          ...prefillData,
+          dateOfBirth,
           hasPrefilledState: true,
         };
       }
     }
     return state;
-  }
-
-  componentDidUpdate(prevProps: Props, prevState: State) {
-    const { dateOfBirth, isDateRequested } = this.state;
-    const notEditedOrChanged =
-      !dateOfBirth || dateOfBirth !== prevState.dateOfBirth;
-    if (dateOfBirth && notEditedOrChanged && isDateRequested) {
-      this.handleSave();
-    }
   }
 
   handleGenderChange = (gender: any) => {
@@ -136,10 +132,6 @@ class PassengerForm extends React.Component<Props, State> {
     this.setState({ dateOfBirth });
   };
 
-  handleSavePress = () => {
-    this.setState({ isDateRequested: true });
-  };
-
   handleSave = () => {
     const {
       nationality,
@@ -163,7 +155,6 @@ class PassengerForm extends React.Component<Props, State> {
       type: 'adult', // @TODO get type base on dateOfBirth
     };
     this.props.onRequestSave(newPassenger);
-    this.setState({ isDateRequested: false });
   };
 
   requestClose = () => {
@@ -216,7 +207,6 @@ class PassengerForm extends React.Component<Props, State> {
               onDateChange={this.handleBirthDateSubmit}
               date={this.state.dateOfBirth}
               isEditModeEnabled={this.props.isEditing}
-              isDateRequested={this.state.isDateRequested}
             />
             <Picker
               selectedValue={this.state.nationality}
@@ -244,7 +234,7 @@ class PassengerForm extends React.Component<Props, State> {
           </View>
           <View style={styles.spacer} />
           <View style={styles.menuButtonWrap}>
-            <Button block={true} label="Save" onPress={this.handleSavePress} />
+            <Button block={true} label="Save" onPress={this.handleSave} />
           </View>
         </View>
       </Modal>

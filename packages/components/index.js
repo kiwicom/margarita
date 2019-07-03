@@ -69,7 +69,7 @@ export {
 } from './src/stopoverDuration/StopoverDuration';
 
 export { default as HeaderWithIcon } from './src/headerWithIcon/HeaderWithIcon';
-export { default as DateInput } from './src/dateInput/DateInput';
+export { DateInput } from './src/dateInput';
 export { SortTabs } from './src/sortTabs';
 export {
   default as ContentContainer,
