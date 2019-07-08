@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     paddingBottom: parseInt(defaultTokens.spaceXXLarge, 10),
   },
   contentCentered: {
-    maxWidth: 420,
+    maxWidth: 520,
     borderRadius: parseInt(defaultTokens.borderRadiusLarge, 10),
     paddingTop: 0,
     paddingBottom: 0,

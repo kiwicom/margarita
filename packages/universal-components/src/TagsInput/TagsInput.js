@@ -18,6 +18,7 @@ import { Text } from '../Text';
 type Props = {|
   +fontSize: number,
   +onChangeText: (value: string) => void,
+  +onDeletePress?: number => void,
   +tags: string[],
   +disabled?: boolean,
   +label?: string,
@@ -40,7 +41,7 @@ const boxShadow = isFocus => {
   if (Platform.OS === 'web') {
     return {
       boxShadow: isFocus
-        ? `${defaultTokens.borderColorInputFocus} 0 0 0 2px inset`
+        ? `${defaultTokens.borderColorInputFocus} 0 0 0 1px inset`
         : `${defaultTokens.borderColorInput} 0 0 0 1px inset`,
     };
   }
@@ -49,7 +50,7 @@ const boxShadow = isFocus => {
 
 export default class TagsInput extends React.Component<Props, State> {
   static defaultProps = {
-    fontSize: parseFloat(defaultTokens.fontSizeButtonLarge),
+    fontSize: parseFloat(defaultTokens.fontSizeButtonNormal),
     tags: [],
     autoFocus: false,
     autoCorrect: false,
@@ -57,9 +58,6 @@ export default class TagsInput extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.inputRef = React.createRef();
-    this.scrollRef = React.createRef();
-
     this.state = {
       value: props.value || '',
       isFocus: props.autoFocus,
@@ -80,17 +78,15 @@ export default class TagsInput extends React.Component<Props, State> {
   inputRef: any;
   scrollRef: any;
 
-  getPlaceholder = () => {
-    const { tags, placeholder } = this.props;
-    // Don't render placeholder if the Tags are rendered.
-    return tags.length === 0 && placeholder ? placeholder : null;
-  };
-
   handleChange = (value: string) => {
     const { value: oldValue } = this.state;
     const { onChangeText } = this.props;
     if (value !== oldValue) {
-      this.setState({ value }, this.scrollRef.current.scrollToEnd);
+      this.setState({ value }, () => {
+        if (this.scrollRef) {
+          this.scrollRef.scrollToEnd();
+        }
+      });
       onChangeText(value);
     }
   };
@@ -99,7 +95,7 @@ export default class TagsInput extends React.Component<Props, State> {
     const { isFocus } = this.state;
     if (isFocus) return;
     this.setState({ isFocus: true });
-    if (this.inputRef.current) {
+    if (this.inputRef?.current) {
       this.inputRef.current.focus();
     }
   };
@@ -114,6 +110,14 @@ export default class TagsInput extends React.Component<Props, State> {
     this.handleOnFocus();
   };
 
+  setScrollRef = (ref: ?Element) => {
+    this.scrollRef = ref;
+  };
+
+  setInputRef = (ref: ?Element) => {
+    this.inputRef = ref;
+  };
+
   render() {
     const {
       disabled,
@@ -123,6 +127,8 @@ export default class TagsInput extends React.Component<Props, State> {
       tags,
       autoFocus,
       autoCorrect,
+      onDeletePress,
+      placeholder,
     } = this.props;
     const { isFocus, value } = this.state;
 
@@ -135,72 +141,97 @@ export default class TagsInput extends React.Component<Props, State> {
       },
     };
 
-    const buttonStyles =
+    const deleteButtonOpacity =
       value || tags.length > 0 ? styles.opacityOne : styles.opacityZero;
 
     const isButtonDisabled = (!value && tags.length === 0) ?? disabled;
 
+    const areTagsRendered = tags.length > 0;
     return (
-      <TouchableWithoutFeedback onPress={this.handleOnFocus}>
-        <View style={[styles.container, dynamicStyle.border]}>
+      <>
+        <View style={styles.labelContainer}>
           {label != null && label !== '' && (
             <Text weight="bold" style={[styles.label, dynamicStyle.label]}>
               {label}
             </Text>
           )}
-          <ScrollView
-            contentContainerStyle={styles.scrollContainer}
-            onContentSizeChange={this.scrollRef?.current?.scrollToEnd}
-            scrollEventThrottle={3}
-            showsHorizontalScrollIndicator={false}
-            horizontal
-            style={styles.fieldContainer}
-            ref={this.scrollRef}
-          >
-            <TagsContainer tags={tags} fontSize={fontSize} />
-            <InputField
-              autoCorrect={autoCorrect}
-              autoFocus={autoFocus}
-              onKeyPress={onKeyPress}
-              onFocus={this.handleOnFocus}
-              onBlur={this.handleOnBlur}
-              ref={this.inputRef}
-              fontSize={fontSize}
-              disabled={disabled}
-              value={value}
-              placeholder={this.getPlaceholder()}
-              onChangeText={this.handleChange}
-            />
-          </ScrollView>
           <DeleteButton
-            style={buttonStyles}
+            style={deleteButtonOpacity}
             onPress={this.handleClear}
             disabled={isButtonDisabled}
           />
         </View>
-      </TouchableWithoutFeedback>
+        <View style={[styles.container, dynamicStyle.border]}>
+          <View style={styles.fieldContainer}>
+            <View style={styles.row}>
+              {areTagsRendered && (
+                <ScrollView
+                  style={styles.scrollView}
+                  contentContainerStyle={styles.scrollContainer}
+                  ref={this.setScrollRef}
+                >
+                  <TagsContainer
+                    tags={tags}
+                    fontSize={fontSize}
+                    onDeletePress={onDeletePress}
+                  />
+                  <TouchableWithoutFeedback onPress={this.handleOnFocus}>
+                    <View style={styles.inputFieldFocus} />
+                  </TouchableWithoutFeedback>
+                </ScrollView>
+              )}
+              <View
+                style={[
+                  styles.inputFieldContainer,
+                  areTagsRendered && styles.inputFieldBorder,
+                ]}
+              >
+                <InputField
+                  autoCorrect={autoCorrect}
+                  autoFocus={autoFocus}
+                  onKeyPress={onKeyPress}
+                  onFocus={this.handleOnFocus}
+                  onBlur={this.handleOnBlur}
+                  ref={this.setInputRef}
+                  fontSize={fontSize}
+                  disabled={disabled}
+                  value={value}
+                  placeholder={placeholder ?? 'Add new location...'}
+                  onChangeText={this.handleChange}
+                />
+              </View>
+            </View>
+          </View>
+        </View>
+      </>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  scrollView: {
+    maxHeight: 150,
+  },
   scrollContainer: {
     flexGrow: 1,
-    paddingVertical: 12,
+    paddingVertical: parseFloat(defaultTokens.spaceXSmall),
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+  },
+  labelContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: parseFloat(defaultTokens.spaceXSmall),
   },
   container: {
-    flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 1,
-    paddingBottom: 2,
-    paddingHorizontal: 10,
+    flexDirection: 'row',
+    paddingHorizontal: parseFloat(defaultTokens.spaceXSmall),
     borderRadius: 3,
   },
   fieldContainer: {
     flexDirection: 'row',
     flex: 1,
-    marginStart: 4,
-    overflow: 'hidden',
   },
   label: {
     color: defaultTokens.paletteInkDark,
@@ -212,4 +243,17 @@ const styles = StyleSheet.create({
   opacityOne: {
     opacity: 1,
   },
+  row: {
+    flex: 1,
+    flexDirection: 'column',
+  },
+  inputFieldContainer: {
+    paddingVertical: defaultTokens.spaceXSmall,
+    height: 50,
+  },
+  inputFieldBorder: {
+    borderTopWidth: 1,
+    borderTopColor: defaultTokens.borderColorTable,
+  },
+  inputFieldFocus: { flex: 1 },
 });

@@ -1,10 +1,12 @@
 // @flow
 
 import * as React from 'react';
+import { View } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
 
 import { Touchable } from '../../Touchable';
-import type { StylePropType } from '../../PlatformStyleSheet/StyleTypes';
+import { type StylePropType, StyleSheet } from '../../PlatformStyleSheet';
+import { Text } from '../../Text';
 import { Icon } from '../../Icon';
 
 type Props = {|
@@ -23,12 +25,25 @@ export default class DeleteButton extends React.PureComponent<Props> {
         disabled={disabled}
         style={style}
       >
-        <Icon
-          name="close"
-          color={defaultTokens.colorIconSecondary}
-          size="small"
-        />
+        <View style={styles.buttonContainer}>
+          <Text style={styles.text}>Clear all</Text>
+          <Icon
+            name="close"
+            color={defaultTokens.colorIconSecondary}
+            size="small"
+          />
+        </View>
       </Touchable>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  buttonContainer: {
+    flexDirection: 'row',
+  },
+  text: {
+    color: defaultTokens.colorTextSecondary,
+    marginEnd: defaultTokens.spaceXXXSmall,
+  },
+});

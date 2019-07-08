@@ -1,13 +1,14 @@
 // @flow
 
 import * as React from 'react';
-import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import {
   OptionPicker,
   StyleSheet,
   ModalButtons,
 } from '@kiwicom/universal-components';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { remove } from 'ramda';
 import {
   graphql,
   createRefetchContainer,
@@ -203,6 +204,16 @@ class PlacePickerContent extends React.Component<Props, State> {
     this.props.onClose();
   };
 
+  handleDeletePress = index => {
+    const locations = this.props[this.props.pickerType];
+
+    if (locations && locations.length !== 0) {
+      this.setState(state => ({
+        tempLocations: remove(index, 1, state.tempLocations),
+      }));
+    }
+  };
+
   render() {
     const { searchText, isLoading } = this.state;
     const options = this.getOptions();
@@ -211,18 +222,18 @@ class PlacePickerContent extends React.Component<Props, State> {
       !isLoading && searchText.length > 0 && options.length < 1;
 
     return (
-      <View style={styles.wrapper}>
+      <SafeAreaView style={styles.wrapper}>
         <OptionPicker
           text={searchText}
           onClearPress={this.handleClearSearch}
           label={this.getLabel()}
-          onPressItem={this.handlePressOption}
-          onPressAdd={this.addLocationToSearch}
+          onPressItem={this.addLocationToSearch}
           onChangeText={this.handleChangeText}
           options={filterOptions(options, selectedOptions)}
           selected={selectedOptions}
           onKeyPress={this.handlePressKey}
           isLoading={isLoading}
+          onDeletePress={this.handleDeletePress}
         />
         {isNotFound && <NotFound />}
         <ModalButtons
@@ -230,7 +241,7 @@ class PlacePickerContent extends React.Component<Props, State> {
           onConfirmPress={this.handleConfirm}
           onCancelPress={this.handleDismiss}
         />
-      </View>
+      </SafeAreaView>
     );
   }
 }
@@ -250,7 +261,15 @@ const select = ({
 const styles = StyleSheet.create({
   wrapper: {
     margin: parseFloat(defaultTokens.spaceXSmall),
-    minHeight: 500,
+    web: {
+      minHeight: 500,
+    },
+    ios: {
+      height: '100%',
+    },
+    android: {
+      height: '100%',
+    },
   },
 });
 

@@ -13,7 +13,7 @@ import Loader from '../Loader/Loader';
 type Props = {|
   +onChangeText: string => void,
   +onClearPress: () => void,
-  +onPressAdd: OptionTypeInterface => void | Promise<void>,
+  +onPressAdd?: OptionTypeInterface => void | Promise<void>,
   +onPressItem: OptionTypeInterface => void | Promise<void>,
   +text?: string,
   +label?: string,
@@ -22,6 +22,7 @@ type Props = {|
   +placeholder?: string,
   +selected?: ?Array<OptionTypeInterface>,
   +isLoading?: boolean,
+  +onDeletePress?: number => void,
 |};
 
 type Event = { nativeEvent: { key: string } };
@@ -39,6 +40,7 @@ export default function OptionPicker(props: Props) {
     onPressItem,
     onPressAdd,
     isLoading,
+    onDeletePress,
   } = props;
 
   const tags = selected ? selected.map(option => option.label) : [];
@@ -55,6 +57,7 @@ export default function OptionPicker(props: Props) {
           onKeyPress={onKeyPress}
           label={label}
           placeholder={placeholder}
+          onDeletePress={onDeletePress}
         />
       </View>
       {isLoading ? (
@@ -62,11 +65,13 @@ export default function OptionPicker(props: Props) {
           <Loader size="large" />
         </View>
       ) : options ? (
-        <OptionList
-          onItemPress={onPressItem}
-          onAddPress={onPressAdd}
-          options={options}
-        />
+        <View style={styles.optionsContainer}>
+          <OptionList
+            onItemPress={onPressItem}
+            onAddPress={onPressAdd}
+            options={options}
+          />
+        </View>
       ) : null}
     </View>
   );
@@ -85,6 +90,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  optionsContainer: { flex: 1 },
   inputWrapper: {
     ios: {
       ...commonStyles,

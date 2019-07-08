@@ -146,9 +146,10 @@ const styles = StyleSheet.create({
   container: {
     minHeight: 24,
     flexDirection: 'row',
-    position: 'relative',
+    flex: 1,
   },
   input: {
+    flex: 1,
     web: {
       outline: 'none',
     },

@@ -10,7 +10,7 @@ import type { OptionTypeInterface } from '../OptionPickerTypes';
 type Props = {|
   +options: OptionTypeInterface[],
   +onItemPress: (option: OptionTypeInterface) => void | Promise<void>,
-  +onAddPress: (option: OptionTypeInterface) => void | Promise<void>,
+  +onAddPress?: (option: OptionTypeInterface) => void | Promise<void>,
 |};
 
 export default class OptionList extends React.Component<Props> {

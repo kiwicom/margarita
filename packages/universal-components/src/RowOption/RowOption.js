@@ -17,7 +17,7 @@ type Props = {|
   +subheader: ?(string | React.Node),
   +info?: string | React.Node,
   +onItemPress: () => void | Promise<void>,
-  +onAddPress: () => void | Promise<void>,
+  +onAddPress?: () => void | Promise<void>,
 |};
 
 export default function RowOption({
@@ -57,7 +57,9 @@ export default function RowOption({
               subheader={subheader}
               info={info}
             />
-            <RowOptionRightButton onAddPress={onAddPress} />
+            {onAddPress !== undefined && (
+              <RowOptionRightButton onAddPress={onAddPress} />
+            )}
           </View>
         </View>
       </View>
