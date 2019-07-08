@@ -45,6 +45,7 @@ export default class PlacePickerRenderer extends React.Component<Props> {
   render() {
     return (
       <QueryRenderer
+        loaderText="Locations are loading..."
         query={graphql`
           query PlacePickerRendererQuery {
             ...PlacePickerContent_locations
