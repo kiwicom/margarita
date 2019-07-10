@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: defaultTokens.colorTextSecondary,
-    marginEnd: defaultTokens.spaceXXXSmall,
+    marginEnd: parseFloat(defaultTokens.spaceXXXSmall),
   },
 });

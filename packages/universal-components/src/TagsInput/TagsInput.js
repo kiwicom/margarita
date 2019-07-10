@@ -248,7 +248,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
   },
   inputFieldContainer: {
-    paddingVertical: defaultTokens.spaceXSmall,
+    paddingVertical: parseFloat(defaultTokens.spaceXSmall),
     height: 50,
   },
   inputFieldBorder: {
