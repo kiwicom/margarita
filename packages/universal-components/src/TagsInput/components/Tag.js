@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     },
   },
   text: {
-    lineHeight: designTokens.heightBadge,
+    lineHeight: parseFloat(designTokens.heightBadge),
     letterSpacing: 0.3,
     color: defaultTokens.colorTextBadgeDark,
     marginStart: 5,

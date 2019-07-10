@@ -57,7 +57,7 @@ export default class TagsContainer extends React.Component<Props> {
 const styles = StyleSheet.create({
   tag: {
     alignSelf: 'center',
-    marginVertical: defaultTokens.spaceXXXSmall,
-    marginEnd: defaultTokens.spaceXXSmall,
+    marginVertical: parseFloat(defaultTokens.spaceXXXSmall),
+    marginEnd: parseFloat(defaultTokens.spaceXXSmall),
   },
 });
