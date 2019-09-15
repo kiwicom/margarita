@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import { View } from 'react-native';
-import { Loader, StyleSheet } from '@kiwicom/universal-components';
+import { Loader, StyleSheet, Text } from '@kiwicom/universal-components';
 import {
   QueryRenderer as KiwiQueryRenderer,
   type GraphQLTaggedNode,
@@ -14,6 +14,7 @@ import environment from './Environment';
 type Props = {|
   +render: (props: Object) => React.Element<any>,
   +query: GraphQLTaggedNode,
+  +loaderText?: string,
   +variables?: Object,
 |};
 
@@ -34,6 +35,11 @@ export default class QueryRenderer extends React.Component<Props> {
     return (
       <View style={styles.unloadedContainer}>
         <Loader size="large" />
+        {this.props.loaderText != null && (
+          <View style={styles.loaderTextContainer}>
+            <Text style={styles.loaderText}>{this.props.loaderText}</Text>
+          </View>
+        )}
       </View>
     );
   };
@@ -56,7 +62,11 @@ const styles = StyleSheet.create({
   unloadedContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
+    margin: 15,
     flexGrow: 1,
   },
+  loaderTextContainer: {
+    paddingTop: 10,
+  },
+  loaderText: { color: '#aaa' },
 });
