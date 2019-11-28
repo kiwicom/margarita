@@ -2,6 +2,9 @@
   <a href="http://margarita.kiwi.com"><img src="./docs/assets/logo.png" alt="Margarita" title="Margarita" width="200" /></a>
 </div>
 <h1 align="center">Margarita</h1>
+<hr />
+<h4 align="center">⚠️ This project is not actively maintained ⚠️</h4>
+<hr />
 <h4 align="center">Multi-platform <span title="travel">✈️</span> travel app  for iOS, Android and Web<br></h4>
 
  <p align="center">built with <strong>React Native, GraphQL and <a href="https://partners.kiwi.com/presenting-tequila-revolution-travel-industry/" target="_blank">Tequila API</a></strong></p>
