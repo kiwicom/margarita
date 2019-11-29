@@ -39,6 +39,10 @@ yarn
      - Variables for user Google login in native version
      - **Optional** - can be left empty 
      - More info: [Guide: Firebase implementation](./guide-firebase-user)
+   - `SITE_ID`
+     - Used for Netlify deploys (previously no support for Monorepo multi-deploys)
+     - for Margarita: `SITE_ID=@kiwicom/margarita-web`
+     - for Storybook: `SITE_ID=@kiwicom/universal-components`
 
    **apps/graphql/.env**:
 

@@ -27,6 +27,12 @@ switch (SITE_ID) {
     break;
   }
   default: {
-    console.log('No SITE_ID environment variable was set; exiting.');
+    execSync('yarn create-dotenv', { stdio: 'inherit' });
+    execSync('yarn workspace @kiwicom/margarita-web deploy', {
+      stdio: 'inherit',
+    });
+    console.log(
+      'No SITE_ID environment variable was set; using @kiwicom/margarita-web.',
+    );
   }
 }
