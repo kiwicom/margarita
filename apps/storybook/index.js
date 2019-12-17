@@ -2,6 +2,7 @@
 
 import React from 'react';
 import * as Expo from 'expo';
+import * as Font from 'expo-font';
 import { Fonts } from '@kiwicom/universal-components';
 
 import StorybookUI from './config';
@@ -28,7 +29,7 @@ class App extends React.Component<Props, State> {
   }
 
   loadFonts = () =>
-    Expo.Font.loadAsync({
+    Font.loadAsync({
       Roboto: Fonts.Roboto,
       RobotoItalic: Fonts.RobotoItalic,
       RobotoBold: Fonts.RobotoBold,
