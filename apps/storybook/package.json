@@ -23,9 +23,10 @@
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-ondevice-knobs": "^4.1.13",
     "@storybook/react-native": "^4.1.13",
-    "expo-font": "~5.0.1",
+    "expo": "^34.0.0",
+    "expo-font": "~6.0.1",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.2.tar.gz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
