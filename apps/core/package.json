@@ -29,6 +29,7 @@
     "react": "^",
     "react-native": "^",
     "react-native-dotenv": "^",
+    "react-native-maps": "^0.26.1",
     "react-native-testing-library": "^",
     "react-test-renderer": ""
   },

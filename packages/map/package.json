@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "main": "index.js",
   "peerDependencies": {
-    "expo": "^"
+    "react-native-maps": "^0.26.1"
   }
 }

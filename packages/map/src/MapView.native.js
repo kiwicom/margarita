@@ -1,3 +1,3 @@
 // @flow
 
-export { MapView } from 'expo';
+export { default as MapView } from 'react-native-maps';
