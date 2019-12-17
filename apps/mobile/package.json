@@ -17,6 +17,7 @@
     "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-utils": "^0",
     "expo": "^33.0.0",
+    "expo-font": "~5.0.1",
     "expo-keep-awake": "~5.0.1",
     "intl": "^1.2.5",
     "react": "16.8.3",

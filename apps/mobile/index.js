@@ -2,6 +2,7 @@
 
 import React from 'react';
 import * as Expo from 'expo';
+import * as Font from 'expo-font';
 import KeepAwake from 'expo-keep-awake';
 import { Fonts } from '@kiwicom/universal-components';
 
@@ -33,7 +34,7 @@ class App extends React.Component<Props, State> {
   }
 
   loadFonts = () =>
-    Expo.Font.loadAsync({
+    Font.loadAsync({
       Roboto: Fonts.Roboto,
       RobotoItalic: Fonts.RobotoItalic,
       RobotoBold: Fonts.RobotoBold,
