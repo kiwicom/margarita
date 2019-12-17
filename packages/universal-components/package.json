@@ -79,6 +79,7 @@
     "react-native-gesture-handler": "^1.1.0",
     "react-native-paper": "^2.16.0",
     "react-native-testing-library": "^",
+    "react-native-vector-icons": "6.6.0",
     "react-test-renderer": "^",
     "styled-components": "^"
   },

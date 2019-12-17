@@ -23,7 +23,7 @@
     "lint": "yarn jest --config=.jest-eslint.config.js",
     "flow": "flow --include-warnings",
     "test": "yarn monorepo-run-tests",
-    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall"
+    "postinstall": "yarn workspace @kiwicom/margarita-mobile postinstall && yarn workspace @kiwicom/margarita-mobile-storybook postinstall"
   },
   "private": true,
   "workspaces": [
@@ -41,7 +41,7 @@
     "next": "^8.0.3",
     "next-plugin-transpile-modules": "^2.0.0",
     "ramda": "^0.26.1",
-    "react": "16.5.0",
+    "react": "16.8.3",
     "react-art": "^16.8.3",
     "react-dom": "^16.8.3"
   },

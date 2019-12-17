@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "private": true,
   "license": "MIT",
+  "main": "./index.js",
   "scripts": {
     "start:webUI": "storybook -c configs/mobile start -p 7007",
     "start:expo": "EXPO_DEBUG=true expo start --clear",
     "start": "yarn concurrently \"yarn start:webUI\" \"yarn start:expo\"",
-    "prestart": "node scripts/linkWorkspaces.js",
     "start:margarita-components": "yarn start",
     "prestart:margarita-components": "yarn rnstl:margarita-components",
     "rnstl:margarita-components": "rnstl --searchDir='../../packages/components/src'",
     "start:universal-components": "yarn start",
     "prestart:universal-components": "yarn rnstl:universal-components",
-    "rnstl:universal-components": "rnstl --searchDir='../../packages/universal-components/src'"
+    "rnstl:universal-components": "rnstl --searchDir='../../packages/universal-components/src'",
+    "postinstall": "expo-yarn-workspaces postinstall"
   },
   "dependencies": {
     "@kiwicom/universal-components": "0.0.17",
@@ -22,16 +23,17 @@
     "@storybook/addon-links": "^4.1.13",
     "@storybook/addon-ondevice-knobs": "^4.1.13",
     "@storybook/react-native": "^4.1.13",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz"
+    "react": "16.8.3",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.2.0",
     "concurrently": "^4.1.0",
-    "expo-cli": "^2.15.4",
+    "expo-cli": "^3.11.1",
+    "expo-yarn-workspaces": "^1.2.1",
     "react-native-storybook-loader": "^1.8.0"
   },
   "peerDependencies": {
-    "crna-make-symlinks-for-yarn-workspaces": "^",
     "expo": "^",
     "react": ">=16",
     "react-art": ">=16",
