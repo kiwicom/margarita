@@ -16,12 +16,12 @@
     "@kiwicom/margarita-navigation": "^0",
     "@kiwicom/margarita-relay": "^0",
     "@kiwicom/margarita-utils": "^0",
-    "expo": "^33.0.0",
-    "expo-font": "~5.0.1",
-    "expo-keep-awake": "~5.0.1",
+    "expo": "^34.0.0",
+    "expo-font": "~6.0.1",
+    "expo-keep-awake": "~6.0.0",
     "intl": "^1.2.5",
     "react": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.2.tar.gz",
     "react-native-dotenv": "^0.2.0",
     "react-native-paper": "^2.16.0",
     "react-native-maps": "^0.26.1",
@@ -29,7 +29,7 @@
     "react-navigation": "^3.3.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^8.0.0",
+    "babel-preset-expo": "^6.0.0",
     "expo-cli": "^3.11.1",
     "expo-yarn-workspaces": "^1.2.1"
   },
