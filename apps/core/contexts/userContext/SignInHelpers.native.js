@@ -1,7 +1,6 @@
 // @flow
 
-import { Google } from 'expo';
-import { Platform } from 'react-native';
+import * as Google from 'expo-google-app-auth';
 import firebase from 'firebase/app';
 import { GOOGLE_OAUTH_ANDROID, GOOGLE_OAUTH_IOS } from 'react-native-dotenv';
 
@@ -13,8 +12,8 @@ import { GOOGLE_OAUTH_ANDROID, GOOGLE_OAUTH_IOS } from 'react-native-dotenv';
 
 export const signInWithGoogle = async () => {
   const result = await Google.logInAsync({
-    clientId:
-      Platform.OS === 'android' ? GOOGLE_OAUTH_ANDROID : GOOGLE_OAUTH_IOS,
+    iosClientId: GOOGLE_OAUTH_IOS,
+    androidClientId: GOOGLE_OAUTH_ANDROID,
   });
   if (result.idToken) {
     const credential = firebase.auth.GoogleAuthProvider.credential(
