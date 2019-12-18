@@ -1,0 +1,10 @@
+{
+  "presets": [
+    "babel-preset-expo",
+    "module:react-native-dotenv"
+  ],
+  "plugins": [
+    "babel-plugin-relay",
+    "@babel/plugin-transform-runtime"
+  ]
+}
