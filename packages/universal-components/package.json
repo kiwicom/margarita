@@ -83,11 +83,6 @@
     "react-test-renderer": "^",
     "styled-components": "^"
   },
-  "rnpm": {
-    "assets": [
-      "lib/fonts"
-    ]
-  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
