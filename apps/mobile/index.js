@@ -3,7 +3,7 @@
 import React from 'react';
 import * as Expo from 'expo';
 import * as Font from 'expo-font';
-import KeepAwake from 'expo-keep-awake';
+import * as KeepAwake from 'expo-keep-awake';
 import { Fonts } from '@kiwicom/universal-components';
 
 import SharedApp from './App';
