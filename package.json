@@ -41,9 +41,9 @@
     "next": "^8.0.3",
     "next-plugin-transpile-modules": "^2.0.0",
     "ramda": "^0.26.1",
-    "react": "16.8.3",
-    "react-art": "^16.8.3",
-    "react-dom": "^16.8.3"
+    "react": "16.9.0",
+    "react-art": "^16.9.0",
+    "react-dom": "^16.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
