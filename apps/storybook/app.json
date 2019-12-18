@@ -4,7 +4,7 @@
     "description": "This project is really great.",
     "slug": "storybook",
     "privacy": "public",
-    "sdkVersion": "35.0.0",
+    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android"
