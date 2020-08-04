@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "./index.js",
   "scripts": {
-    "start": "EXPO_DEBUG=true expo start --clear",
+    "start": "expo start --clear",
     "postinstall": "node scripts/configureApplication.js && expo-yarn-workspaces postinstall"
   },
   "private": true,

@@ -11,6 +11,7 @@ type Props = {|
 |};
 
 export default function ReturnResultsQuery(props: Props) {
+  console.log('queryProps:', props);
   return (
     <QueryRenderer
       query={graphql`
