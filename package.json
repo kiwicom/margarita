@@ -30,6 +30,9 @@
     "packages/*",
     "apps/*"
   ],
+  "engines": {
+    "node": "10.15.0"
+  },
   "dependencies": {
     "@kiwicom/margarita-graphql": "^0",
     "@kiwicom/margarita-mobile": "^0",
