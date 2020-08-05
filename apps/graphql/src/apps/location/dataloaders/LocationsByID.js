@@ -13,7 +13,7 @@ export type LocationInputID = {|
 
 const fetchLocations = async (params: $ReadOnlyArray<LocationInputID>) => {
   const results = await fetch(
-    `/locations/id?limit=${params.length}&` +
+    `/locations/id?limit=${params.length}&locale=ru-RU&` +
       params
         .map((param: LocationInputID) => {
           const code = param.code ?? '';

@@ -71,6 +71,7 @@ const defaultState = {
   limit: SEARCH_RESULTS_LIMIT,
   returnDateFrom: defaultReturnDate,
   returnDateTo: defaultReturnDate,
+  locale:'ru',
   bookingToken: null,
   adults: 1,
   infants: 0,
@@ -111,7 +112,7 @@ class SearchContextProvider extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-
+    console.log('params:', SearchContextProvider.getDefaultState(props.routerQuery));
     this.state = {
       ...SearchContextProvider.getDefaultState(props.routerQuery),
       actions: {

@@ -1,13 +1,13 @@
 // @flow
-
+import { translate } from '@kiwicom/margarita-localization';
 export const TRIP_TYPE = {
   Return: {
     icon: 'flight-return',
-    label: 'Return',
+    label: translate('Return'),
   },
   OneWay: {
     icon: 'flight-direct',
-    label: 'One way',
+    label: translate('One way'),
   },
 };
 

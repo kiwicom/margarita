@@ -1,5 +1,6 @@
 service: margarita-graphql
-
+org: dragan
+app: my-first-app
 plugins:
   - serverless-webpack
   - serverless-offline
@@ -11,12 +12,12 @@ custom:
     webpackConfig: ./webpack.config.js
     includeModules: true
   contentEncoding:
-    minimumCompressionSize: 0 
+    minimumCompressionSize: 0
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs10.x
   stage: staging
-  region: eu-central-1
+  region: us-west-1
 functions:
   margarita-graphql:
     handler: src/server.handler

@@ -27,6 +27,7 @@ const fetchLocations = async (params: $ReadOnlyArray<LocationInputTerm>) => {
       return fetch(
         `/locations/query?${qs.stringify({
           term: param.term ?? '',
+          locale: 'ru-RU',
         })}${locationsParamTypes}`,
       );
     }),

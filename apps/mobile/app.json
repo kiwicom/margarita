@@ -26,6 +26,9 @@
     "ios": {
       "supportsTablet": true
     },
+    "android": {
+      "package": "com.dragan.kiwitravel"
+    },
     "packagerOpts": {
       "config": "metro.config.js"
     }

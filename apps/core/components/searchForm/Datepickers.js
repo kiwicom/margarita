@@ -24,6 +24,7 @@ import {
 import PickersWrapper from './PickersWrapper';
 import DatePicker from './DatePicker';
 import { type ConfirmType } from './DatePickerTypes';
+import { translate } from '@kiwicom/margarita-localization';
 
 type Props = {|
   +tripType: string,
@@ -197,7 +198,7 @@ class Datepickers extends React.Component<Props, State> {
           <DatePicker
             style={rowLayout && styles.rowInput}
             onPress={this.handleDepartureDatePress}
-            label="Departure"
+            label={translate("Departure")}
             icon="calendar"
             value={this.getDateNames(departureDates)}
             dates={departureDates}
@@ -208,7 +209,7 @@ class Datepickers extends React.Component<Props, State> {
           {showReturnInput && (
             <DatePicker
               onPress={this.handleReturnDatePress}
-              label={returnType ? TRIP_TYPES.RETURN : ''}
+              label={translate(returnType ? TRIP_TYPES.RETURN : '')}
               icon="calendar"
               value={this.getProperReturnName({
                 returnType,

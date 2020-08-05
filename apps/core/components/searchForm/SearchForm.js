@@ -3,6 +3,7 @@
 import * as React from 'react';
 import { View, Platform } from 'react-native';
 import { defaultTokens } from '@kiwicom/orbit-design-tokens';
+import { translate } from '@kiwicom/margarita-localization';
 import qs from 'qs';
 import {
   LAYOUT,
@@ -92,6 +93,7 @@ class SearchForm extends React.Component<Props> {
       travelTo: qs.stringify(travelTo),
       travelFromName: this.convertLocationsToParams(travelFrom, 'name'),
       travelToName: this.convertLocationsToParams(travelTo, 'name'),
+      locale: '',
       sortBy: 'QUALITY',
       limit,
       adults,
@@ -152,7 +154,7 @@ class SearchForm extends React.Component<Props> {
             {this.props.showButton && (
               <Button
                 onPress={this.handleSubmitPress}
-                label="Search"
+                label={translate("Search")}
                 rightIcon={
                   Platform.OS === 'web' ? <Icon name="chevron-right" /> : null
                 }

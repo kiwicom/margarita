@@ -26,6 +26,7 @@ import {
   PLACE_TYPE,
   type PlaceType,
 } from '../../scenes/search/SearchConstants';
+import { translate } from '@kiwicom/margarita-localization';
 
 type Props = {|
   +travelFrom: ?Array<Location>,
@@ -84,7 +85,7 @@ class Placepickers extends React.Component<Props, State> {
         <TripInput
           style={rowLayout && styles.rowInput}
           onPress={this.handleFromPress}
-          label="From"
+          label={translate("From")}
           icon={<Icon name="airplane-takeoff" />}
           value={this.getLocationsNames(travelFrom)}
         />
@@ -97,7 +98,7 @@ class Placepickers extends React.Component<Props, State> {
         </TouchableWithoutFeedback>
         <TripInput
           onPress={this.handleToPress}
-          label="To"
+          label={translate("To")}
           icon={<Icon name="airplane-landing" />}
           value={this.getLocationsNames(travelTo)}
         />

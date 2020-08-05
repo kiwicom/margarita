@@ -57,7 +57,8 @@ export const parseParameters = (
       children: input.passengers.children ?? 0,
       infants: input.passengers.infants ?? 0,
     }),
-    curr: 'EUR',
+    curr: 'RUB',
+    locale: 'ru',
   };
 
   return {
